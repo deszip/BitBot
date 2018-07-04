@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */; };
+		0E42CADD20EC7A7E0033CD03 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CADC20EC7A7E0033CD03 /* ViewController.m */; };
+		0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
+		0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CAE020EC7A800033CD03 /* Main.storyboard */; };
+		0E42CAE520EC7A800033CD03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAE420EC7A800033CD03 /* main.m */; };
+		0E42CAF020EC7A800033CD03 /* BitriseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAEF20EC7A800033CD03 /* BitriseTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E42CAEC20EC7A800033CD03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E42CAD420EC7A7E0033CD03;
+			remoteInfo = Bitrise;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E42CAD520EC7A7E0033CD03 /* Bitrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0E42CADB20EC7A7E0033CD03 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0E42CADC20EC7A7E0033CD03 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0E42CADE20EC7A800033CD03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0E42CAE120EC7A800033CD03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0E42CAE320EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E42CAE420EC7A800033CD03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bitrise.entitlements; sourceTree = "<group>"; };
+		0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitriseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E42CAEF20EC7A800033CD03 /* BitriseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitriseTests.m; sourceTree = "<group>"; };
+		0E42CAF120EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E42CAD220EC7A7E0033CD03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E42CAE820EC7A800033CD03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E42CACC20EC7A7E0033CD03 = {
+			isa = PBXGroup;
+			children = (
+				0E42CAD720EC7A7E0033CD03 /* Bitrise */,
+				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
+				0E42CAD620EC7A7E0033CD03 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E42CAD620EC7A7E0033CD03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CAD520EC7A7E0033CD03 /* Bitrise.app */,
+				0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E42CAD720EC7A7E0033CD03 /* Bitrise */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
+				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
+				0E42CADB20EC7A7E0033CD03 /* ViewController.h */,
+				0E42CADC20EC7A7E0033CD03 /* ViewController.m */,
+				0E42CADE20EC7A800033CD03 /* Assets.xcassets */,
+				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
+				0E42CAE320EC7A800033CD03 /* Info.plist */,
+				0E42CAE420EC7A800033CD03 /* main.m */,
+				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
+			);
+			path = Bitrise;
+			sourceTree = "<group>";
+		};
+		0E42CAEE20EC7A800033CD03 /* BitriseTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CAEF20EC7A800033CD03 /* BitriseTests.m */,
+				0E42CAF120EC7A800033CD03 /* Info.plist */,
+			);
+			path = BitriseTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E42CAD420EC7A7E0033CD03 /* Bitrise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E42CAF420EC7A800033CD03 /* Build configuration list for PBXNativeTarget "Bitrise" */;
+			buildPhases = (
+				0E42CAD120EC7A7E0033CD03 /* Sources */,
+				0E42CAD220EC7A7E0033CD03 /* Frameworks */,
+				0E42CAD320EC7A7E0033CD03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bitrise;
+			productName = Bitrise;
+			productReference = 0E42CAD520EC7A7E0033CD03 /* Bitrise.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0E42CAEA20EC7A800033CD03 /* BitriseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E42CAF720EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitriseTests" */;
+			buildPhases = (
+				0E42CAE720EC7A800033CD03 /* Sources */,
+				0E42CAE820EC7A800033CD03 /* Frameworks */,
+				0E42CAE920EC7A800033CD03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E42CAED20EC7A800033CD03 /* PBXTargetDependency */,
+			);
+			name = BitriseTests;
+			productName = BitriseTests;
+			productReference = 0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E42CACD20EC7A7E0033CD03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Bitrise;
+				TargetAttributes = {
+					0E42CAD420EC7A7E0033CD03 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					0E42CAEA20EC7A800033CD03 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 0E42CAD420EC7A7E0033CD03;
+					};
+				};
+			};
+			buildConfigurationList = 0E42CAD020EC7A7E0033CD03 /* Build configuration list for PBXProject "Bitrise" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0E42CACC20EC7A7E0033CD03;
+			productRefGroup = 0E42CAD620EC7A7E0033CD03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E42CAD420EC7A7E0033CD03 /* Bitrise */,
+				0E42CAEA20EC7A800033CD03 /* BitriseTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E42CAD320EC7A7E0033CD03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
+				0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E42CAE920EC7A800033CD03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E42CAD120EC7A7E0033CD03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E42CADD20EC7A7E0033CD03 /* ViewController.m in Sources */,
+				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
+				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E42CAE720EC7A800033CD03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E42CAF020EC7A800033CD03 /* BitriseTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E42CAED20EC7A800033CD03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E42CAD420EC7A7E0033CD03 /* Bitrise */;
+			targetProxy = 0E42CAEC20EC7A800033CD03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0E42CAE020EC7A800033CD03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E42CAE120EC7A800033CD03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0E42CAF220EC7A800033CD03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0E42CAF320EC7A800033CD03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0E42CAF520EC7A800033CD03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				INFOPLIST_FILE = Bitrise/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BR.Bitrise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0E42CAF620EC7A800033CD03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				INFOPLIST_FILE = Bitrise/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BR.Bitrise;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0E42CAF820EC7A800033CD03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				INFOPLIST_FILE = BitriseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitriseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitrise.app/Contents/MacOS/Bitrise";
+			};
+			name = Debug;
+		};
+		0E42CAF920EC7A800033CD03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				INFOPLIST_FILE = BitriseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitriseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitrise.app/Contents/MacOS/Bitrise";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E42CAD020EC7A7E0033CD03 /* Build configuration list for PBXProject "Bitrise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E42CAF220EC7A800033CD03 /* Debug */,
+				0E42CAF320EC7A800033CD03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E42CAF420EC7A800033CD03 /* Build configuration list for PBXNativeTarget "Bitrise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E42CAF520EC7A800033CD03 /* Debug */,
+				0E42CAF620EC7A800033CD03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E42CAF720EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitriseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E42CAF820EC7A800033CD03 /* Debug */,
+				0E42CAF920EC7A800033CD03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+}
