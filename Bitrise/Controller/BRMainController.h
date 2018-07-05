@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BRMainController.h
 //  Bitrise
 //
 //  Created by Deszip on 04/07/2018.
@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface BRMainController : NSViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

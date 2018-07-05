@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */; };
-		0E42CADD20EC7A7E0033CD03 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CADC20EC7A7E0033CD03 /* ViewController.m */; };
 		0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CAE020EC7A800033CD03 /* Main.storyboard */; };
 		0E42CAE520EC7A800033CD03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAE420EC7A800033CD03 /* main.m */; };
 		0E42CAF020EC7A800033CD03 /* BitriseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAEF20EC7A800033CD03 /* BitriseTests.m */; };
+		0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAFE20EC7BB40033CD03 /* BRMainController.m */; };
+		0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0220EC89550033CD03 /* BRAppCellView.m */; };
+		0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0520EC896B0033CD03 /* BRBuildCellView.m */; };
+		0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */; };
+		0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
+		0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */; };
+		0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +35,6 @@
 		0E42CAD520EC7A7E0033CD03 /* Bitrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0E42CADB20EC7A7E0033CD03 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0E42CADC20EC7A7E0033CD03 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0E42CADE20EC7A800033CD03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E42CAE120EC7A800033CD03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E42CAE320EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +43,19 @@
 		0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitriseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E42CAEF20EC7A800033CD03 /* BitriseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitriseTests.m; sourceTree = "<group>"; };
 		0E42CAF120EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E42CAFD20EC7BB40033CD03 /* BRMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMainController.h; sourceTree = "<group>"; };
+		0E42CAFE20EC7BB40033CD03 /* BRMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMainController.m; sourceTree = "<group>"; };
+		0E42CB0120EC89550033CD03 /* BRAppCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppCellView.h; sourceTree = "<group>"; };
+		0E42CB0220EC89550033CD03 /* BRAppCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppCellView.m; sourceTree = "<group>"; };
+		0E42CB0420EC896B0033CD03 /* BRBuildCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildCellView.h; sourceTree = "<group>"; };
+		0E42CB0520EC896B0033CD03 /* BRBuildCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildCellView.m; sourceTree = "<group>"; };
+		0E42CB0820EC89D00033CD03 /* BRAppsDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppsDataSource.h; sourceTree = "<group>"; };
+		0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppsDataSource.m; sourceTree = "<group>"; };
+		0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise.xcdatamodel; sourceTree = "<group>"; };
+		0E73597520EDF0A0007E15A7 /* BRContainerBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRContainerBuilder.h; sourceTree = "<group>"; };
+		0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRContainerBuilder.m; sourceTree = "<group>"; };
+		0E73597820EDF5D5007E15A7 /* BRAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsViewController.h; sourceTree = "<group>"; };
+		0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,15 +97,16 @@
 		0E42CAD720EC7A7E0033CD03 /* Bitrise */ = {
 			isa = PBXGroup;
 			children = (
-				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
-				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
-				0E42CADB20EC7A7E0033CD03 /* ViewController.h */,
-				0E42CADC20EC7A7E0033CD03 /* ViewController.m */,
-				0E42CADE20EC7A800033CD03 /* Assets.xcassets */,
-				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
 				0E42CAE320EC7A800033CD03 /* Info.plist */,
 				0E42CAE420EC7A800033CD03 /* main.m */,
 				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
+				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
+				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
+				0E42CAFB20EC7AF60033CD03 /* Controller */,
+				0E42CAFA20EC7AEF0033CD03 /* View */,
+				0E42CB0B20EC8AD70033CD03 /* Models */,
+				0E42CB0720EC89AB0033CD03 /* Data Sources */,
+				0E42CAFC20EC7B070033CD03 /* Resources */,
 			);
 			path = Bitrise;
 			sourceTree = "<group>";
@@ -100,6 +118,64 @@
 				0E42CAF120EC7A800033CD03 /* Info.plist */,
 			);
 			path = BitriseTests;
+			sourceTree = "<group>";
+		};
+		0E42CAFA20EC7AEF0033CD03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CB0020EC893C0033CD03 /* Cells */,
+				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E42CAFB20EC7AF60033CD03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CAFD20EC7BB40033CD03 /* BRMainController.h */,
+				0E42CAFE20EC7BB40033CD03 /* BRMainController.m */,
+				0E73597820EDF5D5007E15A7 /* BRAccountsViewController.h */,
+				0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0E42CAFC20EC7B070033CD03 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CADE20EC7A800033CD03 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0E42CB0020EC893C0033CD03 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CB0120EC89550033CD03 /* BRAppCellView.h */,
+				0E42CB0220EC89550033CD03 /* BRAppCellView.m */,
+				0E42CB0420EC896B0033CD03 /* BRBuildCellView.h */,
+				0E42CB0520EC896B0033CD03 /* BRBuildCellView.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0E42CB0720EC89AB0033CD03 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CB0820EC89D00033CD03 /* BRAppsDataSource.h */,
+				0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */,
+				0E73597520EDF0A0007E15A7 /* BRContainerBuilder.h */,
+				0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */,
+			);
+			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		0E42CB0B20EC8AD70033CD03 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,9 +277,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E42CADD20EC7A7E0033CD03 /* ViewController.m in Sources */,
+				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
+				0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
+				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
+				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
+				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
+				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
+				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +533,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */,
+			);
+			currentVersion = 0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */;
+			path = bitrise.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0E42CACD20EC7A7E0033CD03 /* Project object */;
 }

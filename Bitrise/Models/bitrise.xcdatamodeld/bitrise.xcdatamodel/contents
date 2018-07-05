@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14270.11" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="BRAccount" representedClassName="BRAccount" syncable="YES" codeGenerationType="class">
+        <attribute name="apiKey" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRApp" inverseName="account" inverseEntity="BRApp" syncable="YES"/>
+    </entity>
+    <entity name="BRApp" representedClassName="BRApp" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRAccount" inverseName="apps" inverseEntity="BRAccount" syncable="YES"/>
+        <relationship name="builds" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BRBuild" inverseName="app" inverseEntity="BRBuild" syncable="YES"/>
+    </entity>
+    <entity name="BRBuild" representedClassName="BRBuild" syncable="YES" codeGenerationType="class">
+        <attribute name="branch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workflow" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="app" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRApp" inverseName="builds" inverseEntity="BRApp" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="BRAccount" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="BRApp" positionX="-54" positionY="-9" width="128" height="30"/>
+        <element name="BRBuild" positionX="-36" positionY="9" width="128" height="90"/>
+    </elements>
+</model>
