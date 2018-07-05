@@ -723,7 +723,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="m8L-ow-dne" kind="show" identifier="BRAccountsViewController" id="fqb-hu-G1L"/>
+                                            <segue destination="u6Y-Oa-61p" kind="show" identifier="BRAccountsViewController" id="TTC-OE-mVR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -837,6 +837,27 @@
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="uh9-Ob-V4L">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="u6Y-Oa-61p" sceneMemberID="viewController">
+                    <window key="window" title="Accounts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="qnI-TF-tiT">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="516" y="564" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1669"/>
+                        <connections>
+                            <outlet property="delegate" destination="u6Y-Oa-61p" id="EES-4Z-4Za"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="m8L-ow-dne" kind="relationship" relationship="window.shadowedContentViewController" id="VyR-zp-CG2"/>
+                    </connections>
+                </windowController>
+                <customObject id="slB-aa-5XY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="670"/>
+        </scene>
         <!--Accounts View Controller-->
         <scene sceneID="Pbj-wG-L7R">
             <objects>
@@ -846,13 +867,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrb-pX-wQc">
-                                <rect key="frame" x="0.0" y="40" width="470" height="220"/>
+                                <rect key="frame" x="0.0" y="40" width="470" height="260"/>
                                 <clipView key="contentView" id="l4s-Af-lPE">
-                                    <rect key="frame" x="1" y="0.0" width="468" height="219"/>
+                                    <rect key="frame" x="1" y="0.0" width="468" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="sAJ-Jj-OAX" viewBased="YES" id="Z1G-eL-nHg">
-                                            <rect key="frame" x="0.0" y="0.0" width="468" height="194"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="468" height="234"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -941,24 +962,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="fyG-Yo-zKW">
-                                <rect key="frame" x="0.0" y="260" width="470" height="40"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dHh-im-UOu">
-                                        <rect key="frame" x="193" y="12" width="85" height="17"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Account keys" id="A9A-2w-kNS">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="dHh-im-UOu" firstAttribute="centerY" secondItem="fyG-Yo-zKW" secondAttribute="centerY" id="FGp-91-PnX"/>
-                                    <constraint firstItem="dHh-im-UOu" firstAttribute="centerX" secondItem="fyG-Yo-zKW" secondAttribute="centerX" id="Jx6-vZ-dvo"/>
-                                    <constraint firstAttribute="height" constant="40" id="LTP-qf-lOd"/>
-                                </constraints>
-                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="h3X-LJ-plt">
                                 <rect key="frame" x="0.0" y="0.0" width="470" height="40"/>
                                 <subviews>
@@ -1011,22 +1014,19 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fyG-Yo-zKW" secondAttribute="trailing" id="2lc-p4-8DQ"/>
+                            <constraint firstItem="Vrb-pX-wQc" firstAttribute="top" secondItem="0Hf-Mi-3Pg" secondAttribute="top" id="27G-s8-9uC"/>
                             <constraint firstAttribute="bottom" secondItem="h3X-LJ-plt" secondAttribute="bottom" id="D2n-0t-fjU"/>
-                            <constraint firstItem="fyG-Yo-zKW" firstAttribute="top" secondItem="0Hf-Mi-3Pg" secondAttribute="top" id="KJI-Q5-by0"/>
                             <constraint firstItem="Vrb-pX-wQc" firstAttribute="leading" secondItem="0Hf-Mi-3Pg" secondAttribute="leading" id="TiG-Vr-gAY"/>
-                            <constraint firstItem="fyG-Yo-zKW" firstAttribute="leading" secondItem="0Hf-Mi-3Pg" secondAttribute="leading" id="W4t-vL-f3u"/>
                             <constraint firstItem="h3X-LJ-plt" firstAttribute="leading" secondItem="0Hf-Mi-3Pg" secondAttribute="leading" id="bBE-aL-tUX"/>
                             <constraint firstItem="h3X-LJ-plt" firstAttribute="top" secondItem="Vrb-pX-wQc" secondAttribute="bottom" id="fVb-Jg-VrR"/>
                             <constraint firstAttribute="trailing" secondItem="Vrb-pX-wQc" secondAttribute="trailing" id="nbU-lm-KOC"/>
-                            <constraint firstItem="Vrb-pX-wQc" firstAttribute="top" secondItem="fyG-Yo-zKW" secondAttribute="bottom" id="oTU-Dz-Uj8"/>
                             <constraint firstAttribute="trailing" secondItem="h3X-LJ-plt" secondAttribute="trailing" id="siO-FP-3Yu"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="8gU-cS-HHk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="655"/>
+            <point key="canvasLocation" x="1256" y="655"/>
         </scene>
     </scenes>
     <resources>

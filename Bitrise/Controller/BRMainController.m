@@ -41,7 +41,7 @@
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"BRAccountsViewController"]) {
-        [(BRAccountsViewController *)segue.destinationController setContainer:self.container];
+        [(BRAccountsViewController *)[(NSWindowController *)segue.destinationController contentViewController] setContainer:self.container];
     }
 }
 
