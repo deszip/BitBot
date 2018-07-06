@@ -14,9 +14,7 @@
 
 @interface BRMainController ()
 
-@property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
-
 @property (weak) IBOutlet NSOutlineView *outlineView;
 
 @end
@@ -25,24 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    BRContainerBuilder *builder = [BRContainerBuilder new];
-    self.container = [builder buildContainer];
-    
-    self.dataSource = [[BRAppsDataSource alloc] initWithContainer:self.container outline:self.outlineView];
-
-    //[self.dataSource buildStubs];
+    self.dataSource = [self.dependencyContainer appsDataSourceFor:self.outlineView];
 }
 
 - (void)viewDidAppear {
     [super viewDidAppear];
     [self.dataSource fetch];
-}
-
-- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"BRAccountsViewController"]) {
-        [(BRAccountsViewController *)[(NSWindowController *)segue.destinationController contentViewController] setContainer:self.container];
-    }
 }
 
 @end

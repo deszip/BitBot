@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "BRMainController.h"
+#import "BRDependencyContainer.h"
 
 @interface AppDelegate () <NSPopoverDelegate>
 
@@ -30,12 +31,17 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 #endif
         
+        BRDependencyContainer *container = [BRDependencyContainer new];
+        
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         _popover = [[NSPopover alloc] init];
         _popover.delegate = self;
         
         _mainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
+        _mainController.dependencyContainer = container;
         _detachableMainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
+        _detachableMainController.dependencyContainer = container;
+        
         _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
     }
     

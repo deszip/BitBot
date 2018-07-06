@@ -19,6 +19,9 @@
 		0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
 		0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */; };
 		0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */; };
+		0E73598120EF8D92007E15A7 /* BRDependencyContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73598020EF8D92007E15A7 /* BRDependencyContainer.m */; };
+		0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73598320EF8ED3007E15A7 /* BRAccountsDataSource.m */; };
+		0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73598620EF93B8007E15A7 /* BRViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,12 @@
 		0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRContainerBuilder.m; sourceTree = "<group>"; };
 		0E73597820EDF5D5007E15A7 /* BRAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsViewController.h; sourceTree = "<group>"; };
 		0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsViewController.m; sourceTree = "<group>"; };
+		0E73597F20EF8D92007E15A7 /* BRDependencyContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDependencyContainer.h; sourceTree = "<group>"; };
+		0E73598020EF8D92007E15A7 /* BRDependencyContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDependencyContainer.m; sourceTree = "<group>"; };
+		0E73598220EF8ED3007E15A7 /* BRAccountsDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsDataSource.h; sourceTree = "<group>"; };
+		0E73598320EF8ED3007E15A7 /* BRAccountsDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsDataSource.m; sourceTree = "<group>"; };
+		0E73598520EF93B8007E15A7 /* BRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRViewController.h; sourceTree = "<group>"; };
+		0E73598620EF93B8007E15A7 /* BRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +106,7 @@
 		0E42CAD720EC7A7E0033CD03 /* Bitrise */ = {
 			isa = PBXGroup;
 			children = (
+				0E73597E20EF8D73007E15A7 /* Container */,
 				0E42CAE320EC7A800033CD03 /* Info.plist */,
 				0E42CAE420EC7A800033CD03 /* main.m */,
 				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
@@ -136,6 +146,8 @@
 				0E42CAFE20EC7BB40033CD03 /* BRMainController.m */,
 				0E73597820EDF5D5007E15A7 /* BRAccountsViewController.h */,
 				0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */,
+				0E73598520EF93B8007E15A7 /* BRViewController.h */,
+				0E73598620EF93B8007E15A7 /* BRViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -164,8 +176,8 @@
 			children = (
 				0E42CB0820EC89D00033CD03 /* BRAppsDataSource.h */,
 				0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */,
-				0E73597520EDF0A0007E15A7 /* BRContainerBuilder.h */,
-				0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */,
+				0E73598220EF8ED3007E15A7 /* BRAccountsDataSource.h */,
+				0E73598320EF8ED3007E15A7 /* BRAccountsDataSource.m */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -176,6 +188,17 @@
 				0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0E73597E20EF8D73007E15A7 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				0E73597520EDF0A0007E15A7 /* BRContainerBuilder.h */,
+				0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */,
+				0E73597F20EF8D92007E15A7 /* BRDependencyContainer.h */,
+				0E73598020EF8D92007E15A7 /* BRDependencyContainer.m */,
+			);
+			path = Container;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,13 +300,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */,
 				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
 				0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */,
+				0E73598120EF8D92007E15A7 /* BRDependencyContainer.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
+				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
 				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,
 			);

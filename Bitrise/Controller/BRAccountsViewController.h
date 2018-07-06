@@ -7,13 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <CoreData/CoreData.h>
+
+#import "BRViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAccountsViewController : NSViewController
-
-@property (strong, nonatomic) NSPersistentContainer *container;
+@interface BRAccountsViewController : BRViewController
 
 @end
 
