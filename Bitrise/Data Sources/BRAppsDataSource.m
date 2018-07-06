@@ -24,7 +24,9 @@
 @property (weak) NSOutlineView *outlineView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
-@property (strong, nonatomic) NSFetchedResultsController *frc;
+@property (strong, nonatomic) NSFetchedResultsController *appsFRC;
+@property (strong, nonatomic) NSFetchedResultsController *buildsFRC;
+@property (strong, nonatomic) NSFetchedResultsController *activeFRC;
 
 @end
 
@@ -37,18 +39,41 @@
         _outlineView.delegate = self;
         
         _container = container;
-        _frc = [self buildFRC:self.container.viewContext];
-        [_frc setDelegate:self];
+        _appsFRC = [self buildAppsFRC:self.container.viewContext];
+        [_appsFRC setDelegate:self];
+        _buildsFRC = [self buildBuildsFRC:self.container.viewContext];
+        [_buildsFRC setDelegate:self];
+        
+        [self enableTreeView:NO];
     }
     
     return self;
 }
 
+- (void)enableTreeView:(BOOL)treeView {
+    _treeView = treeView;
+    if (treeView) {
+        self.activeFRC = self.appsFRC;
+    } else {
+        self.activeFRC = self.buildsFRC;
+    }
+    
+    [self fetch];
+    [self.outlineView reloadData];
+}
+
 #pragma mark - Builders -
 
-- (NSFetchedResultsController *)buildFRC:(NSManagedObjectContext *)context {
+- (NSFetchedResultsController *)buildAppsFRC:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [BRApp fetchRequest];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    [context setAutomaticallyMergesChangesFromParent:YES];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+}
+
+- (NSFetchedResultsController *)buildBuildsFRC:(NSManagedObjectContext *)context {
+    NSFetchRequest *request = [BRBuild fetchRequest];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"branch" ascending:YES]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
 }
@@ -78,10 +103,10 @@
 
 - (void)fetch {
     NSError *fetchError = nil;
-    if (![self.frc performFetch:&fetchError]) {
+    if (![self.activeFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch apps: %@", fetchError);
     } else {
-        NSLog(@"Fetched apps: %@", [self.frc.sections[0] objects]);
+        NSLog(@"Fetched apps: %@", [self.activeFRC.sections[0] objects]);
     }
     
     [self.outlineView reloadData];
@@ -91,28 +116,40 @@
 #pragma mark - NSOutlineViewDataSource -
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    if (!item) {
-        return [self.frc.sections[0] objects][index];
-    }
-    
-    if ([item isKindOfClass:[BRApp class]]) {
-        return [[(BRApp *)item builds] objectAtIndex:index];
+    if (self.treeView) {
+        if (!item) {
+            return [self.activeFRC.sections[0] objects][index];
+        }
+        
+        if ([item isKindOfClass:[BRApp class]]) {
+            return [[(BRApp *)item builds] objectAtIndex:index];
+        }
+    } else {
+        return [self.activeFRC.sections[0] objects][index];
     }
     
     return nil;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return [item isKindOfClass:[BRApp class]] && [[(BRApp *)item builds] count] > 0;
+    if (self.treeView) {
+        return [item isKindOfClass:[BRApp class]] && [[(BRApp *)item builds] count] > 0;
+    }
+    
+    return NO;
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    if (!item) {
-        return [[self.frc.sections[0] objects] count];
-    }
-    
-    if ([item isKindOfClass:[BRApp class]]) {
-        return [[(BRApp *)item builds] count];
+    if (self.treeView) {
+        if (!item) {
+            return [[self.activeFRC.sections[0] objects] count];
+        }
+        
+        if ([item isKindOfClass:[BRApp class]]) {
+            return [[(BRApp *)item builds] count];
+        }
+    } else {
+        return [[self.activeFRC.sections[0] objects] count];
     }
     
     return 0;

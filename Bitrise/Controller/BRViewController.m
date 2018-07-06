@@ -16,6 +16,21 @@
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     id destination = segue.destinationController;
+    BRViewController *nextController = nil;
+    
+    if ([destination isKindOfClass:[BRViewController class]]) {
+        nextController = destination;
+    } else if ([destination isKindOfClass:[NSWindowController class]]) {
+        NSViewController *contentController = [(NSWindowController *)destination contentViewController];
+        if ([contentController isKindOfClass:[BRViewController class]]) {
+            nextController = (BRViewController *)contentController;
+        }
+    }
+    
+    if (nextController) {
+        nextController.dependencyContainer = self.dependencyContainer;
+        NSLog(@"Passed dependency container from: %@ to %@", self, nextController);
+    }
 }
 
 @end

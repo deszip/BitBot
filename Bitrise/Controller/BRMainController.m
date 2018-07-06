@@ -31,4 +31,8 @@
     [self.dataSource fetch];
 }
 
+- (IBAction)presentationChanged:(NSSegmentedControl *)sender {
+    [self.dataSource enableTreeView:sender.selectedSegment];
+}
+
 @end

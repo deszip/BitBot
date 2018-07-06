@@ -12,9 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRAppsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
+@property (assign, nonatomic, readonly) BOOL treeView;
+
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithContainer:(NSPersistentContainer *)container outline:(NSOutlineView *)outline NS_DESIGNATED_INITIALIZER;
+
+- (void)enableTreeView:(BOOL)treeView;
+
 - (void)fetch;
 - (void)buildStubs;
 
