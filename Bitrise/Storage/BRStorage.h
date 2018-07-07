@@ -9,19 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-#import "BRAccountResponse.h"
+#import "BRAccountInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^BRStorageTokenslListResult)(NSArray <NSString *> * _Nullable, NSError * _Nullable);
+typedef void(^BRAccountsListResult)(NSArray <BRAccountInfo *> * _Nullable, NSError * _Nullable);
 
 @interface BRStorage : NSObject
 
 - (instancetype)initWithContainer:(NSPersistentContainer *)container;
 
-- (void)saveAccount:(BRAccountResponse *)accountInfo;
+- (void)saveAccount:(BRAccountInfo *)accountInfo;
 - (void)removeAccount:(NSString *)token;
-- (void)getAccountTokens:(BRStorageTokenslListResult)completion;
+- (void)getAccounts:(BRAccountsListResult)completion;
 
 @end
 

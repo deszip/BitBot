@@ -35,9 +35,9 @@ static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/
         if (data) {
             NSError *serializationError = nil;
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
-            BRAccountResponse *accountResponse = [[BRAccountResponse alloc] initWithResponse:response token:token];
+            BRAccountInfo *accountInfo = [[BRAccountInfo alloc] initWithResponse:response token:token];
             
-            completion(accountResponse, nil);
+            completion(accountInfo, nil);
         } else {
             completion(nil, error);
         }

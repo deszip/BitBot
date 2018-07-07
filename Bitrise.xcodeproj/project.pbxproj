@@ -26,7 +26,7 @@
 		0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5420F0819E00494DEB /* BRBitriseAPI.m */; };
 		0E8E9B5820F0820D00494DEB /* BRGetAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */; };
 		0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
-		0E93B6FE20F085E8001A6C15 /* BRAccountResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6FD20F085E8001A6C15 /* BRAccountResponse.m */; };
+		0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */; };
 		0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
 		0E93B70520F09A85001A6C15 /* BRGetBuildsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRGetBuildsCommand.m */; };
 /* End PBXBuildFile section */
@@ -80,8 +80,8 @@
 		0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRGetAccountCommand.m; sourceTree = "<group>"; };
 		0E93B6F520F0837B001A6C15 /* BRStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStorage.h; sourceTree = "<group>"; };
 		0E93B6F620F0837B001A6C15 /* BRStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStorage.m; sourceTree = "<group>"; };
-		0E93B6FC20F085E8001A6C15 /* BRAccountResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountResponse.h; sourceTree = "<group>"; };
-		0E93B6FD20F085E8001A6C15 /* BRAccountResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountResponse.m; sourceTree = "<group>"; };
+		0E93B6FC20F085E8001A6C15 /* BRAccountInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountInfo.h; sourceTree = "<group>"; };
+		0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountInfo.m; sourceTree = "<group>"; };
 		0E93B70020F08EF2001A6C15 /* BRRemoveAccountCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRemoveAccountCommand.h; sourceTree = "<group>"; };
 		0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRemoveAccountCommand.m; sourceTree = "<group>"; };
 		0E93B70320F09A85001A6C15 /* BRGetBuildsCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRGetBuildsCommand.h; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 		0E93B6FB20F085D6001A6C15 /* Responces */ = {
 			isa = PBXGroup;
 			children = (
-				0E93B6FC20F085E8001A6C15 /* BRAccountResponse.h */,
-				0E93B6FD20F085E8001A6C15 /* BRAccountResponse.m */,
+				0E93B6FC20F085E8001A6C15 /* BRAccountInfo.h */,
+				0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */,
 			);
 			path = Responces;
 			sourceTree = "<group>";
@@ -390,7 +390,7 @@
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
 				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,
 				0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */,
-				0E93B6FE20F085E8001A6C15 /* BRAccountResponse.m in Sources */,
+				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

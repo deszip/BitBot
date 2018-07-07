@@ -29,8 +29,8 @@
 }
 
 - (void)execute {
-    [self.api getAccount:self.token completion:^(BRAccountResponse *response, NSError *error) {
-        [self.storage saveAccount:response];
+    [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
+        [self.storage saveAccount:accountInfo];
     }];
 }
 

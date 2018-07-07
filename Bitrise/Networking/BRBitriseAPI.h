@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BRAccountResponse.h"
+#import "BRAccountInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^APIAccountInfoCallback)(BRAccountResponse * _Nullable, NSError * _Nullable);
+typedef void (^APIAccountInfoCallback)(BRAccountInfo * _Nullable, NSError * _Nullable);
 
 @interface BRBitriseAPI : NSObject
 

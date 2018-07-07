@@ -27,8 +27,8 @@
 }
 
 - (void)execute {
-    [self.storage getAccountTokens:^(NSArray<NSString *> *tokens, NSError *error) {
-        if (tokens.count > 0) {
+    [self.storage getAccounts:^(NSArray<BRAccountInfo *> *accounts, NSError *error) {
+        if (accounts.count > 0) {
             //...
         }
     }];

@@ -1,5 +1,5 @@
 //
-//  BRAccountResponse.h
+//  BRAccountInfo.h
 //  Bitrise
 //
 //  Created by Deszip on 07/07/2018.
@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRAccount+CoreDataClass.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAccountResponse : NSObject
+@interface BRAccountInfo : NSObject
 
 @property (copy, nonatomic, readonly) NSString *token;
 @property (copy, nonatomic, readonly) NSString *username;
@@ -18,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic, readonly) NSURL *avatarURL;
 
 - (instancetype)initWithResponse:(NSDictionary *)response token:(NSString *)token;
+- (instancetype)initWithAccount:(BRAccount *)account;
 
 @end
 

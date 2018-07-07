@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)saveAccount:(BRAccountResponse *)accountInfo {
+- (void)saveAccount:(BRAccountInfo *)accountInfo {
     [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
         [context setAutomaticallyMergesChangesFromParent:YES];
         BRAccount *account = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRAccount class]) inManagedObjectContext:context];
@@ -57,14 +57,19 @@
     }];
 }
 
-- (void)getAccountTokens:(BRStorageTokenslListResult)completion {
+- (void)getAccountTokens:(BRAccountsListResult)completion {
     [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
         NSFetchRequest *request = [BRAccount fetchRequest];
         NSError *requestError = nil;
         NSArray *accounts = [context executeFetchRequest:request error:&requestError];
         if (accounts) {
-            NSArray *tokens = [accounts valueForKeyPath:@"token"];
-            completion(tokens, nil);
+            
+            __block NSMutableArray *accountInfos = [NSMutableArray array];
+            [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
+                [accountInfos addObject:[[BRAccountInfo alloc] initWithAccount:nextAccount]];
+            }];
+            
+            completion(accountInfos, nil);
         } else {
             completion(nil, requestError);
         }
