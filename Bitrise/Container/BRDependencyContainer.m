@@ -27,12 +27,24 @@
     return self;
 }
 
-- (BRAppsDataSource *)appsDataSourceFor:(NSOutlineView *)outlineView {
-    return [[BRAppsDataSource alloc] initWithContainer:self.persistenceContainer outline:outlineView];
+#pragma mark - BRDataSourceProvider -
+
+- (BRAppsDataSource *)appsDataSource {
+    return [[BRAppsDataSource alloc] initWithContainer:self.persistenceContainer];
 }
 
-- (BRAccountsDataSource *)accountsDataSourceFor:(NSOutlineView *)outlineView {
-    return [[BRAccountsDataSource alloc] initWithContainer:self.persistenceContainer outline:outlineView];
+- (BRAccountsDataSource *)accountsDataSource {
+    return [[BRAccountsDataSource alloc] initWithContainer:self.persistenceContainer];
+}
+
+#pragma mark - BRInteractionProvider -
+
+- (BRBitriseAPI *)bitriseAPI {
+    return [BRBitriseAPI new];
+}
+
+- (BRStorage *)storage {
+    return [[BRStorage alloc] initWithContainer:self.persistenceContainer];
 }
 
 @end

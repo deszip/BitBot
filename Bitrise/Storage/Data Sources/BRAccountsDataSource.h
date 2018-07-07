@@ -11,9 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAccountsDataSource : NSObject
+@interface BRAccountsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container outline:(NSOutlineView *)outline;
+- (instancetype)initWithContainer:(NSPersistentContainer *)container;
+
+- (void)bind:(NSOutlineView *)outlineView;
+- (void)fetch;
 
 @end
 

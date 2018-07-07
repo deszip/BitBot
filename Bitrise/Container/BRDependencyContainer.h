@@ -10,10 +10,24 @@
 
 #import "BRAppsDataSource.h"
 #import "BRAccountsDataSource.h"
+#import "BRBitriseAPI.h"
+#import "BRStorage.h"
 
-@interface BRDependencyContainer : NSObject
+@protocol BRDataSourceProvider <NSObject>
 
-- (BRAppsDataSource *)appsDataSourceFor:(NSOutlineView *)outlineView;
-- (BRAccountsDataSource *)accountsDataSourceFor:(NSOutlineView *)outlineView;
+- (BRAppsDataSource *)appsDataSource;
+- (BRAccountsDataSource *)accountsDataSource;
+
+@end
+
+@protocol BRInteractionProvider <NSObject>
+
+- (BRBitriseAPI *)bitriseAPI;
+- (BRStorage *)storage;
+
+@end
+
+
+@interface BRDependencyContainer : NSObject <BRDataSourceProvider, BRInteractionProvider>
 
 @end

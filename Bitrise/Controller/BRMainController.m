@@ -23,16 +23,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataSource = [self.dependencyContainer appsDataSourceFor:self.outlineView];
+    
+    self.dataSource = [self.dependencyContainer appsDataSource];
+    [self.dataSource bind:self.outlineView];
 }
 
 - (void)viewDidAppear {
     [super viewDidAppear];
+    
     [self.dataSource fetch];
 }
 
 - (IBAction)presentationChanged:(NSSegmentedControl *)sender {
-    [self.dataSource enableTreeView:sender.selectedSegment];
+    switch (sender.selectedSegment) {
+        case 0: [self.dataSource setPresentationStyle:BRPresentationStyleList]; break;
+        case 1: [self.dataSource setPresentationStyle:BRPresentationStyleTree]; break;
+    }
 }
 
 @end

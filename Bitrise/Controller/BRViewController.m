@@ -29,7 +29,6 @@
     
     if (nextController) {
         nextController.dependencyContainer = self.dependencyContainer;
-        NSLog(@"Passed dependency container from: %@ to %@", self, nextController);
     }
 }
 

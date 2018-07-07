@@ -17,11 +17,9 @@
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
 
-
-
 @interface BRAppsDataSource () <NSFetchedResultsControllerDelegate>
 
-@property (weak) NSOutlineView *outlineView;
+@property (weak, nonatomic) NSOutlineView *outlineView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSFetchedResultsController *appsFRC;
@@ -32,33 +30,36 @@
 
 @implementation BRAppsDataSource
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container outline:(NSOutlineView *)outline {
+- (instancetype)initWithContainer:(NSPersistentContainer *)container {
     if (self = [super init]) {
-        _outlineView = outline;
-        _outlineView.dataSource = self;
-        _outlineView.delegate = self;
-        
         _container = container;
         _appsFRC = [self buildAppsFRC:self.container.viewContext];
         [_appsFRC setDelegate:self];
         _buildsFRC = [self buildBuildsFRC:self.container.viewContext];
         [_buildsFRC setDelegate:self];
         
-        [self enableTreeView:NO];
+        [self setPresentationStyle:BRPresentationStyleList];
     }
     
     return self;
 }
 
-- (void)enableTreeView:(BOOL)treeView {
-    _treeView = treeView;
-    if (treeView) {
-        self.activeFRC = self.appsFRC;
-    } else {
-        self.activeFRC = self.buildsFRC;
+- (void)setPresentationStyle:(BRPresentationStyle)presentationStyle {
+    _presentationStyle = presentationStyle;
+    
+    switch (presentationStyle) {
+        case BRPresentationStyleList: self.activeFRC = self.buildsFRC; break;
+        case BRPresentationStyleTree: self.activeFRC = self.appsFRC; break;
     }
     
     [self fetch];
+    [self.outlineView reloadData];
+}
+
+- (void)bind:(NSOutlineView *)outlineView {
+    _outlineView = outlineView;
+    self.outlineView.dataSource = self;
+    self.outlineView.delegate = self;
     [self.outlineView reloadData];
 }
 
@@ -116,7 +117,7 @@
 #pragma mark - NSOutlineViewDataSource -
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    if (self.treeView) {
+    if (self.presentationStyle == BRPresentationStyleTree) {
         if (!item) {
             return [self.activeFRC.sections[0] objects][index];
         }
@@ -132,7 +133,7 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    if (self.treeView) {
+    if (self.presentationStyle == BRPresentationStyleTree) {
         return [item isKindOfClass:[BRApp class]] && [[(BRApp *)item builds] count] > 0;
     }
     
@@ -140,7 +141,7 @@
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    if (self.treeView) {
+    if (self.presentationStyle == BRPresentationStyleTree) {
         if (!item) {
             return [[self.activeFRC.sections[0] objects] count];
         }

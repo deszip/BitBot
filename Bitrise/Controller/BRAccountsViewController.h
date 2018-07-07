@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRAccountsViewController : BRViewController
 
+@property (strong, nonatomic) id <BRDataSourceProvider, BRInteractionProvider> dependencyContainer;
+
 @end
 
 NS_ASSUME_NONNULL_END

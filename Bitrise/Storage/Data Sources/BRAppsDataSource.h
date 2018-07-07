@@ -10,16 +10,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, BRPresentationStyle) {
+    BRPresentationStyleList,
+    BRPresentationStyleTree
+};
+
 @interface BRAppsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-@property (assign, nonatomic, readonly) BOOL treeView;
+@property (assign, nonatomic) BRPresentationStyle presentationStyle;
 
 - (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithContainer:(NSPersistentContainer *)container NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container outline:(NSOutlineView *)outline NS_DESIGNATED_INITIALIZER;
-
-- (void)enableTreeView:(BOOL)treeView;
-
+- (void)bind:(NSOutlineView *)outlineView;
 - (void)fetch;
 - (void)buildStubs;
 
