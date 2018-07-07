@@ -8,7 +8,9 @@
 
 #import "BRStorage.h"
 
-#import "BRAccount+CoreDataClass.h"
+#import <EasyMapping/EasyMapping.h>
+
+#import "BRAccount+Mapping.h"
 
 @interface BRStorage ()
 
@@ -29,11 +31,8 @@
 - (void)saveAccount:(BRAccountInfo *)accountInfo {
     [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
         [context setAutomaticallyMergesChangesFromParent:YES];
-        BRAccount *account = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRAccount class]) inManagedObjectContext:context];
+        BRAccount *account = [EKManagedObjectMapper objectFromExternalRepresentation:accountInfo.rawResponce withMapping:[BRAccount objectMapping] inManagedObjectContext:context];
         account.token = accountInfo.token;
-        account.username = accountInfo.username;
-        account.slug = accountInfo.slug;
-        account.avatarURL = accountInfo.avatarURL.path;
         
         [self saveContext:context];
     }];
@@ -57,7 +56,7 @@
     }];
 }
 
-- (void)getAccountTokens:(BRAccountsListResult)completion {
+- (void)getAccounts:(BRAccountsListResult)completion {
     [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
         NSFetchRequest *request = [BRAccount fetchRequest];
         NSError *requestError = nil;
@@ -73,6 +72,12 @@
         } else {
             completion(nil, requestError);
         }
+    }];
+}
+
+- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo {
+    [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
+        
     }];
 }
 

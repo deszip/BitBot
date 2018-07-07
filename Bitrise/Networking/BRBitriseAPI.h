@@ -9,14 +9,17 @@
 #import <Foundation/Foundation.h>
 
 #import "BRAccountInfo.h"
+#import "BRBuildInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^APIAccountInfoCallback)(BRAccountInfo * _Nullable, NSError * _Nullable);
+typedef void (^APIBuildsListCallback)(NSArray <BRBuildInfo *> * _Nullable, NSError * _Nullable);
 
 @interface BRBitriseAPI : NSObject
 
 - (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion;
+- (void)getBuilds:(BRAccountInfo *)accountInfo completion:(APIBuildsListCallback)completion;
 
 @end
 

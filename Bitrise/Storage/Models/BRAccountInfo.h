@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRAccountInfo : NSObject
 
+@property (strong, nonatomic, readonly) NSDictionary *rawResponce;
+
 @property (copy, nonatomic, readonly) NSString *token;
 @property (copy, nonatomic, readonly) NSString *username;
 @property (copy, nonatomic, readonly) NSString *slug;

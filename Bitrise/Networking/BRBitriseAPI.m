@@ -8,6 +8,8 @@
 
 #import "BRBitriseAPI.h"
 
+#import "BRBuildInfo.h"
+
 static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me";
 static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
 
@@ -46,16 +48,21 @@ static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/
     [task resume];
 }
 
-- (void)getBuilds:(NSString *)accountSlug token:(NSString *)token {
-    NSURLRequest *request = [self buildsRequest:accountSlug token:token];
+- (void)getBuilds:(BRAccountInfo *)accountInfo completion:(APIBuildsListCallback)completion {
+    NSURLRequest *request = [self buildsRequest:accountInfo.slug token:accountInfo.token];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *urlResponse, NSError *error) {
         if (data) {
             NSError *serializationError = nil;
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
+            __block NSMutableArray *buildsInfo = [NSMutableArray array];
+            [response[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *nextBuild, NSUInteger idx, BOOL *stop) {
+                BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithResponse:nextBuild];
+                [buildsInfo addObject:buildInfo];
+            }];
             
-            //...
+            completion(buildsInfo, nil);
         } else {
-            //...
+            completion(nil, error);
         }
     }];
     

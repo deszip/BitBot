@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 #import "BRAccountInfo.h"
+#import "BRBuildInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +23,8 @@ typedef void(^BRAccountsListResult)(NSArray <BRAccountInfo *> * _Nullable, NSErr
 - (void)saveAccount:(BRAccountInfo *)accountInfo;
 - (void)removeAccount:(NSString *)token;
 - (void)getAccounts:(BRAccountsListResult)completion;
+
+- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo;
 
 @end
 

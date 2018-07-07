@@ -8,17 +8,11 @@
 
 #import "BRAccountInfo.h"
 
-@interface BRAccountInfo ()
-
-@property (strong, nonatomic) NSDictionary *rawResponce;
-
-@end
-
 @implementation BRAccountInfo
 
 - (instancetype)initWithResponse:(NSDictionary *)response token:(NSString *)token {
     if (self = [super init]) {
-        _rawResponce = response;
+        _rawResponce = response[@"data"];
         _token = token;
         [self parseResponse];
     }
@@ -38,11 +32,10 @@
 }
 
 - (void)parseResponse {
-    NSDictionary *responceData = self.rawResponce[@"data"];
-    if (responceData) {
-        _username = responceData[@"username"];
-        _slug = responceData[@"slug"];
-        _avatarURL = [NSURL URLWithString:responceData[@"avatar_url"]];
+    if (self.rawResponce) {
+        _username = self.rawResponce[@"username"];
+        _slug = self.rawResponce[@"slug"];
+        _avatarURL = [NSURL URLWithString:self.rawResponce[@"avatar_url"]];
     }
 }
 

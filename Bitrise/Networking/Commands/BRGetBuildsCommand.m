@@ -28,9 +28,11 @@
 
 - (void)execute {
     [self.storage getAccounts:^(NSArray<BRAccountInfo *> *accounts, NSError *error) {
-        if (accounts.count > 0) {
-            //...
-        }
+        [accounts enumerateObjectsUsingBlock:^(BRAccountInfo *nextAccount, NSUInteger idx, BOOL *stop) {
+            [self.api getBuilds:nextAccount completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
+                [self.storage saveBuilds:builds];
+            }];
+        }];
     }];
 }
 
