@@ -6,16 +6,16 @@
 //  Copyright © 2018 Bitrise. All rights reserved.
 //
 
-#import "BRGetBuildsCommand.h"
+#import "BRSyncCommand.h"
 
-@interface BRGetBuildsCommand ()
+@interface BRSyncCommand ()
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
 
 @end
 
-@implementation BRGetBuildsCommand
+@implementation BRSyncCommand
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage {
     if (self = [super init]) {
@@ -29,8 +29,13 @@
 - (void)execute {
     [self.storage getAccounts:^(NSArray<BRAccountInfo *> *accounts, NSError *error) {
         [accounts enumerateObjectsUsingBlock:^(BRAccountInfo *nextAccount, NSUInteger idx, BOOL *stop) {
-            [self.api getBuilds:nextAccount completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
-                [self.storage saveBuilds:builds];
+            [self.api getApps:nextAccount completion:^(NSArray<BRAppInfo *> *apps, NSError *error) {
+                [self.storage saveApps:apps forAccount:nextAccount];
+                [apps enumerateObjectsUsingBlock:^(BRAppInfo *nextApp, NSUInteger idx, BOOL *stop) {
+                    [self.api getBuilds:nextApp account:nextAccount completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
+                        [self.storage saveBuilds:builds forApp:nextApp];
+                    }];
+                }];
             }];
         }];
     }];

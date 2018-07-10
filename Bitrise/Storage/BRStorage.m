@@ -11,6 +11,8 @@
 #import <EasyMapping/EasyMapping.h>
 
 #import "BRAccount+Mapping.h"
+#import "BRApp+Mapping.h"
+#import "BRBuild+Mapping.h"
 
 @interface BRStorage ()
 
@@ -62,7 +64,6 @@
         NSError *requestError = nil;
         NSArray *accounts = [context executeFetchRequest:request error:&requestError];
         if (accounts) {
-            
             __block NSMutableArray *accountInfos = [NSMutableArray array];
             [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
                 [accountInfos addObject:[[BRAccountInfo alloc] initWithAccount:nextAccount]];
@@ -75,9 +76,39 @@
     }];
 }
 
-- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo {
+- (void)saveApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccountInfo *)account {
     [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
-        
+        NSFetchRequest *request = [BRAccount fetchRequest];
+        request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", account.slug];
+        NSError *requestError = nil;
+        NSArray *accounts = [context executeFetchRequest:request error:&requestError];
+        if (accounts.count == 1) {
+            [appsInfo enumerateObjectsUsingBlock:^(BRAppInfo *appInfo, NSUInteger idx, BOOL *stop) {
+                BRApp *app = [EKManagedObjectMapper objectFromExternalRepresentation:appInfo.rawResponse withMapping:[BRApp objectMapping] inManagedObjectContext:context];
+                app.account = accounts[0];
+                [self saveContext:context];
+            }];
+        } else {
+            NSLog(@"Failed to save apps: %@", requestError);
+        }
+    }];
+}
+
+- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(BRAppInfo *)app {
+    [self.container performBackgroundTask:^(NSManagedObjectContext *context) {
+        NSFetchRequest *request = [BRApp fetchRequest];
+        request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", app.slug];
+        NSError *requestError = nil;
+        NSArray *apps = [context executeFetchRequest:request error:&requestError];
+        if (apps.count == 1) {
+            [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
+                BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:context];
+                build.app = apps[0];
+                [self saveContext:context];
+            }];
+        } else {
+            NSLog(@"Failed to save builds: %@", requestError);
+        }
     }];
 }
 

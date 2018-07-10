@@ -32,6 +32,9 @@
     [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
         [self.storage saveAccount:accountInfo];
     }];
+    
+    // Get apps
+    //...
 }
 
 @end

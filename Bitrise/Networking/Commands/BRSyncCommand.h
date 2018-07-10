@@ -1,5 +1,5 @@
 //
-//  BRGetBuildsCommand.h
+//  BRSyncCommand.h
 //  Bitrise
 //
 //  Created by Deszip on 07/07/2018.
@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRGetBuildsCommand : NSObject
+@interface BRSyncCommand : NSObject
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage;
 - (void)execute;

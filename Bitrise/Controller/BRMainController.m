@@ -12,8 +12,12 @@
 #import "BRAppsDataSource.h"
 #import "BRAccountsViewController.h"
 
+#import "BRSyncCommand.h"
+
 @interface BRMainController ()
 
+@property (strong, nonatomic) BRBitriseAPI *api;
+@property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 
@@ -24,6 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.api = [self.dependencyContainer bitriseAPI];
+    self.storage = [self.dependencyContainer storage];
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];
 }
@@ -32,6 +38,9 @@
     [super viewDidAppear];
     
     [self.dataSource fetch];
+    
+    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initWithAPI:self.api storage:self.storage];
+    [syncCommand execute];
 }
 
 - (IBAction)presentationChanged:(NSSegmentedControl *)sender {

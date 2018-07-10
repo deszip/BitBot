@@ -67,21 +67,21 @@
 
 - (NSFetchedResultsController *)buildAppsFRC:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [BRApp fetchRequest];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
 }
 
 - (NSFetchedResultsController *)buildBuildsFRC:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [BRBuild fetchRequest];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"branch" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"finishedTime" ascending:NO]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
 }
 
 - (void)buildStubs {
     BRApp *app = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRApp class]) inManagedObjectContext:self.container.viewContext];
-    app.name = @"Foo App";
+    app.title = @"Foo App";
     
     BRBuild *build_1 = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRBuild class]) inManagedObjectContext:self.container.viewContext];
     build_1.workflow = @"workflow 1";
@@ -166,7 +166,7 @@
     if ([item isKindOfClass:[BRApp class]]) {
         BRApp *app = (BRApp *)item;
         BRAppCellView *cell = [outlineView makeViewWithIdentifier:@"BRAppCellView" owner:self];
-        [cell.appNameLabel setStringValue:app.name];
+        [cell.appNameLabel setStringValue:app.title];
         
         return cell;
     }

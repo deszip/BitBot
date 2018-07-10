@@ -29,9 +29,12 @@
 		0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
 		0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */; };
 		0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
-		0E93B70520F09A85001A6C15 /* BRGetBuildsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRGetBuildsCommand.m */; };
+		0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
 		0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70820F0D110001A6C15 /* BRBuildInfo.m */; };
 		0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
+		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
+		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		ED6758BF1A82FC4080E055BD /* libPods-Bitrise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A893E02CCB94654F32FCD2 /* libPods-Bitrise.a */; };
 /* End PBXBuildFile section */
 
@@ -88,12 +91,18 @@
 		0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountInfo.m; sourceTree = "<group>"; };
 		0E93B70020F08EF2001A6C15 /* BRRemoveAccountCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRemoveAccountCommand.h; sourceTree = "<group>"; };
 		0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRemoveAccountCommand.m; sourceTree = "<group>"; };
-		0E93B70320F09A85001A6C15 /* BRGetBuildsCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRGetBuildsCommand.h; sourceTree = "<group>"; };
-		0E93B70420F09A85001A6C15 /* BRGetBuildsCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRGetBuildsCommand.m; sourceTree = "<group>"; };
+		0E93B70320F09A85001A6C15 /* BRSyncCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncCommand.h; sourceTree = "<group>"; };
+		0E93B70420F09A85001A6C15 /* BRSyncCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncCommand.m; sourceTree = "<group>"; };
 		0E93B70720F0D110001A6C15 /* BRBuildInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildInfo.h; sourceTree = "<group>"; };
 		0E93B70820F0D110001A6C15 /* BRBuildInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildInfo.m; sourceTree = "<group>"; };
 		0E93B70B20F0F9BB001A6C15 /* BRAccount+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRAccount+Mapping.h"; sourceTree = "<group>"; };
 		0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRAccount+Mapping.m"; sourceTree = "<group>"; };
+		0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRBuild+Mapping.h"; sourceTree = "<group>"; };
+		0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRBuild+Mapping.m"; sourceTree = "<group>"; };
+		0EFD891620F201400023FCCE /* BRAppInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppInfo.h; sourceTree = "<group>"; };
+		0EFD891720F201400023FCCE /* BRAppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppInfo.m; sourceTree = "<group>"; };
+		0EFD893B20F4893B0023FCCE /* BRApp+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRApp+Mapping.h"; sourceTree = "<group>"; };
+		0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRApp+Mapping.m"; sourceTree = "<group>"; };
 		2EF201CD105B5B136D7596A3 /* libPods-BitriseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A893E02CCB94654F32FCD2 /* libPods-Bitrise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bitrise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3604BA7155E179D986774A14 /* Pods-Bitrise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitrise.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bitrise/Pods-Bitrise.release.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +240,8 @@
 				0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */,
 				0E93B70720F0D110001A6C15 /* BRBuildInfo.h */,
 				0E93B70820F0D110001A6C15 /* BRBuildInfo.m */,
+				0EFD891620F201400023FCCE /* BRAppInfo.h */,
+				0EFD891720F201400023FCCE /* BRAppInfo.m */,
 				0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */,
 			);
 			path = Models;
@@ -275,8 +286,8 @@
 				0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */,
 				0E93B70020F08EF2001A6C15 /* BRRemoveAccountCommand.h */,
 				0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */,
-				0E93B70320F09A85001A6C15 /* BRGetBuildsCommand.h */,
-				0E93B70420F09A85001A6C15 /* BRGetBuildsCommand.m */,
+				0E93B70320F09A85001A6C15 /* BRSyncCommand.h */,
+				0E93B70420F09A85001A6C15 /* BRSyncCommand.m */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -286,6 +297,10 @@
 			children = (
 				0E93B70B20F0F9BB001A6C15 /* BRAccount+Mapping.h */,
 				0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */,
+				0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */,
+				0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */,
+				0EFD893B20F4893B0023FCCE /* BRApp+Mapping.h */,
+				0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */,
 			);
 			path = Mappings;
 			sourceTree = "<group>";
@@ -462,18 +477,21 @@
 				0E73598120EF8D92007E15A7 /* BRDependencyContainer.m in Sources */,
 				0E8E9B5820F0820D00494DEB /* BRGetAccountCommand.m in Sources */,
 				0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */,
-				0E93B70520F09A85001A6C15 /* BRGetBuildsCommand.m in Sources */,
+				0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */,
+				0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
+				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
 				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
 				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,
+				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
 				0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */,
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
 			);

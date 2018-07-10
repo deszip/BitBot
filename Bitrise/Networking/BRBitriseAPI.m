@@ -8,10 +8,11 @@
 
 #import "BRBitriseAPI.h"
 
-#import "BRBuildInfo.h"
-
 static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me";
+static NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
 static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+
+typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
 
 @interface BRBitriseAPI ()
 
@@ -32,59 +33,101 @@ static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/
 }
 
 - (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion {
-    NSURLRequest *request = [self accountRequest:token];
-    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *urlResponse, NSError *error) {
-        if (data) {
-            NSError *serializationError = nil;
-            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
-            BRAccountInfo *accountInfo = [[BRAccountInfo alloc] initWithResponse:response token:token];
-            
+    [self runRequest:[self accountRequest:token] completion:^(NSDictionary *result, NSError *error) {
+        if (result) {
+            BRAccountInfo *accountInfo = [[BRAccountInfo alloc] initWithResponse:result token:token];
             completion(accountInfo, nil);
         } else {
             completion(nil, error);
         }
     }];
-    
-    [task resume];
 }
 
-- (void)getBuilds:(BRAccountInfo *)accountInfo completion:(APIBuildsListCallback)completion {
-    NSURLRequest *request = [self buildsRequest:accountInfo.slug token:accountInfo.token];
+- (void)getApps:(BRAccountInfo *)account completion:(APIAppsListCallback)completion {
+    [self runRequest:[self appsRequest:account.token] completion:^(NSDictionary *result, NSError *error) {
+        if (result) {
+            __block NSMutableArray <BRAppInfo *> *apps = [NSMutableArray array];
+            [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *appData, NSUInteger idx, BOOL *stop) {
+                BRAppInfo *appInfo = [[BRAppInfo alloc] initWithResponse:appData];
+                [apps addObject:appInfo];
+            }];
+            completion(apps, nil);
+        } else {
+            completion(nil, error);
+        }
+    }];
+}
+
+- (void)getBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account completion:(APIBuildsListCallback)completion {
+    [self runRequest:[self buildsRequest:app.slug token:account.token] completion:^(NSDictionary *result, NSError *error) {
+        if (result) {
+            __block NSMutableArray <BRBuildInfo *> *builds = [NSMutableArray array];
+            [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *buildData, NSUInteger idx, BOOL *stop) {
+                BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithResponse:buildData];
+                [builds addObject:buildInfo];
+            }];
+            completion(builds, nil);
+        } else {
+            completion(nil, error);
+        }
+    }];
+//    NSURLRequest *request = [self buildsRequest:accountInfo.slug token:accountInfo.token];
+//    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *urlResponse, NSError *error) {
+//        if (data) {
+//            NSError *serializationError = nil;
+//            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
+//            __block NSMutableArray *buildsInfo = [NSMutableArray array];
+//            [response[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *nextBuild, NSUInteger idx, BOOL *stop) {
+//                BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithResponse:nextBuild];
+//                [buildsInfo addObject:buildInfo];
+//            }];
+//
+//            completion(buildsInfo, nil);
+//        } else {
+//            completion(nil, error);
+//        }
+//    }];
+//
+//    [task resume];
+}
+
+#pragma mark - Request builders -
+
+- (NSURLRequest *)accountRequest:(NSString *)token {
+    return [self requestWithEndpoint:[NSURL URLWithString:kAccountInfoEndpoint] token:token];
+}
+
+- (NSURLRequest *)appsRequest:(NSString *)token {
+    return [self requestWithEndpoint:[NSURL URLWithString:kAppsEndpoint] token:token];
+}
+
+- (NSURLRequest *)buildsRequest:(NSString *)slug token:(NSString *)token {
+    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kBuildsEndpoint, slug]];
+    return [self requestWithEndpoint:endpoint token:token];
+}
+
+- (NSURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpoint];
+    NSString *tokenString = [NSString stringWithFormat:@"token %@", token];
+    [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
+    
+    return [request copy];
+}
+
+#pragma mark - Request processing -
+
+- (void)runRequest:(NSURLRequest *)request completion:(APICallback)completion {
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *urlResponse, NSError *error) {
         if (data) {
             NSError *serializationError = nil;
             NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
-            __block NSMutableArray *buildsInfo = [NSMutableArray array];
-            [response[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *nextBuild, NSUInteger idx, BOOL *stop) {
-                BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithResponse:nextBuild];
-                [buildsInfo addObject:buildInfo];
-            }];
-            
-            completion(buildsInfo, nil);
+            completion(response, nil);
         } else {
             completion(nil, error);
         }
     }];
     
     [task resume];
-}
-
-#pragma mark - Request builders -
-
-- (NSURLRequest *)accountRequest:(NSString *)token {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kAccountInfoEndpoint]];
-    NSString *tokenString = [NSString stringWithFormat:@"token %@", token];
-    [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
-    
-    return [request copy];
-}
-
-- (NSURLRequest *)buildsRequest:(NSString *)slug token:(NSString *)token {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:kAccountInfoEndpoint]];
-    NSString *tokenString = [NSString stringWithFormat:@"token %@", token];
-    [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
-    
-    return [request copy];
 }
 
 @end
