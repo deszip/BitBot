@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, BRPresentationStyle) {
 
 - (void)bind:(NSOutlineView *)outlineView;
 - (void)fetch;
-- (void)buildStubs;
 
 @end
 

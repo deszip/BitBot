@@ -76,30 +76,9 @@
 
 - (NSFetchedResultsController *)buildBuildsFRC:(NSManagedObjectContext *)context {
     NSFetchRequest *request = [BRBuild fetchRequest];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"finishedTime" ascending:NO]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"buildNumber" ascending:NO]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-}
-
-- (void)buildStubs {
-    BRApp *app = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRApp class]) inManagedObjectContext:self.container.viewContext];
-    app.title = @"Foo App";
-    
-    BRBuild *build_1 = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRBuild class]) inManagedObjectContext:self.container.viewContext];
-    build_1.workflow = @"workflow 1";
-    build_1.branch = @"master";
-    
-    BRBuild *build_2 = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRBuild class]) inManagedObjectContext:self.container.viewContext];
-    build_2.workflow = @"workflow 2";
-    build_2.branch = @"master";
-    
-    [app addBuildsObject:build_1];
-    [app addBuildsObject:build_2];
-    
-    NSError *saveError = nil;
-    if (![self.container.viewContext save:&saveError]) {
-        NSLog(@"Failed to save context: %@", saveError);
-    }
 }
 
 #pragma mark - Actions -

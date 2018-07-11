@@ -726,9 +726,8 @@
                                             <segue destination="u6Y-Oa-61p" kind="modal" identifier="BRAccountsViewController" id="TTC-OE-mVR"/>
                                         </connections>
                                     </button>
-                                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CYQ-gE-0vI">
-                                        <rect key="frame" x="205" y="7" width="71" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CYQ-gE-0vI">
+                                        <rect key="frame" x="236" y="7" width="71" height="23"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="tmG-UK-FAg">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -742,9 +741,11 @@
                                     </segmentedControl>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="CYQ-gE-0vI" firstAttribute="top" secondItem="nqv-oN-Zd6" secondAttribute="top" id="2MV-y9-sZg"/>
                                     <constraint firstAttribute="height" constant="40" id="8RC-1p-PQm"/>
                                     <constraint firstItem="nqv-oN-Zd6" firstAttribute="centerY" secondItem="82J-cI-jpS" secondAttribute="centerY" id="If8-4g-bDc"/>
                                     <constraint firstAttribute="trailing" secondItem="nqv-oN-Zd6" secondAttribute="trailing" constant="10" id="TX3-Qv-Jx2"/>
+                                    <constraint firstItem="CYQ-gE-0vI" firstAttribute="centerX" secondItem="82J-cI-jpS" secondAttribute="centerX" id="ttV-1o-wKy"/>
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="77" horizontalPageScroll="10" verticalLineScroll="77" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-eN-807">
