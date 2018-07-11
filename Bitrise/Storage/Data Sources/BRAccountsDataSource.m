@@ -46,10 +46,7 @@
     NSError *fetchError = nil;
     if (![self.accountsFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch apps: %@", fetchError);
-    } else {
-        NSLog(@"Fetched accounts: %@", [self.accountsFRC.sections[0] objects]);
     }
-    
     [self.outlineView reloadData];
 }
 

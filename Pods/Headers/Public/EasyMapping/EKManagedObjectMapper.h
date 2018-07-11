@@ -1,0 +1,1 @@
+../../../EasyMapping/Sources/EasyMapping/EKManagedObjectMapper.h

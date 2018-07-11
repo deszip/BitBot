@@ -1,0 +1,18 @@
+PODS:
+  - EasyMapping (0.22.0):
+    - EasyMapping/Core (= 0.22.0)
+  - EasyMapping/Core (0.22.0)
+
+DEPENDENCIES:
+  - EasyMapping
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EasyMapping
+
+SPEC CHECKSUMS:
+  EasyMapping: 60f8b3cac9a9d2b76a75e2b96f556480de103601
+
+PODFILE CHECKSUM: 933feb601493dc3be8db5be78d2b7d8562648328
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,744 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01CD8BD6343C56809EC3F3A5D60E1DC2 /* EKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 40937B7E01D6DB8F3F176CA3EE7742C6 /* EKManagedObjectMapper.m */; };
+		074E3E9057317588C1558AA1EE66C082 /* EKPropertyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 83332F9F50AEF701DB64F161E2700106 /* EKPropertyMapping.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0A153C8420C09326C51C4E7FA51D3A57 /* EKManagedObjectMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 13EA7D1122964EF3154D3BA49571C08F /* EKManagedObjectMapping.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0E8CA8EBFD95F7E0D88D2DEF6236F43B /* EKMappingProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C4C72C134E8DE62F5AE3D1411010AB84 /* EKMappingProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1080EFE4482EF4E7AEC4682D73E6F120 /* EKCoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40686DFDBE54796356D7B73A81A384FD /* EKCoreDataImporter.m */; };
+		1813D58288403ACDD5A94ABBFF0699A8 /* EKObjectMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A650DD5A4649141C5A707407F97D75A /* EKObjectMapping.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2AF56FEF35CBF31DAFE34396530D5586 /* EKObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 258B797FFF3CC30634D14176E38FFC7D /* EKObjectModel.m */; };
+		3A3C47FF56B3B09E71E5788008C56695 /* EasyMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = CF101CBCD7B00F5C0B4AB7F6038F4208 /* EasyMapping.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3FFE3F9E226E681769F5E5F22E54D746 /* EKPropertyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 21466B008B604155FEBB5D51AE6D7885 /* EKPropertyMapping.m */; };
+		41C12F016FFD9625042724EEE7FFA0BB /* EKPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = C187A3C68735EF2CD348CBB83EDA28DD /* EKPropertyHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		42FD086E4F8EABD81ACD95176706CAC5 /* EKMappingBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = BC489078C6B40257A45EF0158DCF24EB /* EKMappingBlocks.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		43A56E7C457A007742F9C83929E89CBB /* EasyMapping-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D463EDDDE5E198C3AF18D4B6C0B244EA /* EasyMapping-dummy.m */; };
+		5358538147FAE4576FC0D2256BF942A8 /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC16D5941EEAAAD77B94D2DB78630F4 /* NSArray+FlattenArray.m */; };
+		592C2B97274D7C596036CC5660559146 /* Pods-Bitrise-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A81845E8680F45406001489A778030 /* Pods-Bitrise-dummy.m */; };
+		5FA26F021B81BA85331487BD2E0D785F /* NSDateFormatter+EasyMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B4B9669B92873CF02FD7347D13DA9E6 /* NSDateFormatter+EasyMappingAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		60123A4E7BD8604997C3C0C85543B88A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB3F9040FCEB96E06E461E878ABB8AC /* CoreData.framework */; };
+		6351B55CB8F57831B646D1B492FA4DEC /* EKMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB30E1E568A4096E52500533CA1EAEB /* EKMapper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6A50FD50FEDA8122E564EF70C7569263 /* EKManagedObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = BDABE4005C24D0528FD91612AA8CA752 /* EKManagedObjectMapping.m */; };
+		6C4CB6AADE3D6C8468DBA4B994841AD9 /* EKManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3275BA84D36D32E30038B1C4DDB7C0A1 /* EKManagedObjectModel.m */; };
+		8AAA45F27AB5E2FC83F031590A703199 /* EKSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 381FD49F23A97C1DCBCF044B7755BBAB /* EKSerializer.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		971F61E573E5CD2ACDC27E06188F0F40 /* EKPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8724C76DE59474AF773EAEA180CFE /* EKPropertyHelper.m */; };
+		9DCAB4CEA0E423576EDA96F22C27F7AD /* Pods-BitriseTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD31423BC949219B42B98CF4869CE8 /* Pods-BitriseTests-dummy.m */; };
+		A6C1E0C873A3E3C6B57BB2CF2F1621CE /* NSArray+FlattenArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CDCD1A66A572E0FE440C82CEB9325717 /* NSArray+FlattenArray.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AC5D8988D888E34089B58D1295E82FC9 /* EKSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F82E1B63ACF9776F766D796D4A5B91 /* EKSerializer.m */; };
+		B9F4DA45DF7C24ABF959AED1B8A2A4A0 /* EKCoreDataImporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 33D92C2F07FE72833C074710A0EE8A04 /* EKCoreDataImporter.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BAE4BC7088BAE95360224AB95A21EA97 /* EKMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41648EF12844F1BB909C3FE3A28DD3AD /* EKMapper.m */; };
+		BCC8529C02CE941E51B583920411D65F /* EKObjectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C5FFE0EA98F0C7C9EB0F467E404FDD /* EKObjectMapping.m */; };
+		BF764D471BFB10E6E33A38578A4139AB /* EKRelationshipMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 102E4B5FA7FCBC93C5165B8ACB2C9BE6 /* EKRelationshipMapping.m */; };
+		D3613A4BEE6CC6B24B3039D86ACA60D2 /* EKManagedObjectMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 699583B7E51E7C2D4CD140F0BDC23C5B /* EKManagedObjectMapper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DBB3F64CA6DE41884F91940EF94B67FB /* EKRelationshipMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = E179DD97A2A18B004D580DC82A750B02 /* EKRelationshipMapping.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DF67F8E7E12AA898943353E5FDD973CF /* EKManagedObjectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 7429F83D4D497ACBBEEDC983208C7242 /* EKManagedObjectModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E4869E2269D5897A69DF283C20759BD4 /* EKObjectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B97E8BC18C19C364569253836B5C2AC /* EKObjectModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FE8B5E4D64D58621575D4A7C53CCFB49 /* EKMappingBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4441DEDB184B56E6DFCA98851150F74D /* EKMappingBlocks.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		29EA792F027B4DA1CF4AD63B4AFAED6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 943DF0F3642979A8AC90B09B5E5F75BB;
+			remoteInfo = "Pods-Bitrise";
+		};
+		860A5E3B2BDFBAD4EC76C23650EDA7E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F398F47562426BDAEE05CA571E9A1F45;
+			remoteInfo = EasyMapping;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00A81845E8680F45406001489A778030 /* Pods-Bitrise-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Bitrise-dummy.m"; sourceTree = "<group>"; };
+		0DD8724C76DE59474AF773EAEA180CFE /* EKPropertyHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKPropertyHelper.m; path = Sources/EasyMapping/EKPropertyHelper.m; sourceTree = "<group>"; };
+		0FB3F9040FCEB96E06E461E878ABB8AC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		102E4B5FA7FCBC93C5165B8ACB2C9BE6 /* EKRelationshipMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKRelationshipMapping.m; path = Sources/EasyMapping/EKRelationshipMapping.m; sourceTree = "<group>"; };
+		11F82E1B63ACF9776F766D796D4A5B91 /* EKSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKSerializer.m; path = Sources/EasyMapping/EKSerializer.m; sourceTree = "<group>"; };
+		13EA7D1122964EF3154D3BA49571C08F /* EKManagedObjectMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectMapping.h; path = Sources/EasyMapping/EKManagedObjectMapping.h; sourceTree = "<group>"; };
+		21466B008B604155FEBB5D51AE6D7885 /* EKPropertyMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKPropertyMapping.m; path = Sources/EasyMapping/EKPropertyMapping.m; sourceTree = "<group>"; };
+		22EF0522C3BAE20EE3C5515A0BEA06D6 /* libPods-BitriseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-BitriseTests.a"; path = "libPods-BitriseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		258B797FFF3CC30634D14176E38FFC7D /* EKObjectModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKObjectModel.m; path = Sources/EasyMapping/EKObjectModel.m; sourceTree = "<group>"; };
+		2B97E8BC18C19C364569253836B5C2AC /* EKObjectModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKObjectModel.h; path = Sources/EasyMapping/EKObjectModel.h; sourceTree = "<group>"; };
+		3275BA84D36D32E30038B1C4DDB7C0A1 /* EKManagedObjectModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectModel.m; path = Sources/EasyMapping/EKManagedObjectModel.m; sourceTree = "<group>"; };
+		33D92C2F07FE72833C074710A0EE8A04 /* EKCoreDataImporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKCoreDataImporter.h; path = Sources/EasyMapping/EKCoreDataImporter.h; sourceTree = "<group>"; };
+		381FD49F23A97C1DCBCF044B7755BBAB /* EKSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKSerializer.h; path = Sources/EasyMapping/EKSerializer.h; sourceTree = "<group>"; };
+		388A90465CEBD00537C1CA5D000BEF56 /* Pods-BitriseTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitriseTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3B8A962D8A56D9AD10C9B00099113047 /* libEasyMapping.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libEasyMapping.a; path = libEasyMapping.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		40686DFDBE54796356D7B73A81A384FD /* EKCoreDataImporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataImporter.m; path = Sources/EasyMapping/EKCoreDataImporter.m; sourceTree = "<group>"; };
+		40937B7E01D6DB8F3F176CA3EE7742C6 /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapper.m; path = Sources/EasyMapping/EKManagedObjectMapper.m; sourceTree = "<group>"; };
+		41648EF12844F1BB909C3FE3A28DD3AD /* EKMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKMapper.m; path = Sources/EasyMapping/EKMapper.m; sourceTree = "<group>"; };
+		4441DEDB184B56E6DFCA98851150F74D /* EKMappingBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKMappingBlocks.m; path = Sources/EasyMapping/EKMappingBlocks.m; sourceTree = "<group>"; };
+		4A173FB9C0705CAEF4B044DCF0273BD7 /* Pods-BitriseTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitriseTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		4B4B9669B92873CF02FD7347D13DA9E6 /* NSDateFormatter+EasyMappingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+EasyMappingAdditions.h"; path = "Sources/EasyMapping/NSDateFormatter+EasyMappingAdditions.h"; sourceTree = "<group>"; };
+		4E3A74C1D2E93FA193A6BA5236620FB0 /* Pods-Bitrise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bitrise.release.xcconfig"; sourceTree = "<group>"; };
+		585FD653D947DAE73512CAEA74C58626 /* Pods-Bitrise-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Bitrise-acknowledgements.plist"; sourceTree = "<group>"; };
+		5FB30E1E568A4096E52500533CA1EAEB /* EKMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKMapper.h; path = Sources/EasyMapping/EKMapper.h; sourceTree = "<group>"; };
+		699583B7E51E7C2D4CD140F0BDC23C5B /* EKManagedObjectMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectMapper.h; path = Sources/EasyMapping/EKManagedObjectMapper.h; sourceTree = "<group>"; };
+		7429F83D4D497ACBBEEDC983208C7242 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectModel.h; path = Sources/EasyMapping/EKManagedObjectModel.h; sourceTree = "<group>"; };
+		83332F9F50AEF701DB64F161E2700106 /* EKPropertyMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKPropertyMapping.h; path = Sources/EasyMapping/EKPropertyMapping.h; sourceTree = "<group>"; };
+		8A650DD5A4649141C5A707407F97D75A /* EKObjectMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKObjectMapping.h; path = Sources/EasyMapping/EKObjectMapping.h; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A42C160A24732AD7CCD69AFEDC4E99BF /* EasyMapping.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyMapping.xcconfig; sourceTree = "<group>"; };
+		B57A52961C48A4D3097094BC66639A37 /* Pods-BitriseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitriseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B68894F6585B294FF5551AAB01F2AF13 /* Pods-BitriseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitriseTests.release.xcconfig"; sourceTree = "<group>"; };
+		BC489078C6B40257A45EF0158DCF24EB /* EKMappingBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKMappingBlocks.h; path = Sources/EasyMapping/EKMappingBlocks.h; sourceTree = "<group>"; };
+		BDABE4005C24D0528FD91612AA8CA752 /* EKManagedObjectMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapping.m; path = Sources/EasyMapping/EKManagedObjectMapping.m; sourceTree = "<group>"; };
+		BDD2BA642739FD1A07C290E583471BC9 /* Pods-BitriseTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BitriseTests-frameworks.sh"; sourceTree = "<group>"; };
+		C06983CE090DE73A9F542F11396ADEB0 /* EasyMapping-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyMapping-prefix.pch"; sourceTree = "<group>"; };
+		C187A3C68735EF2CD348CBB83EDA28DD /* EKPropertyHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKPropertyHelper.h; path = Sources/EasyMapping/EKPropertyHelper.h; sourceTree = "<group>"; };
+		C1BD31423BC949219B42B98CF4869CE8 /* Pods-BitriseTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitriseTests-dummy.m"; sourceTree = "<group>"; };
+		C48BD884FCCAD6407AE304B7CE255C7C /* Pods-Bitrise-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bitrise-resources.sh"; sourceTree = "<group>"; };
+		C4C72C134E8DE62F5AE3D1411010AB84 /* EKMappingProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKMappingProtocol.h; path = Sources/EasyMapping/EKMappingProtocol.h; sourceTree = "<group>"; };
+		CDCD1A66A572E0FE440C82CEB9325717 /* NSArray+FlattenArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+FlattenArray.h"; path = "Sources/EasyMapping/NSArray+FlattenArray.h"; sourceTree = "<group>"; };
+		CF101CBCD7B00F5C0B4AB7F6038F4208 /* EasyMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EasyMapping.h; path = Sources/EasyMapping/EasyMapping.h; sourceTree = "<group>"; };
+		D323BD0868B4B1B6E1A0545B38C1F39D /* Pods-Bitrise-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Bitrise-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D463EDDDE5E198C3AF18D4B6C0B244EA /* EasyMapping-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EasyMapping-dummy.m"; sourceTree = "<group>"; };
+		DFD4C6F55B5519EBBEEDB12AAE69236C /* libPods-Bitrise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Bitrise.a"; path = "libPods-Bitrise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E179DD97A2A18B004D580DC82A750B02 /* EKRelationshipMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKRelationshipMapping.h; path = Sources/EasyMapping/EKRelationshipMapping.h; sourceTree = "<group>"; };
+		EDC16D5941EEAAAD77B94D2DB78630F4 /* NSArray+FlattenArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+FlattenArray.m"; path = "Sources/EasyMapping/NSArray+FlattenArray.m"; sourceTree = "<group>"; };
+		F079383C4658C0F0789BB5D6E4EA8959 /* Pods-Bitrise-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bitrise-frameworks.sh"; sourceTree = "<group>"; };
+		F9C5FFE0EA98F0C7C9EB0F467E404FDD /* EKObjectMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKObjectMapping.m; path = Sources/EasyMapping/EKObjectMapping.m; sourceTree = "<group>"; };
+		FB42C57D80A5CF6CE14007D4BE1BF1B0 /* Pods-Bitrise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Bitrise.debug.xcconfig"; sourceTree = "<group>"; };
+		FD8280115AF0E17938789749CB3206F6 /* Pods-BitriseTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BitriseTests-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E7D6E1400B5A535E1BA543DF2766206 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60123A4E7BD8604997C3C0C85543B88A /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31FABEE5453035656614A1B09C118132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D9AD0FC6598FE8520457A3AE3782F05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		075EF71EB2EB7E3340E947336717F5E8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CF101CBCD7B00F5C0B4AB7F6038F4208 /* EasyMapping.h */,
+				33D92C2F07FE72833C074710A0EE8A04 /* EKCoreDataImporter.h */,
+				40686DFDBE54796356D7B73A81A384FD /* EKCoreDataImporter.m */,
+				699583B7E51E7C2D4CD140F0BDC23C5B /* EKManagedObjectMapper.h */,
+				40937B7E01D6DB8F3F176CA3EE7742C6 /* EKManagedObjectMapper.m */,
+				13EA7D1122964EF3154D3BA49571C08F /* EKManagedObjectMapping.h */,
+				BDABE4005C24D0528FD91612AA8CA752 /* EKManagedObjectMapping.m */,
+				7429F83D4D497ACBBEEDC983208C7242 /* EKManagedObjectModel.h */,
+				3275BA84D36D32E30038B1C4DDB7C0A1 /* EKManagedObjectModel.m */,
+				5FB30E1E568A4096E52500533CA1EAEB /* EKMapper.h */,
+				41648EF12844F1BB909C3FE3A28DD3AD /* EKMapper.m */,
+				BC489078C6B40257A45EF0158DCF24EB /* EKMappingBlocks.h */,
+				4441DEDB184B56E6DFCA98851150F74D /* EKMappingBlocks.m */,
+				C4C72C134E8DE62F5AE3D1411010AB84 /* EKMappingProtocol.h */,
+				8A650DD5A4649141C5A707407F97D75A /* EKObjectMapping.h */,
+				F9C5FFE0EA98F0C7C9EB0F467E404FDD /* EKObjectMapping.m */,
+				2B97E8BC18C19C364569253836B5C2AC /* EKObjectModel.h */,
+				258B797FFF3CC30634D14176E38FFC7D /* EKObjectModel.m */,
+				C187A3C68735EF2CD348CBB83EDA28DD /* EKPropertyHelper.h */,
+				0DD8724C76DE59474AF773EAEA180CFE /* EKPropertyHelper.m */,
+				83332F9F50AEF701DB64F161E2700106 /* EKPropertyMapping.h */,
+				21466B008B604155FEBB5D51AE6D7885 /* EKPropertyMapping.m */,
+				E179DD97A2A18B004D580DC82A750B02 /* EKRelationshipMapping.h */,
+				102E4B5FA7FCBC93C5165B8ACB2C9BE6 /* EKRelationshipMapping.m */,
+				381FD49F23A97C1DCBCF044B7755BBAB /* EKSerializer.h */,
+				11F82E1B63ACF9776F766D796D4A5B91 /* EKSerializer.m */,
+				CDCD1A66A572E0FE440C82CEB9325717 /* NSArray+FlattenArray.h */,
+				EDC16D5941EEAAAD77B94D2DB78630F4 /* NSArray+FlattenArray.m */,
+				4B4B9669B92873CF02FD7347D13DA9E6 /* NSDateFormatter+EasyMappingAdditions.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		16E88CDE358CA6F7A603844979CF5A68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B8A962D8A56D9AD10C9B00099113047 /* libEasyMapping.a */,
+				DFD4C6F55B5519EBBEEDB12AAE69236C /* libPods-Bitrise.a */,
+				22EF0522C3BAE20EE3C5515A0BEA06D6 /* libPods-BitriseTests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E18C8366D814E0101ECBDCCD2D7F7D0 /* Pods-Bitrise */ = {
+			isa = PBXGroup;
+			children = (
+				D323BD0868B4B1B6E1A0545B38C1F39D /* Pods-Bitrise-acknowledgements.markdown */,
+				585FD653D947DAE73512CAEA74C58626 /* Pods-Bitrise-acknowledgements.plist */,
+				00A81845E8680F45406001489A778030 /* Pods-Bitrise-dummy.m */,
+				F079383C4658C0F0789BB5D6E4EA8959 /* Pods-Bitrise-frameworks.sh */,
+				C48BD884FCCAD6407AE304B7CE255C7C /* Pods-Bitrise-resources.sh */,
+				FB42C57D80A5CF6CE14007D4BE1BF1B0 /* Pods-Bitrise.debug.xcconfig */,
+				4E3A74C1D2E93FA193A6BA5236620FB0 /* Pods-Bitrise.release.xcconfig */,
+			);
+			name = "Pods-Bitrise";
+			path = "Target Support Files/Pods-Bitrise";
+			sourceTree = "<group>";
+		};
+		1EF7706C899FCF408633A4CBC7DEC903 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1E18C8366D814E0101ECBDCCD2D7F7D0 /* Pods-Bitrise */,
+				AF4E3B90650D1F2DA3D19465A8A369F1 /* Pods-BitriseTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		28A938F64B5EA0F57BB6DA6414963CDC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A42C160A24732AD7CCD69AFEDC4E99BF /* EasyMapping.xcconfig */,
+				D463EDDDE5E198C3AF18D4B6C0B244EA /* EasyMapping-dummy.m */,
+				C06983CE090DE73A9F542F11396ADEB0 /* EasyMapping-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/EasyMapping";
+			sourceTree = "<group>";
+		};
+		358A47F298495ABEFCCA59BDA38EBD55 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7D91DD4F499305F3FC92CD3EE2E7B50 /* EasyMapping */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD43719DF9F5FB408DBD8085F45B8005 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
+				358A47F298495ABEFCCA59BDA38EBD55 /* Pods */,
+				16E88CDE358CA6F7A603844979CF5A68 /* Products */,
+				1EF7706C899FCF408633A4CBC7DEC903 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AF4E3B90650D1F2DA3D19465A8A369F1 /* Pods-BitriseTests */ = {
+			isa = PBXGroup;
+			children = (
+				388A90465CEBD00537C1CA5D000BEF56 /* Pods-BitriseTests-acknowledgements.markdown */,
+				4A173FB9C0705CAEF4B044DCF0273BD7 /* Pods-BitriseTests-acknowledgements.plist */,
+				C1BD31423BC949219B42B98CF4869CE8 /* Pods-BitriseTests-dummy.m */,
+				BDD2BA642739FD1A07C290E583471BC9 /* Pods-BitriseTests-frameworks.sh */,
+				FD8280115AF0E17938789749CB3206F6 /* Pods-BitriseTests-resources.sh */,
+				B57A52961C48A4D3097094BC66639A37 /* Pods-BitriseTests.debug.xcconfig */,
+				B68894F6585B294FF5551AAB01F2AF13 /* Pods-BitriseTests.release.xcconfig */,
+			);
+			name = "Pods-BitriseTests";
+			path = "Target Support Files/Pods-BitriseTests";
+			sourceTree = "<group>";
+		};
+		D7D91DD4F499305F3FC92CD3EE2E7B50 /* EasyMapping */ = {
+			isa = PBXGroup;
+			children = (
+				075EF71EB2EB7E3340E947336717F5E8 /* Core */,
+				28A938F64B5EA0F57BB6DA6414963CDC /* Support Files */,
+			);
+			name = EasyMapping;
+			path = EasyMapping;
+			sourceTree = "<group>";
+		};
+		FD43719DF9F5FB408DBD8085F45B8005 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				0FB3F9040FCEB96E06E461E878ABB8AC /* CoreData.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7A9AFF7DDBE9B3DA44707B4B6451591C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A3C47FF56B3B09E71E5788008C56695 /* EasyMapping.h in Headers */,
+				B9F4DA45DF7C24ABF959AED1B8A2A4A0 /* EKCoreDataImporter.h in Headers */,
+				D3613A4BEE6CC6B24B3039D86ACA60D2 /* EKManagedObjectMapper.h in Headers */,
+				0A153C8420C09326C51C4E7FA51D3A57 /* EKManagedObjectMapping.h in Headers */,
+				DF67F8E7E12AA898943353E5FDD973CF /* EKManagedObjectModel.h in Headers */,
+				6351B55CB8F57831B646D1B492FA4DEC /* EKMapper.h in Headers */,
+				42FD086E4F8EABD81ACD95176706CAC5 /* EKMappingBlocks.h in Headers */,
+				0E8CA8EBFD95F7E0D88D2DEF6236F43B /* EKMappingProtocol.h in Headers */,
+				1813D58288403ACDD5A94ABBFF0699A8 /* EKObjectMapping.h in Headers */,
+				E4869E2269D5897A69DF283C20759BD4 /* EKObjectModel.h in Headers */,
+				41C12F016FFD9625042724EEE7FFA0BB /* EKPropertyHelper.h in Headers */,
+				074E3E9057317588C1558AA1EE66C082 /* EKPropertyMapping.h in Headers */,
+				DBB3F64CA6DE41884F91940EF94B67FB /* EKRelationshipMapping.h in Headers */,
+				8AAA45F27AB5E2FC83F031590A703199 /* EKSerializer.h in Headers */,
+				A6C1E0C873A3E3C6B57BB2CF2F1621CE /* NSArray+FlattenArray.h in Headers */,
+				5FA26F021B81BA85331487BD2E0D785F /* NSDateFormatter+EasyMappingAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		04564F3CAD6FA8C23ABE57367F287A4A /* Pods-BitriseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 430862E91AC0E1537E8F02C0A6450039 /* Build configuration list for PBXNativeTarget "Pods-BitriseTests" */;
+			buildPhases = (
+				719658961ED7DF02DF2376A733CEE3E3 /* Sources */,
+				31FABEE5453035656614A1B09C118132 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FD2A2E4686B7E99641E297E95D5D5B4 /* PBXTargetDependency */,
+			);
+			name = "Pods-BitriseTests";
+			productName = "Pods-BitriseTests";
+			productReference = 22EF0522C3BAE20EE3C5515A0BEA06D6 /* libPods-BitriseTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		943DF0F3642979A8AC90B09B5E5F75BB /* Pods-Bitrise */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 630EBB3B02C2F9B68D01F674EA392ABD /* Build configuration list for PBXNativeTarget "Pods-Bitrise" */;
+			buildPhases = (
+				4F346FDD715A2CB18BA1D17681E68780 /* Sources */,
+				7D9AD0FC6598FE8520457A3AE3782F05 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D50681453A98E5A355970BFB6780D9E2 /* PBXTargetDependency */,
+			);
+			name = "Pods-Bitrise";
+			productName = "Pods-Bitrise";
+			productReference = DFD4C6F55B5519EBBEEDB12AAE69236C /* libPods-Bitrise.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F398F47562426BDAEE05CA571E9A1F45 /* EasyMapping */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 569FFB0F345A64F5DF3159825F0DF869 /* Build configuration list for PBXNativeTarget "EasyMapping" */;
+			buildPhases = (
+				B9A244F799B4FEEBBA953ACFCBE8E7BD /* Sources */,
+				2E7D6E1400B5A535E1BA543DF2766206 /* Frameworks */,
+				7A9AFF7DDBE9B3DA44707B4B6451591C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyMapping;
+			productName = EasyMapping;
+			productReference = 3B8A962D8A56D9AD10C9B00099113047 /* libEasyMapping.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 16E88CDE358CA6F7A603844979CF5A68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F398F47562426BDAEE05CA571E9A1F45 /* EasyMapping */,
+				943DF0F3642979A8AC90B09B5E5F75BB /* Pods-Bitrise */,
+				04564F3CAD6FA8C23ABE57367F287A4A /* Pods-BitriseTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F346FDD715A2CB18BA1D17681E68780 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				592C2B97274D7C596036CC5660559146 /* Pods-Bitrise-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		719658961ED7DF02DF2376A733CEE3E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DCAB4CEA0E423576EDA96F22C27F7AD /* Pods-BitriseTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9A244F799B4FEEBBA953ACFCBE8E7BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43A56E7C457A007742F9C83929E89CBB /* EasyMapping-dummy.m in Sources */,
+				1080EFE4482EF4E7AEC4682D73E6F120 /* EKCoreDataImporter.m in Sources */,
+				01CD8BD6343C56809EC3F3A5D60E1DC2 /* EKManagedObjectMapper.m in Sources */,
+				6A50FD50FEDA8122E564EF70C7569263 /* EKManagedObjectMapping.m in Sources */,
+				6C4CB6AADE3D6C8468DBA4B994841AD9 /* EKManagedObjectModel.m in Sources */,
+				BAE4BC7088BAE95360224AB95A21EA97 /* EKMapper.m in Sources */,
+				FE8B5E4D64D58621575D4A7C53CCFB49 /* EKMappingBlocks.m in Sources */,
+				BCC8529C02CE941E51B583920411D65F /* EKObjectMapping.m in Sources */,
+				2AF56FEF35CBF31DAFE34396530D5586 /* EKObjectModel.m in Sources */,
+				971F61E573E5CD2ACDC27E06188F0F40 /* EKPropertyHelper.m in Sources */,
+				3FFE3F9E226E681769F5E5F22E54D746 /* EKPropertyMapping.m in Sources */,
+				BF764D471BFB10E6E33A38578A4139AB /* EKRelationshipMapping.m in Sources */,
+				AC5D8988D888E34089B58D1295E82FC9 /* EKSerializer.m in Sources */,
+				5358538147FAE4576FC0D2256BF942A8 /* NSArray+FlattenArray.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FD2A2E4686B7E99641E297E95D5D5B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Bitrise";
+			target = 943DF0F3642979A8AC90B09B5E5F75BB /* Pods-Bitrise */;
+			targetProxy = 29EA792F027B4DA1CF4AD63B4AFAED6C /* PBXContainerItemProxy */;
+		};
+		D50681453A98E5A355970BFB6780D9E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EasyMapping;
+			target = F398F47562426BDAEE05CA571E9A1F45 /* EasyMapping */;
+			targetProxy = 860A5E3B2BDFBAD4EC76C23650EDA7E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		144C56F6DDE22E6F9BA12E85832763E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A42C160A24732AD7CCD69AFEDC4E99BF /* EasyMapping.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyMapping/EasyMapping-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = EasyMapping;
+				PRODUCT_NAME = EasyMapping;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+			};
+			name = Release;
+		};
+		2DF37E7E13774C12BF05E1D6BCD1442E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E3A74C1D2E93FA193A6BA5236620FB0 /* Pods-Bitrise.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6563B696741F36F580AE3F1DB2CBD248 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A42C160A24732AD7CCD69AFEDC4E99BF /* EasyMapping.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyMapping/EasyMapping-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = EasyMapping;
+				PRODUCT_NAME = EasyMapping;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+			};
+			name = Debug;
+		};
+		885072FBE917853E9C621EA32511C1DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		91FF6B859FF8E9CEACDFC1A3E6245BE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B68894F6585B294FF5551AAB01F2AF13 /* Pods-BitriseTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C12A0D324E81F38742C9AE65DE7ED399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B57A52961C48A4D3097094BC66639A37 /* Pods-BitriseTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CED94B24B1A14A3372796999A17242B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB42C57D80A5CF6CE14007D4BE1BF1B0 /* Pods-Bitrise.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E574923E2959CFEF4FEBC7B272DBC6AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				885072FBE917853E9C621EA32511C1DA /* Debug */,
+				E574923E2959CFEF4FEBC7B272DBC6AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		430862E91AC0E1537E8F02C0A6450039 /* Build configuration list for PBXNativeTarget "Pods-BitriseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C12A0D324E81F38742C9AE65DE7ED399 /* Debug */,
+				91FF6B859FF8E9CEACDFC1A3E6245BE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		569FFB0F345A64F5DF3159825F0DF869 /* Build configuration list for PBXNativeTarget "EasyMapping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6563B696741F36F580AE3F1DB2CBD248 /* Debug */,
+				144C56F6DDE22E6F9BA12E85832763E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		630EBB3B02C2F9B68D01F674EA392ABD /* Build configuration list for PBXNativeTarget "Pods-Bitrise" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CED94B24B1A14A3372796999A17242B4 /* Debug */,
+				2DF37E7E13774C12BF05E1D6BCD1442E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

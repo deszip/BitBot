@@ -9,6 +9,7 @@
 #import "BRDependencyContainer.h"
 
 #import "BRContainerBuilder.h"
+#import "BRCellBuilder.h"
 
 @interface BRDependencyContainer ()
 
@@ -27,10 +28,14 @@
     return self;
 }
 
+- (BRCellBuilder *)cellBuilder {
+    return [BRCellBuilder new];
+}
+
 #pragma mark - BRDataSourceProvider -
 
 - (BRAppsDataSource *)appsDataSource {
-    return [[BRAppsDataSource alloc] initWithContainer:self.persistenceContainer];
+    return [[BRAppsDataSource alloc] initWithContainer:self.persistenceContainer cellBuilder:[self cellBuilder]];
 }
 
 - (BRAccountsDataSource *)accountsDataSource {

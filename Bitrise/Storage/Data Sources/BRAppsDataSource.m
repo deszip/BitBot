@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) NSOutlineView *outlineView;
 
+@property (strong, nonatomic) BRCellBuilder *cellBuilder;
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSFetchedResultsController *appsFRC;
 @property (strong, nonatomic) NSFetchedResultsController *buildsFRC;
@@ -30,8 +31,9 @@
 
 @implementation BRAppsDataSource
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container {
+- (instancetype)initWithContainer:(NSPersistentContainer *)container cellBuilder:(BRCellBuilder *)cellBuilder {
     if (self = [super init]) {
+        _cellBuilder = cellBuilder;
         _container = container;
         _appsFRC = [self buildAppsFRC:self.container.viewContext];
         [_appsFRC setDelegate:self];
@@ -106,10 +108,7 @@
     NSError *fetchError = nil;
     if (![self.activeFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch apps: %@", fetchError);
-    } else {
-        NSLog(@"Fetched apps: %@", [self.activeFRC.sections[0] objects]);
     }
-    
     [self.outlineView reloadData];
 }
 
@@ -159,24 +158,24 @@
 #pragma mark - NSOutlineViewDelegate -
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
-    return 52.0;
+    if ([item isKindOfClass:[BRApp class]]) {
+        return 45.0;
+    }
+    
+    if ([item isKindOfClass:[BRBuild class]]) {
+        return 75.0;
+    }
+    
+    return 0;
 }
 
 - (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
     if ([item isKindOfClass:[BRApp class]]) {
-        BRApp *app = (BRApp *)item;
-        BRAppCellView *cell = [outlineView makeViewWithIdentifier:@"BRAppCellView" owner:self];
-        [cell.appNameLabel setStringValue:app.title];
-        
-        return cell;
+        return [self.cellBuilder appCell:item forOutline:outlineView];
     }
     
     if ([item isKindOfClass:[BRBuild class]]) {
-        BRBuild *build = (BRBuild *)item;
-        BRBuildCellView *cell = [outlineView makeViewWithIdentifier:@"BRBuildCellView" owner:self];
-        [cell.buildNameLabel setStringValue:[NSString stringWithFormat:@"%@ - %@", build.branch, build.workflow]];
-        
-        return cell;
+        return [self.cellBuilder buildCell:item forOutline:outlineView];
     }
     
     return nil;

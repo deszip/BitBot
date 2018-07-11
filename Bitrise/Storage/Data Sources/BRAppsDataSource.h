@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "BRCellBuilder.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, BRPresentationStyle) {
@@ -20,7 +22,7 @@ typedef NS_ENUM(NSInteger, BRPresentationStyle) {
 @property (assign, nonatomic) BRPresentationStyle presentationStyle;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithContainer:(NSPersistentContainer *)container NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContainer:(NSPersistentContainer *)container cellBuilder:(BRCellBuilder *)cellBuilder  NS_DESIGNATED_INITIALIZER;
 
 - (void)bind:(NSOutlineView *)outlineView;
 - (void)fetch;
