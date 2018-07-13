@@ -42,8 +42,13 @@
     // Status
     switch (build.status.integerValue) {
         case 0:
-            [cell.statusImage setImage:nil];
-            [cell.statusLabel setStringValue:@"Unknown"];
+            if ([build.statusText isEqualToString:@"on-hold"]) {
+                [cell.statusImage setImage:[NSImage imageNamed:@"hold-status"]];
+                [cell.statusLabel setStringValue:@"On hold"];
+            } else {
+                [cell.statusImage setImage:nil];
+                [cell.statusLabel setStringValue:@"Unknown"];
+            }
             break;
         case 1:
             [cell.statusImage setImage:[NSImage imageNamed:@"success-status"]];

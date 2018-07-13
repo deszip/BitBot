@@ -71,24 +71,6 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
             completion(nil, error);
         }
     }];
-//    NSURLRequest *request = [self buildsRequest:accountInfo.slug token:accountInfo.token];
-//    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *urlResponse, NSError *error) {
-//        if (data) {
-//            NSError *serializationError = nil;
-//            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
-//            __block NSMutableArray *buildsInfo = [NSMutableArray array];
-//            [response[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *nextBuild, NSUInteger idx, BOOL *stop) {
-//                BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithResponse:nextBuild];
-//                [buildsInfo addObject:buildInfo];
-//            }];
-//
-//            completion(buildsInfo, nil);
-//        } else {
-//            completion(nil, error);
-//        }
-//    }];
-//
-//    [task resume];
 }
 
 #pragma mark - Request builders -
