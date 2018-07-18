@@ -12,6 +12,7 @@
 #import "BRAccountsDataSource.h"
 #import "BRBitriseAPI.h"
 #import "BRStorage.h"
+#import "BRObserver.h"
 
 @protocol BRDataSourceProvider <NSObject>
 
@@ -24,6 +25,7 @@
 
 - (BRBitriseAPI *)bitriseAPI;
 - (BRStorage *)storage;
+- (BRObserver *)commandObserver;
 
 @end
 

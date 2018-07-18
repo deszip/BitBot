@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSTextField *buildTimeLabel;
 @property (weak) IBOutlet NSTextField *buildNumberLabel;
 
+@property (weak) IBOutlet NSButton *actionButton;
+
+- (void)setRunningSince:(NSDate *)startDate;
+- (void)setFinishedAt:(NSDate *)finishDate started:(NSDate *)startDate;
+
 @end
 
 NS_ASSUME_NONNULL_END

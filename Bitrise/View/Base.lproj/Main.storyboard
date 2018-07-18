@@ -863,7 +863,7 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2JW-X2-ln1">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="206" height="17"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="17"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-Ch-mya">
                                                                                             <rect key="frame" x="-2" y="0.0" width="104" height="17"/>
@@ -874,15 +874,15 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xy8-er-prl">
-                                                                                            <rect key="frame" x="109" y="0.0" width="49" height="17"/>
-                                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="5m 57s" id="nGS-2R-NJb">
+                                                                                            <rect key="frame" x="109" y="0.0" width="54" height="17"/>
+                                                                                            <textFieldCell key="cell" lineBreakMode="clipping" id="nGS-2R-NJb">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y2p-XX-Ma8">
-                                                                                            <rect key="frame" x="165" y="0.0" width="43" height="17"/>
+                                                                                            <rect key="frame" x="170" y="0.0" width="43" height="17"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="#1402" id="Lk4-2U-dLA">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -944,6 +944,7 @@
                                                                 <constraint firstItem="4iN-xb-wVT" firstAttribute="leading" secondItem="OxU-5v-ffN" secondAttribute="leading" constant="10" id="tma-sf-cRr"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="actionButton" destination="kAq-TO-iog" id="MTf-b0-zy5"/>
                                                                 <outlet property="branchLabel" destination="nrg-IU-rup" id="4ti-Ch-MNE"/>
                                                                 <outlet property="buildNumberLabel" destination="Y2p-XX-Ma8" id="M3e-4X-g2Q"/>
                                                                 <outlet property="buildTimeLabel" destination="Xy8-er-prl" id="wjq-RC-0Xg"/>

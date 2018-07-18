@@ -8,6 +8,8 @@
 
 #import "BRGetAccountCommand.h"
 
+#import "BRMacro.h"
+
 @interface BRGetAccountCommand ()
 
 @property (copy, nonatomic) NSString *token;
@@ -28,13 +30,12 @@
     return self;
 }
 
-- (void)execute {
+- (void)execute:(BRCommandResult)callback {
     [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
         [self.storage saveAccount:accountInfo];
+        if (callback) callback(YES, nil);
     }];
-    
-    // Get apps
-    //...
 }
+
 
 @end

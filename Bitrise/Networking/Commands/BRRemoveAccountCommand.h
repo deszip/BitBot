@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRCommand.h"
 #import "BRStorage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRRemoveAccountCommand : NSObject
+@interface BRRemoveAccountCommand : NSObject <BRCommand>
 
 - (instancetype)initWithStorage:(BRStorage *)storage token:(NSString *)token;
-- (void)execute;
 
 @end
 

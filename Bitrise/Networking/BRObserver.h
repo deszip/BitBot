@@ -1,5 +1,5 @@
 //
-//  BRAPIObserver.h
+//  BRObserver.h
 //  Bitrise
 //
 //  Created by Deszip on 13/07/2018.
@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRCommand.h"
 #import "BRBitriseAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAPIObserver : NSObject
+@interface BRObserver : NSObject
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api;
-
-- (void)startObservingBuilds;
-- (void)stopObservingBuilds;
+- (void)startObserving:(id <BRCommand>)command;
+- (void)stopObserving;
 
 @end
 

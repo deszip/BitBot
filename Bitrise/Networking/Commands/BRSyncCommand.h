@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRCommand.h"
 #import "BRBitriseAPI.h"
 #import "BRStorage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRSyncCommand : NSObject
+@interface BRSyncCommand : NSObject <BRCommand>
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage;
-- (void)execute;
 
 @end
 

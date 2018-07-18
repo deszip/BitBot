@@ -52,4 +52,8 @@
     return [[BRStorage alloc] initWithContainer:self.persistenceContainer];
 }
 
+- (BRObserver *)commandObserver {
+    return [BRObserver new];
+}
+
 @end

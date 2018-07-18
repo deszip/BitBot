@@ -41,14 +41,14 @@
     BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithAPI:self.api
                                                                     storage:self.storage
                                                                       token:self.keyField.stringValue];
-    [command execute];
+    [command execute:nil];
 }
 
 - (IBAction)removeKey:(NSButton *)sender {
     BRAccount *selectedAccount = [self.outlineView itemAtRow:[self.outlineView rowForView:sender]];
     BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithStorage:self.storage
                                                                                 token:selectedAccount.token];
-    [command execute];
+    [command execute:nil];
 }
 
 @end

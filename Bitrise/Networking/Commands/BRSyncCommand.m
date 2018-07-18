@@ -26,18 +26,20 @@
     return self;
 }
 
-- (void)execute {
+- (void)execute:(BRCommandResult)callback {
     [self.storage getAccounts:^(NSArray<BRAccountInfo *> *accounts, NSError *error) {
         [accounts enumerateObjectsUsingBlock:^(BRAccountInfo *nextAccount, NSUInteger idx, BOOL *stop) {
             [self.api getApps:nextAccount completion:^(NSArray<BRAppInfo *> *apps, NSError *error) {
                 [self.storage saveApps:apps forAccount:nextAccount];
                 [apps enumerateObjectsUsingBlock:^(BRAppInfo *nextApp, NSUInteger idx, BOOL *stop) {
                     [self.api getBuilds:nextApp account:nextAccount completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
-                        [self.storage saveBuilds:builds forApp:nextApp];
+                        [self.storage saveBuilds:builds forApp:nextApp completion:nil];
                     }];
                 }];
             }];
         }];
+        
+        if (callback) callback(YES, nil);
     }];
 }
 

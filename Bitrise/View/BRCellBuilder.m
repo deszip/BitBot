@@ -39,34 +39,47 @@
 - (BRBuildCellView *)buildCell:(BRBuild *)build forOutline:(NSOutlineView *)outline {
     BRBuildCellView *cell = [outline makeViewWithIdentifier:@"BRBuildCellView" owner:self];
     
+    // Action
+    if (build.status.integerValue == 0 && !build.onHold.boolValue) {
+        [cell.actionButton setTitle:@"Stop"];
+        [cell setRunningSince:build.envPrepareFinishedTime];
+    } else {
+        [cell.actionButton setTitle:@"Rebuild"];
+        [cell setFinishedAt:build.finishedTime started:build.triggerTime];
+    }
+    
     // Status
     switch (build.status.integerValue) {
         case 0:
-            if ([build.statusText isEqualToString:@"on-hold"]) {
+            if (build.onHold.boolValue) {
                 [cell.statusImage setImage:[NSImage imageNamed:@"hold-status"]];
                 [cell.statusLabel setStringValue:@"On hold"];
             } else {
                 [cell.statusImage setImage:nil];
-                [cell.statusLabel setStringValue:@"Unknown"];
+                [cell.statusLabel setStringValue:@"In progress..."];
             }
             break;
+        
         case 1:
             [cell.statusImage setImage:[NSImage imageNamed:@"success-status"]];
             [cell.statusLabel setStringValue:@"Success"];
             break;
+        
         case 2:
             [cell.statusImage setImage:[NSImage imageNamed:@"failed-status"]];
             [cell.statusLabel setStringValue:@"Failed"];
             break;
+        
+        case 3:
+            [cell.statusImage setImage:[NSImage imageNamed:@"abort-status"]];
+            [cell.statusLabel setStringValue:@"Aborted"];
+            break;
     }
     
+    // Parameters
     [cell.branchLabel setStringValue:build.branch];
     [cell.workflowLabel setStringValue:build.workflow];
     [cell.triggerTimeLabel setStringValue:[NSString stringWithFormat:@"Triggered: %@", [self.timeFormatter stringFromDate:build.triggerTime]]];
-    
-    NSTimeInterval duration = [build.finishedTime timeIntervalSinceDate:build.envPrepareFinishedTime];
-    NSDate *durationDate = [NSDate dateWithTimeIntervalSince1970:duration];
-    [cell.buildTimeLabel setStringValue:[NSString stringWithFormat:@"%@", [self.durationFormatter stringFromDate:durationDate]]];
     
     [cell.buildNumberLabel setStringValue:[NSString stringWithFormat:@"#%li", build.buildNumber.integerValue]];
     

@@ -26,8 +26,8 @@
     return self;
 }
 
-- (void)execute {
-    [self.storage removeAccount:self.token];
+- (void)execute:(BRCommandResult)callback {
+    [self.storage removeAccount:self.token completion:callback];
 }
 
 @end

@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
+@property (strong, nonatomic) BRObserver *observer;
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 
@@ -30,6 +31,7 @@
     
     self.api = [self.dependencyContainer bitriseAPI];
     self.storage = [self.dependencyContainer storage];
+    self.observer = [self.dependencyContainer commandObserver];
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];
 }
@@ -40,7 +42,9 @@
     [self.dataSource fetch];
     
     BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initWithAPI:self.api storage:self.storage];
-    [syncCommand execute];
+    [syncCommand execute:nil];
+    
+    [self.observer startObserving:syncCommand];
 }
 
 - (IBAction)presentationChanged:(NSSegmentedControl *)sender {

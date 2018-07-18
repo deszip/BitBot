@@ -15,18 +15,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^BRAccountsListResult)(NSArray <BRAccountInfo *> * _Nullable, NSError * _Nullable);
+typedef void(^BRAccountsListResult)(NSArray <BRAccountInfo *> * _Nullable accounts, NSError * _Nullable error);
+typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
 @interface BRStorage : NSObject
 
 - (instancetype)initWithContainer:(NSPersistentContainer *)container;
 
 - (void)saveAccount:(BRAccountInfo *)accountInfo;
-- (void)removeAccount:(NSString *)token;
+- (void)removeAccount:(NSString *)token completion:(BRStorageResult)completion;
 - (void)getAccounts:(BRAccountsListResult)completion;
 
 - (void)saveApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccountInfo *)account;
-- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(BRAppInfo *)app;
+- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(BRAppInfo *)app completion:(BRStorageResult _Nullable)completion;
 
 @end
 
