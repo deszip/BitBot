@@ -14,13 +14,15 @@
 
 #import "BRSyncCommand.h"
 
-@interface BRMainController ()
+@interface BRMainController () <NSMenuDelegate>
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRObserver *observer;
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
+
 @property (weak) IBOutlet NSOutlineView *outlineView;
+@property (strong) IBOutlet NSMenu *buildMenu;
 
 @end
 
@@ -47,11 +49,27 @@
     [self.observer startObserving:syncCommand];
 }
 
+#pragma mark - NSMenuDelegate -
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    [self.outlineView deselectAll:nil];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+}
+
+#pragma mark - Actions -
+
 - (IBAction)presentationChanged:(NSSegmentedControl *)sender {
     switch (sender.selectedSegment) {
         case 0: [self.dataSource setPresentationStyle:BRPresentationStyleList]; break;
         case 1: [self.dataSource setPresentationStyle:BRPresentationStyleTree]; break;
     }
+}
+
+- (IBAction)rebuild:(id)sender {
+    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
 }
 
 @end

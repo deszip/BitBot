@@ -38,6 +38,7 @@ static const NSTimeInterval kSpinDuration = 1.0;
 
 - (void)spinImage:(BOOL)spin {
     if (spin) {
+        [self.statusImage.layer setCornerRadius:self.statusImage.bounds.size.width / 2];
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * kSpinDuration ];
         rotationAnimation.duration = kSpinDuration;
@@ -48,6 +49,7 @@ static const NSTimeInterval kSpinDuration = 1.0;
         self.statusImage.layer.anchorPoint = CGPointMake(0.5, 0.5);
         [self.statusImage.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     } else {
+        [self.statusImage.layer setCornerRadius:0];
         [self.statusImage.layer removeAllAnimations];
     }
 }

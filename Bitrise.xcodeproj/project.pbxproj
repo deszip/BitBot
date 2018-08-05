@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C9BCE6024FF6D8FE3A58D60 /* libPods-BitriseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF201CD105B5B136D7596A3 /* libPods-BitriseTests.a */; };
+		0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */; };
 		0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */; };
 		0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CAE020EC7A800033CD03 /* Main.storyboard */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E3C0B002117008200F2EA35 /* BRBuildStateInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildStateInfo.h; sourceTree = "<group>"; };
+		0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildStateInfo.m; sourceTree = "<group>"; };
 		0E42CAD520EC7A7E0033CD03 /* Bitrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
 				0EEF655520F5B2AB0012C45D /* BRCellBuilder.h */,
 				0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */,
+				0E3C0B002117008200F2EA35 /* BRBuildStateInfo.h */,
+				0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
+				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,

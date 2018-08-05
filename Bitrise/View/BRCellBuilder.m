@@ -38,48 +38,22 @@
 
 - (BRBuildCellView *)buildCell:(BRBuild *)build forOutline:(NSOutlineView *)outline {
     BRBuildCellView *cell = [outline makeViewWithIdentifier:@"BRBuildCellView" owner:self];
+    BRBuildStateInfo *buildStateInfo = [[BRBuildStateInfo alloc] initWithBuild:build];
     
-    // Action
-    if (build.status.integerValue == 0 && !build.onHold.boolValue) {
-        [cell.actionButton setTitle:@"Stop"];
+    if (buildStateInfo.state == BRBuildStateInProgress) {
+        [cell spinImage:YES];
         [cell setRunningSince:build.envPrepareFinishedTime];
     } else {
-        [cell.actionButton setTitle:@"Rebuild"];
+        [cell spinImage:NO];
         [cell setFinishedAt:build.finishedTime started:build.triggerTime];
     }
+
+    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
+    [cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
+    [cell.statusLabel setStringValue:buildStateInfo.statusTitle];
     
-    // Status
-    [cell.statusImage.layer setCornerRadius:0];
-    [cell spinImage:NO];
-    
-    switch (build.status.integerValue) {
-        case 0:
-            if (build.onHold.boolValue) {
-                [cell.statusImage setImage:[NSImage imageNamed:@"hold-status"]];
-                [cell.statusLabel setStringValue:@"On hold"];
-            } else {
-                [cell.statusImage.layer setCornerRadius:cell.statusImage.bounds.size.width / 2];
-                [cell spinImage:NO];
-                [cell.statusImage setImage:[NSImage imageNamed:@"progress-status"]];
-                [cell.statusLabel setStringValue:@"In progress..."];
-            }
-            break;
-        
-        case 1:
-            [cell.statusImage setImage:[NSImage imageNamed:@"success-status"]];
-            [cell.statusLabel setStringValue:@"Success"];
-            break;
-        
-        case 2:
-            [cell.statusImage setImage:[NSImage imageNamed:@"failed-status"]];
-            [cell.statusLabel setStringValue:@"Failed"];
-            break;
-        
-        case 3:
-            [cell.statusImage setImage:[NSImage imageNamed:@"abort-status"]];
-            [cell.statusLabel setStringValue:@"Aborted"];
-            break;
-    }
+    [cell.statusImageContainer setWantsLayer:YES];
+    [cell.statusImageContainer.layer setBackgroundColor:[NSColor colorWithPatternImage:cell.statusImage.image].CGColor];
     
     // Parameters
     [cell.appTitleLabel setStringValue:build.app.title];

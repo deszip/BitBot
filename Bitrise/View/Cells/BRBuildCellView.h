@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRBuildCellView : NSTableRowView
 
 @property (weak) IBOutlet NSImageView *statusImage;
+@property (weak) IBOutlet NSImageView *backgroundStatusImage;
+@property (weak) IBOutlet NSView *statusImageContainer;
 @property (weak) IBOutlet NSTextField *statusLabel;
 @property (weak) IBOutlet NSTextField *appTitleLabel;
 @property (weak) IBOutlet NSTextField *branchLabel;
@@ -20,8 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSTextField *triggerTimeLabel;
 @property (weak) IBOutlet NSTextField *buildTimeLabel;
 @property (weak) IBOutlet NSTextField *buildNumberLabel;
-
-@property (weak) IBOutlet NSButton *actionButton;
 
 - (void)spinImage:(BOOL)spin;
 - (void)setRunningSince:(NSDate *)startDate;
