@@ -49,13 +49,18 @@
     }
     
     // Status
+    [cell.statusImage.layer setCornerRadius:0];
+    [cell spinImage:NO];
+    
     switch (build.status.integerValue) {
         case 0:
             if (build.onHold.boolValue) {
                 [cell.statusImage setImage:[NSImage imageNamed:@"hold-status"]];
                 [cell.statusLabel setStringValue:@"On hold"];
             } else {
-                [cell.statusImage setImage:nil];
+                [cell.statusImage.layer setCornerRadius:cell.statusImage.bounds.size.width / 2];
+                [cell spinImage:NO];
+                [cell.statusImage setImage:[NSImage imageNamed:@"progress-status"]];
                 [cell.statusLabel setStringValue:@"In progress..."];
             }
             break;
@@ -77,6 +82,7 @@
     }
     
     // Parameters
+    [cell.appTitleLabel setStringValue:build.app.title];
     [cell.branchLabel setStringValue:build.branch];
     [cell.workflowLabel setStringValue:build.workflow];
     [cell.triggerTimeLabel setStringValue:[NSString stringWithFormat:@"Triggered: %@", [self.timeFormatter stringFromDate:build.triggerTime]]];

@@ -6,7 +6,11 @@
 //  Copyright © 2018 Bitrise. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "BRBuildCellView.h"
+
+static const NSTimeInterval kSpinDuration = 1.0;
 
 @interface BRBuildCellView ()
 
@@ -28,6 +32,24 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+}
+
+#pragma mark - Animations -
+
+- (void)spinImage:(BOOL)spin {
+    if (spin) {
+        CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+        rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * kSpinDuration ];
+        rotationAnimation.duration = kSpinDuration;
+        rotationAnimation.cumulative = YES;
+        rotationAnimation.repeatCount = HUGE_VALF;
+        CGPoint center = CGPointMake(CGRectGetMidX(self.statusImage.frame), CGRectGetMidY(self.statusImage.frame));
+        self.statusImage.layer.position = center;
+        self.statusImage.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.statusImage.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    } else {
+        [self.statusImage.layer removeAllAnimations];
+    }
 }
 
 #pragma mark - Build timer -

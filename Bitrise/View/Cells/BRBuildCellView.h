@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) IBOutlet NSImageView *statusImage;
 @property (weak) IBOutlet NSTextField *statusLabel;
+@property (weak) IBOutlet NSTextField *appTitleLabel;
 @property (weak) IBOutlet NSTextField *branchLabel;
 @property (weak) IBOutlet NSTextField *workflowLabel;
 @property (weak) IBOutlet NSTextField *triggerTimeLabel;
@@ -22,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak) IBOutlet NSButton *actionButton;
 
+- (void)spinImage:(BOOL)spin;
 - (void)setRunningSince:(NSDate *)startDate;
 - (void)setFinishedAt:(NSDate *)finishDate started:(NSDate *)startDate;
 
