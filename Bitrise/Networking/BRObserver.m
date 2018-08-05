@@ -13,7 +13,7 @@ static const NSTimeInterval kObservingTimeout = 10.0;
 @interface BRObserver ()
 
 @property (strong, nonatomic) NSTimer *timer;
-@property (strong, nonatomic) id <BRCommand> command;
+@property (strong, nonatomic) BRCommand *command;
 
 @end
 
@@ -21,7 +21,7 @@ static const NSTimeInterval kObservingTimeout = 10.0;
 
 #pragma mark - Public API -
 
-- (void)startObserving:(id<BRCommand>)command {
+- (void)startObserving:(BRCommand *)command {
     [self stopObserving];
     
     self.command = command;
@@ -35,7 +35,7 @@ static const NSTimeInterval kObservingTimeout = 10.0;
 
 #pragma mark - Observing -
 
-- (void)schedule:(id <BRCommand>)command {
+- (void)schedule:(BRCommand *)command {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kObservingTimeout repeats:YES block:^(NSTimer *timer) {
         [command execute:nil];
     }];

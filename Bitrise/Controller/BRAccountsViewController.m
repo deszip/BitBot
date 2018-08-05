@@ -46,8 +46,9 @@
 
 - (IBAction)removeKey:(NSButton *)sender {
     BRAccount *selectedAccount = [self.outlineView itemAtRow:[self.outlineView rowForView:sender]];
-    BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithStorage:self.storage
-                                                                                token:selectedAccount.token];
+    BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
+                                                                          storage:self.storage
+                                                                            token:selectedAccount.token];
     [command execute:nil];
 }
 

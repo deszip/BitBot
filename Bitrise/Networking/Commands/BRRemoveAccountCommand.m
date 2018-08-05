@@ -11,16 +11,14 @@
 @interface BRRemoveAccountCommand ()
 
 @property (copy, nonatomic) NSString *token;
-@property (strong, nonatomic) BRStorage *storage;
 
 @end
 
 @implementation BRRemoveAccountCommand
 
-- (instancetype)initWithStorage:(BRStorage *)storage token:(NSString *)token {
-    if (self = [super init]) {
+- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token {
+    if (self = [super initWithAPI:api storage:storage]) {
         _token = token;
-        _storage = storage;
     }
     
     return self;

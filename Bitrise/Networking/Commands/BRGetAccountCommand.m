@@ -13,18 +13,14 @@
 @interface BRGetAccountCommand ()
 
 @property (copy, nonatomic) NSString *token;
-@property (strong, nonatomic) BRBitriseAPI *api;
-@property (strong, nonatomic) BRStorage *storage;
 
 @end
 
 @implementation BRGetAccountCommand
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token {
-    if (self = [super init]) {
+    if (self = [super initWithAPI:api storage:storage]) {
         _token = token;
-        _api = api;
-        _storage = storage;
     }
     
     return self;

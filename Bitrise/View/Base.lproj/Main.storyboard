@@ -678,7 +678,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="107" y="-284"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -687,7 +687,7 @@
                     <window key="window" title="Bitrise" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="542" height="269"/>
+                        <rect key="contentRect" x="196" y="240" width="542" height="149"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -699,18 +699,18 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="249.5"/>
+            <point key="canvasLocation" x="96" y="-118.5"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController storyboardIdentifier="BRMainController" id="XfG-lQ-9wD" customClass="BRMainController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="542" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="542" height="645"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="82J-cI-jpS">
-                                <rect key="frame" x="0.0" y="230" width="542" height="40"/>
+                                <rect key="frame" x="0.0" y="605" width="542" height="40"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="nqv-oN-Zd6">
                                         <rect key="frame" x="512" y="10" width="20" height="20"/>
@@ -749,16 +749,17 @@
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="77" horizontalPageScroll="10" verticalLineScroll="77" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-eN-807">
-                                <rect key="frame" x="0.0" y="0.0" width="542" height="230"/>
+                                <rect key="frame" x="0.0" y="0.0" width="542" height="605"/>
                                 <clipView key="contentView" id="LYZ-ht-aUh">
-                                    <rect key="frame" x="1" y="1" width="540" height="228"/>
+                                    <rect key="frame" x="1" y="1" width="540" height="603"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="75" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="VDd-0D-hGO" id="1IG-VH-UrI">
-                                            <rect key="frame" x="0.0" y="0.0" width="540" height="228"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="603"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <tableViewGridLines key="gridStyleMask" dashed="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="537" minWidth="40" maxWidth="1000" id="VDd-0D-hGO">
@@ -829,10 +830,10 @@
                                                                             <rect key="frame" x="75" y="0.0" width="442" height="65"/>
                                                                             <subviews>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKN-Iw-dGd">
-                                                                                    <rect key="frame" x="0.0" y="40" width="158" height="25"/>
+                                                                                    <rect key="frame" x="0.0" y="40" width="442" height="25"/>
                                                                                     <subviews>
-                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EoE-xY-Zky">
-                                                                                            <rect key="frame" x="-2" y="2" width="73" height="22"/>
+                                                                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EoE-xY-Zky">
+                                                                                            <rect key="frame" x="-2" y="2" width="357" height="22"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Success" id="SNP-jm-lKM">
                                                                                                 <font key="font" metaFont="system" size="18"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -840,7 +841,7 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7bi-uN-zX1">
-                                                                                            <rect key="frame" x="87" y="2" width="73" height="22"/>
+                                                                                            <rect key="frame" x="371" y="2" width="73" height="22"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Success" id="G41-we-Lf5">
                                                                                                 <font key="font" metaFont="system" size="18"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -929,6 +930,10 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                             </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="GKN-Iw-dGd" firstAttribute="leading" secondItem="SnW-8A-XWT" secondAttribute="leading" id="Yop-8h-PvG"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="GKN-Iw-dGd" secondAttribute="trailing" id="uw2-cs-pGa"/>
+                                                                            </constraints>
                                                                             <visibilityPriorities>
                                                                                 <integer value="1000"/>
                                                                                 <integer value="1000"/>
@@ -1011,25 +1016,37 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="Q6c-WQ-hru">
                     <items>
-                        <menuItem title="Rebuild" id="DyA-c3-ZY8">
+                        <menuItem title="Rebuild" tag="1" id="DyA-c3-ZY8">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="rebuild:" target="XfG-lQ-9wD" id="xtU-wo-a5w"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="Abort" id="SQP-qm-MTq">
+                        <menuItem title="Abort" tag="2" id="SQP-qm-MTq">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="abort:" target="XfG-lQ-9wD" id="QN6-cS-6Bp"/>
+                            </connections>
                         </menuItem>
-                        <menuItem title="Download log" id="6xd-3U-dEj">
+                        <menuItem title="Download log" tag="3" id="6xd-3U-dEj">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="downloadLog:" target="XfG-lQ-9wD" id="GWx-HR-WPp"/>
+                            </connections>
                         </menuItem>
-                        <menuItem title="Open build" id="RNi-pd-njy">
+                        <menuItem title="Open build" tag="4" id="RNi-pd-njy">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="openBuild:" target="XfG-lQ-9wD" id="KQx-as-m63"/>
+                            </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="delegate" destination="XfG-lQ-9wD" id="zdE-z6-UCV"/>
+                    </connections>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="106" y="727"/>
+            <point key="canvasLocation" x="80" y="505"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="uh9-Ob-V4L">
@@ -1050,7 +1067,7 @@
                 </windowController>
                 <customObject id="slB-aa-5XY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="759" y="727"/>
+            <point key="canvasLocation" x="720" y="356"/>
         </scene>
         <!--Accounts View Controller-->
         <scene sceneID="Pbj-wG-L7R">
@@ -1220,7 +1237,7 @@
                 </viewController>
                 <customObject id="8gU-cS-HHk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1350" y="727"/>
+            <point key="canvasLocation" x="1350" y="348"/>
         </scene>
     </scenes>
     <resources>

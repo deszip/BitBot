@@ -8,23 +8,7 @@
 
 #import "BRSyncCommand.h"
 
-@interface BRSyncCommand ()
-
-@property (strong, nonatomic) BRBitriseAPI *api;
-@property (strong, nonatomic) BRStorage *storage;
-
-@end
-
 @implementation BRSyncCommand
-
-- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage {
-    if (self = [super init]) {
-        _api = api;
-        _storage = storage;
-    }
-    
-    return self;
-}
 
 - (void)execute:(BRCommandResult)callback {
     [self.storage getAccounts:^(NSArray<BRAccountInfo *> *accounts, NSError *error) {

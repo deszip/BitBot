@@ -13,6 +13,15 @@
 #import "BRAccountsViewController.h"
 
 #import "BRSyncCommand.h"
+#import "BRBuildStateInfo.h"
+
+typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
+    BRBuildMenuItemUndefined = 0,
+    BRBuildMenuItemRebuild,
+    BRBuildMenuItemAbort,
+    BRBuildMenuItemDownload,
+    BRBuildMenuItemOpenBuild
+};
 
 @interface BRMainController () <NSMenuDelegate>
 
@@ -52,11 +61,27 @@
 #pragma mark - NSMenuDelegate -
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    [self.outlineView deselectAll:nil];
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if (![selectedItem isKindOfClass:[BRBuild class]]) {
+        [menu cancelTrackingWithoutAnimation];
+    }
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRBuild class]]) {
+        BRBuildStateInfo *stateInfo = [[BRBuildStateInfo alloc] initWithBuild:selectedItem];
+        BOOL buildInProgress = stateInfo.state == BRBuildStateInProgress;
+        switch (menuItem.tag) {
+            case BRBuildMenuItemRebuild: return !buildInProgress;
+            case BRBuildMenuItemAbort: return buildInProgress;
+            case BRBuildMenuItemDownload: return !buildInProgress;
+            case BRBuildMenuItemOpenBuild: return buildInProgress;
+            default: return NO;
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - Actions -
@@ -70,6 +95,22 @@
 
 - (IBAction)rebuild:(id)sender {
     //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+}
+
+- (IBAction)abort:(id)sender {
+    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+}
+
+- (IBAction)downloadLog:(id)sender {
+    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+}
+
+- (IBAction)openBuild:(id)sender {
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRBuild class]]) {
+        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/api/build/%@/logs.json?&download=log", [(BRBuild *)selectedItem slug]];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
+    }
 }
 
 @end

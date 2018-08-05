@@ -9,15 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #import "BRCommand.h"
-#import "BRBitriseAPI.h"
-#import "BRStorage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRGetAccountCommand : NSObject <BRCommand>
+@interface BRGetAccountCommand : BRCommand
 
-- (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token;
 
 @end
 

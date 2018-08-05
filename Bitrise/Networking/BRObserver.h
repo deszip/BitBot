@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRObserver : NSObject
 
-- (void)startObserving:(id <BRCommand>)command;
+- (void)startObserving:(BRCommand *)command;
 - (void)stopObserving;
 
 @end
