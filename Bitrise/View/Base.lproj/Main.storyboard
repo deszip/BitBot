@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14306.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -739,6 +739,20 @@
                                             <action selector="presentationChanged:" target="XfG-lQ-9wD" id="iYA-sq-KGD"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKp-gY-TKo">
+                                        <rect key="frame" x="484" y="10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Cfo-U7-FuB"/>
+                                            <constraint firstAttribute="height" constant="20" id="E0R-SE-4e9"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSAddTemplate" imagePosition="only" alignment="center" alternateImage="NSUser" state="on" imageScaling="proportionallyDown" inset="2" id="TCc-MT-eU8">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addApp:" target="XfG-lQ-9wD" id="etI-VH-kua"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CYQ-gE-0vI" firstAttribute="top" secondItem="nqv-oN-Zd6" secondAttribute="top" id="2MV-y9-sZg"/>
@@ -780,7 +794,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OWC-fo-K1I">
-                                                                    <rect key="frame" x="28" y="16" width="29" height="18"/>
+                                                                    <rect key="frame" x="28" y="17" width="29" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="App" id="z3Y-Sq-vtO">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -830,10 +844,10 @@
                                                                             <rect key="frame" x="75" y="0.0" width="442" height="65"/>
                                                                             <subviews>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKN-Iw-dGd">
-                                                                                    <rect key="frame" x="0.0" y="40" width="442" height="25"/>
+                                                                                    <rect key="frame" x="0.0" y="38" width="442" height="27"/>
                                                                                     <subviews>
                                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EoE-xY-Zky">
-                                                                                            <rect key="frame" x="-2" y="2" width="357" height="22"/>
+                                                                                            <rect key="frame" x="-2" y="3" width="357" height="22"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Success" id="SNP-jm-lKM">
                                                                                                 <font key="font" metaFont="system" size="18"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -841,7 +855,7 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7bi-uN-zX1">
-                                                                                            <rect key="frame" x="371" y="2" width="73" height="22"/>
+                                                                                            <rect key="frame" x="371" y="3" width="73" height="22"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Success" id="G41-we-Lf5">
                                                                                                 <font key="font" metaFont="system" size="18"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -859,10 +873,10 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTV-W1-BQ4">
-                                                                                    <rect key="frame" x="0.0" y="20" width="308" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="19" width="308" height="17"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nrg-IU-rup">
-                                                                                            <rect key="frame" x="-2" y="0.0" width="213" height="18"/>
+                                                                                            <rect key="frame" x="-2" y="0.0" width="213" height="17"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="feature/AP-1275-tvos-sample-app" id="P60-fK-2ha">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -870,7 +884,7 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L7U-Oy-9Mu">
-                                                                                            <rect key="frame" x="227" y="0.0" width="83" height="18"/>
+                                                                                            <rect key="frame" x="227" y="0.0" width="83" height="17"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="development" id="FLf-49-KaL">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -891,10 +905,10 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2JW-X2-ln1">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="18"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="211" height="17"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-Ch-mya">
-                                                                                            <rect key="frame" x="-2" y="0.0" width="104" height="18"/>
+                                                                                            <rect key="frame" x="-2" y="0.0" width="104" height="17"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Triggered: 18:42" id="ods-Z9-1Uf">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -902,7 +916,7 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xy8-er-prl">
-                                                                                            <rect key="frame" x="109" y="1" width="54" height="17"/>
+                                                                                            <rect key="frame" x="109" y="0.0" width="54" height="17"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" id="nGS-2R-NJb">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -910,7 +924,7 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y2p-XX-Ma8">
-                                                                                            <rect key="frame" x="170" y="0.0" width="43" height="18"/>
+                                                                                            <rect key="frame" x="170" y="0.0" width="43" height="17"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="#1402" id="Lk4-2U-dLA">
                                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1084,7 +1098,7 @@
                                         <rect key="frame" x="10" y="0.0" width="450" height="40"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a1b-Yg-Rsy">
-                                                <rect key="frame" x="-2" y="11" width="57" height="18"/>
+                                                <rect key="frame" x="-2" y="12" width="57" height="17"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Add key:" id="feQ-7D-7uV">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1164,7 +1178,7 @@
                                                                     <rect key="frame" x="30" y="15" width="405" height="21"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="13l-bF-KnQ">
-                                                                            <rect key="frame" x="-2" y="1" width="252" height="18"/>
+                                                                            <rect key="frame" x="-2" y="2" width="252" height="17"/>
                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Account 1" id="TRk-Vw-pbT">
                                                                                 <font key="font" usesAppearanceFont="YES"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1241,6 +1255,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="NSPathTemplate" width="16" height="10"/>
         <image name="NSUser" width="128" height="128"/>

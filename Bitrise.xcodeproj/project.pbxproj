@@ -40,6 +40,10 @@
 		0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
 		0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70820F0D110001A6C15 /* BRBuildInfo.m */; };
 		0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85221B4363D005D5140 /* NSDictionary+FRP.m */; };
+		0EE1B85D21B4363D005D5140 /* NSHashTable+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85421B4363D005D5140 /* NSHashTable+FRP.m */; };
+		0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85521B4363D005D5140 /* NSSet+FRP.m */; };
+		0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */; };
 		0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */; };
 		0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
@@ -123,6 +127,14 @@
 		0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRAccount+Mapping.m"; sourceTree = "<group>"; };
 		0E9F413320FEF8BF0083D646 /* BRCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommand.h; sourceTree = "<group>"; };
 		0E9F413720FEFA6A0083D646 /* BRMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMacro.h; sourceTree = "<group>"; };
+		0EE1B85221B4363D005D5140 /* NSDictionary+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FRP.m"; sourceTree = "<group>"; };
+		0EE1B85421B4363D005D5140 /* NSHashTable+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHashTable+FRP.m"; sourceTree = "<group>"; };
+		0EE1B85521B4363D005D5140 /* NSSet+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+FRP.m"; sourceTree = "<group>"; };
+		0EE1B85621B4363D005D5140 /* NSArray+FRP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FRP.h"; sourceTree = "<group>"; };
+		0EE1B85721B4363D005D5140 /* NSDictionary+FRP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FRP.h"; sourceTree = "<group>"; };
+		0EE1B85821B4363D005D5140 /* NSHashTable+FRP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHashTable+FRP.h"; sourceTree = "<group>"; };
+		0EE1B85A21B4363D005D5140 /* NSSet+FRP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+FRP.h"; sourceTree = "<group>"; };
+		0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FRP.m"; sourceTree = "<group>"; };
 		0EEF655520F5B2AB0012C45D /* BRCellBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCellBuilder.h; sourceTree = "<group>"; };
 		0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCellBuilder.m; sourceTree = "<group>"; };
 		0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRBuild+Mapping.h"; sourceTree = "<group>"; };
@@ -363,9 +375,25 @@
 		0E9F413620FEFA510083D646 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0EE1B85121B4363D005D5140 /* Collection Extensions */,
 				0E9F413720FEFA6A0083D646 /* BRMacro.h */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		0EE1B85121B4363D005D5140 /* Collection Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0EE1B85721B4363D005D5140 /* NSDictionary+FRP.h */,
+				0EE1B85221B4363D005D5140 /* NSDictionary+FRP.m */,
+				0EE1B85821B4363D005D5140 /* NSHashTable+FRP.h */,
+				0EE1B85421B4363D005D5140 /* NSHashTable+FRP.m */,
+				0EE1B85A21B4363D005D5140 /* NSSet+FRP.h */,
+				0EE1B85521B4363D005D5140 /* NSSet+FRP.m */,
+				0EE1B85621B4363D005D5140 /* NSArray+FRP.h */,
+				0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */,
+			);
+			path = "Collection Extensions";
 			sourceTree = "<group>";
 		};
 		A5A4F7A77EC39C1E5A21C34D /* Pods */ = {
@@ -535,6 +563,7 @@
 			files = (
 				0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */,
 				0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */,
+				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
 				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
 				0E3C0B11211760C000F2EA35 /* BROpenBuildCommand.m in Sources */,
@@ -542,8 +571,10 @@
 				0E73598120EF8D92007E15A7 /* BRDependencyContainer.m in Sources */,
 				0E8E9B5820F0820D00494DEB /* BRGetAccountCommand.m in Sources */,
 				0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */,
+				0EE1B85D21B4363D005D5140 /* NSHashTable+FRP.m in Sources */,
 				0E3C0B0B2117609900F2EA35 /* BRAbortCommand.m in Sources */,
 				0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */,
+				0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */,
 				0E3C0B0521175F0A00F2EA35 /* BRBuildActionHandler.m in Sources */,
 				0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,
@@ -556,6 +587,7 @@
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
+				0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */,
 				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
 				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,

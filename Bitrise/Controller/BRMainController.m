@@ -76,7 +76,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildInProgress;
             case BRBuildMenuItemDownload: return !buildInProgress;
-            case BRBuildMenuItemOpenBuild: return buildInProgress;
+            case BRBuildMenuItemOpenBuild: return YES;
             default: return NO;
         }
     }
@@ -85,6 +85,13 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 #pragma mark - Actions -
+
+- (IBAction)addApp:(NSButton *)sender {
+    BRApp *app = [self.outlineView itemAtRow:0];
+    BRAppInfo *appInfo = [[BRAppInfo alloc] initWithResponse:@{ @"slug" : @"12345", @"title" : @"test app" }];
+    BRAccountInfo *accInfo = [[BRAccountInfo alloc] initWithAccount:app.account];
+    [self.storage saveApps:@[appInfo] forAccount:accInfo];
+}
 
 - (IBAction)presentationChanged:(NSSegmentedControl *)sender {
     switch (sender.selectedSegment) {
@@ -102,13 +109,17 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (IBAction)downloadLog:(id)sender {
-    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRBuild class]]) {
+        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/api/build/%@/logs.json?&download=log", [(BRBuild *)selectedItem slug]];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
+    }
 }
 
 - (IBAction)openBuild:(id)sender {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/api/build/%@/logs.json?&download=log", [(BRBuild *)selectedItem slug]];
+        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/build/%@", [(BRBuild *)selectedItem slug]];
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
     }
 }

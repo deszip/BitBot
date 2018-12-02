@@ -163,7 +163,44 @@
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.outlineView reloadData];
+    //[self.outlineView reloadData];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    //NSLog(@"Type: %lu, object: %@", (unsigned long)type, anObject);
+    
+    switch (type) {
+        case NSFetchedResultsChangeDelete:
+            if ([anObject isKindOfClass:[BRBuild class]] && self.presentationStyle == BRPresentationStyleTree) {
+                [self.outlineView removeItemsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.item] inParent:[(BRBuild *)anObject app] withAnimation:NSTableViewAnimationSlideRight];
+            } else {
+                NSUInteger index = [self.outlineView childIndexForItem:anObject];
+                [self.outlineView removeItemsAtIndexes:[NSIndexSet indexSetWithIndex:index] inParent:nil withAnimation:NSTableViewAnimationSlideRight];
+            }
+        break;
+
+        case NSFetchedResultsChangeInsert:
+            if ([anObject isKindOfClass:[BRBuild class]] && self.presentationStyle == BRPresentationStyleTree) {
+                [self.outlineView insertItemsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.item] inParent:[(BRBuild *)anObject app] withAnimation:NSTableViewAnimationEffectGap];
+            } else {
+                [self.outlineView insertItemsAtIndexes:[NSIndexSet indexSetWithIndex:indexPath.item] inParent:nil withAnimation:NSTableViewAnimationEffectGap];
+            }
+            break;
+
+            case NSFetchedResultsChangeUpdate:
+            [self.outlineView reloadItem:anObject];
+        break;
+
+        case NSFetchedResultsChangeMove:
+            if ([anObject isKindOfClass:[BRBuild class]] && self.presentationStyle == BRPresentationStyleTree) {
+                BRApp *parentApp = [(BRBuild *)anObject app];
+                [self.outlineView moveItemAtIndex:indexPath.item inParent:parentApp toIndex:newIndexPath.item inParent:parentApp];
+            } else {
+                [self.outlineView moveItemAtIndex:indexPath.item inParent:nil toIndex:newIndexPath.item inParent:nil];
+            }
+        break;
+    }
 }
 
 @end
