@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRApp+CoreDataClass.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRAppInfo : NSObject
@@ -16,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic, readonly) NSString *slug;
 
 - (instancetype)initWithResponse:(NSDictionary *)response;
-
+- (instancetype)initWithApp:(BRApp *)app;
 
 @end
 

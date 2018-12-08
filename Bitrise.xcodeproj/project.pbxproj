@@ -40,6 +40,11 @@
 		0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
 		0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70820F0D110001A6C15 /* BRBuildInfo.m */; };
 		0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */; };
+		0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */; };
+		0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */; };
+		0EDE7D0821B9346200A39CC4 /* BRSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */; };
+		0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */; };
 		0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85221B4363D005D5140 /* NSDictionary+FRP.m */; };
 		0EE1B85D21B4363D005D5140 /* NSHashTable+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85421B4363D005D5140 /* NSHashTable+FRP.m */; };
 		0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85521B4363D005D5140 /* NSSet+FRP.m */; };
@@ -127,6 +132,14 @@
 		0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRAccount+Mapping.m"; sourceTree = "<group>"; };
 		0E9F413320FEF8BF0083D646 /* BRCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommand.h; sourceTree = "<group>"; };
 		0E9F413720FEFA6A0083D646 /* BRMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMacro.h; sourceTree = "<group>"; };
+		0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASQueue.m; sourceTree = "<group>"; };
+		0EDC5DE021BBBB0A00AD41FE /* ASOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASOperation.h; sourceTree = "<group>"; };
+		0EDC5DE121BBBB0A00AD41FE /* ASQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASQueue.h; sourceTree = "<group>"; };
+		0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASOperation.m; sourceTree = "<group>"; };
+		0EDC5DE521BBFB0A00AD41FE /* BRSyncOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncOperation.h; sourceTree = "<group>"; };
+		0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncOperation.m; sourceTree = "<group>"; };
+		0EDE7D0621B9346200A39CC4 /* BRSyncEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncEngine.h; sourceTree = "<group>"; };
+		0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncEngine.m; sourceTree = "<group>"; };
 		0EE1B85221B4363D005D5140 /* NSDictionary+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FRP.m"; sourceTree = "<group>"; };
 		0EE1B85421B4363D005D5140 /* NSHashTable+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHashTable+FRP.m"; sourceTree = "<group>"; };
 		0EE1B85521B4363D005D5140 /* NSSet+FRP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+FRP.m"; sourceTree = "<group>"; };
@@ -203,6 +216,7 @@
 				0E73597E20EF8D73007E15A7 /* Container */,
 				0E42CAFB20EC7AF60033CD03 /* Controller */,
 				0E42CAFA20EC7AEF0033CD03 /* View */,
+				0EDE7D0521B9344200A39CC4 /* Sync */,
 				0E8E9B5020F07FF400494DEB /* Networking */,
 				0E8E9B5120F0817600494DEB /* Storage */,
 				0E42CAFC20EC7B070033CD03 /* Resources */,
@@ -340,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				0E9F413320FEF8BF0083D646 /* BRCommand.h */,
+				0E3C0B122117627700F2EA35 /* BRCommand.m */,
 				0E8E9B5620F0820D00494DEB /* BRGetAccountCommand.h */,
 				0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */,
 				0E93B70020F08EF2001A6C15 /* BRRemoveAccountCommand.h */,
@@ -354,7 +369,6 @@
 				0E3C0B0D211760AC00F2EA35 /* BRDownloadLogsCommand.m */,
 				0E3C0B0F211760C000F2EA35 /* BROpenBuildCommand.h */,
 				0E3C0B10211760C000F2EA35 /* BROpenBuildCommand.m */,
-				0E3C0B122117627700F2EA35 /* BRCommand.m */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -375,10 +389,33 @@
 		0E9F413620FEFA510083D646 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				0EDC5DDE21BBBB0A00AD41FE /* Queue */,
 				0EE1B85121B4363D005D5140 /* Collection Extensions */,
 				0E9F413720FEFA6A0083D646 /* BRMacro.h */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		0EDC5DDE21BBBB0A00AD41FE /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */,
+				0EDC5DE021BBBB0A00AD41FE /* ASOperation.h */,
+				0EDC5DE121BBBB0A00AD41FE /* ASQueue.h */,
+				0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		0EDE7D0521B9344200A39CC4 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				0EDE7D0621B9346200A39CC4 /* BRSyncEngine.h */,
+				0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */,
+				0EDC5DE521BBFB0A00AD41FE /* BRSyncOperation.h */,
+				0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */,
+			);
+			path = Sync;
 			sourceTree = "<group>";
 		};
 		0EE1B85121B4363D005D5140 /* Collection Extensions */ = {
@@ -579,8 +616,10 @@
 				0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
+				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
+				0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
@@ -591,8 +630,10 @@
 				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
 				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,
+				0EDE7D0821B9346200A39CC4 /* BRSyncEngine.m in Sources */,
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
 				0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */,
+				0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */,
 				0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */,
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
 				0E3C0B132117627700F2EA35 /* BRCommand.m in Sources */,
@@ -605,6 +646,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */,
 				0E42CAF020EC7A800033CD03 /* BitriseTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,7 +789,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				DEVELOPMENT_TEAM = AM5334753U;
 				INFOPLIST_FILE = Bitrise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -765,7 +807,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				DEVELOPMENT_TEAM = AM5334753U;
 				INFOPLIST_FILE = Bitrise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

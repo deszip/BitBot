@@ -739,7 +739,7 @@
                                             <action selector="presentationChanged:" target="XfG-lQ-9wD" id="iYA-sq-KGD"/>
                                         </connections>
                                     </segmentedControl>
-                                    <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKp-gY-TKo">
+                                    <button hidden="YES" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKp-gY-TKo">
                                         <rect key="frame" x="484" y="10" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Cfo-U7-FuB"/>

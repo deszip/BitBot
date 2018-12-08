@@ -22,6 +22,12 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
 - (instancetype)initWithContainer:(NSPersistentContainer *)container;
 
+#pragma mark - Synchronous API -
+- (void)perform:(void (^)(void))action;
+- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error;
+- (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
+- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
+
 - (void)saveAccount:(BRAccountInfo *)accountInfo;
 - (void)removeAccount:(NSString *)token completion:(BRStorageResult)completion;
 - (void)getAccounts:(BRAccountsListResult)completion;

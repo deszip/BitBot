@@ -43,8 +43,8 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
-- (void)getApps:(BRAccountInfo *)account completion:(APIAppsListCallback)completion {
-    [self runRequest:[self appsRequest:account.token] completion:^(NSDictionary *result, NSError *error) {
+- (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion {
+    [self runRequest:[self appsRequest:token] completion:^(NSDictionary *result, NSError *error) {
         if (result) {
             __block NSMutableArray <BRAppInfo *> *apps = [NSMutableArray array];
             [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *appData, NSUInteger idx, BOOL *stop) {
@@ -58,8 +58,14 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
+#pragma mark - Builds -
+
 - (void)getBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account completion:(APIBuildsListCallback)completion {
-    [self runRequest:[self buildsRequest:app.slug token:account.token] completion:^(NSDictionary *result, NSError *error) {
+    [self updateBuilds:app account:account after:0 completion:completion];
+}
+
+- (void)updateBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion {
+    [self runRequest:[self buildsRequest:app.slug token:account.token after:after] completion:^(NSDictionary *result, NSError *error) {
         if (result) {
             __block NSMutableArray <BRBuildInfo *> *builds = [NSMutableArray array];
             [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *buildData, NSUInteger idx, BOOL *stop) {
@@ -83,9 +89,18 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     return [self requestWithEndpoint:[NSURL URLWithString:kAppsEndpoint] token:token];
 }
 
-- (NSURLRequest *)buildsRequest:(NSString *)slug token:(NSString *)token {
+- (NSURLRequest *)buildsRequest:(NSString *)slug token:(NSString *)token after:(NSTimeInterval)after {
     NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kBuildsEndpoint, slug]];
-    return [self requestWithEndpoint:endpoint token:token];
+    
+    if (after > 0) {
+        NSURLComponents *components = [NSURLComponents componentsWithURL:endpoint resolvingAgainstBaseURL:NO];
+        [components setQueryItems:@[[NSURLQueryItem queryItemWithName:@"after" value:[@(after) stringValue]]]];
+        endpoint = [components URL];
+    }
+    
+    NSURLRequest *request = [self requestWithEndpoint:endpoint token:token];
+    
+    return request;
 }
 
 - (NSURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {

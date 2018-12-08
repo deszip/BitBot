@@ -21,8 +21,10 @@ typedef void (^APIBuildsListCallback)(NSArray <BRBuildInfo *> * _Nullable, NSErr
 @interface BRBitriseAPI : NSObject
 
 - (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion;
-- (void)getApps:(BRAccountInfo *)account completion:(APIAppsListCallback)completion;
+- (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion;
+
 - (void)getBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account completion:(APIBuildsListCallback)completion;
+- (void)updateBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
 
 @end
 

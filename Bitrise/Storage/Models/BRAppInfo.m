@@ -19,4 +19,13 @@
     return self;
 }
 
+- (instancetype)initWithApp:(BRApp *)app {
+    if (self = [super init]) {
+        _rawResponse = nil;
+        _slug = app.slug;
+    }
+    
+    return self;
+}
+
 @end

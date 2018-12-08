@@ -34,6 +34,14 @@
     return self;
 }
 
+#pragma mark - Synchronous API -
+
+- (void)perform:(void (^)(void))action {
+    [self.context performBlock:^{
+        action();
+    }];
+}
+
 - (void)saveAccount:(BRAccountInfo *)accountInfo {
     [self.context performBlock:^{
         [self.context setAutomaticallyMergesChangesFromParent:YES];
@@ -63,51 +71,69 @@
     }];
 }
 
-- (void)getAccounts:(BRAccountsListResult)completion {
-    [self.context performBlock:^{
-        NSFetchRequest *request = [BRAccount fetchRequest];
-        NSError *requestError = nil;
-        NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
-        if (accounts) {
-            __block NSMutableArray *accountInfos = [NSMutableArray array];
-            [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
-                [accountInfos addObject:[[BRAccountInfo alloc] initWithAccount:nextAccount]];
-            }];
-            
-            completion(accountInfos, nil);
-        } else {
-            completion(nil, requestError);
-        }
-    }];
+//- (void)getAccounts:(BRAccountsListResult)completion {
+//    [self perform:^{
+//        NSError *fetchError;
+//        NSArray *accounts = [self accounts:&fetchError];
+//        if (accounts) {
+//            completion(accounts, nil);
+//        } else {
+//            completion(nil, fetchError);
+//        }
+//    }];
+//}
+
+- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRAccount fetchRequest];
+    NSArray *accounts = [self.context executeFetchRequest:request error:error];
+    
+    return accounts;
 }
 
-- (void)saveApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccountInfo *)account {
-    [self.context performBlock:^{
-        NSFetchRequest *request = [BRAccount fetchRequest];
-        request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", account.slug];
-        NSError *requestError = nil;
-        NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
-        if (accounts.count == 1) {
-            // Fetch outdated account apps
-            NSFetchRequest *request = [BRApp fetchRequest];
-            NSArray *appSlugs = [appsInfo valueForKeyPath:@"slug"];
-            request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@ AND NOT (slug IN %@)", account.slug, appSlugs];
-            NSError *requestError = nil;
-            NSArray *outdatedApps = [self.context executeFetchRequest:request error:&requestError];
-            [outdatedApps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
-                [self.context deleteObject:app];
-            }];
-            
-            [appsInfo enumerateObjectsUsingBlock:^(BRAppInfo *appInfo, NSUInteger idx, BOOL *stop) {
-                BRApp *app = [EKManagedObjectMapper objectFromExternalRepresentation:appInfo.rawResponse withMapping:[BRApp objectMapping] inManagedObjectContext:self.context];
-                app.account = accounts[0];
-                [self saveContext:self.context completion:nil];
-            }];
-        } else {
-            NSLog(@"Failed to save apps: %@", requestError);
-        }
-    }];
+- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRApp fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@", account.slug];
+    NSArray <BRApp *> *apps = [self.context executeFetchRequest:request error:error];
+    
+    return apps;
 }
+
+//- (void)saveApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccountInfo *)account {
+//    [self perform:^{
+//        NSError *error;
+//        [self updateApps:appsInfo forAccount:account error:&error];
+//    }];
+//}
+
+- (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRAccount fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", account.slug];
+    NSError *requestError = nil;
+    NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
+    if (accounts.count == 1) {
+        // Fetch outdated account apps
+        NSFetchRequest *request = [BRApp fetchRequest];
+        NSArray *appSlugs = [appsInfo valueForKeyPath:@"slug"];
+        request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@ AND NOT (slug IN %@)", account.slug, appSlugs];
+        NSError *requestError = nil;
+        NSArray *outdatedApps = [self.context executeFetchRequest:request error:&requestError];
+        [outdatedApps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
+            [self.context deleteObject:app];
+        }];
+        
+        [appsInfo enumerateObjectsUsingBlock:^(BRAppInfo *appInfo, NSUInteger idx, BOOL *stop) {
+            BRApp *app = [EKManagedObjectMapper objectFromExternalRepresentation:appInfo.rawResponse withMapping:[BRApp objectMapping] inManagedObjectContext:self.context];
+            app.account = accounts[0];
+            [self saveContext:self.context completion:nil];
+        }];
+        
+        return YES;
+    } else {
+        NSLog(@"Failed to save apps: %@", requestError);
+        return NO;
+    }
+}
+
 
 - (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(BRAppInfo *)app completion:(BRStorageResult)completion {
     [self.context performBlock:^{
