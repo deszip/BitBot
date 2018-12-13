@@ -9,6 +9,7 @@
 #import "BRSyncEngine.h"
 
 #import "ASQueue.h"
+#import "BRSyncOperation.h"
 
 @interface BRSyncEngine ()
 
@@ -33,7 +34,8 @@
 }
 
 - (void)sync {
-    
+    BRSyncOperation *syncOperation = [[BRSyncOperation alloc] initWithStorage:self.storage api:self.API];
+    [self.queue addOperation:syncOperation];
 }
 
 @end

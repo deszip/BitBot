@@ -134,11 +134,25 @@
     }
 }
 
+- (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRBuild fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@", app.slug];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
+    request.fetchLimit = 1;
+    
+    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
+    
+    if (builds.count == 1) {
+        return [builds firstObject];
+    }
+    
+    return nil;
+}
 
-- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(BRAppInfo *)app completion:(BRStorageResult)completion {
+- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug completion:(BRStorageResult)completion {
     [self.context performBlock:^{
         NSFetchRequest *request = [BRApp fetchRequest];
-        request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", app.slug];
+        request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", appSlug];
         NSError *requestError = nil;
         NSArray *apps = [self.context executeFetchRequest:request error:&requestError];
         if (apps.count == 1) {

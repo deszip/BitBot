@@ -27,6 +27,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
+@property (strong, nonatomic) BRSyncEngine *syncEngine;
+
 @property (strong, nonatomic) BRObserver *observer;
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 
@@ -40,8 +42,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.api = [self.dependencyContainer bitriseAPI];
-    self.storage = [self.dependencyContainer storage];
+    self.syncEngine = [self.dependencyContainer syncEngine];
+    
     self.observer = [self.dependencyContainer commandObserver];
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];
@@ -52,7 +54,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     [self.dataSource fetch];
     
-    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initWithAPI:self.api storage:self.storage];
+    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine];
     [syncCommand execute:nil];
     
     [self.observer startObserving:syncCommand];

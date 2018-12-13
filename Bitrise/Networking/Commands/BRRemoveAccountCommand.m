@@ -10,6 +10,8 @@
 
 @interface BRRemoveAccountCommand ()
 
+@property (strong, nonatomic, readonly) BRBitriseAPI *api;
+@property (strong, nonatomic, readonly) BRStorage *storage;
 @property (copy, nonatomic) NSString *token;
 
 @end
@@ -17,7 +19,9 @@
 @implementation BRRemoveAccountCommand
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token {
-    if (self = [super initWithAPI:api storage:storage]) {
+    if (self = [super init]) {
+        _api = api;
+        _storage = storage;
         _token = token;
     }
     

@@ -27,13 +27,14 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 - (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error;
 - (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
 - (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
+- (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error;
 
 - (void)saveAccount:(BRAccountInfo *)accountInfo;
 - (void)removeAccount:(NSString *)token completion:(BRStorageResult)completion;
 - (void)getAccounts:(BRAccountsListResult)completion;
 
 - (void)saveApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccountInfo *)account;
-- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(BRAppInfo *)app completion:(BRStorageResult _Nullable)completion;
+- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug completion:(BRStorageResult)completion;
 
 @end
 

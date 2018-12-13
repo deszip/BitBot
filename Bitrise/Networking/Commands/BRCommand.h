@@ -17,10 +17,6 @@ typedef void(^BRCommandResult)(BOOL result, NSError * _Nullable error);
 
 @interface BRCommand : NSObject
 
-@property (strong, nonatomic, readonly) BRBitriseAPI *api;
-@property (strong, nonatomic, readonly) BRStorage *storage;
-
-- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage;
 - (void)execute:(_Nullable BRCommandResult)callback;
 
 @end

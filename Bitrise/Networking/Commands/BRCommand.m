@@ -16,15 +16,6 @@
 
 @implementation BRCommand
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage {
-    if (self = [super init]) {
-        _api = api;
-        _storage = storage;
-    }
-    
-    return self;
-}
-
 - (void)execute:(BRCommandResult)callback {
     callback(NO, [NSError errorWithDomain:@"" code:0 userInfo:nil]);
 }

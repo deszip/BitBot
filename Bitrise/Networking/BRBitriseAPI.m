@@ -32,6 +32,8 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     return self;
 }
 
+#pragma mark - API calls -
+
 - (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion {
     [self runRequest:[self accountRequest:token] completion:^(NSDictionary *result, NSError *error) {
         if (result) {
@@ -58,14 +60,8 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
-#pragma mark - Builds -
-
-- (void)getBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account completion:(APIBuildsListCallback)completion {
-    [self updateBuilds:app account:account after:0 completion:completion];
-}
-
-- (void)updateBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion {
-    [self runRequest:[self buildsRequest:app.slug token:account.token after:after] completion:^(NSDictionary *result, NSError *error) {
+- (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion {
+    [self runRequest:[self buildsRequest:appSlug token:token after:after] completion:^(NSDictionary *result, NSError *error) {
         if (result) {
             __block NSMutableArray <BRBuildInfo *> *builds = [NSMutableArray array];
             [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *buildData, NSUInteger idx, BOOL *stop) {

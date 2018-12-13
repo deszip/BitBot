@@ -22,9 +22,7 @@ typedef void (^APIBuildsListCallback)(NSArray <BRBuildInfo *> * _Nullable, NSErr
 
 - (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion;
 - (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion;
-
-- (void)getBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account completion:(APIBuildsListCallback)completion;
-- (void)updateBuilds:(BRAppInfo *)app account:(BRAccountInfo *)account after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
+- (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
 
 @end
 

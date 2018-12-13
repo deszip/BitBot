@@ -44,6 +44,10 @@
 
 #pragma mark - BRInteractionProvider -
 
+- (BRSyncEngine *)syncEngine {
+    return [[BRSyncEngine alloc] initWithAPI:self.bitriseAPI storage:self.storage];
+}
+
 - (BRBitriseAPI *)bitriseAPI {
     return [BRBitriseAPI new];
 }
