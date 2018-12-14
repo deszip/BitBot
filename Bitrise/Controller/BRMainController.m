@@ -88,13 +88,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 #pragma mark - Actions -
 
-- (IBAction)addApp:(NSButton *)sender {
-    BRApp *app = [self.outlineView itemAtRow:0];
-    BRAppInfo *appInfo = [[BRAppInfo alloc] initWithResponse:@{ @"slug" : @"12345", @"title" : @"test app" }];
-    BRAccountInfo *accInfo = [[BRAccountInfo alloc] initWithAccount:app.account];
-    [self.storage saveApps:@[appInfo] forAccount:accInfo];
-}
-
 - (IBAction)presentationChanged:(NSSegmentedControl *)sender {
     switch (sender.selectedSegment) {
         case 0: [self.dataSource setPresentationStyle:BRPresentationStyleList]; break;

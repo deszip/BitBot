@@ -16,16 +16,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
+            condition = "builds.count &gt; 0"
             continueAfterRunningActions = "No"
-            filePath = "Bitrise/Sync/BRSyncOperation.m"
-            timestampString = "566415867.666625"
+            filePath = "Bitrise/Networking/BRBitriseAPI.m"
+            timestampString = "566474727.649724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-start"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-getBuilds:token:after:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -34,14 +35,78 @@
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
+            condition = "[appSlug isEqualToString:@&quot;1c0b620ddc600fd6&quot;]"
             continueAfterRunningActions = "No"
-            filePath = "Bitrise/Storage/BRStorage.m"
-            timestampString = "566415867.667046"
+            filePath = "Bitrise/Networking/BRBitriseAPI.m"
+            timestampString = "566474727.6501369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "-saveBuilds:forApp:completion:"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-getBuilds:token:after:completion:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BRBitriseAPI getBuilds:token:after:completion:]"
+                  moduleName = "Bitrise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zardoz/Projects/Bitrise/Bitrise/Bitrise/Networking/BRBitriseAPI.m"
+                  timestampString = "566472153.251428"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[BRBitriseAPI getBuilds:token:after:completion:]_block_invoke"
+                  moduleName = "Bitrise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zardoz/Projects/Bitrise/Bitrise/Bitrise/Networking/BRBitriseAPI.m"
+                  timestampString = "566472153.254264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.53"
+                  moduleName = "Bitrise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zardoz/Projects/Bitrise/Bitrise/Bitrise/Networking/BRBitriseAPI.m"
+                  timestampString = "566472153.257161"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bitrise/Networking/BRBitriseAPI.m"
+            timestampString = "566474727.650365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-runRequest:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

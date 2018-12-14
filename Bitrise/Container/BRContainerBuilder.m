@@ -14,13 +14,27 @@
     NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
     NSPersistentStoreDescription *storeDescription = [NSPersistentStoreDescription new];
     NSURL *documentsURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
-    storeDescription.URL = [documentsURL URLByAppendingPathComponent:@"bitrise.sqlite"];
+    NSURL *appDirectoryURL = [documentsURL URLByAppendingPathComponent:@"/Bitrise"];
+    
+    BOOL isDir;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:appDirectoryURL.path isDirectory:&isDir]) {
+        NSError *error;
+        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:NO attributes:nil error:&error];
+        if (!result) {
+            NSLog(@"Failed to create app directory: %@", error);
+            return nil;
+        }
+    }
+    
+    storeDescription.URL = [appDirectoryURL URLByAppendingPathComponent:@"bitrise.sqlite"];
     storeDescription.type = NSSQLiteStoreType;
     storeDescription.shouldInferMappingModelAutomatically = YES;
     storeDescription.shouldMigrateStoreAutomatically = YES;
     container.persistentStoreDescriptions = @[storeDescription];
     [container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
-        //...
+        if (!storeDescription) {
+            NSLog(@"Failed to load store: %@", error);
+        }
     }];
     
     return container;

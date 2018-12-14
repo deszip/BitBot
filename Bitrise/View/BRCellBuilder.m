@@ -21,7 +21,7 @@
     if (self= [super init]) {
         _timeFormatter = [NSDateFormatter new];
         [_timeFormatter setTimeZone:[NSTimeZone localTimeZone]];
-        [_timeFormatter setDateFormat:@"HH:mm"];
+        [_timeFormatter setDateFormat:@"yyyy.MM.dd @ HH:mm"];
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
     }

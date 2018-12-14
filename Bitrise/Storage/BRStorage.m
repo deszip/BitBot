@@ -48,7 +48,8 @@
         BRAccount *account = [EKManagedObjectMapper objectFromExternalRepresentation:accountInfo.rawResponce withMapping:[BRAccount objectMapping] inManagedObjectContext:self.context];
         account.token = accountInfo.token;
         
-        [self saveContext:self.context completion:nil];
+        NSError *error;
+        [self saveContext:self.context error:&error];
     }];
 }
 
@@ -63,25 +64,15 @@
             [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
                 [self.context deleteObject:nextAccount];
             }];
-            [self saveContext:self.context completion:completion];
+            if (![self saveContext:self.context error:&requestError]) {
+                if (completion) completion(NO, requestError);
+            }
         } else {
             NSLog(@"Failed to fetch account: %@", requestError);
             if (completion) completion(NO, requestError);
         }
     }];
 }
-
-//- (void)getAccounts:(BRAccountsListResult)completion {
-//    [self perform:^{
-//        NSError *fetchError;
-//        NSArray *accounts = [self accounts:&fetchError];
-//        if (accounts) {
-//            completion(accounts, nil);
-//        } else {
-//            completion(nil, fetchError);
-//        }
-//    }];
-//}
 
 - (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRAccount fetchRequest];
@@ -97,13 +88,6 @@
     
     return apps;
 }
-
-//- (void)saveApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccountInfo *)account {
-//    [self perform:^{
-//        NSError *error;
-//        [self updateApps:appsInfo forAccount:account error:&error];
-//    }];
-//}
 
 - (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRAccount fetchRequest];
@@ -124,7 +108,7 @@
         [appsInfo enumerateObjectsUsingBlock:^(BRAppInfo *appInfo, NSUInteger idx, BOOL *stop) {
             BRApp *app = [EKManagedObjectMapper objectFromExternalRepresentation:appInfo.rawResponse withMapping:[BRApp objectMapping] inManagedObjectContext:self.context];
             app.account = accounts[0];
-            [self saveContext:self.context completion:nil];
+            [self saveContext:self.context error:error];
         }];
         
         return YES;
@@ -149,37 +133,35 @@
     return nil;
 }
 
-- (void)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug completion:(BRStorageResult)completion {
-    [self.context performBlock:^{
-        NSFetchRequest *request = [BRApp fetchRequest];
-        request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", appSlug];
-        NSError *requestError = nil;
-        NSArray *apps = [self.context executeFetchRequest:request error:&requestError];
-        if (apps.count == 1) {
-            [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
-                BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:self.context];
-                build.app = apps[0];
-                [self saveContext:self.context completion:completion];
-            }];
-        } else {
-            NSLog(@"Failed to save builds: %@", requestError);
-            if (completion) completion(NO, requestError);
-        }
-    }];
+- (BOOL)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRApp fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", appSlug];
+    NSArray *apps = [self.context executeFetchRequest:request error:error];
+    __block BOOL result = YES;
+    if (apps.count == 1) {
+        [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
+            BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:self.context];
+            build.app = apps[0];
+            if (![self saveContext:self.context error:error]) {
+                result = NO;
+            }
+        }];
+    } else {
+        NSLog(@"Failed to save builds: %@", *error);
+        result = NO;
+    }
+    
+    return result;
 }
 
 #pragma mark - Save -
 
-- (void)saveContext:(NSManagedObjectContext *)context completion:(BRStorageResult)completion {
+- (BOOL)saveContext:(NSManagedObjectContext *)context error:(NSError * __autoreleasing *)error {
     if ([context hasChanges]) {
-        NSError *saveError = nil;
-        if (![context save:&saveError]) {
-            NSLog(@"Failed to save context: %@", saveError);
-            if (completion) completion(NO, saveError);
-        } else {
-            if (completion) completion(YES, nil);
-        }
+        return [context save:error];
     }
+    
+    return YES;
 }
 
 @end

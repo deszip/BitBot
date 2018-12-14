@@ -80,24 +80,21 @@
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
                     NSError *error;
                     BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
-                    if (latestBuild) {
-                        NSLog(@"Latest build for app:%@ at:%@", app.slug, latestBuild.startTime);
-                        [self.api getBuilds:app.slug token:account.token after:[latestBuild.startTime timeIntervalSince1970] completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
-                            if (builds) {
-                                NSLog(@"Got builds for app: %lu", (unsigned long)builds.count);
-                                [self.storage saveBuilds:builds forApp:app.slug completion:^(BOOL result, NSError *error) {
-                                    //NSLog(@"Saved builds: %i, error: %@", result, error);
-                                    [super finish];
-                                }];
-                            } else {
-                                NSLog(@"Failed to get builds from API: %@", error);
-                                [super finish];
+                    NSTimeInterval fetchTime = latestBuild ? [latestBuild.triggerTime timeIntervalSince1970] + 1 : 0;
+                    
+                    [self.api getBuilds:app.slug token:account.token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
+                        if (builds) {
+                            NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
+                            if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
+                                NSLog(@"Failed to save builds: %@", error);
                             }
-                        }];
-                    } else {
-                        NSLog(@"Failed to fetch latest build: %@", error);
-                        [super finish];
-                    }
+                            [super finish];
+                        } else {
+                            NSLog(@"Failed to get builds from API: %@", error);
+                            [super finish];
+                        }
+                    }];
+                    
                 }];
             }];
         }];
