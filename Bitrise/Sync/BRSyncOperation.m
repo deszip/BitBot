@@ -30,18 +30,7 @@
 
 - (void)start {
     [super start];
-    
-    /*
-     - get accounts from storage
-        - for each account get list of apps from API
-        - update apps
-            - remove apps not present in response
-            - add/update others
-                - for each app get latest local build
-                - get list of builds since last build from API
-                - add/update builds
-     */
-    
+
     NSLog(@"Start sync...");
     
     [self.storage perform:^{
@@ -78,26 +67,33 @@
                 }
                 
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
-                    NSError *error;
-                    BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
-                    NSTimeInterval fetchTime = latestBuild ? [latestBuild.triggerTime timeIntervalSince1970] + 1 : 0;
-                    
-                    [self.api getBuilds:app.slug token:account.token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
-                        if (builds) {
-                            NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
-                            if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
-                                NSLog(@"Failed to save builds: %@", error);
-                            }
-                            [super finish];
-                        } else {
-                            NSLog(@"Failed to get builds from API: %@", error);
-                            [super finish];
-                        }
-                    }];
-                    
+                    [self updateBuilds:app token:account.token];
                 }];
             }];
         }];
+    }];
+}
+
+- (NSTimeInterval)fetchTime:(BRApp *)app {
+    BRBuild *latestBuild = [self.storage latestBuild:app error:NULL];
+    NSTimeInterval fetchTime = latestBuild ? [latestBuild.triggerTime timeIntervalSince1970] + 1 : 0;
+    
+    return fetchTime;
+}
+
+- (void)updateBuilds:(BRApp *)app token:(NSString *)token {
+    NSTimeInterval fetchTime = [self fetchTime:app];
+    [self.api getBuilds:app.slug token:token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
+        if (builds) {
+            NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
+            if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
+                NSLog(@"Failed to save builds: %@", error);
+            }
+        } else {
+            NSLog(@"Failed to get builds from API: %@", error);
+        }
+        
+        [super finish];
     }];
 }
 

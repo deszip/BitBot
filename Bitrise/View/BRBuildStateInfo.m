@@ -10,7 +10,6 @@
 
 @implementation BRBuildStateInfo
 
-
 - (instancetype)initWithBuild:(BRBuild *)build {
     if (self = [super init]) {
         switch (build.status.integerValue) {
