@@ -40,6 +40,7 @@
     BRBuildCellView *cell = [outline makeViewWithIdentifier:@"BRBuildCellView" owner:self];
     BRBuildStateInfo *buildStateInfo = [[BRBuildStateInfo alloc] initWithBuild:build];
     
+    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     if (buildStateInfo.state == BRBuildStateInProgress) {
         [cell spinImage:YES];
         [cell setRunningSince:build.envPrepareFinishedTime];
@@ -48,7 +49,6 @@
         [cell setFinishedAt:build.finishedTime started:build.triggerTime];
     }
 
-    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     [cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     [cell.statusLabel setStringValue:buildStateInfo.statusTitle];
     

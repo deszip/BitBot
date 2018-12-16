@@ -120,7 +120,7 @@
 
 - (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRBuild fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@", app.slug];
+    request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@ && status != 0", app.slug];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
     request.fetchLimit = 1;
     
