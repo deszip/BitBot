@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSImageView *statusImage;
 @property (weak) IBOutlet NSImageView *backgroundStatusImage;
 @property (weak) IBOutlet NSView *statusImageContainer;
+
 @property (weak) IBOutlet NSTextField *statusLabel;
 @property (weak) IBOutlet NSTextField *appTitleLabel;
 @property (weak) IBOutlet NSTextField *branchLabel;

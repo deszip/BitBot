@@ -25,6 +25,12 @@ static const NSTimeInterval kSpinDuration = 1.0;
     if (self = [super initWithCoder:decoder]) {
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
+        
+//        if (!self.statusImage.layer) {
+//            CALayer *layer = [CALayer new];
+//            [self.statusImage setLayer:layer];
+//            [self setWantsLayer:YES];
+//        }
     }
     
     return self;
@@ -39,17 +45,26 @@ static const NSTimeInterval kSpinDuration = 1.0;
 - (void)spinImage:(BOOL)spin {
     if (spin) {
         if (!self.statusImage.layer) {
-            CALayer *layer = [CALayer new];
-            [self.statusImage setLayer:layer];
             [self.statusImage setWantsLayer:YES];
+            [self.statusImage setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
+            
+            CALayer *layer = [self.statusImage makeBackingLayer];
+            layer.borderColor = [NSColor redColor].CGColor;
+            layer.borderWidth = 1.0;
+            [self.statusImage setLayer:layer];
+            
+//            [self.statusImage setNeedsLayout:YES];
+//            [self.statusImage layoutSubtreeIfNeeded];
+//            [self.statusImage setNeedsDisplay:YES];
+//            [self.statusImage displayIfNeeded];
         }
-        
+
         CALayer *backingLayer = self.statusImage.layer;
-        
-        if ([backingLayer animationForKey:@"rotationAnimation"]) {
+
+        if ([backingLayer animationForKey:@"transform"]) {
             return;
         }
-        
+
         [backingLayer setCornerRadius:self.statusImage.bounds.size.width / 2];
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
         rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * kSpinDuration ];
@@ -59,9 +74,12 @@ static const NSTimeInterval kSpinDuration = 1.0;
         CGPoint center = CGPointMake(CGRectGetMidX(self.statusImage.frame), CGRectGetMidY(self.statusImage.frame));
         backingLayer.position = center;
         backingLayer.anchorPoint = CGPointMake(0.5, 0.5);
-        [backingLayer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        [backingLayer addAnimation:rotationAnimation forKey:@"transform"];
         
-        NSLog(@"Added spin animation: %@, on layer: %@", [backingLayer animationForKey:@"rotationAnimation"], backingLayer);
+        [self.statusImage setNeedsLayout:YES];
+        [self.statusImage setNeedsDisplay:YES];
+        
+        NSLog(@"Added spin animation: %@, on layer: %f : %f", [backingLayer animationForKey:@"transform"], backingLayer.position.x, backingLayer.position.y);
     } else {
         [self.statusImage.layer setCornerRadius:0];
         [self.statusImage.layer removeAllAnimations];

@@ -821,7 +821,7 @@
                                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="z5d-4L-QHk">
                                                                             <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                                             <subviews>
-                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-j3-ONm">
+                                                                                <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mYK-j3-ONm">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="success-status" id="Qed-70-oB9"/>
                                                                                 </imageView>
