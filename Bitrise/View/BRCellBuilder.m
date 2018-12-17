@@ -44,19 +44,16 @@
     if (buildStateInfo.state == BRBuildStateInProgress) {
         [cell spinImage:YES];
         [cell setRunningSince:build.envPrepareFinishedTime];
-        
-        NSLog(@"Image: %@, animations: %@", cell.statusImage.image, cell.statusImage.layer.animationKeys);
-        
     } else {
         [cell spinImage:NO];
         [cell setFinishedAt:build.finishedTime started:build.triggerTime];
     }
     
-    //[cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
+    [cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     [cell.statusLabel setStringValue:buildStateInfo.statusTitle];
     
-    //[cell.statusImageContainer setWantsLayer:YES];
-    //[cell.statusImageContainer.layer setBackgroundColor:[NSColor colorWithPatternImage:cell.statusImage.image].CGColor];
+    [cell.statusImageContainer setWantsLayer:YES];
+    [cell.statusImageContainer.layer setBackgroundColor:[NSColor colorWithPatternImage:cell.statusImage.image].CGColor];
     
     // Parameters
     [cell.appTitleLabel setStringValue:build.app.title];

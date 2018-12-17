@@ -160,14 +160,6 @@
     return nil;
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    if ([item isKindOfClass:[BRBuild class]]) {
-        if ([[(BRBuildCellView *)cell statusImage].layer animationForKey:@"transform"]) {
-            [(BRBuildCellView *)cell spinImage:YES];
-        }
-    }
-}
-
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
