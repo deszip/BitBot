@@ -25,16 +25,22 @@ static const NSTimeInterval kSpinDuration = 1.0;
     if (self = [super initWithCoder:decoder]) {
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
-        
-//        if (!self.statusImage.layer) {
-//            CALayer *layer = [CALayer new];
-//            [self.statusImage setLayer:layer];
-//            [self setWantsLayer:YES];
-//        }
     }
     
     return self;
 }
+
+//- (void)layout {
+//    [super layout];
+//
+//    [self.statusImage setWantsLayer:YES];
+//    [self.statusImage setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
+//    [self.statusImage setCanDrawSubviewsIntoLayer:YES];
+//    CALayer *layer = [self.statusImage makeBackingLayer];
+//    [self.statusImage setLayer:layer];
+//
+//    [self setNeedsLayout:YES];
+//}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -44,42 +50,36 @@ static const NSTimeInterval kSpinDuration = 1.0;
 
 - (void)spinImage:(BOOL)spin {
     if (spin) {
-        if (!self.statusImage.layer) {
-            [self.statusImage setWantsLayer:YES];
-            [self.statusImage setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
-            
-            CALayer *layer = [self.statusImage makeBackingLayer];
-            layer.borderColor = [NSColor redColor].CGColor;
-            layer.borderWidth = 1.0;
-            [self.statusImage setLayer:layer];
-            
-//            [self.statusImage setNeedsLayout:YES];
-//            [self.statusImage layoutSubtreeIfNeeded];
-//            [self.statusImage setNeedsDisplay:YES];
-//            [self.statusImage displayIfNeeded];
-        }
-
-        CALayer *backingLayer = self.statusImage.layer;
-
-        if ([backingLayer animationForKey:@"transform"]) {
-            return;
-        }
-
-        [backingLayer setCornerRadius:self.statusImage.bounds.size.width / 2];
+        // Assign layer
+        [self.statusImage setWantsLayer:YES];
+        [self.statusImage setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
+        [self.statusImage setCanDrawSubviewsIntoLayer:YES];
+        CALayer *layer = [self.statusImage makeBackingLayer];
+        [self.statusImage setLayer:layer];
+        
+        // Customize layer
+        layer.borderColor = [NSColor redColor].CGColor;
+        layer.borderWidth = 1.0;
+        
+        //CGPoint center = CGPointMake(CGRectGetMidX(self.statusImage.frame), CGRectGetMidY(self.statusImage.frame));
+        CGPoint center = CGPointMake(layer.superlayer.bounds.size.width / 2, layer.superlayer.bounds.size.height / 2);
+        layer.position = center;
+        layer.anchorPoint = CGPointMake(0.5, 0.5);
+        
+        //NSLog(@"Status image layer: %@", NSStringFromRect(layer.bounds), layer.position);
+        
+        [layer setCornerRadius:self.statusImage.bounds.size.width / 2];
+        
+        // Build animation
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
         rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * kSpinDuration ];
         rotationAnimation.duration = kSpinDuration;
         rotationAnimation.cumulative = YES;
         rotationAnimation.repeatCount = HUGE_VALF;
-        CGPoint center = CGPointMake(CGRectGetMidX(self.statusImage.frame), CGRectGetMidY(self.statusImage.frame));
-        backingLayer.position = center;
-        backingLayer.anchorPoint = CGPointMake(0.5, 0.5);
-        [backingLayer addAnimation:rotationAnimation forKey:@"transform"];
+        [layer addAnimation:rotationAnimation forKey:@"transform"];
         
-        [self.statusImage setNeedsLayout:YES];
-        [self.statusImage setNeedsDisplay:YES];
-        
-        NSLog(@"Added spin animation: %@, on layer: %f : %f", [backingLayer animationForKey:@"transform"], backingLayer.position.x, backingLayer.position.y);
+        NSLog(@"Added spin animation: %@, on layer: %@ (%f:%f), center: %f:%f", [layer animationForKey:@"transform"], layer, layer.bounds.size.width, layer.bounds.size.height, layer.position.x, layer.position.y);
+
     } else {
         [self.statusImage.layer setCornerRadius:0];
         [self.statusImage.layer removeAllAnimations];

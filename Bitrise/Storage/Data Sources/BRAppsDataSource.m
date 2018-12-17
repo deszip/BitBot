@@ -162,8 +162,8 @@
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     if ([item isKindOfClass:[BRBuild class]]) {
-        if ([[(BRBuildCellView *)cell statusImage].layer animationForKey:@"rotationAnimation"]) {
-            //[(BRBuildCellView *)cell spinImage:YES];
+        if ([[(BRBuildCellView *)cell statusImage].layer animationForKey:@"transform"]) {
+            [(BRBuildCellView *)cell spinImage:YES];
         }
     }
 }
