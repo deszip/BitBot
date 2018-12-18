@@ -43,6 +43,7 @@
         _detachableMainController.dependencyContainer = container;
         
         _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
+        [_detachableWindowController.window setLevel:NSStatusWindowLevel];
     }
     
     return self;
