@@ -164,8 +164,6 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
-    //NSLog(@"Type: %lu, object: %@", (unsigned long)type, anObject);
-    
     switch (type) {
         case NSFetchedResultsChangeDelete:
             if ([anObject isKindOfClass:[BRBuild class]] && self.presentationStyle == BRPresentationStyleTree) {
@@ -184,9 +182,9 @@
             }
             break;
 
-            case NSFetchedResultsChangeUpdate:
-            [self.outlineView reloadItem:anObject];
-        break;
+        case NSFetchedResultsChangeUpdate:
+            [self.outlineView reloadData];
+            break;
 
         case NSFetchedResultsChangeMove:
             if ([anObject isKindOfClass:[BRBuild class]] && self.presentationStyle == BRPresentationStyleTree) {
