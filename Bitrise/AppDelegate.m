@@ -8,10 +8,14 @@
 
 #import "AppDelegate.h"
 
+#import "BRSyncCommand.h"
 #import "BRMainController.h"
 #import "BRDependencyContainer.h"
 
 @interface AppDelegate () <NSPopoverDelegate>
+
+@property (strong, nonatomic) BRDependencyContainer *dependencyContainer;
+@property (strong, nonatomic) BRObserver *observer;
 
 @property (strong, nonatomic) BRMainController *mainController;
 @property (strong, nonatomic) BRMainController *detachableMainController;
@@ -31,16 +35,17 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 #endif
         
-        BRDependencyContainer *container = [BRDependencyContainer new];
+        _dependencyContainer = [BRDependencyContainer new];
+        _observer = [_dependencyContainer commandObserver];
         
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         _popover = [[NSPopover alloc] init];
         _popover.delegate = self;
         
         _mainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
-        _mainController.dependencyContainer = container;
+        _mainController.dependencyContainer = _dependencyContainer;
         _detachableMainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
-        _detachableMainController.dependencyContainer = container;
+        _detachableMainController.dependencyContainer = _dependencyContainer;
         
         _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
         [_detachableWindowController.window setLevel:NSStatusWindowLevel];
@@ -50,12 +55,18 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // Start sync
+    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]];
+    [self.observer startObserving:syncCommand];
+    
+    // Build status item
     NSImage *image = [NSImage imageNamed:@"bitrise-logo"];
     self.statusItem.button.image = image;
     self.statusItem.button.imageScaling = NSImageScaleProportionallyDown;
     self.statusItem.button.alternateImage = image;
     [self.statusItem.button setAction:@selector(togglePopover:)];
     
+    // Build popover
     self.popover.contentViewController = self.mainController;
     self.popover.behavior = NSPopoverBehaviorTransient;
 }

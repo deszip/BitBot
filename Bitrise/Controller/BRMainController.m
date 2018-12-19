@@ -54,10 +54,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     [self.dataSource fetch];
     
-    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine];
-    [syncCommand execute:nil];
-    
-    [self.observer startObserving:syncCommand];
+//    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine];
+//    [syncCommand execute:nil];
+//    [self.observer startObserving:syncCommand];
 }
 
 #pragma mark - NSMenuDelegate -
