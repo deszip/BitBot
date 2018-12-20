@@ -13,6 +13,7 @@
 - (instancetype)initWithResponse:(NSDictionary *)response {
     if (self = [super init]) {
         _rawResponse = response;
+        _slug = _rawResponse[@"slug"];
     }
     
     return self;

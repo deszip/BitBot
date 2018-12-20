@@ -22,16 +22,20 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
 - (instancetype)initWithContainer:(NSPersistentContainer *)container;
 
-#pragma mark - Synchronous API -
 - (void)perform:(void (^)(void))action;
-- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error;
-- (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
-- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
-- (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error;
 
+#pragma mark - Accounts -
+- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error;
 - (void)saveAccount:(BRAccountInfo *)accountInfo;
 - (void)removeAccount:(NSString *)token completion:(BRStorageResult)completion;
 
+#pragma mark - Apps -
+- (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
+- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
+
+#pragma mark - Builds -
+- (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error;
+- (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error;
 - (BOOL)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error;
 
 @end

@@ -10,6 +10,7 @@
 
 @interface ASOperation ()
 
+@property (assign, nonatomic) NSTimeInterval duration;
 @property (assign, nonatomic) BOOL processing;
 
 @end
@@ -17,6 +18,12 @@
 @implementation ASOperation
 
 - (void)setProcessing:(BOOL)processingState {
+    NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
+    self.duration = processingState ? current : current - self.duration;
+    if (!processingState) {
+        NSLog(@"%@: %f", NSStringFromClass([self class]), self.duration);
+    }
+    
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
     

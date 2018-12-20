@@ -25,6 +25,7 @@ static const NSTimeInterval kObservingTimeout = 10.0;
     [self stopObserving];
     
     self.command = command;
+    [self.command execute:nil];
     [self schedule:self.command];
 }
 

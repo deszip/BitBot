@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRBuildInfo.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
 
@@ -29,6 +30,7 @@ typedef NS_ENUM(NSUInteger, BRBuildState) {
 @property (strong, nonatomic) NSString *statusTitle;
 
 - (instancetype)initWithBuild:(BRBuild *)build;
+- (instancetype)initWithBuildInfo:(BRBuildInfo *)buildInfo;
 
 @end
 

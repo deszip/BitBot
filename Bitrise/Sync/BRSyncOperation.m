@@ -8,12 +8,16 @@
 
 #import "BRSyncOperation.h"
 
+#import "BRBuildStateInfo.h"
+#import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
 
 @interface BRSyncOperation ()
 
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRBitriseAPI *api;
+
+@property (strong, nonatomic) dispatch_group_t group;
 
 @end
 
@@ -32,6 +36,8 @@
     [super start];
 
     NSLog(@"Start sync...");
+    
+    self.group = dispatch_group_create();
     
     [self.storage perform:^{
         NSError *accFetchError;
@@ -65,10 +71,14 @@
                     [super finish];
                     return;
                 }
-                
+
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
                     [self updateBuilds:app token:account.token];
                 }];
+                
+                dispatch_group_notify(self.group, dispatch_get_main_queue(), ^{
+                    [super finish];
+                });
             }];
         }];
     }];
@@ -82,10 +92,31 @@
 }
 
 - (void)updateBuilds:(BRApp *)app token:(NSString *)token {
+    dispatch_group_enter(self.group);
+    
+    NSError *fetchError;
+    NSArray <NSString *> *runningBuildSlugs = [[self.storage runningBuilds:&fetchError] aps_map:^id(BRBuild *build) {
+        return build.slug;
+    }];
+    
     NSTimeInterval fetchTime = [self fetchTime:app];
     [self.api getBuilds:app.slug token:token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
         if (builds) {
-            NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
+            //NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
+            
+            [builds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
+                BRBuildStateInfo *remoteBuildState = [[BRBuildStateInfo alloc] initWithBuildInfo:remoteBuild];
+                if ([runningBuildSlugs containsObject:remoteBuild.slug]) {
+                    if (remoteBuildState.state != BRBuildStateHold && remoteBuildState.state != BRBuildStateInProgress) {
+                        NSLog(@"Finished build: %@", remoteBuild.slug);
+                    }
+                } else {
+                    if (remoteBuildState.state == BRBuildStateHold || remoteBuildState.state == BRBuildStateInProgress) {
+                        NSLog(@"Started build: %@", remoteBuild.slug);
+                    }
+                }
+            }];
+            
             if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
                 NSLog(@"Failed to save builds: %@", error);
             }
@@ -93,7 +124,7 @@
             NSLog(@"Failed to get builds from API: %@", error);
         }
         
-        [super finish];
+        dispatch_group_leave(self.group);
     }];
 }
 

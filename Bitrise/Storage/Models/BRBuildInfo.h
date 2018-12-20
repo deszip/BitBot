@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRBuildInfo : NSObject
 
 @property (strong, nonatomic, readonly) NSDictionary *rawResponse;
+@property (copy, nonatomic, readonly) NSString *slug;
 
 - (instancetype)initWithResponse:(NSDictionary *)response;
 

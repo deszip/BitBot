@@ -29,7 +29,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
 
-@property (strong, nonatomic) BRObserver *observer;
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
@@ -44,7 +43,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     self.syncEngine = [self.dependencyContainer syncEngine];
     
-    self.observer = [self.dependencyContainer commandObserver];
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];
 }
@@ -53,10 +51,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [super viewDidAppear];
     
     [self.dataSource fetch];
-    
-//    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine];
-//    [syncCommand execute:nil];
-//    [self.observer startObserving:syncCommand];
 }
 
 #pragma mark - NSMenuDelegate -

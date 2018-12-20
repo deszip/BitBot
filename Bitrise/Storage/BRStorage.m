@@ -42,6 +42,15 @@
     }];
 }
 
+#pragma mark - Accounts  -
+
+- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRAccount fetchRequest];
+    NSArray *accounts = [self.context executeFetchRequest:request error:error];
+    
+    return accounts;
+}
+
 - (void)saveAccount:(BRAccountInfo *)accountInfo {
     [self.context performBlock:^{
         [self.context setAutomaticallyMergesChangesFromParent:YES];
@@ -74,20 +83,7 @@
     }];
 }
 
-- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error {
-    NSFetchRequest *request = [BRAccount fetchRequest];
-    NSArray *accounts = [self.context executeFetchRequest:request error:error];
-    
-    return accounts;
-}
-
-- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
-    NSFetchRequest *request = [BRApp fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@", account.slug];
-    NSArray <BRApp *> *apps = [self.context executeFetchRequest:request error:error];
-    
-    return apps;
-}
+#pragma mark - Apps -
 
 - (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRAccount fetchRequest];
@@ -116,6 +112,26 @@
         NSLog(@"Failed to save apps: %@", requestError);
         return NO;
     }
+}
+
+- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRApp fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@", account.slug];
+    NSArray <BRApp *> *apps = [self.context executeFetchRequest:request error:error];
+    
+    return apps;
+}
+
+#pragma mark - Builds -
+
+- (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRBuild fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"status = 0"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
+    
+    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
+    
+    return builds;
 }
 
 - (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error {
