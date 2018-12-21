@@ -18,11 +18,7 @@
 @implementation ASOperation
 
 - (void)setProcessing:(BOOL)processingState {
-    NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
-    self.duration = processingState ? current : current - self.duration;
-    if (!processingState) {
-        NSLog(@"%@: %f", NSStringFromClass([self class]), self.duration);
-    }
+    [self trackDuration:processingState];
     
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
@@ -55,6 +51,14 @@
 
 - (void)finish {
     [self setProcessing:NO];
+}
+
+- (void)trackDuration:(BOOL)processing {
+    NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
+    self.duration = processing ? current : current - self.duration;
+    if (!processing) {
+        NSLog(@"%@: %f", NSStringFromClass([self class]), self.duration);
+    }
 }
 
 @end

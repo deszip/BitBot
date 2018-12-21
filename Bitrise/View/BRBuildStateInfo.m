@@ -10,17 +10,9 @@
 
 @implementation BRBuildStateInfo
 
-- (instancetype)initWithBuild:(BRBuild *)build {
+- (instancetype)initWithBuildStatus:(NSUInteger)buildStatus holdStatus:(BOOL)holdStatus {
     if (self = [super init]) {
-        [self applyStatus:build.status.integerValue isOnHold:build.onHold.boolValue];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithBuildInfo:(BRBuildInfo *)buildInfo {
-    if (self = [super init]) {
-        [self applyStatus:[buildInfo.rawResponse[@"status"] integerValue] isOnHold:[buildInfo.rawResponse[@"is_on_hold"] boolValue]];
+        [self applyStatus:buildStatus isOnHold:holdStatus];
     }
     
     return self;
@@ -30,32 +22,32 @@
     switch (buildStatus) {
         case 0:
             if (isOnHold) {
-                self.statusImageName = @"hold-status";
-                self.statusTitle = @"On hold";
-                self.state = BRBuildStateHold;
+                _statusImageName = @"hold-status";
+                _statusTitle = @"On hold";
+                _state = BRBuildStateHold;
             } else {
-                self.statusImageName = @"progress-status";
-                self.statusTitle = @"In progress...";
-                self.state = BRBuildStateInProgress;
+                _statusImageName = @"progress-status";
+                _statusTitle = @"In progress...";
+                _state = BRBuildStateInProgress;
             }
             break;
             
         case 1:
-            self.statusImageName = @"success-status";
-            self.statusTitle = @"Success";
-            self.state = BRBuildStateSuccess;
+            _statusImageName = @"success-status";
+            _statusTitle = @"Success";
+            _state = BRBuildStateSuccess;
             break;
             
         case 2:
-            self.statusImageName = @"failed-status";
-            self.statusTitle = @"Failed";
-            self.state = BRBuildStateFailed;
+            _statusImageName = @"failed-status";
+            _statusTitle = @"Failed";
+            _state = BRBuildStateFailed;
             break;
             
         case 3:
-            self.statusImageName = @"abort-status";
-            self.statusTitle = @"Aborted";
-            self.state = BRBuildStateAborted;
+            _statusImageName = @"abort-status";
+            _statusTitle = @"Aborted";
+            _state = BRBuildStateAborted;
             break;
     }
 }

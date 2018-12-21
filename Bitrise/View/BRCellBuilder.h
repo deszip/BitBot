@@ -13,7 +13,6 @@
 #import "BRBuild+CoreDataClass.h"
 #import "BRAppCellView.h"
 #import "BRBuildCellView.h"
-#import "BRBuildStateInfo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

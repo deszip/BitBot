@@ -65,8 +65,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRBuildStateInfo *stateInfo = [[BRBuildStateInfo alloc] initWithBuild:selectedItem];
-        BOOL buildInProgress = stateInfo.state == BRBuildStateInProgress;
+        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
+        BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
         switch (menuItem.tag) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildInProgress;

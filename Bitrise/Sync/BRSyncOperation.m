@@ -72,11 +72,15 @@
                     return;
                 }
 
+                NSError *fetchError;
+                NSArray <NSString *> *runningBuildSlugs = [[self.storage runningBuilds:&fetchError] aps_map:^id(BRBuild *build) {
+                    return build.slug;
+                }];
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
-                    [self updateBuilds:app token:account.token];
+                    [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs];
                 }];
                 
-                dispatch_group_notify(self.group, dispatch_get_main_queue(), ^{
+                dispatch_group_notify(self.group, self.queue.underlyingQueue, ^{
                     [super finish];
                 });
             }];
@@ -91,13 +95,8 @@
     return fetchTime;
 }
 
-- (void)updateBuilds:(BRApp *)app token:(NSString *)token {
+- (void)updateBuilds:(BRApp *)app token:(NSString *)token runningBuilds:(NSArray <NSString *> *)runningBuildSlugs {
     dispatch_group_enter(self.group);
-    
-    NSError *fetchError;
-    NSArray <NSString *> *runningBuildSlugs = [[self.storage runningBuilds:&fetchError] aps_map:^id(BRBuild *build) {
-        return build.slug;
-    }];
     
     NSTimeInterval fetchTime = [self fetchTime:app];
     [self.api getBuilds:app.slug token:token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
@@ -105,13 +104,12 @@
             //NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
             
             [builds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
-                BRBuildStateInfo *remoteBuildState = [[BRBuildStateInfo alloc] initWithBuildInfo:remoteBuild];
                 if ([runningBuildSlugs containsObject:remoteBuild.slug]) {
-                    if (remoteBuildState.state != BRBuildStateHold && remoteBuildState.state != BRBuildStateInProgress) {
+                    if (remoteBuild.stateInfo.state != BRBuildStateHold && remoteBuild.stateInfo.state != BRBuildStateInProgress) {
                         NSLog(@"Finished build: %@", remoteBuild.slug);
                     }
                 } else {
-                    if (remoteBuildState.state == BRBuildStateHold || remoteBuildState.state == BRBuildStateInProgress) {
+                    if (remoteBuild.stateInfo.state == BRBuildStateHold || remoteBuild.stateInfo.state == BRBuildStateInProgress) {
                         NSLog(@"Started build: %@", remoteBuild.slug);
                     }
                 }
@@ -125,6 +123,24 @@
         }
         
         dispatch_group_leave(self.group);
+    }];
+}
+
+- (void)notificationsForBuilds:(NSArray <BRBuildInfo *> *)remoteBuilds runningBuilds:(NSArray <NSString *> *)runningBuilds {
+    __block NSMutableArray <NSString *> *finished = [NSMutableArray array];
+    __block NSMutableArray <NSString *> *started = [NSMutableArray array];
+    [remoteBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
+        if ([runningBuilds containsObject:remoteBuild.slug]) {
+            if (remoteBuild.stateInfo.state != BRBuildStateHold && remoteBuild.stateInfo.state != BRBuildStateInProgress) {
+                NSLog(@"Finished build: %@", remoteBuild.slug);
+                [finished addObject:remoteBuild.slug];
+            }
+        } else {
+            if (remoteBuild.stateInfo.state == BRBuildStateHold || remoteBuild.stateInfo.state == BRBuildStateInProgress) {
+                NSLog(@"Started build: %@", remoteBuild.slug);
+                [started addObject:remoteBuild.slug];
+            }
+        }
     }];
 }
 

@@ -8,6 +8,8 @@
 
 #import "BRCellBuilder.h"
 
+#import "BRBuildInfo.h"
+
 @interface BRCellBuilder ()
 
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
@@ -38,7 +40,7 @@
 
 - (BRBuildCellView *)buildCell:(BRBuild *)build forOutline:(NSOutlineView *)outline {
     BRBuildCellView *cell = [outline makeViewWithIdentifier:@"BRBuildCellView" owner:self];
-    BRBuildStateInfo *buildStateInfo = [[BRBuildStateInfo alloc] initWithBuild:build];
+    BRBuildStateInfo *buildStateInfo = [[[BRBuildInfo alloc] initWithBuild:build] stateInfo];
     
     [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     if (buildStateInfo.state == BRBuildStateInProgress) {
