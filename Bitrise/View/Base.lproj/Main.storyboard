@@ -712,54 +712,25 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="82J-cI-jpS">
                                 <rect key="frame" x="0.0" y="605" width="542" height="40"/>
                                 <subviews>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="nqv-oN-Zd6">
-                                        <rect key="frame" x="512" y="10" width="20" height="20"/>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="JMg-rD-ZNo">
+                                        <rect key="frame" x="20" y="10" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="K0n-ze-xOt"/>
-                                            <constraint firstAttribute="height" constant="20" id="Xz8-zt-Cmu"/>
+                                            <constraint firstAttribute="height" constant="20" id="8C6-9n-8CK"/>
+                                            <constraint firstAttribute="width" constant="20" id="aue-7u-QY1"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSUser" imagePosition="only" alignment="center" alternateImage="NSUser" state="on" imageScaling="proportionallyDown" inset="2" id="7d6-xH-fXU">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSActionTemplate" imagePosition="only" alignment="center" alternateImage="NSAddTemplate" state="on" imageScaling="proportionallyDown" inset="2" id="ONJ-GV-aRZ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="u6Y-Oa-61p" kind="modal" identifier="BRAccountsViewController" id="TTC-OE-mVR"/>
-                                        </connections>
-                                    </button>
-                                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CYQ-gE-0vI">
-                                        <rect key="frame" x="236" y="7" width="71" height="23"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="tmG-UK-FAg">
-                                            <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment image="NSListViewTemplate" width="32" selected="YES"/>
-                                                <segment image="NSPathTemplate" width="32" tag="1"/>
-                                            </segments>
-                                        </segmentedCell>
-                                        <connections>
-                                            <action selector="presentationChanged:" target="XfG-lQ-9wD" id="iYA-sq-KGD"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <button hidden="YES" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKp-gY-TKo">
-                                        <rect key="frame" x="484" y="10" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="Cfo-U7-FuB"/>
-                                            <constraint firstAttribute="height" constant="20" id="E0R-SE-4e9"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSAddTemplate" imagePosition="only" alignment="center" alternateImage="NSUser" state="on" imageScaling="proportionallyDown" inset="2" id="TCc-MT-eU8">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="addApp:" target="XfG-lQ-9wD" id="etI-VH-kua"/>
+                                            <action selector="openSettingsMenu:" target="XfG-lQ-9wD" id="5yq-o5-APQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CYQ-gE-0vI" firstAttribute="top" secondItem="nqv-oN-Zd6" secondAttribute="top" id="2MV-y9-sZg"/>
                                     <constraint firstAttribute="height" constant="40" id="8RC-1p-PQm"/>
-                                    <constraint firstItem="nqv-oN-Zd6" firstAttribute="centerY" secondItem="82J-cI-jpS" secondAttribute="centerY" id="If8-4g-bDc"/>
-                                    <constraint firstAttribute="trailing" secondItem="nqv-oN-Zd6" secondAttribute="trailing" constant="10" id="TX3-Qv-Jx2"/>
-                                    <constraint firstItem="CYQ-gE-0vI" firstAttribute="centerX" secondItem="82J-cI-jpS" secondAttribute="centerX" id="ttV-1o-wKy"/>
+                                    <constraint firstItem="JMg-rD-ZNo" firstAttribute="leading" secondItem="82J-cI-jpS" secondAttribute="leading" constant="20" id="W6K-3a-YCn"/>
+                                    <constraint firstItem="JMg-rD-ZNo" firstAttribute="centerY" secondItem="82J-cI-jpS" secondAttribute="centerY" id="ouW-2J-QT0"/>
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="77" horizontalPageScroll="10" verticalLineScroll="77" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-eN-807">
@@ -1025,6 +996,7 @@
                     <connections>
                         <outlet property="buildMenu" destination="Q6c-WQ-hru" id="n3V-JU-dc4"/>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>
+                        <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1057,6 +1029,32 @@
                     </items>
                     <connections>
                         <outlet property="delegate" destination="XfG-lQ-9wD" id="zdE-z6-UCV"/>
+                    </connections>
+                </menu>
+                <menu title="Settings" id="Gbj-C2-212">
+                    <items>
+                        <menuItem title="Accounts..." tag="1" id="aRv-i9-9CL">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="rebuild:" target="XfG-lQ-9wD" id="0Bk-5Y-x2b"/>
+                                <segue destination="u6Y-Oa-61p" kind="show" id="z5Y-qg-jeh"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Run at startup" tag="2" id="rlr-Bp-No8">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="abort:" target="XfG-lQ-9wD" id="aL2-al-Tz6"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Quit" tag="3" id="f60-ia-sAq">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="quit:" target="XfG-lQ-9wD" id="cve-K6-L0A"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="XfG-lQ-9wD" id="RAg-j6-0m2"/>
                     </connections>
                 </menu>
             </objects>
@@ -1255,10 +1253,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSListViewTemplate" width="14" height="10"/>
-        <image name="NSPathTemplate" width="16" height="10"/>
-        <image name="NSUser" width="128" height="128"/>
         <image name="success-status" width="119" height="119"/>
     </resources>
 </document>

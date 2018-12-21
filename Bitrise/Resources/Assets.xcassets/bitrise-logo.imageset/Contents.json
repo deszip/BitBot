@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "bitrise-logo-png-transparent-2.png",
+      "filename" : "Icon-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "bitrise-logo-png-transparent-1.png",
+      "filename" : "Icon-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "bitrise-logo-png-transparent.png",
+      "filename" : "Icon.png",
       "scale" : "3x"
     }
   ],

@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
+@property (strong) IBOutlet NSMenu *settingsMenu;
 
 @end
 
@@ -53,26 +54,46 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.dataSource fetch];
 }
 
+#pragma mark - Actions -
+
+- (IBAction)quit:(NSMenuItem *)sender {
+    [NSApp terminate:self];
+}
+
+
+- (IBAction)openSettingsMenu:(NSButton *)sender {
+    NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
+    [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
+}
+
 #pragma mark - NSMenuDelegate -
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if (![selectedItem isKindOfClass:[BRBuild class]]) {
-        [menu cancelTrackingWithoutAnimation];
+    if (menu == self.buildMenu) {
+        id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+        if (![selectedItem isKindOfClass:[BRBuild class]]) {
+            [menu cancelTrackingWithoutAnimation];
+        }
     }
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
-        BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
-        switch (menuItem.tag) {
-            case BRBuildMenuItemRebuild: return !buildInProgress;
-            case BRBuildMenuItemAbort: return buildInProgress;
-            case BRBuildMenuItemDownload: return !buildInProgress;
-            case BRBuildMenuItemOpenBuild: return YES;
-            default: return NO;
+    if (menuItem.menu == self.settingsMenu) {
+        return YES;
+    }
+    
+    if (menuItem.menu == self.buildMenu) {
+        id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+        if ([selectedItem isKindOfClass:[BRBuild class]]) {
+            BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
+            BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
+            switch (menuItem.tag) {
+                case BRBuildMenuItemRebuild: return !buildInProgress;
+                case BRBuildMenuItemAbort: return buildInProgress;
+                case BRBuildMenuItemDownload: return !buildInProgress;
+                case BRBuildMenuItemOpenBuild: return YES;
+                default: return NO;
+            }
         }
     }
     

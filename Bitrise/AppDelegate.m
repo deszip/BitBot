@@ -65,6 +65,7 @@
     self.statusItem.button.imageScaling = NSImageScaleProportionallyDown;
     self.statusItem.button.alternateImage = image;
     [self.statusItem.button setAction:@selector(togglePopover:)];
+    [(NSButtonCell *)self.statusItem.button.cell setHighlightsBy:NSNoCellMask];
     
     // Build popover
     self.popover.contentViewController = self.mainController;
