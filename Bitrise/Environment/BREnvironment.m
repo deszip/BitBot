@@ -10,7 +10,7 @@
 
 @implementation BREnvironment
 
-- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds {
+- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds forApp:(BRAppInfo *)appInfo {
     if (!builds.count) {
         return;
     }
@@ -18,7 +18,7 @@
     [builds enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
         NSUserNotification *notification = [NSUserNotification new];
         notification.identifier = [NSString stringWithFormat:@"%@-%lu", buildInfo.slug, (unsigned long)buildInfo.stateInfo.state];
-        notification.title = buildInfo.appName;
+        notification.title = appInfo.title;
         
         switch (buildInfo.stateInfo.state) {
             case BRBuildStateHold:

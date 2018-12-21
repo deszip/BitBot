@@ -23,8 +23,9 @@
         _environment = environment;
         
         __weak BREnvironment *weakEnv = _environment;
-        _syncEngine.syncCallback = ^(NSArray<BRBuildInfo *> *finishedBuilds, NSArray<BRBuildInfo *> *startedBuilds) {
-            [weakEnv postNotifications:[startedBuilds arrayByAddingObjectsFromArray:finishedBuilds]];
+        _syncEngine.syncCallback = ^(BRSyncResult *result) {
+            NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
+            [weakEnv postNotifications:builds forApp:result.app];
         };
     }
     

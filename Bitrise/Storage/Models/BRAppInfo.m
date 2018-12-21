@@ -14,6 +14,7 @@
     if (self = [super init]) {
         _rawResponse = response;
         _slug = _rawResponse[@"slug"];
+        _title = _rawResponse[@"title"];
     }
     
     return self;
@@ -23,6 +24,7 @@
     if (self = [super init]) {
         _rawResponse = nil;
         _slug = app.slug;
+        _title = app.title;
     }
     
     return self;

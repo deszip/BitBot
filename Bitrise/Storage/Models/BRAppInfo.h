@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic, readonly) NSDictionary *rawResponse;
 @property (copy, nonatomic, readonly) NSString *slug;
+@property (copy, nonatomic, readonly) NSString *title;
 
 - (instancetype)initWithResponse:(NSDictionary *)response;
 - (instancetype)initWithApp:(BRApp *)app;

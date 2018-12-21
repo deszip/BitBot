@@ -10,6 +10,7 @@
 
 #import "BRStorage.h"
 #import "BRBitriseAPI.h"
+#import "BRSyncResult.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithStorage:(BRStorage *)storage api:(BRBitriseAPI *)api NS_DESIGNATED_INITIALIZER;
 
-@property (copy, nonatomic, nullable) void (^syncCallback)(NSArray <BRBuildInfo *> *finishedBuilds, NSArray <BRBuildInfo *> *startedBuilds);
+@property (copy, nonatomic, nullable) void (^syncCallback)(BRSyncResult *result);
 
 @end
 

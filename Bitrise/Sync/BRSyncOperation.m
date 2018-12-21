@@ -11,6 +11,7 @@
 #import "BRBuildStateInfo.h"
 #import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
+#import "BRSyncDiff.h"
 
 @interface BRSyncOperation ()
 
@@ -101,7 +102,12 @@
     NSTimeInterval fetchTime = [self fetchTime:app];
     [self.api getBuilds:app.slug token:token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
         if (builds) {
-            [self notifyDiffForBuilds:builds runningBuilds:runningBuildSlugs];
+            if (self.syncCallback) {
+                BRSyncDiff *diff = [self diffForBuilds:builds runningBuilds:runningBuildSlugs];
+                BRAppInfo *appInfo = [[BRAppInfo alloc] initWithApp:app];
+                BRSyncResult *result = [[BRSyncResult alloc] initWithApp:appInfo diff:diff];
+                self.syncCallback(result);
+            }
             if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
                 NSLog(@"Failed to save builds: %@", error);
             }
@@ -113,7 +119,7 @@
     }];
 }
 
-- (void)notifyDiffForBuilds:(NSArray <BRBuildInfo *> *)remoteBuilds runningBuilds:(NSArray <NSString *> *)runningBuilds {
+- (BRSyncDiff *)diffForBuilds:(NSArray <BRBuildInfo *> *)remoteBuilds runningBuilds:(NSArray <NSString *> *)runningBuilds {
     __block NSMutableArray <BRBuildInfo *> *finished = [NSMutableArray array];
     __block NSMutableArray <BRBuildInfo *> *started = [NSMutableArray array];
     [remoteBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
@@ -130,9 +136,7 @@
         }
     }];
     
-    if (self.syncCallback) {
-        self.syncCallback([finished copy], [started copy]);
-    }
+    return [[BRSyncDiff alloc] initWithStartedBuilds:started finishedBuilds:finished];
 }
 
 @end
