@@ -60,7 +60,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [NSApp terminate:self];
 }
 
-
 - (IBAction)openSettingsMenu:(NSButton *)sender {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];

@@ -1033,11 +1033,18 @@
                 </menu>
                 <menu title="Settings" id="Gbj-C2-212">
                     <items>
-                        <menuItem title="Accounts..." tag="1" id="aRv-i9-9CL">
+                        <menuItem title="About" tag="1" id="aRv-i9-9CL">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="rebuild:" target="XfG-lQ-9wD" id="0Bk-5Y-x2b"/>
-                                <segue destination="u6Y-Oa-61p" kind="show" id="z5Y-qg-jeh"/>
+                                <segue destination="jqU-3H-VNR" kind="show" id="dOx-sg-2MU"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="ARh-dw-Oar"/>
+                        <menuItem title="Accounts..." tag="1" id="PKg-hP-kvt">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <segue destination="u6Y-Oa-61p" kind="show" id="JxD-80-dYs"/>
                             </connections>
                         </menuItem>
                         <menuItem title="Run at startup" tag="2" id="rlr-Bp-No8">
@@ -1046,8 +1053,8 @@
                                 <action selector="abort:" target="XfG-lQ-9wD" id="aL2-al-Tz6"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="Quit" tag="3" id="f60-ia-sAq">
-                            <modifierMask key="keyEquivalentModifierMask"/>
+                        <menuItem isSeparatorItem="YES" id="6B4-eS-GXx"/>
+                        <menuItem title="Quit" tag="3" keyEquivalent="q" id="f60-ia-sAq">
                             <connections>
                                 <action selector="quit:" target="XfG-lQ-9wD" id="cve-K6-L0A"/>
                             </connections>
@@ -1079,7 +1086,7 @@
                 </windowController>
                 <customObject id="slB-aa-5XY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="356"/>
+            <point key="canvasLocation" x="720" y="761"/>
         </scene>
         <!--Accounts View Controller-->
         <scene sceneID="Pbj-wG-L7R">
@@ -1249,12 +1256,108 @@
                 </viewController>
                 <customObject id="8gU-cS-HHk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1350" y="348"/>
+            <point key="canvasLocation" x="1319" y="752"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="wRK-8i-SNH">
+            <objects>
+                <windowController id="jqU-3H-VNR" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zJ9-0d-oYy">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <connections>
+                            <outlet property="delegate" destination="jqU-3H-VNR" id="CgA-GY-hig"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="q3v-hi-t6E" kind="relationship" relationship="window.shadowedContentViewController" id="dWa-Xf-Hm9"/>
+                    </connections>
+                </windowController>
+                <customObject id="Aw1-N7-zEo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="720" y="386"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="pyc-n1-OLx">
+            <objects>
+                <viewController id="q3v-hi-t6E" customClass="CHAboutViewController" sceneMemberID="viewController">
+                    <view key="view" id="Kq8-xr-Mh1" customClass="CHPopoverBackgroundView">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-A7-HCu">
+                                <rect key="frame" x="20" y="35" width="150" height="195"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-zw-3Vr">
+                                        <rect key="frame" x="11" y="67" width="128" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bb9-zw-3Vr" secondAttribute="height" multiplier="1:1" id="RDN-yV-FRp"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="WhP-0z-q5u"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j63-6n-mGW">
+                                        <rect key="frame" x="36" y="0.0" width="79" height="57"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-Wd-kcM">
+                                                <rect key="frame" x="-2" y="19" width="83" height="38"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Bitrise" id="2EW-45-DXz">
+                                                    <font key="font" size="32" name="HelveticaNeue-UltraLight"/>
+                                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="azh-8G-J61">
+                                                <rect key="frame" x="6" y="0.0" width="66" height="19"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version 1.0" id="kdh-jg-TOx">
+                                                    <font key="font" size="13" name="HelveticaNeue-UltraLight"/>
+                                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="shW-st-2io"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hGk-A7-HCu" firstAttribute="top" secondItem="Kq8-xr-Mh1" secondAttribute="top" constant="40" id="2hw-eG-yV5"/>
+                            <constraint firstItem="hGk-A7-HCu" firstAttribute="leading" secondItem="Kq8-xr-Mh1" secondAttribute="leading" constant="20" id="4iT-Co-dJe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="versionField" destination="azh-8G-J61" id="jbS-0I-BQF"/>
+                    </connections>
+                </viewController>
+                <customObject id="Bi9-kT-DPp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="386"/>
         </scene>
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="success-status" width="119" height="119"/>
     </resources>
 </document>
