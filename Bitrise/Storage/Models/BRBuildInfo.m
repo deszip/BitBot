@@ -19,6 +19,9 @@
         _rawResponse = response;
         _stateInfo = [[BRBuildStateInfo alloc] initWithBuildStatus:[response[@"status"] integerValue] holdStatus:[response[@"is_on_hold"] boolValue]];
         _slug = _rawResponse[@"slug"];
+        _appName = _rawResponse[@"slug"];
+        _branchName = _rawResponse[@"branch"];
+        _workflowName = _rawResponse[@"triggered_workflow"];
     }
     
     return self;
@@ -29,6 +32,9 @@
         _rawResponse = nil;
         _stateInfo = [[BRBuildStateInfo alloc] initWithBuildStatus:[build.status integerValue] holdStatus:[build.onHold boolValue]];
         _slug = build.slug;
+        _appName = build.app.title;
+        _branchName = build.branch;
+        _workflowName = build.workflow;
     }
     
     return self;

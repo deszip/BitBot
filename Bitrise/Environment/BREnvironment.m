@@ -11,14 +11,40 @@
 @implementation BREnvironment
 
 - (void)postNotifications:(NSArray<BRBuildInfo *> *)builds {
+    if (!builds.count) {
+        return;
+    }
+    
     [builds enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
         NSUserNotification *notification = [NSUserNotification new];
-        notification.identifier = buildInfo.slug;
-        notification.title = @"appspector-ios-sdk";
-        notification.subtitle = @"build started";
-        notification.informativeText = @"Branch: develop, workflow: develop";
+        notification.identifier = [NSString stringWithFormat:@"%@-%lu", buildInfo.slug, (unsigned long)buildInfo.stateInfo.state];
+        notification.title = buildInfo.appName;
+        
+        switch (buildInfo.stateInfo.state) {
+            case BRBuildStateHold:
+                notification.subtitle = @"build on hold";
+                break;
+            case BRBuildStateInProgress:
+                notification.subtitle = @"build started";
+                break;
+            case BRBuildStateFailed:
+                notification.subtitle = @"build failed";
+                break;
+            case BRBuildStateAborted:
+                notification.subtitle = @"build aborted";
+                break;
+            case BRBuildStateSuccess:
+                notification.subtitle = @"build finished";
+                break;
+            
+            default:
+                notification.subtitle = @"build state undefined";
+                break;
+        }
+        
+        notification.contentImage = [NSImage imageNamed:buildInfo.stateInfo.statusImageName];
+        notification.informativeText = [NSString stringWithFormat:@"Branch: %@, workflow: %@", buildInfo.branchName, buildInfo.workflowName];
         notification.soundName = NSUserNotificationDefaultSoundName;
-        notification.contentImage = [NSImage imageNamed:@"foo"];
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }];

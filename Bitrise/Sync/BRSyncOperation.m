@@ -101,20 +101,7 @@
     NSTimeInterval fetchTime = [self fetchTime:app];
     [self.api getBuilds:app.slug token:token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
         if (builds) {
-            //NSLog(@"Got builds for app: %@, count: %lu, after: %f", app.slug, (unsigned long)builds.count, fetchTime);
-            
-            [builds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
-                if ([runningBuildSlugs containsObject:remoteBuild.slug]) {
-                    if (remoteBuild.stateInfo.state != BRBuildStateHold && remoteBuild.stateInfo.state != BRBuildStateInProgress) {
-                        NSLog(@"Finished build: %@", remoteBuild.slug);
-                    }
-                } else {
-                    if (remoteBuild.stateInfo.state == BRBuildStateHold || remoteBuild.stateInfo.state == BRBuildStateInProgress) {
-                        NSLog(@"Started build: %@", remoteBuild.slug);
-                    }
-                }
-            }];
-            
+            [self notifyDiffForBuilds:builds runningBuilds:runningBuildSlugs];
             if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
                 NSLog(@"Failed to save builds: %@", error);
             }
@@ -126,22 +113,26 @@
     }];
 }
 
-- (void)notificationsForBuilds:(NSArray <BRBuildInfo *> *)remoteBuilds runningBuilds:(NSArray <NSString *> *)runningBuilds {
-    __block NSMutableArray <NSString *> *finished = [NSMutableArray array];
-    __block NSMutableArray <NSString *> *started = [NSMutableArray array];
+- (void)notifyDiffForBuilds:(NSArray <BRBuildInfo *> *)remoteBuilds runningBuilds:(NSArray <NSString *> *)runningBuilds {
+    __block NSMutableArray <BRBuildInfo *> *finished = [NSMutableArray array];
+    __block NSMutableArray <BRBuildInfo *> *started = [NSMutableArray array];
     [remoteBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
         if ([runningBuilds containsObject:remoteBuild.slug]) {
             if (remoteBuild.stateInfo.state != BRBuildStateHold && remoteBuild.stateInfo.state != BRBuildStateInProgress) {
                 NSLog(@"Finished build: %@", remoteBuild.slug);
-                [finished addObject:remoteBuild.slug];
+                [finished addObject:remoteBuild];
             }
         } else {
             if (remoteBuild.stateInfo.state == BRBuildStateHold || remoteBuild.stateInfo.state == BRBuildStateInProgress) {
                 NSLog(@"Started build: %@", remoteBuild.slug);
-                [started addObject:remoteBuild.slug];
+                [started addObject:remoteBuild];
             }
         }
     }];
+    
+    if (self.syncCallback) {
+        self.syncCallback([finished copy], [started copy]);
+    }
 }
 
 @end

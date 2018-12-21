@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithStorage:(BRStorage *)storage api:(BRBitriseAPI *)api NS_DESIGNATED_INITIALIZER;
 
+@property (copy, nonatomic, nullable) void (^syncCallback)(NSArray <BRBuildInfo *> *finishedBuilds, NSArray <BRBuildInfo *> *startedBuilds);
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -35,6 +35,8 @@
 
 - (void)sync {
     BRSyncOperation *syncOperation = [[BRSyncOperation alloc] initWithStorage:self.storage api:self.API];
+    [syncOperation setSyncCallback:self.syncCallback];
+    
     [self.queue addOperation:syncOperation];
 }
 

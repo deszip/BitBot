@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)sync;
 
+@property (copy, nonatomic, nullable) void (^syncCallback)(NSArray <BRBuildInfo *> *finishedBuilds, NSArray <BRBuildInfo *> *startedBuilds);
+
 @end
 
 NS_ASSUME_NONNULL_END

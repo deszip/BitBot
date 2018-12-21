@@ -15,6 +15,7 @@
 #import "BRBitriseAPI.h"
 #import "BRStorage.h"
 #import "BRObserver.h"
+#import "BREnvironment.h"
 
 @protocol BRDataSourceProvider <NSObject>
 
@@ -32,7 +33,13 @@
 
 @end
 
+@protocol BREnvironmentProvider <NSObject>
 
-@interface BRDependencyContainer : NSObject <BRDataSourceProvider, BRInteractionProvider>
+- (BREnvironment *)environment;
+
+@end
+
+
+@interface BRDependencyContainer : NSObject <BRDataSourceProvider, BRInteractionProvider, BREnvironmentProvider>
 
 @end

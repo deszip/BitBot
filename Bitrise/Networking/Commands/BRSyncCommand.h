@@ -10,12 +10,13 @@
 
 #import "BRCommand.h"
 #import "BRSyncEngine.h"
+#import "BREnvironment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSyncCommand : BRCommand
 
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine;
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment;
 
 @end
 

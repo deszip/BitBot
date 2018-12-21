@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic, readonly) BRBuildStateInfo *stateInfo;
 @property (copy, nonatomic, readonly) NSString *slug;
+@property (copy, nonatomic, readonly) NSString *appName;
+@property (copy, nonatomic, readonly) NSString *branchName;
+@property (copy, nonatomic, readonly) NSString *workflowName;
 
 - (instancetype)initWithResponse:(NSDictionary *)response;
 - (instancetype)initWithBuild:(BRBuild *)build;

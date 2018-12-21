@@ -11,14 +11,21 @@
 @interface BRSyncCommand ()
 
 @property (strong, nonatomic, readonly) BRSyncEngine *syncEngine;
+@property (strong, nonatomic, readonly) BREnvironment *environment;
 
 @end
 
 @implementation BRSyncCommand
 
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine {
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;
+        _environment = environment;
+        
+        __weak BREnvironment *weakEnv = _environment;
+        _syncEngine.syncCallback = ^(NSArray<BRBuildInfo *> *finishedBuilds, NSArray<BRBuildInfo *> *startedBuilds) {
+            [weakEnv postNotifications:[startedBuilds arrayByAddingObjectsFromArray:finishedBuilds]];
+        };
     }
     
     return self;
@@ -26,21 +33,6 @@
 
 - (void)execute:(BRCommandResult)callback {
     [self.syncEngine sync];
-    
-//    [self.storage getAccounts:^(NSArray<BRAccountInfo *> *accounts, NSError *error) {
-//        [accounts enumerateObjectsUsingBlock:^(BRAccountInfo *nextAccount, NSUInteger idx, BOOL *stop) {
-//            [self.api getApps:nextAccount completion:^(NSArray<BRAppInfo *> *apps, NSError *error) {
-//                [self.storage saveApps:apps forAccount:nextAccount];
-//                [apps enumerateObjectsUsingBlock:^(BRAppInfo *nextApp, NSUInteger idx, BOOL *stop) {
-//                    [self.api getBuilds:nextApp account:nextAccount completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
-//                        [self.storage saveBuilds:builds forApp:nextApp completion:nil];
-//                    }];
-//                }];
-//            }];
-//        }];
-//
-//        if (callback) callback(YES, nil);
-//    }];
 }
 
 @end

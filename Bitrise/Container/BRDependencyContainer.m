@@ -60,4 +60,10 @@
     return [BRObserver new];
 }
 
+#pragma mark - BREnvironmentProvider -
+
+- (BREnvironment *)environment {
+    return [BREnvironment new];
+}
+
 @end
