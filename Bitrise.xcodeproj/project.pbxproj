@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C9BCE6024FF6D8FE3A58D60 /* libPods-BitriseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF201CD105B5B136D7596A3 /* libPods-BitriseTests.a */; };
+		0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E30344521CEDDD0001757C0 /* BRSettingsMenuController.m */; };
+		0E30344921CEE218001757C0 /* BRAutorun.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E30344721CEE217001757C0 /* BRAutorun.m */; };
 		0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */; };
 		0E3C0B0521175F0A00F2EA35 /* BRBuildActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B0421175F0A00F2EA35 /* BRBuildActionHandler.m */; };
 		0E3C0B082117607A00F2EA35 /* BRRebuildCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B072117607A00F2EA35 /* BRRebuildCommand.m */; };
@@ -70,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E30344421CEDDD0001757C0 /* BRSettingsMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSettingsMenuController.h; sourceTree = "<group>"; };
+		0E30344521CEDDD0001757C0 /* BRSettingsMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSettingsMenuController.m; sourceTree = "<group>"; };
+		0E30344721CEE217001757C0 /* BRAutorun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAutorun.m; sourceTree = "<group>"; };
+		0E30344821CEE217001757C0 /* BRAutorun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAutorun.h; sourceTree = "<group>"; };
 		0E3C0B002117008200F2EA35 /* BRBuildStateInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildStateInfo.h; sourceTree = "<group>"; };
 		0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildStateInfo.m; sourceTree = "<group>"; };
 		0E3C0B0321175F0A00F2EA35 /* BRBuildActionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildActionHandler.h; sourceTree = "<group>"; };
@@ -193,6 +199,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E30344321CEDDA6001757C0 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				0E30344421CEDDD0001757C0 /* BRSettingsMenuController.h */,
+				0E30344521CEDDD0001757C0 /* BRSettingsMenuController.m */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
 		0E42CACC20EC7A7E0033CD03 = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +261,7 @@
 		0E42CAFA20EC7AEF0033CD03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E30344321CEDDA6001757C0 /* Menus */,
 				0E42CB0020EC893C0033CD03 /* Cells */,
 				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
 				0EEF655520F5B2AB0012C45D /* BRCellBuilder.h */,
@@ -341,6 +357,8 @@
 			children = (
 				0E7A18BC21CCE5B10096E1E6 /* BREnvironment.h */,
 				0E7A18BD21CCE5B10096E1E6 /* BREnvironment.m */,
+				0E30344821CEE217001757C0 /* BRAutorun.h */,
+				0E30344721CEE217001757C0 /* BRAutorun.m */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -621,6 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */,
 				0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */,
 				0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */,
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
@@ -633,6 +652,7 @@
 				0E8E9B5820F0820D00494DEB /* BRGetAccountCommand.m in Sources */,
 				0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */,
 				0EE1B85D21B4363D005D5140 /* NSHashTable+FRP.m in Sources */,
+				0E30344921CEE218001757C0 /* BRAutorun.m in Sources */,
 				0E3C0B0B2117609900F2EA35 /* BRAbortCommand.m in Sources */,
 				0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */,
 				0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */,

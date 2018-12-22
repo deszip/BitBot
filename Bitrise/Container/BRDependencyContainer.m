@@ -10,6 +10,7 @@
 
 #import "BRContainerBuilder.h"
 #import "BRCellBuilder.h"
+#import "BRAutorun.h"
 
 @interface BRDependencyContainer ()
 
@@ -63,7 +64,7 @@
 #pragma mark - BREnvironmentProvider -
 
 - (BREnvironment *)environment {
-    return [BREnvironment new];
+    return [[BREnvironment alloc] initWithAutorun:[BRAutorun new]];
 }
 
 @end

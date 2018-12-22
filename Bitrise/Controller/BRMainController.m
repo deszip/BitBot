@@ -14,6 +14,7 @@
 
 #import "BRSyncCommand.h"
 #import "BRBuildStateInfo.h"
+#import "BRSettingsMenuController.h"
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
@@ -31,6 +32,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 
+@property (strong, nonatomic) BRSettingsMenuController *settingsController;
+
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
@@ -46,6 +49,22 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];
+    
+    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:[self.dependencyContainer environment]];
+    [self.settingsController bind:self.settingsMenu];
+    [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
+        switch (action) {
+            case BRSettingsMenuNavigationActionAccounts:
+                //...
+                break;
+                
+            case BRSettingsMenuNavigationActionAbout:
+                //...
+                break;
+                
+            default: break;
+        }
+    }];
 }
 
 - (void)viewDidAppear {
@@ -55,10 +74,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 #pragma mark - Actions -
-
-- (IBAction)quit:(NSMenuItem *)sender {
-    [NSApp terminate:self];
-}
 
 - (IBAction)openSettingsMenu:(NSButton *)sender {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
@@ -77,10 +92,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    if (menuItem.menu == self.settingsMenu) {
-        return YES;
-    }
-    
     if (menuItem.menu == self.buildMenu) {
         id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
         if ([selectedItem isKindOfClass:[BRBuild class]]) {

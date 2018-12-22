@@ -8,7 +8,21 @@
 
 #import "BREnvironment.h"
 
+@interface BREnvironment ()
+
+@property (strong, nonatomic) BRAutorun *autorun;
+
+@end
+
 @implementation BREnvironment
+
+- (instancetype)initWithAutorun:(BRAutorun *)autorun {
+    if (self = [super init]) {
+        _autorun = autorun;
+    }
+    
+    return self;
+}
 
 - (void)postNotifications:(NSArray<BRBuildInfo *> *)builds forApp:(BRAppInfo *)appInfo {
     if (!builds.count) {
@@ -48,6 +62,17 @@
         
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }];
+}
+
+- (BOOL)autolaunchEnabled {
+    return [self.autorun launchOnLoginEnabled];
+}
+- (void)toggleAutolaunch {
+    [self.autorun toggleAutolaunch];
+}
+
+- (void)quitApp {
+    [NSApp terminate:self];
 }
 
 @end

@@ -1035,30 +1035,16 @@
                     <items>
                         <menuItem title="About" tag="1" id="aRv-i9-9CL">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="rebuild:" target="XfG-lQ-9wD" id="0Bk-5Y-x2b"/>
-                                <segue destination="jqU-3H-VNR" kind="show" id="dOx-sg-2MU"/>
-                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="ARh-dw-Oar"/>
                         <menuItem title="Accounts..." tag="1" id="PKg-hP-kvt">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <segue destination="u6Y-Oa-61p" kind="show" id="JxD-80-dYs"/>
-                            </connections>
                         </menuItem>
                         <menuItem title="Run at startup" tag="2" id="rlr-Bp-No8">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="abort:" target="XfG-lQ-9wD" id="aL2-al-Tz6"/>
-                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="6B4-eS-GXx"/>
-                        <menuItem title="Quit" tag="3" keyEquivalent="q" id="f60-ia-sAq">
-                            <connections>
-                                <action selector="quit:" target="XfG-lQ-9wD" id="cve-K6-L0A"/>
-                            </connections>
-                        </menuItem>
+                        <menuItem title="Quit" tag="3" keyEquivalent="q" id="f60-ia-sAq"/>
                     </items>
                     <connections>
                         <outlet property="delegate" destination="XfG-lQ-9wD" id="RAg-j6-0m2"/>
@@ -1262,8 +1248,9 @@
         <scene sceneID="wRK-8i-SNH">
             <objects>
                 <windowController id="jqU-3H-VNR" sceneMemberID="viewController">
-                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zJ9-0d-oYy">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="zJ9-0d-oYy">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>

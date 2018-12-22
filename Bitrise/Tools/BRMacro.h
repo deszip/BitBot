@@ -9,4 +9,6 @@
 #ifndef BRMacro_h
 #define BRMacro_h
 
+#define BR_SAFE_CALL(block, ...) block ? block(__VA_ARGS__) : nil
+
 #endif /* BRMacro_h */
