@@ -1262,7 +1262,7 @@
         <scene sceneID="wRK-8i-SNH">
             <objects>
                 <windowController id="jqU-3H-VNR" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zJ9-0d-oYy">
+                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zJ9-0d-oYy">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -1288,14 +1288,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-A7-HCu">
-                                <rect key="frame" x="20" y="35" width="150" height="195"/>
+                                <rect key="frame" x="20" y="13" width="150" height="217"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-zw-3Vr">
-                                        <rect key="frame" x="11" y="67" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="67" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="bb9-zw-3Vr" secondAttribute="height" multiplier="1:1" id="RDN-yV-FRp"/>
                                         </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="WhP-0z-q5u"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="bitrise-logo" id="WhP-0z-q5u"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j63-6n-mGW">
                                         <rect key="frame" x="36" y="0.0" width="79" height="57"/>
@@ -1304,7 +1304,7 @@
                                                 <rect key="frame" x="-2" y="19" width="83" height="38"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Bitrise" id="2EW-45-DXz">
                                                     <font key="font" size="32" name="HelveticaNeue-UltraLight"/>
-                                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                 </textFieldCell>
                                             </textField>
@@ -1312,7 +1312,7 @@
                                                 <rect key="frame" x="6" y="0.0" width="66" height="19"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version 1.0" id="kdh-jg-TOx">
                                                     <font key="font" size="13" name="HelveticaNeue-UltraLight"/>
-                                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                 </textFieldCell>
                                             </textField>
@@ -1357,7 +1357,7 @@
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="bitrise-logo" width="220" height="220"/>
         <image name="success-status" width="119" height="119"/>
     </resources>
 </document>
