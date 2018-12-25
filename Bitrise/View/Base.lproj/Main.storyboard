@@ -1042,7 +1042,7 @@
             <objects>
                 <windowController showSeguePresentationStyle="single" id="u6Y-Oa-61p" sceneMemberID="viewController">
                     <window key="window" title="Accounts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="qnI-TF-tiT">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="516" y="564" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1669"/>
@@ -1149,30 +1149,46 @@
                                                             <rect key="frame" x="1" y="1" width="465" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="87" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgT-nU-yrl">
-                                                                    <rect key="frame" x="30" y="15" width="405" height="21"/>
+                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgT-nU-yrl">
+                                                                    <rect key="frame" x="10" y="0.0" width="445" height="50"/>
                                                                     <subviews>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="13l-bF-KnQ">
-                                                                            <rect key="frame" x="-2" y="2" width="252" height="17"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Account 1" id="TRk-Vw-pbT">
-                                                                                <font key="font" usesAppearanceFont="YES"/>
-                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I7N-Pg-JRW">
-                                                                            <rect key="frame" x="329" y="-7" width="82" height="32"/>
+                                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JEN-TZ-OAZ">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="70" id="Xsk-7m-aLA"/>
+                                                                                <constraint firstAttribute="width" constant="50" id="cRu-Ds-SDK"/>
+                                                                                <constraint firstAttribute="height" constant="50" id="dqd-zd-tZS"/>
                                                                             </constraints>
-                                                                            <buttonCell key="cell" type="push" title="Remove" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Z9A-zK-uf7">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <connections>
-                                                                                <action selector="removeKey:" target="m8L-ow-dne" id="Deo-2e-mjx"/>
-                                                                            </connections>
-                                                                        </button>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2oX-Xq-MJg"/>
+                                                                        </imageView>
+                                                                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woq-MO-55P">
+                                                                            <rect key="frame" x="60" y="8" width="385" height="34"/>
+                                                                            <subviews>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="13l-bF-KnQ">
+                                                                                    <rect key="frame" x="-2" y="17" width="64" height="17"/>
+                                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Account 1" id="TRk-Vw-pbT">
+                                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GU7-k4-1ZL">
+                                                                                    <rect key="frame" x="-2" y="0.0" width="37" height="17"/>
+                                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Email" id="Ufo-Su-mLN">
+                                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <visibilityPriorities>
+                                                                                <integer value="1000"/>
+                                                                                <integer value="1000"/>
+                                                                            </visibilityPriorities>
+                                                                            <customSpacing>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                <real value="3.4028234663852886e+38"/>
+                                                                            </customSpacing>
+                                                                        </stackView>
                                                                     </subviews>
                                                                     <visibilityPriorities>
                                                                         <integer value="1000"/>
@@ -1185,12 +1201,14 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="zgT-nU-yrl" secondAttribute="trailing" constant="30" id="EuZ-5A-h1g"/>
+                                                                <constraint firstAttribute="trailing" secondItem="zgT-nU-yrl" secondAttribute="trailing" constant="10" id="EuZ-5A-h1g"/>
                                                                 <constraint firstItem="zgT-nU-yrl" firstAttribute="centerY" secondItem="yp2-Cc-eu4" secondAttribute="centerY" id="T4A-Tp-TIM"/>
-                                                                <constraint firstItem="zgT-nU-yrl" firstAttribute="leading" secondItem="yp2-Cc-eu4" secondAttribute="leading" constant="30" id="u30-rG-8QG"/>
+                                                                <constraint firstItem="zgT-nU-yrl" firstAttribute="leading" secondItem="yp2-Cc-eu4" secondAttribute="leading" constant="10" id="u30-rG-8QG"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="accountNameLabel" destination="13l-bF-KnQ" id="lkq-0k-rix"/>
+                                                                <outlet property="avatarImageView" destination="JEN-TZ-OAZ" id="lmL-9a-JFy"/>
+                                                                <outlet property="emailLabel" destination="GU7-k4-1ZL" id="AWm-7S-p5Z"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -1236,7 +1254,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="contentRect" x="1091" y="611" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
                             <outlet property="delegate" destination="jqU-3H-VNR" id="CgA-GY-hig"/>

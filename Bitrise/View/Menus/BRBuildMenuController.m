@@ -51,7 +51,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
             [item setTarget:self];
         }];
         
-        [self.menu.itemArray[BRBuildMenuItemRebuild]   setAction:@selector(rebuild)];
+        // Not supported by Bitrise API yet...
+        //[self.menu.itemArray[BRBuildMenuItemRebuild]   setAction:@selector(rebuild)];
         [self.menu.itemArray[BRBuildMenuItemAbort]     setAction:@selector(abort)];
         [self.menu.itemArray[BRBuildMenuItemDownload]  setAction:@selector(downloadLog)];
         [self.menu.itemArray[BRBuildMenuItemOpenBuild] setAction:@selector(openBuild)];
@@ -63,20 +64,16 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)rebuild {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api appSlug:[[(BRBuild *)selectedItem app] slug] buildSlug:[(BRBuild *)selectedItem slug] token:[[[(BRBuild *)selectedItem app] account] token]];
-        [command execute:^(BOOL result, NSError *error) {
-            NSLog(@"Rebuild result: %i : %@", result, error);
-        }];
+        BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
+        [command execute:nil];
     }
 }
 
 - (void)abort {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api appSlug:[[(BRBuild *)selectedItem app] slug] buildSlug:[(BRBuild *)selectedItem slug] token:[[[(BRBuild *)selectedItem app] account] token]];
-        [command execute:^(BOOL result, NSError *error) {
-            NSLog(@"Abort result: %i : %@", result, error);
-        }];
+        BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
+        [command execute:nil];
     }
 }
 

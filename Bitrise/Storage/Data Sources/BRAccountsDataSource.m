@@ -9,6 +9,7 @@
 #import "BRAccountsDataSource.h"
 
 #import <CoreData/CoreData.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "BRAccount+CoreDataClass.h"
 #import "BRAccountCellView.h"
 
@@ -84,9 +85,18 @@
         BRAccount *account = (BRAccount *)item;
         BRAccountCellView *cell = [outlineView makeViewWithIdentifier:@"BRAccountCellView" owner:self];
         
-        if (account.username) {
-            [cell.accountNameLabel setStringValue:account.username];
+        
+        [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL]
+                                placeholderImage:[NSImage imageNamed:@"avatar-default"]];
+        [cell.accountNameLabel setStringValue:account.username ? account.username : @""];
+        
+        NSString *email = @"";
+        if (account.email) {
+            email = account.email;
+        } else if (account.emailUnconfirmed) {
+            email = account.emailUnconfirmed;
         }
+        [cell.emailLabel setStringValue:email];
         
         return cell;
     }

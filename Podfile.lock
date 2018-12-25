@@ -2,17 +2,23 @@ PODS:
   - EasyMapping (0.22.0):
     - EasyMapping/Core (= 0.22.0)
   - EasyMapping/Core (0.22.0)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - EasyMapping
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - EasyMapping
+    - SDWebImage
 
 SPEC CHECKSUMS:
   EasyMapping: 60f8b3cac9a9d2b76a75e2b96f556480de103601
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 933feb601493dc3be8db5be78d2b7d8562648328
+PODFILE CHECKSUM: 7e5b58c83d9d8a7dd6292d77705b2d36b5101c1f
 
 COCOAPODS: 1.5.3

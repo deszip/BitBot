@@ -4,6 +4,7 @@ target 'Bitrise' do
     # use_frameworks!
 
   pod 'EasyMapping'
+  pod 'SDWebImage'
 
   target 'BitriseTests' do
     inherit! :search_paths

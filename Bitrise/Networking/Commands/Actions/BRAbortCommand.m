@@ -1,14 +1,14 @@
 //
-//  BRRebuildCommand.m
+//  BRAbortCommand.m
 //  Bitrise
 //
 //  Created by Deszip on 05/08/2018.
 //  Copyright © 2018 Bitrise. All rights reserved.
 //
 
-#import "BRRebuildCommand.h"
+#import "BRAbortCommand.h"
 
-@interface BRRebuildCommand ()
+@interface BRAbortCommand ()
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (copy, nonatomic) NSString *appSlug;
@@ -17,24 +17,23 @@
 
 @end
 
-@implementation BRRebuildCommand
+@implementation BRAbortCommand
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api appSlug:(NSString *)appSlug buildSlug:(NSString *)buildSlug token:(NSString *)token {
+- (instancetype)initWithAPI:(BRBitriseAPI *)api build:(BRBuild *)build {
     if (self = [super init]) {
         _api = api;
-        _appSlug = appSlug;
-        _buildSlug = buildSlug;
-        _token = token;
+        _appSlug = build.app.slug;
+        _buildSlug = build.slug;
+        _token = build.app.account.token;
     }
     
     return self;
 }
 
 - (void)execute:(BRCommandResult)callback {
-    [self.api rebuild:self.buildSlug appSlug:self.appSlug token:self.token completion:^(BOOL status, NSError *error) {
+    [self.api abortBuild:self.buildSlug appSlug:self.appSlug token:self.token completion:^(BOOL status, NSError *error) {
         BR_SAFE_CALL(callback, status, error);
     }];
 }
-
 
 @end

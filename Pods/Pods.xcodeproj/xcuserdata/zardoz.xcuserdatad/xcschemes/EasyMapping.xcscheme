@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F398F47562426BDAEE05CA571E9A1F45"
+               BlueprintIdentifier = "10524E27DEBE1284E0DE96AFA308A536"
                BlueprintName = "EasyMapping"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libEasyMapping.a">

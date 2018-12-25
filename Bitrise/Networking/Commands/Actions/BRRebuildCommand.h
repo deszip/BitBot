@@ -1,5 +1,5 @@
 //
-//  BRAbortCommand.h
+//  BRRebuildCommand.h
 //  Bitrise
 //
 //  Created by Deszip on 05/08/2018.
@@ -13,9 +13,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAbortCommand : BRCommand
+@interface BRRebuildCommand : BRCommand
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api appSlug:(NSString *)appSlug buildSlug:(NSString *)buildSlug token:(NSString *)token;
+- (instancetype)initWithAPI:(BRBitriseAPI *)api build:(BRBuild *)build;
 
 @end
 

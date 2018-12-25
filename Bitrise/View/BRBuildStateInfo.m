@@ -45,6 +45,7 @@
             break;
             
         case 3:
+        case 4:
             _statusImageName = @"abort-status";
             _statusTitle = @"Aborted";
             _state = BRBuildStateAborted;
