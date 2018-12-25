@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BRBitriseAPI.h"
-#import "BRStorage.h"
+#import "BRMacro.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

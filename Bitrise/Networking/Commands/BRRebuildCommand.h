@@ -9,10 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BRCommand.h"
+#import "BRBitriseAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRRebuildCommand : BRCommand
+
+- (instancetype)initWithAPI:(BRBitriseAPI *)api appSlug:(NSString *)appSlug buildSlug:(NSString *)buildSlug token:(NSString *)token;
 
 @end
 

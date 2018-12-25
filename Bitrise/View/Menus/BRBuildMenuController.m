@@ -10,6 +10,8 @@
 
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildInfo.h"
+#import "BRAbortCommand.h"
+#import "BRRebuildCommand.h"
 
 static const NSUInteger kMenuItemsCount = 4;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -21,12 +23,22 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @interface BRBuildMenuController ()
 
+@property (strong, nonatomic) BRBitriseAPI *api;
+
 @property (weak, nonatomic) NSMenu *menu;
 @property (weak, nonatomic) NSOutlineView *outlineView;
 
 @end
 
 @implementation BRBuildMenuController
+
+- (instancetype)initWithAPI:(BRBitriseAPI *)api {
+    if (self = [super init]) {
+        _api = api;
+    }
+    
+    return self;
+}
 
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline {
     self.menu = menu;
@@ -51,14 +63,20 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)rebuild {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        
+        BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api appSlug:[[(BRBuild *)selectedItem app] slug] buildSlug:[(BRBuild *)selectedItem slug] token:[[[(BRBuild *)selectedItem app] account] token]];
+        [command execute:^(BOOL result, NSError *error) {
+            NSLog(@"Rebuild result: %i : %@", result, error);
+        }];
     }
 }
 
 - (void)abort {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        
+        BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api appSlug:[[(BRBuild *)selectedItem app] slug] buildSlug:[(BRBuild *)selectedItem slug] token:[[[(BRBuild *)selectedItem app] account] token]];
+        [command execute:^(BOOL result, NSError *error) {
+            NSLog(@"Abort result: %i : %@", result, error);
+        }];
     }
 }
 

@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
+#import "BRBitriseAPI.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildMenuController : NSObject
 
+- (instancetype)initWithAPI:(BRBitriseAPI *)api;
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;
 
 @end

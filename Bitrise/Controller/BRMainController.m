@@ -70,7 +70,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         }
     }];
     
-    self.buildController = [BRBuildMenuController new];
+    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]];
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
 }
 

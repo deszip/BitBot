@@ -8,9 +8,13 @@
 
 #import "BRBitriseAPI.h"
 
+#import "BRMacro.h"
+
 static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me";
 static NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
 static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+static NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
+static NSString * const kRebuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/rebuild";
 
 typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
 
@@ -75,6 +79,18 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
+- (void)abortBuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:( APIActionCallback)completion {
+    [self runRequest:[self abortRequest:buildSlug appSlug:appSlug token:token] completion:^(NSDictionary *result, NSError *error) {
+        BR_SAFE_CALL(completion, YES, error);
+    }];
+}
+
+- (void)rebuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:( APIActionCallback)completion {
+    [self runRequest:[self rebuildRequest:buildSlug appSlug:appSlug token:token] completion:^(NSDictionary *result, NSError *error) {
+        BR_SAFE_CALL(completion, YES, error);
+    }];
+}
+
 #pragma mark - Request builders -
 
 - (NSURLRequest *)accountRequest:(NSString *)token {
@@ -97,6 +113,16 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     NSURLRequest *request = [self requestWithEndpoint:endpoint token:token];
     
     return request;
+}
+
+- (NSURLRequest *)abortRequest:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token {
+    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kAbortEndpoint, appSlug, buildSlug]];
+    return [self requestWithEndpoint:endpoint token:token];
+}
+
+- (NSURLRequest *)rebuildRequest:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token {
+    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kRebuildEndpoint, appSlug, buildSlug]];
+    return [self requestWithEndpoint:endpoint token:token];
 }
 
 - (NSURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {

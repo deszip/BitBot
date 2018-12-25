@@ -8,6 +8,33 @@
 
 #import "BRRebuildCommand.h"
 
+@interface BRRebuildCommand ()
+
+@property (strong, nonatomic) BRBitriseAPI *api;
+@property (copy, nonatomic) NSString *appSlug;
+@property (copy, nonatomic) NSString *buildSlug;
+@property (copy, nonatomic) NSString *token;
+
+@end
+
 @implementation BRRebuildCommand
+
+- (instancetype)initWithAPI:(BRBitriseAPI *)api appSlug:(NSString *)appSlug buildSlug:(NSString *)buildSlug token:(NSString *)token {
+    if (self = [super init]) {
+        _api = api;
+        _appSlug = appSlug;
+        _buildSlug = buildSlug;
+        _token = token;
+    }
+    
+    return self;
+}
+
+- (void)execute:(BRCommandResult)callback {
+    [self.api rebuild:self.buildSlug appSlug:self.appSlug token:self.token completion:^(BOOL status, NSError *error) {
+        BR_SAFE_CALL(callback, status, error);
+    }];
+}
+
 
 @end
