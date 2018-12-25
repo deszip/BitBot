@@ -10,14 +10,16 @@
 
 #import "BRMacro.h"
 
+static const NSUInteger kMenuItemsCount = 7;
 typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
     BRSettingsMenuItemAbout = 0,
-    BRSettingsMenuItemAccounts,
-    BRSettingsMenuItemAutorun,
-    BRSettingsMenuItemQuit
+    BRSettingsMenuItemAccounts = 2,
+    BRSettingsMenuItemAutorun = 3,
+    BRSettingsMenuItemNotifications = 4,
+    BRSettingsMenuItemQuit = 6
 };
 
-@interface BRSettingsMenuController () <NSMenuDelegate>
+@interface BRSettingsMenuController () <NSMenuItemValidation>
 
 @property (strong, nonatomic) BREnvironment *environment;
 @property (weak, nonatomic) NSMenu *menu;
@@ -36,17 +38,18 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
-    [self.menu setDelegate:self];
     
-    if (self.menu.itemArray.count == 4) {
+    if (self.menu.itemArray.count == kMenuItemsCount) {
         [self.menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
             [item setTag:idx];
+            [item setTarget:self];
         }];
         
-        [self.menu.itemArray[BRSettingsMenuItemAbout]       setAction:@selector(showAbout)];
-        [self.menu.itemArray[BRSettingsMenuItemAccounts]    setAction:@selector(showAccounts)];
-        [self.menu.itemArray[BRSettingsMenuItemAutorun]     setAction:@selector(toggleAutorun)];
-        [self.menu.itemArray[BRSettingsMenuItemQuit]        setAction:@selector(quitApp)];
+        [self.menu.itemArray[BRSettingsMenuItemAbout]           setAction:@selector(showAbout)];
+        [self.menu.itemArray[BRSettingsMenuItemAccounts]        setAction:@selector(showAccounts)];
+        [self.menu.itemArray[BRSettingsMenuItemAutorun]         setAction:@selector(toggleAutorun)];
+        [self.menu.itemArray[BRSettingsMenuItemNotifications]   setAction:@selector(toggleNotifications)];
+        [self.menu.itemArray[BRSettingsMenuItemQuit]            setAction:@selector(quitApp)];
     }
 }
 
@@ -64,19 +67,23 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
     [self.environment toggleAutolaunch];
 }
 
+- (void)toggleNotifications {
+    [self.environment toggleNotifications];
+}
+
 - (void)quitApp {
     [self.environment quitApp];
 }
 
-#pragma mark - NSMenuDelegate -
-
-- (void)menuWillOpen:(NSMenu *)menu {
-    //...
-}
+#pragma mark - NSMenuItemValidation -
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     if (menuItem.tag == BRSettingsMenuItemAutorun) {
         [menuItem setState:[self.environment autolaunchEnabled] ? NSControlStateValueOn : NSControlStateValueOff];
+    }
+    
+    if (menuItem.tag == BRSettingsMenuItemNotifications) {
+        [menuItem setState:[self.environment notificationsEnabled] ? NSControlStateValueOn : NSControlStateValueOff];
     }
     
     return YES;

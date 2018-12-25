@@ -19,10 +19,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithAutorun:(BRAutorun *)autorun;
 
+- (void)handleAppLaunch;
+
+#pragma mark - Notifications -
+
+- (BOOL)notificationsEnabled;
+- (void)toggleNotifications;
 - (void)postNotifications:(NSArray<BRBuildInfo *> *)builds forApp:(BRAppInfo *)appInfo;
+
+#pragma mark - Autorun -
 
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
+
+#pragma mark - Quit -
 
 - (void)quitApp;
 

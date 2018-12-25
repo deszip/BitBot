@@ -36,6 +36,7 @@
 #endif
         
         _dependencyContainer = [BRDependencyContainer new];
+        [[_dependencyContainer environment] handleAppLaunch];
         _observer = [_dependencyContainer commandObserver];
         
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -72,7 +73,6 @@
     self.popover.behavior = NSPopoverBehaviorTransient;
 }
 
-
 #pragma mark - Actions -
 
 - (void)togglePopover:(NSStatusBarButton *)sender {
@@ -99,6 +99,5 @@
     
     return self.detachableWindowController.window;
 }
-
 
 @end

@@ -967,9 +967,6 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
-                                            <connections>
-                                                <outlet property="menu" destination="Q6c-WQ-hru" id="IPj-fH-7R8"/>
-                                            </connections>
                                         </outlineView>
                                     </subviews>
                                 </clipView>
@@ -997,6 +994,8 @@
                         <outlet property="buildMenu" destination="Q6c-WQ-hru" id="n3V-JU-dc4"/>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>
                         <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
+                        <segue destination="jqU-3H-VNR" kind="modal" identifier="kAboutWindowSegue" id="6rC-QE-sbB"/>
+                        <segue destination="u6Y-Oa-61p" kind="show" identifier="kAccountWindowSegue" id="NV4-Wk-TbZ"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1004,32 +1003,17 @@
                     <items>
                         <menuItem title="Rebuild" tag="1" id="DyA-c3-ZY8">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="rebuild:" target="XfG-lQ-9wD" id="xtU-wo-a5w"/>
-                            </connections>
                         </menuItem>
                         <menuItem title="Abort" tag="2" id="SQP-qm-MTq">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="abort:" target="XfG-lQ-9wD" id="QN6-cS-6Bp"/>
-                            </connections>
                         </menuItem>
                         <menuItem title="Download log" tag="3" id="6xd-3U-dEj">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="downloadLog:" target="XfG-lQ-9wD" id="GWx-HR-WPp"/>
-                            </connections>
                         </menuItem>
                         <menuItem title="Open build" tag="4" id="RNi-pd-njy">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="openBuild:" target="XfG-lQ-9wD" id="KQx-as-m63"/>
-                            </connections>
                         </menuItem>
                     </items>
-                    <connections>
-                        <outlet property="delegate" destination="XfG-lQ-9wD" id="zdE-z6-UCV"/>
-                    </connections>
                 </menu>
                 <menu title="Settings" id="Gbj-C2-212">
                     <items>
@@ -1043,12 +1027,12 @@
                         <menuItem title="Run at startup" tag="2" id="rlr-Bp-No8">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
+                        <menuItem title="Show build notifications" tag="2" id="MZG-e9-Sd5">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="6B4-eS-GXx"/>
                         <menuItem title="Quit" tag="3" keyEquivalent="q" id="f60-ia-sAq"/>
                     </items>
-                    <connections>
-                        <outlet property="delegate" destination="XfG-lQ-9wD" id="RAg-j6-0m2"/>
-                    </connections>
                 </menu>
             </objects>
             <point key="canvasLocation" x="80" y="505"/>
@@ -1266,10 +1250,10 @@
             </objects>
             <point key="canvasLocation" x="720" y="386"/>
         </scene>
-        <!--About View Controller-->
+        <!--View Controller-->
         <scene sceneID="pyc-n1-OLx">
             <objects>
-                <viewController id="q3v-hi-t6E" customClass="CHAboutViewController" sceneMemberID="viewController">
+                <viewController id="q3v-hi-t6E" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1" customClass="CHPopoverBackgroundView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>

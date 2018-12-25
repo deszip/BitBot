@@ -8,6 +8,9 @@
 
 #import "BREnvironment.h"
 
+static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
+static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
+
 @interface BREnvironment ()
 
 @property (strong, nonatomic) BRAutorun *autorun;
@@ -24,8 +27,27 @@
     return self;
 }
 
+- (void)handleAppLaunch {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kBRFirstLaunchKey]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kBRFirstLaunchKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self toggleNotifications];
+    }
+}
+
+#pragma mark - Notifications -
+
+- (BOOL)notificationsEnabled {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kBRNotificationsKey];
+}
+
+- (void)toggleNotifications {
+    [[NSUserDefaults standardUserDefaults] setBool:![self notificationsEnabled] forKey:kBRNotificationsKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)postNotifications:(NSArray<BRBuildInfo *> *)builds forApp:(BRAppInfo *)appInfo {
-    if (!builds.count) {
+    if (![self notificationsEnabled] || !builds.count) {
         return;
     }
     
@@ -64,12 +86,16 @@
     }];
 }
 
+#pragma mark - Autorun -
+
 - (BOOL)autolaunchEnabled {
     return [self.autorun launchOnLoginEnabled];
 }
 - (void)toggleAutolaunch {
     [self.autorun toggleAutolaunch];
 }
+
+#pragma mark - Quit -
 
 - (void)quitApp {
     [NSApp terminate:self];

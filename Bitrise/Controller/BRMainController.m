@@ -15,6 +15,8 @@
 #import "BRSyncCommand.h"
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
+#import "BRBuildMenuController.h"
+#import "BRSegue.h"
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
@@ -33,6 +35,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
+@property (strong, nonatomic) BRBuildMenuController *buildController;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
@@ -52,24 +55,27 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:[self.dependencyContainer environment]];
     [self.settingsController bind:self.settingsMenu];
+    __weak __typeof (self) weakSelf = self;
     [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
         switch (action) {
             case BRSettingsMenuNavigationActionAccounts:
-                //...
+                [weakSelf performSegueWithIdentifier:kAccountWindowSegue sender:weakSelf];
                 break;
                 
             case BRSettingsMenuNavigationActionAbout:
-                //...
+                [weakSelf performSegueWithIdentifier:kAboutWindowSegue sender:weakSelf];
                 break;
                 
             default: break;
         }
     }];
+    
+    self.buildController = [BRBuildMenuController new];
+    [self.buildController bind:self.buildMenu toOutline:self.outlineView];
 }
 
 - (void)viewDidAppear {
     [super viewDidAppear];
-    
     [self.dataSource fetch];
 }
 
@@ -78,69 +84,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (IBAction)openSettingsMenu:(NSButton *)sender {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
-}
-
-#pragma mark - NSMenuDelegate -
-
-- (void)menuWillOpen:(NSMenu *)menu {
-    if (menu == self.buildMenu) {
-        id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-        if (![selectedItem isKindOfClass:[BRBuild class]]) {
-            [menu cancelTrackingWithoutAnimation];
-        }
-    }
-}
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    if (menuItem.menu == self.buildMenu) {
-        id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-        if ([selectedItem isKindOfClass:[BRBuild class]]) {
-            BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
-            BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
-            switch (menuItem.tag) {
-                case BRBuildMenuItemRebuild: return !buildInProgress;
-                case BRBuildMenuItemAbort: return buildInProgress;
-                case BRBuildMenuItemDownload: return !buildInProgress;
-                case BRBuildMenuItemOpenBuild: return YES;
-                default: return NO;
-            }
-        }
-    }
-    
-    return NO;
-}
-
-#pragma mark - Actions -
-
-- (IBAction)presentationChanged:(NSSegmentedControl *)sender {
-    switch (sender.selectedSegment) {
-        case 0: [self.dataSource setPresentationStyle:BRPresentationStyleList]; break;
-        case 1: [self.dataSource setPresentationStyle:BRPresentationStyleTree]; break;
-    }
-}
-
-- (IBAction)rebuild:(id)sender {
-    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-}
-
-- (IBAction)abort:(id)sender {
-    //id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-}
-
-- (IBAction)downloadLog:(id)sender {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/api/build/%@/logs.json?&download=log", [(BRBuild *)selectedItem slug]];
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
-    }
-}
-
-- (IBAction)openBuild:(id)sender {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/build/%@", [(BRBuild *)selectedItem slug]];
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
-    }
 }
 
 @end
