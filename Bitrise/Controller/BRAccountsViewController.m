@@ -11,6 +11,7 @@
 #import "BRAccount+CoreDataClass.h"
 #import "BRGetAccountCommand.h"
 #import "BRRemoveAccountCommand.h"
+#import "BRSyncCommand.h"
 
 @interface BRAccountsViewController ()
 
@@ -41,7 +42,13 @@
     BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithAPI:self.api
                                                                     storage:self.storage
                                                                       token:self.keyField.stringValue];
-    [command execute:nil];
+    [command execute:^(BOOL result, NSError *error) {
+        if (result) {
+            BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]
+                                                                   environment:[self.dependencyContainer environment]];
+            [syncCommand execute:nil];
+        }
+    }];
 }
 
 - (IBAction)removeKey:(NSButton *)sender {

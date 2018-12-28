@@ -12,7 +12,7 @@ static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me"
 static NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
 static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
 static NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
-static NSString * const kRebuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/rebuild";
+static NSString * const kStartBuildEndpoint = @"https://app.bitrise.io/app/%@/build/start.json";
 
 @implementation BRRequestBuilder
 
@@ -57,11 +57,23 @@ static NSString * const kRebuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@
 }
 
 - (NSURLRequest *)rebuildRequest:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token {
-    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kRebuildEndpoint, appSlug, buildSlug]];
+    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kStartBuildEndpoint, appSlug]];
     NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:token] mutableCopy];
     [request setHTTPMethod:@"POST"];
+    NSError *serializationError;
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ @"hook_info": @{ @"type" : @"bitrise",
+                                                                                      @"build_trigger_token" : @"" },
+                                                                     @"build_params": @{ @"tag" : @"",
+                                                                                         @"branch" : @"",
+                                                                                         @"workflow_id" : @"" } }
+                                                          options:0
+                                                            error:&serializationError];
+    if (requestData) {
+        [request setHTTPBody:requestData];
+        return [request copy];
+    }
     
-    return [request copy];
+    return nil;
 }
 
 - (NSURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {
