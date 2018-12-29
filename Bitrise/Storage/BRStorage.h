@@ -26,6 +26,7 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
 #pragma mark - Accounts -
 - (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error;
+- (BRAccount *)accountWithToken:(NSString *)token error:(NSError * __autoreleasing *)error;
 - (void)saveAccount:(BRAccountInfo *)accountInfo;
 - (void)removeAccount:(NSString *)token completion:(BRStorageResult)completion;
 

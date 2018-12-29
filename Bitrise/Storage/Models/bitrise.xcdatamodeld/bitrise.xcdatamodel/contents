@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="BRAccount" representedClassName="BRAccount" syncable="YES" codeGenerationType="class">
         <attribute name="avatarURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,9 +7,10 @@
         <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRApp" inverseName="account" inverseEntity="BRApp" syncable="YES"/>
+        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BRApp" inverseName="account" inverseEntity="BRApp" syncable="YES"/>
     </entity>
     <entity name="BRApp" representedClassName="BRApp" syncable="YES" codeGenerationType="class">
+        <attribute name="avatarURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="disabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="ownerAccountType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownerName" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,7 +54,7 @@
     </entity>
     <elements>
         <element name="BRAccount" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="BRApp" positionX="-54" positionY="-9" width="128" height="270"/>
+        <element name="BRApp" positionX="-54" positionY="-9" width="128" height="285"/>
         <element name="BRBuild" positionX="-36" positionY="9" width="128" height="390"/>
     </elements>
 </model>

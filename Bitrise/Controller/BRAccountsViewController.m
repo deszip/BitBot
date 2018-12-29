@@ -8,6 +8,8 @@
 
 #import "BRAccountsViewController.h"
 
+#import "BRAccountsMenuController.h"
+
 #import "BRAccount+CoreDataClass.h"
 #import "BRGetAccountCommand.h"
 #import "BRRemoveAccountCommand.h"
@@ -17,9 +19,13 @@
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet NSTextField *keyField;
+@property (strong) IBOutlet NSMenu *controlMenu;
+
+@property (strong, nonatomic) BRAccountsMenuController *menuController;
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
+@property (strong, nonatomic) BRSyncEngine *syncEngine;
 @property (strong, nonatomic) BRAccountsDataSource *dataSource;
 
 @end
@@ -31,24 +37,20 @@
 - (void)viewDidAppear {
     [super viewDidAppear];
     
+    self.menuController = [BRAccountsMenuController new];
+    [self.menuController bind:self.controlMenu toOutline:self.outlineView];
+    
     self.api = [self.dependencyContainer bitriseAPI];
     self.storage = [self.dependencyContainer storage];
+    self.syncEngine = [self.dependencyContainer syncEngine];
     self.dataSource = [self.dependencyContainer accountsDataSource];
     [self.dataSource bind:self.outlineView];
     [self.dataSource fetch];
 }
 
 - (IBAction)saveKey:(NSButton *)sender {
-    BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithAPI:self.api
-                                                                    storage:self.storage
-                                                                      token:self.keyField.stringValue];
-    [command execute:^(BOOL result, NSError *error) {
-        if (result) {
-            BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]
-                                                                   environment:[self.dependencyContainer environment]];
-            [syncCommand execute:nil];
-        }
-    }];
+    BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithSyncEngine:self.syncEngine token:self.keyField.stringValue];
+    [command execute:nil];
 }
 
 - (IBAction)removeKey:(NSButton *)sender {

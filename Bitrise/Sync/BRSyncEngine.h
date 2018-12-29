@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage;
 
 - (void)sync;
+- (void)addAccount:(NSString *)accountToken;
 
 @property (copy, nonatomic, nullable) void (^syncCallback)(BRSyncResult *result);
 

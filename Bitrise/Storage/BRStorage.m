@@ -51,6 +51,18 @@
     return accounts;
 }
 
+- (BRAccount *)accountWithToken:(NSString *)token error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRAccount fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"token = %@", token];
+    NSArray *accounts = [self.context executeFetchRequest:request error:error];
+    
+    if (accounts.count == 1) {
+        return accounts.firstObject;
+    }
+    
+    return nil;
+}
+
 - (void)saveAccount:(BRAccountInfo *)accountInfo {
     [self.context performBlock:^{
         [self.context setAutomaticallyMergesChangesFromParent:YES];

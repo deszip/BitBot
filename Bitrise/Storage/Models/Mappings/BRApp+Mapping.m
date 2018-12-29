@@ -23,6 +23,7 @@
         [mapping mapKeyPath:@"is_disabled" toProperty:@"disabled"];
         [mapping mapKeyPath:@"status" toProperty:@"status"];
         [mapping mapKeyPath:@"is_public" toProperty:@"public"];
+        [mapping mapKeyPath:@"avatar_url" toProperty:@"avatarURL"];
         [mapping mapKeyPath:@"owner.account_type" toProperty:@"ownerAccountType"];
         [mapping mapKeyPath:@"owner.name" toProperty:@"ownerName"];
         [mapping mapKeyPath:@"owner.slug" toProperty:@"ownerSlug"];

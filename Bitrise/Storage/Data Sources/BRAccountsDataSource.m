@@ -11,7 +11,9 @@
 #import <CoreData/CoreData.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "BRAccount+CoreDataClass.h"
+#import "BRApp+CoreDataClass.h"
 #import "BRAccountCellView.h"
+#import "BRManagingAppCellView.h"
 
 @interface BRAccountsDataSource () <NSFetchedResultsControllerDelegate>
 
@@ -63,14 +65,26 @@
 #pragma mark - NSOutlineViewDataSource -
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
+    if ([item isKindOfClass:[BRAccount class]]) {
+        return [[(BRAccount *)item apps] objectAtIndex:index];
+    }
+    
     return [self.accountsFRC.sections[0] objects][index];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+    if ([item isKindOfClass:[BRAccount class]]) {
+        return YES;
+    }
+    
     return NO;
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
+    if ([item isKindOfClass:[BRAccount class]]) {
+        return [[(BRAccount *)item apps] count];
+    }
+    
     return [[self.accountsFRC.sections[0] objects] count];
 }
 
@@ -85,7 +99,6 @@
         BRAccount *account = (BRAccount *)item;
         BRAccountCellView *cell = [outlineView makeViewWithIdentifier:@"BRAccountCellView" owner:self];
         
-        
         [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL]
                                 placeholderImage:[NSImage imageNamed:@"avatar-default"]];
         [cell.accountNameLabel setStringValue:account.username ? account.username : @""];
@@ -97,6 +110,17 @@
             email = account.emailUnconfirmed;
         }
         [cell.emailLabel setStringValue:email];
+        
+        return cell;
+    }
+    
+    if ([item isKindOfClass:[BRApp class]]) {
+        BRApp *app = (BRApp *)item;
+        BRManagingAppCellView *cell = [outlineView makeViewWithIdentifier:@"BRManagingAppCellView" owner:self];
+        [cell.appIcon sd_setImageWithURL:[NSURL URLWithString:app.avatarURL]
+                        placeholderImage:[NSImage imageNamed:@"avatar-default"]];
+        [cell.appName setStringValue:app.title];
+        [cell.appRepoURL setStringValue:app.repoURL];
         
         return cell;
     }

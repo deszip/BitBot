@@ -10,6 +10,7 @@
 
 #import "ASQueue.h"
 #import "BRSyncOperation.h"
+#import "BRAddAccountOperation.h"
 
 @interface BRSyncEngine ()
 
@@ -38,6 +39,11 @@
     [syncOperation setSyncCallback:self.syncCallback];
     
     [self.queue addOperation:syncOperation];
+}
+
+- (void)addAccount:(NSString *)accountToken {
+    BRAddAccountOperation *accountOperation = [[BRAddAccountOperation alloc] initWithStorage:self.storage api:self.API accountToken:accountToken];
+    [self.queue addOperation:accountOperation];
 }
 
 @end

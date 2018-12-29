@@ -12,6 +12,7 @@
 
 @interface BRGetAccountCommand ()
 
+@property (strong, nonatomic, readonly) BRSyncEngine *syncEngine;
 @property (strong, nonatomic, readonly) BRBitriseAPI *api;
 @property (strong, nonatomic, readonly) BRStorage *storage;
 @property (copy, nonatomic) NSString *token;
@@ -30,11 +31,22 @@
     return self;
 }
 
+- (instancetype)initWithSyncEngine:(BRSyncEngine *)engine token:(NSString *)token {
+    if (self = [super init]) {
+        _syncEngine = engine;
+        _token = token;
+    }
+    
+    return self;
+}
+
 - (void)execute:(BRCommandResult)callback {
-    [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
-        [self.storage saveAccount:accountInfo];
-        BR_SAFE_CALL(callback, YES, nil);
-    }];
+//    [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
+//        [self.storage saveAccount:accountInfo];
+//        BR_SAFE_CALL(callback, YES, nil);
+//    }];
+    
+    [self.syncEngine addAccount:self.token];
 }
 
 

@@ -49,8 +49,17 @@
             return;
         }
         
+        if (accounts.count == 0) {
+            NSLog(@"No accounts, nothing to do...");
+            [super finish];
+            return;
+        }
+        
         NSLog(@"Got %lu accounts", (unsigned long)accounts.count);
         [accounts enumerateObjectsUsingBlock:^(BRAccount *account, NSUInteger idx, BOOL *stop) {
+            
+            dispatch_group_enter(self.group);
+            
             [self.api getApps:account.token completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
                 if (!appsInfo) {
                     NSLog(@"Failed to get apps from API: %@", error);
@@ -80,6 +89,8 @@
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
                     [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs];
                 }];
+              
+                dispatch_group_leave(self.group);
             }];
         }];
         
