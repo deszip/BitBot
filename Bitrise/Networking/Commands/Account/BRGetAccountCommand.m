@@ -41,11 +41,6 @@
 }
 
 - (void)execute:(BRCommandResult)callback {
-//    [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
-//        [self.storage saveAccount:accountInfo];
-//        BR_SAFE_CALL(callback, YES, nil);
-//    }];
-    
     [self.syncEngine addAccount:self.token];
 }
 

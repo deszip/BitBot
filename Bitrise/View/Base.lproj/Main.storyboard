@@ -1264,7 +1264,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <segue destination="pi4-fd-2TY" kind="sheet" id="Css-cr-yLg"/>
+                                                        <action selector="addAccount:" target="m8L-ow-dne" id="6De-FE-rEt"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZyA-Uw-bYm">
@@ -1276,6 +1276,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="removeAccount:" target="m8L-ow-dne" id="fD0-8l-4ph"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1321,17 +1324,18 @@
                     <connections>
                         <outlet property="controlMenu" destination="Qsv-eV-BMd" id="cuu-3D-C2p"/>
                         <outlet property="outlineView" destination="RU5-K3-JO8" id="qAI-NK-bgS"/>
+                        <segue destination="pi4-fd-2TY" kind="sheet" identifier="BRKeyInputViewController" id="OvU-b2-oMp"/>
                     </connections>
                 </viewController>
                 <customObject id="8gU-cS-HHk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <menu id="Qsv-eV-BMd"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="968"/>
+            <point key="canvasLocation" x="1333" y="968"/>
         </scene>
-        <!--View Controller-->
+        <!--Key Input View Controller-->
         <scene sceneID="rkT-zy-wt0">
             <objects>
-                <viewController id="pi4-fd-2TY" sceneMemberID="viewController">
+                <viewController id="pi4-fd-2TY" customClass="BRKeyInputViewController" sceneMemberID="viewController">
                     <view key="view" id="xR3-Lz-6v6">
                         <rect key="frame" x="0.0" y="0.0" width="504" height="155"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1348,6 +1352,9 @@
 Gw
 </string>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="dismiss:" target="pi4-fd-2TY" id="df6-pC-FfI"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OdU-ez-z6K">
                                         <rect key="frame" x="79" y="4" width="70" height="32"/>
@@ -1355,6 +1362,9 @@ Gw
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="save:" target="pi4-fd-2TY" id="JSq-bV-hnS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1427,10 +1437,13 @@ Gw
                             <constraint firstAttribute="trailing" secondItem="wJu-wj-rfn" secondAttribute="trailing" constant="20" id="ojM-v0-7LB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="keyField" destination="kWG-HJ-8b6" id="LE1-09-cm2"/>
+                    </connections>
                 </viewController>
                 <customObject id="Lc2-yZ-b6e" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1883" y="791"/>
+            <point key="canvasLocation" x="1906" y="968"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="wRK-8i-SNH">

@@ -12,14 +12,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger, BRPresentationStyle) {
-    BRPresentationStyleList,
-    BRPresentationStyleTree
-};
+//typedef NS_ENUM(NSInteger, BRPresentationStyle) {
+//    BRPresentationStyleList,
+//    BRPresentationStyleTree
+//};
 
 @interface BRAppsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
 
-@property (assign, nonatomic) BRPresentationStyle presentationStyle;
+//@property (assign, nonatomic) BRPresentationStyle presentationStyle;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithContainer:(NSPersistentContainer *)container cellBuilder:(BRCellBuilder *)cellBuilder  NS_DESIGNATED_INITIALIZER;

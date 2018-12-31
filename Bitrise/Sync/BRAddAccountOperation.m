@@ -36,6 +36,11 @@
     
     [self.storage perform:^{
         [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
+            if (!accountInfo) {
+                [super finish];
+                return;
+            }
+            
             [self.storage saveAccount:accountInfo];
             
             // Dispatch sync

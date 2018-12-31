@@ -51,8 +51,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
             [item setTarget:self];
         }];
         
-        // Not supported by Bitrise API yet...
-        //[self.menu.itemArray[BRBuildMenuItemRebuild]   setAction:@selector(rebuild)];
+        [self.menu.itemArray[BRBuildMenuItemRebuild]   setAction:@selector(rebuild)];
         [self.menu.itemArray[BRBuildMenuItemAbort]     setAction:@selector(abort)];
         [self.menu.itemArray[BRBuildMenuItemDownload]  setAction:@selector(downloadLog)];
         [self.menu.itemArray[BRBuildMenuItemOpenBuild] setAction:@selector(openBuild)];

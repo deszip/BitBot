@@ -8,6 +8,8 @@
 
 #import "BRAccountsViewController.h"
 
+#import "BRKeyRequestContext.h"
+#import "BRKeyInputViewController.h"
 #import "BRAccountsMenuController.h"
 
 #import "BRAccount+CoreDataClass.h"
@@ -18,7 +20,6 @@
 @interface BRAccountsViewController ()
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
-@property (weak) IBOutlet NSTextField *keyField;
 @property (strong) IBOutlet NSMenu *controlMenu;
 
 @property (strong, nonatomic) BRAccountsMenuController *menuController;
@@ -37,28 +38,63 @@
 - (void)viewDidAppear {
     [super viewDidAppear];
     
-    self.menuController = [BRAccountsMenuController new];
-    [self.menuController bind:self.controlMenu toOutline:self.outlineView];
-    
+    // Dependencies
     self.api = [self.dependencyContainer bitriseAPI];
     self.storage = [self.dependencyContainer storage];
-    self.syncEngine = [self.dependencyContainer syncEngine];
     self.dataSource = [self.dependencyContainer accountsDataSource];
+    self.syncEngine = [self.dependencyContainer syncEngine];
+    
+    // Menu controller setup
+    self.menuController = [[BRAccountsMenuController alloc] initWithAPI:self.api storage:self.storage];
+    __weak typeof(self) weakSelf = self;
+    [self.menuController setNavigationCallback:^(BRAppMenuNavigationAction action, NSString *slug) {
+        if (action == BRAppMenuNavigationActionAddKey) {
+            [weakSelf performSegueWithIdentifier:@"BRKeyInputViewController" sender:[BRKeyRequestContext appContext:slug]];
+        }
+    }];
+    [self.menuController bind:self.controlMenu toOutline:self.outlineView];
+    
+    // Accounts datasource setup
     [self.dataSource bind:self.outlineView];
     [self.dataSource fetch];
 }
 
-- (IBAction)saveKey:(NSButton *)sender {
-    BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithSyncEngine:self.syncEngine token:self.keyField.stringValue];
-    [command execute:nil];
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationController isKindOfClass:[BRKeyInputViewController class]] &&
+        [sender isKindOfClass:[BRKeyRequestContext class]]) {
+        BRKeyInputViewController *inputController = (BRKeyInputViewController *)segue.destinationController;
+        BRKeyRequestContext *context = (BRKeyRequestContext *)sender;
+        [inputController setInputCallback:^(NSString *input) {
+            switch (context.type) {
+                case BRKeyRequestContextTypeApp:
+                    NSLog(@"Add key: %@, for app: %@", input, context.appSlug);
+                    break;
+                    
+                case BRKeyRequestContextTypeAccount: {
+                    NSLog(@"Add account with token: %@", input);
+                    BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithSyncEngine:self.syncEngine token:input];
+                    [command execute:nil];
+                    break;
+                }
+                    
+                case BRKeyRequestContextTypeUndefined: break;
+            }
+        }];
+    }
 }
 
-- (IBAction)removeKey:(NSButton *)sender {
-    BRAccount *selectedAccount = [self.outlineView itemAtRow:[self.outlineView rowForView:sender]];
-    BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
-                                                                          storage:self.storage
-                                                                            token:selectedAccount.token];
-    [command execute:nil];
+- (IBAction)addAccount:(NSButton *)sender {
+    [self performSegueWithIdentifier:@"BRKeyInputViewController" sender:[BRKeyRequestContext accountContext]];
+}
+
+- (IBAction)removeAccount:(NSButton *)sender {
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+        BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
+                                                                              storage:self.storage
+                                                                                token:[(BRAccount *)selectedItem token]];
+        [command execute:nil];
+    }
 }
 
 @end

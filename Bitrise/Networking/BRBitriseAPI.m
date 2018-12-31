@@ -11,6 +11,8 @@
 #import "BRMacro.h"
 #import "BRRequestBuilder.h"
 
+NSString * const kBRBitriseAPIDomain = @"kBRBitriseAPIDomain";
+
 static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me";
 static NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
 static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
@@ -98,16 +100,42 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
 
 - (void)runRequest:(NSURLRequest *)request completion:(APICallback)completion {
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *urlResponse, NSError *error) {
-        if (data) {
-            NSError *serializationError = nil;
-            NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&serializationError];
-            completion(response, nil);
-        } else {
-            completion(nil, error);
-        }
+        NSError *serializationError;
+        NSDictionary *response = [self serializedResponse:data urlResponse:urlResponse requestError:error error:&serializationError];
+        completion(response, serializationError);
     }];
     
     [task resume];
+}
+
+- (NSDictionary *)serializedResponse:(NSData *)data urlResponse:(NSURLResponse *)urlResponse requestError:(NSError *)requestError error:(NSError * __autoreleasing *)error {
+    // Get HTTP status
+    BOOL statusCodeOK = YES;
+    NSUInteger statusCode = 0;
+    if ([urlResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+        statusCode = [(NSHTTPURLResponse *)urlResponse statusCode];
+        statusCodeOK = (statusCode >= 200 && statusCode < 300);
+    }
+    
+    if (data) {
+        if (statusCodeOK) {
+            // We have response data and status is OK
+            return [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
+        } else {
+            // Status is not ok but we still have reponse, get reason from it
+            NSDictionary *reason = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
+            if (reason) {
+                *error = [NSError errorWithDomain:kBRBitriseAPIDomain code:statusCode userInfo:@{ NSLocalizedDescriptionKey : reason[@"message"] }];
+            } else {
+                *error = [NSError errorWithDomain:kBRBitriseAPIDomain code:statusCode userInfo:@{ NSLocalizedDescriptionKey : @"Unknown error" }];
+            }
+            return nil;
+        }
+    }
+    
+    // No data
+    *error = [NSError errorWithDomain:kBRBitriseAPIDomain code:statusCode userInfo:@{ NSLocalizedDescriptionKey : @"Unknown error" }];
+    return nil;
 }
 
 @end
