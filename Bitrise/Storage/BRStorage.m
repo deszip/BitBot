@@ -29,6 +29,7 @@
     if (self = [super init]) {
         _container = container;
         _context = [container newBackgroundContext];
+        [_context setAutomaticallyMergesChangesFromParent:YES];
     }
     
     return self;

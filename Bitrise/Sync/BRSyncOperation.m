@@ -36,7 +36,7 @@
 - (void)start {
     [super start];
 
-    NSLog(@"Start sync...");
+    NSLog(@"Start sync... storage: %@", self.storage);
     
     self.group = dispatch_group_create();
     
