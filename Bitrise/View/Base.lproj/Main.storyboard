@@ -1322,8 +1322,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="yXC-fe-QRP" id="hs1-dq-Gcu"/>
                         <outlet property="controlMenu" destination="Qsv-eV-BMd" id="cuu-3D-C2p"/>
                         <outlet property="outlineView" destination="RU5-K3-JO8" id="qAI-NK-bgS"/>
+                        <outlet property="removeButton" destination="ZyA-Uw-bYm" id="Idc-ai-1VR"/>
                         <segue destination="pi4-fd-2TY" kind="sheet" identifier="BRKeyInputViewController" id="OvU-b2-oMp"/>
                     </connections>
                 </viewController>

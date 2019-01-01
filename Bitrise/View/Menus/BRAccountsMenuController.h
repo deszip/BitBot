@@ -14,14 +14,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, BRAppMenuNavigationAction) {
-    BRAppMenuNavigationActionUndefined = 0,
-    BRAppMenuNavigationActionAddKey
+typedef NS_ENUM(NSUInteger, BRAppMenuAction) {
+    BRAppMenuActionUndefined = 0,
+    BRAppMenuActionAddKey,
+    BRAppMenuActionRemoveAccount
 };
 
 @interface BRAccountsMenuController : NSObject
 
-@property (copy, nonatomic) void (^navigationCallback)(BRAppMenuNavigationAction action, NSString *slug);
+@property (copy, nonatomic) void (^actionCallback)(BRAppMenuAction action, NSString *slug);
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage;
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;
