@@ -99,9 +99,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
         BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
         BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
+        BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress || buildInfo.stateInfo.state == BRBuildStateHold;
         switch (menuItem.tag) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
-            case BRBuildMenuItemAbort: return buildInProgress;
+            case BRBuildMenuItemAbort: return buildCouldBeAborted;
             case BRBuildMenuItemDownload: return !buildInProgress;
             case BRBuildMenuItemOpenBuild: return YES;
             default: return NO;

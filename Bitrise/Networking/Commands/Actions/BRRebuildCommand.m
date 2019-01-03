@@ -12,8 +12,10 @@
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (copy, nonatomic) NSString *appSlug;
-@property (copy, nonatomic) NSString *buildSlug;
-@property (copy, nonatomic) NSString *token;
+@property (copy, nonatomic) NSString *buildToken;
+@property (copy, nonatomic) NSString *branch;
+@property (copy, nonatomic) NSString *commit;
+@property (copy, nonatomic) NSString *workflow;
 
 @end
 
@@ -23,15 +25,22 @@
     if (self = [super init]) {
         _api = api;
         _appSlug = build.app.slug;
-        _buildSlug = build.slug;
-        _token = build.app.account.token;
+        _buildToken = build.app.buildToken;
+        _branch = build.branch;
+        _commit = build.commitHash;
+        _workflow = build.workflow;
     }
     
     return self;
 }
 
 - (void)execute:(BRCommandResult)callback {
-    [self.api rebuild:self.buildSlug appSlug:self.appSlug token:self.token completion:^(BOOL status, NSError *error) {
+    [self.api rebuildApp:self.appSlug
+              buildToken:self.buildToken
+                  branch:self.branch
+                  commit:self.commit
+                workflow:self.workflow
+              completion:^(BOOL status, NSError *error) {
         BR_SAFE_CALL(callback, status, error);
     }];
 }

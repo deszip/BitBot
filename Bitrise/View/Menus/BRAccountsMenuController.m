@@ -49,14 +49,6 @@
 }
 
 - (void)deleteAccount {
-//    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-//    if ([selectedItem isKindOfClass:[BRAccount class]]) {
-//        BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
-//                                                                              storage:self.storage
-//                                                                                token:[(BRAccount *)selectedItem token]];
-//        [command execute:nil];
-//    }
-    
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRAccount class]]) {
         BR_SAFE_CALL(self.actionCallback, BRAppMenuActionRemoveAccount, [(BRAccount *)selectedItem slug]);

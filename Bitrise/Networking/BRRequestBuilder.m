@@ -56,16 +56,20 @@ static NSString * const kStartBuildEndpoint = @"https://app.bitrise.io/app/%@/bu
     return nil;
 }
 
-- (NSURLRequest *)rebuildRequest:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token {
+- (NSURLRequest *)rebuildRequest:(NSString *)appSlug
+                      buildToken:(NSString *)buildToken
+                          branch:(NSString *)branch
+                          commit:(NSString *)commit
+                        workflow:(NSString *)workflow {
     NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kStartBuildEndpoint, appSlug]];
-    NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:token] mutableCopy];
+    NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:nil] mutableCopy];
     [request setHTTPMethod:@"POST"];
     NSError *serializationError;
     NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ @"hook_info": @{ @"type" : @"bitrise",
-                                                                                      @"build_trigger_token" : @"" },
-                                                                     @"build_params": @{ @"tag" : @"",
-                                                                                         @"branch" : @"",
-                                                                                         @"workflow_id" : @"" } }
+                                                                                      @"build_trigger_token" : buildToken },
+                                                                     @"build_params": @{ @"branch" : branch,
+                                                                                         @"commit_hash" : commit,
+                                                                                         @"workflow_id" : workflow } }
                                                           options:0
                                                             error:&serializationError];
     if (requestData) {
@@ -78,8 +82,10 @@ static NSString * const kStartBuildEndpoint = @"https://app.bitrise.io/app/%@/bu
 
 - (NSURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpoint];
-    NSString *tokenString = [NSString stringWithFormat:@"token %@", token];
-    [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
+    if (token) {
+        NSString *tokenString = [NSString stringWithFormat:@"token %@", token];
+        [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
+    }
     
     return [request copy];
 }

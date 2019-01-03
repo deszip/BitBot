@@ -135,6 +135,19 @@
     return apps;
 }
 
+- (BOOL)addBuildToken:(NSString *)token toApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRApp fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", appSlug];
+    NSArray <BRApp *> *apps = [self.context executeFetchRequest:request error:error];
+    
+    if (apps.count == 1 && token) {
+        [apps.firstObject setBuildToken:token];
+        return [self saveContext:self.context error:error];
+    }
+    
+    return NO;
+}
+
 #pragma mark - Builds -
 
 - (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error {

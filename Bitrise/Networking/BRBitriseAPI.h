@@ -28,7 +28,12 @@ typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 - (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
 
 - (void)abortBuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:(APIActionCallback)completion;
-- (void)rebuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:(APIActionCallback)completion;
+- (void)rebuildApp:(NSString *)appSlug
+        buildToken:(NSString *)token
+            branch:(NSString *)branch
+            commit:(NSString *)commit
+          workflow:(NSString *)workflow
+        completion:(APIActionCallback)completion;
 
 @end
 

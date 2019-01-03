@@ -33,6 +33,7 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 #pragma mark - Apps -
 - (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
 - (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;
+- (BOOL)addBuildToken:(NSString *)token toApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error;
 
 #pragma mark - Builds -
 - (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error;

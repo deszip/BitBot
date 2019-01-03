@@ -16,6 +16,7 @@
 #import "BRGetAccountCommand.h"
 #import "BRRemoveAccountCommand.h"
 #import "BRSyncCommand.h"
+#import "BRAddBuildTokenCommand.h"
 
 @interface BRAccountsViewController ()
 
@@ -55,8 +56,9 @@
             [weakSelf performSegueWithIdentifier:@"BRKeyInputViewController" sender:[BRKeyRequestContext appContext:slug]];
         }
         if (action == BRAppMenuActionRemoveAccount) {
-            [weakSelf confirmDeletion];
-            //[weakSelf removeSelectedAccount];
+            [weakSelf confirmDeletion:^{
+                [weakSelf removeSelectedAccount];
+            }];
         }
     }];
     [self.menuController bind:self.controlMenu toOutline:self.outlineView];
@@ -77,9 +79,16 @@
         BRKeyRequestContext *context = (BRKeyRequestContext *)sender;
         [inputController setInputCallback:^(NSString *input) {
             switch (context.type) {
-                case BRKeyRequestContextTypeApp:
+                case BRKeyRequestContextTypeApp: {
                     NSLog(@"Add key: %@, for app: %@", input, context.appSlug);
+                    BRAddBuildTokenCommand *command = [[BRAddBuildTokenCommand alloc] initWithStorage:self.storage appSlug:context.appSlug token:input];
+                    [command execute:^(BOOL result, NSError *error) {
+                        if (result) {
+                            [self.outlineView reloadData];
+                        }
+                    }];
                     break;
+                }
                     
                 case BRKeyRequestContextTypeAccount: {
                     NSLog(@"Add account with token: %@", input);
@@ -112,20 +121,12 @@
 }
 
 - (IBAction)removeAccount:(NSButton *)sender {
-    [self confirmDeletion];
-    
-//    [self removeSelectedAccount];
-    
-//    id selectedItem = [self.outlineView itemAtRow:[self.outlineView selectedRow]];
-//    if ([selectedItem isKindOfClass:[BRAccount class]]) {
-//        BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
-//                                                                              storage:self.storage
-//                                                                                token:[(BRAccount *)selectedItem token]];
-//        [command execute:nil];
-//    }
+    [self confirmDeletion:^{
+        [self removeSelectedAccount];
+    }];
 }
 
-- (void)confirmDeletion {
+- (void)confirmDeletion:(void(^)(void))callback {
     NSAlert *alert = [NSAlert new];
     alert.alertStyle = NSAlertStyleWarning;
     alert.messageText = [NSString stringWithFormat:@"Remove account?"];
@@ -135,6 +136,9 @@
     
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         NSLog(@"Alert response: %li", (long)returnCode);
+        if (returnCode == NSModalResponseContinue) {
+            BR_SAFE_CALL(callback);
+        }
     }];
 }
 

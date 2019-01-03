@@ -121,6 +121,12 @@
                         placeholderImage:[NSImage imageNamed:@"avatar-default"]];
         [cell.appName setStringValue:app.title];
         [cell.appRepoURL setStringValue:app.repoURL];
+        if (app.buildToken) {
+            [cell.buildToken setHidden:NO];
+            [cell.buildToken setStringValue:app.buildToken];
+        } else {
+            [cell.buildToken setHidden:YES];
+        }
         
         return cell;
     }

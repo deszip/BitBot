@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSImageView *appIcon;
 @property (weak) IBOutlet NSTextField *appName;
 @property (weak) IBOutlet NSTextField *appRepoURL;
+@property (weak) IBOutlet NSTextField *buildToken;
 
 @end
 
