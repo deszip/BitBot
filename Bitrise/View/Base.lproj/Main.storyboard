@@ -1492,39 +1492,55 @@ Gw
             <objects>
                 <viewController id="q3v-hi-t6E" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="374"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-A7-HCu">
-                                <rect key="frame" x="20" y="13" width="150" height="217"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-zH-Sot">
+                                <rect key="frame" x="20" y="20" width="400" height="324"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-zw-3Vr">
-                                        <rect key="frame" x="0.0" y="67" width="150" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="bb9-zw-3Vr" secondAttribute="height" multiplier="1:1" id="RDN-yV-FRp"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="bitrise-logo" id="WhP-0z-q5u"/>
-                                    </imageView>
-                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j63-6n-mGW">
-                                        <rect key="frame" x="36" y="0.0" width="79" height="57"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-A7-HCu">
+                                        <rect key="frame" x="0.0" y="54" width="150" height="217"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-Wd-kcM">
-                                                <rect key="frame" x="-2" y="19" width="83" height="38"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Bitrise" id="2EW-45-DXz">
-                                                    <font key="font" size="32" name="HelveticaNeue-UltraLight"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="azh-8G-J61">
-                                                <rect key="frame" x="6" y="0.0" width="66" height="19"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version 1.0" id="kdh-jg-TOx">
-                                                    <font key="font" size="13" name="HelveticaNeue-UltraLight"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                                </textFieldCell>
-                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-zw-3Vr">
+                                                <rect key="frame" x="0.0" y="67" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="bb9-zw-3Vr" secondAttribute="height" multiplier="1:1" id="RDN-yV-FRp"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="TILTED RECTANGLE" id="WhP-0z-q5u"/>
+                                            </imageView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j63-6n-mGW">
+                                                <rect key="frame" x="35" y="0.0" width="80" height="57"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-Wd-kcM">
+                                                        <rect key="frame" x="-2" y="19" width="84" height="38"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="BitBot" id="2EW-45-DXz">
+                                                            <font key="font" size="32" name="HelveticaNeue-UltraLight"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="azh-8G-J61">
+                                                        <rect key="frame" x="7" y="0.0" width="66" height="19"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version 0.1" id="kdh-jg-TOx">
+                                                            <font key="font" size="13" name="HelveticaNeue-UltraLight"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="shW-st-2io"/>
+                                        </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -1534,9 +1550,65 @@ Gw
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-pU-ZTL">
+                                        <rect key="frame" x="160" y="0.0" width="240" height="324"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="X3U-v3-un2">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="324"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ryo-DS-wy4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="324"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="240" height="324"/>
+                                                    <size key="maxSize" width="240" height="10000000"/>
+                                                    <attributedString key="textStorage">
+                                                        <fragment>
+                                                            <string key="content">BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of it's features. Before use add your personal access token and application build trigger tokens in account list. I wont steal them, I promise :)
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue-UltraLight"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue-UltraLight"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <mutableString key="content">BitBot was built to work for my current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop me a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com 
+BitBot and me are not associated or affiliated with Bitrise in any way.</mutableString>
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue-UltraLight"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="qcc-9W-U4s"/>
+                                        </constraints>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="rGS-vT-9y7">
+                                            <rect key="frame" x="-100" y="-100" width="15" height="324"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="shW-st-2io"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yoq-pU-ZTL" secondAttribute="bottom" id="g4m-Hp-tN3"/>
+                                    <constraint firstItem="Yoq-pU-ZTL" firstAttribute="top" secondItem="aoa-zH-Sot" secondAttribute="top" id="kFp-UT-xSs"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -1549,8 +1621,10 @@ Gw
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hGk-A7-HCu" firstAttribute="top" secondItem="Kq8-xr-Mh1" secondAttribute="top" constant="40" id="2hw-eG-yV5"/>
-                            <constraint firstItem="hGk-A7-HCu" firstAttribute="leading" secondItem="Kq8-xr-Mh1" secondAttribute="leading" constant="20" id="4iT-Co-dJe"/>
+                            <constraint firstItem="aoa-zH-Sot" firstAttribute="leading" secondItem="Kq8-xr-Mh1" secondAttribute="leading" constant="20" id="83K-f4-dhD"/>
+                            <constraint firstAttribute="bottom" secondItem="aoa-zH-Sot" secondAttribute="bottom" constant="20" id="b9g-ns-sax"/>
+                            <constraint firstItem="aoa-zH-Sot" firstAttribute="top" secondItem="Kq8-xr-Mh1" secondAttribute="top" constant="30" id="mmy-7i-lEw"/>
+                            <constraint firstAttribute="trailing" secondItem="aoa-zH-Sot" secondAttribute="trailing" constant="20" id="u87-XW-eEd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1566,7 +1640,7 @@ Gw
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="bitrise-logo" width="220" height="220"/>
+        <image name="TILTED RECTANGLE" width="1024" height="1024"/>
         <image name="success-status" width="119" height="119"/>
     </resources>
 </document>
