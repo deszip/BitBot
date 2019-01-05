@@ -713,7 +713,7 @@
                                 <rect key="frame" x="0.0" y="605" width="542" height="40"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="JMg-rD-ZNo">
-                                        <rect key="frame" x="20" y="10" width="20" height="20"/>
+                                        <rect key="frame" x="502" y="10" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="8C6-9n-8CK"/>
                                             <constraint firstAttribute="width" constant="20" id="aue-7u-QY1"/>
@@ -728,8 +728,8 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JMg-rD-ZNo" secondAttribute="trailing" constant="20" id="1bd-x1-qIK"/>
                                     <constraint firstAttribute="height" constant="40" id="8RC-1p-PQm"/>
-                                    <constraint firstItem="JMg-rD-ZNo" firstAttribute="leading" secondItem="82J-cI-jpS" secondAttribute="leading" constant="20" id="W6K-3a-YCn"/>
                                     <constraint firstItem="JMg-rD-ZNo" firstAttribute="centerY" secondItem="82J-cI-jpS" secondAttribute="centerY" id="ouW-2J-QT0"/>
                                 </constraints>
                             </customView>
@@ -994,8 +994,8 @@
                         <outlet property="buildMenu" destination="Q6c-WQ-hru" id="n3V-JU-dc4"/>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>
                         <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
-                        <segue destination="jqU-3H-VNR" kind="modal" identifier="kAboutWindowSegue" id="6rC-QE-sbB"/>
-                        <segue destination="u6Y-Oa-61p" kind="modal" identifier="kAccountWindowSegue" id="NV4-Wk-TbZ"/>
+                        <segue destination="jqU-3H-VNR" kind="show" identifier="kAboutWindowSegue" id="6rC-QE-sbB"/>
+                        <segue destination="u6Y-Oa-61p" kind="show" identifier="kAccountWindowSegue" id="NV4-Wk-TbZ"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1457,6 +1457,7 @@ Gw
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="annotationField" destination="txT-uz-XI3" id="Kc1-3H-GJr"/>
                         <outlet property="keyField" destination="kWG-HJ-8b6" id="LE1-09-cm2"/>
                     </connections>
                 </viewController>

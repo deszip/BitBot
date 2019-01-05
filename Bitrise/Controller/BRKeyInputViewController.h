@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRKeyInputViewController : NSViewController
 
+@property (copy, nonatomic) NSString *inputAnnotation;
 @property (copy, nonatomic) void (^inputCallback)(NSString *input);
 
 @end

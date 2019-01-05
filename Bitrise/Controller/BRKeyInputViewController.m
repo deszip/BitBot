@@ -12,6 +12,7 @@
 
 @interface BRKeyInputViewController ()
 
+@property (weak) IBOutlet NSTextField *annotationField;
 @property (weak) IBOutlet NSTextField *keyField;
 
 @end
@@ -20,6 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear {
+    [self.annotationField setStringValue:self.inputAnnotation];
 }
 
 - (IBAction)dismiss:(NSButton *)sender {

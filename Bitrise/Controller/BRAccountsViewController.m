@@ -76,10 +76,16 @@
         [sender isKindOfClass:[BRKeyRequestContext class]]) {
         BRKeyInputViewController *inputController = (BRKeyInputViewController *)segue.destinationController;
         BRKeyRequestContext *context = (BRKeyRequestContext *)sender;
+        
+        switch (context.type) {
+            case BRKeyRequestContextTypeApp: inputController.inputAnnotation = @"Build trigger token:"; break;
+            case BRKeyRequestContextTypeAccount: inputController.inputAnnotation = @"Personal access token:"; break;
+            default: break;
+        }
+        
         [inputController setInputCallback:^(NSString *input) {
             switch (context.type) {
                 case BRKeyRequestContextTypeApp: {
-                    NSLog(@"Add key: %@, for app: %@", input, context.appSlug);
                     BRAddBuildTokenCommand *command = [[BRAddBuildTokenCommand alloc] initWithStorage:self.storage appSlug:context.appSlug token:input];
                     [command execute:^(BOOL result, NSError *error) {
                         if (result) {
@@ -90,7 +96,6 @@
                 }
                     
                 case BRKeyRequestContextTypeAccount: {
-                    NSLog(@"Add account with token: %@", input);
                     BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithSyncEngine:self.syncEngine token:input];
                     [command execute:nil];
                     break;
@@ -137,7 +142,6 @@
     [alert addButtonWithTitle:@"OK"];
     
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
-        NSLog(@"Alert response: %li", (long)returnCode);
         if (returnCode == NSAlertSecondButtonReturn) {
             BR_SAFE_CALL(callback);
         }
@@ -160,6 +164,5 @@
                                                                             token:token];
     [command execute:nil];
 }
-
 
 @end
