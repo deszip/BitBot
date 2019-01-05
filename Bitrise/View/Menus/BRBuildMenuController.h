@@ -10,12 +10,14 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BRBitriseAPI.h"
+#import "BRSyncEngine.h"
+#import "BREnvironment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildMenuController : NSObject
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api;
+- (instancetype)initWithAPI:(BRBitriseAPI *)api syncEngine:(BRSyncEngine *)syncEngine environment:(BREnvironment *)environment;
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;
 
 @end

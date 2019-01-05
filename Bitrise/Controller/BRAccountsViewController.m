@@ -51,13 +51,12 @@
     self.menuController = [[BRAccountsMenuController alloc] initWithAPI:self.api storage:self.storage];
     __weak typeof(self) weakSelf = self;
     [self.menuController setActionCallback:^(BRAppMenuAction action, NSString *slug) {
-        
         if (action == BRAppMenuActionAddKey) {
             [weakSelf performSegueWithIdentifier:@"BRKeyInputViewController" sender:[BRKeyRequestContext appContext:slug]];
         }
         if (action == BRAppMenuActionRemoveAccount) {
             [weakSelf confirmDeletion:^{
-                [weakSelf removeSelectedAccount];
+                [weakSelf removeAccountWithToken:slug];
             }];
         }
     }];
@@ -121,9 +120,12 @@
 }
 
 - (IBAction)removeAccount:(NSButton *)sender {
-    [self confirmDeletion:^{
-        [self removeSelectedAccount];
-    }];
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+        [self confirmDeletion:^{
+            [self removeAccountWithToken:[(BRAccount *)selectedItem token]];
+        }];
+    }
 }
 
 - (void)confirmDeletion:(void(^)(void))callback {
@@ -136,20 +138,28 @@
     
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         NSLog(@"Alert response: %li", (long)returnCode);
-        if (returnCode == NSModalResponseContinue) {
+        if (returnCode == NSAlertSecondButtonReturn) {
             BR_SAFE_CALL(callback);
         }
     }];
 }
 
 - (void)removeSelectedAccount {
-        id selectedItem = [self.outlineView itemAtRow:[self.outlineView selectedRow]];
-        if ([selectedItem isKindOfClass:[BRAccount class]]) {
-            BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
-                                                                                  storage:self.storage
-                                                                                    token:[(BRAccount *)selectedItem token]];
-            [command execute:nil];
-        }
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+        BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
+                                                                              storage:self.storage
+                                                                                token:[(BRAccount *)selectedItem token]];
+        [command execute:nil];
+    }
 }
+
+- (void)removeAccountWithToken:(NSString *)token {
+    BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
+                                                                          storage:self.storage
+                                                                            token:token];
+    [command execute:nil];
+}
+
 
 @end

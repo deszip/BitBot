@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
+@property (strong, nonatomic) BREnvironment *environment;
 
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 
@@ -49,11 +50,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [super viewDidLoad];
     
     self.syncEngine = [self.dependencyContainer syncEngine];
+    self.environment = [self.dependencyContainer environment];
     
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];
     
-    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:[self.dependencyContainer environment]];
+    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment];
     [self.settingsController bind:self.settingsMenu];
     __weak __typeof (self) weakSelf = self;
     [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
@@ -70,7 +72,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         }
     }];
     
-    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]];
+    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI] syncEngine:self.syncEngine environment:self.environment];
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
 }
 

@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bitrise/Networking/BRRequestBuilder.m"
-            timestampString = "568192071.957334"
+            filePath = "Bitrise/Controller/BRAccountsViewController.m"
+            timestampString = "568381135.271299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-rebuildRequest:buildToken:tag:branch:commit:workflow:"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-removeSelectedAccount"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

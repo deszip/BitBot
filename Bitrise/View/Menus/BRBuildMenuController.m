@@ -12,6 +12,7 @@
 #import "BRBuildInfo.h"
 #import "BRAbortCommand.h"
 #import "BRRebuildCommand.h"
+#import "BRSyncCommand.h"
 
 static const NSUInteger kMenuItemsCount = 4;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -24,6 +25,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @interface BRBuildMenuController ()
 
 @property (strong, nonatomic) BRBitriseAPI *api;
+@property (strong, nonatomic) BRSyncEngine *syncEngine;
+@property (strong, nonatomic) BREnvironment *environment;
 
 @property (weak, nonatomic) NSMenu *menu;
 @property (weak, nonatomic) NSOutlineView *outlineView;
@@ -32,9 +35,11 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @implementation BRBuildMenuController
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api {
+- (instancetype)initWithAPI:(BRBitriseAPI *)api syncEngine:(BRSyncEngine *)syncEngine environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _api = api;
+        _syncEngine = syncEngine;
+        _environment = environment;
     }
     
     return self;
@@ -64,7 +69,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
         BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
-        [command execute:nil];
+        [command execute:^(BOOL result, NSError *error) {
+            if (result) {
+                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+                [syncCommand execute:nil];
+            }
+        }];
     }
 }
 
@@ -72,7 +82,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
         BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
-        [command execute:nil];
+        [command execute:^(BOOL result, NSError *error) {
+            if (result) {
+                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+                [syncCommand execute:nil];
+            }
+        }];
     }
 }
 
@@ -98,10 +113,14 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
         BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
+        
         BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
-        BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress || buildInfo.stateInfo.state == BRBuildStateHold;
+        BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
+                                   buildInfo.stateInfo.state == BRBuildStateHold;
+        BOOL buildCouldBeRestarted = (!buildInProgress && [[(BRBuild *)selectedItem app] buildToken] != nil);
+        
         switch (menuItem.tag) {
-            case BRBuildMenuItemRebuild: return !buildInProgress;
+            case BRBuildMenuItemRebuild: return buildCouldBeRestarted;
             case BRBuildMenuItemAbort: return buildCouldBeAborted;
             case BRBuildMenuItemDownload: return !buildInProgress;
             case BRBuildMenuItemOpenBuild: return YES;

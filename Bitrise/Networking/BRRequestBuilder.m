@@ -65,11 +65,18 @@ static NSString * const kStartBuildEndpoint = @"https://app.bitrise.io/app/%@/bu
     NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:nil] mutableCopy];
     [request setHTTPMethod:@"POST"];
     NSError *serializationError;
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ @"hook_info": @{ @"type" : @"bitrise",
-                                                                                      @"build_trigger_token" : buildToken },
-                                                                     @"build_params": @{ @"branch" : branch,
-                                                                                         @"commit_hash" : commit,
-                                                                                         @"workflow_id" : workflow } }
+    
+    NSMutableDictionary *params = [@{ @"hook_info": @{ @"type" : @"bitrise",
+                                                       @"build_trigger_token" : buildToken },
+                                      @"build_params": [@{ @"branch" : branch } mutableCopy] } mutableCopy];
+    if (commit) {
+        params[@"build_params"][@"commit_hash"] = commit;
+    }
+    if (workflow) {
+        params[@"build_params"][@"workflow_id"] = workflow;
+    }
+
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:params
                                                           options:0
                                                             error:&serializationError];
     if (requestData) {

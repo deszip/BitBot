@@ -11,6 +11,7 @@
 #import <EasyMapping/EasyMapping.h>
 
 #import "NSArray+FRP.h"
+#import "BRMacro.h"
 
 #import "BRAccount+Mapping.h"
 #import "BRApp+Mapping.h"
@@ -75,10 +76,10 @@
     }];
 }
 
-- (void)removeAccount:(NSString *)token completion:(BRStorageResult)completion {
+- (void)removeAccount:(NSString *)slug completion:(BRStorageResult)completion {
     [self.context performBlock:^{
         NSFetchRequest *request = [BRAccount fetchRequest];
-        request.predicate = [NSPredicate predicateWithFormat:@"token = %@", token];
+        request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
         
         NSError *requestError = nil;
         NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
@@ -87,11 +88,11 @@
                 [self.context deleteObject:nextAccount];
             }];
             if (![self saveContext:self.context error:&requestError]) {
-                if (completion) completion(NO, requestError);
+                BR_SAFE_CALL(completion, NO, requestError);
             }
         } else {
             NSLog(@"Failed to fetch account: %@", requestError);
-            if (completion) completion(NO, requestError);
+            BR_SAFE_CALL(completion, NO, requestError);
         }
     }];
 }
@@ -163,7 +164,7 @@
 - (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRBuild fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@ && status != 0", app.slug];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:YES]];
     request.fetchLimit = 1;
     
     NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
