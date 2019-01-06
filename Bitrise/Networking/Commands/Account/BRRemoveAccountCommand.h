@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRRemoveAccountCommand : BRCommand
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token;
+- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage slug:(NSString *)slug;
 
 @end
 

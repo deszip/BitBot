@@ -12,24 +12,24 @@
 
 @property (strong, nonatomic, readonly) BRBitriseAPI *api;
 @property (strong, nonatomic, readonly) BRStorage *storage;
-@property (copy, nonatomic) NSString *token;
+@property (copy, nonatomic) NSString *slug;
 
 @end
 
 @implementation BRRemoveAccountCommand
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage token:(NSString *)token {
+- (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage slug:(NSString *)slug {
     if (self = [super init]) {
         _api = api;
         _storage = storage;
-        _token = token;
+        _slug = slug;
     }
     
     return self;
 }
 
 - (void)execute:(BRCommandResult)callback {
-    [self.storage removeAccount:self.token completion:callback];
+    [self.storage removeAccount:self.slug completion:callback];
 }
 
 @end

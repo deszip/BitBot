@@ -56,7 +56,7 @@
         }
         if (action == BRAppMenuActionRemoveAccount) {
             [weakSelf confirmDeletion:^{
-                [weakSelf removeAccountWithToken:slug];
+                [weakSelf removeAccountWithSlug:slug];
             }];
         }
     }];
@@ -125,10 +125,10 @@
 }
 
 - (IBAction)removeAccount:(NSButton *)sender {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView selectedRow]];
     if ([selectedItem isKindOfClass:[BRAccount class]]) {
         [self confirmDeletion:^{
-            [self removeAccountWithToken:[(BRAccount *)selectedItem token]];
+            [self removeAccountWithSlug:[(BRAccount *)selectedItem slug]];
         }];
     }
 }
@@ -153,15 +153,15 @@
     if ([selectedItem isKindOfClass:[BRAccount class]]) {
         BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
                                                                               storage:self.storage
-                                                                                token:[(BRAccount *)selectedItem token]];
+                                                                                slug:[(BRAccount *)selectedItem slug]];
         [command execute:nil];
     }
 }
 
-- (void)removeAccountWithToken:(NSString *)token {
+- (void)removeAccountWithSlug:(NSString *)slug {
     BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
                                                                           storage:self.storage
-                                                                            token:token];
+                                                                            slug:slug];
     [command execute:nil];
 }
 
