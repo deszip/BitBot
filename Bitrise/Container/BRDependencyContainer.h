@@ -35,7 +35,7 @@
 
 @protocol BREnvironmentProvider <NSObject>
 
-- (BREnvironment *)environment;
+- (BREnvironment *)appEnvironment;
 
 @end
 

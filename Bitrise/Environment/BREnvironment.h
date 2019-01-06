@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)handleAppLaunch;
 
+#pragma mark - Info -
+- (NSString *)versionNumber;
+- (NSString *)buildNumber;
+
 #pragma mark - Notifications -
 
 - (BOOL)notificationsEnabled;

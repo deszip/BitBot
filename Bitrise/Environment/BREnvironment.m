@@ -35,6 +35,16 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
     }
 }
 
+#pragma mark - Info -
+
+- (NSString *)versionNumber {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)buildNumber {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
 #pragma mark - Notifications -
 
 - (BOOL)notificationsEnabled {

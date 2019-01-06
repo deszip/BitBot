@@ -1487,10 +1487,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="720" y="386"/>
         </scene>
-        <!--Rabout View Controller-->
+        <!--About View Controller-->
         <scene sceneID="pyc-n1-OLx">
             <objects>
-                <viewController id="q3v-hi-t6E" customClass="BRaboutViewController" sceneMemberID="viewController">
+                <viewController id="q3v-hi-t6E" customClass="BRAboutViewController" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="374"/>
                         <autoresizingMask key="autoresizingMask"/>

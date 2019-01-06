@@ -36,7 +36,7 @@
 #endif
         
         _dependencyContainer = [BRDependencyContainer new];
-        [[_dependencyContainer environment] handleAppLaunch];
+        [[_dependencyContainer appEnvironment] handleAppLaunch];
         _observer = [_dependencyContainer commandObserver];
         
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -57,7 +57,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Start sync
-    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine] environment:[self.dependencyContainer environment]];
+    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine] environment:[self.dependencyContainer appEnvironment]];
     [self.observer startObserving:syncCommand];
     
     // Build status item

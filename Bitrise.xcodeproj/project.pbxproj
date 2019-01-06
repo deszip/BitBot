@@ -63,7 +63,7 @@
 		0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */; };
 		0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */; };
 		0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766A521DDDF6C00E64E0C /* BRAddBuildTokenCommand.m */; };
-		0EF766C021E2637900E64E0C /* BRaboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766BF21E2637900E64E0C /* BRaboutViewController.m */; };
+		0EF766C021E2637900E64E0C /* BRAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766BF21E2637900E64E0C /* BRAboutViewController.m */; };
 		0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766C321E264E300E64E0C /* BRAboutTextView.m */; };
 		0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
@@ -195,8 +195,8 @@
 		0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCellBuilder.m; sourceTree = "<group>"; };
 		0EF766A421DDDF6C00E64E0C /* BRAddBuildTokenCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAddBuildTokenCommand.h; sourceTree = "<group>"; };
 		0EF766A521DDDF6C00E64E0C /* BRAddBuildTokenCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAddBuildTokenCommand.m; sourceTree = "<group>"; };
-		0EF766BE21E2637900E64E0C /* BRaboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRaboutViewController.h; sourceTree = "<group>"; };
-		0EF766BF21E2637900E64E0C /* BRaboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRaboutViewController.m; sourceTree = "<group>"; };
+		0EF766BE21E2637900E64E0C /* BRAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAboutViewController.h; sourceTree = "<group>"; };
+		0EF766BF21E2637900E64E0C /* BRAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAboutViewController.m; sourceTree = "<group>"; };
 		0EF766C221E264E300E64E0C /* BRAboutTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAboutTextView.h; sourceTree = "<group>"; };
 		0EF766C321E264E300E64E0C /* BRAboutTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAboutTextView.m; sourceTree = "<group>"; };
 		0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRBuild+Mapping.h"; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 				0E8DFB4C21DA28EC00E7E5AC /* BRKeyInputViewController.m */,
 				0E8DFB4E21DA2E7700E7E5AC /* BRKeyRequestContext.h */,
 				0E8DFB4F21DA2E7700E7E5AC /* BRKeyRequestContext.m */,
-				0EF766BE21E2637900E64E0C /* BRaboutViewController.h */,
-				0EF766BF21E2637900E64E0C /* BRaboutViewController.m */,
+				0EF766BE21E2637900E64E0C /* BRAboutViewController.h */,
+				0EF766BF21E2637900E64E0C /* BRAboutViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -772,7 +772,7 @@
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
-				0EF766C021E2637900E64E0C /* BRaboutViewController.m in Sources */,
+				0EF766C021E2637900E64E0C /* BRAboutViewController.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
 				0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */,
 				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,

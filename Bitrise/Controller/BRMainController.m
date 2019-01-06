@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [super viewDidLoad];
     
     self.syncEngine = [self.dependencyContainer syncEngine];
-    self.environment = [self.dependencyContainer environment];
+    self.environment = [self.dependencyContainer appEnvironment];
     
     self.dataSource = [self.dependencyContainer appsDataSource];
     [self.dataSource bind:self.outlineView];

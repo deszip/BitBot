@@ -63,7 +63,7 @@
 
 #pragma mark - BREnvironmentProvider -
 
-- (BREnvironment *)environment {
+- (BREnvironment *)appEnvironment {
     return [[BREnvironment alloc] initWithAutorun:[BRAutorun new]];
 }
 
