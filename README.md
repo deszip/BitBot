@@ -15,7 +15,7 @@ BitBot and I are not associated or affiliated with Bitrise in any way.
 - Open Bitrise.xcworkspace file
 - Build Bitrise target or export binary
 
-Or you can just grab .dmg file from releases section.
+Or you can just grab .dmg file from [releases](/releases/latest) section.
 
 ### Account credentials
 To use BitBot you need to provide your account token in the account access token. You can generate it on your account settings page.
