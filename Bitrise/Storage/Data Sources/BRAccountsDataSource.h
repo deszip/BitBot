@@ -1,9 +1,9 @@
 //
 //  BRAccountsDataSource.h
-//  Bitrise
+//  BitBot
 //
 //  Created by Deszip on 06/07/2018.
-//  Copyright © 2018 Bitrise. All rights reserved.
+//  Copyright © 2018 BitBot. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>

@@ -1,6 +1,6 @@
 //
 //  BRAddBuildKeyCommand.m
-//  Bitrise
+//  BitBot
 //
 //  Created by Deszip on 03/01/2019.
 //  Copyright © 2019 Bitrise. All rights reserved.

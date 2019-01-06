@@ -1,9 +1,9 @@
 //
 //  BRSyncOperation.m
-//  Bitrise
+//  BitBot
 //
 //  Created by Deszip on 08/12/2018.
-//  Copyright © 2018 Bitrise. All rights reserved.
+//  Copyright © 2018 BitBot. All rights reserved.
 //
 
 #import "BRSyncOperation.h"

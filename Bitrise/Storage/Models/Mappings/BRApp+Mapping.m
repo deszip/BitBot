@@ -1,9 +1,9 @@
 //
 //  BRApp+Mapping.m
-//  Bitrise
+//  BitBot
 //
 //  Created by Deszip on 10/07/2018.
-//  Copyright © 2018 Bitrise. All rights reserved.
+//  Copyright © 2018 BitBot. All rights reserved.
 //
 
 #import "BRApp+Mapping.h"
