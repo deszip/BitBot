@@ -1,4 +1,4 @@
-# ![](https://github.com/deszip/BitBot/raw/master/icon.png)BitBot
+# <img src="https://github.com/deszip/BitBot/raw/master/icon.png" width="64"> BitBot
 
 ### About
 BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of its features. Before use add your personal access token and application build trigger tokens in the account list.
