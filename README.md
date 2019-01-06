@@ -18,7 +18,7 @@ BitBot and I are not associated or affiliated with Bitrise in any way.
 Or you can just grab .dmg file from [releases](https://github.com/deszip/BitBot/releases/latest) section.
 
 ### Account credentials
-To use BitBot you need to provide your account token in the account access token. You can generate it on your account settings page.
+To use BitBot you need to provide your account access token. You can generate it on your account settings page.
 
 To use 'rebuild' feature you also need build token which is specific for each app. You can find it under the 'code' tab in app settings. Add it by selecting your app in accounts list and selecting 'add build key...' from the context menu.
 
