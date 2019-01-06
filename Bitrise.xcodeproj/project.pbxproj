@@ -63,6 +63,8 @@
 		0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */; };
 		0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */; };
 		0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766A521DDDF6C00E64E0C /* BRAddBuildTokenCommand.m */; };
+		0EF766C021E2637900E64E0C /* BRaboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766BF21E2637900E64E0C /* BRaboutViewController.m */; };
+		0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766C321E264E300E64E0C /* BRAboutTextView.m */; };
 		0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
@@ -193,6 +195,10 @@
 		0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCellBuilder.m; sourceTree = "<group>"; };
 		0EF766A421DDDF6C00E64E0C /* BRAddBuildTokenCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAddBuildTokenCommand.h; sourceTree = "<group>"; };
 		0EF766A521DDDF6C00E64E0C /* BRAddBuildTokenCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAddBuildTokenCommand.m; sourceTree = "<group>"; };
+		0EF766BE21E2637900E64E0C /* BRaboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRaboutViewController.h; sourceTree = "<group>"; };
+		0EF766BF21E2637900E64E0C /* BRaboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRaboutViewController.m; sourceTree = "<group>"; };
+		0EF766C221E264E300E64E0C /* BRAboutTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAboutTextView.h; sourceTree = "<group>"; };
+		0EF766C321E264E300E64E0C /* BRAboutTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAboutTextView.m; sourceTree = "<group>"; };
 		0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRBuild+Mapping.h"; sourceTree = "<group>"; };
 		0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRBuild+Mapping.m"; sourceTree = "<group>"; };
 		0EFD891620F201400023FCCE /* BRAppInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppInfo.h; sourceTree = "<group>"; };
@@ -293,14 +299,15 @@
 		0E42CAFA20EC7AEF0033CD03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0EF766C121E264C500E64E0C /* Custom */,
 				0E30344321CEDDA6001757C0 /* Menus */,
 				0E42CB0020EC893C0033CD03 /* Cells */,
 				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
+				0E51715721D149FD000D470E /* BRSegue.h */,
 				0EEF655520F5B2AB0012C45D /* BRCellBuilder.h */,
 				0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */,
 				0E3C0B002117008200F2EA35 /* BRBuildStateInfo.h */,
 				0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */,
-				0E51715721D149FD000D470E /* BRSegue.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -320,6 +327,8 @@
 				0E8DFB4C21DA28EC00E7E5AC /* BRKeyInputViewController.m */,
 				0E8DFB4E21DA2E7700E7E5AC /* BRKeyRequestContext.h */,
 				0E8DFB4F21DA2E7700E7E5AC /* BRKeyRequestContext.m */,
+				0EF766BE21E2637900E64E0C /* BRaboutViewController.h */,
+				0EF766BF21E2637900E64E0C /* BRaboutViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -529,6 +538,15 @@
 			path = "Collection Extensions";
 			sourceTree = "<group>";
 		};
+		0EF766C121E264C500E64E0C /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				0EF766C221E264E300E64E0C /* BRAboutTextView.h */,
+				0EF766C321E264E300E64E0C /* BRAboutTextView.m */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		69A9F2BFB5AB6510F4520CA0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -729,6 +747,7 @@
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
 				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
 				0E8DFB5021DA2E7700E7E5AC /* BRKeyRequestContext.m in Sources */,
+				0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */,
 				0E3C0B11211760C000F2EA35 /* BROpenBuildCommand.m in Sources */,
 				0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */,
 				0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */,
@@ -753,6 +772,7 @@
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
+				0EF766C021E2637900E64E0C /* BRaboutViewController.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
 				0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */,
 				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,

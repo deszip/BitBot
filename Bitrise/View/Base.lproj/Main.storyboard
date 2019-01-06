@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1488,10 +1487,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="720" y="386"/>
         </scene>
-        <!--View Controller-->
+        <!--Rabout View Controller-->
         <scene sceneID="pyc-n1-OLx">
             <objects>
-                <viewController id="q3v-hi-t6E" sceneMemberID="viewController">
+                <viewController id="q3v-hi-t6E" customClass="BRaboutViewController" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="374"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1557,7 +1556,7 @@ Gw
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="324"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ryo-DS-wy4">
+                                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ryo-DS-wy4" customClass="BRAboutTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="324"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1585,7 +1584,7 @@ Cg
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <mutableString key="content">BitBot was built to work for my current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop me a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com 
+                                                            <mutableString key="content">BitBot was built to work for my current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop me a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com/deszip/BitBot 
 BitBot and me are not associated or affiliated with Bitrise in any way.</mutableString>
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1629,7 +1628,8 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="versionField" destination="azh-8G-J61" id="jbS-0I-BQF"/>
+                        <outlet property="aboutTextView" destination="ryo-DS-wy4" id="vbu-H4-EqQ"/>
+                        <outlet property="versionField" destination="azh-8G-J61" id="aYs-Tm-hrg"/>
                     </connections>
                 </viewController>
                 <customObject id="Bi9-kT-DPp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
