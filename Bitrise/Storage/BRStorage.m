@@ -101,7 +101,6 @@
         
         return YES;
     } else {
-        NSLog(@"Failed to save apps: %@", requestError);
         return NO;
     }
 }
