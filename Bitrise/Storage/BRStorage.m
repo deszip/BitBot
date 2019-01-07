@@ -118,7 +118,7 @@
     request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", appSlug];
     NSArray <BRApp *> *apps = [self.context executeFetchRequest:request error:error];
     
-    if (apps.count == 1 && token) {
+    if (apps.count == 1) {
         [apps.firstObject setBuildToken:token];
         return [self saveContext:self.context error:error];
     }
@@ -146,7 +146,7 @@
     
     NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
     
-    if (builds.count == 1) {
+    if (builds.count > 0) {
         return [builds firstObject];
     }
     

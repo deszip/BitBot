@@ -25,6 +25,9 @@ static NSString * const kAppSlug2 = @"app_slug_2";
 static NSString * const kAppSlugInvalid = @"app_slug_invalid";
 static NSString * const kAppBuildToken = @"app_build_token";
 
+static NSString * const kBuildSlug1 = @"build_slug_1";
+static NSString * const kBuildSlug2 = @"build_slug_2";
+
 @interface BRStorageTests : XCTestCase
 
 @property (strong, nonatomic) NSPersistentContainer *container;
@@ -191,13 +194,14 @@ static NSString * const kAppBuildToken = @"app_build_token";
     }];
 }
 
-- (void)testStorageIgnoresNilBuildToken {
+- (void)testStorageIgnoresAppDuplicate {
     [self executeOnStorage:^{
         BRAccount *account = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
         [self buildAppWithSlug:kAppSlug1 forAccount:account];
+        [self buildAppWithSlug:kAppSlug1 forAccount:account];
         
         NSError *error;
-        BOOL result = [self.storage addBuildToken:nil toApp:kAppSlug1 error:&error];
+        BOOL result = [self.storage addBuildToken:kAppBuildToken toApp:kAppSlug1 error:&error];
         NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&error];
         expect(result).to.beFalsy();
         expect(apps[0].buildToken).to.beNil();
@@ -206,7 +210,62 @@ static NSString * const kAppBuildToken = @"app_build_token";
 
 #pragma mark - Builds -
 
-//...
+- (void)testStorageFetchesRunningBuilds {
+    [self executeOnStorage:^{
+        [self buildWithSlug:kBuildSlug1 staus:@(0)];
+        [self buildWithSlug:kBuildSlug2 staus:@(1)];
+        NSError *error;
+        NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
+        
+        expect(builds.count).to.equal(1);
+        expect(error).to.beNil();
+        expect(builds[0].status.integerValue).to.equal(0);
+    }];
+}
+
+- (void)testStorageSortsRunningBuilds {
+    [self executeOnStorage:^{
+        [self buildWithSlug:kBuildSlug1 staus:@(0)];
+        [self buildWithSlug:kBuildSlug2 staus:@(0)];
+        NSError *error;
+        NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
+        
+        expect(builds.count).to.equal(2);
+        
+        // Verify build at index 0 is the latest started
+        BOOL ordered = [[builds[0].triggerTime earlierDate:builds[1].triggerTime] isEqualToDate:builds[1].triggerTime];
+        expect(ordered).to.beTruthy();
+    }];
+}
+
+- (void)testStorageReturnsNilIfNoRunningBuilds {
+    [self executeOnStorage:^{
+        NSError *error;
+        NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
+        
+        expect(builds.count).to.equal(0);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testStorageFetchesLatestNotRunningBuild {
+//    [self executeOnStorage:^{
+//        [self buildWithSlug:kBuildSlug1 staus:@(1)];
+//        [self buildWithSlug:kBuildSlug2 staus:@(0)];
+//        NSError *error;
+//        //NSArray <BRBuild *> *builds = [self.storage late:&error];
+//
+//        expect(builds.count).to.equal(2);
+//
+//        // Verify build at index 0 is the latest started
+//        BOOL ordered = [[builds[0].triggerTime earlierDate:builds[1].triggerTime] isEqualToDate:builds[1].triggerTime];
+//        expect(ordered).to.beTruthy();
+//    }];
+}
+
+- (void)testStorageReturnsNilIfNoLatestBuild {
+    
+}
 
 #pragma mark - Builders -
 
@@ -228,6 +287,17 @@ static NSString * const kAppBuildToken = @"app_build_token";
     [self.context save:nil];
     
     return app;
+}
+
+- (BRBuild *)buildWithSlug:(NSString *)slug staus:(NSNumber *)status {
+    BRBuild *build = [NSEntityDescription insertNewObjectForEntityForName:@"BRBuild" inManagedObjectContext:self.context];
+    build.slug = slug;
+    build.status = status;
+    build.triggerTime = [NSDate date];
+    
+    [self.context save:nil];
+    
+    return build;
 }
 
 - (BRAccountInfo *)accountInfo {
