@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRContainerBuilder : NSObject
 
 - (NSPersistentContainer *)buildContainer;
+- (NSPersistentContainer *)buildContainerOfType:(NSString *)type;
 
 @end
 

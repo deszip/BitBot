@@ -29,7 +29,11 @@
 }
 
 - (void)execute:(BRCommandResult)callback {
-    [self.storage removeAccount:self.slug completion:callback];
+    [self.storage perform:^{
+        NSError *error;
+        BOOL result = [self.storage removeAccount:self.slug error:&error];
+        BR_SAFE_CALL(callback, result, error);
+    }];
 }
 
 @end

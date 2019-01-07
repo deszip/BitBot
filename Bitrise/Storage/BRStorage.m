@@ -19,17 +19,15 @@
 
 @interface BRStorage ()
 
-@property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 
 @end
 
 @implementation BRStorage
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container {
+- (instancetype)initWithContext:(NSManagedObjectContext *)context {
     if (self = [super init]) {
-        _container = container;
-        _context = [container newBackgroundContext];
+        _context = context;
         [_context setAutomaticallyMergesChangesFromParent:YES];
     }
     
@@ -53,48 +51,27 @@
     return accounts;
 }
 
-- (BRAccount *)accountWithToken:(NSString *)token error:(NSError * __autoreleasing *)error {
+- (BOOL)saveAccount:(BRAccountInfo *)accountInfo error:(NSError * __autoreleasing *)error {
+    BRAccount *account = [EKManagedObjectMapper objectFromExternalRepresentation:accountInfo.rawResponce withMapping:[BRAccount objectMapping] inManagedObjectContext:self.context];
+    account.token = accountInfo.token;
+    
+    return [self saveContext:self.context error:error];
+}
+
+- (BOOL)removeAccount:(NSString *)slug error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRAccount fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"token = %@", token];
-    NSArray *accounts = [self.context executeFetchRequest:request error:error];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
     
-    if (accounts.count == 1) {
-        return accounts.firstObject;
+    NSError *requestError = nil;
+    NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
+    if (accounts.count > 0) {
+        [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
+            [self.context deleteObject:nextAccount];
+        }];
+        return [self saveContext:self.context error:error];
+    } else {
+        return NO;
     }
-    
-    return nil;
-}
-
-- (void)saveAccount:(BRAccountInfo *)accountInfo {
-    [self.context performBlock:^{
-        [self.context setAutomaticallyMergesChangesFromParent:YES];
-        BRAccount *account = [EKManagedObjectMapper objectFromExternalRepresentation:accountInfo.rawResponce withMapping:[BRAccount objectMapping] inManagedObjectContext:self.context];
-        account.token = accountInfo.token;
-        
-        NSError *error;
-        [self saveContext:self.context error:&error];
-    }];
-}
-
-- (void)removeAccount:(NSString *)slug completion:(BRStorageResult)completion {
-    [self.context performBlock:^{
-        NSFetchRequest *request = [BRAccount fetchRequest];
-        request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
-        
-        NSError *requestError = nil;
-        NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
-        if (accounts) {
-            [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
-                [self.context deleteObject:nextAccount];
-            }];
-            if (![self saveContext:self.context error:&requestError]) {
-                BR_SAFE_CALL(completion, NO, requestError);
-            }
-        } else {
-            NSLog(@"Failed to fetch account: %@", requestError);
-            BR_SAFE_CALL(completion, NO, requestError);
-        }
-    }];
 }
 
 #pragma mark - Apps -
@@ -105,7 +82,7 @@
     NSError *requestError = nil;
     NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
     if (accounts.count == 1) {
-        // Fetch outdated account apps
+        // Fetch and remove outdated account apps
         NSFetchRequest *request = [BRApp fetchRequest];
         NSArray *appSlugs = [appsInfo valueForKeyPath:@"slug"];
         request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@ AND NOT (slug IN %@)", account.slug, appSlugs];
@@ -115,6 +92,7 @@
             [self.context deleteObject:app];
         }];
         
+        // Insert new apps
         [appsInfo enumerateObjectsUsingBlock:^(BRAppInfo *appInfo, NSUInteger idx, BOOL *stop) {
             BRApp *app = [EKManagedObjectMapper objectFromExternalRepresentation:appInfo.rawResponse withMapping:[BRApp objectMapping] inManagedObjectContext:self.context];
             app.account = accounts[0];
