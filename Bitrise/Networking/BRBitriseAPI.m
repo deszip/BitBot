@@ -90,18 +90,9 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
-- (void)rebuildApp:(NSString *)appSlug
-        buildToken:(NSString *)token
-            branch:(NSString *)branch
-            commit:(NSString *)commit
-          workflow:(NSString *)workflow
-        completion:(APIActionCallback)completion {
-    NSURLRequest *request = [self.requestBuilder rebuildRequest:appSlug
-                                                     buildToken:token
-                                                         branch:branch
-                                                         commit:commit
-                                                       workflow:workflow];
-    [self runRequest:request completion:^(NSDictionary *response, NSError *error) {
+- (void)rebuild:(BRRebuildRequest *)request completion:(APIActionCallback)completion {
+    NSURLRequest *urlRequest = [self.requestBuilder rebuildURLRequest:request];
+    [self runRequest:urlRequest completion:^(NSDictionary *response, NSError *error) {
         BR_SAFE_CALL(completion, response != nil, error);
     }];
 }

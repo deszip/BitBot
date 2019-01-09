@@ -117,10 +117,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
         BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
                                    buildInfo.stateInfo.state == BRBuildStateHold;
-        BOOL buildCouldBeRestarted = (!buildInProgress && [[(BRBuild *)selectedItem app] buildToken] != nil);
         
         switch (menuItem.tag) {
-            case BRBuildMenuItemRebuild: return buildCouldBeRestarted;
+            case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildCouldBeAborted;
             case BRBuildMenuItemDownload: return !buildInProgress;
             case BRBuildMenuItemOpenBuild: return YES;

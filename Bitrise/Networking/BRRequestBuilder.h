@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRRebuildRequest.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRRequestBuilder : NSObject
@@ -24,11 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
                        appSlug:(NSString *)appSlug
                          token:(NSString *)token;
 
-- (NSURLRequest *)rebuildRequest:(NSString *)appSlug
-                      buildToken:(NSString *)buildToken
-                          branch:(NSString *)branch
-                          commit:(NSString *)commit
-                        workflow:(NSString *)workflow;
+- (NSURLRequest *)rebuildURLRequest:(BRRebuildRequest *)apiRequest;
+
 @end
 
 NS_ASSUME_NONNULL_END

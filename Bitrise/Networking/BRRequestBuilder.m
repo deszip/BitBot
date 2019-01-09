@@ -12,7 +12,7 @@ static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me"
 static NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
 static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
 static NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
-static NSString * const kStartBuildEndpoint = @"https://app.bitrise.io/app/%@/build/start.json";
+static NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
 
 @implementation BRRequestBuilder
 
@@ -56,45 +56,22 @@ static NSString * const kStartBuildEndpoint = @"https://app.bitrise.io/app/%@/bu
     return nil;
 }
 
-- (NSURLRequest *)rebuildRequest:(NSString *)appSlug
-                      buildToken:(NSString *)buildToken
-                          branch:(NSString *)branch
-                          commit:(NSString *)commit
-                        workflow:(NSString *)workflow {
-    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kStartBuildEndpoint, appSlug]];
-    NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:nil] mutableCopy];
-    [request setHTTPMethod:@"POST"];
-    NSError *serializationError;
+- (NSURLRequest *)rebuildURLRequest:(BRRebuildRequest *)apiRequest {
+    NSMutableURLRequest *urlRequest = [self requestWithEndpoint:apiRequest.endpoint token:apiRequest.token];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:apiRequest.requestBody];
     
-    NSMutableDictionary *params = [@{ @"hook_info": @{ @"type" : @"bitrise",
-                                                       @"build_trigger_token" : buildToken },
-                                      @"build_params": [@{ @"branch" : branch } mutableCopy] } mutableCopy];
-    if (commit) {
-        params[@"build_params"][@"commit_hash"] = commit;
-    }
-    if (workflow) {
-        params[@"build_params"][@"workflow_id"] = workflow;
-    }
-
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:params
-                                                          options:0
-                                                            error:&serializationError];
-    if (requestData) {
-        [request setHTTPBody:requestData];
-        return [request copy];
-    }
-    
-    return nil;
+    return [urlRequest copy];
 }
 
-- (NSURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {
+- (NSMutableURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpoint];
     if (token) {
         NSString *tokenString = [NSString stringWithFormat:@"token %@", token];
         [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
     }
     
-    return [request copy];
+    return request;
 }
 
 

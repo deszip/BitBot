@@ -12,6 +12,8 @@
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
 
+#import "BRRebuildRequest.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const kBRBitriseAPIDomain;
@@ -28,12 +30,7 @@ typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 - (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
 
 - (void)abortBuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:(APIActionCallback)completion;
-- (void)rebuildApp:(NSString *)appSlug
-        buildToken:(NSString *)token
-            branch:(NSString *)branch
-            commit:(NSString *)commit
-          workflow:(NSString *)workflow
-        completion:(APIActionCallback)completion;
+- (void)rebuild:(BRRebuildRequest *)request completion:(APIActionCallback)completion;
 
 @end
 
