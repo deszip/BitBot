@@ -248,25 +248,6 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
     }];
 }
 
-- (void)testStorageFetchesLatestNotRunningBuild {
-//    [self executeOnStorage:^{
-//        [self buildWithSlug:kBuildSlug1 staus:@(1)];
-//        [self buildWithSlug:kBuildSlug2 staus:@(0)];
-//        NSError *error;
-//        //NSArray <BRBuild *> *builds = [self.storage late:&error];
-//
-//        expect(builds.count).to.equal(2);
-//
-//        // Verify build at index 0 is the latest started
-//        BOOL ordered = [[builds[0].triggerTime earlierDate:builds[1].triggerTime] isEqualToDate:builds[1].triggerTime];
-//        expect(ordered).to.beTruthy();
-//    }];
-}
-
-- (void)testStorageReturnsNilIfNoLatestBuild {
-    
-}
-
 #pragma mark - Builders -
 
 - (BRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug {
