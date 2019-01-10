@@ -8,6 +8,8 @@
 
 #import "BRAbortCommand.h"
 
+#import "BRAbortRequest.h"
+
 @interface BRAbortCommand ()
 
 @property (strong, nonatomic) BRBitriseAPI *api;
@@ -31,7 +33,10 @@
 }
 
 - (void)execute:(BRCommandResult)callback {
-    [self.api abortBuild:self.buildSlug appSlug:self.appSlug token:self.token completion:^(BOOL status, NSError *error) {
+    BRAbortRequest *request = [[BRAbortRequest alloc] initWithToken:self.token
+                                                            appSlug:self.appSlug
+                                                          buildSlug:self.buildSlug];
+    [self.api abortBuild:request completion:^(BOOL status, NSError *error) {
         BR_SAFE_CALL(callback, status, error);
     }];
 }

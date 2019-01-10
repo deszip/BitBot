@@ -69,8 +69,8 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
-- (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion {
-    [self runRequest:[self.requestBuilder buildsRequest:appSlug token:token after:after] completion:^(NSDictionary *result, NSError *error) {
+- (void)getBuilds:(BRBuildsRequest *)request completion:(APIBuildsListCallback)completion {
+    [self runRequest:request.urlRequest completion:^(NSDictionary *result, NSError *error) {
         if (result) {
             __block NSMutableArray <BRBuildInfo *> *builds = [NSMutableArray array];
             [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *buildData, NSUInteger idx, BOOL *stop) {
@@ -84,15 +84,14 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
-- (void)abortBuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:( APIActionCallback)completion {
-    [self runRequest:[self.requestBuilder abortRequest:buildSlug appSlug:appSlug token:token] completion:^(NSDictionary *result, NSError *error) {
+- (void)abortBuild:(BRAbortRequest *)request completion:( APIActionCallback)completion {
+    [self runRequest:request.urlRequest completion:^(NSDictionary *result, NSError *error) {
         BR_SAFE_CALL(completion, YES, error);
     }];
 }
 
 - (void)rebuild:(BRRebuildRequest *)request completion:(APIActionCallback)completion {
-    NSURLRequest *urlRequest = [self.requestBuilder rebuildURLRequest:request];
-    [self runRequest:urlRequest completion:^(NSDictionary *response, NSError *error) {
+    [self runRequest:request.urlRequest completion:^(NSDictionary *response, NSError *error) {
         BR_SAFE_CALL(completion, response != nil, error);
     }];
 }

@@ -57,6 +57,8 @@
 		0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */; };
 		0EB3ED5821E619F7003F0364 /* BRRebuildRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */; };
+		0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */; };
+		0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */; };
 		0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */; };
 		0ECFF27A21CD1C10005EC4A4 /* BRSyncDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27921CD1C10005EC4A4 /* BRSyncDiff.m */; };
 		0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */; };
@@ -182,6 +184,10 @@
 		0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAPIRequest.m; sourceTree = "<group>"; };
 		0EB3ED5621E619F7003F0364 /* BRRebuildRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRebuildRequest.h; sourceTree = "<group>"; };
 		0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRebuildRequest.m; sourceTree = "<group>"; };
+		0EB3ED6E21E7B7F3003F0364 /* BRAbortRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAbortRequest.h; sourceTree = "<group>"; };
+		0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAbortRequest.m; sourceTree = "<group>"; };
+		0EB3ED7121E7BC92003F0364 /* BRBuildsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildsRequest.h; sourceTree = "<group>"; };
+		0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildsRequest.m; sourceTree = "<group>"; };
 		0ECFF27521CD186E005EC4A4 /* BRSyncResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncResult.h; sourceTree = "<group>"; };
 		0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncResult.m; sourceTree = "<group>"; };
 		0ECFF27821CD1C10005EC4A4 /* BRSyncDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncDiff.h; sourceTree = "<group>"; };
@@ -522,6 +528,10 @@
 				0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */,
 				0EB3ED5621E619F7003F0364 /* BRRebuildRequest.h */,
 				0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */,
+				0EB3ED6E21E7B7F3003F0364 /* BRAbortRequest.h */,
+				0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */,
+				0EB3ED7121E7BC92003F0364 /* BRBuildsRequest.h */,
+				0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -798,6 +808,7 @@
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
+				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,
 				0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
@@ -815,6 +826,7 @@
 				0E7A18BE21CCE5B10096E1E6 /* BREnvironment.m in Sources */,
 				0E8DFB4721D7A05C00E7E5AC /* BRManagingAppCellView.m in Sources */,
 				0E51715C21D2074E000D470E /* BRBuildMenuController.m in Sources */,
+				0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */,
 				0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */,
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
 				0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */,

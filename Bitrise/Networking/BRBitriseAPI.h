@@ -12,6 +12,8 @@
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
 
+#import "BRBuildsRequest.h"
+#import "BRAbortRequest.h"
 #import "BRRebuildRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -27,9 +29,10 @@ typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 
 - (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion;
 - (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion;
-- (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
 
-- (void)abortBuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:(APIActionCallback)completion;
+- (void)getBuilds:(BRBuildsRequest *)request completion:(APIBuildsListCallback)completion;
+
+- (void)abortBuild:(BRAbortRequest *)request completion:( APIActionCallback)completion;
 - (void)rebuild:(BRRebuildRequest *)request completion:(APIActionCallback)completion;
 
 @end

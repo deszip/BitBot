@@ -24,45 +24,53 @@ static NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps
     return [self requestWithEndpoint:[NSURL URLWithString:kAppsEndpoint] token:token];
 }
 
-- (NSURLRequest *)buildsRequest:(NSString *)slug token:(NSString *)token after:(NSTimeInterval)after {
-    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kBuildsEndpoint, slug]];
-    
-    if (after > 0) {
-        NSURLComponents *components = [NSURLComponents componentsWithURL:endpoint resolvingAgainstBaseURL:NO];
-        [components setQueryItems:@[[NSURLQueryItem queryItemWithName:@"after" value:[@(after) stringValue]]]];
-        endpoint = [components URL];
-    }
-    
-    NSURLRequest *request = [self requestWithEndpoint:endpoint token:token];
-    
-    return request;
-}
+//- (NSURLRequest *)buildsRequest:(NSString *)slug token:(NSString *)token after:(NSTimeInterval)after {
+//    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kBuildsEndpoint, slug]];
+//    
+//    if (after > 0) {
+//        NSURLComponents *components = [NSURLComponents componentsWithURL:endpoint resolvingAgainstBaseURL:NO];
+//        [components setQueryItems:@[[NSURLQueryItem queryItemWithName:@"after" value:[@(after) stringValue]]]];
+//        endpoint = [components URL];
+//    }
+//    
+//    NSURLRequest *request = [self requestWithEndpoint:endpoint token:token];
+//    
+//    return request;
+//}
 
-- (NSURLRequest *)abortRequest:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token {
-    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kAbortEndpoint, appSlug, buildSlug]];
-    NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:token] mutableCopy];
-    [request setHTTPMethod:@"POST"];
-    NSError *serializationError;
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ @"abort_reason": @"foo",
-                                                                     @"abort_with_success": @YES,
-                                                                     @"skip_notifications": @YES }
-                                                          options:0
-                                                            error:&serializationError];
-    if (requestData) {
-        [request setHTTPBody:requestData];
-        return [request copy];
-    }
-    
-    return nil;
-}
+//- (NSURLRequest *)abortRequest:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token {
+//    NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kAbortEndpoint, appSlug, buildSlug]];
+//    NSMutableURLRequest *request = [[self requestWithEndpoint:endpoint token:token] mutableCopy];
+//    [request setHTTPMethod:@"POST"];
+//    NSError *serializationError;
+//    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ @"abort_reason": @"foo",
+//                                                                     @"abort_with_success": @YES,
+//                                                                     @"skip_notifications": @YES }
+//                                                          options:0
+//                                                            error:&serializationError];
+//    if (requestData) {
+//        [request setHTTPBody:requestData];
+//        return [request copy];
+//    }
+//
+//    return nil;
+//}
 
-- (NSURLRequest *)rebuildURLRequest:(BRRebuildRequest *)apiRequest {
-    NSMutableURLRequest *urlRequest = [self requestWithEndpoint:apiRequest.endpoint token:apiRequest.token];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:apiRequest.requestBody];
-    
-    return [urlRequest copy];
-}
+//- (NSURLRequest *)abortURLRequest:(BRAbortRequest *)apiRequest {
+//    NSMutableURLRequest *urlRequest = [self requestWithEndpoint:apiRequest.endpoint token:apiRequest.token];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:apiRequest.requestBody];
+//
+//    return [urlRequest copy];
+//}
+//
+//- (NSURLRequest *)rebuildURLRequest:(BRRebuildRequest *)apiRequest {
+//    NSMutableURLRequest *urlRequest = [self requestWithEndpoint:apiRequest.endpoint token:apiRequest.token];
+//    [urlRequest setHTTPMethod:@"POST"];
+//    [urlRequest setHTTPBody:apiRequest.requestBody];
+//
+//    return [urlRequest copy];
+//}
 
 - (NSMutableURLRequest *)requestWithEndpoint:(NSURL *)endpoint token:(NSString *)token {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpoint];

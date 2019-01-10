@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRAbortRequest.h"
 #import "BRRebuildRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,15 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSURLRequest *)appsRequest:(NSString *)token;
 
-- (NSURLRequest *)buildsRequest:(NSString *)slug
-                          token:(NSString *)token
-                          after:(NSTimeInterval)after;
+//- (NSURLRequest *)buildsRequest:(NSString *)slug
+//                          token:(NSString *)token
+//                          after:(NSTimeInterval)after;
 
-- (NSURLRequest *)abortRequest:(NSString *)buildSlug
-                       appSlug:(NSString *)appSlug
-                         token:(NSString *)token;
+//- (NSURLRequest *)abortRequest:(NSString *)buildSlug
+//                       appSlug:(NSString *)appSlug
+//                         token:(NSString *)token;
 
-- (NSURLRequest *)rebuildURLRequest:(BRRebuildRequest *)apiRequest;
+//- (NSURLRequest *)abortURLRequest:(BRAbortRequest *)apiRequest;
+//- (NSURLRequest *)rebuildURLRequest:(BRRebuildRequest *)apiRequest;
 
 @end
 

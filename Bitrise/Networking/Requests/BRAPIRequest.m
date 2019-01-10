@@ -20,4 +20,20 @@
     return self;
 }
 
+- (NSString *)method {
+    return @"GET";
+}
+
+- (NSURLRequest *)urlRequest {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.endpoint];
+    if (self.token) {
+        NSString *tokenString = [NSString stringWithFormat:@"token %@", self.token];
+        [request setValue:tokenString forHTTPHeaderField:@"Authorization"];
+    }
+    [request setHTTPBody:[self requestBody]];
+    [request setHTTPMethod:[self method]];
+    
+    return [request copy];
+}
+
 @end

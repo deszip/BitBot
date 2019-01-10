@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithEndpoint:(NSURL *)endpoint token:(NSString *)token body:(NSData * _Nullable)body;
 
+- (NSString *)method;
+- (NSURLRequest *)urlRequest;
+
 @end
 
 NS_ASSUME_NONNULL_END

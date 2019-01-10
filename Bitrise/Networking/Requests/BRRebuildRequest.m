@@ -21,6 +21,10 @@ static NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps
     return self;
 }
 
+- (NSString *)method {
+    return @"POST";
+}
+
 - (NSData *)requestBody {
     NSError *serializationError;
     NSMutableDictionary *params = [@{ @"hook_info":     @{ @"type" : @"bitrise" },
