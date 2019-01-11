@@ -13,6 +13,8 @@
 #import "BRAbortCommand.h"
 #import "BRRebuildCommand.h"
 #import "BRSyncCommand.h"
+#import "BRDownloadLogsCommand.h"
+#import "BROpenBuildCommand.h"
 
 static const NSUInteger kMenuItemsCount = 4;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -94,16 +96,16 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)downloadLog {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/api/build/%@/logs.json?&download=log", [(BRBuild *)selectedItem slug]];
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
+        BRDownloadLogsCommand *command = [[BRDownloadLogsCommand alloc] initWithBuildSlug:[(BRBuild *)selectedItem slug]];
+        [command execute:nil];
     }
 }
 
 - (void)openBuild {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/build/%@", [(BRBuild *)selectedItem slug]];
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
+        BROpenBuildCommand *command = [[BROpenBuildCommand alloc] initWithBuildSlug:[(BRBuild *)selectedItem slug]];
+        [command execute:nil];
     }
 }
 
