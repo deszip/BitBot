@@ -9,22 +9,14 @@
 #import "BRBitriseAPI.h"
 
 #import "BRMacro.h"
-#import "BRRequestBuilder.h"
 
 NSString * const kBRBitriseAPIDomain = @"kBRBitriseAPIDomain";
-
-static NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me";
-static NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
-static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
-static NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
-static NSString * const kRebuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/rebuild";
 
 typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
 
 @interface BRBitriseAPI ()
 
 @property (strong, nonatomic) NSURLSession *session;
-@property (strong, nonatomic) BRRequestBuilder *requestBuilder;
 
 @end
 
@@ -35,7 +27,6 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         config.requestCachePolicy = NSURLRequestReloadIgnoringCacheData;
         _session = [NSURLSession sessionWithConfiguration:config];
-        _requestBuilder = [BRRequestBuilder new];
     }
     
     return self;
@@ -43,10 +34,10 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
 
 #pragma mark - API calls -
 
-- (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion {
-    [self runRequest:[self.requestBuilder accountRequest:token] completion:^(NSDictionary *result, NSError *error) {
+- (void)getAccount:(BRAccountRequest *)request completion:(APIAccountInfoCallback)completion {
+    [self runRequest:request.urlRequest completion:^(NSDictionary *result, NSError *error) {
         if (result) {
-            BRAccountInfo *accountInfo = [[BRAccountInfo alloc] initWithResponse:result token:token];
+            BRAccountInfo *accountInfo = [[BRAccountInfo alloc] initWithResponse:result token:request.token];
             completion(accountInfo, nil);
         } else {
             completion(nil, error);
@@ -54,8 +45,8 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
     }];
 }
 
-- (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion {
-    [self runRequest:[self.requestBuilder appsRequest:token] completion:^(NSDictionary *result, NSError *error) {
+- (void)getApps:(BRAppsRequest *)request completion:(APIAppsListCallback)completion {
+    [self runRequest:request.urlRequest completion:^(NSDictionary *result, NSError *error) {
         if (result) {
             __block NSMutableArray <BRAppInfo *> *apps = [NSMutableArray array];
             [result[@"data"] enumerateObjectsUsingBlock:^(NSDictionary *appData, NSUInteger idx, BOOL *stop) {

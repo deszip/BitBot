@@ -8,7 +8,13 @@
 
 #import "BRRebuildRequest.h"
 
-static NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+static NSString * const kHookInfoKey        = @"hook_info";
+static NSString * const kHookInfoTypeKey    = @"type";
+static NSString * const kParamsKey          = @"build_params";
+static NSString * const kBranchKey          = @"branch";
+static NSString * const kCommitKey          = @"commit_hash";
+static NSString * const kWorkflowKey        = @"workflow_id";
+static NSString * const kTriggerKey         = @"triggered_by";
 
 @implementation BRRebuildRequest
 
@@ -27,14 +33,14 @@ static NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps
 
 - (NSData *)requestBody {
     NSError *serializationError;
-    NSMutableDictionary *params = [@{ @"hook_info":     @{ @"type" : @"bitrise" },
-                                      @"build_params":  [@{ @"branch" : self.branch } mutableCopy],
-                                      @"triggered_by":  @"bitrise_api_doc" } mutableCopy];
+    NSMutableDictionary *params = [@{ kHookInfoKey: @{ kHookInfoTypeKey : @"bitrise" },
+                                      kParamsKey:   [@{ kBranchKey : self.branch } mutableCopy],
+                                      kTriggerKey:  @"bitbot" } mutableCopy];
     if (self.commit) {
-        params[@"build_params"][@"commit_hash"] = self.commit;
+        params[kParamsKey][kCommitKey] = self.commit;
     }
     if (self.workflow) {
-        params[@"build_params"][@"workflow_id"] = self.workflow;
+        params[kParamsKey][kWorkflowKey] = self.workflow;
     }
     
     return [NSJSONSerialization dataWithJSONObject:params options:0 error:&serializationError];

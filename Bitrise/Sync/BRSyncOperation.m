@@ -13,6 +13,7 @@
 #import "BRBuild+CoreDataClass.h"
 #import "BRSyncDiff.h"
 
+#import "BRAppsRequest.h"
 #import "BRBuildsRequest.h"
 
 @interface BRSyncOperation ()
@@ -62,7 +63,8 @@
             
             dispatch_group_enter(self.group);
             
-            [self.api getApps:account.token completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
+            BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
+            [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
                 if (!appsInfo) {
                     NSLog(@"Failed to get apps from API: %@", error);
                     [super finish];

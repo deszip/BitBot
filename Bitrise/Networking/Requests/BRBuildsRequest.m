@@ -8,7 +8,7 @@
 
 #import "BRBuildsRequest.h"
 
-static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+static NSString * const kAfterKey = @"afetr";
 
 @implementation BRBuildsRequest
 
@@ -16,7 +16,7 @@ static NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/
     NSURL *endpoint = [NSURL URLWithString:[NSString stringWithFormat:kBuildsEndpoint, appSlug]];
     if (syncTime > 0) {
         NSURLComponents *components = [NSURLComponents componentsWithURL:endpoint resolvingAgainstBaseURL:NO];
-        [components setQueryItems:@[[NSURLQueryItem queryItemWithName:@"after" value:[@(syncTime) stringValue]]]];
+        [components setQueryItems:@[[NSURLQueryItem queryItemWithName:kAfterKey value:[@(syncTime) stringValue]]]];
         endpoint = [components URL];
     }
     

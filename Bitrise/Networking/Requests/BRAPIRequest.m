@@ -8,6 +8,12 @@
 
 #import "BRAPIRequest.h"
 
+NSString * const kAccountInfoEndpoint = @"https://api.bitrise.io/v0.1/me";
+NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
+NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
+NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+
 @implementation BRAPIRequest
 
 - (instancetype)initWithEndpoint:(NSURL *)endpoint token:(NSString *)token body:(NSData *)body {

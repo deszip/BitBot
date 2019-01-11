@@ -10,6 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString * const kAccountInfoEndpoint;
+extern NSString * const kAppsEndpoint;
+extern NSString * const kBuildsEndpoint;
+extern NSString * const kAbortEndpoint;
+extern NSString * const kStartBuildEndpoint;
+
 @interface BRAPIRequest : NSObject
 
 @property (copy, nonatomic, readonly) NSString *token;

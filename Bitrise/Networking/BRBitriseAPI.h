@@ -12,6 +12,8 @@
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
 
+#import "BRAccountRequest.h"
+#import "BRAppsRequest.h"
 #import "BRBuildsRequest.h"
 #import "BRAbortRequest.h"
 #import "BRRebuildRequest.h"
@@ -27,9 +29,8 @@ typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 
 @interface BRBitriseAPI : NSObject
 
-- (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion;
-- (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion;
-
+- (void)getAccount:(BRAccountRequest *)request completion:(APIAccountInfoCallback)completion;
+- (void)getApps:(BRAppsRequest *)request completion:(APIAppsListCallback)completion;
 - (void)getBuilds:(BRBuildsRequest *)request completion:(APIBuildsListCallback)completion;
 
 - (void)abortBuild:(BRAbortRequest *)request completion:( APIActionCallback)completion;

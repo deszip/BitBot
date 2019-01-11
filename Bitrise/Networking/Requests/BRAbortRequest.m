@@ -8,7 +8,9 @@
 
 #import "BRAbortRequest.h"
 
-static NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
+static NSString * const kAbortReasonKey         = @"abort_reason";
+static NSString * const kAbortSuccessKey        = @"abort_with_success";
+static NSString * const kAbortNotificationsKey  = @"skip_notifications";
 
 @implementation BRAbortRequest
 
@@ -23,9 +25,9 @@ static NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/b
 
 - (NSData *)requestBody {
     NSError *serializationError;
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ @"abort_reason": @"foo",
-                                                                     @"abort_with_success": @YES,
-                                                                     @"skip_notifications": @YES }
+    NSData *requestData = [NSJSONSerialization dataWithJSONObject:@{ kAbortReasonKey: @"BitBot aborted",
+                                                                     kAbortSuccessKey: @YES,
+                                                                     kAbortNotificationsKey: @YES }
                                                               options:0
                                                                 error:&serializationError];
     
