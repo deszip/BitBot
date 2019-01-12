@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
+#import "BRAccount+CoreDataClass.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
 #import "BRAppCellView.h"

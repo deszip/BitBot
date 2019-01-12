@@ -81,6 +81,15 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.dataSource fetch];
 }
 
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:kAboutWindowSegue] || [segue.identifier isEqualToString:kAccountWindowSegue]) {
+        [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
+        [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
+    }
+}
+
 #pragma mark - Actions -
 
 - (IBAction)openSettingsMenu:(NSButton *)sender {

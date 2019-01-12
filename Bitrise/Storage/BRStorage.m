@@ -141,7 +141,7 @@
 - (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRBuild fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@ && status != 0", app.slug];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
     request.fetchLimit = 1;
     
     NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
@@ -162,9 +162,7 @@
         [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
             BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:self.context];
             build.app = apps[0];
-            if (![self saveContext:self.context error:error]) {
-                result = NO;
-            }
+            result = [self saveContext:self.context error:error];
         }];
     } else {
         NSLog(@"Failed to save builds: %@", *error);

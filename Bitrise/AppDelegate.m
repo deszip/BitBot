@@ -49,7 +49,7 @@
         _detachableMainController.dependencyContainer = _dependencyContainer;
         
         _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
-        [_detachableWindowController.window setLevel:NSStatusWindowLevel];
+        [_detachableWindowController.window setLevel:NSFloatingWindowLevel];
         [_detachableWindowController.window setTitle:@"BitBot"];
     }
     

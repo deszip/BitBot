@@ -52,16 +52,18 @@
     }
     
     [cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
-    [cell.statusLabel setStringValue:buildStateInfo.statusTitle];
     
+    NSColor *statusColor = [NSColor colorWithPatternImage:cell.statusImage.image];
     [cell.statusImageContainer setWantsLayer:YES];
-    [cell.statusImageContainer.layer setBackgroundColor:[NSColor colorWithPatternImage:cell.statusImage.image].CGColor];
+    [cell.statusImageContainer.layer setBackgroundColor:statusColor.CGColor];
+    [cell.markerBox setFillColor:statusColor];
     
     // Parameters
+    [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];
     [cell.appTitleLabel setStringValue:build.app.title];
     [cell.branchLabel setStringValue:build.branch];
     [cell.workflowLabel setStringValue:build.workflow];
-    [cell.triggerTimeLabel setStringValue:[NSString stringWithFormat:@"Triggered: %@", [self.timeFormatter stringFromDate:build.triggerTime]]];
+    [cell.triggerTimeLabel setStringValue:[self.timeFormatter stringFromDate:build.triggerTime]];
     
     [cell.buildNumberLabel setStringValue:[NSString stringWithFormat:@"#%li", build.buildNumber.integerValue]];
     
