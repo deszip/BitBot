@@ -20,7 +20,6 @@
 		0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CAE020EC7A800033CD03 /* Main.storyboard */; };
 		0E42CAE520EC7A800033CD03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAE420EC7A800033CD03 /* main.m */; };
-		0E42CAF020EC7A800033CD03 /* BitriseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAEF20EC7A800033CD03 /* BitriseTests.m */; };
 		0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAFE20EC7BB40033CD03 /* BRMainController.m */; };
 		0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0220EC89550033CD03 /* BRAppCellView.m */; };
 		0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0520EC896B0033CD03 /* BRBuildCellView.m */; };
@@ -28,7 +27,6 @@
 		0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
 		0E51715C21D2074E000D470E /* BRBuildMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51715B21D2074E000D470E /* BRBuildMenuController.m */; };
 		0E51715F21D20E96000D470E /* BRActionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51715E21D20E96000D470E /* BRActionDispatcher.m */; };
-		0E51716421D2AE29000D470E /* BRRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51716321D2AE29000D470E /* BRRequestBuilder.m */; };
 		0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C720D20F90A5B00E5A082 /* BRObserver.m */; };
 		0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */; };
 		0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */; };
@@ -50,6 +48,18 @@
 		0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
 		0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70820F0D110001A6C15 /* BRBuildInfo.m */; };
 		0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED4921E336BD003F0364 /* BRStorageTests.m */; };
+		0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
+		0EB3ED4D21E33A1D003F0364 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
+		0EB3ED4E21E3453F003F0364 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0EB3ED4F21E3453F003F0364 /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
+		0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
+		0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */; };
+		0EB3ED5821E619F7003F0364 /* BRRebuildRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */; };
+		0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */; };
+		0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */; };
+		0EB3ED7621E88E8C003F0364 /* BRAppsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7521E88E8C003F0364 /* BRAppsRequest.m */; };
+		0EB3ED7921E890E1003F0364 /* BRAccountRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */; };
 		0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */; };
 		0ECFF27A21CD1C10005EC4A4 /* BRSyncDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27921CD1C10005EC4A4 /* BRSyncDiff.m */; };
 		0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */; };
@@ -109,7 +119,6 @@
 		0E42CAE420EC7A800033CD03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bitrise.entitlements; sourceTree = "<group>"; };
 		0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitriseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E42CAEF20EC7A800033CD03 /* BitriseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitriseTests.m; sourceTree = "<group>"; };
 		0E42CAF120EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E42CAFD20EC7BB40033CD03 /* BRMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMainController.h; sourceTree = "<group>"; };
 		0E42CAFE20EC7BB40033CD03 /* BRMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMainController.m; sourceTree = "<group>"; };
@@ -125,8 +134,6 @@
 		0E51715B21D2074E000D470E /* BRBuildMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildMenuController.m; sourceTree = "<group>"; };
 		0E51715D21D20E96000D470E /* BRActionDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRActionDispatcher.h; sourceTree = "<group>"; };
 		0E51715E21D20E96000D470E /* BRActionDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRActionDispatcher.m; sourceTree = "<group>"; };
-		0E51716221D2AE29000D470E /* BRRequestBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRequestBuilder.h; sourceTree = "<group>"; };
-		0E51716321D2AE29000D470E /* BRRequestBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRequestBuilder.m; sourceTree = "<group>"; };
 		0E5C720C20F90A5B00E5A082 /* BRObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRObserver.h; sourceTree = "<group>"; };
 		0E5C720D20F90A5B00E5A082 /* BRObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRObserver.m; sourceTree = "<group>"; };
 		0E73597520EDF0A0007E15A7 /* BRContainerBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRContainerBuilder.h; sourceTree = "<group>"; };
@@ -171,6 +178,19 @@
 		0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRAccount+Mapping.m"; sourceTree = "<group>"; };
 		0E9F413320FEF8BF0083D646 /* BRCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommand.h; sourceTree = "<group>"; };
 		0E9F413720FEFA6A0083D646 /* BRMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMacro.h; sourceTree = "<group>"; };
+		0EB3ED4921E336BD003F0364 /* BRStorageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStorageTests.m; sourceTree = "<group>"; };
+		0EB3ED5321E617FA003F0364 /* BRAPIRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAPIRequest.h; sourceTree = "<group>"; };
+		0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAPIRequest.m; sourceTree = "<group>"; };
+		0EB3ED5621E619F7003F0364 /* BRRebuildRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRebuildRequest.h; sourceTree = "<group>"; };
+		0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRebuildRequest.m; sourceTree = "<group>"; };
+		0EB3ED6E21E7B7F3003F0364 /* BRAbortRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAbortRequest.h; sourceTree = "<group>"; };
+		0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAbortRequest.m; sourceTree = "<group>"; };
+		0EB3ED7121E7BC92003F0364 /* BRBuildsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildsRequest.h; sourceTree = "<group>"; };
+		0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildsRequest.m; sourceTree = "<group>"; };
+		0EB3ED7421E88E8B003F0364 /* BRAppsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppsRequest.h; sourceTree = "<group>"; };
+		0EB3ED7521E88E8C003F0364 /* BRAppsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppsRequest.m; sourceTree = "<group>"; };
+		0EB3ED7721E890E1003F0364 /* BRAccountRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountRequest.h; sourceTree = "<group>"; };
+		0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountRequest.m; sourceTree = "<group>"; };
 		0ECFF27521CD186E005EC4A4 /* BRSyncResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncResult.h; sourceTree = "<group>"; };
 		0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncResult.m; sourceTree = "<group>"; };
 		0ECFF27821CD1C10005EC4A4 /* BRSyncDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncDiff.h; sourceTree = "<group>"; };
@@ -290,7 +310,7 @@
 		0E42CAEE20EC7A800033CD03 /* BitriseTests */ = {
 			isa = PBXGroup;
 			children = (
-				0E42CAEF20EC7A800033CD03 /* BitriseTests.m */,
+				0EB3ED4821E3369D003F0364 /* Storage */,
 				0E42CAF120EC7A800033CD03 /* Info.plist */,
 			);
 			path = BitriseTests;
@@ -433,6 +453,7 @@
 		0E8E9B5020F07FF400494DEB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				0EB3ED5221E617E3003F0364 /* Requests */,
 				0E93B6FF20F08ECD001A6C15 /* Commands */,
 				0E8E9B5320F0819E00494DEB /* BRBitriseAPI.h */,
 				0E8E9B5420F0819E00494DEB /* BRBitriseAPI.m */,
@@ -440,8 +461,6 @@
 				0E5C720D20F90A5B00E5A082 /* BRObserver.m */,
 				0E51715D21D20E96000D470E /* BRActionDispatcher.h */,
 				0E51715E21D20E96000D470E /* BRActionDispatcher.m */,
-				0E51716221D2AE29000D470E /* BRRequestBuilder.h */,
-				0E51716321D2AE29000D470E /* BRRequestBuilder.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -493,6 +512,33 @@
 				0EE1B85121B4363D005D5140 /* Collection Extensions */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		0EB3ED4821E3369D003F0364 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				0EB3ED4921E336BD003F0364 /* BRStorageTests.m */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		0EB3ED5221E617E3003F0364 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				0EB3ED5321E617FA003F0364 /* BRAPIRequest.h */,
+				0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */,
+				0EB3ED5621E619F7003F0364 /* BRRebuildRequest.h */,
+				0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */,
+				0EB3ED6E21E7B7F3003F0364 /* BRAbortRequest.h */,
+				0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */,
+				0EB3ED7121E7BC92003F0364 /* BRBuildsRequest.h */,
+				0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */,
+				0EB3ED7421E88E8B003F0364 /* BRAppsRequest.h */,
+				0EB3ED7521E88E8C003F0364 /* BRAppsRequest.m */,
+				0EB3ED7721E890E1003F0364 /* BRAccountRequest.h */,
+				0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		0EDC5DDE21BBBB0A00AD41FE /* Queue */ = {
@@ -741,7 +787,6 @@
 			files = (
 				0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */,
 				0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */,
-				0E51716421D2AE29000D470E /* BRRequestBuilder.m in Sources */,
 				0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */,
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
@@ -757,6 +802,7 @@
 				0EE1B85D21B4363D005D5140 /* NSHashTable+FRP.m in Sources */,
 				0E30344921CEE218001757C0 /* BRAutorun.m in Sources */,
 				0E3C0B0B2117609900F2EA35 /* BRAbortCommand.m in Sources */,
+				0EB3ED5821E619F7003F0364 /* BRRebuildRequest.m in Sources */,
 				0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */,
 				0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */,
 				0E3C0B0521175F0A00F2EA35 /* BRBuildActionHandler.m in Sources */,
@@ -766,12 +812,14 @@
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
+				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,
 				0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */,
+				0EB3ED7921E890E1003F0364 /* BRAccountRequest.m in Sources */,
 				0EF766C021E2637900E64E0C /* BRAboutViewController.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
 				0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */,
@@ -783,6 +831,8 @@
 				0E7A18BE21CCE5B10096E1E6 /* BREnvironment.m in Sources */,
 				0E8DFB4721D7A05C00E7E5AC /* BRManagingAppCellView.m in Sources */,
 				0E51715C21D2074E000D470E /* BRBuildMenuController.m in Sources */,
+				0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */,
+				0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */,
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
 				0E93B6F720F0837B001A6C15 /* BRStorage.m in Sources */,
 				0E51715F21D20E96000D470E /* BRActionDispatcher.m in Sources */,
@@ -794,6 +844,7 @@
 				0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */,
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
 				0E3C0B132117627700F2EA35 /* BRCommand.m in Sources */,
+				0EB3ED7621E88E8C003F0364 /* BRAppsRequest.m in Sources */,
 				0E3C0B0E211760AC00F2EA35 /* BRDownloadLogsCommand.m in Sources */,
 				0E3C0B082117607A00F2EA35 /* BRRebuildCommand.m in Sources */,
 			);
@@ -803,8 +854,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */,
+				0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */,
+				0EB3ED4E21E3453F003F0364 /* BRAccount+Mapping.m in Sources */,
+				0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */,
+				0EB3ED4D21E33A1D003F0364 /* bitrise.xcdatamodeld in Sources */,
 				0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */,
-				0E42CAF020EC7A800033CD03 /* BitriseTests.m in Sources */,
+				0EB3ED4F21E3453F003F0364 /* BRBuild+Mapping.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,9 +1036,10 @@
 			baseConfigurationReference = 74C0A871342AC9F3D945FEB5 /* Pods-BitriseTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				DEVELOPMENT_TEAM = AM5334753U;
 				INFOPLIST_FILE = BitriseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -991,6 +1048,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BR.BitriseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitrise.app/Contents/MacOS/Bitrise";
 			};
 			name = Debug;
@@ -1000,9 +1058,10 @@
 			baseConfigurationReference = 1933E73DED40E2A87EF04BC3 /* Pods-BitriseTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KUDGTPXKVD;
+				DEVELOPMENT_TEAM = AM5334753U;
 				INFOPLIST_FILE = BitriseTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1011,6 +1070,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BR.BitriseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitrise.app/Contents/MacOS/Bitrise";
 			};
 			name = Release;

@@ -54,7 +54,7 @@
 }
 
 - (BRStorage *)storage {
-    return [[BRStorage alloc] initWithContainer:self.persistenceContainer];
+    return [[BRStorage alloc] initWithContext:[self.persistenceContainer newBackgroundContext]];
 }
 
 - (BRObserver *)commandObserver {

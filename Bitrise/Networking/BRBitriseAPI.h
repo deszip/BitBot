@@ -12,6 +12,12 @@
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
 
+#import "BRAccountRequest.h"
+#import "BRAppsRequest.h"
+#import "BRBuildsRequest.h"
+#import "BRAbortRequest.h"
+#import "BRRebuildRequest.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const kBRBitriseAPIDomain;
@@ -23,17 +29,12 @@ typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 
 @interface BRBitriseAPI : NSObject
 
-- (void)getAccount:(NSString *)token completion:(APIAccountInfoCallback)completion;
-- (void)getApps:(NSString *)token completion:(APIAppsListCallback)completion;
-- (void)getBuilds:(NSString *)appSlug token:(NSString *)token after:(NSTimeInterval)after completion:(APIBuildsListCallback)completion;
+- (void)getAccount:(BRAccountRequest *)request completion:(APIAccountInfoCallback)completion;
+- (void)getApps:(BRAppsRequest *)request completion:(APIAppsListCallback)completion;
+- (void)getBuilds:(BRBuildsRequest *)request completion:(APIBuildsListCallback)completion;
 
-- (void)abortBuild:(NSString *)buildSlug appSlug:(NSString *)appSlug token:(NSString *)token completion:(APIActionCallback)completion;
-- (void)rebuildApp:(NSString *)appSlug
-        buildToken:(NSString *)token
-            branch:(NSString *)branch
-            commit:(NSString *)commit
-          workflow:(NSString *)workflow
-        completion:(APIActionCallback)completion;
+- (void)abortBuild:(BRAbortRequest *)request completion:( APIActionCallback)completion;
+- (void)rebuild:(BRRebuildRequest *)request completion:(APIActionCallback)completion;
 
 @end
 

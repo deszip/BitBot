@@ -13,6 +13,9 @@
 #import "BRBuild+CoreDataClass.h"
 #import "BRSyncDiff.h"
 
+#import "BRAppsRequest.h"
+#import "BRBuildsRequest.h"
+
 @interface BRSyncOperation ()
 
 @property (strong, nonatomic) BRStorage *storage;
@@ -60,7 +63,8 @@
             
             dispatch_group_enter(self.group);
             
-            [self.api getApps:account.token completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
+            BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
+            [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
                 if (!appsInfo) {
                     NSLog(@"Failed to get apps from API: %@", error);
                     [super finish];
@@ -111,7 +115,9 @@
     dispatch_group_enter(self.group);
     
     NSTimeInterval fetchTime = [self fetchTime:app];
-    [self.api getBuilds:app.slug token:token after:fetchTime completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
+    BRBuildsRequest *request = [[BRBuildsRequest alloc] initWithToken:token appSlug:app.slug syncTime:fetchTime];
+    
+    [self.api getBuilds:request completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
         if (builds) {
             if (self.syncCallback) {
                 BRSyncDiff *diff = [self diffForBuilds:builds runningBuilds:runningBuildSlugs];

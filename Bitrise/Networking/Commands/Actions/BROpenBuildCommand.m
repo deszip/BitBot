@@ -8,6 +8,27 @@
 
 #import "BROpenBuildCommand.h"
 
+@interface BROpenBuildCommand ()
+
+@property (copy, nonatomic) NSString *buildSlug;
+
+@end
+
 @implementation BROpenBuildCommand
+
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug {
+    if (self = [super init]) {
+        _buildSlug = buildSlug;
+    }
+    
+    return self;
+}
+
+- (void)execute:(BRCommandResult)callback {
+    NSString *buildPath = [NSString stringWithFormat:@"https://app.bitrise.io/build/%@", self.buildSlug];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:buildPath]];
+    
+    BR_SAFE_CALL(callback, YES, nil);
+}
 
 @end

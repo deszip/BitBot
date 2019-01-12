@@ -8,6 +8,27 @@
 
 #import "BRDownloadLogsCommand.h"
 
+@interface BRDownloadLogsCommand ()
+
+@property (copy, nonatomic) NSString *buildSlug;
+
+@end
+
 @implementation BRDownloadLogsCommand
+
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug {
+    if (self = [super init]) {
+        _buildSlug = buildSlug;
+    }
+    
+    return self;
+}
+
+- (void)execute:(BRCommandResult)callback {
+    NSString *downloadPath = [NSString stringWithFormat:@"https://app.bitrise.io/api/build/%@/logs.json?&download=log", self.buildSlug];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
+    
+    BR_SAFE_CALL(callback, YES, nil);
+}
 
 @end
