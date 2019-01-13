@@ -44,21 +44,13 @@
     
     self.deleteItem = [[NSMenuItem alloc] initWithTitle:@"Delete account" action:@selector(deleteAccount) keyEquivalent:@""];
     [self.deleteItem setTarget:self];
-    self.keyItem = [[NSMenuItem alloc] initWithTitle:@"Add build key..." action:@selector(addBuildKey) keyEquivalent:@""];
-    [self.keyItem setTarget:self];
+    [self.menu insertItem:self.deleteItem atIndex:0];
 }
 
 - (void)deleteAccount {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRAccount class]]) {
         BR_SAFE_CALL(self.actionCallback, BRAppMenuActionRemoveAccount, [(BRAccount *)selectedItem slug]);
-    }
-}
-
-- (void)addBuildKey {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRApp class]]) {
-        BR_SAFE_CALL(self.actionCallback, BRAppMenuActionAddKey, [(BRApp *)selectedItem slug]);
     }
 }
 
@@ -72,13 +64,10 @@
 
 - (void)menuWillOpen:(NSMenu *)menu {
     [self.menu removeAllItems];
-    
+
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRAccount class]]) {
         [self.menu insertItem:self.deleteItem atIndex:0];
-    }
-    if ([selectedItem isKindOfClass:[BRApp class]]) {
-        [self.menu insertItem:self.keyItem atIndex:0];
     }
 }
 

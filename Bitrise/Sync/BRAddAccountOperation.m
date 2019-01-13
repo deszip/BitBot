@@ -9,6 +9,7 @@
 #import "BRAddAccountOperation.h"
 
 #import "BRSyncOperation.h"
+#import "BRAccountRequest.h"
 
 @interface BRAddAccountOperation ()
 
@@ -35,17 +36,21 @@
     [super start];
     
     [self.storage perform:^{
-        [self.api getAccount:self.token completion:^(BRAccountInfo *accountInfo, NSError *error) {
+        BRAccountRequest *request = [[BRAccountRequest alloc] initWithToken:self.token];
+        [self.api getAccount:request completion:^(BRAccountInfo *accountInfo, NSError *error) {
             if (!accountInfo) {
                 [super finish];
                 return;
             }
             
-            [self.storage saveAccount:accountInfo];
+            NSError *fetchError;
+            BOOL result = [self.storage saveAccount:accountInfo error:&fetchError];
+            if (result) {
+                // Dispatch sync
+                BRSyncOperation *syncOperation = [[BRSyncOperation alloc] initWithStorage:self.storage api:self.api];
+                [self.queue addOperation:syncOperation];
+            }
             
-            // Dispatch sync
-            BRSyncOperation *syncOperation = [[BRSyncOperation alloc] initWithStorage:self.storage api:self.api];
-            [self.queue addOperation:syncOperation];
             [super finish];
         }];
     }];

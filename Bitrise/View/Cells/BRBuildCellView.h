@@ -12,13 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildCellView : NSTableRowView
 
-@property (weak) IBOutlet NSImageView *statusImage;
-@property (weak) IBOutlet NSImageView *backgroundStatusImage;
+@property (weak) IBOutlet NSBox *markerBox;
 @property (weak) IBOutlet NSView *statusImageContainer;
+@property (weak) IBOutlet NSImageView *backgroundStatusImage;
+@property (weak) IBOutlet NSImageView *statusImage;
 
-@property (weak) IBOutlet NSTextField *statusLabel;
+@property (weak) IBOutlet NSTextField *accountLabel;
 @property (weak) IBOutlet NSTextField *appTitleLabel;
 @property (weak) IBOutlet NSTextField *branchLabel;
+@property (weak) IBOutlet NSTextField *commitLabel;
 @property (weak) IBOutlet NSTextField *workflowLabel;
 @property (weak) IBOutlet NSTextField *triggerTimeLabel;
 @property (weak) IBOutlet NSTextField *buildTimeLabel;

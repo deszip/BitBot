@@ -11,6 +11,10 @@
 @implementation BRContainerBuilder
 
 - (NSPersistentContainer *)buildContainer {
+    return [self buildContainerOfType:NSSQLiteStoreType];
+}
+
+- (NSPersistentContainer *)buildContainerOfType:(NSString *)type {
     NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
     NSPersistentStoreDescription *storeDescription = [NSPersistentStoreDescription new];
     NSURL *documentsURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
@@ -27,7 +31,7 @@
     }
     
     storeDescription.URL = [appDirectoryURL URLByAppendingPathComponent:@"bitrise.sqlite"];
-    storeDescription.type = NSSQLiteStoreType;
+    storeDescription.type = type;
     storeDescription.shouldInferMappingModelAutomatically = YES;
     storeDescription.shouldMigrateStoreAutomatically = YES;
     container.persistentStoreDescriptions = @[storeDescription];

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BROpenBuildCommand : BRCommand
 
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -20,15 +20,14 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
 @interface BRStorage : NSObject
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container;
+- (instancetype)initWithContext:(NSManagedObjectContext *)context;
 
 - (void)perform:(void (^)(void))action;
 
 #pragma mark - Accounts -
 - (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error;
-- (BRAccount *)accountWithToken:(NSString *)token error:(NSError * __autoreleasing *)error;
-- (void)saveAccount:(BRAccountInfo *)accountInfo;
-- (void)removeAccount:(NSString *)slug completion:(BRStorageResult)completion;
+- (BOOL)saveAccount:(BRAccountInfo *)accountInfo error:(NSError * __autoreleasing *)error;
+- (BOOL)removeAccount:(NSString *)slug error:(NSError * __autoreleasing *)error;
 
 #pragma mark - Apps -
 - (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error;

@@ -43,14 +43,16 @@
         _popover = [[NSPopover alloc] init];
         _popover.delegate = self;
         
-        _mainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
+        NSStoryboard *mainStoryboard = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        
+        _mainController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainController"];
         _mainController.dependencyContainer = _dependencyContainer;
-        _detachableMainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
+        _detachableMainController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainController"];
         _detachableMainController.dependencyContainer = _dependencyContainer;
         
-        _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
-        [_detachableWindowController.window setLevel:NSStatusWindowLevel];
-        [_detachableWindowController.window setTitle:@"BitBot"];
+        _detachableWindowController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainWindow"];
+        [_detachableWindowController.window setLevel:NSFloatingWindowLevel];
+        [_detachableWindowController.window setTitleVisibility:NSWindowTitleHidden];
     }
     
     return self;
@@ -62,7 +64,7 @@
     [self.observer startObserving:syncCommand];
     
     // Build status item
-    NSImage *image = [NSImage imageNamed:@"bitrise-logo"];
+    NSImage *image = [NSImage imageNamed:@"bitrise-bot-icon"];
     self.statusItem.button.image = image;
     self.statusItem.button.imageScaling = NSImageScaleProportionallyDown;
     self.statusItem.button.alternateImage = image;

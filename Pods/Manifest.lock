@@ -2,23 +2,31 @@ PODS:
   - EasyMapping (0.22.0):
     - EasyMapping/Core (= 0.22.0)
   - EasyMapping/Core (0.22.0)
+  - Expecta (1.0.6)
+  - OCMock (3.4.3)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - EasyMapping
+  - Expecta (~> 1.0.6)
+  - OCMock (~> 3.4.3)
   - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - EasyMapping
+    - Expecta
+    - OCMock
     - SDWebImage
 
 SPEC CHECKSUMS:
   EasyMapping: 60f8b3cac9a9d2b76a75e2b96f556480de103601
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 7e5b58c83d9d8a7dd6292d77705b2d36b5101c1f
+PODFILE CHECKSUM: 6e63624800ceb54748e4f6f0ac89e16b7727855c
 
 COCOAPODS: 1.5.3
