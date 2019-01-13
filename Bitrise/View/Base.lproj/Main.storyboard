@@ -921,7 +921,7 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="message-square" id="IOJ-Vd-RUu"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WyQ-Bu-n6R">
+                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="WyQ-Bu-n6R">
                                                                                                             <rect key="frame" x="15" y="0.0" width="50" height="20"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="develop" id="LdW-rP-NHo">
                                                                                                                 <font key="font" size="12" name="AvenirNext-Regular"/>
