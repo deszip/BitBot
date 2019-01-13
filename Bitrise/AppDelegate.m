@@ -50,7 +50,7 @@
         
         _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
         [_detachableWindowController.window setLevel:NSFloatingWindowLevel];
-        [_detachableWindowController.window setTitle:@"BitBot"];
+        [_detachableWindowController.window setTitleVisibility:NSWindowTitleHidden];
     }
     
     return self;
@@ -62,7 +62,7 @@
     [self.observer startObserving:syncCommand];
     
     // Build status item
-    NSImage *image = [NSImage imageNamed:@"bitrise-logo"];
+    NSImage *image = [NSImage imageNamed:@"bitrise-bot-icon"];
     self.statusItem.button.image = image;
     self.statusItem.button.imageScaling = NSImageScaleProportionallyDown;
     self.statusItem.button.alternateImage = image;

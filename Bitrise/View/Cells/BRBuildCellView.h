@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSTextField *accountLabel;
 @property (weak) IBOutlet NSTextField *appTitleLabel;
 @property (weak) IBOutlet NSTextField *branchLabel;
+@property (weak) IBOutlet NSTextField *commitLabel;
 @property (weak) IBOutlet NSTextField *workflowLabel;
 @property (weak) IBOutlet NSTextField *triggerTimeLabel;
 @property (weak) IBOutlet NSTextField *buildTimeLabel;

@@ -62,6 +62,7 @@
     [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];
     [cell.appTitleLabel setStringValue:build.app.title];
     [cell.branchLabel setStringValue:build.branch];
+    [cell.commitLabel setStringValue:build.commitMessage ? build.commitMessage : @"no commit message"];
     [cell.workflowLabel setStringValue:build.workflow];
     [cell.triggerTimeLabel setStringValue:[self.timeFormatter stringFromDate:build.triggerTime]];
     
