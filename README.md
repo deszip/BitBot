@@ -1,5 +1,7 @@
 # <img src="https://github.com/deszip/BitBot/raw/master/icon.png" width="64"> BitBot
 
+<img src="https://app.bitrise.io/app/6db55ab6a5f1d22f/status.svg?token=XJCgNQGZP1aSbbEsrU1Jqw">
+
 ### About
 BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of its features. Before use add your personal access token and application build trigger tokens in the account list.
 
