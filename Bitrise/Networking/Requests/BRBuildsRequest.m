@@ -8,7 +8,7 @@
 
 #import "BRBuildsRequest.h"
 
-static NSString * const kAfterKey = @"afetr";
+static NSString * const kAfterKey = @"after";
 
 @implementation BRBuildsRequest
 

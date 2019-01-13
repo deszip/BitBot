@@ -23,7 +23,7 @@
     if (self= [super init]) {
         _timeFormatter = [NSDateFormatter new];
         [_timeFormatter setTimeZone:[NSTimeZone localTimeZone]];
-        [_timeFormatter setDateFormat:@"yyyy.MM.dd @ HH:mm"];
+        [_timeFormatter setDateFormat:@"dd.MM.yyyy @ HH:mm"];
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
     }
@@ -52,16 +52,19 @@
     }
     
     [cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
-    [cell.statusLabel setStringValue:buildStateInfo.statusTitle];
     
+    NSColor *statusColor = [NSColor colorWithPatternImage:cell.statusImage.image];
     [cell.statusImageContainer setWantsLayer:YES];
-    [cell.statusImageContainer.layer setBackgroundColor:[NSColor colorWithPatternImage:cell.statusImage.image].CGColor];
+    [cell.statusImageContainer.layer setBackgroundColor:statusColor.CGColor];
+    [cell.markerBox setFillColor:statusColor];
     
     // Parameters
+    [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];
     [cell.appTitleLabel setStringValue:build.app.title];
     [cell.branchLabel setStringValue:build.branch];
+    [cell.commitLabel setStringValue:build.commitMessage ? build.commitMessage : @"no commit message"];
     [cell.workflowLabel setStringValue:build.workflow];
-    [cell.triggerTimeLabel setStringValue:[NSString stringWithFormat:@"Triggered: %@", [self.timeFormatter stringFromDate:build.triggerTime]]];
+    [cell.triggerTimeLabel setStringValue:[self.timeFormatter stringFromDate:build.triggerTime]];
     
     [cell.buildNumberLabel setStringValue:[NSString stringWithFormat:@"#%li", build.buildNumber.integerValue]];
     
