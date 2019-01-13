@@ -1,4 +1,4 @@
- platform :osx, '10.13'
+ platform :osx, '10.12'
 
 target 'Bitrise' do
   # use_frameworks!

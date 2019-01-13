@@ -106,7 +106,7 @@
 
 - (NSTimeInterval)fetchTime:(BRApp *)app {
     BRBuild *latestBuild = [self.storage latestBuild:app error:NULL];
-    NSTimeInterval fetchTime = latestBuild ? [latestBuild.triggerTime timeIntervalSince1970] + 1 : 0;
+    NSTimeInterval fetchTime = latestBuild ? [latestBuild.triggerTime timeIntervalSince1970] - 1 : 0;
     
     return fetchTime;
 }

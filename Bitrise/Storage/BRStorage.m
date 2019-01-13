@@ -140,14 +140,25 @@
 
 - (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRBuild fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@ && status != 0", app.slug];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@ && status == 0", app.slug];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:YES]];
     request.fetchLimit = 1;
     
-    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
+    NSArray <BRBuild *> *runningBuilds = [self.context executeFetchRequest:request error:error];
     
-    if (builds.count > 0) {
-        return [builds firstObject];
+    // If we have running builds return oldest, otherwise - most recent build
+    if (runningBuilds.count > 0) {
+        return [runningBuilds firstObject];
+    } else {
+        NSFetchRequest *request = [BRBuild fetchRequest];
+        request.predicate = [NSPredicate predicateWithFormat:@"app.slug == %@ && status != 0", app.slug];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
+        request.fetchLimit = 1;
+        
+        NSArray <BRBuild *> *finishedBuilds = [self.context executeFetchRequest:request error:error];
+        if (finishedBuilds.count > 0) {
+            return finishedBuilds.firstObject;
+        }
     }
     
     return nil;

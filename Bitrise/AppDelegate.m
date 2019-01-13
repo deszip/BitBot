@@ -43,12 +43,14 @@
         _popover = [[NSPopover alloc] init];
         _popover.delegate = self;
         
-        _mainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
+        NSStoryboard *mainStoryboard = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        
+        _mainController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainController"];
         _mainController.dependencyContainer = _dependencyContainer;
-        _detachableMainController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainController"];
+        _detachableMainController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainController"];
         _detachableMainController.dependencyContainer = _dependencyContainer;
         
-        _detachableWindowController = [[NSStoryboard mainStoryboard] instantiateControllerWithIdentifier:@"BRMainWindow"];
+        _detachableWindowController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainWindow"];
         [_detachableWindowController.window setLevel:NSFloatingWindowLevel];
         [_detachableWindowController.window setTitleVisibility:NSWindowTitleHidden];
     }

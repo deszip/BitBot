@@ -27,6 +27,8 @@ static NSString * const kAppBuildToken = @"app_build_token";
 
 static NSString * const kBuildSlug1 = @"build_slug_1";
 static NSString * const kBuildSlug2 = @"build_slug_2";
+static NSString * const kBuildSlug3 = @"build_slug_3";
+static NSString * const kBuildSlug4 = @"build_slug_4";
 
 @interface BRStorageTests : XCTestCase
 
@@ -212,8 +214,8 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
 
 - (void)testStorageFetchesRunningBuilds {
     [self executeOnStorage:^{
-        [self buildWithSlug:kBuildSlug1 staus:@(0)];
-        [self buildWithSlug:kBuildSlug2 staus:@(1)];
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
+        [self buildWithSlug:kBuildSlug2 staus:@(1) app:nil];
         NSError *error;
         NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
         
@@ -225,8 +227,8 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
 
 - (void)testStorageSortsRunningBuilds {
     [self executeOnStorage:^{
-        [self buildWithSlug:kBuildSlug1 staus:@(0)];
-        [self buildWithSlug:kBuildSlug2 staus:@(0)];
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
+        [self buildWithSlug:kBuildSlug2 staus:@(0) app:nil];
         NSError *error;
         NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
         
@@ -244,6 +246,126 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
         NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
         
         expect(builds.count).to.equal(0);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testLatestBuildFetchIgnoresRunningBuilds {
+    [self executeOnStorage:^{
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        BRBuild *finishedBuild = [self buildWithSlug:kBuildSlug1 staus:@(1) app:app];
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:app];
+        
+        NSError *error;
+        BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
+        
+        expect(latestBuild.slug).to.equal(finishedBuild.slug);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testLatestBuildFetchOldestRunningBuild {
+    [self executeOnStorage:^{
+        // Add four builds, only first and last are finished
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        [self buildWithSlug:kBuildSlug1 staus:@(1) app:app];
+        BRBuild *targetBuild = [self buildWithSlug:kBuildSlug2 staus:@(0) app:app];
+        [self buildWithSlug:kBuildSlug3 staus:@(0) app:app];
+        [self buildWithSlug:kBuildSlug4 staus:@(1) app:app];
+        
+        // Fetch latest build
+        NSError *error;
+        BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
+        
+        // Verify latest build is oldest running one
+        expect(latestBuild.slug).to.equal(targetBuild.slug);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testLatestBuildFetchMostRecentBuildIfNoRunning {
+    [self executeOnStorage:^{
+        // Add two finished builds
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        [self buildWithSlug:kBuildSlug1 staus:@(1) app:app];
+        BRBuild *targetBuild = [self buildWithSlug:kBuildSlug2 staus:@(1) app:app];
+        
+        // Fetch latest build
+        NSError *error;
+        BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
+        
+        // Verify latest build is most recent one
+        expect(latestBuild.slug).to.equal(targetBuild.slug);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testLatestBuildIsNilIfNoBuilds {
+    [self executeOnStorage:^{
+        // Fetch latest build
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        NSError *error;
+        BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
+        
+        // Verify latest build is nil
+        expect(latestBuild).to.beNil();
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testSaveBuildsInsertsBuild {
+    [self executeOnStorage:^{
+        // Add build
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        BRBuildInfo *buildInfo = [self buildInfoWithSlug:kBuildSlug1 status:@(0)];
+        NSError *error;
+        BOOL result = [self.storage saveBuilds:@[buildInfo] forApp:app.slug error:&error];
+        
+        // Fetch it
+        BRBuild *build = [self buildWithSlug:kBuildSlug1];
+        
+        // Verify build inserted and assigned to app
+        expect(result).to.beTruthy();
+        expect(build).to.beTruthy();
+        expect(build.app.slug).to.equal(app.slug);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testSaveBuildsUpdatesBuildIfExists {
+    [self executeOnStorage:^{
+        // Add build with status 0
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:app];
+        
+        // Update it with status 1
+        BRBuildInfo *buildInfo = [self buildInfoWithSlug:kBuildSlug1 status:@(1)];
+        NSError *error;
+        BOOL result = [self.storage saveBuilds:@[buildInfo] forApp:app.slug error:&error];
+        
+        // Fetch updated
+        BRBuild *updateBuild = [self buildWithSlug:kBuildSlug1];
+        
+        // Verify status was updated
+        expect(updateBuild.status.integerValue).to.equal(1);
+        expect(result).to.beTruthy();
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testSaveBuildsFailsIfNoAppsFound {
+    [self executeOnStorage:^{
+        BRBuildInfo *buildInfo = [self buildInfoWithSlug:kBuildSlug1 status:@(1)];
+        NSError *error;
+        BOOL result = [self.storage saveBuilds:@[buildInfo] forApp:kAppSlug1 error:&error];
+        
+        expect(result).to.beFalsy();
         expect(error).to.beNil();
     }];
 }
@@ -270,11 +392,17 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
     return app;
 }
 
-- (BRBuild *)buildWithSlug:(NSString *)slug staus:(NSNumber *)status {
+- (BRBuild *)buildWithSlug:(NSString *)slug staus:(NSNumber *)status app:(BRApp *)app {
+    if (!app) {
+        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+    }
+    
     BRBuild *build = [NSEntityDescription insertNewObjectForEntityForName:@"BRBuild" inManagedObjectContext:self.context];
     build.slug = slug;
     build.status = status;
     build.triggerTime = [NSDate date];
+    build.app = app;
     
     [self.context save:nil];
     
@@ -289,6 +417,14 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
     return [[BRAppInfo alloc] initWithResponse:@{ @"slug" : slug }];
 }
 
+- (BRBuildInfo *)buildInfoWithSlug:(NSString *)slug status:(NSNumber *)status {
+    return [[BRBuildInfo alloc] initWithResponse:@{ @"status" : status,
+                                                    @"is_on_hold" : @(0),
+                                                    @"slug" : slug,
+                                                    @"branch" : @"foo",
+                                                    @"triggered_workflow" : @"bar" }];
+}
+
 #pragma mark - Tools -
 
 - (void)executeOnStorage:(void (^)(void))action {
@@ -300,6 +436,16 @@ static NSString * const kBuildSlug2 = @"build_slug_2";
     }];
     
     [self waitForExpectations:@[e] timeout:0.1];
+}
+
+- (BRBuild *)buildWithSlug:(NSString *)slug {
+    NSFetchRequest *request = [BRBuild fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", slug];
+    
+    NSError *error;
+    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:&error];
+    
+    return builds.firstObject;
 }
 
 @end
