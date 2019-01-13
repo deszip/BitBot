@@ -7,7 +7,7 @@ BitBot was built to work for my current project so it definitely lacks a lot of 
 
 BitBot and I are not associated or affiliated with Bitrise in any way.
 
-# ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot-1.png)
+# ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot.png)
 
 ### Building
 - Clone the repo
@@ -19,10 +19,6 @@ Or you can just grab .dmg file from [releases](https://github.com/deszip/BitBot/
 
 ### Account credentials
 To use BitBot you need to provide your account access token. You can generate it on your account settings page.
-
-To use 'rebuild' feature you also need build token which is specific for each app. You can find it under the 'code' tab in app settings. Add it by selecting your app in accounts list and selecting 'add build key...' from the context menu.
-
-# ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot-2.png)
 
 ### Contributing
 BitBot was built for my personal needs and thus lacks lots of features from the Bitrise public API. Feel free to make PRs, open issues etc.
