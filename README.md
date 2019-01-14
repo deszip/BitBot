@@ -13,7 +13,7 @@ BitBot and I are not associated or affiliated with Bitrise in any way.
 
 ### Building
 - Clone the repo
-- Run `pod install` in the root directory
+- Run `pod install --repo-update` in the root directory
 - Open Bitrise.xcworkspace file
 - Build Bitrise target or export binary
 
