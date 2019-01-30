@@ -75,6 +75,8 @@
 		0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766A521DDDF6C00E64E0C /* BRAddBuildTokenCommand.m */; };
 		0EF766C021E2637900E64E0C /* BRAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766BF21E2637900E64E0C /* BRAboutViewController.m */; };
 		0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766C321E264E300E64E0C /* BRAboutTextView.m */; };
+		0EFB325C22020B5E0045C376 /* BRLogObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB325B22020B5E0045C376 /* BRLogObserver.m */; };
+		0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB325B22020B5E0045C376 /* BRLogObserver.m */; };
 		0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
@@ -219,6 +221,8 @@
 		0EF766BF21E2637900E64E0C /* BRAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAboutViewController.m; sourceTree = "<group>"; };
 		0EF766C221E264E300E64E0C /* BRAboutTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAboutTextView.h; sourceTree = "<group>"; };
 		0EF766C321E264E300E64E0C /* BRAboutTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAboutTextView.m; sourceTree = "<group>"; };
+		0EFB325A22020B5E0045C376 /* BRLogObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogObserver.h; sourceTree = "<group>"; };
+		0EFB325B22020B5E0045C376 /* BRLogObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogObserver.m; sourceTree = "<group>"; };
 		0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRBuild+Mapping.h"; sourceTree = "<group>"; };
 		0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRBuild+Mapping.m"; sourceTree = "<group>"; };
 		0EFD891620F201400023FCCE /* BRAppInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppInfo.h; sourceTree = "<group>"; };
@@ -461,6 +465,8 @@
 				0E5C720D20F90A5B00E5A082 /* BRObserver.m */,
 				0E51715D21D20E96000D470E /* BRActionDispatcher.h */,
 				0E51715E21D20E96000D470E /* BRActionDispatcher.m */,
+				0EFB325A22020B5E0045C376 /* BRLogObserver.h */,
+				0EFB325B22020B5E0045C376 /* BRLogObserver.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -788,6 +794,7 @@
 				0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */,
 				0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */,
 				0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */,
+				0EFB325C22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
 				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
@@ -854,6 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */,
 				0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */,
 				0EB3ED4E21E3453F003F0364 /* BRAccount+Mapping.m in Sources */,
