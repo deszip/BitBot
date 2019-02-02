@@ -15,6 +15,7 @@ extern NSString * const kAppsEndpoint;
 extern NSString * const kBuildsEndpoint;
 extern NSString * const kAbortEndpoint;
 extern NSString * const kStartBuildEndpoint;
+extern NSString * const kBuildLogEndpoint;
 
 @interface BRAPIRequest : NSObject
 

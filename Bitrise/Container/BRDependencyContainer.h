@@ -16,6 +16,7 @@
 #import "BRStorage.h"
 #import "BRObserver.h"
 #import "BREnvironment.h"
+#import "BRLogObserver.h"
 
 @protocol BRDataSourceProvider <NSObject>
 
@@ -30,6 +31,7 @@
 - (BRBitriseAPI *)bitriseAPI;
 - (BRStorage *)storage;
 - (BRObserver *)commandObserver;
+- (BRLogObserver *)logObserver;
 
 @end
 

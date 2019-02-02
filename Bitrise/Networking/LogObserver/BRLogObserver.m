@@ -9,6 +9,7 @@
 #import "BRLogObserver.h"
 
 #import "ASQueue.h"
+#import "ASLogLoadingOperation.h"
 
 @interface BRLogObserver ()
 
@@ -32,11 +33,18 @@
 }
 
 - (void)startObservingBuild:(NSString *)buildSlug {
-    
+    ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
+    [self.queue addOperation:operation];
+    NSLog(@"BRLogObserver: added operation: %@", buildSlug);
 }
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
-    
+    [self.queue.operations enumerateObjectsUsingBlock:^(ASLogLoadingOperation* operation, NSUInteger idx, BOOL *stop) {
+        if ([operation.buildSlug isEqualToString:buildSlug]) {
+            NSLog(@"BRLogObserver: cancelling operation: %@", buildSlug);
+            [operation cancel];
+        }
+    }];
 }
 
 @end

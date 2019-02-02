@@ -35,9 +35,13 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 - (BOOL)addBuildToken:(NSString *)token toApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error;
 
 #pragma mark - Builds -
+- (BRBuild *)buildWithSlug:(NSString *)slug error:(NSError * __autoreleasing *)error;
 - (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error;
 - (BRBuild *)latestBuild:(BRApp *)app error:(NSError * __autoreleasing *)error;
 - (BOOL)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error;
+
+#pragma mark - Logs -
+- (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error;
 
 @end
 

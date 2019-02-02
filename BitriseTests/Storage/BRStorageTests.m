@@ -212,6 +212,41 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 #pragma mark - Builds -
 
+- (void)testStorageFetchesBuildWithSlug {
+    [self executeOnStorage:^{
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
+        [self buildWithSlug:kBuildSlug2 staus:@(1) app:nil];
+        NSError *error;
+        BRBuild *build = [self.storage buildWithSlug:kBuildSlug1 error:&error];
+
+        expect(build.slug).to.equal(kBuildSlug1);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testStorageReturnsNilIfNoBuildFound {
+    [self executeOnStorage:^{
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
+        NSError *error;
+        BRBuild *build = [self.storage buildWithSlug:kBuildSlug2 error:&error];
+        
+        expect(build).to.beNil();
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testStorageReturnsNilIfDuplicateFound {
+    [self executeOnStorage:^{
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
+        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
+        NSError *error;
+        BRBuild *build = [self.storage buildWithSlug:kBuildSlug1 error:&error];
+        
+        expect(build).to.beNil();
+        expect(error).to.beNil();
+    }];
+}
+
 - (void)testStorageFetchesRunningBuilds {
     [self executeOnStorage:^{
         [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];

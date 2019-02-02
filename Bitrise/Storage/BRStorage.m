@@ -16,6 +16,7 @@
 #import "BRAccount+Mapping.h"
 #import "BRApp+Mapping.h"
 #import "BRBuild+Mapping.h"
+#import "BRBuildLog+Mapping.h"
 
 @interface BRStorage ()
 
@@ -128,6 +129,18 @@
 
 #pragma mark - Builds -
 
+- (BRBuild *)buildWithSlug:(NSString *)slug error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRBuild fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
+    
+    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
+    if (builds.count == 1) {
+        return builds.firstObject;
+    }
+    
+    return nil;
+}
+
 - (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRBuild fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"status = 0"];
@@ -181,6 +194,21 @@
     }
     
     return result;
+}
+
+#pragma mark - Logs -
+
+- (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+    BRBuildLog *buildLog = [EKManagedObjectMapper objectFromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
+    if (buildLog) {
+        if (!buildLog.build) {
+            build.log = buildLog;
+        }
+        return [self saveContext:self.context error:error];
+    }
+    
+    *error = [NSError errorWithDomain:@"" code:0 userInfo:nil];
+    return NO;
 }
 
 #pragma mark - Save -

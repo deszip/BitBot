@@ -61,6 +61,10 @@
     return [BRObserver new];
 }
 
+- (BRLogObserver *)logObserver {
+    return [[BRLogObserver alloc] initWithAPI:self.bitriseAPI storage:self.storage];
+}
+
 #pragma mark - BREnvironmentProvider -
 
 - (BREnvironment *)appEnvironment {

@@ -16,6 +16,8 @@
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
+#import "BRBuildActionContext.h"
+#import "BRLogsViewController.h"
 #import "BRSegue.h"
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -74,6 +76,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI] syncEngine:self.syncEngine environment:self.environment];
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
+    [self.buildController setActionCallback:^(BRBuildMenuAction action, NSString *buildSlug) {
+        if (action == BRBuildMenuActionShowLog) {
+            BRBuildActionContext *context = [BRBuildActionContext contextWithSlug:buildSlug];
+            [weakSelf performSegueWithIdentifier:kLogWindowSegue sender:context];
+        }
+    }];
 }
 
 - (void)viewDidAppear {
@@ -84,9 +92,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     
-    if ([segue.identifier isEqualToString:kAboutWindowSegue] || [segue.identifier isEqualToString:kAccountWindowSegue]) {
-        [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
-        [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
+    [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
+    [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
+    
+    if ([segue.identifier isEqualToString:kLogWindowSegue]) {
+        BRLogsViewController *logController = (BRLogsViewController *)[(NSWindowController *)segue.destinationController contentViewController];
+        [logController setBuildSlug:[(BRBuildActionContext *)sender slug]];
     }
 }
 

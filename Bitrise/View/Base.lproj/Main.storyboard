@@ -1151,6 +1151,7 @@
                         <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
                         <segue destination="jqU-3H-VNR" kind="show" identifier="kAboutWindowSegue" id="6rC-QE-sbB"/>
                         <segue destination="u6Y-Oa-61p" kind="show" identifier="kAccountWindowSegue" id="NV4-Wk-TbZ"/>
+                        <segue destination="asu-PE-Roq" kind="show" identifier="kLogWindowSegue" id="PDf-H1-w4D"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1162,7 +1163,10 @@
                         <menuItem title="Abort" tag="2" id="SQP-qm-MTq">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem title="Download log" tag="3" id="6xd-3U-dEj">
+                        <menuItem title="Show log" tag="3" id="6xd-3U-dEj">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Download log" tag="3" id="xYZ-7g-NJy">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem title="Open build" tag="4" id="RNi-pd-njy">
@@ -1191,6 +1195,40 @@
                 </menu>
             </objects>
             <point key="canvasLocation" x="96" y="485"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="FJH-sd-lo4">
+            <objects>
+                <windowController id="asu-PE-Roq" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="9PA-xQ-rRn">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <connections>
+                            <outlet property="delegate" destination="asu-PE-Roq" id="GOO-A1-uXo"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="xqt-If-8UY" kind="relationship" relationship="window.shadowedContentViewController" id="PZ4-g3-sj8"/>
+                    </connections>
+                </windowController>
+                <customObject id="82d-mv-VxY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="1022"/>
+        </scene>
+        <!--Logs View Controller-->
+        <scene sceneID="cqh-Ps-RmD">
+            <objects>
+                <viewController id="xqt-If-8UY" customClass="BRLogsViewController" sceneMemberID="viewController">
+                    <view key="view" id="5te-AQ-jce">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="M4y-gM-Wf4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="1414"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="uh9-Ob-V4L">

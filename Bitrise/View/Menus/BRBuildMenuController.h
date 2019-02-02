@@ -15,7 +15,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
+    BRBuildMenuActionUndefined = 0,
+    BRBuildMenuActionShowLog
+};
+
 @interface BRBuildMenuController : NSObject
+
+@property (copy, nonatomic) void (^actionCallback)(BRBuildMenuAction action, NSString *buildSlug);
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api syncEngine:(BRSyncEngine *)syncEngine environment:(BREnvironment *)environment;
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;

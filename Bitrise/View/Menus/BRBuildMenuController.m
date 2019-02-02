@@ -16,10 +16,11 @@
 #import "BRDownloadLogsCommand.h"
 #import "BROpenBuildCommand.h"
 
-static const NSUInteger kMenuItemsCount = 4;
+static const NSUInteger kMenuItemsCount = 5;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemRebuild = 0,
     BRBuildMenuItemAbort,
+    BRBuildMenuItemShowLog,
     BRBuildMenuItemDownload,
     BRBuildMenuItemOpenBuild
 };
@@ -60,6 +61,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         
         [self.menu.itemArray[BRBuildMenuItemRebuild]   setAction:@selector(rebuild)];
         [self.menu.itemArray[BRBuildMenuItemAbort]     setAction:@selector(abort)];
+        [self.menu.itemArray[BRBuildMenuItemShowLog]   setAction:@selector(showLog)];
         [self.menu.itemArray[BRBuildMenuItemDownload]  setAction:@selector(downloadLog)];
         [self.menu.itemArray[BRBuildMenuItemOpenBuild] setAction:@selector(openBuild)];
     }
@@ -93,6 +95,13 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     }
 }
 
+- (void)showLog {
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRBuild class]]) {
+        BR_SAFE_CALL(self.actionCallback, BRBuildMenuActionShowLog, [(BRBuild *)selectedItem slug]);
+    }
+}
+
 - (void)downloadLog {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
@@ -119,10 +128,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
         BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
                                    buildInfo.stateInfo.state == BRBuildStateHold;
+        BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold;
         
         switch (menuItem.tag) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildCouldBeAborted;
+            case BRBuildMenuItemShowLog: return buildLogAvailable;
             case BRBuildMenuItemDownload: return !buildInProgress;
             case BRBuildMenuItemOpenBuild: return YES;
             default: return NO;

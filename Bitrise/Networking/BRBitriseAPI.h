@@ -17,6 +17,7 @@
 #import "BRBuildsRequest.h"
 #import "BRAbortRequest.h"
 #import "BRRebuildRequest.h"
+#import "BRLogsRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,6 +26,7 @@ extern NSString * const kBRBitriseAPIDomain;
 typedef void (^APIAccountInfoCallback)(BRAccountInfo * _Nullable, NSError * _Nullable);
 typedef void (^APIAppsListCallback)(NSArray <BRAppInfo *> * _Nullable, NSError * _Nullable);
 typedef void (^APIBuildsListCallback)(NSArray <BRBuildInfo *> * _Nullable, NSError * _Nullable);
+typedef void (^APIBuildLogCallback)(NSDictionary * _Nullable, NSError * _Nullable);
 typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 
 @interface BRBitriseAPI : NSObject
@@ -35,6 +37,8 @@ typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 
 - (void)abortBuild:(BRAbortRequest *)request completion:( APIActionCallback)completion;
 - (void)rebuild:(BRRebuildRequest *)request completion:(APIActionCallback)completion;
+
+- (void)loadLogs:(BRLogsRequest *)request completion:(APIBuildLogCallback)completion;
 
 @end
 
