@@ -15,9 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRSyncDiff : NSObject
 
 @property (strong, nonatomic, readonly) NSArray <BRBuildInfo *> *started;
+@property (strong, nonatomic, readonly) NSArray <BRBuildInfo *> *running;
 @property (strong, nonatomic, readonly) NSArray <BRBuildInfo *> *finished;
 
-- (instancetype)initWithStartedBuilds:(NSArray <BRBuildInfo *> *)started finishedBuilds:(NSArray <BRBuildInfo *> *)finished;
+- (instancetype)initWithStartedBuilds:(NSArray <BRBuildInfo *> *)started
+                       runningBuilds:(NSArray <BRBuildInfo *> *)running
+                       finishedBuilds:(NSArray <BRBuildInfo *> *)finished;
 
 @end
 

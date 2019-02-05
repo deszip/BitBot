@@ -11,21 +11,36 @@
 @interface BRSyncCommand ()
 
 @property (strong, nonatomic, readonly) BRSyncEngine *syncEngine;
+@property (strong, nonatomic, readonly) BRLogObserver *logObserver;
 @property (strong, nonatomic, readonly) BREnvironment *environment;
 
 @end
 
 @implementation BRSyncCommand
 
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine
+                   logObserver:(BRLogObserver *)logObserver
+                   environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;
+        _logObserver = logObserver;
         _environment = environment;
         
         __weak BREnvironment *weakEnv = _environment;
+        __weak BRLogObserver *weakLogObserver = _logObserver;
         _syncEngine.syncCallback = ^(BRSyncResult *result) {
+            // Notifications
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
             [weakEnv postNotifications:builds forApp:result.app];
+            
+            // Logs
+            NSArray *runningBuilds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.running];
+            [runningBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
+                [weakLogObserver startObservingBuild:buildInfo.slug];
+            }];
+            [result.diff.finished enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
+                [weakLogObserver stopObservingBuild:buildInfo.slug];
+            }];
         };
     }
     

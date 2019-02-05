@@ -10,9 +10,12 @@
 
 @implementation BRSyncDiff
 
-- (instancetype)initWithStartedBuilds:(NSArray <BRBuildInfo *> *)started finishedBuilds:(NSArray <BRBuildInfo *> *)finished {
+- (instancetype)initWithStartedBuilds:(NSArray <BRBuildInfo *> *)started
+                        runningBuilds:(NSArray <BRBuildInfo *> *)running
+                       finishedBuilds:(NSArray <BRBuildInfo *> *)finished {
     if (self = [super init]) {
         _started = started;
+        _running = running;
         _finished = finished;
     }
     

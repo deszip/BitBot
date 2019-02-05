@@ -138,12 +138,17 @@
 
 - (BRSyncDiff *)diffForBuilds:(NSArray <BRBuildInfo *> *)remoteBuilds runningBuilds:(NSArray <NSString *> *)runningBuilds {
     __block NSMutableArray <BRBuildInfo *> *finished = [NSMutableArray array];
+    __block NSMutableArray <BRBuildInfo *> *running = [NSMutableArray array];
     __block NSMutableArray <BRBuildInfo *> *started = [NSMutableArray array];
     [remoteBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
         if ([runningBuilds containsObject:remoteBuild.slug]) {
             if (remoteBuild.stateInfo.state != BRBuildStateHold && remoteBuild.stateInfo.state != BRBuildStateInProgress) {
                 NSLog(@"Finished build: %@", remoteBuild.slug);
                 [finished addObject:remoteBuild];
+            }
+            if (remoteBuild.stateInfo.state == BRBuildStateInProgress) {
+                NSLog(@"Running build: %@", remoteBuild.slug);
+                [running addObject:remoteBuild];
             }
         } else {
             if (remoteBuild.stateInfo.state == BRBuildStateHold || remoteBuild.stateInfo.state == BRBuildStateInProgress) {
@@ -153,7 +158,7 @@
         }
     }];
     
-    return [[BRSyncDiff alloc] initWithStartedBuilds:started finishedBuilds:finished];
+    return [[BRSyncDiff alloc] initWithStartedBuilds:started runningBuilds:running finishedBuilds:finished];
 }
 
 @end

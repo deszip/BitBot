@@ -60,7 +60,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Start sync
-    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine] environment:[self.dependencyContainer appEnvironment]];
+    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]
+                                                           logObserver:[self.dependencyContainer logObserver]
+                                                           environment:[self.dependencyContainer appEnvironment]];
     [self.observer startObserving:syncCommand];
     
     // Build status item

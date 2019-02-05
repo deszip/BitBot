@@ -17,7 +17,7 @@
 @property (strong, nonatomic) BRBitriseAPI *API;
 @property (strong, nonatomic) BRStorage *storage;
 
-@property (strong, nonatomic) ASQueue *queue;
+@property (strong, nonatomic) ASQueue *syncQueue;
 
 @end
 
@@ -27,8 +27,9 @@
     if (self = [super init]) {
         _API = api;
         _storage = storage;
-        _queue = [ASQueue new];
-        [_queue setMaxConcurrentOperationCount:1];
+        
+        _syncQueue = [ASQueue new];
+        [_syncQueue setMaxConcurrentOperationCount:1];
     }
     
     return self;
@@ -38,12 +39,12 @@
     BRSyncOperation *syncOperation = [[BRSyncOperation alloc] initWithStorage:self.storage api:self.API];
     [syncOperation setSyncCallback:self.syncCallback];
     
-    [self.queue addOperation:syncOperation];
+    [self.syncQueue addOperation:syncOperation];
 }
 
 - (void)addAccount:(NSString *)accountToken {
     BRAddAccountOperation *accountOperation = [[BRAddAccountOperation alloc] initWithStorage:self.storage api:self.API accountToken:accountToken];
-    [self.queue addOperation:accountOperation];
+    [self.syncQueue addOperation:accountOperation];
 }
 
 @end

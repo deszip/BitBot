@@ -74,7 +74,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         }
     }];
     
-    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI] syncEngine:self.syncEngine environment:self.environment];
+    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
+                                                           syncEngine:self.syncEngine
+                                                          logObserver:[self.dependencyContainer logObserver]
+                                                          environment:self.environment];
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
     [self.buildController setActionCallback:^(BRBuildMenuAction action, NSString *buildSlug) {
         if (action == BRBuildMenuActionShowLog) {

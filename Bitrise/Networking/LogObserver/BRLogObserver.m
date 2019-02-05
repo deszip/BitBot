@@ -33,18 +33,35 @@
 }
 
 - (void)startObservingBuild:(NSString *)buildSlug {
+    ASLogLoadingOperation *oldOperation = [self operationForBuild:buildSlug];
+    if (oldOperation) {
+        NSLog(@"BRLogObserver: has operation: %@, skipping...", buildSlug);
+        return;
+    }
+    
     ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
     [self.queue addOperation:operation];
     NSLog(@"BRLogObserver: added operation: %@", buildSlug);
 }
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
+    ASLogLoadingOperation *operation = [self operationForBuild:buildSlug];
+    if (operation) {
+        NSLog(@"BRLogObserver: cancelling operation: %@", buildSlug);
+        [operation cancel];
+    }
+}
+
+- (ASLogLoadingOperation *)operationForBuild:(NSString *)buildSlug {
+    __block ASLogLoadingOperation *targetOperation = nil;
     [self.queue.operations enumerateObjectsUsingBlock:^(ASLogLoadingOperation* operation, NSUInteger idx, BOOL *stop) {
         if ([operation.buildSlug isEqualToString:buildSlug]) {
-            NSLog(@"BRLogObserver: cancelling operation: %@", buildSlug);
-            [operation cancel];
+            *stop = YES;
+            targetOperation = operation;
         }
     }];
+    
+    return targetOperation;
 }
 
 @end

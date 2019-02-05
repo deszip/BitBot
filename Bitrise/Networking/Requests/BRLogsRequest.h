@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRLogsRequest : BRAPIRequest
 
-- (instancetype)initWithToken:(NSString *)token appSlug:(NSString *)appSlug buildSlug:(NSString *)buildSlug NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithToken:(NSString *)token appSlug:(NSString *)appSlug buildSlug:(NSString *)buildSlug since:(NSTimeInterval)since NS_DESIGNATED_INITIALIZER;
 
 @end
 

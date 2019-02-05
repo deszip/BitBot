@@ -17,6 +17,7 @@
 #import "BRApp+Mapping.h"
 #import "BRBuild+Mapping.h"
 #import "BRBuildLog+Mapping.h"
+#import "BRLogChunk+Mapping.h"
 
 @interface BRStorage ()
 
@@ -199,16 +200,17 @@
 #pragma mark - Logs -
 
 - (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
-    BRBuildLog *buildLog = [EKManagedObjectMapper objectFromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
-    if (buildLog) {
-        if (!buildLog.build) {
-            build.log = buildLog;
-        }
-        return [self saveContext:self.context error:error];
+    if (build.log) {
+        [EKManagedObjectMapper fillObject:build.log fromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
+    } else {
+        BRBuildLog *buildLog = [EKManagedObjectMapper objectFromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
+        build.log = buildLog;
     }
     
-    *error = [NSError errorWithDomain:@"" code:0 userInfo:nil];
-    return NO;
+    NSArray <BRLogChunk *> *chunks = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:rawLogs[@"log_chunks"] withMapping:[BRLogChunk objectMapping] inManagedObjectContext:self.context];
+    [build.log addChunks:[NSSet setWithArray:chunks]];
+    
+    return [self saveContext:self.context error:error];
 }
 
 #pragma mark - Save -

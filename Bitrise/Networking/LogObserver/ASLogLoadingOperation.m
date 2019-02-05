@@ -9,6 +9,7 @@
 #import "ASLogLoadingOperation.h"
 
 #import "BRBuild+CoreDataClass.h"
+#import "BRBuildLog+CoreDataClass.h"
 #import "BRLogsRequest.h"
 
 static const NSTimeInterval kPollTimeout = 1.0;
@@ -42,6 +43,8 @@ static const NSTimeInterval kPollTimeout = 1.0;
                                                 selector:@selector(fetchLogs)
                                                 userInfo:nil
                                                  repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] run];
 }
 
 - (void)finish {
@@ -59,17 +62,15 @@ static const NSTimeInterval kPollTimeout = 1.0;
         [self finish];
         return;
     }
-
-    NSLog(@"ASLogLoadingOperation: got build: %@", build);
     
     BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                           appSlug:build.app.slug
-                                                        buildSlug:build.slug];
+                                                        buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
     [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
         if (rawLog) {
-            NSLog(@"ASLogLoadingOperation: got build log: %@", rawLog);
             NSError *saveError;
             [self.storage saveLogs:rawLog forBuild:build error:&saveError];
+            NSLog(@"ASLogLoadingOperation: got build log, chunks: %lu / %lld", build.log.chunks.count, build.log.chunksCount);
         }
         
         BRBuildStateInfo *buildInfo = [[BRBuildStateInfo alloc] initWithBuildStatus:build.status.integerValue

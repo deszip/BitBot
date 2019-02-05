@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
+@property (strong, nonatomic) BRLogObserver *logObserver;
 @property (strong, nonatomic) BREnvironment *environment;
 
 @property (weak, nonatomic) NSMenu *menu;
@@ -38,10 +39,14 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @implementation BRBuildMenuController
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api syncEngine:(BRSyncEngine *)syncEngine environment:(BREnvironment *)environment {
+- (instancetype)initWithAPI:(BRBitriseAPI *)api
+                 syncEngine:(BRSyncEngine *)syncEngine
+                logObserver:(BRLogObserver *)logObserver
+                environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _api = api;
         _syncEngine = syncEngine;
+        _logObserver = logObserver;
         _environment = environment;
     }
     
@@ -75,7 +80,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
-                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
+                                                                       logObserver:self.logObserver
+                                                                       environment:self.environment];
                 [syncCommand execute:nil];
             }
         }];
@@ -88,7 +95,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
-                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
+                                                                       logObserver:self.logObserver
+                                                                       environment:self.environment];
                 [syncCommand execute:nil];
             }
         }];
