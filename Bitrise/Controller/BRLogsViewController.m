@@ -22,8 +22,8 @@
 
 - (void)setBuildSlug:(NSString *)buildSlug {
     _buildSlug = buildSlug;
-    self.logObserver = [self.dependencyContainer logObserver];
-    [self.logObserver startObservingBuild:self.buildSlug];
+    
+    // Build a logs datasource
 }
 
 @end

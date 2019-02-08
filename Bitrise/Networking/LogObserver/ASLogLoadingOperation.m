@@ -2,24 +2,23 @@
 //  ASLogLoadingOperation.m
 //  Bitrise
 //
-//  Created by Deszip on 02/02/2019.
+//  Created by Deszip on 08/02/2019.
 //  Copyright © 2019 Bitrise. All rights reserved.
 //
 
 #import "ASLogLoadingOperation.h"
 
+#import "ASLogObservingOperation.h"
+#import "BRBuildInfo.h"
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildLog+CoreDataClass.h"
 #import "BRLogsRequest.h"
-
-static const NSTimeInterval kPollTimeout = 1.0;
 
 @interface ASLogLoadingOperation ()
 
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRBitriseAPI *api;
-
-@property (strong, nonatomic) NSTimer *timer;
+@property (copy, nonatomic) NSString *buildSlug;
 
 @end
 
@@ -35,34 +34,43 @@ static const NSTimeInterval kPollTimeout = 1.0;
     return self;
 }
 
+
 - (void)start {
     [super start];
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kPollTimeout
-                                                  target:self
-                                                selector:@selector(fetchLogs)
-                                                userInfo:nil
-                                                 repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    [[NSRunLoop currentRunLoop] run];
+
+    [self.storage perform:^{
+        NSLog(@"ASLogLoadingOperation: fetching log: %@", self.buildSlug);
+        
+        NSError *fetchError;
+        BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
+        if (!build) {
+            NSLog(@"ASLogLoadingOperation: failed to get build: %@", fetchError);
+            [self finish];
+            return;
+        }
+        
+        BRBuildStateInfo *stateInfo = [[BRBuildInfo alloc] initWithBuild:build].stateInfo;
+        
+        // Dispatch observing op. for running build
+        if (stateInfo.state == BRBuildStateInProgress) {
+            ASLogObservingOperation *observingOperation = [[ASLogObservingOperation alloc] initWithStorage:self.storage api:self.api buildSlug:self.buildSlug];
+            [self.queue addOperation:observingOperation];
+            [super finish];
+            return;
+        }
+        
+        // Ignore not started build
+        if (stateInfo.state == BRBuildStateHold) {
+            [super finish];
+            return;
+        }
+        
+        // Load full log for evrybody else
+        [self loadLogs:build];
+    }];
 }
 
-- (void)finish {
-    [self.timer invalidate];
-    [super finish];
-}
-
-- (void)fetchLogs {
-    NSLog(@"ASLogLoadingOperation: fetching log: %@", self.buildSlug);
-    
-    NSError *fetchError;
-    BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
-    if (!build) {
-        NSLog(@"ASLogLoadingOperation: failed to get build: %@", fetchError);
-        [self finish];
-        return;
-    }
-    
+- (void)loadLogs:(BRBuild *)build {
     BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                           appSlug:build.app.slug
                                                         buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
@@ -70,17 +78,11 @@ static const NSTimeInterval kPollTimeout = 1.0;
         if (rawLog) {
             NSError *saveError;
             [self.storage saveLogs:rawLog forBuild:build error:&saveError];
-            NSLog(@"ASLogLoadingOperation: got build log, chunks: %lu / %lld", build.log.chunks.count, build.log.chunksCount);
+            
+            // load build.log.expiringRawLogURL
+            //...
         }
         
-        BRBuildStateInfo *buildInfo = [[BRBuildStateInfo alloc] initWithBuildStatus:build.status.integerValue
-                                                                         holdStatus:build.onHold.boolValue];
-        if (buildInfo.state == BRBuildStateSuccess ||
-            buildInfo.state == BRBuildStateFailed ||
-            buildInfo.state == BRBuildStateAborted) {
-            NSLog(@"ASLogLoadingOperation: build finished");
-            [self finish];
-        }
     }];
 }
 

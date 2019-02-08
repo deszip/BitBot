@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)startObservingBuild:(NSString *)buildSlug;
 - (void)stopObservingBuild:(NSString *)buildSlug;
+- (void)loadLogsForBuild:(NSString *)buildSlug;
 
 @end
 

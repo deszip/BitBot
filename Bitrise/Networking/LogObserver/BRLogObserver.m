@@ -10,6 +10,7 @@
 
 #import "ASQueue.h"
 #import "ASLogLoadingOperation.h"
+#import "ASLogObservingOperation.h"
 
 @interface BRLogObserver ()
 
@@ -33,31 +34,39 @@
 }
 
 - (void)startObservingBuild:(NSString *)buildSlug {
-    ASLogLoadingOperation *oldOperation = [self operationForBuild:buildSlug];
+    ASLogObservingOperation *oldOperation = [self operationForBuild:buildSlug];
     if (oldOperation) {
-        NSLog(@"BRLogObserver: has operation: %@, skipping...", buildSlug);
+        NSLog(@"BRLogObserver: has observing operation: %@, skipping...", buildSlug);
         return;
     }
     
-    ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
+    ASLogObservingOperation *operation = [[ASLogObservingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
     [self.queue addOperation:operation];
-    NSLog(@"BRLogObserver: added operation: %@", buildSlug);
+    NSLog(@"BRLogObserver: added observing operation: %@", buildSlug);
 }
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
-    ASLogLoadingOperation *operation = [self operationForBuild:buildSlug];
+    ASLogObservingOperation *operation = [self operationForBuild:buildSlug];
     if (operation) {
-        NSLog(@"BRLogObserver: cancelling operation: %@", buildSlug);
+        NSLog(@"BRLogObserver: cancelling observing operation: %@", buildSlug);
         [operation cancel];
     }
 }
 
-- (ASLogLoadingOperation *)operationForBuild:(NSString *)buildSlug {
-    __block ASLogLoadingOperation *targetOperation = nil;
-    [self.queue.operations enumerateObjectsUsingBlock:^(ASLogLoadingOperation* operation, NSUInteger idx, BOOL *stop) {
-        if ([operation.buildSlug isEqualToString:buildSlug]) {
-            *stop = YES;
-            targetOperation = operation;
+- (void)loadLogsForBuild:(NSString *)buildSlug {
+    ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
+    [self.queue addOperation:operation];
+    NSLog(@"BRLogObserver: added load operation: %@", buildSlug);
+}
+
+- (ASLogObservingOperation *)operationForBuild:(NSString *)buildSlug {
+    __block ASLogObservingOperation *targetOperation = nil;
+    [self.queue.operations enumerateObjectsUsingBlock:^(ASOperation* operation, NSUInteger idx, BOOL *stop) {
+        if ([operation isKindOfClass:[ASLogObservingOperation class]]) {
+            if ([[(ASLogObservingOperation *)operation buildSlug] isEqualToString:buildSlug]) {
+                *stop = YES;
+                targetOperation = (ASLogObservingOperation *)operation;
+            }
         }
     }];
     

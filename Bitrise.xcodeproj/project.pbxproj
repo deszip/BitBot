@@ -25,8 +25,8 @@
 		0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0520EC896B0033CD03 /* BRBuildCellView.m */; };
 		0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */; };
 		0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
-		0E4AD07D2205D01600257E8E /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD07C2205D01600257E8E /* ASLogLoadingOperation.m */; };
-		0E4AD07E2205D01600257E8E /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD07C2205D01600257E8E /* ASLogLoadingOperation.m */; };
+		0E4AD07D2205D01600257E8E /* ASLogObservingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD07C2205D01600257E8E /* ASLogObservingOperation.m */; };
+		0E4AD07E2205D01600257E8E /* ASLogObservingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD07C2205D01600257E8E /* ASLogObservingOperation.m */; };
 		0E4AD0812205D65A00257E8E /* BRBuildLog+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD0802205D65A00257E8E /* BRBuildLog+Mapping.m */; };
 		0E4AD0822205D65A00257E8E /* BRBuildLog+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD0802205D65A00257E8E /* BRBuildLog+Mapping.m */; };
 		0E4AD0852205D75500257E8E /* BRLogChunk+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD0842205D75500257E8E /* BRLogChunk+Mapping.m */; };
@@ -74,6 +74,8 @@
 		0EB3ED7921E890E1003F0364 /* BRAccountRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */; };
 		0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */; };
 		0ECFF27A21CD1C10005EC4A4 /* BRSyncDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27921CD1C10005EC4A4 /* BRSyncDiff.m */; };
+		0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */; };
+		0ED38CDD220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */; };
 		0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */; };
 		0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */; };
 		0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */; };
@@ -143,8 +145,8 @@
 		0E42CB0820EC89D00033CD03 /* BRAppsDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppsDataSource.h; sourceTree = "<group>"; };
 		0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppsDataSource.m; sourceTree = "<group>"; };
 		0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise.xcdatamodel; sourceTree = "<group>"; };
-		0E4AD07B2205D01600257E8E /* ASLogLoadingOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLogLoadingOperation.h; sourceTree = "<group>"; };
-		0E4AD07C2205D01600257E8E /* ASLogLoadingOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASLogLoadingOperation.m; sourceTree = "<group>"; };
+		0E4AD07B2205D01600257E8E /* ASLogObservingOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLogObservingOperation.h; sourceTree = "<group>"; };
+		0E4AD07C2205D01600257E8E /* ASLogObservingOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASLogObservingOperation.m; sourceTree = "<group>"; };
 		0E4AD07F2205D65A00257E8E /* BRBuildLog+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRBuildLog+Mapping.h"; sourceTree = "<group>"; };
 		0E4AD0802205D65A00257E8E /* BRBuildLog+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRBuildLog+Mapping.m"; sourceTree = "<group>"; };
 		0E4AD0832205D75500257E8E /* BRLogChunk+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRLogChunk+Mapping.h"; sourceTree = "<group>"; };
@@ -221,6 +223,8 @@
 		0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncResult.m; sourceTree = "<group>"; };
 		0ECFF27821CD1C10005EC4A4 /* BRSyncDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncDiff.h; sourceTree = "<group>"; };
 		0ECFF27921CD1C10005EC4A4 /* BRSyncDiff.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncDiff.m; sourceTree = "<group>"; };
+		0ED38CDA220DE9000006FE69 /* ASLogLoadingOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLogLoadingOperation.h; sourceTree = "<group>"; };
+		0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASLogLoadingOperation.m; sourceTree = "<group>"; };
 		0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASQueue.m; sourceTree = "<group>"; };
 		0EDC5DE021BBBB0A00AD41FE /* ASOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASOperation.h; sourceTree = "<group>"; };
 		0EDC5DE121BBBB0A00AD41FE /* ASQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASQueue.h; sourceTree = "<group>"; };
@@ -439,8 +443,10 @@
 			children = (
 				0EFB325A22020B5E0045C376 /* BRLogObserver.h */,
 				0EFB325B22020B5E0045C376 /* BRLogObserver.m */,
-				0E4AD07B2205D01600257E8E /* ASLogLoadingOperation.h */,
-				0E4AD07C2205D01600257E8E /* ASLogLoadingOperation.m */,
+				0E4AD07B2205D01600257E8E /* ASLogObservingOperation.h */,
+				0E4AD07C2205D01600257E8E /* ASLogObservingOperation.m */,
+				0ED38CDA220DE9000006FE69 /* ASLogLoadingOperation.h */,
+				0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */,
 			);
 			path = LogObserver;
 			sourceTree = "<group>";
@@ -861,7 +867,7 @@
 				0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */,
 				0E3C0B0521175F0A00F2EA35 /* BRBuildActionHandler.m in Sources */,
 				0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */,
-				0E4AD07D2205D01600257E8E /* ASLogLoadingOperation.m in Sources */,
+				0E4AD07D2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
@@ -888,6 +894,7 @@
 				0E8DFB4721D7A05C00E7E5AC /* BRManagingAppCellView.m in Sources */,
 				0E51715C21D2074E000D470E /* BRBuildMenuController.m in Sources */,
 				0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */,
+				0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */,
 				0E4AD0912206039400257E8E /* BRBuildActionContext.m in Sources */,
 				0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */,
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
@@ -914,6 +921,7 @@
 				0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */,
 				0E4AD0822205D65A00257E8E /* BRBuildLog+Mapping.m in Sources */,
+				0ED38CDD220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */,
 				0E4AD08E2205FEBA00257E8E /* BRLogsViewController.m in Sources */,
 				0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */,
 				0E4AD08A2205F9D200257E8E /* BRLogsRequest.m in Sources */,
@@ -922,7 +930,7 @@
 				0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */,
 				0EB3ED4D21E33A1D003F0364 /* bitrise.xcdatamodeld in Sources */,
 				0E4AD0922206039400257E8E /* BRBuildActionContext.m in Sources */,
-				0E4AD07E2205D01600257E8E /* ASLogLoadingOperation.m in Sources */,
+				0E4AD07E2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */,
 				0EB3ED4F21E3453F003F0364 /* BRBuild+Mapping.m in Sources */,
 			);
