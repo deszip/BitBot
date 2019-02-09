@@ -14,11 +14,13 @@
 #import "BRBuildLog+CoreDataClass.h"
 #import "BRLogsRequest.h"
 
-@interface ASLogLoadingOperation ()
+@interface ASLogLoadingOperation () <NSURLSessionDownloadDelegate>
 
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (copy, nonatomic) NSString *buildSlug;
+
+@property (strong, nonatomic) NSURLSession *session;
 
 @end
 
@@ -29,6 +31,8 @@
         _storage = storage;
         _api = api;
         _buildSlug = buildSlug;
+        
+        self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:self.queue];
     }
     
     return self;
@@ -39,8 +43,6 @@
     [super start];
 
     [self.storage perform:^{
-        NSLog(@"ASLogLoadingOperation: fetching log: %@", self.buildSlug);
-        
         NSError *fetchError;
         BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
         if (!build) {
@@ -65,12 +67,18 @@
             return;
         }
         
+        // Clean previous logs
+        if (build.log.chunks.count > 0) {
+            
+        }
+        
         // Load full log for evrybody else
         [self loadLogs:build];
     }];
 }
 
 - (void)loadLogs:(BRBuild *)build {
+    NSLog(@"ASLogLoadingOperation: fetching log: %@", self.buildSlug);
     BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                           appSlug:build.app.slug
                                                         buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
@@ -78,12 +86,30 @@
         if (rawLog) {
             NSError *saveError;
             [self.storage saveLogs:rawLog forBuild:build error:&saveError];
-            
-            // load build.log.expiringRawLogURL
-            //...
+            NSURL *logURL = [NSURL URLWithString:build.log.expiringRawLogURL];
+            if (logURL) {
+                NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+                    NSError *readingError;
+                    NSError *saveError;
+                    NSString *logContent = [NSString stringWithContentsOfFile:location.path encoding:NSUTF8StringEncoding error:&readingError];
+                    BOOL logSaved = [self.storage addChunkToBuild:build withText:logContent error:&saveError];
+                    if (logContent && logSaved) {
+                        NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
+                    } else {
+                        NSLog(@"ASLogLoadingOperation: Readlog : %@\nSave log : %@", readingError, saveError);
+                    }
+                    [super finish];
+                }];
+                [task resume];
+            }
         }
-        
     }];
+}
+
+#pragma mark - NSURLSessionDownloadDelegate -
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+    NSLog(@"ASLogLoadingOperation: %@ - %lld / %lld", self.buildSlug, totalBytesWritten, totalBytesExpectedToWrite);
 }
 
 @end

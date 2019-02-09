@@ -213,6 +213,15 @@
     return [self saveContext:self.context error:error];
 }
 
+- (BOOL)addChunkToBuild:(BRBuild *)build withText:(NSString *)text error:(NSError * __autoreleasing *)error {
+    BRLogChunk *chunk = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogChunk class]) inManagedObjectContext:self.context];
+    chunk.text = text;
+    chunk.position = [[build.log.chunks valueForKeyPath:@"max.position"] integerValue] + 1;
+    [build.log addChunksObject:chunk];
+    
+    return [self saveContext:self.context error:error];
+}
+
 #pragma mark - Save -
 
 - (BOOL)saveContext:(NSManagedObjectContext *)context error:(NSError * __autoreleasing *)error {

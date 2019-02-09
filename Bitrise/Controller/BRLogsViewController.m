@@ -24,6 +24,7 @@
     _buildSlug = buildSlug;
     
     // Build a logs datasource
+    
 }
 
 @end
