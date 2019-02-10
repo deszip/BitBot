@@ -10,6 +10,7 @@
 
 #import "BRAppsDataSource.h"
 #import "BRAccountsDataSource.h"
+#import "BRLogsDataSource.h"
 
 #import "BRSyncEngine.h"
 #import "BRBitriseAPI.h"
@@ -22,6 +23,7 @@
 
 - (BRAppsDataSource *)appsDataSource;
 - (BRAccountsDataSource *)accountsDataSource;
+- (BRLogsDataSource *)logDataSource;
 
 @end
 

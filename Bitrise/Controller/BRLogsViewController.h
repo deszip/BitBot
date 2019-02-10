@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRLogsViewController : BRViewController
 
-@property (strong, nonatomic) id <BRInteractionProvider> dependencyContainer;
+@property (strong, nonatomic) id <BRDataSourceProvider, BRInteractionProvider> dependencyContainer;
 @property (copy, nonatomic) NSString *buildSlug;
 
 @end

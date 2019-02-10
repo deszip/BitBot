@@ -73,13 +73,9 @@ static const NSTimeInterval kPollTimeout = 1.0;
                 [self.storage saveLogs:rawLog forBuild:build error:&saveError];
                 NSLog(@"ASLogObservingOperation: got build log, chunks: %lu / %lld", build.log.chunks.count, build.log.chunksCount);
             }
-            
-            BRBuildStateInfo *buildInfo = [[BRBuildStateInfo alloc] initWithBuildStatus:build.status.integerValue
-                                                                             holdStatus:build.onHold.boolValue];
-            if (buildInfo.state == BRBuildStateSuccess ||
-                buildInfo.state == BRBuildStateFailed ||
-                buildInfo.state == BRBuildStateAborted) {
-                NSLog(@"ASLogObservingOperation: build finished");
+
+            if (build.log.archived) {
+                NSLog(@"ASLogObservingOperation: build log archived, build finished, stopping observing...");
                 [self finish];
             }
         }];

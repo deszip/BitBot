@@ -68,8 +68,13 @@
         }
         
         // Clean previous logs
-        if (build.log.chunks.count > 0) {
-            
+        // If we have multiple chunks and log was archived - assume we dont have full log
+        if (build.log.chunks.count > 1 && build.log.archived) {
+            NSError *cleanError;
+            if (![self.storage cleanLogs:build error:&cleanError]) {
+                [super finish];
+                return;
+            }
         }
         
         // Load full log for evrybody else
@@ -86,6 +91,10 @@
         if (rawLog) {
             NSError *saveError;
             [self.storage saveLogs:rawLog forBuild:build error:&saveError];
+            
+            // Remove chunks
+            [build.log setChunks:[NSSet set]];
+            
             NSURL *logURL = [NSURL URLWithString:build.log.expiringRawLogURL];
             if (logURL) {
                 NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
@@ -96,7 +105,7 @@
                     if (logContent && logSaved) {
                         NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
                     } else {
-                        NSLog(@"ASLogLoadingOperation: Readlog : %@\nSave log : %@", readingError, saveError);
+                        NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@", readingError, saveError);
                     }
                     [super finish];
                 }];

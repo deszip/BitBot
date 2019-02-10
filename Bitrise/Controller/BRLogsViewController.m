@@ -10,7 +10,10 @@
 
 @interface BRLogsViewController ()
 
+@property (strong, nonatomic) BRLogsDataSource *logDataSource;
 @property (strong, nonatomic) BRLogObserver *logObserver;
+@property (weak) IBOutlet NSTextField *logTextField;
+@property (unsafe_unretained) IBOutlet NSTextView *logTextView;
 
 @end
 
@@ -23,8 +26,17 @@
 - (void)setBuildSlug:(NSString *)buildSlug {
     _buildSlug = buildSlug;
     
-    // Build a logs datasource
+    self.logObserver = [self.dependencyContainer logObserver];
+    [self.logObserver loadLogsForBuild:self.buildSlug];
     
+    self.logDataSource = [self.dependencyContainer logDataSource];
+    __weak __typeof(self) weakSelf = self;
+    [self.logDataSource setUpdateCallback:^(NSString *log) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.logTextView.string = log;
+        });
+    }];
+    [self.logDataSource fetch:self.buildSlug];
 }
 
 @end
