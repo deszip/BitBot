@@ -208,7 +208,9 @@
     }
     
     NSArray <BRLogChunk *> *chunks = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:rawLogs[@"log_chunks"] withMapping:[BRLogChunk objectMapping] inManagedObjectContext:self.context];
-    [build.log addChunks:[NSSet setWithArray:chunks]];
+    if (chunks.count > 0) {
+        [build.log addChunks:[NSSet setWithArray:chunks]];
+    }
     
     return [self saveContext:self.context error:error];
 }
@@ -226,7 +228,7 @@
     NSFetchRequest *chunkRequest = [BRLogChunk fetchRequest];
     [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug]];
     NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:chunkRequest];
-    [self.context executeRequest:deleteRequest error:error] != nil;
+    [self.context executeRequest:deleteRequest error:error];
     
     return [self.context save:error];
 }

@@ -788,6 +788,7 @@
                                                                                 <constraint firstAttribute="width" constant="2" id="sD1-th-g2g"/>
                                                                             </constraints>
                                                                             <color key="fillColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                                                            <font key="titleFont" metaFont="smallSystem"/>
                                                                         </box>
                                                                         <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lYV-Uq-z7O">
                                                                             <rect key="frame" x="7" y="3" width="428" height="90"/>
@@ -1231,13 +1232,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="494" height="236"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
+                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
                                             <rect key="frame" x="0.0" y="0.0" width="494" height="236"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="494" height="236"/>
-                                            <size key="maxSize" width="494" height="10000000"/>
+                                            <size key="maxSize" width="509" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment content="gdfgdfdghfdhdfhdf">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="12" name="Menlo-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
@@ -1577,6 +1587,7 @@
                                     <constraint firstAttribute="height" constant="450" id="Hv0-HZ-rBh"/>
                                 </constraints>
                                 <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <font key="titleFont" metaFont="smallSystem"/>
                             </box>
                         </subviews>
                         <constraints>
@@ -1696,6 +1707,7 @@ Gw
                                         <constraint firstAttribute="trailing" secondItem="cK1-sc-RlF" secondAttribute="trailing" constant="10" id="sGd-D1-HDc"/>
                                     </constraints>
                                 </view>
+                                <font key="titleFont" metaFont="smallSystem"/>
                             </box>
                         </subviews>
                         <constraints>
