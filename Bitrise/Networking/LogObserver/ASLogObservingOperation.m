@@ -71,7 +71,7 @@ static const NSTimeInterval kPollTimeout = 1.0;
         [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
             if (rawLog) {
                 NSError *saveError;
-                [self.storage saveLogs:rawLog forBuild:build error:&saveError];
+                [self.storage saveLogs:rawLog forBuild:build mapChunks:YES error:&saveError];
                 NSLog(@"ASLogObservingOperation: got build log, chunks: %lu / %lld", build.log.chunks.count, build.log.chunksCount);
             }
 

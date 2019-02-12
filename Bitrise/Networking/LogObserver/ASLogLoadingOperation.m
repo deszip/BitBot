@@ -86,7 +86,7 @@
     [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
         if (rawLog) {
             NSError *saveError;
-            [self.storage saveLogs:rawLog forBuild:build error:&saveError];
+            [self.storage saveLogs:rawLog forBuild:build mapChunks:NO error:&saveError];
             
             // Remove chunks
             [build.log setChunks:[NSSet set]];
@@ -94,16 +94,18 @@
             NSURL *logURL = [NSURL URLWithString:build.log.expiringRawLogURL];
             if (logURL) {
                 NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-                    NSError *readingError;
-                    NSError *saveError;
-                    NSString *logContent = [NSString stringWithContentsOfFile:location.path encoding:NSUTF8StringEncoding error:&readingError];
-                    BOOL logSaved = [self.storage addChunkToBuild:build withText:logContent error:&saveError];
-                    if (logContent && logSaved) {
-                        NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
-                    } else {
-                        NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@", readingError, saveError);
-                    }
-                    [super finish];
+                    [self.storage perform:^{
+                        NSError *readingError;
+                        NSError *saveError;
+                        NSString *logContent = [NSString stringWithContentsOfFile:location.path encoding:NSUTF8StringEncoding error:&readingError];
+                        BOOL logSaved = [self.storage addChunkToBuild:build withText:logContent error:&saveError];
+                        if (logContent && logSaved) {
+                            NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
+                        } else {
+                            NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@", readingError, saveError);
+                        }
+                        [super finish];
+                    }];
                 }];
                 [task resume];
             }
@@ -116,5 +118,9 @@
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     NSLog(@"ASLogLoadingOperation: %@ - %lld / %lld", self.buildSlug, totalBytesWritten, totalBytesExpectedToWrite);
 }
+
+//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+//didFinishDownloadingToURL:(NSURL *)location {
+//}
 
 @end

@@ -12,8 +12,13 @@
 
 #import "BRMacro.h"
 #import "BRLogChunk+CoreDataClass.h"
+#import "BRLogLine+CoreDataClass.h"
 
-@interface BRLogsDataSource () <NSFetchedResultsControllerDelegate>
+#import "BRLogLineView.h"
+
+@interface BRLogsDataSource () <NSOutlineViewDataSource, NSOutlineViewDelegate, NSFetchedResultsControllerDelegate>
+
+@property (weak, nonatomic) NSOutlineView *outlineView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSFetchedResultsController *logFRC;
@@ -33,7 +38,7 @@
 }
 
 - (NSFetchedResultsController *)buildFRC:(NSManagedObjectContext *)context buildSlug:(NSString *)buildSlug {
-    NSFetchRequest *request = [BRLogChunk fetchRequest];
+    NSFetchRequest *request = [BRLogLine fetchRequest];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
     [context setAutomaticallyMergesChangesFromParent:YES];
@@ -53,18 +58,55 @@
         NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
     
-    [self updateContent];
+    //[self updateContent];
+    [self.outlineView reloadData];
+}
+
+- (void)bind:(NSOutlineView *)outlineView {
+    _outlineView = outlineView;
+    self.outlineView.dataSource = self;
+    self.outlineView.delegate = self;
+    [self.outlineView reloadData];
+}
+
+#pragma mark - NSOutlineViewDataSource -
+
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
+    return [self.logFRC.sections[0] objects][index];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
+    return NO;
+}
+
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
+    return [[self.logFRC.sections[0] objects] count];
+}
+
+#pragma mark - NSOutlineViewDelegate -
+
+- (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
+    if ([item isKindOfClass:[BRLogLine class]]) {
+        BRLogLine *line = (BRLogLine *)item;
+        BRLogLineView *cell = [outlineView makeViewWithIdentifier:@"BRLogLineView" owner:self];
+        [cell.lineLabel setStringValue:line.text];
+        
+        return cell;
+    }
+    
+    return nil;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     //[self updateContent];
+    [self.outlineView reloadData];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     if (type == NSFetchedResultsChangeInsert) {
-        BR_SAFE_CALL(self.insertCallback, [anObject text]);
+        //BR_SAFE_CALL(self.insertCallback, [anObject text]);
     }
 }
 
@@ -73,7 +115,7 @@
 - (void)updateContent {
     NSString *log = [self currentLog:self.logFRC];
     if (log.length > 0) {
-        BR_SAFE_CALL(self.updateCallback, log);
+        //BR_SAFE_CALL(self.updateCallback, log);
     }
 }
 

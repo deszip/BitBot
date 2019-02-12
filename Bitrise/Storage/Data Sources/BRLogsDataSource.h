@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithContainer:(NSPersistentContainer *)container NS_DESIGNATED_INITIALIZER;
 - (void)fetch:(NSString *)buildSlug;
+- (void)bind:(NSOutlineView *)outlineView;
 
 @end
 

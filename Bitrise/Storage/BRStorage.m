@@ -200,7 +200,7 @@
 
 #pragma mark - Logs -
 
-- (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+- (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build mapChunks:(BOOL)mapChunks error:(NSError * __autoreleasing *)error {
     if (build.log) {
         [EKManagedObjectMapper fillObject:build.log fromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
     } else {
@@ -208,9 +208,15 @@
         build.log = buildLog;
     }
     
-    NSArray <BRLogChunk *> *chunks = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:rawLogs[@"log_chunks"] withMapping:[BRLogChunk objectMapping] inManagedObjectContext:self.context];
-    if (chunks.count > 0) {
-        [build.log addChunks:[NSSet setWithArray:chunks]];
+    if (mapChunks) {
+        NSArray <BRLogChunk *> *chunks = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:rawLogs[@"log_chunks"] withMapping:[BRLogChunk objectMapping] inManagedObjectContext:self.context];
+        if (chunks.count > 0) {
+            //[build.log addChunks:[NSSet setWithArray:chunks]];
+            [chunks enumerateObjectsUsingBlock:^(BRLogChunk *chunk, NSUInteger idx, BOOL *stop) {
+                NSError *chunkError;
+                [self addChunkToBuild:build withText:chunk.text error:&chunkError];
+            }];
+        }
     }
     
     return [self saveContext:self.context error:error];
@@ -252,6 +258,7 @@
             BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
             line.position = idx + positionOffset;
             line.text = rawLine;
+            [build.log addLinesObject:line];
         }
     }];
     
