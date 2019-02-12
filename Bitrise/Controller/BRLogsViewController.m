@@ -12,7 +12,6 @@
 
 @property (strong, nonatomic) BRLogsDataSource *logDataSource;
 @property (strong, nonatomic) BRLogObserver *logObserver;
-@property (weak) IBOutlet NSTextField *logTextField;
 @property (unsafe_unretained) IBOutlet NSTextView *logTextView;
 
 @end
@@ -21,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.logTextView setFont:[NSFont fontWithName:@"Menlo" size:12.0]];
 }
 
 - (void)setBuildSlug:(NSString *)buildSlug {
@@ -32,8 +33,12 @@
     self.logDataSource = [self.dependencyContainer logDataSource];
     __weak __typeof(self) weakSelf = self;
     [self.logDataSource setUpdateCallback:^(NSString *log) {
+        NSLog(@"BRLogsViewController: update callback, text length: %ld", log.length);
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.logTextView.string = log;
+            if (weakSelf.logTextView.selectedRanges.count == 0) {
+                [weakSelf.logTextView scrollToEndOfDocument:weakSelf];
+            }
         });
     }];
     [self.logDataSource fetch:self.buildSlug];

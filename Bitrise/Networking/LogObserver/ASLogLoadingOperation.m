@@ -67,14 +67,10 @@
             return;
         }
         
-        // Clean previous logs
-        // If we have multiple chunks and log was archived - assume we dont have full log
-        if (build.log.chunks.count > 1 && build.log.archived) {
-            NSError *cleanError;
-            if (![self.storage cleanLogs:build error:&cleanError]) {
-                [super finish];
-                return;
-            }
+        // If we have one chunk, log is archived and we have no last timestamp - assume we have full log
+        if (build.log.chunks.count == 1 && build.log.archived && !build.log.timestamp) {
+            [super finish];
+            return;
         }
         
         // Load full log for evrybody else

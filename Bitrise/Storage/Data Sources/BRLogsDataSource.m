@@ -52,19 +52,40 @@
     if (![self.logFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
+    
+    [self updateContent];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self updateContent];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    if (type == NSFetchedResultsChangeInsert) {
+        
+    }
+}
+
+#pragma mark - Content loading -
+
+- (void)updateContent {
+    NSString *log = [self currentLog:self.logFRC];
+    if (log.length > 0) {
+        BR_SAFE_CALL(self.updateCallback, log);
+    }
+}
+
+- (NSString *)currentLog:(NSFetchedResultsController *)frc {
     NSString *log = @"";
-    NSUInteger chunkCount = [controller.sections[0] numberOfObjects];
+    NSUInteger chunkCount = [frc.sections[0] numberOfObjects];
     for (NSUInteger i = 0; i < chunkCount; i++) {
-        BRLogChunk *chunk = [controller objectAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
+        BRLogChunk *chunk = [frc objectAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
         log = [log stringByAppendingString:chunk.text];
     }
     
-    BR_SAFE_CALL(self.updateCallback, log);
+    return log;
 }
 
 @end

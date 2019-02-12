@@ -58,7 +58,6 @@
             return;
         }
         
-        NSLog(@"Got %lu accounts", (unsigned long)accounts.count);
         [accounts enumerateObjectsUsingBlock:^(BRAccount *account, NSUInteger idx, BOOL *stop) {
             
             dispatch_group_enter(self.group);

@@ -54,6 +54,7 @@ static const NSTimeInterval kPollTimeout = 1.0;
 
 - (void)fetchLogs {
     [self.storage perform:^{
+        NSTimeInterval startTime = [[NSDate date] timeIntervalSince1970];
         NSLog(@"ASLogObservingOperation: fetching log: %@", self.buildSlug);
         
         NSError *fetchError;
@@ -78,6 +79,9 @@ static const NSTimeInterval kPollTimeout = 1.0;
                 NSLog(@"ASLogObservingOperation: build log archived, build finished, stopping observing...");
                 [self finish];
             }
+            
+            NSTimeInterval endTime = [[NSDate date] timeIntervalSince1970];
+            NSLog(@"ASLogObservingOperation: fetch time: %f sec.", endTime - startTime);
         }];
     }];
 }

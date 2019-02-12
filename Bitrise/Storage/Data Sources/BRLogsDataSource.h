@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRLogsDataSource : NSObject
 
 @property (copy, nonatomic) void (^updateCallback)(NSString *log);
+@property (copy, nonatomic) void (^insertCallback)(NSString *log);
 
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
