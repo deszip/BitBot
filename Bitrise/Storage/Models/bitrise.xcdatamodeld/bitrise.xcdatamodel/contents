@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="BRAccount" representedClassName="BRAccount" syncable="YES" codeGenerationType="class">
         <attribute name="avatarURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -61,17 +61,24 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="build" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuild" inverseName="log" inverseEntity="BRBuild" syncable="YES"/>
         <relationship name="chunks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogChunk" inverseName="log" inverseEntity="BRLogChunk" syncable="YES"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogLine" inverseName="log" inverseEntity="BRLogLine" syncable="YES"/>
     </entity>
     <entity name="BRLogChunk" representedClassName="BRLogChunk" syncable="YES" codeGenerationType="class">
         <attribute name="position" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="chunks" inverseEntity="BRBuildLog" syncable="YES"/>
     </entity>
+    <entity name="BRLogLine" representedClassName="BRLogLine" syncable="YES" codeGenerationType="class">
+        <attribute name="position" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="lines" inverseEntity="BRBuildLog" syncable="YES"/>
+    </entity>
     <elements>
         <element name="BRAccount" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="BRApp" positionX="-54" positionY="-9" width="128" height="300"/>
         <element name="BRBuild" positionX="-36" positionY="9" width="128" height="405"/>
-        <element name="BRBuildLog" positionX="-54" positionY="135" width="128" height="135"/>
+        <element name="BRBuildLog" positionX="-54" positionY="135" width="128" height="150"/>
         <element name="BRLogChunk" positionX="-45" positionY="144" width="128" height="90"/>
+        <element name="BRLogLine" positionX="-54" positionY="135" width="128" height="90"/>
     </elements>
 </model>

@@ -41,6 +41,17 @@
             }
         });
     }];
+    
+    [self.logDataSource setInsertCallback:^(NSString *log) {
+        NSLog(@"BRLogsViewController: insert callback, text length: %ld", log.length);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.logTextView insertText:log replacementRange:NSMakeRange(weakSelf.logTextView.string.length-1, 0)];
+            if (weakSelf.logTextView.selectedRanges.count == 0) {
+                [weakSelf.logTextView scrollToEndOfDocument:weakSelf];
+            }
+        });
+    }];
+    
     [self.logDataSource fetch:self.buildSlug];
 }
 

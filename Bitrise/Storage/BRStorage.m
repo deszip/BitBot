@@ -18,6 +18,7 @@
 #import "BRBuild+Mapping.h"
 #import "BRBuildLog+Mapping.h"
 #import "BRLogChunk+Mapping.h"
+#import "BRLogLine+CoreDataClass.h"
 
 @interface BRStorage ()
 
@@ -220,6 +221,39 @@
     chunk.text = text;
     chunk.position = [[build.log.chunks valueForKeyPath:@"@max.position"] integerValue] + 1;
     [build.log addChunksObject:chunk];
+    
+    // Add lines
+    NSFetchRequest *request = [BRLogLine fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
+    request.fetchLimit = 1;
+    NSError *fetchError;
+    NSArray<BRLogLine *> *lines = [self.context executeFetchRequest:request error:&fetchError];
+    
+    BRLogLine *lastLine = nil;
+    NSUInteger positionOffset = 0;
+    BOOL lineBroken = NO;
+    if (lines.count == 1) {
+        lastLine = lines.firstObject;
+        positionOffset = lastLine.position;
+        
+        lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length-1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
+    }
+    
+    NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
+    
+    if (lineBroken) {
+        lastLine.text = [lastLine.text stringByAppendingString:rawLines.firstObject];
+        [rawLines removeObjectAtIndex:0];
+    }
+    
+    [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
+        if (rawLine.length > 0) {
+            BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
+            line.position = idx + positionOffset;
+            line.text = rawLine;
+        }
+    }];
     
     return [self saveContext:self.context error:error];
 }
