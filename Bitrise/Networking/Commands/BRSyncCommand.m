@@ -26,20 +26,22 @@
         _logObserver = logObserver;
         _environment = environment;
         
-        __weak BREnvironment *weakEnv = _environment;
-        __weak BRLogObserver *weakLogObserver = _logObserver;
+        //__weak BREnvironment *weakEnv = _environment;
+        //__weak BRLogObserver *weakLogObserver = _logObserver;
+        
+        __weak BRSyncCommand *weakSelf = self;
         _syncEngine.syncCallback = ^(BRSyncResult *result) {
             // Notifications
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
-            [weakEnv postNotifications:builds forApp:result.app];
+            [weakSelf.environment postNotifications:builds forApp:result.app];
             
             // Logs
             NSArray *runningBuilds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.running];
             [runningBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
-                [weakLogObserver startObservingBuild:buildInfo.slug];
+                [weakSelf.logObserver startObservingBuild:buildInfo.slug];
             }];
             [result.diff.finished enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
-                [weakLogObserver stopObservingBuild:buildInfo.slug];
+                [weakSelf.logObserver stopObservingBuild:buildInfo.slug];
             }];
         };
     }

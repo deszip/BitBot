@@ -231,7 +231,7 @@
     // Add lines
     NSFetchRequest *request = [BRLogLine fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]];
     request.fetchLimit = 1;
     NSError *fetchError;
     NSArray<BRLogLine *> *lines = [self.context executeFetchRequest:request error:&fetchError];
@@ -241,7 +241,7 @@
     BOOL lineBroken = NO;
     if (lines.count == 1) {
         lastLine = lines.firstObject;
-        positionOffset = lastLine.position;
+        positionOffset = lastLine.position + 1;
         
         lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length-1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
     }
@@ -249,8 +249,16 @@
     NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
     
     if (lineBroken) {
-        lastLine.text = [lastLine.text stringByAppendingString:rawLines.firstObject];
-        [rawLines removeObjectAtIndex:0];
+        NSArray <NSString *> *firstLineParts = [rawLines.firstObject componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        if (firstLineParts.count > 0) {
+            lastLine.text = [lastLine.text stringByAppendingString:firstLineParts.firstObject];
+            [rawLines removeObjectAtIndex:0];
+            
+            if (firstLineParts.count > 1) {
+                NSString *firstLineTail = [rawLines.firstObject substringFromIndex:firstLineParts.firstObject.length];
+                [rawLines insertObject:firstLineTail atIndex:0];
+            }
+        }
     }
     
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
@@ -268,8 +276,13 @@
 - (BOOL)cleanLogs:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     NSFetchRequest *chunkRequest = [BRLogChunk fetchRequest];
     [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug]];
-    NSBatchDeleteRequest *deleteRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:chunkRequest];
-    [self.context executeRequest:deleteRequest error:error];
+    NSBatchDeleteRequest *deleteChunkRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:chunkRequest];
+    [self.context executeRequest:deleteChunkRequest error:error];
+    
+    NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
+    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug]];
+    NSBatchDeleteRequest *deleteLinesRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:linesRequest];
+    [self.context executeRequest:deleteLinesRequest error:error];
     
     return [self.context save:error];
 }

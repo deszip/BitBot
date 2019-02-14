@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *buildSlug;
 
 @property (strong, nonatomic) NSURLSession *session;
+@property (strong, nonatomic) NSOperationQueue *urlSessionQueue;
 
 @end
 
@@ -32,7 +33,10 @@
         _api = api;
         _buildSlug = buildSlug;
         
-        self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
+        _urlSessionQueue = [NSOperationQueue new];
+        [_urlSessionQueue setMaxConcurrentOperationCount:1];
+        
+        _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
     }
     
     return self;
@@ -53,16 +57,9 @@
         
         BRBuildStateInfo *stateInfo = [[BRBuildInfo alloc] initWithBuild:build].stateInfo;
         
-        // Dispatch observing op. for running build
-        if (stateInfo.state == BRBuildStateInProgress) {
-            ASLogObservingOperation *observingOperation = [[ASLogObservingOperation alloc] initWithStorage:self.storage api:self.api buildSlug:self.buildSlug];
-            [self.queue addOperation:observingOperation];
-            [super finish];
-            return;
-        }
-        
-        // Ignore not started build
-        if (stateInfo.state == BRBuildStateHold) {
+        // Ignore not started and running builds
+        if (stateInfo.state == BRBuildStateInProgress ||
+            stateInfo.state == BRBuildStateHold) {
             [super finish];
             return;
         }
@@ -119,8 +116,7 @@
     NSLog(@"ASLogLoadingOperation: %@ - %lld / %lld", self.buildSlug, totalBytesWritten, totalBytesExpectedToWrite);
 }
 
-//- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
-//didFinishDownloadingToURL:(NSURL *)location {
-//}
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask
+didFinishDownloadingToURL:(NSURL *)location {}
 
 @end

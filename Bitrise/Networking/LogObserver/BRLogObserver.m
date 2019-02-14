@@ -34,6 +34,8 @@
 }
 
 - (void)startObservingBuild:(NSString *)buildSlug {
+    NSLog(@"Observer: %@, build %@, started...", self, buildSlug);
+    
     ASLogObservingOperation *oldOperation = [self operationForBuild:buildSlug];
     if (oldOperation) {
         NSLog(@"BRLogObserver: has observing operation: %@, skipping...", buildSlug);

@@ -100,8 +100,8 @@
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    //[self updateContent];
     [self.outlineView reloadData];
+    [self.outlineView scrollToEndOfDocument:nil];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
