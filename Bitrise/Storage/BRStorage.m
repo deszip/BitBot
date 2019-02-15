@@ -223,10 +223,10 @@
 }
 
 - (BOOL)addChunkToBuild:(BRBuild *)build withText:(NSString *)text error:(NSError * __autoreleasing *)error {
-    BRLogChunk *chunk = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogChunk class]) inManagedObjectContext:self.context];
-    chunk.text = text;
-    chunk.position = [[build.log.chunks valueForKeyPath:@"@max.position"] integerValue] + 1;
-    [build.log addChunksObject:chunk];
+//    BRLogChunk *chunk = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogChunk class]) inManagedObjectContext:self.context];
+//    chunk.text = text;
+//    chunk.position = [[build.log.chunks valueForKeyPath:@"@max.position"] integerValue] + 1;
+//    [build.log addChunksObject:chunk];
     
     // Add lines
     NSFetchRequest *request = [BRLogLine fetchRequest];
@@ -273,14 +273,14 @@
     return [self saveContext:self.context error:error];
 }
 
-- (BOOL)cleanLogs:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+- (BOOL)cleanLogs:(NSString *)buildSlug error:(NSError * __autoreleasing *)error {
     NSFetchRequest *chunkRequest = [BRLogChunk fetchRequest];
-    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug]];
+    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
     NSBatchDeleteRequest *deleteChunkRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:chunkRequest];
     [self.context executeRequest:deleteChunkRequest error:error];
     
     NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
-    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug]];
+    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
     NSBatchDeleteRequest *deleteLinesRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:linesRequest];
     [self.context executeRequest:deleteLinesRequest error:error];
     

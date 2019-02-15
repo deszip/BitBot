@@ -38,6 +38,16 @@ static const NSTimeInterval kPollTimeout = 1.0;
 - (void)start {
     [super start];
     
+    [self.storage perform:^{
+        NSError *error;
+        if (![self.storage cleanLogs:self.buildSlug error:&error]) {
+            [super finish];
+            return;
+        }
+        
+        //[self schedulePoll];
+    }];
+    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kPollTimeout
                                                   target:self
                                                 selector:@selector(fetchLogs)
@@ -50,6 +60,16 @@ static const NSTimeInterval kPollTimeout = 1.0;
 - (void)finish {
     [self.timer invalidate];
     [super finish];
+}
+
+- (void)schedulePoll {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kPollTimeout
+                                                  target:self
+                                                selector:@selector(fetchLogs)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] run];
 }
 
 - (void)fetchLogs {
@@ -72,7 +92,7 @@ static const NSTimeInterval kPollTimeout = 1.0;
             if (rawLog) {
                 NSError *saveError;
                 [self.storage saveLogs:rawLog forBuild:build mapChunks:YES error:&saveError];
-                NSLog(@"ASLogObservingOperation: got build log, chunks: %lu / %lld", build.log.chunks.count, build.log.chunksCount);
+                NSLog(@"ASLogObservingOperation: got build log, lines: %lu", build.log.lines.count);
             }
 
             if (build.log.archived) {

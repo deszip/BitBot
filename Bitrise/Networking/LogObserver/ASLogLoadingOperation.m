@@ -64,8 +64,8 @@
             return;
         }
         
-        // If we have one chunk, log is archived and we have no last timestamp - assume we have full log
-        if (build.log.chunks.count == 1 && build.log.archived && !build.log.timestamp) {
+        // If we have at least one line, log is archived and we have no last timestamp - assume we have full log
+        if (build.log.lines.count > 0 && build.log.archived && build.log.timestamp == nil) {
             [super finish];
             return;
         }
