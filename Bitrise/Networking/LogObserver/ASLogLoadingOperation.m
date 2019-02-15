@@ -65,7 +65,7 @@
         }
         
         // If we have at least one line, log is archived and we have no last timestamp - assume we have full log
-        if (build.log.lines.count > 0 && build.log.archived && build.log.timestamp == nil) {
+        if (build.log.loaded) {
             [super finish];
             return;
         }
@@ -82,11 +82,15 @@
                                                         buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
     [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
         if (rawLog) {
-            NSError *saveError;
-            [self.storage saveLogs:rawLog forBuild:build mapChunks:NO error:&saveError];
+            NSError *cleanError;
+            if (![self.storage cleanLogs:build.slug error:&cleanError]) {
+                NSLog(@"Failed to clean build logs: %@", cleanError);
+                [super finish];
+                return;
+            }
             
-            // Remove chunks
-            [build.log setChunks:[NSSet set]];
+            NSError *saveError;
+            [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
             
             NSURL *logURL = [NSURL URLWithString:build.log.expiringRawLogURL];
             if (logURL) {
@@ -94,12 +98,14 @@
                     [self.storage perform:^{
                         NSError *readingError;
                         NSError *saveError;
+                        NSError *markError;
                         NSString *logContent = [NSString stringWithContentsOfFile:location.path encoding:NSUTF8StringEncoding error:&readingError];
-                        BOOL logSaved = [self.storage addChunkToBuild:build withText:logContent error:&saveError];
-                        if (logContent && logSaved) {
+                        BOOL logSaved = [self.storage appendLogs:logContent toBuild:build error:&saveError];
+                        
+                        if (logContent && logSaved && [self.storage markBuildLog:build.log loaded:YES error:&markError]) {
                             NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
                         } else {
-                            NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@", readingError, saveError);
+                            NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError);
                         }
                         [super finish];
                     }];

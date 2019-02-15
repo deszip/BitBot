@@ -11,6 +11,7 @@
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildLog+CoreDataClass.h"
 #import "BRLogsRequest.h"
+#import "NSArray+FRP.h"
 
 static const NSTimeInterval kPollTimeout = 1.0;
 
@@ -91,7 +92,17 @@ static const NSTimeInterval kPollTimeout = 1.0;
         [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
             if (rawLog) {
                 NSError *saveError;
-                [self.storage saveLogs:rawLog forBuild:build mapChunks:YES error:&saveError];
+                [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
+                
+                NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: @"position"
+                                                                            ascending:YES];
+                NSArray *chunks = [rawLog[@"log_chunks"] sortedArrayUsingDescriptors: @[sortDescriptor]];
+                NSArray *lines = [chunks aps_map:^NSString *(NSDictionary *chunk) {
+                    return chunk[@"chunk"];
+                }];
+                NSString *logContent = [lines componentsJoinedByString:@""];
+                [self.storage appendLogs:logContent toBuild:build error:&saveError];
+                
                 NSLog(@"ASLogObservingOperation: got build log, lines: %lu", build.log.lines.count);
             }
 

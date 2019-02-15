@@ -11,7 +11,6 @@
 #import "BRLogsDataSource.h"
 
 #import "BRMacro.h"
-#import "BRLogChunk+CoreDataClass.h"
 #import "BRLogLine+CoreDataClass.h"
 
 #import "BRLogLineView.h"
@@ -58,7 +57,6 @@
         NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
     
-    //[self updateContent];
     [self.outlineView reloadData];
 }
 
@@ -108,26 +106,6 @@
     if (type == NSFetchedResultsChangeInsert) {
         //BR_SAFE_CALL(self.insertCallback, [anObject text]);
     }
-}
-
-#pragma mark - Content loading -
-
-- (void)updateContent {
-    NSString *log = [self currentLog:self.logFRC];
-    if (log.length > 0) {
-        //BR_SAFE_CALL(self.updateCallback, log);
-    }
-}
-
-- (NSString *)currentLog:(NSFetchedResultsController *)frc {
-    NSString *log = @"";
-    NSUInteger chunkCount = [frc.sections[0] numberOfObjects];
-    for (NSUInteger i = 0; i < chunkCount; i++) {
-        BRLogChunk *chunk = [frc objectAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
-        log = [log stringByAppendingString:chunk.text];
-    }
-    
-    return log;
 }
 
 @end

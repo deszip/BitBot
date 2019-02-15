@@ -41,8 +41,9 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 - (BOOL)saveBuilds:(NSArray <BRBuildInfo *> *)buildsInfo forApp:(NSString *)appSlug error:(NSError * __autoreleasing *)error;
 
 #pragma mark - Logs -
-- (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build mapChunks:(BOOL)mapChunks error:(NSError * __autoreleasing *)error;
-- (BOOL)addChunkToBuild:(BRBuild *)build withText:(NSString *)text error:(NSError * __autoreleasing *)error;
+- (BOOL)saveLogMetadata:(NSDictionary *)rawLogMetadata forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error;
+- (BOOL)appendLogs:(NSString *)text toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error;
+- (BOOL)markBuildLog:(BRBuildLog *)buildLog loaded:(BOOL)isLoaded error:(NSError * __autoreleasing *)error;
 - (BOOL)cleanLogs:(NSString *)buildSlug error:(NSError * __autoreleasing *)error;
 
 @end

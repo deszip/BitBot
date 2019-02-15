@@ -8,8 +8,6 @@
 
 #import "BRBuildLog+Mapping.h"
 
-#import "BRLogChunk+CoreDataClass.h"
-
 @implementation BRBuildLog (Mapping)
 
 + (EKManagedObjectMapping *)objectMapping {

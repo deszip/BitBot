@@ -17,7 +17,6 @@
 #import "BRApp+Mapping.h"
 #import "BRBuild+Mapping.h"
 #import "BRBuildLog+Mapping.h"
-#import "BRLogChunk+Mapping.h"
 #import "BRLogLine+CoreDataClass.h"
 
 @interface BRStorage ()
@@ -200,34 +199,18 @@
 
 #pragma mark - Logs -
 
-- (BOOL)saveLogs:(NSDictionary *)rawLogs forBuild:(BRBuild *)build mapChunks:(BOOL)mapChunks error:(NSError * __autoreleasing *)error {
+- (BOOL)saveLogMetadata:(NSDictionary *)rawLogMetadata forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     if (build.log) {
-        [EKManagedObjectMapper fillObject:build.log fromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
+        [EKManagedObjectMapper fillObject:build.log fromExternalRepresentation:rawLogMetadata withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
     } else {
-        BRBuildLog *buildLog = [EKManagedObjectMapper objectFromExternalRepresentation:rawLogs withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
+        BRBuildLog *buildLog = [EKManagedObjectMapper objectFromExternalRepresentation:rawLogMetadata withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
         build.log = buildLog;
-    }
-    
-    if (mapChunks) {
-        NSArray <BRLogChunk *> *chunks = [EKManagedObjectMapper arrayOfObjectsFromExternalRepresentation:rawLogs[@"log_chunks"] withMapping:[BRLogChunk objectMapping] inManagedObjectContext:self.context];
-        if (chunks.count > 0) {
-            //[build.log addChunks:[NSSet setWithArray:chunks]];
-            [chunks enumerateObjectsUsingBlock:^(BRLogChunk *chunk, NSUInteger idx, BOOL *stop) {
-                NSError *chunkError;
-                [self addChunkToBuild:build withText:chunk.text error:&chunkError];
-            }];
-        }
     }
     
     return [self saveContext:self.context error:error];
 }
 
-- (BOOL)addChunkToBuild:(BRBuild *)build withText:(NSString *)text error:(NSError * __autoreleasing *)error {
-//    BRLogChunk *chunk = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogChunk class]) inManagedObjectContext:self.context];
-//    chunk.text = text;
-//    chunk.position = [[build.log.chunks valueForKeyPath:@"@max.position"] integerValue] + 1;
-//    [build.log addChunksObject:chunk];
-    
+- (BOOL)appendLogs:(NSString *)text toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     // Add lines
     NSFetchRequest *request = [BRLogLine fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
@@ -273,14 +256,18 @@
     return [self saveContext:self.context error:error];
 }
 
+- (BOOL)markBuildLog:(BRBuildLog *)buildLog loaded:(BOOL)isLoaded error:(NSError * __autoreleasing *)error {
+    [buildLog setLoaded:isLoaded];
+    
+    return [self saveContext:self.context error:error];
+}
+
 - (BOOL)cleanLogs:(NSString *)buildSlug error:(NSError * __autoreleasing *)error {
-    NSFetchRequest *chunkRequest = [BRLogChunk fetchRequest];
-    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
-    NSBatchDeleteRequest *deleteChunkRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:chunkRequest];
-    [self.context executeRequest:deleteChunkRequest error:error];
+    // @TODO: Mark build as not loaded
+    //...
     
     NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
-    [chunkRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
+    [linesRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
     NSBatchDeleteRequest *deleteLinesRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:linesRequest];
     [self.context executeRequest:deleteLinesRequest error:error];
     
