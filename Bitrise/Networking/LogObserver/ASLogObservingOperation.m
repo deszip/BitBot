@@ -11,7 +11,7 @@
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildLog+CoreDataClass.h"
 #import "BRLogsRequest.h"
-#import "NSArray+FRP.h"
+#import "BRLogInfo.h"
 
 static const NSTimeInterval kPollTimeout = 1.0;
 
@@ -46,6 +46,7 @@ static const NSTimeInterval kPollTimeout = 1.0;
             return;
         }
         
+        // ?
         //[self schedulePoll];
     }];
     
@@ -76,7 +77,6 @@ static const NSTimeInterval kPollTimeout = 1.0;
 - (void)fetchLogs {
     [self.storage perform:^{
         NSTimeInterval startTime = [[NSDate date] timeIntervalSince1970];
-        NSLog(@"ASLogObservingOperation: fetching log: %@", self.buildSlug);
         
         NSError *fetchError;
         BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
@@ -93,15 +93,15 @@ static const NSTimeInterval kPollTimeout = 1.0;
             if (rawLog) {
                 NSError *saveError;
                 [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
-                
-                NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: @"position"
-                                                                            ascending:YES];
-                NSArray *chunks = [rawLog[@"log_chunks"] sortedArrayUsingDescriptors: @[sortDescriptor]];
-                NSArray *lines = [chunks aps_map:^NSString *(NSDictionary *chunk) {
-                    return chunk[@"chunk"];
-                }];
-                NSString *logContent = [lines componentsJoinedByString:@""];
-                [self.storage appendLogs:logContent toBuild:build error:&saveError];
+
+                BRLogInfo *logInfo = [[BRLogInfo alloc] initWithRawLog:rawLog];
+//                NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: @"position" ascending:YES];
+//                NSArray *chunks = [rawLog[@"log_chunks"] sortedArrayUsingDescriptors: @[sortDescriptor]];
+//                NSArray *lines = [chunks aps_map:^NSString *(NSDictionary *chunk) {
+//                    return chunk[@"chunk"];
+//                }];
+//                NSString *logContent = [lines componentsJoinedByString:@""];
+                [self.storage appendLogs:[logInfo content] toBuild:build error:&saveError];
                 
                 NSLog(@"ASLogObservingOperation: got build log, lines: %lu", build.log.lines.count);
             }
@@ -116,5 +116,9 @@ static const NSTimeInterval kPollTimeout = 1.0;
         }];
     }];
 }
+
+#pragma mark - Tools -
+
+
 
 @end

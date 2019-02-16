@@ -57,18 +57,18 @@
         
         BRBuildStateInfo *stateInfo = [[BRBuildInfo alloc] initWithBuild:build].stateInfo;
         
-        // Ignore not started and running builds
+        // Ignore not started and running builds, we should have observing op. for them
         if (stateInfo.state == BRBuildStateInProgress ||
             stateInfo.state == BRBuildStateHold) {
             [super finish];
             return;
         }
         
-        // If we have at least one line, log is archived and we have no last timestamp - assume we have full log
-        if (build.log.loaded) {
-            [super finish];
-            return;
-        }
+        // Skip fully loaded
+//        if (build.log.loaded) {
+//            [super finish];
+//            return;
+//        }
         
         // Load full log for evrybody else
         [self loadLogs:build];
@@ -81,39 +81,65 @@
                                                           appSlug:build.app.slug
                                                         buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
     [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
-        if (rawLog) {
-            NSError *cleanError;
-            if (![self.storage cleanLogs:build.slug error:&cleanError]) {
-                NSLog(@"Failed to clean build logs: %@", cleanError);
-                [super finish];
-                return;
-            }
-            
-            NSError *saveError;
-            [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
-            
-            NSURL *logURL = [NSURL URLWithString:build.log.expiringRawLogURL];
-            if (logURL) {
-                NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-                    [self.storage perform:^{
-                        NSError *readingError;
-                        NSError *saveError;
-                        NSError *markError;
-                        NSString *logContent = [NSString stringWithContentsOfFile:location.path encoding:NSUTF8StringEncoding error:&readingError];
-                        BOOL logSaved = [self.storage appendLogs:logContent toBuild:build error:&saveError];
-                        
-                        if (logContent && logSaved && [self.storage markBuildLog:build.log loaded:YES error:&markError]) {
-                            NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
-                        } else {
-                            NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError);
-                        }
+        NSURL *logURL = [NSURL URLWithString:rawLog[@"expiring_raw_log_url"]];
+        if (rawLog && logURL) {
+            NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+                
+                // Move log file to app directory
+                NSURL *logFileURL = [self moveLogFile:location];
+                if (!logFileURL) {
+                    return;
+                }
+                
+                [self.storage perform:^{
+                    NSError *cleanError;
+                    NSError *metadataError;
+                    NSError *readingError;
+                    NSError *saveError;
+                    NSError *markError;
+                 
+                    // Clean pervious logs
+                    if (![self.storage cleanLogs:build.slug error:&cleanError]) {
+                        NSLog(@"Failed to clean build logs: %@", cleanError);
                         [super finish];
-                    }];
+                        return;
+                    }
+                    
+                    // Save log
+                    BOOL metadataSaved = [self.storage saveLogMetadata:rawLog forBuild:build error:&metadataError];
+                    NSString *logContent = [NSString stringWithContentsOfFile:logFileURL.path encoding:NSUTF8StringEncoding error:&readingError];
+                    BOOL logSaved = [self.storage appendLogs:logContent toBuild:build error:&saveError];
+                    BOOL logMarked = [self.storage markBuildLog:build.log loaded:YES error:&markError];
+                    
+                    if (metadataSaved && logSaved && logMarked) {
+                        NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
+                    } else {
+                        NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError, markError);
+                    }
+                    [super finish];
                 }];
-                [task resume];
-            }
+            }];
+            [task resume];
+        } else {
+            [super finish];
         }
     }];
+}
+
+#pragma mark - Tools -
+
+- (NSURL *)moveLogFile:(NSURL *)tmpURL {
+    NSError *moveError;
+    NSURL *targetURL = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:&moveError];
+    targetURL = [targetURL URLByAppendingPathComponent:tmpURL.lastPathComponent];
+    BOOL moveResult = [[NSFileManager defaultManager] moveItemAtURL:tmpURL toURL:targetURL error:&moveError];
+    if (!moveResult) {
+        NSLog(@"Failed to move log file: %@", moveError);
+        [super finish];
+        return nil;
+    }
+    
+    return targetURL;
 }
 
 #pragma mark - NSURLSessionDownloadDelegate -

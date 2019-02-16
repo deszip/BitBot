@@ -263,13 +263,23 @@
 }
 
 - (BOOL)cleanLogs:(NSString *)buildSlug error:(NSError * __autoreleasing *)error {
-    // @TODO: Mark build as not loaded
-    //...
+    // Mark build as not loaded
+    BRBuild *build = [self buildWithSlug:buildSlug error:error];
+    if (!build) {
+        return NO;
+    }
+    build.log.loaded = NO;
     
+    // Clean logs
     NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
     [linesRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
-    NSBatchDeleteRequest *deleteLinesRequest = [[NSBatchDeleteRequest alloc] initWithFetchRequest:linesRequest];
-    [self.context executeRequest:deleteLinesRequest error:error];
+    NSArray <BRLogLine *> *lines = [self.context executeFetchRequest:linesRequest error:error];
+    if (!lines) {
+        return NO;
+    }
+    [lines enumerateObjectsUsingBlock:^(BRLogLine *line, NSUInteger idx, BOOL *stop) {
+        [self.context deleteObject:line];
+    }];
     
     return [self.context save:error];
 }
