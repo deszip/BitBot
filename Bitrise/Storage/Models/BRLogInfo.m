@@ -10,6 +10,10 @@
 
 #import "NSArray+FRP.h"
 
+static NSString * const kChunkListKey = @"log_chunks";
+static NSString * const kChunkKey = @"chunk";
+static NSString * const kChunkPositionKey = @"position";
+
 @interface BRLogInfo ()
 
 @property (strong, nonatomic) NSDictionary *rawLog;
@@ -27,10 +31,10 @@
 }
 
 - (NSString *)content {
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: @"position" ascending:YES];
-    NSArray *chunks = [self.rawLog[@"log_chunks"] sortedArrayUsingDescriptors: @[sortDescriptor]];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: kChunkPositionKey ascending:YES];
+    NSArray *chunks = [self.rawLog[kChunkListKey] sortedArrayUsingDescriptors: @[sortDescriptor]];
     NSArray *lines = [chunks aps_map:^NSString *(NSDictionary *chunk) {
-        return chunk[@"chunk"];
+        return chunk[kChunkKey];
     }];
     NSString *logContent = [lines componentsJoinedByString:@""];
     

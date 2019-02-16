@@ -99,13 +99,6 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.outlineView reloadData];
-    //[self.outlineView scrollToEndOfDocument:nil];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    if (type == NSFetchedResultsChangeInsert) {
-        //BR_SAFE_CALL(self.insertCallback, [anObject text]);
-    }
 }
 
 @end

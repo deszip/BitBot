@@ -61,6 +61,12 @@
     NSLog(@"BRLogObserver: added load operation: %@", buildSlug);
 }
 
+- (NSProgress *)progressForBuild:(NSString *)buildSlug {
+    return nil;
+}
+
+#pragma mark - Private API -
+
 - (ASLogObservingOperation *)operationForBuild:(NSString *)buildSlug {
     __block ASLogObservingOperation *targetOperation = nil;
     [self.queue.operations enumerateObjectsUsingBlock:^(ASOperation* operation, NSUInteger idx, BOOL *stop) {

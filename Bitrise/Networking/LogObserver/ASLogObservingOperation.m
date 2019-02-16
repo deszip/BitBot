@@ -95,12 +95,6 @@ static const NSTimeInterval kPollTimeout = 1.0;
                 [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
 
                 BRLogInfo *logInfo = [[BRLogInfo alloc] initWithRawLog:rawLog];
-//                NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: @"position" ascending:YES];
-//                NSArray *chunks = [rawLog[@"log_chunks"] sortedArrayUsingDescriptors: @[sortDescriptor]];
-//                NSArray *lines = [chunks aps_map:^NSString *(NSDictionary *chunk) {
-//                    return chunk[@"chunk"];
-//                }];
-//                NSString *logContent = [lines componentsJoinedByString:@""];
                 [self.storage appendLogs:[logInfo content] toBuild:build error:&saveError];
                 
                 NSLog(@"ASLogObservingOperation: got build log, lines: %lu", build.log.lines.count);
@@ -116,9 +110,5 @@ static const NSTimeInterval kPollTimeout = 1.0;
         }];
     }];
 }
-
-#pragma mark - Tools -
-
-
 
 @end

@@ -187,8 +187,8 @@
         [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
             BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:self.context];
             build.app = apps[0];
-            result = [self saveContext:self.context error:error];
         }];
+        result = [self saveContext:self.context error:error];
     } else {
         NSLog(@"Failed to save builds: %@", *error);
         result = NO;
@@ -210,8 +210,9 @@
     return [self saveContext:self.context error:error];
 }
 
+// @TODO: Extract text processing
 - (BOOL)appendLogs:(NSString *)text toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
-    // Add lines
+    // Get last line
     NSFetchRequest *request = [BRLogLine fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]];
@@ -225,12 +226,12 @@
     if (lines.count == 1) {
         lastLine = lines.firstObject;
         positionOffset = lastLine.position + 1;
-        
-        lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length-1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
+        lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length - 1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
     }
     
     NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
     
+    // Append to previous line
     if (lineBroken) {
         NSArray <NSString *> *firstLineParts = [rawLines.firstObject componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         if (firstLineParts.count > 0) {
@@ -244,6 +245,7 @@
         }
     }
     
+    // Build lines
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
         if (rawLine.length > 0) {
             BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
@@ -281,13 +283,14 @@
         [self.context deleteObject:line];
     }];
     
-    return [self.context save:error];
+    return [self saveContext:self.context error:error];
 }
 
 #pragma mark - Save -
 
 - (BOOL)saveContext:(NSManagedObjectContext *)context error:(NSError * __autoreleasing *)error {
     if ([context hasChanges]) {
+        [context processPendingChanges];
         return [context save:error];
     }
     

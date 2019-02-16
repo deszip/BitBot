@@ -65,10 +65,10 @@
         }
         
         // Skip fully loaded
-//        if (build.log.loaded) {
-//            [super finish];
-//            return;
-//        }
+        if (build.log.loaded) {
+            [super finish];
+            return;
+        }
         
         // Load full log for evrybody else
         [self loadLogs:build];
