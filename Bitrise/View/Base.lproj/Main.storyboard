@@ -1203,24 +1203,24 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="9PA-xQ-rRn">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="461" width="480" height="270"/>
+                        <rect key="contentRect" x="425" y="461" width="480" height="271"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
                             <outlet property="delegate" destination="asu-PE-Roq" id="GOO-A1-uXo"/>
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="r4X-Sj-tTu" kind="relationship" relationship="window.shadowedContentViewController" id="Bsd-Vu-p7c"/>
+                        <segue destination="xqt-If-8UY" kind="relationship" relationship="window.shadowedContentViewController" id="SW2-pD-3HD"/>
                     </connections>
                 </windowController>
                 <customObject id="82d-mv-VxY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="1022"/>
+            <point key="canvasLocation" x="96" y="1022.5"/>
         </scene>
-        <!--Logs View Controller-->
+        <!--Logs Text View Controller-->
         <scene sceneID="cqh-Ps-RmD">
             <objects>
-                <viewController id="xqt-If-8UY" customClass="BRLogsViewController" sceneMemberID="viewController">
+                <viewController id="xqt-If-8UY" customClass="BRLogsTextViewController" sceneMemberID="viewController">
                     <view key="view" id="5te-AQ-jce">
                         <rect key="frame" x="0.0" y="0.0" width="549" height="276"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1256,7 +1256,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="logTextView" destination="PCO-NY-c1K" id="5jg-QJ-U0x"/>
+                        <outlet property="logTextView" destination="PCO-NY-c1K" id="SjA-Yl-kx3"/>
                     </connections>
                 </viewController>
                 <customObject id="M4y-gM-Wf4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1277,7 +1277,7 @@
                                     <rect key="frame" x="1" y="0.0" width="408" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Dh6-JV-fwc" viewBased="YES" indentationPerLevel="16" outlineTableColumn="Qow-9W-FPc" id="jc9-TQ-k33">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" usesAutomaticRowHeights="YES" headerView="Dh6-JV-fwc" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="Qow-9W-FPc" id="jc9-TQ-k33">
                                             <rect key="frame" x="0.0" y="0.0" width="408" height="234"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1303,7 +1303,7 @@
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="7K3-C7-oJl">
                                                                     <rect key="frame" x="-2" y="0.0" width="120" height="18"/>
-                                                                    <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="Rv8-jX-NV7">
+                                                                    <textFieldCell key="cell" selectable="YES" continuous="YES" title="Multiline Label" id="Rv8-jX-NV7">
                                                                         <font key="font" size="12" name="Menlo-Regular"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

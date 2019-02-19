@@ -1,23 +1,22 @@
 //
-//  BRLogsViewController.m
+//  BRLogsTextViewController.m
 //  Bitrise
 //
-//  Created by Deszip on 02/02/2019.
+//  Created by Deszip on 18/02/2019.
 //  Copyright © 2019 Bitrise. All rights reserved.
 //
 
-#import "BRLogsViewController.h"
+#import "BRLogsTextViewController.h"
 
-@interface BRLogsViewController ()
+@interface BRLogsTextViewController ()
 
 @property (strong, nonatomic) BRLogsDataSource *logDataSource;
 @property (strong, nonatomic) BRLogObserver *logObserver;
 @property (unsafe_unretained) IBOutlet NSTextView *logTextView;
-@property (weak) IBOutlet NSOutlineView *logOutline;
 
 @end
 
-@implementation BRLogsViewController
+@implementation BRLogsTextViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,11 +31,11 @@
     [self.logObserver loadLogsForBuild:self.buildSlug];
     
     self.logDataSource = [self.dependencyContainer logDataSource];
-    
     [self.logDataSource bindTextView:self.logTextView];
     [self.logDataSource fetch:self.buildSlug];
     
     NSLog(@"Controller: %@, observer: %@", self, self.logObserver);
 }
+
 
 @end

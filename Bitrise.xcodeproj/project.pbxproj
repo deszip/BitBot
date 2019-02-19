@@ -75,6 +75,8 @@
 		0EB3ED7921E890E1003F0364 /* BRAccountRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */; };
 		0EBA9D6C2217F9EF007234EB /* BRLogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA9D6B2217F9EF007234EB /* BRLogInfo.m */; };
 		0EBA9D6D2217F9EF007234EB /* BRLogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA9D6B2217F9EF007234EB /* BRLogInfo.m */; };
+		0EC53F45221B19F900F47B47 /* BRLogsTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC53F44221B19F900F47B47 /* BRLogsTextViewController.m */; };
+		0EC53F46221B19F900F47B47 /* BRLogsTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC53F44221B19F900F47B47 /* BRLogsTextViewController.m */; };
 		0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */; };
 		0ECFF27A21CD1C10005EC4A4 /* BRSyncDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27921CD1C10005EC4A4 /* BRSyncDiff.m */; };
 		0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */; };
@@ -224,6 +226,8 @@
 		0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountRequest.m; sourceTree = "<group>"; };
 		0EBA9D6A2217F9EF007234EB /* BRLogInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogInfo.h; sourceTree = "<group>"; };
 		0EBA9D6B2217F9EF007234EB /* BRLogInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogInfo.m; sourceTree = "<group>"; };
+		0EC53F43221B19F900F47B47 /* BRLogsTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogsTextViewController.h; sourceTree = "<group>"; };
+		0EC53F44221B19F900F47B47 /* BRLogsTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogsTextViewController.m; sourceTree = "<group>"; };
 		0ECFF27521CD186E005EC4A4 /* BRSyncResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncResult.h; sourceTree = "<group>"; };
 		0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncResult.m; sourceTree = "<group>"; };
 		0ECFF27821CD1C10005EC4A4 /* BRSyncDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncDiff.h; sourceTree = "<group>"; };
@@ -388,6 +392,8 @@
 				0E4AD08C2205FEBA00257E8E /* BRLogsViewController.m */,
 				0E4AD08F2206039400257E8E /* BRBuildActionContext.h */,
 				0E4AD0902206039400257E8E /* BRBuildActionContext.m */,
+				0EC53F43221B19F900F47B47 /* BRLogsTextViewController.h */,
+				0EC53F44221B19F900F47B47 /* BRLogsTextViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -882,6 +888,7 @@
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
+				0EC53F45221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,
 				0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
@@ -942,6 +949,7 @@
 				0E4AD0922206039400257E8E /* BRBuildActionContext.m in Sources */,
 				0E4AD07E2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */,
+				0EC53F46221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED4F21E3453F003F0364 /* BRBuild+Mapping.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

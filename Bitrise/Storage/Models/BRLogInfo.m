@@ -9,6 +9,7 @@
 #import "BRLogInfo.h"
 
 #import "NSArray+FRP.h"
+#import "NSDictionary+FRP.h"
 
 static NSString * const kChunkListKey = @"log_chunks";
 static NSString * const kChunkKey = @"chunk";
@@ -31,14 +32,30 @@ static NSString * const kChunkPositionKey = @"position";
 }
 
 - (NSString *)content {
+    return [self contentExcluding:nil];
+}
+
+- (NSString *)contentExcluding:(NSIndexSet *)excludedChunks {
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: kChunkPositionKey ascending:YES];
     NSArray *chunks = [self.rawLog[kChunkListKey] sortedArrayUsingDescriptors: @[sortDescriptor]];
     NSArray *lines = [chunks aps_map:^NSString *(NSDictionary *chunk) {
-        return chunk[kChunkKey];
+        if (![excludedChunks containsIndex:[chunk[kChunkPositionKey] integerValue]]) {
+            return chunk[kChunkKey];
+        }
+        return @"";
     }];
     NSString *logContent = [lines componentsJoinedByString:@""];
     
     return logContent;
+}
+
+- (NSIndexSet *)chunkPositions {
+    __block NSMutableIndexSet *positions = [NSMutableIndexSet indexSet];
+    [[self.rawLog[kChunkListKey] valueForKeyPath:@"position"] enumerateObjectsUsingBlock:^(NSNumber *chunkPosition, NSUInteger idx, BOOL *stop) {
+        [positions addIndex:[chunkPosition integerValue]];
+    }];
+    
+    return positions;
 }
 
 @end

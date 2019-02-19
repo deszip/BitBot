@@ -230,6 +230,13 @@
     }
     
     NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
+    rawLines = [[rawLines aps_map:^NSString *(NSString *line) {
+        if (line.length > 0) {
+            return [line stringByAppendingString:@"\n"];
+        }
+        
+        return line;
+    }] mutableCopy];
     
     // Append to previous line
     if (lineBroken) {

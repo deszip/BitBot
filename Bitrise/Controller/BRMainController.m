@@ -18,6 +18,7 @@
 #import "BRBuildMenuController.h"
 #import "BRBuildActionContext.h"
 #import "BRLogsViewController.h"
+#import "BRLogsTextViewController.h"
 #import "BRSegue.h"
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -99,7 +100,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
     
     if ([segue.identifier isEqualToString:kLogWindowSegue]) {
-        BRLogsViewController *logController = (BRLogsViewController *)[(NSWindowController *)segue.destinationController contentViewController];
+        BRLogsTextViewController *logController = (BRLogsTextViewController *)[(NSWindowController *)segue.destinationController contentViewController];
         [logController setBuildSlug:[(BRBuildActionContext *)sender slug]];
     }
 }

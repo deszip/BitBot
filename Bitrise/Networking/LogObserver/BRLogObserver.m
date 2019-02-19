@@ -34,31 +34,37 @@
 }
 
 - (void)startObservingBuild:(NSString *)buildSlug {
-    NSLog(@"Observer: %@, build %@, started...", self, buildSlug);
-    
-    ASLogObservingOperation *oldOperation = [self operationForBuild:buildSlug];
-    if (oldOperation) {
-        NSLog(@"BRLogObserver: has observing operation: %@, skipping...", buildSlug);
-        return;
+    @synchronized (self) {
+        NSLog(@"Observer: %@, build %@, started...", self, buildSlug);
+        
+        ASLogObservingOperation *oldOperation = [self operationForBuild:buildSlug];
+        if (oldOperation) {
+            NSLog(@"BRLogObserver: has observing operation: %@, skipping...", buildSlug);
+            return;
+        }
+        
+        ASLogObservingOperation *operation = [[ASLogObservingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
+        [self.queue addOperation:operation];
+        NSLog(@"BRLogObserver: added observing operation: %@", buildSlug);
     }
-    
-    ASLogObservingOperation *operation = [[ASLogObservingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
-    [self.queue addOperation:operation];
-    NSLog(@"BRLogObserver: added observing operation: %@", buildSlug);
 }
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
-    ASLogObservingOperation *operation = [self operationForBuild:buildSlug];
-    if (operation) {
-        NSLog(@"BRLogObserver: cancelling observing operation: %@", buildSlug);
-        [operation cancel];
+    @synchronized (self) {
+        ASLogObservingOperation *operation = [self operationForBuild:buildSlug];
+        if (operation) {
+            NSLog(@"BRLogObserver: cancelling observing operation: %@", buildSlug);
+            [operation cancel];
+        }
     }
 }
 
 - (void)loadLogsForBuild:(NSString *)buildSlug {
-    ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
-    [self.queue addOperation:operation];
-    NSLog(@"BRLogObserver: added load operation: %@", buildSlug);
+    @synchronized (self) {
+        ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
+        [self.queue addOperation:operation];
+        NSLog(@"BRLogObserver: added load operation: %@", buildSlug);
+    }
 }
 
 - (NSProgress *)progressForBuild:(NSString *)buildSlug {

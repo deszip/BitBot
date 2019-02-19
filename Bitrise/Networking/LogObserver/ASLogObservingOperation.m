@@ -21,6 +21,7 @@ static const NSTimeInterval kPollTimeout = 1.0;
 @property (strong, nonatomic) BRBitriseAPI *api;
 
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSMutableIndexSet *receivedChunks;
 
 @end
 
@@ -31,6 +32,7 @@ static const NSTimeInterval kPollTimeout = 1.0;
         _storage = storage;
         _api = api;
         _buildSlug = buildSlug;
+        _receivedChunks = [NSMutableIndexSet indexSet];
     }
     
     return self;
@@ -86,18 +88,27 @@ static const NSTimeInterval kPollTimeout = 1.0;
             return;
         }
         
+        NSTimeInterval fetchTime = [build.log.timestamp timeIntervalSince1970];
         BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                               appSlug:build.app.slug
-                                                            buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
+                                                            buildSlug:build.slug since:fetchTime];
+        NSLog(@"ASLogObservingOperation: request timestamp: %f", fetchTime);
         [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
             if (rawLog) {
                 NSError *saveError;
                 [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
 
                 BRLogInfo *logInfo = [[BRLogInfo alloc] initWithRawLog:rawLog];
-                [self.storage appendLogs:[logInfo content] toBuild:build error:&saveError];
                 
-                NSLog(@"ASLogObservingOperation: got build log, lines: %lu", build.log.lines.count);
+                NSLog(@"ASLogObservingOperation: chunks: %@", [logInfo chunkPositions]);
+                
+                NSString *content = [logInfo contentExcluding:self.receivedChunks];
+                if (content.length) {
+                    [self.storage appendLogs:content toBuild:build error:&saveError];
+                }
+                [self.receivedChunks addIndexes:[logInfo chunkPositions]];
+                
+                NSLog(@"ASLogObservingOperation: got timestamp: %@", rawLog[@"timestamp"]);
             }
 
             if (build.log.archived) {

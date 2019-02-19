@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithRawLog:(NSDictionary *)rawLog;
 
 - (NSString *)content;
+- (NSString *)contentExcluding:(NSIndexSet * _Nullable)excludedChunks;
+- (NSIndexSet *)chunkPositions;
 
 @end
 

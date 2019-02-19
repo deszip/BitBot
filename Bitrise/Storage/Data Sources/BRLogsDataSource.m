@@ -18,6 +18,7 @@
 @interface BRLogsDataSource () <NSOutlineViewDataSource, NSOutlineViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) NSOutlineView *outlineView;
+@property (weak, nonatomic) NSTextView *textView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSFetchedResultsController *logFRC;
@@ -57,14 +58,52 @@
         NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
     
-    [self.outlineView reloadData];
+    [self updateContent];
 }
 
-- (void)bind:(NSOutlineView *)outlineView {
+- (void)bindOutlineView:(NSOutlineView *)outlineView {
     _outlineView = outlineView;
     self.outlineView.dataSource = self;
     self.outlineView.delegate = self;
     [self.outlineView reloadData];
+}
+
+- (void)bindTextView:(NSTextView *)textView {
+    _textView = textView;
+}
+
+#pragma mark - Log updates -
+
+- (void)updateContent {
+    [self.outlineView reloadData];
+    
+    BOOL hasSelection = self.textView.selectedRange.length > 0;
+    if (hasSelection) {
+        return;
+    }
+    
+    BOOL needsScroll = (NSMaxY(self.textView.bounds) - NSMaxY(self.textView.visibleRect)) < 100;
+    NSString *insertion = [self contentFromLine:0];
+    [self.textView setString:insertion];
+    if (needsScroll) {
+        [self.textView scrollRangeToVisible: NSMakeRange(self.textView.string.length, 0)];
+    }
+}
+
+#pragma mark - Text processing -
+
+- (NSString *)contentFromLine:(NSUInteger)startLine {
+    NSUInteger lineCount = [[self.logFRC.sections[0] objects] count];
+    NSMutableString *content = [@"" mutableCopy];
+    for (NSUInteger lineIndex = startLine; lineIndex < lineCount; lineIndex++) {
+        BRLogLine *line = [self.logFRC objectAtIndexPath:[NSIndexPath indexPathForItem:lineIndex inSection:0]];
+        if (line) {
+            [content appendString:line.text];
+            //[content appendString:@"\n"];
+        }
+    }
+    
+    return content;
 }
 
 #pragma mark - NSOutlineViewDataSource -
@@ -98,7 +137,7 @@
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.outlineView reloadData];
+    [self updateContent];
 }
 
 @end
