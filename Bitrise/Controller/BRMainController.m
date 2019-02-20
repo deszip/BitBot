@@ -82,8 +82,28 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
     [self.buildController setActionCallback:^(BRBuildMenuAction action, NSString *buildSlug) {
         if (action == BRBuildMenuActionShowLog) {
-            BRBuildActionContext *context = [BRBuildActionContext contextWithSlug:buildSlug];
-            [weakSelf performSegueWithIdentifier:kLogWindowSegue sender:context];
+            
+            // @TODO: Extract to logs window presenter
+            // - find and display log windows
+            // - assign them build slugs
+            // - assign titles
+            
+            __block BRLogsTextViewController *logsController = nil;
+            [[NSApp windows] enumerateObjectsUsingBlock:^(NSWindow *window, NSUInteger idx, BOOL *stop) {
+                if ([window.windowController.contentViewController isKindOfClass:[BRLogsTextViewController class]]) {
+                    if ([[(BRLogsTextViewController *)window.windowController.contentViewController buildSlug] isEqualToString:buildSlug]) {
+                        logsController = (BRLogsTextViewController *)window.windowController.contentViewController;
+                        *stop = YES;
+                    }
+                }
+            }];
+            
+            if (logsController) {
+                [logsController.view.window makeKeyAndOrderFront:nil];
+            } else {
+                BRBuildActionContext *context = [BRBuildActionContext contextWithSlug:buildSlug];
+                [weakSelf performSegueWithIdentifier:kLogWindowSegue sender:context];
+            }
         }
     }];
 }
