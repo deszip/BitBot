@@ -209,6 +209,7 @@
 		0E93B70820F0D110001A6C15 /* BRBuildInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildInfo.m; sourceTree = "<group>"; };
 		0E93B70B20F0F9BB001A6C15 /* BRAccount+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRAccount+Mapping.h"; sourceTree = "<group>"; };
 		0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRAccount+Mapping.m"; sourceTree = "<group>"; };
+		0E9A7E0A221DBD75002FCBE4 /* ASLogOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLogOperation.h; sourceTree = "<group>"; };
 		0E9F413320FEF8BF0083D646 /* BRCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommand.h; sourceTree = "<group>"; };
 		0E9F413720FEFA6A0083D646 /* BRMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMacro.h; sourceTree = "<group>"; };
 		0EB3ED4921E336BD003F0364 /* BRStorageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStorageTests.m; sourceTree = "<group>"; };
@@ -462,6 +463,7 @@
 				0E4AD07C2205D01600257E8E /* ASLogObservingOperation.m */,
 				0ED38CDA220DE9000006FE69 /* ASLogLoadingOperation.h */,
 				0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */,
+				0E9A7E0A221DBD75002FCBE4 /* ASLogOperation.h */,
 			);
 			path = LogObserver;
 			sourceTree = "<group>";
@@ -1027,7 +1029,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -1079,7 +1081,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

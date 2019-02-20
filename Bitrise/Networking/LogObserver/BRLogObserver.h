@@ -10,6 +10,8 @@
 
 #import "BRBitriseAPI.h"
 #import "BRStorage.h"
+#import "ASLogLoadingOperation.h"
+#import "ASLogObservingOperation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,9 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)startObservingBuild:(NSString *)buildSlug;
 - (void)stopObservingBuild:(NSString *)buildSlug;
-- (void)loadLogsForBuild:(NSString *)buildSlug;
-
-- (NSProgress *)progressForBuild:(NSString *)buildSlug;
+- (void)loadLogsForBuild:(NSString *)buildSlug callback:(BRLogLoadingCallback)callback;
 
 @end
 

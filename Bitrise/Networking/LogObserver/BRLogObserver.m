@@ -8,6 +8,8 @@
 
 #import "BRLogObserver.h"
 
+#import "NSArray+FRP.h"
+
 #import "ASQueue.h"
 #import "ASLogLoadingOperation.h"
 #import "ASLogObservingOperation.h"
@@ -37,8 +39,7 @@
     @synchronized (self) {
         NSLog(@"Observer: %@, build %@, started...", self, buildSlug);
         
-        ASLogObservingOperation *oldOperation = [self operationForBuild:buildSlug];
-        if (oldOperation) {
+        if ([[self operationsForBuild:buildSlug] count] > 0) {
             NSLog(@"BRLogObserver: has observing operation: %@, skipping...", buildSlug);
             return;
         }
@@ -51,40 +52,33 @@
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
     @synchronized (self) {
-        ASLogObservingOperation *operation = [self operationForBuild:buildSlug];
-        if (operation) {
+        [[self operationsForBuild:buildSlug] enumerateObjectsUsingBlock:^(ASOperation <ASLogOperation> *operation, NSUInteger idx, BOOL *stop) {
             NSLog(@"BRLogObserver: cancelling observing operation: %@", buildSlug);
             [operation cancel];
-        }
+        }];
     }
 }
 
-- (void)loadLogsForBuild:(NSString *)buildSlug {
+- (void)loadLogsForBuild:(NSString *)buildSlug callback:(BRLogLoadingCallback)callback {
     @synchronized (self) {
         ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
+        [operation setLoadingCallback:callback];
         [self.queue addOperation:operation];
         NSLog(@"BRLogObserver: added load operation: %@", buildSlug);
     }
 }
 
-- (NSProgress *)progressForBuild:(NSString *)buildSlug {
-    return nil;
-}
-
 #pragma mark - Private API -
 
-- (ASLogObservingOperation *)operationForBuild:(NSString *)buildSlug {
-    __block ASLogObservingOperation *targetOperation = nil;
-    [self.queue.operations enumerateObjectsUsingBlock:^(ASOperation* operation, NSUInteger idx, BOOL *stop) {
-        if ([operation isKindOfClass:[ASLogObservingOperation class]]) {
-            if ([[(ASLogObservingOperation *)operation buildSlug] isEqualToString:buildSlug]) {
-                *stop = YES;
-                targetOperation = (ASLogObservingOperation *)operation;
-            }
+- (NSArray <ASOperation <ASLogOperation> *> *)operationsForBuild:(NSString *)buildSlug {
+    __block NSMutableArray <id<ASLogOperation>> *operations = [NSMutableArray array];
+    [self.queue.operations enumerateObjectsUsingBlock:^(id <ASLogOperation> operation, NSUInteger idx, BOOL *stop) {
+        if ([[operation buildSlug] isEqualToString:buildSlug]) {
+            [operations addObject:operation];
         }
     }];
     
-    return targetOperation;
+    return operations;
 }
 
 @end

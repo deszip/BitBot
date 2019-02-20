@@ -8,12 +8,13 @@
 
 #import "ASOperation.h"
 
+#import "ASLogOperation.h"
 #import "BRStorage.h"
 #import "BRBitriseAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ASLogObservingOperation : ASOperation
+@interface ASLogObservingOperation : ASOperation <ASLogOperation>
 
 @property (copy, nonatomic, readonly) NSString *buildSlug;
 

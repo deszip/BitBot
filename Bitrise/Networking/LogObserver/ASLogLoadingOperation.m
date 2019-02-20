@@ -8,6 +8,7 @@
 
 #import "ASLogLoadingOperation.h"
 
+#import "BRMacro.h"
 #import "ASLogObservingOperation.h"
 #import "BRBuildInfo.h"
 #import "BRBuild+CoreDataClass.h"
@@ -45,7 +46,9 @@
 
 - (void)start {
     [super start];
-
+    
+    BR_SAFE_CALL(self.loadingCallback, BRLogLoadingStateStarted, nil);
+    
     [self.storage perform:^{
         NSError *fetchError;
         BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
@@ -60,19 +63,24 @@
         // Ignore not started and running builds, we should have observing op. for them
         if (stateInfo.state == BRBuildStateInProgress ||
             stateInfo.state == BRBuildStateHold) {
-            [super finish];
+            [self finish];
             return;
         }
         
         // Skip fully loaded
         if (build.log.loaded) {
-            [super finish];
+            [self finish];
             return;
         }
         
         // Load full log for evrybody else
         [self loadLogs:build];
     }];
+}
+
+- (void)finish {
+    BR_SAFE_CALL(self.loadingCallback, BRLogLoadingStateFinished, nil);
+    [super finish];
 }
 
 - (void)loadLogs:(BRBuild *)build {
@@ -88,6 +96,7 @@
                 // Move log file to app directory
                 NSURL *logFileURL = [self moveLogFile:location];
                 if (!logFileURL) {
+                    [self finish];
                     return;
                 }
                 
@@ -101,7 +110,7 @@
                     // Clean pervious logs
                     if (![self.storage cleanLogs:build.slug error:&cleanError]) {
                         NSLog(@"Failed to clean build logs: %@", cleanError);
-                        [super finish];
+                        [self finish];
                         return;
                     }
                     
@@ -116,12 +125,13 @@
                     } else {
                         NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError, markError);
                     }
-                    [super finish];
+                    [self finish];
                 }];
             }];
             [task resume];
+            BR_SAFE_CALL(self.loadingCallback, BRLogLoadingStateInProgress, task.progress);
         } else {
-            [super finish];
+            [self finish];
         }
     }];
 }
