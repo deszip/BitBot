@@ -40,6 +40,7 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (void)setBuildInfo:(BRBuildInfo *)buildInfo {
     _buildInfo = buildInfo;
+    self.view.window.title = [NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName];
     
     // Observer
     self.logObserver = [self.dependencyContainer logObserver];

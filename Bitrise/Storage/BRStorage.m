@@ -211,6 +211,7 @@
 }
 
 // @TODO: Extract text processing
+// @TODO: Argument should be a list of chunks, line position should be obtained from chunk position
 - (BOOL)appendLogs:(NSString *)text toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     // Get last line
     NSFetchRequest *request = [BRLogLine fetchRequest];
