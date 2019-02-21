@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
 
 @interface BRBuildMenuController : NSObject
 
-@property (copy, nonatomic) void (^actionCallback)(BRBuildMenuAction action, NSString *buildSlug);
+@property (copy, nonatomic) void (^actionCallback)(BRBuildMenuAction action, BRBuildInfo *buildInfo);
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api
                  syncEngine:(BRSyncEngine *)syncEngine

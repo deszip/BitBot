@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRLogsTextViewController : BRViewController
 
 @property (strong, nonatomic) id <BRDataSourceProvider, BRInteractionProvider> dependencyContainer;
-@property (copy, nonatomic) NSString *buildSlug;
+@property (copy, nonatomic) BRBuildInfo *buildInfo;
 
 @end
 

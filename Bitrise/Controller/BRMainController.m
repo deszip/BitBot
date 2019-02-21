@@ -16,10 +16,11 @@
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
-#import "BRBuildActionContext.h"
 #import "BRLogsViewController.h"
 #import "BRLogsTextViewController.h"
 #import "BRSegue.h"
+#import "BRLogsWindowPresenter.h"
+
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
@@ -37,9 +38,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BREnvironment *environment;
 
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
-
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
 @property (strong, nonatomic) BRBuildMenuController *buildController;
+@property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
@@ -51,6 +52,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
     
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
@@ -80,30 +83,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
                                                           logObserver:[self.dependencyContainer logObserver]
                                                           environment:self.environment];
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
-    [self.buildController setActionCallback:^(BRBuildMenuAction action, NSString *buildSlug) {
+    [self.buildController setActionCallback:^(BRBuildMenuAction action, BRBuildInfo *buildInfo) {
         if (action == BRBuildMenuActionShowLog) {
-            
-            // @TODO: Extract to logs window presenter
-            // - find and display log windows
-            // - assign them build slugs
-            // - assign titles
-            
-            __block BRLogsTextViewController *logsController = nil;
-            [[NSApp windows] enumerateObjectsUsingBlock:^(NSWindow *window, NSUInteger idx, BOOL *stop) {
-                if ([window.windowController.contentViewController isKindOfClass:[BRLogsTextViewController class]]) {
-                    if ([[(BRLogsTextViewController *)window.windowController.contentViewController buildSlug] isEqualToString:buildSlug]) {
-                        logsController = (BRLogsTextViewController *)window.windowController.contentViewController;
-                        *stop = YES;
-                    }
-                }
-            }];
-            
-            if (logsController) {
-                [logsController.view.window makeKeyAndOrderFront:nil];
-            } else {
-                BRBuildActionContext *context = [BRBuildActionContext contextWithSlug:buildSlug];
-                [weakSelf performSegueWithIdentifier:kLogWindowSegue sender:context];
-            }
+            [weakSelf.logsPresenter presentLogs:buildInfo];
         }
     }];
 }
@@ -121,7 +103,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     if ([segue.identifier isEqualToString:kLogWindowSegue]) {
         BRLogsTextViewController *logController = (BRLogsTextViewController *)[(NSWindowController *)segue.destinationController contentViewController];
-        [logController setBuildSlug:[(BRBuildActionContext *)sender slug]];
+        [logController setBuildInfo:(BRBuildInfo *)sender];
     }
 }
 

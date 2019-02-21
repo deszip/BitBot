@@ -107,7 +107,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)showLog {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
     if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BR_SAFE_CALL(self.actionCallback, BRBuildMenuActionShowLog, [(BRBuild *)selectedItem slug]);
+        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:(BRBuild *)selectedItem];
+        BR_SAFE_CALL(self.actionCallback, BRBuildMenuActionShowLog, buildInfo);
     }
 }
 
