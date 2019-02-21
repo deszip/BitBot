@@ -1229,31 +1229,35 @@
                                 <rect key="frame" x="20" y="20" width="509" height="256"/>
                                 <subviews>
                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-Pg-oCd">
-                                        <rect key="frame" x="0.0" y="20" width="509" height="236"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="509" height="256"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
-                                            <rect key="frame" x="0.0" y="0.0" width="494" height="236"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="494" height="256"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
-                                                    <rect key="frame" x="0.0" y="0.0" width="494" height="236"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="494" height="256"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="494" height="236"/>
+                                                    <size key="minSize" width="494" height="256"/>
                                                     <size key="maxSize" width="509" height="10000000"/>
                                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
                                             </subviews>
                                         </clipView>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
-                                            <rect key="frame" x="494" y="0.0" width="15" height="236"/>
+                                            <rect key="frame" x="494" y="0.0" width="15" height="256"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
-                                    <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="ZAf-QW-F2I">
-                                        <rect key="frame" x="205" y="-1" width="100" height="20"/>
+                                    <progressIndicator hidden="YES" wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="ZAf-QW-F2I">
+                                        <rect key="frame" x="0.0" y="237" width="509" height="20"/>
                                     </progressIndicator>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZAf-QW-F2I" secondAttribute="trailing" id="RAk-Bm-fqc"/>
+                                    <constraint firstItem="ZAf-QW-F2I" firstAttribute="leading" secondItem="9br-Ie-Rei" secondAttribute="leading" id="WY0-Mf-ank"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>

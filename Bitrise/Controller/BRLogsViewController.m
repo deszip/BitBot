@@ -29,7 +29,7 @@
     _buildSlug = buildSlug;
     
     self.logObserver = [self.dependencyContainer logObserver];
-    [self.logObserver loadLogsForBuild:self.buildSlug];
+    [self.logObserver loadLogsForBuild:self.buildSlug callback:nil];
     
     self.logDataSource = [self.dependencyContainer logDataSource];
     
