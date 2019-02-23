@@ -43,9 +43,6 @@
             [runningBuildsSlugs enumerateObjectsUsingBlock:^(NSString *buildSlug, BOOL *stop) {
                 [weakSelf.logObserver startObservingBuild:buildSlug];
             }];
-            [result.diff.finished enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
-                [weakSelf.logObserver stopObservingBuild:buildInfo.slug];
-            }];
         };
     }
     

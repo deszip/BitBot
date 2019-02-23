@@ -92,22 +92,22 @@ static const NSTimeInterval kPollTimeout = 1.0;
         BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                               appSlug:build.app.slug
                                                             buildSlug:build.slug since:fetchTime];
-        NSLog(@"ASLogObservingOperation: request timestamp: %f", fetchTime);
+        NSLog(@"ASLogObservingOperation: %@, request timestamp: %f", self, fetchTime);
         [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
             if (rawLog) {
                 NSError *saveError;
                 [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
 
                 BRLogInfo *logInfo = [[BRLogInfo alloc] initWithRawLog:rawLog];
+                NSArray *chunks = [logInfo chunksExcluding:self.receivedChunks];
+                [chunks enumerateObjectsUsingBlock:^(NSDictionary *chunk, NSUInteger idx, BOOL *stop) {
+                    NSError *appendError;
+                    [self.storage appendLogs:chunk[@"chunk"] chunkPosition:[chunk[@"position"] integerValue] toBuild:build error:&appendError];
+                }];
                 
-                NSLog(@"ASLogObservingOperation: chunks: %@", [logInfo chunkPositions]);
-                
-                NSString *content = [logInfo contentExcluding:self.receivedChunks];
-                if (content.length) {
-                    [self.storage appendLogs:content toBuild:build error:&saveError];
-                }
                 [self.receivedChunks addIndexes:[logInfo chunkPositions]];
                 
+                NSLog(@"ASLogObservingOperation: got chunks: %lu, filtered: %lu", [rawLog[@"log_chunks"] count], chunks.count);
                 NSLog(@"ASLogObservingOperation: got timestamp: %@", rawLog[@"timestamp"]);
             }
 

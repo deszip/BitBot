@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)content;
 - (NSString *)contentExcluding:(NSIndexSet * _Nullable)excludedChunks;
+- (NSArray <NSDictionary *> *)chunksExcluding:(NSIndexSet * _Nullable)excludedChunks;
 - (NSIndexSet *)chunkPositions;
 
 @end

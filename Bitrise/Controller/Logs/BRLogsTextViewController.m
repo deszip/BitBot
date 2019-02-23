@@ -20,7 +20,9 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 @property (strong, nonatomic) BRProgressObserver *progressObserver;
 
-@property (unsafe_unretained) IBOutlet NSTextView *logTextView;
+@property (weak) IBOutlet NSTabView *logsTabView;
+@property (weak) IBOutlet NSOutlineView *logOutlineView;
+@property (weak) IBOutlet NSTextView *logTextView;
 @property (weak) IBOutlet NSProgressIndicator *loadingProgressIndicator;
 
 @end
@@ -51,6 +53,7 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
     
     // Data source
     self.logDataSource = [self.dependencyContainer logDataSource];
+    [self.logDataSource bindOutlineView:self.logOutlineView];
     [self.logDataSource bindTextView:self.logTextView];
     [self.logDataSource fetch:self.buildInfo.slug];
 }
@@ -83,6 +86,16 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (void)hideProgress {
     self.loadingProgressIndicator.hidden = YES;
+}
+
+#pragma mark - Actions -
+
+- (IBAction)switchLogPresentation:(NSSegmentedControl *)sender {
+    if (sender.selectedSegment == 0) {
+        [self.logsTabView selectFirstTabViewItem:self];
+    } else {
+        [self.logsTabView selectLastTabViewItem:self];
+    }
 }
 
 @end

@@ -117,7 +117,7 @@
                     // Save log
                     BOOL metadataSaved = [self.storage saveLogMetadata:rawLog forBuild:build error:&metadataError];
                     NSString *logContent = [NSString stringWithContentsOfFile:logFileURL.path encoding:NSUTF8StringEncoding error:&readingError];
-                    BOOL logSaved = [self.storage appendLogs:logContent toBuild:build error:&saveError];
+                    BOOL logSaved = [self.storage appendLogs:logContent chunkPosition:0 toBuild:build error:&saveError];
                     BOOL logMarked = [self.storage markBuildLog:build.log loaded:YES error:&markError];
                     
                     if (metadataSaved && logSaved && logMarked) {

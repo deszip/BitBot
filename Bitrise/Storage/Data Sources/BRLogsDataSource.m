@@ -39,7 +39,8 @@
 
 - (NSFetchedResultsController *)buildFRC:(NSManagedObjectContext *)context buildSlug:(NSString *)buildSlug {
     NSFetchRequest *request = [BRLogLine fetchRequest];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
     [context setAutomaticallyMergesChangesFromParent:YES];
     
@@ -99,7 +100,6 @@
         BRLogLine *line = [self.logFRC objectAtIndexPath:[NSIndexPath indexPathForItem:lineIndex inSection:0]];
         if (line) {
             [content appendString:line.text];
-            //[content appendString:@"\n"];
         }
     }
     
@@ -126,7 +126,8 @@
     if ([item isKindOfClass:[BRLogLine class]]) {
         BRLogLine *line = (BRLogLine *)item;
         BRLogLineView *cell = [outlineView makeViewWithIdentifier:@"BRLogLineView" owner:self];
-        [cell.lineLabel setStringValue:line.text];
+        NSString *logLine = [line.text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        [cell.lineLabel setStringValue:logLine];
         
         return cell;
     }

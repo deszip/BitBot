@@ -211,25 +211,25 @@
 }
 
 // @TODO: Extract text processing
-// @TODO: Argument should be a list of chunks, line position should be obtained from chunk position
-- (BOOL)appendLogs:(NSString *)text toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+- (BOOL)appendLogs:(NSString *)text chunkPosition:(NSUInteger)chunkPosition toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     // Get last line
+    // BRBuild *build, return BRLogLine if was broken or nil
     NSFetchRequest *request = [BRLogLine fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"position" ascending:NO]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:NO],
+                                [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:NO]];
     request.fetchLimit = 1;
     NSError *fetchError;
     NSArray<BRLogLine *> *lines = [self.context executeFetchRequest:request error:&fetchError];
     
     BRLogLine *lastLine = nil;
-    NSUInteger positionOffset = 0;
     BOOL lineBroken = NO;
     if (lines.count == 1) {
         lastLine = lines.firstObject;
-        positionOffset = lastLine.position + 1;
         lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length - 1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
     }
     
+    // Split chunk into lines
     NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
     rawLines = [[rawLines aps_map:^NSString *(NSString *line) {
         if (line.length > 0) {
@@ -239,7 +239,7 @@
         return line;
     }] mutableCopy];
     
-    // Append to previous line
+    // Append first line part before newline to previous line if it was broken
     if (lineBroken) {
         NSArray <NSString *> *firstLineParts = [rawLines.firstObject componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         if (firstLineParts.count > 0) {
@@ -253,11 +253,13 @@
         }
     }
     
-    // Build lines
+    // Build rest of lines from chunk
+    // NSArray <NSString *> *lines, BRBuild *build
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
         if (rawLine.length > 0) {
             BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
-            line.position = idx + positionOffset;
+            line.linePosition = idx;
+            line.chunkPosition = chunkPosition;
             line.text = rawLine;
             [build.log addLinesObject:line];
         }

@@ -49,6 +49,15 @@ static NSString * const kChunkPositionKey = @"position";
     return logContent;
 }
 
+- (NSArray <NSDictionary *> *)chunksExcluding:(NSIndexSet *)excludedChunks {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey: kChunkPositionKey ascending:YES];
+    NSArray *chunks = [self.rawLog[kChunkListKey] sortedArrayUsingDescriptors: @[sortDescriptor]];
+    
+    return [chunks aps_filter:^BOOL(NSDictionary *chunk) {
+        return ![excludedChunks containsIndex:[chunk[kChunkPositionKey] integerValue]];
+    }];
+}
+
 - (NSIndexSet *)chunkPositions {
     __block NSMutableIndexSet *positions = [NSMutableIndexSet indexSet];
     [[self.rawLog[kChunkListKey] valueForKeyPath:@"position"] enumerateObjectsUsingBlock:^(NSNumber *chunkPosition, NSUInteger idx, BOOL *stop) {
