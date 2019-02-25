@@ -232,37 +232,32 @@
     // Split chunk into lines
     NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
     rawLines = [[rawLines aps_map:^NSString *(NSString *line) {
-        if (line.length > 0) {
+        if (line.length > 0 && ![rawLines.lastObject isEqualToString:line]) {
             return [line stringByAppendingString:@"\n"];
         }
         
         return line;
     }] mutableCopy];
     
-    // Append first line part before newline to previous line if it was broken
-    if (lineBroken) {
-        NSArray <NSString *> *firstLineParts = [rawLines.firstObject componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-        if (firstLineParts.count > 0) {
-            lastLine.text = [lastLine.text stringByAppendingString:firstLineParts.firstObject];
-            [rawLines removeObjectAtIndex:0];
-            
-            if (firstLineParts.count > 1) {
-                NSString *firstLineTail = [rawLines.firstObject substringFromIndex:firstLineParts.firstObject.length];
-                [rawLines insertObject:firstLineTail atIndex:0];
-            }
-        }
+    // If input has newline as a last symbol we'll have empty line at the end, drop it
+    if (rawLines.lastObject.length == 0) {
+        [rawLines removeLastObject];
+    }
+    
+    // Append first line to previous line if it was broken
+    if (lineBroken && rawLines.count > 0) {
+        lastLine.text = [lastLine.text stringByAppendingString:rawLines.firstObject];
+        [rawLines removeObjectAtIndex:0];
     }
     
     // Build rest of lines from chunk
     // NSArray <NSString *> *lines, BRBuild *build
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
-        if (rawLine.length > 0) {
-            BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
-            line.linePosition = idx;
-            line.chunkPosition = chunkPosition;
-            line.text = rawLine;
-            [build.log addLinesObject:line];
-        }
+        BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
+        line.linePosition = idx;
+        line.chunkPosition = chunkPosition;
+        line.text = rawLine;
+        [build.log addLinesObject:line];
     }];
     
     return [self saveContext:self.context error:error];

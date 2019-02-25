@@ -12,6 +12,7 @@
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildLog+CoreDataClass.h"
+#import "BRLogLine+CoreDataClass.h"
 #import "BRAccountInfo.h"
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
@@ -42,7 +43,7 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (BRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug;
 - (BRApp *)buildAppWithSlug:(NSString *)slug forAccount:(BRAccount *)account;
 - (BRBuild *)buildWithSlug:(NSString *)slug status:(NSNumber *)status app:(BRApp * _Nullable)app;
-- (BRBuildLog *)logForBuild:(BRBuild *)build;
+- (BRBuildLog *)logForBuild:(BRBuild * _Nullable)build;
 
 #pragma mark - Models -
 

@@ -417,7 +417,7 @@
         expect(error).to.beFalsy();
         expect(log.loaded).to.beFalsy();
         expect(log.build).to.equal(build);
-        [self validateLog:log metadata:logMetadata];
+        [self validateLogMetadata:log metadata:logMetadata];
     }];
 }
 
@@ -432,7 +432,7 @@
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
         expect(build.log).to.beTruthy();
-        [self validateLog:build.log metadata:logMetadata];
+        [self validateLogMetadata:build.log metadata:logMetadata];
     }];
 }
 
@@ -442,10 +442,120 @@
         BRBuildLog *log = [self.mockBuilder logForBuild:build];
         
         NSError *error;
-        BOOL result =  [self.storage appendLogs:@"" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line1\nline2\nline3" chunkPosition:0 toBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
+        expect(log.lines.count).to.equal(3);
+    }];
+}
+
+- (void)testStorageAppendsLinesToExistingLog {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2\n" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line3\nline4\n" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(log.lines.count).to.equal(4);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        expect(lines[0].chunkPosition).to.equal(0);
+        expect(lines[0].linePosition).to.equal(0);
+        expect(lines[1].chunkPosition).to.equal(0);
+        expect(lines[1].linePosition).to.equal(1);
+        expect(lines[2].chunkPosition).to.equal(1);
+        expect(lines[2].linePosition).to.equal(0);
+        expect(lines[3].chunkPosition).to.equal(1);
+        expect(lines[3].linePosition).to.equal(1);
+    }];
+}
+
+- (void)testStorageAppendsBrokenLines {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2 which is " chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"broken\nline3" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(log.lines.count).to.equal(3);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        expect(lines[1].text).equal(@"line2 which is broken\n");
+    }];
+}
+
+- (void)testStorageAppendsEmptyLines {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2\n" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line3\n\n" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(log.lines.count).to.equal(4);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        expect(lines[3].text).equal(@"");
+    }];
+}
+
+- (void)testStorageMarksLogAsLoaded {
+    [self executeOnStorage:^{
+        BRBuildLog *log = [self.mockBuilder logForBuild:nil];
+        
+        NSError *error;
+        [self.storage markBuildLog:log loaded:YES error:&error];
+        expect(log.loaded).to.beTruthy();
+        
+        [self.storage markBuildLog:log loaded:NO error:&error];
+        expect(log.loaded).to.beFalsy();
+    }];
+}
+
+- (void)testStorageCleansLog {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2" chunkPosition:0 toBuild:build error:&error];
+        
+        BOOL result = [self.storage cleanLogs:build.slug error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beNil();
+        expect(log.lines.count).to.equal(0);
+    }];
+}
+
+- (void)testStorageMarksLogAsNotLoadedAfterClean {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        
+        NSError *error;
+        [self.storage cleanLogs:build.slug error:&error];
+        
+        expect(log.loaded).to.beFalsy();
+    }];
+}
+
+- (void)testStorageIgnoresCleanForInvalidBuild {
+    [self executeOnStorage:^{
+        NSError *error;
+        BOOL result = [self.storage cleanLogs:@"" error:&error];
+        expect(result).to.beFalsy();
     }];
 }
 
@@ -462,7 +572,7 @@
     [self waitForExpectations:@[e] timeout:0.1];
 }
 
-- (void)validateLog:(BRBuildLog *)log metadata:(NSDictionary *)logMetadata {
+- (void)validateLogMetadata:(BRBuildLog *)log metadata:(NSDictionary *)logMetadata {
     expect(log.archived).to.equal([logMetadata[@"is_archived"] boolValue]);
     expect(log.chunksCount).to.equal([logMetadata[@"generated_log_chunks_num"] integerValue]);
     if (logMetadata[@"expiring_raw_log_url"] != [NSNull null]) {
@@ -471,6 +581,11 @@
         expect(log.expiringRawLogURL).to.beNil();
     }
     expect(log.timestamp).to.equal([NSDate dateWithTimeIntervalSince1970:[logMetadata[@"timestamp"] doubleValue]]);
+}
+
+- (NSArray <BRLogLine *> *)sortedLines:(BRBuildLog *)log {
+    return [log.lines sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
+                                             [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]]];
 }
 
 @end
