@@ -511,6 +511,24 @@
     }];
 }
 
+- (void)testStorageHandlesLatEmptyLine {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2\n\n" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line3" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(log.lines.count).to.equal(4);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        expect(lines[2].text).equal(@"");
+    }];
+}
+
 - (void)testStorageMarksLogAsLoaded {
     [self executeOnStorage:^{
         BRBuildLog *log = [self.mockBuilder logForBuild:nil];

@@ -224,7 +224,7 @@
     
     BRLogLine *lastLine = nil;
     BOOL lineBroken = NO;
-    if (lines.count == 1) {
+    if (lines.count == 1 && lines.firstObject.text.length > 0) {
         lastLine = lines.firstObject;
         lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length - 1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
     }
