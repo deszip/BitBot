@@ -465,7 +465,7 @@
 - (void)validateLog:(BRBuildLog *)log metadata:(NSDictionary *)logMetadata {
     expect(log.archived).to.equal([logMetadata[@"is_archived"] boolValue]);
     expect(log.chunksCount).to.equal([logMetadata[@"generated_log_chunks_num"] integerValue]);
-    if (logMetadata[@"expiring_raw_log_url"]) {
+    if (logMetadata[@"expiring_raw_log_url"] != [NSNull null]) {
         expect(log.expiringRawLogURL).to.equal(logMetadata[@"expiring_raw_log_url"]);
     } else {
         expect(log.expiringRawLogURL).to.beNil();
