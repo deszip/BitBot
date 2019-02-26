@@ -67,6 +67,8 @@
 		0EAB9DCC2222CFED00A21D23 /* LogResponse_10chunks_finished.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB9DCB2222CFED00A21D23 /* LogResponse_10chunks_finished.json */; };
 		0EAB9DCD2222CFFC00A21D23 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
 		0EAB9DCF2222D1D700A21D23 /* LogResponse_10chunks_running.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB9DCE2222D1D700A21D23 /* LogResponse_10chunks_running.json */; };
+		0EAB9DDB2225AD7C00A21D23 /* BRLogsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */; };
+		0EAB9DDC2225AD7C00A21D23 /* BRLogsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */; };
 		0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED4921E336BD003F0364 /* BRStorageTests.m */; };
 		0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
 		0EB3ED4D21E33A1D003F0364 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
@@ -226,6 +228,8 @@
 		0EAB9DC72222CD2300A21D23 /* BRLogStubBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogStubBuilder.m; sourceTree = "<group>"; };
 		0EAB9DCB2222CFED00A21D23 /* LogResponse_10chunks_finished.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LogResponse_10chunks_finished.json; sourceTree = "<group>"; };
 		0EAB9DCE2222D1D700A21D23 /* LogResponse_10chunks_running.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LogResponse_10chunks_running.json; sourceTree = "<group>"; };
+		0EAB9DD92225AD7C00A21D23 /* BRLogsParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogsParser.h; sourceTree = "<group>"; };
+		0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogsParser.m; sourceTree = "<group>"; };
 		0EB3ED4921E336BD003F0364 /* BRStorageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStorageTests.m; sourceTree = "<group>"; };
 		0EB3ED5321E617FA003F0364 /* BRAPIRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAPIRequest.h; sourceTree = "<group>"; };
 		0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAPIRequest.m; sourceTree = "<group>"; };
@@ -547,6 +551,8 @@
 				0E93B6F620F0837B001A6C15 /* BRStorage.m */,
 				0E42CB0B20EC8AD70033CD03 /* Models */,
 				0E42CB0720EC89AB0033CD03 /* Data Sources */,
+				0EAB9DD92225AD7C00A21D23 /* BRLogsParser.h */,
+				0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -935,6 +941,7 @@
 				0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */,
 				0E3C0B11211760C000F2EA35 /* BROpenBuildCommand.m in Sources */,
 				0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */,
+				0EAB9DDB2225AD7C00A21D23 /* BRLogsParser.m in Sources */,
 				0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */,
 				0E73598120EF8D92007E15A7 /* BRDependencyContainer.m in Sources */,
 				0EAB9D76221F043100A21D23 /* BRLogsWindowPresenter.m in Sources */,
@@ -1007,6 +1014,7 @@
 				0EAB9D7D221F0A1A00A21D23 /* BRProgressObserver.m in Sources */,
 				0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */,
 				0E4AD0822205D65A00257E8E /* BRBuildLog+Mapping.m in Sources */,
+				0EAB9DDC2225AD7C00A21D23 /* BRLogsParser.m in Sources */,
 				0EAB9DC52222C57E00A21D23 /* BRMockBuilder.m in Sources */,
 				0ED38CDD220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */,
 				0EAB9D77221F043100A21D23 /* BRLogsWindowPresenter.m in Sources */,

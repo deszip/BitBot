@@ -405,19 +405,15 @@
 #pragma mark - Logs -
 
 - (void)testStorageUpdatesLogMetadata {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSDictionary *logMetadata = [self.logStubBuilder runningLogMetadata];
         NSError *error;
         BOOL result = [self.storage saveLogMetadata:logMetadata forBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
-        expect(log.loaded).to.beFalsy();
-        expect(log.build).to.equal(build);
-        [self validateLogMetadata:log metadata:logMetadata];
+        expect(build.log.loaded).to.beFalsy();
+        [self validateLogMetadata:build.log metadata:logMetadata];
     }];
 }
 
@@ -437,33 +433,27 @@
 }
 
 - (void)testStorageAppendsFirstLogLine {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         BOOL result = [self.storage appendLogs:@"line1\nline2\nline3" chunkPosition:0 toBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
-        expect(log.lines.count).to.equal(3);
+        expect(build.log.lines.count).to.equal(3);
     }];
 }
 
 - (void)testStorageAppendsLinesToExistingLog {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         [self.storage appendLogs:@"line1\nline2\n" chunkPosition:0 toBuild:build error:&error];
         BOOL result = [self.storage appendLogs:@"line3\nline4\n" chunkPosition:1 toBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
-        expect(log.lines.count).to.equal(4);
+        expect(build.log.lines.count).to.equal(4);
         
-        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
         expect(lines[0].chunkPosition).to.equal(0);
         expect(lines[0].linePosition).to.equal(0);
         expect(lines[1].chunkPosition).to.equal(0);
@@ -476,76 +466,63 @@
 }
 
 - (void)testStorageAppendsBrokenLines {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         [self.storage appendLogs:@"line1\nline2 which is " chunkPosition:0 toBuild:build error:&error];
         BOOL result = [self.storage appendLogs:@"broken\nline3" chunkPosition:1 toBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
-        expect(log.lines.count).to.equal(3);
+        expect(build.log.lines.count).to.equal(3);
         
-        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
         expect(lines[1].text).equal(@"line2 which is broken\n");
     }];
 }
 
 - (void)testStorageAppendsEmptyLines {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         [self.storage appendLogs:@"line1\nline2\n" chunkPosition:0 toBuild:build error:&error];
         BOOL result = [self.storage appendLogs:@"line3\n\n" chunkPosition:1 toBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
-        expect(log.lines.count).to.equal(4);
+        expect(build.log.lines.count).to.equal(4);
         
-        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
         expect(lines[3].text).equal(@"");
     }];
 }
 
 - (void)testStorageHandlesLatEmptyLine {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         [self.storage appendLogs:@"line1\nline2\n\n" chunkPosition:0 toBuild:build error:&error];
         BOOL result = [self.storage appendLogs:@"line3" chunkPosition:1 toBuild:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beFalsy();
-        expect(log.lines.count).to.equal(4);
+        expect(build.log.lines.count).to.equal(4);
         
-        NSArray <BRLogLine *> *lines = [self sortedLines:log];
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
         expect(lines[2].text).equal(@"");
     }];
 }
 
 - (void)testStorageMarksLogAsLoaded {
-    [self executeOnStorage:^{
-        BRBuildLog *log = [self.mockBuilder logForBuild:nil];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
-        [self.storage markBuildLog:log loaded:YES error:&error];
-        expect(log.loaded).to.beTruthy();
+        [self.storage markBuildLog:build.log loaded:YES error:&error];
+        expect(build.log.loaded).to.beTruthy();
         
-        [self.storage markBuildLog:log loaded:NO error:&error];
-        expect(log.loaded).to.beFalsy();
+        [self.storage markBuildLog:build.log loaded:NO error:&error];
+        expect(build.log.loaded).to.beFalsy();
     }];
 }
 
 - (void)testStorageCleansLog {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         [self.storage appendLogs:@"line1\nline2" chunkPosition:0 toBuild:build error:&error];
         
@@ -553,19 +530,16 @@
         
         expect(result).to.beTruthy();
         expect(error).to.beNil();
-        expect(log.lines.count).to.equal(0);
+        expect(build.log.lines.count).to.equal(0);
     }];
 }
 
 - (void)testStorageMarksLogAsNotLoadedAfterClean {
-    [self executeOnStorage:^{
-        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
-        BRBuildLog *log = [self.mockBuilder logForBuild:build];
-        
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
         [self.storage cleanLogs:build.slug error:&error];
         
-        expect(log.loaded).to.beFalsy();
+        expect(build.log.loaded).to.beFalsy();
     }];
 }
 
@@ -578,6 +552,19 @@
 }
 
 #pragma mark - Tools -
+
+- (void)executeOnStorageWithPrebuiltLog:(void (^)(BRBuild *))action {
+    XCTestExpectation *e = [self expectationWithDescription:@""];
+    
+    [self.storage perform:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        __unused BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        action(build);
+        [e fulfill];
+    }];
+    
+    [self waitForExpectations:@[e] timeout:0.1];
+}
 
 - (void)executeOnStorage:(void (^)(void))action {
     XCTestExpectation *e = [self expectationWithDescription:@""];

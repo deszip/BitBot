@@ -19,9 +19,13 @@
 #import "BRBuildLog+Mapping.h"
 #import "BRLogLine+CoreDataClass.h"
 
+#import "BRLogsParser.h"
+
+
 @interface BRStorage ()
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) BRLogsParser *logParser;
 
 @end
 
@@ -31,6 +35,8 @@
     if (self = [super init]) {
         _context = context;
         [_context setAutomaticallyMergesChangesFromParent:YES];
+        
+        _logParser = [BRLogsParser new];
     }
     
     return self;
@@ -210,10 +216,8 @@
     return [self saveContext:self.context error:error];
 }
 
-// @TODO: Extract text processing
 - (BOOL)appendLogs:(NSString *)text chunkPosition:(NSUInteger)chunkPosition toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     // Get last line
-    // BRBuild *build, return BRLogLine if was broken or nil
     NSFetchRequest *request = [BRLogLine fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:NO],
@@ -222,27 +226,11 @@
     NSError *fetchError;
     NSArray<BRLogLine *> *lines = [self.context executeFetchRequest:request error:&fetchError];
     
-    BRLogLine *lastLine = nil;
-    BOOL lineBroken = NO;
-    if (lines.count == 1 && lines.firstObject.text.length > 0) {
-        lastLine = lines.firstObject;
-        lineBroken = [[lastLine.text substringFromIndex:lastLine.text.length - 1] rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound;
-    }
+    BRLogLine *lastLine = lines.firstObject;
+    BOOL lineBroken = [self.logParser lineBroken:lastLine.text];
     
     // Split chunk into lines
-    NSMutableArray <NSString *> *rawLines = [[text componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] mutableCopy];
-    rawLines = [[rawLines aps_map:^NSString *(NSString *line) {
-        if (line.length > 0 && ![rawLines.lastObject isEqualToString:line]) {
-            return [line stringByAppendingString:@"\n"];
-        }
-        
-        return line;
-    }] mutableCopy];
-    
-    // If input has newline as a last symbol we'll have empty line at the end, drop it
-    if (rawLines.lastObject.length == 0) {
-        [rawLines removeLastObject];
-    }
+    NSMutableArray <NSString *> *rawLines = [[self.logParser split:text] mutableCopy];
     
     // Append first line to previous line if it was broken
     if (lineBroken && rawLines.count > 0) {
@@ -251,7 +239,6 @@
     }
     
     // Build rest of lines from chunk
-    // NSArray <NSString *> *lines, BRBuild *build
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
         BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
         line.linePosition = idx;
