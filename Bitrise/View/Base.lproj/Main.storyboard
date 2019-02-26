@@ -1200,10 +1200,10 @@
         <scene sceneID="FJH-sd-lo4">
             <objects>
                 <windowController id="asu-PE-Roq" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" titlebarAppearsTransparent="YES" id="9PA-xQ-rRn">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="9PA-xQ-rRn">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="461" width="480" height="271"/>
+                        <rect key="contentRect" x="425" y="461" width="561" height="271"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <toolbar key="toolbar" implicitIdentifier="2FDECCA6-87AD-4B1B-AC1A-28CFD72AD2B6" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="FK0-3D-QwS">
                             <allowedToolbarItems>
@@ -1247,9 +1247,40 @@
                                         </popUpButtonCell>
                                     </popUpButton>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E38EBD5A-252C-481B-A70B-4A7EE616368E" label="Custom View" paletteLabel="Custom View" tag="-1" id="ftk-vS-gMF">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="177" height="19"/>
+                                    <size key="maxSize" width="300" height="24"/>
+                                    <box key="view" misplaced="YES" boxType="custom" cornerRadius="4" title="Box" id="RwJ-Pi-dtN">
+                                        <rect key="frame" x="0.0" y="14" width="177" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" id="izk-bj-yoG">
+                                            <rect key="frame" x="1" y="1" width="175" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bLy-ex-VQV">
+                                                    <rect key="frame" x="3" y="2" width="203" height="14"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="BitBot: feature/logs, development" id="xeK-zb-Bh5">
+                                                        <font key="font" size="10" name="Menlo-Regular"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bLy-ex-VQV" firstAttribute="centerY" secondItem="izk-bj-yoG" secondAttribute="centerY" id="E7j-8q-cjp"/>
+                                                <constraint firstAttribute="trailing" secondItem="bLy-ex-VQV" secondAttribute="trailing" constant="5" id="Phg-Hs-DJe"/>
+                                                <constraint firstItem="bLy-ex-VQV" firstAttribute="leading" secondItem="izk-bj-yoG" secondAttribute="leading" constant="5" id="R0c-tP-kES"/>
+                                            </constraints>
+                                        </view>
+                                        <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </box>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Axh-lv-Dow"/>
+                                <toolbarItem reference="m24-Qy-PdI"/>
+                                <toolbarItem reference="ftk-vS-gMF"/>
                                 <toolbarItem reference="m24-Qy-PdI"/>
                                 <toolbarItem reference="ili-Gc-DPH"/>
                             </defaultToolbarItems>
@@ -1264,7 +1295,7 @@
                 </windowController>
                 <customObject id="82d-mv-VxY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="1023"/>
+            <point key="canvasLocation" x="97" y="1181"/>
         </scene>
         <!--Logs Text View Controller-->
         <scene sceneID="cqh-Ps-RmD">
@@ -1431,7 +1462,7 @@
                 </viewController>
                 <customObject id="M4y-gM-Wf4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="1517"/>
+            <point key="canvasLocation" x="97" y="1649"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="uh9-Ob-V4L">
