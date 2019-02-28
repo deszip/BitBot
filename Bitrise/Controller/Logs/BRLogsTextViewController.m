@@ -8,6 +8,7 @@
 
 #import "BRLogsTextViewController.h"
 
+#import "BRLogsWindowController.h"
 #import "BRProgressObserver.h"
 
 static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
@@ -23,7 +24,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 @property (weak) IBOutlet NSTabView *logsTabView;
 @property (weak) IBOutlet NSOutlineView *logOutlineView;
 @property (weak) IBOutlet NSTextView *logTextView;
-@property (weak) IBOutlet NSProgressIndicator *loadingProgressIndicator;
 
 @end
 
@@ -42,7 +42,8 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (void)setBuildInfo:(BRBuildInfo *)buildInfo {
     _buildInfo = buildInfo;
-    self.view.window.title = [NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName];
+    //self.view.window.title = [NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName];
+    [[[self statusView] statusField] setStringValue:[NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName]];
     
     // Observer
     self.logObserver = [self.dependencyContainer logObserver];
@@ -59,19 +60,15 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 }
 
 - (void)handleState:(BRLogLoadingState)state withProgress:(NSProgress *)progress {
-    switch (state) {
-        case BRLogLoadingStateStarted: [self showProgress]; break;
-        case BRLogLoadingStateFinished: [self hideProgress]; break;
-            
-        case BRLogLoadingStateInProgress:
-            if (progress) {
-                self.progressObserver = [BRProgressObserver new];
-                [self.progressObserver bindProgress:progress toIndicator:self.loadingProgressIndicator];
-            }
-            break;
-            
-        case BRLogLoadingStateUndefined: break;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        switch (state) {
+            case BRLogLoadingStateStarted: [self showProgress]; break;
+            case BRLogLoadingStateFinished: [self hideProgress]; break;
+            case BRLogLoadingStateInProgress: [[self statusView] addProgress:progress]; break;
+                
+            case BRLogLoadingStateUndefined: break;
+        }
+    });
 }
 
 #pragma mark - Appearance -
@@ -81,11 +78,15 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 }
 
 - (void)showProgress {
-    self.loadingProgressIndicator.hidden = NO;
+    [[self statusView].progressIndicator setHidden:NO];
 }
 
 - (void)hideProgress {
-    self.loadingProgressIndicator.hidden = YES;
+    [[self statusView].progressIndicator setHidden:YES];
+}
+
+- (BRLogStatusView *)statusView {
+    return [(BRLogsWindowController *)self.view.window.windowController statusView];
 }
 
 #pragma mark - Actions -

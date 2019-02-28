@@ -16,7 +16,6 @@
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
-#import "BRLogsViewController.h"
 #import "BRLogsTextViewController.h"
 #import "BRSegue.h"
 #import "BRLogsWindowPresenter.h"

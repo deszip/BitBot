@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
+#import "BRLogStatusView.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRProgressObserver : NSObject
 
 - (void)bindProgress:(NSProgress *)progress toIndicator:(NSProgressIndicator *)indicator;
+- (void)bindProgress:(NSProgress *)progress toStatusView:(BRLogStatusView *)statusView;
 - (void)stop;
 
 @end

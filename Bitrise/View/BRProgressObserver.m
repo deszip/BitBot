@@ -29,6 +29,10 @@ static NSString * const kProgressFractionKey = @"fractionCompleted";
     [self.progress addObserver:self forKeyPath:kProgressFractionKey options:0 context:BRProgressObserverContext];
 }
 
+- (void)bindProgress:(NSProgress *)progress toStatusView:(BRLogStatusView *)statusView {
+
+}
+
 - (void)stop {
     [self.progress removeObserver:self forKeyPath:kProgressFractionKey context:BRProgressObserverContext];
 }
@@ -40,6 +44,7 @@ static NSString * const kProgressFractionKey = @"fractionCompleted";
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([keyPath isEqualToString:kProgressFractionKey]) {
                 self.indicator.doubleValue = [(NSProgress *)object fractionCompleted];
+                NSLog(@"%f", self.indicator.doubleValue);
             }
         });
     } else {
