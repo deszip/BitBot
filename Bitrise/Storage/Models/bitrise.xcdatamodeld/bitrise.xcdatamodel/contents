@@ -68,12 +68,18 @@
         <attribute name="linePosition" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="lines" inverseEntity="BRBuildLog" syncable="YES"/>
+        <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRLogStep" inverseName="lines" inverseEntity="BRLogStep" syncable="YES"/>
+    </entity>
+    <entity name="BRLogStep" representedClassName="BRLogStep" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BRLogLine" inverseName="step" inverseEntity="BRLogLine" syncable="YES"/>
     </entity>
     <elements>
         <element name="BRAccount" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="BRApp" positionX="-54" positionY="-9" width="128" height="300"/>
         <element name="BRBuild" positionX="-36" positionY="9" width="128" height="405"/>
         <element name="BRBuildLog" positionX="-54" positionY="135" width="128" height="150"/>
-        <element name="BRLogLine" positionX="-54" positionY="135" width="128" height="105"/>
+        <element name="BRLogLine" positionX="-54" positionY="135" width="128" height="120"/>
+        <element name="BRLogStep" positionX="-54" positionY="135" width="128" height="75"/>
     </elements>
 </model>

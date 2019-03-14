@@ -37,6 +37,10 @@ static NSString * const kProgressFractionKey = @"fractionCompleted";
     [self.progress removeObserver:self forKeyPath:kProgressFractionKey context:BRProgressObserverContext];
 }
 
+- (void)dealloc {
+    [self stop];
+}
+
 #pragma mark - KVO -
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

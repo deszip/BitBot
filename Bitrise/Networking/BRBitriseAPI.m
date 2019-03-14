@@ -89,7 +89,8 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
 
 - (void)loadLogs:(BRLogsRequest *)request completion:(APIBuildLogCallback)completion {
     [self runRequest:request.urlRequest completion:^(NSDictionary *response, NSError *error) {
-        BR_SAFE_CALL(completion, response, error);
+        BRLogInfo *logInfo = [[BRLogInfo alloc] initWithRawLog:response];
+        BR_SAFE_CALL(completion, logInfo, error);
     }];
 }
 

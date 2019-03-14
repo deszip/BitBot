@@ -43,7 +43,6 @@
     return self;
 }
 
-
 - (void)start {
     [super start];
     
@@ -88,51 +87,52 @@
     BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                           appSlug:build.app.slug
                                                         buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
-    [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
-        NSURL *logURL = [NSURL URLWithString:rawLog[@"expiring_raw_log_url"]];
-        if (rawLog && logURL) {
-            NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-                
-                // Move log file to app directory
-                NSURL *logFileURL = [self moveLogFile:location];
-                if (!logFileURL) {
+    [self.api loadLogs:request completion:^(BRLogInfo *logInfo, NSError *error) {
+        if (!logInfo.logURL) {
+            [self finish];
+            return;
+        }
+        
+        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:logInfo.logURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+
+            // Move log file to app directory
+            NSURL *logFileURL = [self moveLogFile:location];
+            if (!logFileURL) {
+                [self finish];
+                return;
+            }
+            
+            [self.storage perform:^{
+                NSError *cleanError;
+                NSError *metadataError;
+                NSError *readingError;
+                NSError *saveError;
+                NSError *markError;
+             
+                // Clean pervious logs
+                if (![self.storage cleanLogs:build.slug error:&cleanError]) {
+                    NSLog(@"Failed to clean build logs: %@", cleanError);
                     [self finish];
                     return;
                 }
                 
-                [self.storage perform:^{
-                    NSError *cleanError;
-                    NSError *metadataError;
-                    NSError *readingError;
-                    NSError *saveError;
-                    NSError *markError;
-                 
-                    // Clean pervious logs
-                    if (![self.storage cleanLogs:build.slug error:&cleanError]) {
-                        NSLog(@"Failed to clean build logs: %@", cleanError);
-                        [self finish];
-                        return;
-                    }
-                    
-                    // Save log
-                    BOOL metadataSaved = [self.storage saveLogMetadata:rawLog forBuild:build error:&metadataError];
-                    NSString *logContent = [NSString stringWithContentsOfFile:logFileURL.path encoding:NSUTF8StringEncoding error:&readingError];
-                    BOOL logSaved = [self.storage appendLogs:logContent chunkPosition:0 toBuild:build error:&saveError];
-                    BOOL logMarked = [self.storage markBuildLog:build.log loaded:YES error:&markError];
-                    
-                    if (metadataSaved && logSaved && logMarked) {
-                        NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
-                    } else {
-                        NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError, markError);
-                    }
-                    [self finish];
-                }];
+                // Save log
+                BOOL metadataSaved = [self.storage saveLogMetadata:logInfo.rawLog forBuild:build error:&metadataError];
+                NSString *logContent = [NSString stringWithContentsOfFile:logFileURL.path encoding:NSUTF8StringEncoding error:&readingError];
+                BOOL logSaved = [self.storage appendLogs:logContent chunkPosition:0 toBuild:build error:&saveError];
+                BOOL logMarked = [self.storage markBuildLog:build.log loaded:YES error:&markError];
+                
+                if (metadataSaved && logSaved && logMarked) {
+                    NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
+                } else {
+                    NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError, markError);
+                }
+                
+                [self finish];
             }];
-            [task resume];
-            BR_SAFE_CALL(self.loadingCallback, BRLogLoadingStateInProgress, task.progress);
-        } else {
-            [self finish];
-        }
+        }];
+        [task resume];
+        BR_SAFE_CALL(self.loadingCallback, BRLogLoadingStateInProgress, task.progress);
     }];
 }
 

@@ -11,21 +11,40 @@
 #import "NSArray+FRP.h"
 #import "NSDictionary+FRP.h"
 
+static NSString * const kLogURLKey = @"expiring_raw_log_url";
+static NSString * const kChunksCountKey = @"generated_log_chunks_num";
+static NSString * const kArchivedKey = @"is_archived";
+static NSString * const kTimestampKey = @"timestamp";
+
 static NSString * const kChunkListKey = @"log_chunks";
 static NSString * const kChunkKey = @"chunk";
 static NSString * const kChunkPositionKey = @"position";
-
-@interface BRLogInfo ()
-
-@property (strong, nonatomic) NSDictionary *rawLog;
-
-@end
 
 @implementation BRLogInfo
 
 - (instancetype)initWithRawLog:(NSDictionary *)rawLog {
     if (self = [super init]) {
         _rawLog = rawLog;
+        
+        NSString *logURLPath = rawLog[kLogURLKey];
+        if (logURLPath || ![logURLPath isEqual:[NSNull null]]) {
+            _logURL = [NSURL URLWithString:logURLPath];
+        }
+        
+        NSNumber *chunksCount = rawLog[kChunksCountKey];
+        if (![chunksCount isEqual:[NSNull null]]) {
+            _chunksCount = [chunksCount integerValue];
+        }
+        
+        NSNumber *archived = rawLog[kArchivedKey];
+        if (![archived isEqual:[NSNull null]]) {
+            _archived = [archived boolValue];
+        }
+        
+        NSNumber *timestamp = rawLog[kTimestampKey];
+        if (![timestamp isEqual:[NSNull null]]) {
+            _timestamp = [timestamp doubleValue];
+        }
     }
     
     return self;

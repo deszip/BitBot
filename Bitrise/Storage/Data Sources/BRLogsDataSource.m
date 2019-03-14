@@ -12,6 +12,7 @@
 
 #import "BRMacro.h"
 #import "BRLogLine+CoreDataClass.h"
+#import "BRLogStep+CoreDataClass.h"
 
 #import "BRLogLineView.h"
 

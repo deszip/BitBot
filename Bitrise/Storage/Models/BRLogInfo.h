@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRLogInfo : NSObject
 
+@property (strong, nonatomic) NSDictionary *rawLog;
+@property (strong, nonatomic, readonly) NSURL *logURL;
+@property (assign, nonatomic, readonly) NSUInteger chunksCount;
+@property (assign, nonatomic, readonly) BOOL archived;
+@property (assign, nonatomic, readonly) NSTimeInterval timestamp;
+
 - (instancetype)initWithRawLog:(NSDictionary *)rawLog;
 
 - (NSString *)content;

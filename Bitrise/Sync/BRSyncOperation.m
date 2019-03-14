@@ -8,6 +8,7 @@
 
 #import "BRSyncOperation.h"
 
+//#import "ASTracer.h"
 #import "BRBuildStateInfo.h"
 #import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
@@ -42,6 +43,10 @@
     self.group = dispatch_group_create();
     
     [self.storage perform:^{
+        
+        //NSString *scopeName = [NSString stringWithFormat:@"%@", self.queue];
+        //[[ASTracer tracer] startSpan:@"Accounts fetch" inScope:scopeName];
+        
         NSError *accFetchError;
         NSArray <BRAccount *> *accounts = [self.storage accounts:&accFetchError];
         if (!accounts) {
@@ -56,14 +61,25 @@
             return;
         }
         
+        //[[ASTracer tracer] stopSpan:@"Accounts fetch" inScope:scopeName sucess:YES];
+        
         [accounts enumerateObjectsUsingBlock:^(BRAccount *account, NSUInteger idx, BOOL *stop) {
             
             dispatch_group_enter(self.group);
             
+            //[[ASTracer tracer] startSpan:[NSString stringWithFormat:@"acc fetch: %@", account.slug] inScope:scopeName];
+            
             BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
             [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
+                
+                //[[ASTracer tracer] stopSpan:[NSString stringWithFormat:@"acc fetch: %@", account.slug] inScope:scopeName sucess:YES];
+                
+                //NSString *spanName = [NSString stringWithFormat:@"acc update: %@", account.slug];
+                //[[ASTracer tracer] startSpan:spanName inScope:scopeName];
+                
                 if (!appsInfo) {
                     NSLog(@"Failed to get apps from API: %@", error);
+                    //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:NO];
                     [super finish];
                     return;
                 }
@@ -71,6 +87,7 @@
                 NSError *updateAppsError;
                 if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
                     NSLog(@"Failed to update apps: %@", updateAppsError);
+                    //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:NO];
                     [super finish];
                     return;
                 }
@@ -79,6 +96,7 @@
                 NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&appsFetchError];
                 if (!apps) {
                     NSLog(@"Failed to fetch updated apps: %@", appsFetchError);
+                    //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:NO];
                     [super finish];
                     return;
                 }
@@ -90,7 +108,9 @@
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
                     [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs];
                 }];
-              
+                
+                //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:YES];
+                
                 dispatch_group_leave(self.group);
             }];
         }];

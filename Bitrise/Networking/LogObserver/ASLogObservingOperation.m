@@ -93,12 +93,10 @@ static const NSTimeInterval kPollTimeout = 1.0;
                                                               appSlug:build.app.slug
                                                             buildSlug:build.slug since:fetchTime];
         NSLog(@"ASLogObservingOperation: %@, request timestamp: %f", self, fetchTime);
-        [self.api loadLogs:request completion:^(NSDictionary *rawLog, NSError *error) {
-            if (rawLog) {
+        [self.api loadLogs:request completion:^(BRLogInfo *logInfo, NSError *error) {
+            if (logInfo.rawLog) {
                 NSError *saveError;
-                [self.storage saveLogMetadata:rawLog forBuild:build error:&saveError];
-
-                BRLogInfo *logInfo = [[BRLogInfo alloc] initWithRawLog:rawLog];
+                [self.storage saveLogMetadata:logInfo.rawLog forBuild:build error:&saveError];
                 NSArray *chunks = [logInfo chunksExcluding:self.receivedChunks];
                 [chunks enumerateObjectsUsingBlock:^(NSDictionary *chunk, NSUInteger idx, BOOL *stop) {
                     NSError *appendError;
@@ -107,8 +105,8 @@ static const NSTimeInterval kPollTimeout = 1.0;
                 
                 [self.receivedChunks addIndexes:[logInfo chunkPositions]];
                 
-                NSLog(@"ASLogObservingOperation: got chunks: %lu, filtered: %lu", [rawLog[@"log_chunks"] count], chunks.count);
-                NSLog(@"ASLogObservingOperation: got timestamp: %@", rawLog[@"timestamp"]);
+                NSLog(@"ASLogObservingOperation: got chunks: %lu, filtered: %lu", [logInfo.rawLog[@"log_chunks"] count], chunks.count);
+                NSLog(@"ASLogObservingOperation: got timestamp: %@", logInfo.rawLog[@"timestamp"]);
             }
 
             if (build.log.archived) {

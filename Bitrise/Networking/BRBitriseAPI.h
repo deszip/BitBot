@@ -11,6 +11,7 @@
 #import "BRAccountInfo.h"
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
+#import "BRLogInfo.h"
 
 #import "BRAccountRequest.h"
 #import "BRAppsRequest.h"
@@ -26,7 +27,7 @@ extern NSString * const kBRBitriseAPIDomain;
 typedef void (^APIAccountInfoCallback)(BRAccountInfo * _Nullable, NSError * _Nullable);
 typedef void (^APIAppsListCallback)(NSArray <BRAppInfo *> * _Nullable, NSError * _Nullable);
 typedef void (^APIBuildsListCallback)(NSArray <BRBuildInfo *> * _Nullable, NSError * _Nullable);
-typedef void (^APIBuildLogCallback)(NSDictionary * _Nullable, NSError * _Nullable);
+typedef void (^APIBuildLogCallback)(BRLogInfo * _Nullable, NSError * _Nullable);
 typedef void (^APIActionCallback)(BOOL status, NSError * _Nullable error);
 
 @interface BRBitriseAPI : NSObject
