@@ -39,4 +39,17 @@
     return [rawLines copy];
 }
 
+- (NSString *)stepNameForLine:(NSString *)line {
+    NSError *error;
+    NSRegularExpression *expression = [NSRegularExpression regularExpressionWithPattern:@"^([|])\\s+([(])([0-9]+)([)])\\s+(.*)\\s+([|])$" options:0 error:&error];
+    NSTextCheckingResult *result = [expression firstMatchInString:line options:0 range:NSMakeRange(0, line.length)];
+    
+    if (result && result.numberOfRanges == 7) {
+        NSString *stepName = [[line substringWithRange:[result rangeAtIndex:5]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        return stepName;
+    }
+    
+    return nil;
+}
+
 @end

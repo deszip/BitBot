@@ -8,13 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface BRLogsParser : NSObject
 
-- (BOOL)lineBroken:(NSString * _Nullable)line;
-- (NSArray <NSString *> *)split:(NSString * _Nullable)logChunk;
+- (BOOL)lineBroken:(NSString *)line;
+- (NSArray <NSString *> *)split:(NSString *)logChunk;
+- (NSString *)stepNameForLine:(NSString *)line;
 
 @end
-
-NS_ASSUME_NONNULL_END

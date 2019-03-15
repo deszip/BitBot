@@ -27,7 +27,7 @@ static NSString * const kChunkPositionKey = @"position";
         _rawLog = rawLog;
         
         NSString *logURLPath = rawLog[kLogURLKey];
-        if (logURLPath || ![logURLPath isEqual:[NSNull null]]) {
+        if (logURLPath && ![logURLPath isEqual:[NSNull null]]) {
             _logURL = [NSURL URLWithString:logURLPath];
         }
         

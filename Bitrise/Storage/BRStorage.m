@@ -18,7 +18,7 @@
 #import "BRBuild+Mapping.h"
 #import "BRBuildLog+Mapping.h"
 #import "BRLogLine+CoreDataClass.h"
-
+#import "BRLogStep+CoreDataClass.h"
 #import "BRLogsParser.h"
 
 
@@ -218,16 +218,24 @@
 
 - (BOOL)appendLogs:(NSString *)text chunkPosition:(NSUInteger)chunkPosition toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     // Get last line
-    NSFetchRequest *request = [BRLogLine fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:NO],
-                                [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:NO]];
-    request.fetchLimit = 1;
+    NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
+    linesRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
+    linesRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:NO],
+                                     [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:NO]];
+    linesRequest.fetchLimit = 1;
     NSError *fetchError;
-    NSArray<BRLogLine *> *lines = [self.context executeFetchRequest:request error:&fetchError];
-    
+    NSArray<BRLogLine *> *lines = [self.context executeFetchRequest:linesRequest error:&fetchError];
     BRLogLine *lastLine = lines.firstObject;
     BOOL lineBroken = [self.logParser lineBroken:lastLine.text];
+
+    // Get last step
+    NSFetchRequest *stepsRequest = [BRLogStep fetchRequest];
+    stepsRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug];
+    stepsRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:NO]];
+    stepsRequest.fetchLimit = 1;
+    NSArray<BRLogStep *> *steps = [self.context executeFetchRequest:stepsRequest error:&fetchError];
+    BRLogStep *lastStep = steps.firstObject;
+    __block NSUInteger lastStepIndex = lastStep ? lastStep.index + 1 : 0;
     
     // Split chunk into lines
     NSMutableArray <NSString *> *rawLines = [[self.logParser split:text] mutableCopy];
@@ -239,15 +247,37 @@
     }
     
     // Build rest of lines from chunk
+    __block BRLogStep *currentStep = nil;
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
         BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
         line.linePosition = idx;
         line.chunkPosition = chunkPosition;
         line.text = rawLine;
         [build.log addLinesObject:line];
+        
+        // Build a step
+        NSString *stepName = [self.logParser stepNameForLine:line.text];
+        if (stepName) {
+            currentStep = [self stepWithName:stepName index:++lastStepIndex];
+            [line.log addStepsObject:currentStep];
+        } else if (!currentStep) {
+            currentStep = [self stepWithName:@"Init" index:++lastStepIndex];
+            [line.log addStepsObject:currentStep];
+        }
+        
+        line.step = currentStep;
     }];
     
     return [self saveContext:self.context error:error];
+}
+
+- (BRLogStep *)stepWithName:(NSString *)name index:(NSUInteger)index {
+    NSString *stepClassName = NSStringFromClass([BRLogStep class]);
+    BRLogStep *step = [NSEntityDescription insertNewObjectForEntityForName:stepClassName inManagedObjectContext:self.context];
+    step.name = name;
+    step.index = index;
+    
+    return step;
 }
 
 - (BOOL)markBuildLog:(BRBuildLog *)buildLog loaded:(BOOL)isLoaded error:(NSError * __autoreleasing *)error {
