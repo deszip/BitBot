@@ -15,6 +15,7 @@
 #import "BRLogStep+CoreDataClass.h"
 
 #import "BRLogLineView.h"
+#import "BRLogStepView.h"
 
 @interface BRLogsDataSource () <NSOutlineViewDataSource, NSOutlineViewDelegate, NSFetchedResultsControllerDelegate>
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) NSTextView *textView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
+@property (strong, nonatomic) NSFetchedResultsController *stepFRC;
 @property (strong, nonatomic) NSFetchedResultsController *logFRC;
 
 @property (copy, nonatomic) NSString *buildSlug;
@@ -38,24 +40,33 @@
     return self;
 }
 
-- (NSFetchedResultsController *)buildFRC:(NSManagedObjectContext *)context buildSlug:(NSString *)buildSlug {
-    NSFetchRequest *request = [BRLogLine fetchRequest];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
-                                [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]];
-    request.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
+- (void)buildFRC:(NSManagedObjectContext *)context buildSlug:(NSString *)buildSlug {
+    NSFetchRequest *stepsRequest = [BRLogStep fetchRequest];
+    stepsRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES]];
+    stepsRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
     [context setAutomaticallyMergesChangesFromParent:YES];
+    self.stepFRC = [[NSFetchedResultsController alloc] initWithFetchRequest:stepsRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    [self.stepFRC setDelegate:self];
     
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
+    linesRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
+                                     [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]];
+    linesRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
+    [context setAutomaticallyMergesChangesFromParent:YES];
+    self.logFRC = [[NSFetchedResultsController alloc] initWithFetchRequest:linesRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    [self.logFRC setDelegate:self];
 }
 
 - (void)fetch:(NSString *)buildSlug {
     if (!self.logFRC || ![self.buildSlug isEqualToString:buildSlug]) {
         self.buildSlug = buildSlug;
-        self.logFRC = [self buildFRC:self.container.viewContext buildSlug:buildSlug];
-        [self.logFRC setDelegate:self];
+        [self buildFRC:self.container.viewContext buildSlug:buildSlug];
     }
     
     NSError *fetchError = nil;
+    if (![self.stepFRC performFetch:&fetchError]) {
+        NSLog(@"Failed to fetch steps: %@ - %@", buildSlug, fetchError);
+    }
     if (![self.logFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
@@ -78,6 +89,7 @@
 
 - (void)updateContent {
     [self.outlineView reloadData];
+    [self.outlineView scrollToEndOfDocument:self];
     
     BOOL hasSelection = self.textView.selectedRange.length > 0;
     if (hasSelection) {
@@ -110,15 +122,23 @@
 #pragma mark - NSOutlineViewDataSource -
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    return [self.logFRC.sections[0] objects][index];
+    if ([item isKindOfClass:[BRLogStep class]]) {
+        return [[(BRLogStep *)item lines] objectAtIndex:index];
+    }
+    
+    return [self.stepFRC.sections[0] objects][index];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return NO;
+    return [item isKindOfClass:[BRLogStep class]];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    return [[self.logFRC.sections[0] objects] count];
+    if ([item isKindOfClass:[BRLogStep class]]) {
+        return [[(BRLogStep *)item lines] count];
+    }
+    
+    return [[self.stepFRC.sections[0] objects] count];
 }
 
 #pragma mark - NSOutlineViewDelegate -
@@ -129,6 +149,14 @@
         BRLogLineView *cell = [outlineView makeViewWithIdentifier:@"BRLogLineView" owner:self];
         NSString *logLine = [line.text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         [cell.lineLabel setStringValue:logLine];
+        
+        return cell;
+    }
+    
+    if ([item isKindOfClass:[BRLogStep class]]) {
+        BRLogStep *step = (BRLogStep *)item;
+        BRLogStepView *cell = [outlineView makeViewWithIdentifier:@"BRLogStepView" owner:self];
+        [cell.stepLabel setStringValue:step.name];
         
         return cell;
     }

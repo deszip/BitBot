@@ -205,6 +205,8 @@
 
 #pragma mark - Logs -
 
+// @TODO: Extract to log storage
+
 - (BOOL)saveLogMetadata:(NSDictionary *)rawLogMetadata forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     if (build.log) {
         [EKManagedObjectMapper fillObject:build.log fromExternalRepresentation:rawLogMetadata withMapping:[BRBuildLog objectMapping] inManagedObjectContext:self.context];
@@ -247,7 +249,7 @@
     }
     
     // Build rest of lines from chunk
-    __block BRLogStep *currentStep = nil;
+    __block BRLogStep *currentStep = lastStep;
     [rawLines enumerateObjectsUsingBlock:^(NSString *rawLine , NSUInteger idx, BOOL *stop) {
         BRLogLine *line = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([BRLogLine class]) inManagedObjectContext:self.context];
         line.linePosition = idx;
@@ -260,6 +262,17 @@
         if (stepName) {
             currentStep = [self stepWithName:stepName index:++lastStepIndex];
             [line.log addStepsObject:currentStep];
+            // @TODO: Extract...
+            NSArray <BRLogLine *> *sortedLines = [[build.log.lines allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
+                                                                        [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]]];
+            // Check if we have 'arrow' line
+            if ([[sortedLines[sortedLines.count - 4].text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@"▼"]) {
+                sortedLines[sortedLines.count - 4].step = currentStep;
+                sortedLines[sortedLines.count - 3].step = currentStep;
+                sortedLines[sortedLines.count - 2].step = currentStep;
+            } else {
+                sortedLines[sortedLines.count - 2].step = currentStep;
+            }
         } else if (!currentStep) {
             currentStep = [self stepWithName:@"Init" index:++lastStepIndex];
             [line.log addStepsObject:currentStep];
@@ -294,15 +307,15 @@
     }
     build.log.loaded = NO;
     
-    // Clean logs
-    NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
-    [linesRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
-    NSArray <BRLogLine *> *lines = [self.context executeFetchRequest:linesRequest error:error];
-    if (!lines) {
+    // Clean log steps
+    NSFetchRequest *stepsRequest = [BRLogStep fetchRequest];
+    [stepsRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
+    NSArray <BRLogStep *> *steps = [self.context executeFetchRequest:stepsRequest error:error];
+    if (!steps) {
         return NO;
     }
-    [lines enumerateObjectsUsingBlock:^(BRLogLine *line, NSUInteger idx, BOOL *stop) {
-        [self.context deleteObject:line];
+    [steps enumerateObjectsUsingBlock:^(BRLogStep *step, NSUInteger idx, BOOL *stop) {
+        [self.context deleteObject:step];
     }];
     
     return [self saveContext:self.context error:error];

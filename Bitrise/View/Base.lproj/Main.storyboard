@@ -1375,14 +1375,14 @@
                                                                                 </textFieldCell>
                                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                                 <prototypeCellViews>
-                                                                                    <tableCellView identifier="BRLogLineView" misplaced="YES" id="M3n-nB-dwo" customClass="BRLogLineView">
+                                                                                    <tableCellView identifier="BRLogStepView" misplaced="YES" id="M3n-nB-dwo" customClass="BRLogStepView">
                                                                                         <rect key="frame" x="1" y="1" width="116" height="42"/>
                                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                         <subviews>
                                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="95J-dl-oIi">
-                                                                                                <rect key="frame" x="-2" y="0.0" width="120" height="18"/>
-                                                                                                <textFieldCell key="cell" selectable="YES" continuous="YES" title="Multiline Label" id="tw0-bb-KZ7">
-                                                                                                    <font key="font" size="12" name="Menlo-Regular"/>
+                                                                                                <rect key="frame" x="18" y="0.0" width="100" height="18"/>
+                                                                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" continuous="YES" title="Multiline Label" usesSingleLineMode="YES" id="tw0-bb-KZ7">
+                                                                                                    <font key="font" size="12" name="Menlo-Bold"/>
                                                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                 </textFieldCell>
@@ -1390,12 +1390,35 @@
                                                                                         </subviews>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="trailing" secondItem="95J-dl-oIi" secondAttribute="trailing" id="Bpl-by-RCl"/>
-                                                                                            <constraint firstItem="95J-dl-oIi" firstAttribute="leading" secondItem="M3n-nB-dwo" secondAttribute="leading" id="Fg1-ju-pwb"/>
+                                                                                            <constraint firstItem="95J-dl-oIi" firstAttribute="leading" secondItem="M3n-nB-dwo" secondAttribute="leading" constant="20" id="Fg1-ju-pwb"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="95J-dl-oIi" secondAttribute="bottom" id="KQt-IN-ucm"/>
                                                                                             <constraint firstItem="95J-dl-oIi" firstAttribute="top" secondItem="M3n-nB-dwo" secondAttribute="top" id="cRB-2B-zBm"/>
                                                                                         </constraints>
                                                                                         <connections>
-                                                                                            <outlet property="lineLabel" destination="95J-dl-oIi" id="qsQ-SK-6lE"/>
+                                                                                            <outlet property="stepLabel" destination="95J-dl-oIi" id="3AX-Cj-uhf"/>
+                                                                                        </connections>
+                                                                                    </tableCellView>
+                                                                                    <tableCellView identifier="BRLogLineView" misplaced="YES" id="21e-Q0-F8c" customClass="BRLogLineView">
+                                                                                        <rect key="frame" x="1" y="45" width="116" height="42"/>
+                                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                        <subviews>
+                                                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gUj-Mv-3m6">
+                                                                                                <rect key="frame" x="28" y="0.0" width="90" height="36"/>
+                                                                                                <textFieldCell key="cell" selectable="YES" continuous="YES" title="Multiline Label" id="mfY-u5-j1r">
+                                                                                                    <font key="font" size="12" name="Menlo-Regular"/>
+                                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                                </textFieldCell>
+                                                                                            </textField>
+                                                                                        </subviews>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="trailing" secondItem="gUj-Mv-3m6" secondAttribute="trailing" id="0vR-pQ-UuS"/>
+                                                                                            <constraint firstItem="gUj-Mv-3m6" firstAttribute="top" secondItem="21e-Q0-F8c" secondAttribute="top" id="8N8-sR-fGm"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="gUj-Mv-3m6" secondAttribute="bottom" id="eEr-cy-LV1"/>
+                                                                                            <constraint firstItem="gUj-Mv-3m6" firstAttribute="leading" secondItem="21e-Q0-F8c" secondAttribute="leading" constant="30" id="zYn-b1-vu7"/>
+                                                                                        </constraints>
+                                                                                        <connections>
+                                                                                            <outlet property="lineLabel" destination="gUj-Mv-3m6" id="oDT-nL-Cj0"/>
                                                                                         </connections>
                                                                                     </tableCellView>
                                                                                 </prototypeCellViews>

@@ -57,6 +57,8 @@
 		0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B4E20F07D2000494DEB /* BRAccountCellView.m */; };
 		0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5420F0819E00494DEB /* BRBitriseAPI.m */; };
 		0E8E9B5820F0820D00494DEB /* BRGetAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */; };
+		0E92F5DC223D0111007AC61B /* BRLogStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E92F5DB223D0111007AC61B /* BRLogStepView.m */; };
+		0E92F5DD223D0111007AC61B /* BRLogStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E92F5DB223D0111007AC61B /* BRLogStepView.m */; };
 		0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */; };
 		0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
 		0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
@@ -212,6 +214,8 @@
 		0E8E9B5420F0819E00494DEB /* BRBitriseAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBitriseAPI.m; sourceTree = "<group>"; };
 		0E8E9B5620F0820D00494DEB /* BRGetAccountCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRGetAccountCommand.h; sourceTree = "<group>"; };
 		0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRGetAccountCommand.m; sourceTree = "<group>"; };
+		0E92F5DA223D0111007AC61B /* BRLogStepView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogStepView.h; sourceTree = "<group>"; };
+		0E92F5DB223D0111007AC61B /* BRLogStepView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogStepView.m; sourceTree = "<group>"; };
 		0E93B6F520F0837B001A6C15 /* BRStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStorage.h; sourceTree = "<group>"; };
 		0E93B6F620F0837B001A6C15 /* BRStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStorage.m; sourceTree = "<group>"; };
 		0E93B6FC20F085E8001A6C15 /* BRAccountInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountInfo.h; sourceTree = "<group>"; };
@@ -442,6 +446,8 @@
 				0E8DFB4621D7A05C00E7E5AC /* BRManagingAppCellView.m */,
 				0E348F182213130A000343A1 /* BRLogLineView.h */,
 				0E348F192213130A000343A1 /* BRLogLineView.m */,
+				0E92F5DA223D0111007AC61B /* BRLogStepView.h */,
+				0E92F5DB223D0111007AC61B /* BRLogStepView.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1015,6 +1021,7 @@
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
 				0E3C0B132117627700F2EA35 /* BRCommand.m in Sources */,
 				0EB3ED7621E88E8C003F0364 /* BRAppsRequest.m in Sources */,
+				0E92F5DC223D0111007AC61B /* BRLogStepView.m in Sources */,
 				0E3C0B0E211760AC00F2EA35 /* BRDownloadLogsCommand.m in Sources */,
 				0E3C0B082117607A00F2EA35 /* BRRebuildCommand.m in Sources */,
 			);
@@ -1027,6 +1034,7 @@
 				0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0E02C9AF22103ED100FCFE17 /* BRLogsDataSource.m in Sources */,
 				0E348F1B2213130A000343A1 /* BRLogLineView.m in Sources */,
+				0E92F5DD223D0111007AC61B /* BRLogStepView.m in Sources */,
 				0EBA9D6D2217F9EF007234EB /* BRLogInfo.m in Sources */,
 				0EAB9D7D221F0A1A00A21D23 /* BRProgressObserver.m in Sources */,
 				0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */,

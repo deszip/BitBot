@@ -74,7 +74,7 @@
     <entity name="BRLogStep" representedClassName="BRLogStep" syncable="YES" codeGenerationType="class">
         <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogLine" inverseName="step" inverseEntity="BRLogLine" syncable="YES"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BRLogLine" inverseName="step" inverseEntity="BRLogLine" syncable="YES"/>
         <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="steps" inverseEntity="BRBuildLog" syncable="YES"/>
     </entity>
     <elements>
@@ -83,6 +83,6 @@
         <element name="BRBuild" positionX="-226.3125" positionY="-9.3984375" width="128" height="405"/>
         <element name="BRBuildLog" positionX="-36.48046875" positionY="259.98046875" width="128" height="163"/>
         <element name="BRLogLine" positionX="170.37109375" positionY="211.9140625" width="128" height="120"/>
-        <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="103"/>
+        <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="105"/>
     </elements>
 </model>
