@@ -42,6 +42,8 @@
 		0E4AD08E2205FEBA00257E8E /* BRLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD08C2205FEBA00257E8E /* BRLogsViewController.m */; };
 		0E51715C21D2074E000D470E /* BRBuildMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51715B21D2074E000D470E /* BRBuildMenuController.m */; };
 		0E51715F21D20E96000D470E /* BRActionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51715E21D20E96000D470E /* BRActionDispatcher.m */; };
+		0E52AB802242A4A60020A943 /* BRLogStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E52AB7F2242A4A60020A943 /* BRLogStorage.m */; };
+		0E52AB812242A4A60020A943 /* BRLogStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E52AB7F2242A4A60020A943 /* BRLogStorage.m */; };
 		0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C720D20F90A5B00E5A082 /* BRObserver.m */; };
 		0E73597720EDF0A0007E15A7 /* BRContainerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */; };
 		0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */; };
@@ -184,6 +186,8 @@
 		0E51715B21D2074E000D470E /* BRBuildMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildMenuController.m; sourceTree = "<group>"; };
 		0E51715D21D20E96000D470E /* BRActionDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRActionDispatcher.h; sourceTree = "<group>"; };
 		0E51715E21D20E96000D470E /* BRActionDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRActionDispatcher.m; sourceTree = "<group>"; };
+		0E52AB7E2242A4A60020A943 /* BRLogStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogStorage.h; sourceTree = "<group>"; };
+		0E52AB7F2242A4A60020A943 /* BRLogStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogStorage.m; sourceTree = "<group>"; };
 		0E5C720C20F90A5B00E5A082 /* BRObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRObserver.h; sourceTree = "<group>"; };
 		0E5C720D20F90A5B00E5A082 /* BRObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRObserver.m; sourceTree = "<group>"; };
 		0E73597520EDF0A0007E15A7 /* BRContainerBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRContainerBuilder.h; sourceTree = "<group>"; };
@@ -569,6 +573,8 @@
 				0E93B6F620F0837B001A6C15 /* BRStorage.m */,
 				0EAB9DD92225AD7C00A21D23 /* BRLogsParser.h */,
 				0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */,
+				0E52AB7E2242A4A60020A943 /* BRLogStorage.h */,
+				0E52AB7F2242A4A60020A943 /* BRLogStorage.m */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 				0EFB325C22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0E4AD0892205F9D200257E8E /* BRLogsRequest.m in Sources */,
 				0EBA9D6C2217F9EF007234EB /* BRLogInfo.m in Sources */,
+				0E52AB802242A4A60020A943 /* BRLogStorage.m in Sources */,
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
 				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
@@ -1036,6 +1043,7 @@
 				0E348F1B2213130A000343A1 /* BRLogLineView.m in Sources */,
 				0E92F5DD223D0111007AC61B /* BRLogStepView.m in Sources */,
 				0EBA9D6D2217F9EF007234EB /* BRLogInfo.m in Sources */,
+				0E52AB812242A4A60020A943 /* BRLogStorage.m in Sources */,
 				0EAB9D7D221F0A1A00A21D23 /* BRProgressObserver.m in Sources */,
 				0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */,
 				0E4AD0822205D65A00257E8E /* BRBuildLog+Mapping.m in Sources */,
