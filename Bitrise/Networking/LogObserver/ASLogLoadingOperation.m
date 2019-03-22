@@ -110,7 +110,7 @@
                 NSError *markError;
              
                 // Clean pervious logs
-                if (![self.storage cleanLogs:build.slug error:&cleanError]) {
+                if (![self.storage cleanLogs:build error:&cleanError]) {
                     NSLog(@"Failed to clean build logs: %@", cleanError);
                     [self finish];
                     return;

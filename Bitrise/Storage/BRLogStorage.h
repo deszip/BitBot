@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)saveLogMetadata:(NSDictionary *)rawLogMetadata forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error;
 - (BOOL)appendLogs:(NSString *)text chunkPosition:(NSUInteger)chunkPosition toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error;
 - (BOOL)markBuildLog:(BRBuildLog *)buildLog loaded:(BOOL)isLoaded error:(NSError * __autoreleasing *)error;
-- (BOOL)cleanLogs:(NSString *)buildSlug error:(NSError * __autoreleasing *)error;
+- (BOOL)cleanLogs:(BRBuild *)build error:(NSError * __autoreleasing *)error;
 
 @end
 

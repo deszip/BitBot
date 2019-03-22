@@ -117,32 +117,19 @@
     return [self saveContext:self.context error:error];
 }
 
-- (BRLogStep *)stepWithName:(NSString *)name index:(NSUInteger)index {
-    NSString *stepClassName = NSStringFromClass([BRLogStep class]);
-    BRLogStep *step = [NSEntityDescription insertNewObjectForEntityForName:stepClassName inManagedObjectContext:self.context];
-    step.name = name;
-    step.index = index;
-    
-    return step;
-}
-
 - (BOOL)markBuildLog:(BRBuildLog *)buildLog loaded:(BOOL)isLoaded error:(NSError * __autoreleasing *)error {
     [buildLog setLoaded:isLoaded];
     
     return [self saveContext:self.context error:error];
 }
 
-- (BOOL)cleanLogs:(NSString *)buildSlug error:(NSError * __autoreleasing *)error {
+- (BOOL)cleanLogs:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     // Mark build as not loaded
-    BRBuild *build = [self buildWithSlug:buildSlug error:error];
-    if (!build) {
-        return NO;
-    }
     build.log.loaded = NO;
     
     // Clean log steps
     NSFetchRequest *stepsRequest = [BRLogStep fetchRequest];
-    [stepsRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug]];
+    [stepsRequest setPredicate:[NSPredicate predicateWithFormat:@"log.build.slug = %@", build.slug]];
     NSArray <BRLogStep *> *steps = [self.context executeFetchRequest:stepsRequest error:error];
     if (!steps) {
         return NO;
@@ -154,6 +141,16 @@
     return [self saveContext:self.context error:error];
 }
 
+#pragma mark - Builders -
+
+- (BRLogStep *)stepWithName:(NSString *)name index:(NSUInteger)index {
+    NSString *stepClassName = NSStringFromClass([BRLogStep class]);
+    BRLogStep *step = [NSEntityDescription insertNewObjectForEntityForName:stepClassName inManagedObjectContext:self.context];
+    step.name = name;
+    step.index = index;
+    
+    return step;
+}
 
 #pragma mark - Save -
 

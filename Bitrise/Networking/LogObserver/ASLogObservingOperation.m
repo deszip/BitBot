@@ -43,7 +43,8 @@ static const NSTimeInterval kPollTimeout = 1.0;
     
     [self.storage perform:^{
         NSError *error;
-        if (![self.storage cleanLogs:self.buildSlug error:&error]) {
+        BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&error];
+        if (![self.storage cleanLogs:build error:&error]) {
             [super finish];
             return;
         }
