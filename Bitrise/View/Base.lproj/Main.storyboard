@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -620,7 +620,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -1467,6 +1467,10 @@
                                                                     </textView>
                                                                 </subviews>
                                                             </clipView>
+                                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0lL-V5-psW">
+                                                                <rect key="frame" x="-100" y="-100" width="548" height="15"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </scroller>
                                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
                                                                 <rect key="frame" x="548" y="0.0" width="15" height="322"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
@@ -2097,6 +2101,10 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="qcc-9W-U4s"/>
                                         </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="l3Z-Yg-qzU">
+                                            <rect key="frame" x="-100" y="-100" width="240" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="rGS-vT-9y7">
                                             <rect key="frame" x="-100" y="-100" width="15" height="324"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2156,6 +2164,6 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
         <image name="list" width="18" height="17"/>
         <image name="message-square" width="24" height="24"/>
         <image name="settings" width="22" height="22"/>
-        <image name="success-status" width="119" height="119"/>
+        <image name="success-status" width="59.5" height="59.5"/>
     </resources>
 </document>
