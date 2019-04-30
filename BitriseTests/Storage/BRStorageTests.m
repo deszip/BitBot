@@ -526,7 +526,7 @@
         NSError *error;
         [self.storage appendLogs:@"line1\nline2" chunkPosition:0 toBuild:build error:&error];
         
-        BOOL result = [self.storage cleanLogs:build.slug error:&error];
+        BOOL result = [self.storage cleanLogs:build error:&error];
         
         expect(result).to.beTruthy();
         expect(error).to.beNil();
@@ -537,17 +537,9 @@
 - (void)testStorageMarksLogAsNotLoadedAfterClean {
     [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
         NSError *error;
-        [self.storage cleanLogs:build.slug error:&error];
+        [self.storage cleanLogs:build error:&error];
         
         expect(build.log.loaded).to.beFalsy();
-    }];
-}
-
-- (void)testStorageIgnoresCleanForInvalidBuild {
-    [self executeOnStorage:^{
-        NSError *error;
-        BOOL result = [self.storage cleanLogs:@"" error:&error];
-        expect(result).to.beFalsy();
     }];
 }
 
