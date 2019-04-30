@@ -16,10 +16,17 @@
 #import "BRAccount+Mapping.h"
 #import "BRApp+Mapping.h"
 #import "BRBuild+Mapping.h"
+#import "BRBuildLog+Mapping.h"
+#import "BRLogLine+CoreDataClass.h"
+#import "BRLogStep+CoreDataClass.h"
+
+#import "BRLogStorage.h"
+
 
 @interface BRStorage ()
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) BRLogStorage *logStorage;
 
 @end
 
@@ -29,6 +36,8 @@
     if (self = [super init]) {
         _context = context;
         [_context setAutomaticallyMergesChangesFromParent:YES];
+        
+        _logStorage = [[BRLogStorage alloc] initWithContext:context];
     }
     
     return self;
@@ -128,6 +137,18 @@
 
 #pragma mark - Builds -
 
+- (BRBuild *)buildWithSlug:(NSString *)slug error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BRBuild fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
+    
+    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:error];
+    if (builds.count == 1) {
+        return builds.firstObject;
+    }
+    
+    return nil;
+}
+
 - (NSArray <BRBuild *> *)runningBuilds:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRBuild fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"status = 0"];
@@ -173,8 +194,8 @@
         [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
             BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:self.context];
             build.app = apps[0];
-            result = [self saveContext:self.context error:error];
         }];
+        result = [self saveContext:self.context error:error];
     } else {
         NSLog(@"Failed to save builds: %@", *error);
         result = NO;
@@ -183,10 +204,29 @@
     return result;
 }
 
+#pragma mark - Logs -
+
+- (BOOL)saveLogMetadata:(NSDictionary *)rawLogMetadata forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+    return [self.logStorage saveLogMetadata:rawLogMetadata forBuild:build error:error];
+}
+
+- (BOOL)appendLogs:(NSString *)text chunkPosition:(NSUInteger)chunkPosition toBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+    return [self.logStorage appendLogs:text chunkPosition:chunkPosition toBuild:build error:error];
+}
+
+- (BOOL)markBuildLog:(BRBuildLog *)buildLog loaded:(BOOL)isLoaded error:(NSError * __autoreleasing *)error {
+    return [self.logStorage markBuildLog:buildLog loaded:isLoaded error:error];
+}
+
+- (BOOL)cleanLogs:(BRBuild *)build error:(NSError * __autoreleasing *)error {
+    return [self.logStorage cleanLogs:build error:error];
+}
+
 #pragma mark - Save -
 
 - (BOOL)saveContext:(NSManagedObjectContext *)context error:(NSError * __autoreleasing *)error {
     if ([context hasChanges]) {
+        [context processPendingChanges];
         return [context save:error];
     }
     

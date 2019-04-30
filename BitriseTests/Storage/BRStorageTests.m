@@ -12,28 +12,19 @@
 
 #import <CoreData/CoreData.h>
 #import <EasyMapping/EasyMapping.h>
+#import "BRMockBuilder.h"
+#import "BRLogStubBuilder.h"
 
 #import "BRContainerBuilder.h"
 #import "BRStorage.h"
-
-static NSString * const kAccountSlug = @"account_slug";
-static NSString * const kAccountToken = @"account_token";
-static NSString * const kAccountTokenInvalid = @"account_token_invalid";
-
-static NSString * const kAppSlug1 = @"app_slug_1";
-static NSString * const kAppSlug2 = @"app_slug_2";
-static NSString * const kAppSlugInvalid = @"app_slug_invalid";
-static NSString * const kAppBuildToken = @"app_build_token";
-
-static NSString * const kBuildSlug1 = @"build_slug_1";
-static NSString * const kBuildSlug2 = @"build_slug_2";
-static NSString * const kBuildSlug3 = @"build_slug_3";
-static NSString * const kBuildSlug4 = @"build_slug_4";
 
 @interface BRStorageTests : XCTestCase
 
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) BRMockBuilder *mockBuilder;
+@property (strong, nonatomic) BRLogStubBuilder *logStubBuilder;
+
 @property (strong, nonatomic) BRStorage *storage;
 
 @end
@@ -45,12 +36,18 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
     self.container = [[BRContainerBuilder new] buildContainerOfType:NSInMemoryStoreType];
     self.context = [self.container newBackgroundContext];
+    self.mockBuilder = [[BRMockBuilder alloc] initWithContext:self.context];
+    self.logStubBuilder = [BRLogStubBuilder new];
+    
     self.storage = [[BRStorage alloc] initWithContext:self.context];
 }
 
 - (void)tearDown {
     self.container = nil;
     self.context = nil;
+    self.mockBuilder = nil;
+    self.logStubBuilder = nil;
+    
     self.storage = nil;
     
     [super tearDown];
@@ -67,7 +64,7 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 }
 
 - (void)testStorageFetchesAccounts {
-    [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+    [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
         NSError *error;
@@ -81,7 +78,7 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (void)testStorageSavesAccount {
     [self executeOnStorage:^{
         NSError *error;
-        [self.storage saveAccount:[self accountInfo] error:&error];
+        [self.storage saveAccount:[self.mockBuilder accountInfo] error:&error];
         expect(error).to.beNil();
         
         NSArray <BRAccount *> *accounts = [self.storage accounts:&error];
@@ -91,7 +88,7 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 }
 
 - (void)testStorageRemovesAccount {
-    [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+    [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
         NSError *error;
@@ -117,12 +114,12 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 #pragma mark - Apps -
 
 - (void)testStorageAddsApps {
-    [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+    [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
         NSArray <BRAccount *> *accounts = [self.storage accounts:nil];
         NSError *error;
-        [self.storage updateApps:@[[self appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
+        [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
         
         NSArray <BRApp *> *apps = [self.storage appsForAccount:accounts[0] error:&error];
         expect(apps.count).to.equal(1);
@@ -130,16 +127,16 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 }
 
 - (void)testStorageRemovesOutdatedApps {
-    [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+    [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
         // Insert app 1
         NSArray <BRAccount *> *accounts = [self.storage accounts:nil];
         NSError *error;
-        [self.storage updateApps:@[[self appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
+        [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
         
         // Update with app 2
-        [self.storage updateApps:@[[self appInfoWithSlug:kAppSlug2]] forAccount:accounts[0] error:&error];
+        [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug2]] forAccount:accounts[0] error:&error];
         
         // Verify only app 2 left in storage
         NSArray <BRApp *> *apps = [self.storage appsForAccount:accounts[0] error:&error];
@@ -149,13 +146,13 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 }
 
 - (void)testStorageIgnoresDuplicateAccounts {
-    [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-    [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+    [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+    [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
         NSArray <BRAccount *> *accounts = [self.storage accounts:nil];
         NSError *error;
-        BOOL result = [self.storage updateApps:@[[self appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
+        BOOL result = [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
         
         expect(result).to.beFalsy();
     }];
@@ -163,8 +160,8 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testStorageFetchesApps {
     [self executeOnStorage:^{
-        BRAccount *account = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        [self buildAppWithSlug:kAppSlug1 forAccount:account];
+        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         
         NSError *error;
         NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&error];
@@ -175,7 +172,7 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testStorageFetchesEmptyAppsList {
     [self executeOnStorage:^{
-        BRAccount *account = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         
         NSError *error;
         NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&error];
@@ -185,8 +182,8 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testStorageAddsBuildToken {
     [self executeOnStorage:^{
-        BRAccount *account = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        [self buildAppWithSlug:kAppSlug1 forAccount:account];
+        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         
         NSError *error;
         BOOL result = [self.storage addBuildToken:kAppBuildToken toApp:kAppSlug1 error:&error];
@@ -198,9 +195,9 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testStorageIgnoresAppDuplicate {
     [self executeOnStorage:^{
-        BRAccount *account = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        [self buildAppWithSlug:kAppSlug1 forAccount:account];
-        [self buildAppWithSlug:kAppSlug1 forAccount:account];
+        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
+        [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         
         NSError *error;
         BOOL result = [self.storage addBuildToken:kAppBuildToken toApp:kAppSlug1 error:&error];
@@ -212,10 +209,45 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 #pragma mark - Builds -
 
+- (void)testStorageFetchesBuildWithSlug {
+    [self executeOnStorage:^{
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(1) app:nil];
+        NSError *error;
+        BRBuild *build = [self.storage buildWithSlug:kBuildSlug1 error:&error];
+
+        expect(build.slug).to.equal(kBuildSlug1);
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testStorageReturnsNilIfNoBuildFound {
+    [self executeOnStorage:^{
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        NSError *error;
+        BRBuild *build = [self.storage buildWithSlug:kBuildSlug2 error:&error];
+        
+        expect(build).to.beNil();
+        expect(error).to.beNil();
+    }];
+}
+
+- (void)testStorageReturnsNilIfDuplicateFound {
+    [self executeOnStorage:^{
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        NSError *error;
+        BRBuild *build = [self.storage buildWithSlug:kBuildSlug1 error:&error];
+        
+        expect(build).to.beNil();
+        expect(error).to.beNil();
+    }];
+}
+
 - (void)testStorageFetchesRunningBuilds {
     [self executeOnStorage:^{
-        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
-        [self buildWithSlug:kBuildSlug2 staus:@(1) app:nil];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(1) app:nil];
         NSError *error;
         NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
         
@@ -227,8 +259,8 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testStorageSortsRunningBuilds {
     [self executeOnStorage:^{
-        [self buildWithSlug:kBuildSlug1 staus:@(0) app:nil];
-        [self buildWithSlug:kBuildSlug2 staus:@(0) app:nil];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(0) app:nil];
         NSError *error;
         NSArray <BRBuild *> *builds = [self.storage runningBuilds:&error];
         
@@ -252,10 +284,10 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testLatestBuildFetchIgnoresRunningBuilds {
     [self executeOnStorage:^{
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
-        BRBuild *finishedBuild = [self buildWithSlug:kBuildSlug1 staus:@(1) app:app];
-        [self buildWithSlug:kBuildSlug1 staus:@(0) app:app];
+        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
+        BRBuild *finishedBuild = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(1) app:app];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:app];
         
         NSError *error;
         BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
@@ -268,12 +300,12 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (void)testLatestBuildFetchOldestRunningBuild {
     [self executeOnStorage:^{
         // Add four builds, only first and last are finished
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
-        [self buildWithSlug:kBuildSlug1 staus:@(1) app:app];
-        BRBuild *targetBuild = [self buildWithSlug:kBuildSlug2 staus:@(0) app:app];
-        [self buildWithSlug:kBuildSlug3 staus:@(0) app:app];
-        [self buildWithSlug:kBuildSlug4 staus:@(1) app:app];
+        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(1) app:app];
+        BRBuild *targetBuild = [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(0) app:app];
+        [self.mockBuilder buildWithSlug:kBuildSlug3 status:@(0) app:app];
+        [self.mockBuilder buildWithSlug:kBuildSlug4 status:@(1) app:app];
         
         // Fetch latest build
         NSError *error;
@@ -288,10 +320,10 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (void)testLatestBuildFetchMostRecentBuildIfNoRunning {
     [self executeOnStorage:^{
         // Add two finished builds
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
-        [self buildWithSlug:kBuildSlug1 staus:@(1) app:app];
-        BRBuild *targetBuild = [self buildWithSlug:kBuildSlug2 staus:@(1) app:app];
+        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(1) app:app];
+        BRBuild *targetBuild = [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(1) app:app];
         
         // Fetch latest build
         NSError *error;
@@ -306,8 +338,8 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (void)testLatestBuildIsNilIfNoBuilds {
     [self executeOnStorage:^{
         // Fetch latest build
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
+        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         NSError *error;
         BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
         
@@ -320,14 +352,14 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (void)testSaveBuildsInsertsBuild {
     [self executeOnStorage:^{
         // Add build
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
-        BRBuildInfo *buildInfo = [self buildInfoWithSlug:kBuildSlug1 status:@(0)];
+        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
+        BRBuildInfo *buildInfo = [self.mockBuilder buildInfoWithSlug:kBuildSlug1 status:@(0)];
         NSError *error;
         BOOL result = [self.storage saveBuilds:@[buildInfo] forApp:app.slug error:&error];
         
         // Fetch it
-        BRBuild *build = [self buildWithSlug:kBuildSlug1];
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1];
         
         // Verify build inserted and assigned to app
         expect(result).to.beTruthy();
@@ -340,17 +372,17 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 - (void)testSaveBuildsUpdatesBuildIfExists {
     [self executeOnStorage:^{
         // Add build with status 0
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        BRApp *app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
-        [self buildWithSlug:kBuildSlug1 staus:@(0) app:app];
+        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
+        [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:app];
         
         // Update it with status 1
-        BRBuildInfo *buildInfo = [self buildInfoWithSlug:kBuildSlug1 status:@(1)];
+        BRBuildInfo *buildInfo = [self.mockBuilder buildInfoWithSlug:kBuildSlug1 status:@(1)];
         NSError *error;
         BOOL result = [self.storage saveBuilds:@[buildInfo] forApp:app.slug error:&error];
         
         // Fetch updated
-        BRBuild *updateBuild = [self buildWithSlug:kBuildSlug1];
+        BRBuild *updateBuild = [self.mockBuilder buildWithSlug:kBuildSlug1];
         
         // Verify status was updated
         expect(updateBuild.status.integerValue).to.equal(1);
@@ -361,7 +393,7 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (void)testSaveBuildsFailsIfNoAppsFound {
     [self executeOnStorage:^{
-        BRBuildInfo *buildInfo = [self buildInfoWithSlug:kBuildSlug1 status:@(1)];
+        BRBuildInfo *buildInfo = [self.mockBuilder buildInfoWithSlug:kBuildSlug1 status:@(1)];
         NSError *error;
         BOOL result = [self.storage saveBuilds:@[buildInfo] forApp:kAppSlug1 error:&error];
         
@@ -370,62 +402,161 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
     }];
 }
 
-#pragma mark - Builders -
+#pragma mark - Logs -
 
-- (BRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug {
-    BRAccount *account = [NSEntityDescription insertNewObjectForEntityForName:@"BRAccount" inManagedObjectContext:self.context];
-    account.token = token;
-    account.slug = slug;
-    
-    [self.context save:nil];
-    
-    return account;
+- (void)testStorageUpdatesLogMetadata {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSDictionary *logMetadata = [self.logStubBuilder runningLogMetadata];
+        NSError *error;
+        BOOL result = [self.storage saveLogMetadata:logMetadata forBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log.loaded).to.beFalsy();
+        [self validateLogMetadata:build.log metadata:logMetadata];
+    }];
 }
 
-- (BRApp *)buildAppWithSlug:(NSString *)slug forAccount:(BRAccount *)account {
-    BRApp *app = [NSEntityDescription insertNewObjectForEntityForName:@"BRApp" inManagedObjectContext:self.context];
-    app.slug = slug;
-    app.account = account;
-    
-    [self.context save:nil];
-    
-    return app;
+- (void)testStorageCreatesLogIfNotExists {
+    [self executeOnStorage:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        
+        NSDictionary *logMetadata = [self.logStubBuilder runningLogMetadata];
+        NSError *error;
+        BOOL result = [self.storage saveLogMetadata:logMetadata forBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log).to.beTruthy();
+        [self validateLogMetadata:build.log metadata:logMetadata];
+    }];
 }
 
-- (BRBuild *)buildWithSlug:(NSString *)slug staus:(NSNumber *)status app:(BRApp *)app {
-    if (!app) {
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
-        app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
-    }
-    
-    BRBuild *build = [NSEntityDescription insertNewObjectForEntityForName:@"BRBuild" inManagedObjectContext:self.context];
-    build.slug = slug;
-    build.status = status;
-    build.triggerTime = [NSDate date];
-    build.app = app;
-    
-    [self.context save:nil];
-    
-    return build;
+- (void)testStorageAppendsFirstLogLine {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        BOOL result = [self.storage appendLogs:@"line1\nline2\nline3" chunkPosition:0 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log.lines.count).to.equal(3);
+    }];
 }
 
-- (BRAccountInfo *)accountInfo {
-    return [[BRAccountInfo alloc] initWithResponse:@{ @"slug" : kAccountSlug } token:kAccountToken];
+- (void)testStorageAppendsLinesToExistingLog {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2\n" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line3\nline4\n" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log.lines.count).to.equal(4);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
+        expect(lines[0].chunkPosition).to.equal(0);
+        expect(lines[0].linePosition).to.equal(0);
+        expect(lines[1].chunkPosition).to.equal(0);
+        expect(lines[1].linePosition).to.equal(1);
+        expect(lines[2].chunkPosition).to.equal(1);
+        expect(lines[2].linePosition).to.equal(0);
+        expect(lines[3].chunkPosition).to.equal(1);
+        expect(lines[3].linePosition).to.equal(1);
+    }];
 }
 
-- (BRAppInfo *)appInfoWithSlug:(NSString *)slug {
-    return [[BRAppInfo alloc] initWithResponse:@{ @"slug" : slug }];
+- (void)testStorageAppendsBrokenLines {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2 which is " chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"broken\nline3" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log.lines.count).to.equal(3);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
+        expect(lines[1].text).equal(@"line2 which is broken\n");
+    }];
 }
 
-- (BRBuildInfo *)buildInfoWithSlug:(NSString *)slug status:(NSNumber *)status {
-    return [[BRBuildInfo alloc] initWithResponse:@{ @"status" : status,
-                                                    @"is_on_hold" : @(0),
-                                                    @"slug" : slug,
-                                                    @"branch" : @"foo",
-                                                    @"triggered_workflow" : @"bar" }];
+- (void)testStorageAppendsEmptyLines {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2\n" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line3\n\n" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log.lines.count).to.equal(4);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
+        expect(lines[3].text).equal(@"");
+    }];
+}
+
+- (void)testStorageHandlesLatEmptyLine {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2\n\n" chunkPosition:0 toBuild:build error:&error];
+        BOOL result = [self.storage appendLogs:@"line3" chunkPosition:1 toBuild:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beFalsy();
+        expect(build.log.lines.count).to.equal(4);
+        
+        NSArray <BRLogLine *> *lines = [self sortedLines:build.log];
+        expect(lines[2].text).equal(@"");
+    }];
+}
+
+- (void)testStorageMarksLogAsLoaded {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage markBuildLog:build.log loaded:YES error:&error];
+        expect(build.log.loaded).to.beTruthy();
+        
+        [self.storage markBuildLog:build.log loaded:NO error:&error];
+        expect(build.log.loaded).to.beFalsy();
+    }];
+}
+
+- (void)testStorageCleansLog {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage appendLogs:@"line1\nline2" chunkPosition:0 toBuild:build error:&error];
+        
+        BOOL result = [self.storage cleanLogs:build error:&error];
+        
+        expect(result).to.beTruthy();
+        expect(error).to.beNil();
+        expect(build.log.lines.count).to.equal(0);
+    }];
+}
+
+- (void)testStorageMarksLogAsNotLoadedAfterClean {
+    [self executeOnStorageWithPrebuiltLog:^(BRBuild *build) {
+        NSError *error;
+        [self.storage cleanLogs:build error:&error];
+        
+        expect(build.log.loaded).to.beFalsy();
+    }];
 }
 
 #pragma mark - Tools -
+
+- (void)executeOnStorageWithPrebuiltLog:(void (^)(BRBuild *))action {
+    XCTestExpectation *e = [self expectationWithDescription:@""];
+    
+    [self.storage perform:^{
+        BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+        __unused BRBuildLog *log = [self.mockBuilder logForBuild:build];
+        action(build);
+        [e fulfill];
+    }];
+    
+    [self waitForExpectations:@[e] timeout:0.1];
+}
 
 - (void)executeOnStorage:(void (^)(void))action {
     XCTestExpectation *e = [self expectationWithDescription:@""];
@@ -438,14 +569,20 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
     [self waitForExpectations:@[e] timeout:0.1];
 }
 
-- (BRBuild *)buildWithSlug:(NSString *)slug {
-    NSFetchRequest *request = [BRBuild fetchRequest];
-    request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", slug];
-    
-    NSError *error;
-    NSArray <BRBuild *> *builds = [self.context executeFetchRequest:request error:&error];
-    
-    return builds.firstObject;
+- (void)validateLogMetadata:(BRBuildLog *)log metadata:(NSDictionary *)logMetadata {
+    expect(log.archived).to.equal([logMetadata[@"is_archived"] boolValue]);
+    expect(log.chunksCount).to.equal([logMetadata[@"generated_log_chunks_num"] integerValue]);
+    if (logMetadata[@"expiring_raw_log_url"] != [NSNull null]) {
+        expect(log.expiringRawLogURL).to.equal(logMetadata[@"expiring_raw_log_url"]);
+    } else {
+        expect(log.expiringRawLogURL).to.beNil();
+    }
+    expect(log.timestamp).to.equal([NSDate dateWithTimeIntervalSince1970:[logMetadata[@"timestamp"] doubleValue]]);
+}
+
+- (NSArray <BRLogLine *> *)sortedLines:(BRBuildLog *)log {
+    return [log.lines sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
+                                             [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]]];
 }
 
 @end

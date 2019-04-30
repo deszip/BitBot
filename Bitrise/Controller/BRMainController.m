@@ -16,7 +16,10 @@
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
+#import "BRLogsTextViewController.h"
 #import "BRSegue.h"
+#import "BRLogsWindowPresenter.h"
+
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
@@ -34,9 +37,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BREnvironment *environment;
 
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
-
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
 @property (strong, nonatomic) BRBuildMenuController *buildController;
+@property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
@@ -48,6 +51,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
     
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
@@ -72,8 +77,16 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         }
     }];
     
-    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI] syncEngine:self.syncEngine environment:self.environment];
+    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
+                                                           syncEngine:self.syncEngine
+                                                          logObserver:[self.dependencyContainer logObserver]
+                                                          environment:self.environment];
     [self.buildController bind:self.buildMenu toOutline:self.outlineView];
+    [self.buildController setActionCallback:^(BRBuildMenuAction action, BRBuildInfo *buildInfo) {
+        if (action == BRBuildMenuActionShowLog) {
+            [weakSelf.logsPresenter presentLogs:buildInfo];
+        }
+    }];
 }
 
 - (void)viewDidAppear {
@@ -84,9 +97,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     
-    if ([segue.identifier isEqualToString:kAboutWindowSegue] || [segue.identifier isEqualToString:kAccountWindowSegue]) {
-        [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
-        [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
+    [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
+    [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
+    
+    if ([segue.identifier isEqualToString:kLogWindowSegue]) {
+        BRLogsTextViewController *logController = (BRLogsTextViewController *)[(NSWindowController *)segue.destinationController contentViewController];
+        [logController setBuildInfo:(BRBuildInfo *)sender];
     }
 }
 

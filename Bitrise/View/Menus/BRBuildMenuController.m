@@ -16,10 +16,11 @@
 #import "BRDownloadLogsCommand.h"
 #import "BROpenBuildCommand.h"
 
-static const NSUInteger kMenuItemsCount = 4;
+static const NSUInteger kMenuItemsCount = 5;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemRebuild = 0,
     BRBuildMenuItemAbort,
+    BRBuildMenuItemShowLog,
     BRBuildMenuItemDownload,
     BRBuildMenuItemOpenBuild
 };
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
+@property (strong, nonatomic) BRLogObserver *logObserver;
 @property (strong, nonatomic) BREnvironment *environment;
 
 @property (weak, nonatomic) NSMenu *menu;
@@ -37,10 +39,14 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @implementation BRBuildMenuController
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api syncEngine:(BRSyncEngine *)syncEngine environment:(BREnvironment *)environment {
+- (instancetype)initWithAPI:(BRBitriseAPI *)api
+                 syncEngine:(BRSyncEngine *)syncEngine
+                logObserver:(BRLogObserver *)logObserver
+                environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _api = api;
         _syncEngine = syncEngine;
+        _logObserver = logObserver;
         _environment = environment;
     }
     
@@ -60,6 +66,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         
         [self.menu.itemArray[BRBuildMenuItemRebuild]   setAction:@selector(rebuild)];
         [self.menu.itemArray[BRBuildMenuItemAbort]     setAction:@selector(abort)];
+        [self.menu.itemArray[BRBuildMenuItemShowLog]   setAction:@selector(showLog)];
         [self.menu.itemArray[BRBuildMenuItemDownload]  setAction:@selector(downloadLog)];
         [self.menu.itemArray[BRBuildMenuItemOpenBuild] setAction:@selector(openBuild)];
     }
@@ -73,7 +80,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
-                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
+                                                                       logObserver:self.logObserver
+                                                                       environment:self.environment];
                 [syncCommand execute:nil];
             }
         }];
@@ -86,10 +95,20 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
-                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
+                                                                       logObserver:self.logObserver
+                                                                       environment:self.environment];
                 [syncCommand execute:nil];
             }
         }];
+    }
+}
+
+- (void)showLog {
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+    if ([selectedItem isKindOfClass:[BRBuild class]]) {
+        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:(BRBuild *)selectedItem];
+        BR_SAFE_CALL(self.actionCallback, BRBuildMenuActionShowLog, buildInfo);
     }
 }
 
@@ -119,10 +138,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
         BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
                                    buildInfo.stateInfo.state == BRBuildStateHold;
+        BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold;
         
         switch (menuItem.tag) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildCouldBeAborted;
+            case BRBuildMenuItemShowLog: return buildLogAvailable;
             case BRBuildMenuItemDownload: return !buildInProgress;
             case BRBuildMenuItemOpenBuild: return YES;
             default: return NO;

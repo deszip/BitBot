@@ -13,6 +13,7 @@ NSString * const kAppsEndpoint = @"https://api.bitrise.io/v0.1/apps";
 NSString * const kBuildsEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
 NSString * const kAbortEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/abort";
 NSString * const kStartBuildEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds";
+NSString * const kBuildLogEndpoint = @"https://api.bitrise.io/v0.1/apps/%@/builds/%@/log";
 
 @implementation BRAPIRequest
 
