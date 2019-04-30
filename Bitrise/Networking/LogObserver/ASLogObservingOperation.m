@@ -13,7 +13,7 @@
 #import "BRLogsRequest.h"
 #import "BRLogInfo.h"
 
-static const NSTimeInterval kPollTimeout = 1.0;
+static const NSTimeInterval kPollTimeout = 3.0;
 
 @interface ASLogObservingOperation ()
 
@@ -48,9 +48,6 @@ static const NSTimeInterval kPollTimeout = 1.0;
             [super finish];
             return;
         }
-        
-        // ?
-        //[self schedulePoll];
     }];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kPollTimeout
@@ -65,16 +62,6 @@ static const NSTimeInterval kPollTimeout = 1.0;
 - (void)finish {
     [self.timer invalidate];
     [super finish];
-}
-
-- (void)schedulePoll {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kPollTimeout
-                                                  target:self
-                                                selector:@selector(fetchLogs)
-                                                userInfo:nil
-                                                 repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-    [[NSRunLoop currentRunLoop] run];
 }
 
 - (void)fetchLogs {

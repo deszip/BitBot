@@ -42,7 +42,7 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (void)setBuildInfo:(BRBuildInfo *)buildInfo {
     _buildInfo = buildInfo;
-    //self.view.window.title = [NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName];
+    self.view.window.title = [NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName];
     [[[self statusView] statusField] setStringValue:[NSString stringWithFormat:@"%@: %@", self.buildInfo.appName, self.buildInfo.branchName]];
     
     // Observer

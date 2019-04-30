@@ -100,7 +100,9 @@
     NSString *insertion = [self contentFromLine:0];
     [self.textView setString:insertion];
     if (needsScroll) {
-        [self.textView scrollRangeToVisible: NSMakeRange(self.textView.string.length, 0)];
+        [(NSScrollView *)self.textView.superview.superview setScrollsDynamically:NO];
+        [self.textView scrollToEndOfDocument:self];
+        //[self.textView scrollRangeToVisible:NSMakeRange(self.textView.string.length, 0)];
     }
 }
 

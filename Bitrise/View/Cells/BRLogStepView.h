@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRLogStepView : NSTableRowView
 
+@property (weak) IBOutlet NSImageView *stepImage;
 @property (weak) IBOutlet NSTextField *stepLabel;
 
 @end
