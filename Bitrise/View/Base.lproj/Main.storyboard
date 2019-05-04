@@ -1458,7 +1458,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
                                                                 <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
                                                                         <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>

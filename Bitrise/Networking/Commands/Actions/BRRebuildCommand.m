@@ -8,6 +8,7 @@
 
 #import "BRRebuildCommand.h"
 
+#import "BRAnalytics.h"
 #import "BRRebuildRequest.h"
 
 @interface BRRebuildCommand ()
@@ -44,6 +45,8 @@
     [self.api rebuild:request completion:^(BOOL status, NSError * _Nullable error) {
         BR_SAFE_CALL(callback, status, error);
     }];
+    
+    [[BRAnalytics analytics] trackRebuildAction];
 }
 
 @end

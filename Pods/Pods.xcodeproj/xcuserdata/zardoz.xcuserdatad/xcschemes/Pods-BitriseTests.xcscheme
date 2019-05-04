@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A286E908A020C8B2B2A9B2F3A027773"
+               BlueprintIdentifier = "46DE9FEAB0C8EA0833F465BEDC72537B"
+               BuildableName = "libPods-BitriseTests.a"
                BlueprintName = "Pods-BitriseTests"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods-BitriseTests.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

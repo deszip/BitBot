@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2F76C4DEAE2007246BF4FBF8967B2FA3"
+               BlueprintIdentifier = "9C59561051F1403A293E0B943DB4E71F"
+               BuildableName = "libExpecta.a"
                BlueprintName = "Expecta"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libExpecta.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

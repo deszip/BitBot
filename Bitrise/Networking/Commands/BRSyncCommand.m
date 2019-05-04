@@ -8,6 +8,7 @@
 
 #import "BRSyncCommand.h"
 
+#import "BRAnalytics.h"
 #import "NSArray+FRP.h"
 
 @interface BRSyncCommand ()
@@ -43,6 +44,10 @@
             [runningBuildsSlugs enumerateObjectsUsingBlock:^(NSString *buildSlug, BOOL *stop) {
                 [weakSelf.logObserver startObservingBuild:buildSlug];
             }];
+            
+            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
+                                                  running:result.diff.running.count
+                                                 finished:result.diff.finished.count];
         };
     }
     

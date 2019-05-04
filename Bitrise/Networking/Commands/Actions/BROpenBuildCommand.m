@@ -8,6 +8,8 @@
 
 #import "BROpenBuildCommand.h"
 
+#import "BRAnalytics.h"
+
 @interface BROpenBuildCommand ()
 
 @property (copy, nonatomic) NSString *buildSlug;
@@ -29,6 +31,8 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:buildPath]];
     
     BR_SAFE_CALL(callback, YES, nil);
+    
+    [[BRAnalytics analytics] trackOpenBuildAction];
 }
 
 @end

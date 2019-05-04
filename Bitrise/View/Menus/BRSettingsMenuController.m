@@ -8,6 +8,7 @@
 
 #import "BRSettingsMenuController.h"
 
+#import "BRAnalytics.h"
 #import "BRMacro.h"
 
 static const NSUInteger kMenuItemsCount = 7;
@@ -56,22 +57,27 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 #pragma mark - Actions -
 
 - (void)showAbout {
+    [[BRAnalytics analytics] trackAboutOpen];
     BR_SAFE_CALL(self.navigationCallback, BRSettingsMenuNavigationActionAbout);
 }
 
 - (void)showAccounts {
+    [[BRAnalytics analytics] trackAccountsOpen];
     BR_SAFE_CALL(self.navigationCallback, BRSettingsMenuNavigationActionAccounts);
 }
 
 - (void)toggleAutorun {
+    [[BRAnalytics analytics] trackAutorunToggle];
     [self.environment toggleAutolaunch];
 }
 
 - (void)toggleNotifications {
+    [[BRAnalytics analytics] trackNotificationsToggle];
     [self.environment toggleNotifications];
 }
 
 - (void)quitApp {
+    [[BRAnalytics analytics] trackQuitApp];
     [self.environment quitApp];
 }
 

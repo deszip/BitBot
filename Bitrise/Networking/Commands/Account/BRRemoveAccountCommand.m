@@ -8,6 +8,8 @@
 
 #import "BRRemoveAccountCommand.h"
 
+#import "BRAnalytics.h"
+
 @interface BRRemoveAccountCommand ()
 
 @property (strong, nonatomic, readonly) BRBitriseAPI *api;
@@ -33,6 +35,7 @@
         NSError *error;
         BOOL result = [self.storage removeAccount:self.slug error:&error];
         BR_SAFE_CALL(callback, result, error);
+        [[BRAnalytics analytics] trackAccountRemove];
     }];
 }
 

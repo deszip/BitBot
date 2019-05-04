@@ -5,6 +5,7 @@ target 'Bitrise' do
 
   pod 'EasyMapping'
   pod 'SDWebImage'
+  pod 'Mixpanel-OSX-Community', :git => 'https://github.com/orta/mixpanel-osx-unofficial.git'
 
   target 'BitriseTests' do
     inherit! :search_paths
