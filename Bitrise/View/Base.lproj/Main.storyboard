@@ -2170,6 +2170,6 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
         <image name="message-square" width="24" height="24"/>
         <image name="settings" width="22" height="22"/>
         <image name="stack-list" width="20" height="13"/>
-        <image name="success-status" width="59.5" height="59.5"/>
+        <image name="success-status" width="119" height="119"/>
     </resources>
 </document>
