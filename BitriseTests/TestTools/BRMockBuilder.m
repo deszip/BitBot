@@ -26,8 +26,8 @@
 
 #pragma mark - CD Models -
 
-- (BRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug {
-    BRAccount *account = [NSEntityDescription insertNewObjectForEntityForName:@"BRAccount" inManagedObjectContext:self.context];
+- (BTRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug {
+    BTRAccount *account = [NSEntityDescription insertNewObjectForEntityForName:@"BTRAccount" inManagedObjectContext:self.context];
     account.token = token;
     account.slug = slug;
     
@@ -36,7 +36,7 @@
     return account;
 }
 
-- (BRApp *)buildAppWithSlug:(NSString *)slug forAccount:(BRAccount *)account {
+- (BRApp *)buildAppWithSlug:(NSString *)slug forAccount:(BTRAccount *)account {
     BRApp *app = [NSEntityDescription insertNewObjectForEntityForName:@"BRApp" inManagedObjectContext:self.context];
     app.slug = slug;
     app.account = account;
@@ -48,7 +48,7 @@
 
 - (BRBuild *)buildWithSlug:(NSString *)slug status:(NSNumber *)status app:(BRApp *)app {
     if (!app) {
-        BRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self buildAccountWithToken:kAccountToken slug:kAccountSlug];
         app = [self buildAppWithSlug:kAppSlug1 forAccount:acc];
     }
     

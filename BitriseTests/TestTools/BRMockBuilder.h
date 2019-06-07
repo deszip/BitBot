@@ -40,8 +40,8 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 #pragma mark - CD Models -
 
-- (BRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug;
-- (BRApp *)buildAppWithSlug:(NSString *)slug forAccount:(BRAccount *)account;
+- (BTRAccount *)buildAccountWithToken:(NSString *)token slug:(NSString *)slug;
+- (BRApp *)buildAppWithSlug:(NSString *)slug forAccount:(BTRAccount *)account;
 - (BRBuild *)buildWithSlug:(NSString *)slug status:(NSNumber *)status app:(BRApp * _Nullable)app;
 - (BRBuildLog *)logForBuild:(BRBuild * _Nullable)build;
 

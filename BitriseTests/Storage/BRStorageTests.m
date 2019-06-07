@@ -58,7 +58,7 @@
 - (void)testStorageFetchesEmptyAccountsList {
     [self executeOnStorage:^{
         NSError *error;
-        NSArray <BRAccount *> *accounts = [self.storage accounts:&error];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:&error];
         expect(accounts.count).to.equal(0);
     }];
 }
@@ -68,7 +68,7 @@
     
     [self executeOnStorage:^{
         NSError *error;
-        NSArray <BRAccount *> *accounts = [self.storage accounts:&error];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:&error];
         
         expect(accounts.count).to.equal(1);
         expect(accounts[0].token).to.equal(kAccountToken);
@@ -81,7 +81,7 @@
         [self.storage saveAccount:[self.mockBuilder accountInfo] error:&error];
         expect(error).to.beNil();
         
-        NSArray <BRAccount *> *accounts = [self.storage accounts:&error];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:&error];
         expect(accounts.count).to.equal(1);
         expect(accounts[0].token).to.equal(kAccountToken);
     }];
@@ -96,7 +96,7 @@
         expect(error).to.beNil();
         expect(result).to.beTruthy();
         
-        NSArray <BRAccount *> *accounts = [self.storage accounts:&error];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:&error];
         expect(error).to.beNil();
         expect(accounts.count).to.equal(0);
     }];
@@ -117,7 +117,7 @@
     [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
-        NSArray <BRAccount *> *accounts = [self.storage accounts:nil];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:nil];
         NSError *error;
         [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
         
@@ -131,7 +131,7 @@
     
     [self executeOnStorage:^{
         // Insert app 1
-        NSArray <BRAccount *> *accounts = [self.storage accounts:nil];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:nil];
         NSError *error;
         [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
         
@@ -150,7 +150,7 @@
     [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
     [self executeOnStorage:^{
-        NSArray <BRAccount *> *accounts = [self.storage accounts:nil];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:nil];
         NSError *error;
         BOOL result = [self.storage updateApps:@[[self.mockBuilder appInfoWithSlug:kAppSlug1]] forAccount:accounts[0] error:&error];
         
@@ -160,7 +160,7 @@
 
 - (void)testStorageFetchesApps {
     [self executeOnStorage:^{
-        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         
         NSError *error;
@@ -172,7 +172,7 @@
 
 - (void)testStorageFetchesEmptyAppsList {
     [self executeOnStorage:^{
-        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         
         NSError *error;
         NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&error];
@@ -182,7 +182,7 @@
 
 - (void)testStorageAddsBuildToken {
     [self executeOnStorage:^{
-        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         
         NSError *error;
@@ -195,7 +195,7 @@
 
 - (void)testStorageIgnoresAppDuplicate {
     [self executeOnStorage:^{
-        BRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *account = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:account];
         
@@ -284,7 +284,7 @@
 
 - (void)testLatestBuildFetchIgnoresRunningBuilds {
     [self executeOnStorage:^{
-        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         BRBuild *finishedBuild = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(1) app:app];
         [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:app];
@@ -300,7 +300,7 @@
 - (void)testLatestBuildFetchOldestRunningBuild {
     [self executeOnStorage:^{
         // Add four builds, only first and last are finished
-        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(1) app:app];
         BRBuild *targetBuild = [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(0) app:app];
@@ -320,7 +320,7 @@
 - (void)testLatestBuildFetchMostRecentBuildIfNoRunning {
     [self executeOnStorage:^{
         // Add two finished builds
-        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(1) app:app];
         BRBuild *targetBuild = [self.mockBuilder buildWithSlug:kBuildSlug2 status:@(1) app:app];
@@ -338,7 +338,7 @@
 - (void)testLatestBuildIsNilIfNoBuilds {
     [self executeOnStorage:^{
         // Fetch latest build
-        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         NSError *error;
         BRBuild *latestBuild = [self.storage latestBuild:app error:&error];
@@ -352,7 +352,7 @@
 - (void)testSaveBuildsInsertsBuild {
     [self executeOnStorage:^{
         // Add build
-        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         BRBuildInfo *buildInfo = [self.mockBuilder buildInfoWithSlug:kBuildSlug1 status:@(0)];
         NSError *error;
@@ -372,7 +372,7 @@
 - (void)testSaveBuildsUpdatesBuildIfExists {
     [self executeOnStorage:^{
         // Add build with status 0
-        BRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
+        BTRAccount *acc = [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
         BRApp *app = [self.mockBuilder buildAppWithSlug:kAppSlug1 forAccount:acc];
         [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:app];
         
