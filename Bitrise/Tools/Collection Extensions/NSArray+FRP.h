@@ -1,16 +1,16 @@
 //
 //  NSArray+FRP.h
-//  FileProcessor
+//  BitBot
 //
-//  Created by Deszip on 16/05/2019.
-//  Copyright © 2019 FileProcessing Inc. All rights reserved.
+//  Created by Deszip on 18/07/2018.
+//  Copyright © 2018 BitBot. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface NSArray<ObjectType> (FRP)
 
-- (NSArray *)fp_map:(id (^)(ObjectType obj))map;
-- (instancetype)fp_filter:(BOOL (^)(ObjectType obj))filter;
+- (NSArray *)aps_map:(id (^)(ObjectType obj))map;
+- (instancetype)aps_filter:(BOOL (^)(ObjectType obj))filter;
 
 @end

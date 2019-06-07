@@ -67,7 +67,7 @@
 		0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
 		0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
 		0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70820F0D110001A6C15 /* BRBuildInfo.m */; };
-		0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0E93B70D20F0F9BB001A6C15 /* BTRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */; };
 		0EAB9D76221F043100A21D23 /* BRLogsWindowPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9D75221F043100A21D23 /* BRLogsWindowPresenter.m */; };
 		0EAB9D77221F043100A21D23 /* BRLogsWindowPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9D75221F043100A21D23 /* BRLogsWindowPresenter.m */; };
 		0EAB9D7C221F0A1A00A21D23 /* BRProgressObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9D7B221F0A1A00A21D23 /* BRProgressObserver.m */; };
@@ -82,7 +82,7 @@
 		0EB3ED4A21E336BD003F0364 /* BRStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED4921E336BD003F0364 /* BRStorageTests.m */; };
 		0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
 		0EB3ED4D21E33A1D003F0364 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
-		0EB3ED4E21E3453F003F0364 /* BRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */; };
+		0EB3ED4E21E3453F003F0364 /* BTRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */; };
 		0EB3ED4F21E3453F003F0364 /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */; };
@@ -234,8 +234,8 @@
 		0E93B70420F09A85001A6C15 /* BRSyncCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncCommand.m; sourceTree = "<group>"; };
 		0E93B70720F0D110001A6C15 /* BRBuildInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildInfo.h; sourceTree = "<group>"; };
 		0E93B70820F0D110001A6C15 /* BRBuildInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildInfo.m; sourceTree = "<group>"; };
-		0E93B70B20F0F9BB001A6C15 /* BRAccount+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRAccount+Mapping.h"; sourceTree = "<group>"; };
-		0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRAccount+Mapping.m"; sourceTree = "<group>"; };
+		0E93B70B20F0F9BB001A6C15 /* BTRAccount+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BTRAccount+Mapping.h"; sourceTree = "<group>"; };
+		0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BTRAccount+Mapping.m"; sourceTree = "<group>"; };
 		0E9A7E0A221DBD75002FCBE4 /* ASLogOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLogOperation.h; sourceTree = "<group>"; };
 		0E9F413320FEF8BF0083D646 /* BRCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommand.h; sourceTree = "<group>"; };
 		0E9F413720FEFA6A0083D646 /* BRMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMacro.h; sourceTree = "<group>"; };
@@ -603,8 +603,8 @@
 		0E93B70A20F0F9A6001A6C15 /* Mappings */ = {
 			isa = PBXGroup;
 			children = (
-				0E93B70B20F0F9BB001A6C15 /* BRAccount+Mapping.h */,
-				0E93B70C20F0F9BB001A6C15 /* BRAccount+Mapping.m */,
+				0E93B70B20F0F9BB001A6C15 /* BTRAccount+Mapping.h */,
+				0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */,
 				0EFD891320F1FDE10023FCCE /* BRBuild+Mapping.h */,
 				0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */,
 				0EFD893B20F4893B0023FCCE /* BRApp+Mapping.h */,
@@ -1003,7 +1003,7 @@
 				0EC53F45221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,
 				0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */,
-				0E93B70D20F0F9BB001A6C15 /* BRAccount+Mapping.m in Sources */,
+				0E93B70D20F0F9BB001A6C15 /* BTRAccount+Mapping.m in Sources */,
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
@@ -1063,7 +1063,7 @@
 				0EAB9DC82222CD2300A21D23 /* BRLogStubBuilder.m in Sources */,
 				0EB3ED5021E3453F003F0364 /* BRApp+Mapping.m in Sources */,
 				0E4AD08A2205F9D200257E8E /* BRLogsRequest.m in Sources */,
-				0EB3ED4E21E3453F003F0364 /* BRAccount+Mapping.m in Sources */,
+				0EB3ED4E21E3453F003F0364 /* BTRAccount+Mapping.m in Sources */,
 				0E1ED8F822282C3400A432B1 /* BRLogsWindowController.m in Sources */,
 				0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */,
 				0E1ED8F422282B3200A432B1 /* BRLogStatusView.m in Sources */,
@@ -1226,6 +1226,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
@@ -1246,6 +1247,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";

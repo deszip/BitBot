@@ -17,7 +17,7 @@
 - (NSPersistentContainer *)buildContainerOfType:(NSString *)type {
     NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
     NSPersistentStoreDescription *storeDescription = [NSPersistentStoreDescription new];
-    NSURL *documentsURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0];
+    NSURL *documentsURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask][0];
     NSURL *appDirectoryURL = [documentsURL URLByAppendingPathComponent:@"/Bitrise"];
     
     BOOL isDir;

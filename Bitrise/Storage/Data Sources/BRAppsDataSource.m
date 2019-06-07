@@ -13,7 +13,7 @@
 #import "BRAppCellView.h"
 #import "BRBuildCellView.h"
 
-#import "BRAccount+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
 

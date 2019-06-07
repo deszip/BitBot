@@ -1,9 +1,9 @@
 //
 //  NSDictionary+FRP.h
-//  AppSpectorSDK
+//  BitBot
 //
-//  Created by Deszip on 19/09/2017.
-//  Copyright © 2017 Techery. All rights reserved.
+//  Created by Deszip on 18/07/2018.
+//  Copyright © 2018 BitBot. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -12,7 +12,7 @@
 #import "BRKeyInputViewController.h"
 #import "BRAccountsMenuController.h"
 
-#import "BRAccount+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 #import "BRGetAccountCommand.h"
 #import "BRRemoveAccountCommand.h"
 #import "BRSyncCommand.h"
@@ -111,7 +111,7 @@
 
 - (void)handleSelection:(NSNotification *)notification {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView selectedRow]];
-    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
         [self.removeButton setEnabled:YES];
     } else {
         [self.removeButton setEnabled:NO];
@@ -126,9 +126,9 @@
 
 - (IBAction)removeAccount:(NSButton *)sender {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView selectedRow]];
-    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
         [self confirmDeletion:^{
-            [self removeAccountWithSlug:[(BRAccount *)selectedItem slug]];
+            [self removeAccountWithSlug:[(BTRAccount *)selectedItem slug]];
         }];
     }
 }
@@ -150,10 +150,10 @@
 
 - (void)removeSelectedAccount {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
         BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
                                                                               storage:self.storage
-                                                                                slug:[(BRAccount *)selectedItem slug]];
+                                                                                slug:[(BTRAccount *)selectedItem slug]];
         [command execute:nil];
     }
 }

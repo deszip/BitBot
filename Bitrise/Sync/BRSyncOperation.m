@@ -48,7 +48,7 @@
         //[[ASTracer tracer] startSpan:@"Accounts fetch" inScope:scopeName];
         
         NSError *accFetchError;
-        NSArray <BRAccount *> *accounts = [self.storage accounts:&accFetchError];
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:&accFetchError];
         if (!accounts) {
             NSLog(@"Failed to get accounts: %@", accFetchError);
             [super finish];
@@ -63,7 +63,7 @@
         
         //[[ASTracer tracer] stopSpan:@"Accounts fetch" inScope:scopeName sucess:YES];
         
-        [accounts enumerateObjectsUsingBlock:^(BRAccount *account, NSUInteger idx, BOOL *stop) {
+        [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
             
             dispatch_group_enter(self.group);
             

@@ -13,7 +13,7 @@
 #import "NSArray+FRP.h"
 #import "BRMacro.h"
 
-#import "BRAccount+Mapping.h"
+#import "BTRAccount+Mapping.h"
 #import "BRApp+Mapping.h"
 #import "BRBuild+Mapping.h"
 #import "BRBuildLog+Mapping.h"
@@ -53,28 +53,28 @@
 
 #pragma mark - Accounts  -
 
-- (NSArray <BRAccount *> *)accounts:(NSError * __autoreleasing *)error {
-    NSFetchRequest *request = [BRAccount fetchRequest];
+- (NSArray <BTRAccount *> *)accounts:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BTRAccount fetchRequest];
     NSArray *accounts = [self.context executeFetchRequest:request error:error];
     
     return accounts;
 }
 
 - (BOOL)saveAccount:(BRAccountInfo *)accountInfo error:(NSError * __autoreleasing *)error {
-    BRAccount *account = [EKManagedObjectMapper objectFromExternalRepresentation:accountInfo.rawResponce withMapping:[BRAccount objectMapping] inManagedObjectContext:self.context];
+    BTRAccount *account = [EKManagedObjectMapper objectFromExternalRepresentation:accountInfo.rawResponce withMapping:[BTRAccount objectMapping] inManagedObjectContext:self.context];
     account.token = accountInfo.token;
     
     return [self saveContext:self.context error:error];
 }
 
 - (BOOL)removeAccount:(NSString *)slug error:(NSError * __autoreleasing *)error {
-    NSFetchRequest *request = [BRAccount fetchRequest];
+    NSFetchRequest *request = [BTRAccount fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
     
     NSError *requestError = nil;
     NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
     if (accounts.count > 0) {
-        [accounts enumerateObjectsUsingBlock:^(BRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
+        [accounts enumerateObjectsUsingBlock:^(BTRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
             [self.context deleteObject:nextAccount];
         }];
         return [self saveContext:self.context error:error];
@@ -85,8 +85,8 @@
 
 #pragma mark - Apps -
 
-- (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
-    NSFetchRequest *request = [BRAccount fetchRequest];
+- (BOOL)updateApps:(NSArray <BRAppInfo *> *)appsInfo forAccount:(BTRAccount *)account error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BTRAccount fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"slug == %@", account.slug];
     NSError *requestError = nil;
     NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
@@ -114,7 +114,7 @@
     }
 }
 
-- (NSArray <BRApp *> *)appsForAccount:(BRAccount *)account error:(NSError * __autoreleasing *)error {
+- (NSArray <BRApp *> *)appsForAccount:(BTRAccount *)account error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BRApp fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"account.slug == %@", account.slug];
     NSArray <BRApp *> *apps = [self.context executeFetchRequest:request error:error];

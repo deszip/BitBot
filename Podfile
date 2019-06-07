@@ -4,7 +4,7 @@ target 'Bitrise' do
   # use_frameworks!
 
   pod 'EasyMapping'
-  pod 'SDWebImage'
+  pod 'SDWebImage', :podspec => 'https://raw.githubusercontent.com/SDWebImage/SDWebImage/master/SDWebImage.podspec'
   pod 'Mixpanel-OSX-Community', :git => 'https://github.com/orta/mixpanel-osx-unofficial.git'
 
   target 'BitriseTests' do

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "64D5D16A9A428726966176BAE93649CA"
+               BlueprintIdentifier = "6FB117A0AF935F961E149EF4814DB63B"
                BuildableName = "libEasyMapping.a"
                BlueprintName = "EasyMapping"
                ReferencedContainer = "container:Pods.xcodeproj">

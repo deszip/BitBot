@@ -6,9 +6,9 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
-#import "BRAccount+Mapping.h"
+#import "BTRAccount+Mapping.h"
 
-@implementation BRAccount (Mapping)
+@implementation BTRAccount (Mapping)
 
 + (EKManagedObjectMapping *)objectMapping {
     return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([self class]) withBlock:^(EKManagedObjectMapping *mapping) {

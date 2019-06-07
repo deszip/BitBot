@@ -1,5 +1,5 @@
 //
-//  BRAccount+Mapping.h
+//  BTRAccount+Mapping.h
 //  BitBot
 //
 //  Created by Deszip on 07/07/2018.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 #import <EasyMapping/EasyMapping.h>
-#import "BRAccount+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAccount (Mapping) <EKManagedMappingProtocol>
+@interface BTRAccount (Mapping) <EKManagedMappingProtocol>
 
 @end
 
