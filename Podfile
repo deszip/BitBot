@@ -9,7 +9,8 @@ target 'Bitrise' do
 
   target 'BitriseTests' do
     inherit! :search_paths
-    
+  
+    pod 'SDWebImage', :podspec => 'https://raw.githubusercontent.com/SDWebImage/SDWebImage/master/SDWebImage.podspec'
     pod 'OCMock', '~> 3.4.3'
     pod 'Expecta', '~> 1.0.6'
     
