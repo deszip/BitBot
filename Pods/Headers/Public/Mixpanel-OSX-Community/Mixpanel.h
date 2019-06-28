@@ -1,0 +1,1 @@
+../../../Mixpanel-OSX-Community/Mixpanel/Mixpanel.h
