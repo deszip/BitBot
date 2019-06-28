@@ -8,7 +8,7 @@
 
 #import "BRAnalytics.h"
 
-#import <Mixpanel_OSX_Community/Mixpanel.h>
+#import <Mixpanel-OSX-Community/Mixpanel.h>
 
 static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailabilityKey";
 
