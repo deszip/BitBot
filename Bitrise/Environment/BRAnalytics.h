@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)analytics;
 
 - (void)start;
+- (void)toggle;
 - (void)setEnabled:(BOOL)isEnabled;
 - (BOOL)isEnabled;
 
@@ -27,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)trackAccountsOpen;
 - (void)trackAutorunToggle;
 - (void)trackNotificationsToggle;
+- (void)trackAnalyticsToggle;
 
 - (void)trackAccountAdd;
 - (void)trackAccountRemove;

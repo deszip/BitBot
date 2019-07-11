@@ -19,6 +19,7 @@ static BRAnalyticsEvent * const kAboutScreenEvent = @"app_showabout";
 static BRAnalyticsEvent * const kAccountsScreenEvent = @"app_showaccounts";
 static BRAnalyticsEvent * const kAutorunToggleEvent = @"app_autoruntoggle";
 static BRAnalyticsEvent * const kNotificationsToggleEvent = @"app_notificationstoggle";
+static BRAnalyticsEvent * const kAnalyticsToggleEvent = @"app_analyticstoggle";
 
 static BRAnalyticsEvent * const kAddAccountEvent = @"account_add";
 static BRAnalyticsEvent * const kRemoveAccountEvent = @"account_remove";
@@ -65,6 +66,10 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
     }
 }
 
+- (void)toggle {
+    [self setEnabled:![self isEnabled]];
+}
+
 - (void)setEnabled:(BOOL)isEnabled {
     [self.defaults setBool:isEnabled forKey:kBRAnalyticsAvailabilityKey];
     [self.defaults synchronize];
@@ -81,6 +86,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)trackAccountsOpen { [self sendEvent:kAccountsScreenEvent properties:@{}]; }
 - (void)trackAutorunToggle { [self sendEvent:kAutorunToggleEvent properties:@{}]; }
 - (void)trackNotificationsToggle { [self sendEvent:kNotificationsToggleEvent properties:@{}]; }
+- (void)trackAnalyticsToggle { [self sendEvent:kAnalyticsToggleEvent properties:@{}]; }
 
 - (void)trackAccountAdd { [self sendEvent:kAddAccountEvent properties:@{}]; }
 - (void)trackAccountRemove { [self sendEvent:kRemoveAccountEvent properties:@{}]; }
