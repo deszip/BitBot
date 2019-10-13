@@ -2108,7 +2108,7 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="qcc-9W-U4s"/>
                                         </constraints>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="l3Z-Yg-qzU">
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="l3Z-Yg-qzU">
                                             <rect key="frame" x="-100" y="-100" width="240" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>

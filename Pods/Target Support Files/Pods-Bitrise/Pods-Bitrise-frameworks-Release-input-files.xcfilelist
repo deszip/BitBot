@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Bitrise/Pods-Bitrise-frameworks.sh
+${BUILT_PRODUCTS_DIR}/EasyMapping/EasyMapping.framework
+${BUILT_PRODUCTS_DIR}/Mixpanel-OSX-Community/Mixpanel_OSX_Community.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

@@ -45,9 +45,9 @@
                 [weakSelf.logObserver startObservingBuild:buildSlug];
             }];
             
-            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
-                                                  running:result.diff.running.count
-                                                 finished:result.diff.finished.count];
+//            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
+//                                                  running:result.diff.running.count
+//                                                 finished:result.diff.finished.count];
         };
     }
     

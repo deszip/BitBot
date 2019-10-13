@@ -1,8 +1,13 @@
 PODS:
+  - Crashlytics-OSX (3.4.1):
+    - Fabric-OSX (~> 1.6.0)
   - EasyMapping (0.22.1):
     - EasyMapping/Core (= 0.22.1)
   - EasyMapping/Core (0.22.1)
   - Expecta (1.0.6)
+  - Fabric-OSX (1.6.1):
+    - Fabric-OSX/Base (= 1.6.1)
+  - Fabric-OSX/Base (1.6.1)
   - Mixpanel-OSX-Community (2.1.1)
   - OCMock (3.4.3)
   - SDWebImage (5.0.6):
@@ -10,6 +15,7 @@ PODS:
   - SDWebImage/Core (5.0.6)
 
 DEPENDENCIES:
+  - Crashlytics-OSX
   - EasyMapping
   - Expecta (~> 1.0.6)
   - Mixpanel-OSX-Community (from `https://github.com/orta/mixpanel-osx-unofficial.git`)
@@ -17,11 +23,14 @@ DEPENDENCIES:
   - SDWebImage (~> 5.0.6)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - EasyMapping
     - Expecta
     - OCMock
     - SDWebImage
+  trunk:
+    - Crashlytics-OSX
+    - Fabric-OSX
 
 EXTERNAL SOURCES:
   Mixpanel-OSX-Community:
@@ -33,12 +42,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/orta/mixpanel-osx-unofficial.git
 
 SPEC CHECKSUMS:
+  Crashlytics-OSX: 6037a1e50441be7535a4877a5831106f195acdae
   EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  Fabric-OSX: 81193bf06f223a5c944c01d1778b58524544d288
   Mixpanel-OSX-Community: a322ca7be517cdbe0107717f45975a6d0697a304
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: b31a14d9b80f65a8232262f818b1d534ce9d8e99
+PODFILE CHECKSUM: fa19488251474661f512c4c621090cc5c49026f7
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.0
