@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-BitriseTests/Pods-BitriseTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework
+${BUILT_PRODUCTS_DIR}/OCMock/OCMock.framework

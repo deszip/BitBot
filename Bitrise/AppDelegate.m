@@ -61,6 +61,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[BRAnalytics analytics] start];
+    [[BRAnalytics analytics] trackSessionStart];
     
     // Start sync
     BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]
@@ -81,12 +82,17 @@
     self.popover.behavior = NSPopoverBehaviorTransient;
 }
 
+- (void)applicationWillTerminate:(NSNotification *)notification {
+    [[BRAnalytics analytics] trackSessionEnd];
+}
+
 #pragma mark - Actions -
 
 - (void)togglePopover:(NSStatusBarButton *)sender {
     if (self.popover.shown) {
         [self.popover performClose:self];
     } else {
+        [[BRAnalytics analytics] trackOpenPopover];
         if (self.detachableWindowController.window.isVisible) {
             [self.detachableWindowController.window makeKeyAndOrderFront:self];
         } else {

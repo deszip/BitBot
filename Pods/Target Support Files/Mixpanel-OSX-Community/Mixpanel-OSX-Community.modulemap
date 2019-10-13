@@ -1,0 +1,6 @@
+framework module Mixpanel_OSX_Community {
+  umbrella header "Mixpanel-OSX-Community-umbrella.h"
+
+  export *
+  module * { export * }
+}

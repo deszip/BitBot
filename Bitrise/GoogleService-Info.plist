@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>773013141867-ede12curil9v8vbo4beav05u0oa8i8iq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.773013141867-ede12curil9v8vbo4beav05u0oa8i8iq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCvgh_uRE1S1wDsEdvvo4BS2m102vZ5rqI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>773013141867</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bitbot</string>
+	<key>PROJECT_ID</key>
+	<string>bitbot-30b55</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bitbot-30b55.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:773013141867:ios:6e4bf99d32071272</string>
+	<key>DATABASE_URL</key>
+	<string>https://bitbot-30b55.firebaseio.com</string>
+</dict>
+</plist>
