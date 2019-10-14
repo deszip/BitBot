@@ -10,15 +10,15 @@
 
 @implementation BRBuildStateInfo
 
-- (instancetype)initWithBuildStatus:(NSUInteger)buildStatus holdStatus:(BOOL)holdStatus {
+- (instancetype)initWithBuildStatus:(NSUInteger)buildStatus holdStatus:(BOOL)holdStatus waiting:(BOOL)isWaiting {
     if (self = [super init]) {
-        [self applyStatus:buildStatus isOnHold:holdStatus];
+        [self applyStatus:buildStatus isOnHold:holdStatus waiting:isWaiting];
     }
     
     return self;
 }
 
-- (void)applyStatus:(NSUInteger)buildStatus isOnHold:(BOOL)isOnHold {
+- (void)applyStatus:(NSUInteger)buildStatus isOnHold:(BOOL)isOnHold waiting:(BOOL)isWaiting {
     switch (buildStatus) {
         case 0:
             if (isOnHold) {
@@ -27,8 +27,13 @@
                 _state = BRBuildStateHold;
             } else {
                 _statusImageName = @"progress-status";
-                _statusTitle = @"In progress...";
-                _state = BRBuildStateInProgress;
+                if (isWaiting) {
+                    _statusTitle = @"Waiting for worker...";
+                    _state = BRBuildStateWaitingForWorker;
+                } else {
+                    _statusTitle = @"In progress...";
+                    _state = BRBuildStateInProgress;
+                }
             }
             break;
             
