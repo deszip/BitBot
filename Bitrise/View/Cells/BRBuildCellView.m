@@ -69,7 +69,7 @@ static const NSTimeInterval kSpinDuration = 1.0;
 
 - (void)setRunningSince:(NSDate *)startDate {
     void (^buildDurationUpdate)(NSTimer *) = ^void(NSTimer *timer) {
-        NSTimeInterval duration = [[NSDate date] timeIntervalSinceDate:startDate];
+        NSTimeInterval duration = (startDate == nil) ? 0 : [[NSDate date] timeIntervalSinceDate:startDate];
         [self updateBuildTime:duration];
     };
     buildDurationUpdate(self.timer);

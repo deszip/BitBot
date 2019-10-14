@@ -43,7 +43,8 @@
     BRBuildStateInfo *buildStateInfo = [[[BRBuildInfo alloc] initWithBuild:build] stateInfo];
     
     [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
-    if (buildStateInfo.state == BRBuildStateInProgress) {
+    if (buildStateInfo.state == BRBuildStateInProgress ||
+        buildStateInfo.state == BRBuildStateWaitingForWorker) {
         [cell spinImage:YES];
         [cell setRunningSince:build.envPrepareFinishedTime];
     } else {

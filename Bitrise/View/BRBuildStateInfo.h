@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, BRBuildState) {
     BRBuildStateUndefined = 0,
+    BRBuildStateWaitingForWorker,
     BRBuildStateHold,
     BRBuildStateInProgress,
     BRBuildStateSuccess,
@@ -28,7 +29,9 @@ typedef NS_ENUM(NSUInteger, BRBuildState) {
 @property (strong, nonatomic, readonly) NSString *statusImageName;
 @property (strong, nonatomic, readonly) NSString *statusTitle;
 
-- (instancetype)initWithBuildStatus:(NSUInteger)buildStatus holdStatus:(BOOL)holdStatus;
+- (instancetype)initWithBuildStatus:(NSUInteger)buildStatus
+                         holdStatus:(BOOL)holdStatus
+                            waiting:(BOOL)isWaiting;
 
 @end
 
