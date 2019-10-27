@@ -144,7 +144,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildCouldBeAborted;
             case BRBuildMenuItemShowLog: return buildLogAvailable;
-            case BRBuildMenuItemDownload: return !buildInProgress;
+            case BRBuildMenuItemDownload: return buildLogAvailable;
             case BRBuildMenuItemOpenBuild: return YES;
             default: return NO;
         }
