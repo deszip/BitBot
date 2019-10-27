@@ -138,13 +138,13 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
         BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
                                    buildInfo.stateInfo.state == BRBuildStateHold;
-        BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold;
+        BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold && !buildInProgress;
         
         switch (menuItem.tag) {
             case BRBuildMenuItemRebuild: return !buildInProgress;
             case BRBuildMenuItemAbort: return buildCouldBeAborted;
             case BRBuildMenuItemShowLog: return buildLogAvailable;
-            case BRBuildMenuItemDownload: return !buildInProgress;
+            case BRBuildMenuItemDownload: return buildLogAvailable;
             case BRBuildMenuItemOpenBuild: return YES;
             default: return NO;
         }

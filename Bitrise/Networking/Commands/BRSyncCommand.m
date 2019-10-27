@@ -8,6 +8,7 @@
 
 #import "BRSyncCommand.h"
 
+#import "BRMacro.h"
 #import "BRAnalytics.h"
 #import "NSArray+FRP.h"
 
@@ -35,15 +36,17 @@
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
             [weakSelf.environment postNotifications:builds forApp:result.app];
             
+#if FEATURE_LIVE_LOG
             // Logs observing
             NSArray *runningBuilds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.running];
             NSSet <NSString *> *runningBuildsSlugs = [NSSet setWithArray:[runningBuilds aps_map:^NSString*(BRBuildInfo *buildInfo) {
                 return buildInfo.slug;
             }]];
-            
+
             [runningBuildsSlugs enumerateObjectsUsingBlock:^(NSString *buildSlug, BOOL *stop) {
                 [weakSelf.logObserver startObservingBuild:buildSlug];
             }];
+#endif
             
             [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
                                                   running:result.diff.running.count
