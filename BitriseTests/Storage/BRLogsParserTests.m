@@ -44,4 +44,37 @@
     expect([self.parser stepNameForLine:@"foo"]).to.beNil();
 }
 
+- (void)testParserDetectsBrokenLine {
+    expect([self.parser lineBroken:@"foo"]).to.beTruthy();
+}
+
+- (void)testParserDetectsLineWithNewline {
+    expect([self.parser lineBroken:@"foo\n"]).to.beFalsy();
+}
+
+- (void)testParserDetectsEmtyLineAsNonBroken {
+    expect([self.parser lineBroken:@""]).to.beFalsy();
+}
+
+- (void)testSplittingChunk {
+    NSString *logChunk = @"line1\nline2\nline3";
+    NSArray *chunks = [self.parser split:logChunk];
+    
+    expect(chunks.count).to.equal(3);
+}
+
+- (void)testSplittingChunkWithNewlineAtTheEnd {
+    NSString *logChunk = @"line1\nline2\nline3\n";
+    NSArray *chunks = [self.parser split:logChunk];
+    
+    expect(chunks.count).to.equal(3);
+}
+
+- (void)testSplittingEmptyChunk {
+    NSString *logChunk = @"";
+    NSArray *chunks = [self.parser split:logChunk];
+    
+    expect(chunks.count).to.equal(0);
+}
+
 @end
