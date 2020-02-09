@@ -55,7 +55,7 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
     // Data source
     self.logDataSource = [self.dependencyContainer logDataSource];
     [self.logDataSource bindOutlineView:self.logOutlineView];
-    [self.logDataSource bindTextView:self.logTextView];
+    //[self.logDataSource bindTextView:self.logTextView];
     [self.logDataSource fetch:self.buildInfo.slug];
 }
 

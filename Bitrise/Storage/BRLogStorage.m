@@ -14,6 +14,7 @@
 #import "BRBuildLog+Mapping.h"
 #import "BRLogLine+CoreDataClass.h"
 #import "BRLogStep+CoreDataClass.h"
+#import "BRLogChunk+CoreDataClass.h"
 #import "BRLogsParser.h"
 
 @interface BRLogStorage ()
@@ -37,8 +38,6 @@
 }
 
 #pragma mark - Logs -
-
-// @TODO: Extract to log storage
 
 - (BOOL)saveLogMetadata:(NSDictionary *)rawLogMetadata forBuild:(BRBuild *)build error:(NSError * __autoreleasing *)error {
     if (build.log) {
@@ -112,6 +111,7 @@
         }
         
         line.step = currentStep;
+        currentStep.chunk.text = [currentStep.chunk.text stringByAppendingString:line.text];
     }];
     
     return [self saveContext:self.context error:error];
@@ -148,6 +148,11 @@
     BRLogStep *step = [NSEntityDescription insertNewObjectForEntityForName:stepClassName inManagedObjectContext:self.context];
     step.name = name;
     step.index = index;
+    
+    NSString *chunkClassName = NSStringFromClass([BRLogChunk class]);
+    BRLogChunk *stepChunk = [NSEntityDescription insertNewObjectForEntityForName:chunkClassName inManagedObjectContext:self.context];
+    stepChunk.text = @"";
+    step.chunk = stepChunk;
     
     return step;
 }

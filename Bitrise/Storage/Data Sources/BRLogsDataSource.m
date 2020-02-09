@@ -13,6 +13,7 @@
 #import "BRMacro.h"
 #import "BRLogLine+CoreDataClass.h"
 #import "BRLogStep+CoreDataClass.h"
+#import "BRLogChunk+CoreDataClass.h"
 
 #import "BRLogLineView.h"
 #import "BRLogStepView.h"
@@ -48,17 +49,17 @@
     self.stepFRC = [[NSFetchedResultsController alloc] initWithFetchRequest:stepsRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     [self.stepFRC setDelegate:self];
     
-    NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
-    linesRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
-                                     [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]];
-    linesRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
-    [context setAutomaticallyMergesChangesFromParent:YES];
-    self.logFRC = [[NSFetchedResultsController alloc] initWithFetchRequest:linesRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-    [self.logFRC setDelegate:self];
+//    NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
+//    linesRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
+//                                     [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]];
+//    linesRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
+//    [context setAutomaticallyMergesChangesFromParent:YES];
+//    self.logFRC = [[NSFetchedResultsController alloc] initWithFetchRequest:linesRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+//    [self.logFRC setDelegate:self];
 }
 
 - (void)fetch:(NSString *)buildSlug {
-    if (!self.logFRC || ![self.buildSlug isEqualToString:buildSlug]) {
+    if (!self.stepFRC || ![self.buildSlug isEqualToString:buildSlug]) {
         self.buildSlug = buildSlug;
         [self buildFRC:self.container.viewContext buildSlug:buildSlug];
     }
@@ -67,9 +68,9 @@
     if (![self.stepFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch steps: %@ - %@", buildSlug, fetchError);
     }
-    if (![self.logFRC performFetch:&fetchError]) {
-        NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
-    }
+//    if (![self.logFRC performFetch:&fetchError]) {
+//        NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
+//    }
     
     [self updateContent];
 }
@@ -81,9 +82,9 @@
     [self.outlineView reloadData];
 }
 
-- (void)bindTextView:(NSTextView *)textView {
-    _textView = textView;
-}
+//- (void)bindTextView:(NSTextView *)textView {
+//    _textView = textView;
+//}
 
 #pragma mark - Log updates -
 
@@ -91,35 +92,34 @@
     [self.outlineView reloadData];
     [self.outlineView scrollToEndOfDocument:self];
     
-    BOOL hasSelection = self.textView.selectedRange.length > 0;
-    if (hasSelection) {
-        return;
-    }
+//    BOOL hasSelection = self.textView.selectedRange.length > 0;
+//    if (hasSelection) {
+//        return;
+//    }
     
-    BOOL needsScroll = (NSMaxY(self.textView.bounds) - NSMaxY(self.textView.visibleRect)) < 100;
-    NSString *insertion = [self contentFromLine:0];
-    [self.textView setString:insertion];
-    if (needsScroll) {
-        [(NSScrollView *)self.textView.superview.superview setScrollsDynamically:NO];
-        [self.textView scrollToEndOfDocument:self];
-        //[self.textView scrollRangeToVisible:NSMakeRange(self.textView.string.length, 0)];
-    }
+//    BOOL needsScroll = (NSMaxY(self.textView.bounds) - NSMaxY(self.textView.visibleRect)) < 100;
+//    NSString *insertion = [self contentFromLine:0];
+//    [self.textView setString:insertion];
+//    if (needsScroll) {
+//        [(NSScrollView *)self.textView.superview.superview setScrollsDynamically:NO];
+//        [self.textView scrollToEndOfDocument:self];
+//    }
 }
 
 #pragma mark - Text processing -
 
-- (NSString *)contentFromLine:(NSUInteger)startLine {
-    NSUInteger lineCount = [[self.logFRC.sections[0] objects] count];
-    NSMutableString *content = [@"" mutableCopy];
-    for (NSUInteger lineIndex = startLine; lineIndex < lineCount; lineIndex++) {
-        BRLogLine *line = [self.logFRC objectAtIndexPath:[NSIndexPath indexPathForItem:lineIndex inSection:0]];
-        if (line) {
-            [content appendString:line.text];
-        }
-    }
-    
-    return content;
-}
+//- (NSString *)contentFromLine:(NSUInteger)startLine {
+//    NSUInteger lineCount = [[self.logFRC.sections[0] objects] count];
+//    NSMutableString *content = [@"" mutableCopy];
+//    for (NSUInteger lineIndex = startLine; lineIndex < lineCount; lineIndex++) {
+//        BRLogLine *line = [self.logFRC objectAtIndexPath:[NSIndexPath indexPathForItem:lineIndex inSection:0]];
+//        if (line) {
+//            [content appendString:line.text];
+//        }
+//    }
+//
+//    return content;
+//}
 
 #pragma mark - NSOutlineViewDataSource -
 
@@ -137,7 +137,8 @@
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
     if ([item isKindOfClass:[BRLogStep class]]) {
-        return [[(BRLogStep *)item lines] count];
+        //return [[(BRLogStep *)item lines] count];
+        return 1;
     }
     
     return [[self.stepFRC.sections[0] objects] count];
@@ -149,8 +150,16 @@
     if ([item isKindOfClass:[BRLogLine class]]) {
         BRLogLine *line = (BRLogLine *)item;
         BRLogLineView *cell = [outlineView makeViewWithIdentifier:@"BRLogLineView" owner:self];
-        NSString *logLine = [line.text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-        [cell.lineLabel setStringValue:logLine];
+        
+//        __block NSMutableArray *lines = [NSMutableArray array];
+//        [line.step.lines enumerateObjectsUsingBlock:^(BRLogLine *nextLine, NSUInteger idx, BOOL *stop) {
+//            NSString *logLine = [nextLine.text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+//            [lines addObject:logLine];
+//        }];
+        
+        if (line.step.chunk.text) {
+            [cell.lineLabel setStringValue:line.step.chunk.text];
+        }
         
         return cell;
     }
