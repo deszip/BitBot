@@ -77,4 +77,11 @@
     expect(chunks.count).to.equal(0);
 }
 
+- (void)testColorSplit {
+    NSString *line = @"[36mINFO[0m[08:59:14] [33;1mbitrise runs in Secret Filtering mode[0m";
+    NSAttributedString *coloredString = [self.parser coloredLine:line];
+    
+    expect(coloredString).toNot.beNil();
+}
+
 @end

@@ -120,6 +120,7 @@
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		6B9EB643B31D43C782DFEAE2 /* libPods-BitriseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC38F36C8ABB179E968B54 /* libPods-BitriseTests.a */; };
 		8A6E00C56C408BC470C8A65C /* libPods-Bitrise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */; };
+		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -311,6 +312,8 @@
 		1933E73DED40E2A87EF04BC3 /* Pods-BitriseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitriseTests/Pods-BitriseTests.release.xcconfig"; sourceTree = "<group>"; };
 		74C0A871342AC9F3D945FEB5 /* Pods-BitriseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitriseTests/Pods-BitriseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E0CDE8596D9125C3BCDAB6 /* Pods-Bitrise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitrise.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bitrise/Pods-Bitrise.release.xcconfig"; sourceTree = "<group>"; };
+		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
+		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bitrise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCC38F36C8ABB179E968B54 /* libPods-BitriseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -579,6 +582,8 @@
 				0E93B6F620F0837B001A6C15 /* BRStorage.m */,
 				0EAB9DD92225AD7C00A21D23 /* BRLogsParser.h */,
 				0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */,
+				D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */,
+				D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */,
 				0E52AB7E2242A4A60020A943 /* BRLogStorage.h */,
 				0E52AB7F2242A4A60020A943 /* BRLogStorage.m */,
 			);
@@ -1019,6 +1024,7 @@
 				0E8DFB4421D792D000E7E5AC /* BRAddAccountOperation.m in Sources */,
 				0E7A18BE21CCE5B10096E1E6 /* BREnvironment.m in Sources */,
 				0E8DFB4721D7A05C00E7E5AC /* BRManagingAppCellView.m in Sources */,
+				D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */,
 				0E51715C21D2074E000D470E /* BRBuildMenuController.m in Sources */,
 				0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */,
 				0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */,

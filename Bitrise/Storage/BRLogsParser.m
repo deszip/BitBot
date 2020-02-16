@@ -8,6 +8,7 @@
 
 #import "BRLogsParser.h"
 
+#import "AMR_ANSIEscapeHelper.h"
 #import "NSArray+FRP.h"
 
 @implementation BRLogsParser
@@ -50,6 +51,34 @@
     }
     
     return nil;
+}
+
+//- (NSArray *)colorChunks:(NSString *)input {
+//    __block NSMutableArray *chunks = [NSMutableArray array];
+//
+//    NSError *error;
+//        //NSRegularExpression *colorRegex = [NSRegularExpression regularExpressionWithPattern:@"\\e.(\\d{1,1};)??(\\d{1,2}m)" options:NSRegularExpressionUseUnixLineSeparators error:&error];
+//    NSRegularExpression *colorRegex = [NSRegularExpression regularExpressionWithPattern:@"\\e.(\\d{1,1};)??(\\d{1,2}m)" options:NSRegularExpressionUseUnixLineSeparators error:&error];
+//
+//    NSArray *matches = [colorRegex matchesInString:input options:NSMatchingReportProgress range:NSMakeRange(0, [input length])];
+//    NSString *colorStrippedString = [colorRegex stringByReplacingMatchesInString:input options:0 range:NSMakeRange(0,[input length]) withTemplate:@""];
+//    //NSMutableAttributedString *attributedResult = [[NSMutableAttributedString alloc] initWithString:[colorStrippedString stringByAppendingString:@"\r\n"]];
+//    //[attributedResult addAttributes:*attrs range:NSMakeRange(0, [colorStrippedString length])];
+//
+//    [colorRegex enumerateMatchesInString:input options:NSMatchingReportProgress range:NSMakeRange(0, [input length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+//        if (result) {
+//            //NSRange rangeToHandle = NSMakeRange([result rangeAtIndex:1].location-1, [result rangeAtIndex:1].length+1);
+//            NSString *subString = [input substringWithRange:result.range];
+//            [chunks addObject:subString];
+//        }
+//    }];
+//
+//    return [chunks copy];
+//}
+
+- (NSAttributedString *)coloredLine:(NSString *)input {
+    AMR_ANSIEscapeHelper *helper = [AMR_ANSIEscapeHelper new];
+    return [helper attributedStringWithANSIEscapedString:input];
 }
 
 @end

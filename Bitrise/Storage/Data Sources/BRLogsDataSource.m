@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "AMR_ANSIEscapeHelper.h"
+
 #import "BRLogsDataSource.h"
 
 #import "BRMacro.h"
@@ -98,7 +100,12 @@
     
     BOOL needsScroll = (NSMaxY(self.textView.bounds) - NSMaxY(self.textView.visibleRect)) < 100;
     NSString *insertion = [self contentFromLine:0];
-    [self.textView setString:insertion];
+    //[self.textView setString:insertion];
+    
+    AMR_ANSIEscapeHelper *helper = [AMR_ANSIEscapeHelper new];
+    NSAttributedString *attrLine = [helper attributedStringWithANSIEscapedString:insertion];
+    [[self.textView textStorage] appendAttributedString:attrLine];
+    
     if (needsScroll) {
         [(NSScrollView *)self.textView.superview.superview setScrollsDynamically:NO];
         [self.textView scrollToEndOfDocument:self];
@@ -150,7 +157,11 @@
         BRLogLine *line = (BRLogLine *)item;
         BRLogLineView *cell = [outlineView makeViewWithIdentifier:@"BRLogLineView" owner:self];
         NSString *logLine = [line.text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-        [cell.lineLabel setStringValue:logLine];
+        
+        //[cell.lineLabel setStringValue:logLine];
+        
+        AMR_ANSIEscapeHelper *helper = [AMR_ANSIEscapeHelper new];
+        [cell.lineLabel setAttributedStringValue:[helper attributedStringWithANSIEscapedString:logLine]];
         
         return cell;
     }
