@@ -22,7 +22,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 @property (strong, nonatomic) BRProgressObserver *progressObserver;
 
 @property (weak) IBOutlet NSTabView *logsTabView;
-@property (weak) IBOutlet NSOutlineView *logOutlineView;
 @property (weak) IBOutlet NSTextView *logTextView;
 
 @end
@@ -54,7 +53,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
     
     // Data source
     self.logDataSource = [self.dependencyContainer logDataSource];
-    [self.logDataSource bindOutlineView:self.logOutlineView];
     [self.logDataSource bindTextView:self.logTextView];
     [self.logDataSource fetch:self.buildInfo.slug];
 }
@@ -87,16 +85,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (BRLogStatusView *)statusView {
     return [(BRLogsWindowController *)self.view.window.windowController statusView];
-}
-
-#pragma mark - Actions -
-
-- (IBAction)switchLogPresentation:(NSSegmentedControl *)sender {
-    if (sender.selectedSegment == 0) {
-        [self.logsTabView selectFirstTabViewItem:self];
-    } else {
-        [self.logsTabView selectLastTabViewItem:self];
-    }
 }
 
 @end
