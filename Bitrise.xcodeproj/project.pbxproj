@@ -120,6 +120,15 @@
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		6B9EB643B31D43C782DFEAE2 /* libPods-BitriseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC38F36C8ABB179E968B54 /* libPods-BitriseTests.a */; };
 		8A6E00C56C408BC470C8A65C /* libPods-Bitrise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */; };
+		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
+		D973553E2402F980003FCE9B /* JetBrainsMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */; };
+		D973553F2402F980003FCE9B /* JetBrainsMono-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97355372402F97F003FCE9B /* JetBrainsMono-Bold-Italic.ttf */; };
+		D97355402402F980003FCE9B /* JetBrainsMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97355382402F97F003FCE9B /* JetBrainsMono-Bold.ttf */; };
+		D97355412402F980003FCE9B /* JetBrainsMono-Medium-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */; };
+		D97355422402F980003FCE9B /* JetBrainsMono-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553A2402F97F003FCE9B /* JetBrainsMono-ExtraBold.ttf */; };
+		D97355432402F980003FCE9B /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
+		D97355442402F980003FCE9B /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
+		D97355452402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -312,6 +321,16 @@
 		1933E73DED40E2A87EF04BC3 /* Pods-BitriseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitriseTests/Pods-BitriseTests.release.xcconfig"; sourceTree = "<group>"; };
 		74C0A871342AC9F3D945FEB5 /* Pods-BitriseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitriseTests/Pods-BitriseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E0CDE8596D9125C3BCDAB6 /* Pods-Bitrise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitrise.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bitrise/Pods-Bitrise.release.xcconfig"; sourceTree = "<group>"; };
+		D97355312402F558003FCE9B /* BRLogPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogPresenter.h; sourceTree = "<group>"; };
+		D97355322402F558003FCE9B /* BRLogPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogPresenter.m; sourceTree = "<group>"; };
+		D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Italic.ttf"; sourceTree = "<group>"; };
+		D97355372402F97F003FCE9B /* JetBrainsMono-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		D97355382402F97F003FCE9B /* JetBrainsMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Bold.ttf"; sourceTree = "<group>"; };
+		D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium-Italic.ttf"; sourceTree = "<group>"; };
+		D973553A2402F97F003FCE9B /* JetBrainsMono-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
+		D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
+		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bitrise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +425,7 @@
 		0E42CAFA20EC7AEF0033CD03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D97355302402F51E003FCE9B /* Tools */,
 				0EF766C121E264C500E64E0C /* Custom */,
 				0E30344321CEDDA6001757C0 /* Menus */,
 				0E42CB0020EC893C0033CD03 /* Cells */,
@@ -439,6 +459,7 @@
 		0E42CAFC20EC7B070033CD03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D97355342402F967003FCE9B /* Fonts */,
 				0E42CADE20EC7A800033CD03 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -582,8 +603,6 @@
 				0E93B6F620F0837B001A6C15 /* BRStorage.m */,
 				0EAB9DD92225AD7C00A21D23 /* BRLogsParser.h */,
 				0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */,
-				D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */,
-				D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */,
 				0E52AB7E2242A4A60020A943 /* BRLogStorage.h */,
 				0E52AB7F2242A4A60020A943 /* BRLogStorage.m */,
 			);
@@ -790,6 +809,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D97355302402F51E003FCE9B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */,
+				D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */,
+				D97355312402F558003FCE9B /* BRLogPresenter.h */,
+				D97355322402F558003FCE9B /* BRLogPresenter.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D97355342402F967003FCE9B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D97355352402F974003FCE9B /* Mono */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D97355352402F974003FCE9B /* Mono */ = {
+			isa = PBXGroup;
+			children = (
+				D97355372402F97F003FCE9B /* JetBrainsMono-Bold-Italic.ttf */,
+				D97355382402F97F003FCE9B /* JetBrainsMono-Bold.ttf */,
+				D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */,
+				D973553A2402F97F003FCE9B /* JetBrainsMono-ExtraBold.ttf */,
+				D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */,
+				D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */,
+				D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */,
+				D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */,
+			);
+			path = Mono;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -878,6 +931,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D973553E2402F980003FCE9B /* JetBrainsMono-Italic.ttf in Resources */,
+				D97355402402F980003FCE9B /* JetBrainsMono-Bold.ttf in Resources */,
+				D97355452402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf in Resources */,
+				D97355442402F980003FCE9B /* JetBrainsMono-Regular.ttf in Resources */,
+				D97355422402F980003FCE9B /* JetBrainsMono-ExtraBold.ttf in Resources */,
+				D973553F2402F980003FCE9B /* JetBrainsMono-Bold-Italic.ttf in Resources */,
+				D97355412402F980003FCE9B /* JetBrainsMono-Medium-Italic.ttf in Resources */,
+				D97355432402F980003FCE9B /* JetBrainsMono-Medium.ttf in Resources */,
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
 				0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */,
 			);
@@ -1004,6 +1065,7 @@
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0EAB9DCD2222CFFC00A21D23 /* BRStorage.m in Sources */,
+				D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
 				0EC53F45221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,

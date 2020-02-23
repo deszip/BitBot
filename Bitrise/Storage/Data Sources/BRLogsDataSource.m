@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "AMR_ANSIEscapeHelper.h"
-
 #import "BRLogsDataSource.h"
 
 #import "BRMacro.h"
@@ -20,6 +18,8 @@
 #import "BRLogStepView.h"
 
 @interface BRLogsDataSource () <NSOutlineViewDataSource, NSOutlineViewDelegate, NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) BRLogPresenter *logPresenter;
 
 @property (weak, nonatomic) NSOutlineView *outlineView;
 @property (weak, nonatomic) NSTextView *textView;
@@ -34,9 +34,10 @@
 
 @implementation BRLogsDataSource
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container {
+- (instancetype)initWithContainer:(NSPersistentContainer *)container logPresenter:(BRLogPresenter *)presenter {
     if (self = [super init]) {
         _container = container;
+        _logPresenter = presenter;
     }
     
     return self;
@@ -100,16 +101,13 @@
     
     BOOL needsScroll = (NSMaxY(self.textView.bounds) - NSMaxY(self.textView.visibleRect)) < 100;
     NSString *insertion = [self contentFromLine:0];
-    //[self.textView setString:insertion];
     
-    AMR_ANSIEscapeHelper *helper = [AMR_ANSIEscapeHelper new];
-    NSAttributedString *attrLine = [helper attributedStringWithANSIEscapedString:insertion];
+    NSAttributedString *attrLine = [self.logPresenter decoratedLine:insertion];
     [[self.textView textStorage] appendAttributedString:attrLine];
     
     if (needsScroll) {
         [(NSScrollView *)self.textView.superview.superview setScrollsDynamically:NO];
         [self.textView scrollToEndOfDocument:self];
-        //[self.textView scrollRangeToVisible:NSMakeRange(self.textView.string.length, 0)];
     }
 }
 
@@ -158,10 +156,7 @@
         BRLogLineView *cell = [outlineView makeViewWithIdentifier:@"BRLogLineView" owner:self];
         NSString *logLine = [line.text stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         
-        //[cell.lineLabel setStringValue:logLine];
-        
-        AMR_ANSIEscapeHelper *helper = [AMR_ANSIEscapeHelper new];
-        [cell.lineLabel setAttributedStringValue:[helper attributedStringWithANSIEscapedString:logLine]];
+        [cell.lineLabel setAttributedStringValue:[self.logPresenter decoratedLine:logLine]];
         
         return cell;
     }
