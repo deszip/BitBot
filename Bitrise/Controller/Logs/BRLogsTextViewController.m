@@ -73,6 +73,10 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (void)setupAppearance {
     [self.logTextView setFont:[NSFont fontWithName:@"Menlo" size:12.0]];
+    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    [style setLineSpacing:200.0];
+    [style setLineHeightMultiple:2];
+    [self.logTextView setDefaultParagraphStyle:style];
 }
 
 - (void)showProgress {
