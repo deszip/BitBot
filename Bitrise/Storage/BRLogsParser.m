@@ -8,6 +8,7 @@
 
 #import "BRLogsParser.h"
 
+#import "AMR_ANSIEscapeHelper.h"
 #import "NSArray+FRP.h"
 
 @implementation BRLogsParser
@@ -50,6 +51,11 @@
     }
     
     return nil;
+}
+
+- (NSAttributedString *)coloredLine:(NSString *)input {
+    AMR_ANSIEscapeHelper *helper = [AMR_ANSIEscapeHelper new];
+    return [helper attributedStringWithANSIEscapedString:input];
 }
 
 @end

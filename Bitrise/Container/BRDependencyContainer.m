@@ -44,7 +44,8 @@
 }
 
 - (BRLogsDataSource *)logDataSource {
-    return [[BRLogsDataSource alloc] initWithContainer:self.persistenceContainer];
+    BRLogPresenter *logPresenter = [[BRLogPresenter alloc] initWithANSIHelper:[AMR_ANSIEscapeHelper new]];
+    return [[BRLogsDataSource alloc] initWithContainer:self.persistenceContainer logPresenter:logPresenter];
 }
 
 #pragma mark - BRInteractionProvider -

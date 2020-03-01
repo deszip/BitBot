@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+#import "BRLogPresenter.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRLogsDataSource : NSObject
@@ -19,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContainer:(NSPersistentContainer *)container
+                     logPresenter:(BRLogPresenter *)presenter NS_DESIGNATED_INITIALIZER;
 - (void)fetch:(NSString *)buildSlug;
 - (void)bindOutlineView:(NSOutlineView *)outlineView;
 - (void)bindTextView:(NSTextView *)textView;

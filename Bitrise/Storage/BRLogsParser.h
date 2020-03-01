@@ -13,5 +13,6 @@
 - (BOOL)lineBroken:(NSString *)line;
 - (NSArray <NSString *> *)split:(NSString *)logChunk;
 - (NSString *)stepNameForLine:(NSString *)line;
+- (NSAttributedString *)coloredLine:(NSString *)input;
 
 @end

@@ -19,24 +19,12 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 @property (strong, nonatomic) BRLogObserver *logObserver;
 @property (strong, nonatomic) NSProgress *loadingProgress;
 
-@property (strong, nonatomic) BRProgressObserver *progressObserver;
-
 @property (weak) IBOutlet NSTabView *logsTabView;
-@property (weak) IBOutlet NSOutlineView *logOutlineView;
 @property (weak) IBOutlet NSTextView *logTextView;
 
 @end
 
 @implementation BRLogsTextViewController
-
-- (void)dealloc {
-    [self.progressObserver stop];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupAppearance];
-}
 
 #pragma mark - Setup -
 
@@ -54,7 +42,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
     
     // Data source
     self.logDataSource = [self.dependencyContainer logDataSource];
-    [self.logDataSource bindOutlineView:self.logOutlineView];
     [self.logDataSource bindTextView:self.logTextView];
     [self.logDataSource fetch:self.buildInfo.slug];
 }
@@ -73,10 +60,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 #pragma mark - Appearance -
 
-- (void)setupAppearance {
-    [self.logTextView setFont:[NSFont fontWithName:@"Menlo" size:12.0]];
-}
-
 - (void)showProgress {
     [[self statusView].progressIndicator setHidden:NO];
 }
@@ -87,16 +70,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 - (BRLogStatusView *)statusView {
     return [(BRLogsWindowController *)self.view.window.windowController statusView];
-}
-
-#pragma mark - Actions -
-
-- (IBAction)switchLogPresentation:(NSSegmentedControl *)sender {
-    if (sender.selectedSegment == 0) {
-        [self.logsTabView selectFirstTabViewItem:self];
-    } else {
-        [self.logsTabView selectLastTabViewItem:self];
-    }
 }
 
 @end
