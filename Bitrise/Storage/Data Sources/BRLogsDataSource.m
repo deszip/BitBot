@@ -25,7 +25,6 @@
 @property (weak, nonatomic) NSTextView *textView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
-@property (strong, nonatomic) NSFetchedResultsController *stepFRC;
 @property (strong, nonatomic) NSFetchedResultsController *logFRC;
 
 @property (copy, nonatomic) NSString *buildSlug;
@@ -44,13 +43,6 @@
 }
 
 - (void)buildFRC:(NSManagedObjectContext *)context buildSlug:(NSString *)buildSlug {
-    NSFetchRequest *stepsRequest = [BRLogStep fetchRequest];
-    stepsRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES]];
-    stepsRequest.predicate = [NSPredicate predicateWithFormat:@"log.build.slug = %@", buildSlug];
-    [context setAutomaticallyMergesChangesFromParent:YES];
-    self.stepFRC = [[NSFetchedResultsController alloc] initWithFetchRequest:stepsRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-    [self.stepFRC setDelegate:self];
-    
     NSFetchRequest *linesRequest = [BRLogLine fetchRequest];
     linesRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"chunkPosition" ascending:YES],
                                      [NSSortDescriptor sortDescriptorWithKey:@"linePosition" ascending:YES]];
@@ -67,9 +59,6 @@
     }
     
     NSError *fetchError = nil;
-    if (![self.stepFRC performFetch:&fetchError]) {
-        NSLog(@"Failed to fetch steps: %@ - %@", buildSlug, fetchError);
-    }
     if (![self.logFRC performFetch:&fetchError]) {
         NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
@@ -94,21 +83,9 @@
     [self.outlineView reloadData];
     [self.outlineView scrollToEndOfDocument:self];
     
-    BOOL hasSelection = self.textView.selectedRange.length > 0;
-    if (hasSelection) {
-        return;
-    }
-    
-    BOOL needsScroll = (NSMaxY(self.textView.bounds) - NSMaxY(self.textView.visibleRect)) < 100;
     NSString *insertion = [self contentFromLine:0];
-    
     NSAttributedString *attrLine = [self.logPresenter decoratedLine:insertion];
     [[self.textView textStorage] appendAttributedString:attrLine];
-    
-    if (needsScroll) {
-        [(NSScrollView *)self.textView.superview.superview setScrollsDynamically:NO];
-        [self.textView scrollToEndOfDocument:self];
-    }
 }
 
 #pragma mark - Text processing -
@@ -124,28 +101,6 @@
     }
     
     return content;
-}
-
-#pragma mark - NSOutlineViewDataSource -
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    if ([item isKindOfClass:[BRLogStep class]]) {
-        return [[(BRLogStep *)item lines] objectAtIndex:index];
-    }
-    
-    return [self.stepFRC.sections[0] objects][index];
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    return [item isKindOfClass:[BRLogStep class]];
-}
-
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    if ([item isKindOfClass:[BRLogStep class]]) {
-        return [[(BRLogStep *)item lines] count];
-    }
-    
-    return [[self.stepFRC.sections[0] objects] count];
 }
 
 #pragma mark - NSOutlineViewDelegate -
