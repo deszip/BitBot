@@ -19,23 +19,12 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 @property (strong, nonatomic) BRLogObserver *logObserver;
 @property (strong, nonatomic) NSProgress *loadingProgress;
 
-@property (strong, nonatomic) BRProgressObserver *progressObserver;
-
 @property (weak) IBOutlet NSTabView *logsTabView;
 @property (weak) IBOutlet NSTextView *logTextView;
 
 @end
 
 @implementation BRLogsTextViewController
-
-- (void)dealloc {
-    [self.progressObserver stop];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupAppearance];
-}
 
 #pragma mark - Setup -
 
@@ -70,14 +59,6 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 }
 
 #pragma mark - Appearance -
-
-- (void)setupAppearance {
-    [self.logTextView setFont:[NSFont fontWithName:@"Menlo" size:12.0]];
-    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
-    [style setLineSpacing:200.0];
-    [style setLineHeightMultiple:2];
-    [self.logTextView setDefaultParagraphStyle:style];
-}
 
 - (void)showProgress {
     [[self statusView].progressIndicator setHidden:NO];

@@ -36,7 +36,13 @@
 }
 
 - (NSAttributedString *)decoratedLine:(NSString *)line {
-    return [self.helper attributedStringWithANSIEscapedString:line];
+    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    [style setLineSpacing:5.0];
+
+    NSMutableAttributedString *attrLine = [[self.helper attributedStringWithANSIEscapedString:line] mutableCopy];
+    [attrLine addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attrLine.length)];
+    
+    return attrLine;
 }
 
 @end
