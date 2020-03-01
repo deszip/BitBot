@@ -35,8 +35,6 @@
     
     [self.logDataSource bindTextView:self.logTextView];
     [self.logDataSource fetch:self.buildSlug];
-    
-    NSLog(@"Controller: %@, observer: %@", self, self.logObserver);
 }
 
 @end

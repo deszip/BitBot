@@ -8,7 +8,8 @@
 
 #import "BRSyncOperation.h"
 
-//#import "ASTracer.h"
+#import "BRLogger.h"
+
 #import "BRBuildStateInfo.h"
 #import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
@@ -43,51 +44,33 @@
     self.group = dispatch_group_create();
     
     [self.storage perform:^{
-        
-        //NSString *scopeName = [NSString stringWithFormat:@"%@", self.queue];
-        //[[ASTracer tracer] startSpan:@"Accounts fetch" inScope:scopeName];
-        
         NSError *accFetchError;
         NSArray <BTRAccount *> *accounts = [self.storage accounts:&accFetchError];
         if (!accounts) {
-            NSLog(@"Failed to get accounts: %@", accFetchError);
+            BRLog(LL_DEBUG, LL_STORAGE, @"Failed to get accounts: %@", accFetchError);
             [super finish];
             return;
         }
         
         if (accounts.count == 0) {
-            NSLog(@"No accounts, nothing to do...");
+            BRLog(LL_DEBUG, LL_STORAGE, @"No accounts, nothing to do...");
             [super finish];
             return;
         }
         
-        //[[ASTracer tracer] stopSpan:@"Accounts fetch" inScope:scopeName sucess:YES];
-        
         [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
-            
             dispatch_group_enter(self.group);
-            
-            //[[ASTracer tracer] startSpan:[NSString stringWithFormat:@"acc fetch: %@", account.slug] inScope:scopeName];
-            
             BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
             [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
-                
-                //[[ASTracer tracer] stopSpan:[NSString stringWithFormat:@"acc fetch: %@", account.slug] inScope:scopeName sucess:YES];
-                
-                //NSString *spanName = [NSString stringWithFormat:@"acc update: %@", account.slug];
-                //[[ASTracer tracer] startSpan:spanName inScope:scopeName];
-                
                 if (!appsInfo) {
-                    NSLog(@"Failed to get apps from API: %@", error);
-                    //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:NO];
+                    BRLog(LL_WARN, LL_STORAGE, @"Failed to get apps from API: %@", error);
                     [super finish];
                     return;
                 }
                 
                 NSError *updateAppsError;
                 if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
-                    NSLog(@"Failed to update apps: %@", updateAppsError);
-                    //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:NO];
+                    BRLog(LL_WARN, LL_STORAGE, @"Failed to update apps: %@", updateAppsError);
                     [super finish];
                     return;
                 }
@@ -95,8 +78,7 @@
                 NSError *appsFetchError;
                 NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&appsFetchError];
                 if (!apps) {
-                    NSLog(@"Failed to fetch updated apps: %@", appsFetchError);
-                    //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:NO];
+                    BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch updated apps: %@", appsFetchError);
                     [super finish];
                     return;
                 }
@@ -108,8 +90,6 @@
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
                     [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs];
                 }];
-                
-                //[[ASTracer tracer] stopSpan:spanName inScope:scopeName sucess:YES];
                 
                 dispatch_group_leave(self.group);
             }];
@@ -143,10 +123,10 @@
                 self.syncCallback(result);
             }
             if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
-                NSLog(@"Failed to save builds: %@", error);
+                BRLog(LL_WARN, LL_STORAGE, @"Failed to save builds: %@", error);
             }
         } else {
-            NSLog(@"Failed to get builds from API: %@", error);
+            BRLog(LL_WARN, LL_STORAGE, @"Failed to get builds from API: %@", error);
         }
         
         dispatch_group_leave(self.group);
@@ -160,16 +140,16 @@
     [remoteBuilds enumerateObjectsUsingBlock:^(BRBuildInfo *remoteBuild, NSUInteger idx, BOOL *stop) {
         if ([runningBuilds containsObject:remoteBuild.slug]) {
             if (remoteBuild.stateInfo.state != BRBuildStateHold && remoteBuild.stateInfo.state != BRBuildStateInProgress) {
-                NSLog(@"Finished build: %@", remoteBuild.slug);
+                BRLog(LL_DEBUG, LL_CORE, @"Finished build: %@", remoteBuild.slug);
                 [finished addObject:remoteBuild];
             }
             if (remoteBuild.stateInfo.state == BRBuildStateInProgress) {
-                NSLog(@"Running build: %@", remoteBuild.slug);
+                BRLog(LL_DEBUG, LL_CORE, @"Running build: %@", remoteBuild.slug);
                 [running addObject:remoteBuild];
             }
         } else {
             if (remoteBuild.stateInfo.state == BRBuildStateHold || remoteBuild.stateInfo.state == BRBuildStateInProgress) {
-                NSLog(@"Started build: %@", remoteBuild.slug);
+                BRLog(LL_DEBUG, LL_CORE, @"Started build: %@", remoteBuild.slug);
                 [started addObject:remoteBuild];
             }
         }

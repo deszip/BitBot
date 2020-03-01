@@ -10,6 +10,7 @@
 
 #import "BRLogsDataSource.h"
 
+#import "BRLogger.h"
 #import "BRMacro.h"
 #import "BRLogLine+CoreDataClass.h"
 #import "BRLogStep+CoreDataClass.h"
@@ -60,7 +61,7 @@
     
     NSError *fetchError = nil;
     if (![self.logFRC performFetch:&fetchError]) {
-        NSLog(@"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch logs: %@ - %@", buildSlug, fetchError);
     }
     
     [self updateContent];

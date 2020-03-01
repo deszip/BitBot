@@ -8,6 +8,8 @@
 
 #import "BRProgressObserver.h"
 
+#import "BRLogger.h"
+
 static void *BRProgressObserverContext = &BRProgressObserverContext;
 static NSString * const kProgressFractionKey = @"fractionCompleted";
 
@@ -48,7 +50,7 @@ static NSString * const kProgressFractionKey = @"fractionCompleted";
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([keyPath isEqualToString:kProgressFractionKey]) {
                 self.indicator.doubleValue = [(NSProgress *)object fractionCompleted];
-                NSLog(@"%f", self.indicator.doubleValue);
+                BRLog(LL_DEBUG, LL_STORAGE, @"%f", self.indicator.doubleValue);
             }
         });
     } else {

@@ -10,6 +10,8 @@
 
 #import <CoreData/CoreData.h>
 
+#import "BRLogger.h"
+
 #import "BRAppCellView.h"
 #import "BRBuildCellView.h"
 
@@ -63,7 +65,7 @@
 - (void)fetch {
     NSError *fetchError = nil;
     if (![self.buildsFRC performFetch:&fetchError]) {
-        NSLog(@"Failed to fetch builds: %@", fetchError);
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch builds: %@", fetchError);
     }
     [self.outlineView reloadData];
 }

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "BRLogger.h"
 #import "BRAnalytics.h"
 #import "BRSyncCommand.h"
 #import "BRMainController.h"
@@ -33,6 +34,7 @@
     if (self = [super init]) {
         
 #if DEBUG
+        [[BRLogger defaultLogger] setCurrentLogLevel:LL_VERBOSE];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints"];
 #endif
         

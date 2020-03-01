@@ -8,6 +8,8 @@
 
 #import "ASOperation.h"
 
+#import "BRLogger.h"
+
 @interface ASOperation ()
 
 @property (assign, nonatomic) NSTimeInterval duration;
@@ -57,7 +59,7 @@
     NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
     self.duration = processing ? current : current - self.duration;
     if (!processing) {
-        NSLog(@"%@: %f", NSStringFromClass([self class]), self.duration);
+        BRLog(LL_DEBUG, LL_CORE, @"%@: %f", NSStringFromClass([self class]), self.duration);
     }
 }
 
