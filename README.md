@@ -9,7 +9,10 @@ BitBot was built to work for my current project so it definitely lacks a lot of 
 
 BitBot and I are not associated or affiliated with Bitrise in any way.
 
-# ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot.png)
+# ![BitBot](https://github.com/deszip/BitBot/raw/master/screen-popover.png)
+# ![BitBot](https://github.com/deszip/BitBot/raw/master/screen-logs.png)
+# ![BitBot](https://github.com/deszip/BitBot/raw/master/screen-notification.png)
+
 
 ### Building
 - Clone the repo
