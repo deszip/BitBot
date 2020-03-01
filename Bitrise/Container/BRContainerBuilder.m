@@ -8,6 +8,8 @@
 
 #import "BRContainerBuilder.h"
 
+#import "BRLogger.h"
+
 @implementation BRContainerBuilder
 
 - (NSPersistentContainer *)buildContainer {
@@ -25,7 +27,7 @@
         NSError *error;
         BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:NO attributes:nil error:&error];
         if (!result) {
-            NSLog(@"Failed to create app directory: %@", error);
+            BRLog(LL_WARN, LL_STORAGE, @"Failed to create app directory: %@", error);
             return nil;
         }
     }
@@ -37,7 +39,7 @@
     container.persistentStoreDescriptions = @[storeDescription];
     [container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
         if (!storeDescription) {
-            NSLog(@"Failed to load store: %@", error);
+            BRLog(LL_WARN, LL_STORAGE, @"Failed to load store: %@", error);
         }
     }];
     

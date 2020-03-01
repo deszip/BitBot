@@ -8,6 +8,8 @@
 
 #import "BRAccountsDataSource.h"
 
+#import "BRLogger.h"
+
 #import <CoreData/CoreData.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "BTRAccount+CoreDataClass.h"
@@ -48,7 +50,7 @@
 - (void)fetch {
     NSError *fetchError = nil;
     if (![self.accountsFRC performFetch:&fetchError]) {
-        NSLog(@"Failed to fetch apps: %@", fetchError);
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch apps: %@", fetchError);
     }
     [self.outlineView reloadData];
 }

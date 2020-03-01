@@ -15,8 +15,6 @@
 @interface BRSyncCommand ()
 
 @property (strong, nonatomic, readonly) BRSyncEngine *syncEngine;
-@property (strong, nonatomic, readonly) BRLogObserver *logObserver;
-@property (strong, nonatomic, readonly) BREnvironment *environment;
 
 @end
 
@@ -27,14 +25,13 @@
                    environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;
-        _logObserver = logObserver;
-        _environment = environment;
         
-        __weak BRSyncCommand *weakSelf = self;
         _syncEngine.syncCallback = ^(BRSyncResult *result) {
             // Notifications
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
-            [weakSelf.environment postNotifications:builds forApp:result.app];
+            if (builds.count > 0) {
+                [environment postNotifications:builds forApp:result.app];
+            }
             
 #if FEATURE_LIVE_LOG
             // Logs observing
@@ -44,7 +41,7 @@
             }]];
 
             [runningBuildsSlugs enumerateObjectsUsingBlock:^(NSString *buildSlug, BOOL *stop) {
-                [weakSelf.logObserver startObservingBuild:buildSlug];
+                [logObserver startObservingBuild:buildSlug];
             }];
 #endif
             

@@ -8,6 +8,8 @@
 
 #import "ASLogLoadingOperation.h"
 
+#import "BRLogger.h"
+
 #import "BRMacro.h"
 #import "ASLogObservingOperation.h"
 #import "BRBuildInfo.h"
@@ -52,7 +54,7 @@
         NSError *fetchError;
         BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
         if (!build) {
-            NSLog(@"ASLogLoadingOperation: failed to get build: %@", fetchError);
+            BRLog(LL_WARN, LL_STORAGE, @"ASLogLoadingOperation: failed to get build: %@", fetchError);
             [self finish];
             return;
         }
@@ -83,7 +85,7 @@
 }
 
 - (void)loadLogs:(BRBuild *)build {
-    NSLog(@"ASLogLoadingOperation: fetching log: %@", self.buildSlug);
+    BRLog(LL_DEBUG, LL_STORAGE, @"ASLogLoadingOperation: fetching log: %@", self.buildSlug);
     BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                           appSlug:build.app.slug
                                                         buildSlug:build.slug since:[build.log.timestamp timeIntervalSince1970]];
@@ -111,7 +113,7 @@
              
                 // Clean pervious logs
                 if (![self.storage cleanLogs:build error:&cleanError]) {
-                    NSLog(@"Failed to clean build logs: %@", cleanError);
+                    BRLog(LL_WARN, LL_STORAGE, @"Failed to clean build logs: %@", cleanError);
                     [self finish];
                     return;
                 }
@@ -123,9 +125,9 @@
                 BOOL logMarked = [self.storage markBuildLog:build.log loaded:YES error:&markError];
                 
                 if (metadataSaved && logSaved && logMarked) {
-                    NSLog(@"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
+                    BRLog(LL_DEBUG, LL_STORAGE, @"ASLogLoadingOperation: %@ - log saved", self.buildSlug);
                 } else {
-                    NSLog(@"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError, markError);
+                    BRLog(LL_DEBUG, LL_STORAGE, @"ASLogLoadingOperation: Read log : %@\nSave log : %@\nMark loaded: %@", readingError, saveError, markError);
                 }
                 
                 [self finish];
@@ -144,7 +146,7 @@
     targetURL = [targetURL URLByAppendingPathComponent:tmpURL.lastPathComponent];
     BOOL moveResult = [[NSFileManager defaultManager] moveItemAtURL:tmpURL toURL:targetURL error:&moveError];
     if (!moveResult) {
-        NSLog(@"Failed to move log file: %@", moveError);
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to move log file: %@", moveError);
         [super finish];
         return nil;
     }

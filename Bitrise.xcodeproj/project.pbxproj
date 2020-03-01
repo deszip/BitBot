@@ -130,6 +130,7 @@
 		D97355442402F980003FCE9B /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
 		D97355452402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
+		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +334,8 @@
 		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
+		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
+		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
 		EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bitrise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCC38F36C8ABB179E968B54 /* libPods-BitriseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -643,6 +646,8 @@
 			isa = PBXGroup;
 			children = (
 				0E9F413720FEFA6A0083D646 /* BRMacro.h */,
+				D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */,
+				D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */,
 				0EDC5DDE21BBBB0A00AD41FE /* Queue */,
 				0EE1B85121B4363D005D5140 /* Collection Extensions */,
 			);
@@ -1032,6 +1037,7 @@
 				0E02C9AE22103ED100FCFE17 /* BRLogsDataSource.m in Sources */,
 				0EFB325C22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0E4AD0892205F9D200257E8E /* BRLogsRequest.m in Sources */,
+				D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */,
 				0EBA9D6C2217F9EF007234EB /* BRLogInfo.m in Sources */,
 				0E52AB802242A4A60020A943 /* BRLogStorage.m in Sources */,
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,

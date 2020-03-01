@@ -8,6 +8,8 @@
 
 #import "ASLogObservingOperation.h"
 
+#import "BRLogger.h"
+
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildLog+CoreDataClass.h"
 #import "BRLogsRequest.h"
@@ -71,7 +73,7 @@ static const NSTimeInterval kPollTimeout = 3.0;
         NSError *fetchError;
         BRBuild *build = [self.storage buildWithSlug:self.buildSlug error:&fetchError];
         if (!build) {
-            NSLog(@"ASLogObservingOperation: failed to get build: %@", fetchError);
+            BRLog(LL_DEBUG, LL_LOGSYNC, @"ASLogObservingOperation: failed to get build: %@", fetchError);
             [self finish];
             return;
         }
@@ -80,7 +82,7 @@ static const NSTimeInterval kPollTimeout = 3.0;
         BRLogsRequest *request = [[BRLogsRequest alloc] initWithToken:build.app.account.token
                                                               appSlug:build.app.slug
                                                             buildSlug:build.slug since:fetchTime];
-        NSLog(@"ASLogObservingOperation: %@, request timestamp: %f", self, fetchTime);
+        BRLog(LL_DEBUG, LL_LOGSYNC, @"ASLogObservingOperation: %@, request timestamp: %f", self, fetchTime);
         [self.api loadLogs:request completion:^(BRLogInfo *logInfo, NSError *error) {
             if (logInfo.rawLog) {
                 NSError *saveError;
@@ -93,17 +95,17 @@ static const NSTimeInterval kPollTimeout = 3.0;
                 
                 [self.receivedChunks addIndexes:[logInfo chunkPositions]];
                 
-                NSLog(@"ASLogObservingOperation: got chunks: %lu, filtered: %lu", [logInfo.rawLog[@"log_chunks"] count], chunks.count);
-                NSLog(@"ASLogObservingOperation: got timestamp: %@", logInfo.rawLog[@"timestamp"]);
+                BRLog(LL_DEBUG, LL_LOGSYNC, @"ASLogObservingOperation: got chunks: %lu, filtered: %lu", [logInfo.rawLog[@"log_chunks"] count], chunks.count);
+                BRLog(LL_DEBUG, LL_LOGSYNC, @"ASLogObservingOperation: got timestamp: %@", logInfo.rawLog[@"timestamp"]);
             }
 
             if (build.log.archived) {
-                NSLog(@"ASLogObservingOperation: build log archived, build finished, stopping observing...");
+                BRLog(LL_DEBUG, LL_LOGSYNC, @"ASLogObservingOperation: build log archived, build finished, stopping observing...");
                 [self finish];
             }
             
             NSTimeInterval endTime = [[NSDate date] timeIntervalSince1970];
-            NSLog(@"ASLogObservingOperation: fetch time: %f sec.", endTime - startTime);
+            BRLog(LL_DEBUG, LL_LOGSYNC, @"ASLogObservingOperation: fetch time: %f sec.", endTime - startTime);
         }];
     }];
 }

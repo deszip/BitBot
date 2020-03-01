@@ -10,6 +10,7 @@
 
 #import <EasyMapping/EasyMapping.h>
 
+#import "BRLogger.h"
 #import "NSArray+FRP.h"
 #import "BRMacro.h"
 
@@ -197,7 +198,7 @@
         }];
         result = [self saveContext:self.context error:error];
     } else {
-        NSLog(@"Failed to save builds: %@", *error);
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to save builds: %@", *error);
         result = NO;
     }
     

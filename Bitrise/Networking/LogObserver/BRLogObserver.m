@@ -8,6 +8,7 @@
 
 #import "BRLogObserver.h"
 
+#import "BRLogger.h"
 #import "NSArray+FRP.h"
 
 #import "ASQueue.h"
@@ -37,23 +38,23 @@
 
 - (void)startObservingBuild:(NSString *)buildSlug {
     @synchronized (self) {
-        NSLog(@"Observer: %@, build %@, started...", self, buildSlug);
+        BRLog(LL_DEBUG, LL_LOGSYNC, @"Observer: %@, build %@, started...", self, buildSlug);
         
         if ([[self operationsForBuild:buildSlug] count] > 0) {
-            NSLog(@"BRLogObserver: has observing operation: %@, skipping...", buildSlug);
+            BRLog(LL_DEBUG, LL_LOGSYNC, @"BRLogObserver: has observing operation: %@, skipping...", buildSlug);
             return;
         }
         
         ASLogObservingOperation *operation = [[ASLogObservingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
         [self.queue addOperation:operation];
-        NSLog(@"BRLogObserver: added observing operation: %@", buildSlug);
+        BRLog(LL_DEBUG, LL_LOGSYNC, @"BRLogObserver: added observing operation: %@", buildSlug);
     }
 }
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
     @synchronized (self) {
         [[self operationsForBuild:buildSlug] enumerateObjectsUsingBlock:^(ASOperation <ASLogOperation> *operation, NSUInteger idx, BOOL *stop) {
-            NSLog(@"BRLogObserver: cancelling observing operation: %@", buildSlug);
+            BRLog(LL_DEBUG, LL_LOGSYNC, @"BRLogObserver: cancelling observing operation: %@", buildSlug);
             [operation cancel];
         }];
     }
@@ -64,7 +65,7 @@
         ASLogLoadingOperation *operation = [[ASLogLoadingOperation alloc] initWithStorage:self.storage api:self.API buildSlug:buildSlug];
         [operation setLoadingCallback:callback];
         [self.queue addOperation:operation];
-        NSLog(@"BRLogObserver: added load operation: %@", buildSlug);
+        BRLog(LL_DEBUG, LL_LOGSYNC, @"BRLogObserver: added load operation: %@", buildSlug);
     }
 }
 
