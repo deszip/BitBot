@@ -1,0 +1,16 @@
+{"expiring_raw_log_url":"https://bitrise-build-log-archives-production.s3.amazonaws.com/build-logs-v2/17e1/7e51/105/7e51a.log?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=WNR2HA%2F20190224%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190224T131151Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=26cd9fa8147739af6558108268410f6f4b26a3fe3068e28a00862c552ece80e3",
+    "generated_log_chunks_num":996,
+    "is_archived":false,
+    "log_chunks":[
+        {"chunk":"","position":987},
+        {"chunk":"","position":988},
+        {"chunk":"","position":989},
+        {"chunk":"","position":990},
+        {"chunk":"","position":991},
+        {"chunk":"","position":992},
+        {"chunk":"","position":993},
+        {"chunk":"","position":994},
+        {"chunk":"","position":995},
+    {"chunk":"","position":997}],
+    "timestamp":123456
+}

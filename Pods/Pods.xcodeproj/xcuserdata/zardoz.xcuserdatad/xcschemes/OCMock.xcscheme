@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2D0C7C26A7C7C2ED37C3F4E6ABA1A2A4"
+               BlueprintIdentifier = "C260B5A26D3CD54F215E5E39371483B6"
+               BuildableName = "libOCMock.a"
                BlueprintName = "OCMock"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libOCMock.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

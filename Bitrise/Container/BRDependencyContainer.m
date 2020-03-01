@@ -43,6 +43,11 @@
     return [[BRAccountsDataSource alloc] initWithContainer:self.persistenceContainer];
 }
 
+- (BRLogsDataSource *)logDataSource {
+    BRLogPresenter *logPresenter = [[BRLogPresenter alloc] initWithANSIHelper:[AMR_ANSIEscapeHelper new]];
+    return [[BRLogsDataSource alloc] initWithContainer:self.persistenceContainer logPresenter:logPresenter];
+}
+
 #pragma mark - BRInteractionProvider -
 
 - (BRSyncEngine *)syncEngine {
@@ -59,6 +64,10 @@
 
 - (BRObserver *)commandObserver {
     return [BRObserver new];
+}
+
+- (BRLogObserver *)logObserver {
+    return [[BRLogObserver alloc] initWithAPI:self.bitriseAPI storage:self.storage];
 }
 
 #pragma mark - BREnvironmentProvider -

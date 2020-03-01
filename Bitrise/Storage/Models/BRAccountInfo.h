@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BRAccount+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic, readonly) NSURL *avatarURL;
 
 - (instancetype)initWithResponse:(NSDictionary *)response token:(NSString *)token;
-- (instancetype)initWithAccount:(BRAccount *)account;
+- (instancetype)initWithAccount:(BTRAccount *)account;
 
 @end
 

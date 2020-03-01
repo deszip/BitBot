@@ -20,7 +20,7 @@
     return self;
 }
 
-- (instancetype)initWithAccount:(BRAccount *)account {
+- (instancetype)initWithAccount:(BTRAccount *)account {
     if (self = [super init]) {
         _token = account.token;
         _username = account.username;

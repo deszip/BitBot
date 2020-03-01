@@ -11,13 +11,24 @@
 
 #import "BRBitriseAPI.h"
 #import "BRSyncEngine.h"
+#import "BRLogObserver.h"
 #import "BREnvironment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
+    BRBuildMenuActionUndefined = 0,
+    BRBuildMenuActionShowLog
+};
+
 @interface BRBuildMenuController : NSObject
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api syncEngine:(BRSyncEngine *)syncEngine environment:(BREnvironment *)environment;
+@property (copy, nonatomic) void (^actionCallback)(BRBuildMenuAction action, BRBuildInfo *buildInfo);
+
+- (instancetype)initWithAPI:(BRBitriseAPI *)api
+                 syncEngine:(BRSyncEngine *)syncEngine
+                logObserver:(BRLogObserver *)logObserver
+                environment:(BREnvironment *)environment;
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;
 
 @end

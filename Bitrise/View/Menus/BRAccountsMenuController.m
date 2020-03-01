@@ -9,7 +9,7 @@
 #import "BRAccountsMenuController.h"
 
 #import "BRMacro.h"
-#import "BRAccount+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRRemoveAccountCommand.h"
 
@@ -49,8 +49,8 @@
 
 - (void)deleteAccount {
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRAccount class]]) {
-        BR_SAFE_CALL(self.actionCallback, BRAppMenuActionRemoveAccount, [(BRAccount *)selectedItem slug]);
+    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
+        BR_SAFE_CALL(self.actionCallback, BRAppMenuActionRemoveAccount, [(BTRAccount *)selectedItem slug]);
     }
 }
 
@@ -66,7 +66,7 @@
     [self.menu removeAllItems];
 
     id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRAccount class]]) {
+    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
         [self.menu insertItem:self.deleteItem atIndex:0];
     }
 }

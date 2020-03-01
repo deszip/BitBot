@@ -10,7 +10,7 @@
 
 #import <CoreData/CoreData.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "BRAccount+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRAccountCellView.h"
 #import "BRManagingAppCellView.h"
@@ -56,7 +56,7 @@
 #pragma mark - Builders -
 
 - (NSFetchedResultsController *)buildAccountsFRC:(NSManagedObjectContext *)context {
-    NSFetchRequest *request = [BRAccount fetchRequest];
+    NSFetchRequest *request = [BTRAccount fetchRequest];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
@@ -65,15 +65,15 @@
 #pragma mark - NSOutlineViewDataSource -
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
-    if ([item isKindOfClass:[BRAccount class]]) {
-        return [[(BRAccount *)item apps] objectAtIndex:index];
+    if ([item isKindOfClass:[BTRAccount class]]) {
+        return [[(BTRAccount *)item apps] objectAtIndex:index];
     }
     
     return [self.accountsFRC.sections[0] objects][index];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    if ([item isKindOfClass:[BRAccount class]]) {
+    if ([item isKindOfClass:[BTRAccount class]]) {
         return YES;
     }
     
@@ -81,8 +81,8 @@
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
-    if ([item isKindOfClass:[BRAccount class]]) {
-        return [[(BRAccount *)item apps] count];
+    if ([item isKindOfClass:[BTRAccount class]]) {
+        return [[(BTRAccount *)item apps] count];
     }
     
     return [[self.accountsFRC.sections[0] objects] count];
@@ -95,8 +95,8 @@
 }
 
 - (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
-    if ([item isKindOfClass:[BRAccount class]]) {
-        BRAccount *account = (BRAccount *)item;
+    if ([item isKindOfClass:[BTRAccount class]]) {
+        BTRAccount *account = (BTRAccount *)item;
         BRAccountCellView *cell = [outlineView makeViewWithIdentifier:@"BRAccountCellView" owner:self];
         
         [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL]

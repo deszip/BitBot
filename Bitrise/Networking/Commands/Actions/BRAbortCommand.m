@@ -8,6 +8,7 @@
 
 #import "BRAbortCommand.h"
 
+#import "BRAnalytics.h"
 #import "BRAbortRequest.h"
 
 @interface BRAbortCommand ()
@@ -39,6 +40,8 @@
     [self.api abortBuild:request completion:^(BOOL status, NSError *error) {
         BR_SAFE_CALL(callback, status, error);
     }];
+    
+    [[BRAnalytics analytics] trackAbortAction];
 }
 
 @end

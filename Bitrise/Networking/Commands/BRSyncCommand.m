@@ -8,24 +8,49 @@
 
 #import "BRSyncCommand.h"
 
+#import "BRMacro.h"
+#import "BRAnalytics.h"
+#import "NSArray+FRP.h"
+
 @interface BRSyncCommand ()
 
 @property (strong, nonatomic, readonly) BRSyncEngine *syncEngine;
+@property (strong, nonatomic, readonly) BRLogObserver *logObserver;
 @property (strong, nonatomic, readonly) BREnvironment *environment;
 
 @end
 
 @implementation BRSyncCommand
 
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine
+                   logObserver:(BRLogObserver *)logObserver
+                   environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;
+        _logObserver = logObserver;
         _environment = environment;
         
-        __weak BREnvironment *weakEnv = _environment;
+        __weak BRSyncCommand *weakSelf = self;
         _syncEngine.syncCallback = ^(BRSyncResult *result) {
+            // Notifications
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
-            [weakEnv postNotifications:builds forApp:result.app];
+            [weakSelf.environment postNotifications:builds forApp:result.app];
+            
+#if FEATURE_LIVE_LOG
+            // Logs observing
+            NSArray *runningBuilds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.running];
+            NSSet <NSString *> *runningBuildsSlugs = [NSSet setWithArray:[runningBuilds aps_map:^NSString*(BRBuildInfo *buildInfo) {
+                return buildInfo.slug;
+            }]];
+
+            [runningBuildsSlugs enumerateObjectsUsingBlock:^(NSString *buildSlug, BOOL *stop) {
+                [weakSelf.logObserver startObservingBuild:buildSlug];
+            }];
+#endif
+            
+            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
+                                                  running:result.diff.running.count
+                                                 finished:result.diff.finished.count];
         };
     }
     

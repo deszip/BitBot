@@ -8,6 +8,8 @@
 
 #import "BRDownloadLogsCommand.h"
 
+#import "BRAnalytics.h"
+
 @interface BRDownloadLogsCommand ()
 
 @property (copy, nonatomic) NSString *buildSlug;
@@ -29,6 +31,8 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:downloadPath]];
     
     BR_SAFE_CALL(callback, YES, nil);
+    
+    [[BRAnalytics analytics] trackLoadLogsAction];
 }
 
 @end

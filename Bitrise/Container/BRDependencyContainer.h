@@ -10,17 +10,20 @@
 
 #import "BRAppsDataSource.h"
 #import "BRAccountsDataSource.h"
+#import "BRLogsDataSource.h"
 
 #import "BRSyncEngine.h"
 #import "BRBitriseAPI.h"
 #import "BRStorage.h"
 #import "BRObserver.h"
 #import "BREnvironment.h"
+#import "BRLogObserver.h"
 
 @protocol BRDataSourceProvider <NSObject>
 
 - (BRAppsDataSource *)appsDataSource;
 - (BRAccountsDataSource *)accountsDataSource;
+- (BRLogsDataSource *)logDataSource;
 
 @end
 
@@ -30,6 +33,7 @@
 - (BRBitriseAPI *)bitriseAPI;
 - (BRStorage *)storage;
 - (BRObserver *)commandObserver;
+- (BRLogObserver *)logObserver;
 
 @end
 

@@ -8,15 +8,17 @@
 
 #import "BRSettingsMenuController.h"
 
+#import "BRAnalytics.h"
 #import "BRMacro.h"
 
-static const NSUInteger kMenuItemsCount = 7;
+static const NSUInteger kMenuItemsCount = 8;
 typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
     BRSettingsMenuItemAbout = 0,
     BRSettingsMenuItemAccounts = 2,
     BRSettingsMenuItemAutorun = 3,
     BRSettingsMenuItemNotifications = 4,
-    BRSettingsMenuItemQuit = 6
+    BRSettingsMenuItemAnalytics = 5,
+    BRSettingsMenuItemQuit = 7
 };
 
 @interface BRSettingsMenuController () <NSMenuItemValidation>
@@ -49,6 +51,7 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
         [self.menu.itemArray[BRSettingsMenuItemAccounts]        setAction:@selector(showAccounts)];
         [self.menu.itemArray[BRSettingsMenuItemAutorun]         setAction:@selector(toggleAutorun)];
         [self.menu.itemArray[BRSettingsMenuItemNotifications]   setAction:@selector(toggleNotifications)];
+        [self.menu.itemArray[BRSettingsMenuItemAnalytics]       setAction:@selector(toggleAnalytics)];
         [self.menu.itemArray[BRSettingsMenuItemQuit]            setAction:@selector(quitApp)];
     }
 }
@@ -56,22 +59,32 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 #pragma mark - Actions -
 
 - (void)showAbout {
+    [[BRAnalytics analytics] trackAboutOpen];
     BR_SAFE_CALL(self.navigationCallback, BRSettingsMenuNavigationActionAbout);
 }
 
 - (void)showAccounts {
+    [[BRAnalytics analytics] trackAccountsOpen];
     BR_SAFE_CALL(self.navigationCallback, BRSettingsMenuNavigationActionAccounts);
 }
 
 - (void)toggleAutorun {
+    [[BRAnalytics analytics] trackAutorunToggle];
     [self.environment toggleAutolaunch];
 }
 
 - (void)toggleNotifications {
+    [[BRAnalytics analytics] trackNotificationsToggle];
     [self.environment toggleNotifications];
 }
 
+- (void)toggleAnalytics {
+    [[BRAnalytics analytics] trackAnalyticsToggle];
+    [[BRAnalytics analytics] toggle];
+}
+
 - (void)quitApp {
+    [[BRAnalytics analytics] trackQuitApp];
     [self.environment quitApp];
 }
 
@@ -84,6 +97,10 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
     
     if (menuItem.tag == BRSettingsMenuItemNotifications) {
         [menuItem setState:[self.environment notificationsEnabled] ? NSControlStateValueOn : NSControlStateValueOff];
+    }
+    
+    if (menuItem.tag == BRSettingsMenuItemAnalytics) {
+        [menuItem setState:[[BRAnalytics analytics] isEnabled] ? NSControlStateValueOff : NSControlStateValueOn];
     }
     
     return YES;

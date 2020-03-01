@@ -8,6 +8,7 @@
 
 #import "BRGetAccountCommand.h"
 
+#import "BRAnalytics.h"
 #import "BRMacro.h"
 
 @interface BRGetAccountCommand ()
@@ -42,6 +43,7 @@
 
 - (void)execute:(BRCommandResult)callback {
     [self.syncEngine addAccount:self.token];
+    [[BRAnalytics analytics] trackAccountAdd];
 }
 
 

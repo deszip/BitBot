@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F98B30D4C34076B9FD4B710DF72747B6"
+               BlueprintIdentifier = "D15E95492B5AA7623FB11C8AF60B3C92"
+               BuildableName = "libPods-Bitrise.a"
                BlueprintName = "Pods-Bitrise"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods-Bitrise.a">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

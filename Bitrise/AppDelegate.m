@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 
+#import "BRAnalytics.h"
 #import "BRSyncCommand.h"
 #import "BRMainController.h"
 #import "BRDependencyContainer.h"
@@ -59,8 +60,12 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [[BRAnalytics analytics] start];
+    
     // Start sync
-    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine] environment:[self.dependencyContainer appEnvironment]];
+    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]
+                                                           logObserver:[self.dependencyContainer logObserver]
+                                                           environment:[self.dependencyContainer appEnvironment]];
     [self.observer startObserving:syncCommand];
     
     // Build status item
