@@ -13,13 +13,14 @@
 #import "BRAccountsViewController.h"
 
 #import "BRSyncCommand.h"
+#import "BRBuildInfo.h"
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
 #import "BRLogsTextViewController.h"
 #import "BRSegue.h"
 #import "BRLogsWindowPresenter.h"
-
+#import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
@@ -77,6 +78,17 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         }
     }];
     
+    
+    [self.dataSource setNavigationCallback:^(BRAppsDataSourceNavigationAction action, BRBuild *build) {
+        switch (action) {
+            case BRAppsDataSourceNavigationActionOpenInBrowser:
+                [weakSelf openBuild:build];
+                break;
+                
+            default: break;
+        }
+    }];
+    
     self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                            syncEngine:self.syncEngine
                                                           logObserver:[self.dependencyContainer logObserver]
@@ -111,6 +123,14 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (IBAction)openSettingsMenu:(NSButton *)sender {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
+}
+
+- (void) openBuild:(BRBuild *)build {
+    BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:build];
+    NSString *stringUrl = [NSString stringWithFormat:@"%@/build/%@",self.environment.baseUrlBitriseApp,buildInfo.slug];
+    NSURL *url = [NSURL URLWithString:stringUrl];
+    [[NSWorkspace sharedWorkspace] openURL: url];
+    [[[NSApplication sharedApplication] windows].lastObject close];
 }
 
 @end
