@@ -11,6 +11,7 @@
 #import <CoreData/CoreData.h>
 
 #import "BRLogger.h"
+#import "BRMacro.h"
 
 #import "BRAppCellView.h"
 #import "BRBuildCellView.h"
@@ -92,6 +93,11 @@
 
 - (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
     return [self.cellBuilder buildCell:item forOutline:outlineView];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
+    BR_SAFE_CALL(self.navigationCallback, BRAppsDataSourceNavigationActionOpenInBrowser, item);
+    return YES;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate -
