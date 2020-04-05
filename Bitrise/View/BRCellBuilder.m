@@ -9,6 +9,7 @@
 #import "BRCellBuilder.h"
 
 #import "BRBuildInfo.h"
+#import "BRStyleSheet.h"
 
 @interface BRCellBuilder ()
 
@@ -42,7 +43,7 @@
     BRBuildCellView *cell = [outline makeViewWithIdentifier:@"BRBuildCellView" owner:self];
     BRBuildStateInfo *buildStateInfo = [[[BRBuildInfo alloc] initWithBuild:build] stateInfo];
     
-    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
+    /// Progress animation
     if (buildStateInfo.state == BRBuildStateInProgress ||
         buildStateInfo.state == BRBuildStateWaitingForWorker) {
         [cell spinImage:YES];
@@ -52,12 +53,9 @@
         [cell setFinishedAt:build.finishedTime started:build.triggerTime];
     }
     
-    [cell.backgroundStatusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
+    /// Status image
+    [cell.statusImageContainer.layer setBackgroundColor:buildStateInfo.statusColor.CGColor];
     
-    NSColor *statusColor = [NSColor colorWithPatternImage:cell.statusImage.image];
-    [cell.statusImageContainer setWantsLayer:YES];
-    [cell.statusImageContainer.layer setBackgroundColor:statusColor.CGColor];
-    [cell.markerBox setFillColor:statusColor];
     
     // Parameters
     [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];

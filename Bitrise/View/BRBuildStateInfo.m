@@ -8,6 +8,8 @@
 
 #import "BRBuildStateInfo.h"
 
+#import "BRStyleSheet.h"
+
 @implementation BRBuildStateInfo
 
 - (instancetype)initWithBuildStatus:(NSUInteger)buildStatus holdStatus:(BOOL)holdStatus waiting:(BOOL)isWaiting {
@@ -25,14 +27,17 @@
                 _statusImageName = @"hold-status";
                 _statusTitle = @"On hold";
                 _state = BRBuildStateHold;
+                _statusColor = [BRStyleSheet holdColor];
             } else {
                 _statusImageName = @"progress-status";
                 if (isWaiting) {
                     _statusTitle = @"Waiting for worker...";
                     _state = BRBuildStateWaitingForWorker;
+                    _statusColor = [BRStyleSheet waitingColor];
                 } else {
                     _statusTitle = @"In progress...";
                     _state = BRBuildStateInProgress;
+                    _statusColor = [BRStyleSheet progressColor];
                 }
             }
             break;
@@ -41,12 +46,14 @@
             _statusImageName = @"success-status";
             _statusTitle = @"Success";
             _state = BRBuildStateSuccess;
+            _statusColor = [BRStyleSheet successColor];
             break;
             
         case 2:
             _statusImageName = @"failed-status";
             _statusTitle = @"Failed";
             _state = BRBuildStateFailed;
+            _statusColor = [BRStyleSheet failedColor];
             break;
             
         case 3:
@@ -54,6 +61,7 @@
             _statusImageName = @"abort-status";
             _statusTitle = @"Aborted";
             _state = BRBuildStateAborted;
+            _statusColor = [BRStyleSheet abortedColor];
             break;
     }
 }

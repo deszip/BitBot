@@ -129,6 +129,11 @@
 		D97355432402F980003FCE9B /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
 		D97355442402F980003FCE9B /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
 		D97355452402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */; };
+		D98C540A2439D02500CA1D57 /* BRStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C54092439D02500CA1D57 /* BRStyleSheet.m */; };
+		D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
+		D98C54112439EB8500CA1D57 /* Jura-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */; };
+		D98C54142439EC3A00CA1D57 /* Jura-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */; };
+		D98C54152439EC3A00CA1D57 /* Jura-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 /* End PBXBuildFile section */
@@ -332,6 +337,13 @@
 		D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
 		D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
 		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
+		D98C54082439D02500CA1D57 /* BRStyleSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStyleSheet.h; sourceTree = "<group>"; };
+		D98C54092439D02500CA1D57 /* BRStyleSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStyleSheet.m; sourceTree = "<group>"; };
+		D98C540C2439DAB300CA1D57 /* BRPlaceholderViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPlaceholderViews.h; sourceTree = "<group>"; };
+		D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRPlaceholderViews.m; sourceTree = "<group>"; };
+		D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-Bold.ttf"; sourceTree = "<group>"; };
+		D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-Medium.ttf"; sourceTree = "<group>"; };
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
@@ -440,6 +452,10 @@
 				0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */,
 				0EAB9D7A221F0A1A00A21D23 /* BRProgressObserver.h */,
 				0EAB9D7B221F0A1A00A21D23 /* BRProgressObserver.m */,
+				D98C54082439D02500CA1D57 /* BRStyleSheet.h */,
+				D98C54092439D02500CA1D57 /* BRStyleSheet.m */,
+				D98C540C2439DAB300CA1D57 /* BRPlaceholderViews.h */,
+				D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -828,6 +844,7 @@
 		D97355342402F967003FCE9B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				D98C540F2439EB6800CA1D57 /* Jura */,
 				D97355352402F974003FCE9B /* Mono */,
 			);
 			path = Fonts;
@@ -846,6 +863,16 @@
 				D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */,
 			);
 			path = Mono;
+			sourceTree = "<group>";
+		};
+		D98C540F2439EB6800CA1D57 /* Jura */ = {
+			isa = PBXGroup;
+			children = (
+				D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */,
+				D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */,
+				D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */,
+			);
+			path = Jura;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -941,9 +968,12 @@
 				D97355452402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf in Resources */,
 				D97355442402F980003FCE9B /* JetBrainsMono-Regular.ttf in Resources */,
 				D97355422402F980003FCE9B /* JetBrainsMono-ExtraBold.ttf in Resources */,
+				D98C54142439EC3A00CA1D57 /* Jura-Bold.ttf in Resources */,
 				D973553F2402F980003FCE9B /* JetBrainsMono-Bold-Italic.ttf in Resources */,
 				D97355412402F980003FCE9B /* JetBrainsMono-Medium-Italic.ttf in Resources */,
+				D98C54112439EB8500CA1D57 /* Jura-VariableFont_wght.ttf in Resources */,
 				D97355432402F980003FCE9B /* JetBrainsMono-Medium.ttf in Resources */,
+				D98C54152439EC3A00CA1D57 /* Jura-Medium.ttf in Resources */,
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
 				0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */,
 			);
@@ -1052,6 +1082,7 @@
 				0EAB9DDB2225AD7C00A21D23 /* BRLogsParser.m in Sources */,
 				0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */,
 				0E73598120EF8D92007E15A7 /* BRDependencyContainer.m in Sources */,
+				D98C540A2439D02500CA1D57 /* BRStyleSheet.m in Sources */,
 				0E1E9F22227D81E7002F7ED1 /* BRAnalytics.m in Sources */,
 				0EAB9D76221F043100A21D23 /* BRLogsWindowPresenter.m in Sources */,
 				0E8E9B5820F0820D00494DEB /* BRGetAccountCommand.m in Sources */,
@@ -1085,6 +1116,7 @@
 				0EF766C021E2637900E64E0C /* BRAboutViewController.m in Sources */,
 				0E42CB0320EC89550033CD03 /* BRAppCellView.m in Sources */,
 				0EE1B86021B4363D005D5140 /* NSArray+FRP.m in Sources */,
+				D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */,
 				0E73598420EF8ED3007E15A7 /* BRAccountsDataSource.m in Sources */,
 				0E42CADA20EC7A7E0033CD03 /* AppDelegate.m in Sources */,
 				0E73597A20EDF5D5007E15A7 /* BRAccountsViewController.m in Sources */,

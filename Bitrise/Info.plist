@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1148</string>
+	<string>1207</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -35,6 +35,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>JetBrainsMono-Regular.ttf</string>
+		<string>Jura-VariableFont_wght.ttf</string>
+		<string>Jura-Bold.ttf</string>
+		<string>Jura-Medium.ttf</string>
 	</array>
 </dict>
 </plist>

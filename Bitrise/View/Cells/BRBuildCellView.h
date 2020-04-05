@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildCellView : NSTableRowView
 
-@property (weak) IBOutlet NSBox *markerBox;
+//@property (weak) IBOutlet NSBox *markerBox;
 @property (weak) IBOutlet NSView *statusImageContainer;
 @property (weak) IBOutlet NSImageView *backgroundStatusImage;
 @property (weak) IBOutlet NSImageView *statusImage;

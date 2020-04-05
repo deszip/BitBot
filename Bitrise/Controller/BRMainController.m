@@ -8,6 +8,8 @@
 
 #import "BRMainController.h"
 
+#import "BRStyleSheet.h"
+
 #import "BRContainerBuilder.h"
 #import "BRAppsDataSource.h"
 #import "BRAccountsViewController.h"
@@ -41,6 +43,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRBuildMenuController *buildController;
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
+@property (weak) IBOutlet NSView *topBar;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
@@ -51,6 +54,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupUI];
     
     self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
     
@@ -111,6 +116,15 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (IBAction)openSettingsMenu:(NSButton *)sender {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
+}
+
+#pragma mark - UI setup -
+
+- (void)setupUI {
+    [self.topBar setWantsLayer:YES];
+    [self.topBar.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
+    
+    [self.outlineView.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
 }
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, BRBuildState) {
 @property (assign, nonatomic, readonly) BRBuildState state;
 @property (strong, nonatomic, readonly) NSString *statusImageName;
 @property (strong, nonatomic, readonly) NSString *statusTitle;
+@property (strong, nonatomic, readonly) NSColor *statusColor;
 
 - (instancetype)initWithBuildStatus:(NSUInteger)buildStatus
                          holdStatus:(BOOL)holdStatus
