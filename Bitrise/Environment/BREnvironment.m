@@ -10,6 +10,7 @@
 
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
 static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
+static NSString * const kBRBaseUrlBitriseApp = @"https://app.bitrise.io";
 
 @interface BREnvironment ()
 
@@ -43,6 +44,10 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 
 - (NSString *)buildNumber {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSString *)baseUrlBitriseApp {
+    return kBRBaseUrlBitriseApp;
 }
 
 #pragma mark - Notifications -

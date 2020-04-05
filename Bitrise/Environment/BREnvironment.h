@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Info -
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
+- (NSString *)baseUrlBitriseApp;
 
 #pragma mark - Notifications -
 
