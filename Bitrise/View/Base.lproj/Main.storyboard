@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -712,7 +712,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="82J-cI-jpS">
-                                <rect key="frame" x="0.0" y="545" width="460" height="50"/>
+                                <rect key="frame" x="0.0" y="555" width="460" height="50"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="JMg-rD-ZNo">
                                         <rect key="frame" x="410" y="13" width="30" height="25"/>
@@ -746,13 +746,13 @@
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="110" horizontalPageScroll="10" verticalLineScroll="110" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-eN-807">
-                                <rect key="frame" x="0.0" y="0.0" width="460" height="545"/>
+                                <rect key="frame" x="0.0" y="0.0" width="460" height="555"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="LYZ-ht-aUh">
-                                    <rect key="frame" x="1" y="1" width="458" height="543"/>
+                                    <rect key="frame" x="1" y="1" width="458" height="553"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="110" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="VDd-0D-hGO" id="1IG-VH-UrI">
-                                            <rect key="frame" x="0.0" y="0.0" width="458" height="543"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="458" height="553"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -760,7 +760,6 @@
                                             <tableColumns>
                                                 <tableColumn width="455" minWidth="40" maxWidth="1000" id="VDd-0D-hGO">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1470,7 +1469,6 @@
                                                                 <tableColumns>
                                                                     <tableColumn width="446" minWidth="40" maxWidth="1000" id="EvT-uk-RYA">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                            <font key="font" metaFont="message" size="11"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
@@ -2051,6 +2049,6 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
         <image name="message-square" width="24" height="24"/>
         <image name="settings" width="22" height="22"/>
         <image name="stack-list" width="20" height="13"/>
-        <image name="success-status" width="119" height="119"/>
+        <image name="success-status" width="59.5" height="59.5"/>
     </resources>
 </document>
