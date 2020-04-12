@@ -55,6 +55,7 @@
     
     /// Status image
     [cell setContainerColor:buildStateInfo.statusColor];
+    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     
     // Parameters
     [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];
