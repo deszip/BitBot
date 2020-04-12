@@ -39,11 +39,6 @@ static const NSTimeInterval kSpinDuration = 1.0;
     [self.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
     [self.layer setMasksToBounds:YES];
     
-    [self.backgroundView setWantsLayer:YES];
-    [self.backgroundView.layer setBackgroundColor:[BRStyleSheet cellBackgroundColor].CGColor];
-    [self.backgroundView.layer setCornerRadius:20.0];
-    
-    [self.statusImageContainer setWantsLayer:YES];
     [self.statusImageContainer.layer setMasksToBounds:YES];
     [self.statusImageContainer.layer setCornerRadius:10];
     
@@ -55,6 +50,13 @@ static const NSTimeInterval kSpinDuration = 1.0;
     [self.triggerTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildNumberLabel setTextColor:[BRStyleSheet secondaryTextColor]];
+}
+
+#pragma mark - Accessors -
+
+- (void)setContainerColor:(NSColor *)color {
+    [self.statusImageContainer setWantsLayer:YES];
+    [self.statusImageContainer.layer setBackgroundColor:color.CGColor];
 }
 
 #pragma mark - Animations -

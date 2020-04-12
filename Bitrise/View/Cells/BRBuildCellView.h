@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildCellView : NSTableRowView
 
-//@property (weak) IBOutlet NSBox *markerBox;
 @property (weak) IBOutlet NSView *statusImageContainer;
 @property (weak) IBOutlet NSImageView *backgroundStatusImage;
 @property (weak) IBOutlet NSImageView *statusImage;
@@ -26,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSTextField *buildTimeLabel;
 @property (weak) IBOutlet NSTextField *buildNumberLabel;
 
+#pragma mark - Accessors -
+- (void)setContainerColor:(NSColor *)color;
+
+#pragma mark - Animations -
 - (void)spinImage:(BOOL)spin;
 - (void)setRunningSince:(NSDate *)startDate;
 - (void)setFinishedAt:(NSDate *)finishDate started:(NSDate *)startDate;

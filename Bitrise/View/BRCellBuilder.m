@@ -54,12 +54,11 @@
     }
     
     /// Status image
-    [cell.statusImageContainer.layer setBackgroundColor:buildStateInfo.statusColor.CGColor];
-    
+    [cell setContainerColor:buildStateInfo.statusColor];
     
     // Parameters
     [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];
-    [cell.appTitleLabel setStringValue:build.app.title];
+    [cell.appTitleLabel setStringValue:build.app.title.uppercaseString];
     [cell.branchLabel setStringValue:build.branch];
     [cell.commitLabel setStringValue:build.commitMessage ? build.commitMessage : @"no commit message"];
     [cell.workflowLabel setStringValue:build.workflow];

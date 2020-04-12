@@ -120,6 +120,7 @@
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		6B9EB643B31D43C782DFEAE2 /* libPods-BitriseTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC38F36C8ABB179E968B54 /* libPods-BitriseTests.a */; };
 		8A6E00C56C408BC470C8A65C /* libPods-Bitrise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */; };
+		D96DDE9224436F78005F5998 /* BRScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96DDE9124436F78005F5998 /* BRScroller.m */; };
 		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
 		D973553E2402F980003FCE9B /* JetBrainsMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */; };
 		D973553F2402F980003FCE9B /* JetBrainsMono-Bold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D97355372402F97F003FCE9B /* JetBrainsMono-Bold-Italic.ttf */; };
@@ -327,6 +328,8 @@
 		1933E73DED40E2A87EF04BC3 /* Pods-BitriseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitriseTests/Pods-BitriseTests.release.xcconfig"; sourceTree = "<group>"; };
 		74C0A871342AC9F3D945FEB5 /* Pods-BitriseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BitriseTests/Pods-BitriseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E0CDE8596D9125C3BCDAB6 /* Pods-Bitrise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bitrise.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bitrise/Pods-Bitrise.release.xcconfig"; sourceTree = "<group>"; };
+		D96DDE9024436F78005F5998 /* BRScroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRScroller.h; sourceTree = "<group>"; };
+		D96DDE9124436F78005F5998 /* BRScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRScroller.m; sourceTree = "<group>"; };
 		D97355312402F558003FCE9B /* BRLogPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogPresenter.h; sourceTree = "<group>"; };
 		D97355322402F558003FCE9B /* BRLogPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogPresenter.m; sourceTree = "<group>"; };
 		D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Italic.ttf"; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 				0EF766C321E264E300E64E0C /* BRAboutTextView.m */,
 				0E1ED8F122282B3200A432B1 /* BRLogStatusView.h */,
 				0E1ED8F222282B3200A432B1 /* BRLogStatusView.m */,
+				D96DDE9024436F78005F5998 /* BRScroller.h */,
+				D96DDE9124436F78005F5998 /* BRScroller.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1078,6 +1083,7 @@
 				0E1ED8F322282B3200A432B1 /* BRLogStatusView.m in Sources */,
 				0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */,
 				0E3C0B11211760C000F2EA35 /* BROpenBuildCommand.m in Sources */,
+				D96DDE9224436F78005F5998 /* BRScroller.m in Sources */,
 				0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */,
 				0EAB9DDB2225AD7C00A21D23 /* BRLogsParser.m in Sources */,
 				0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */,

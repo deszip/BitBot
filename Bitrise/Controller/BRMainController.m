@@ -124,7 +124,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.topBar setWantsLayer:YES];
     [self.topBar.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
     
-    [self.outlineView.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
+    //[self.outlineView.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
+    [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
 
 @end

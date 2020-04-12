@@ -87,7 +87,7 @@
 #pragma mark - NSOutlineViewDelegate -
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
-    return 160.0;
+    return 116.0;
 }
 
 - (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
