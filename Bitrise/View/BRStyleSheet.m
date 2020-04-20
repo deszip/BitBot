@@ -30,31 +30,27 @@
 #pragma mark - Build colors -
 
 + (NSColor *)progressColor {
-    return [NSColor colorWithRed:0.51 green:0.32 blue:0.66 alpha:1.0];
+    return [NSColor colorWithRed:0.506 green:0.318 blue:0.659 alpha:1.0];
 }
 
 + (NSColor *)successColor {
-    return [NSColor colorWithRed:0.23 green:0.76 blue:0.64 alpha:1.0];
-}
-
-+ (NSColor *)pendingColor {
-    return [NSColor colorWithRed:0.0 green:0.26 blue:0.35 alpha:1.0];
+    return [NSColor colorWithRed:0.231 green:0.765 blue:0.639 alpha:1.0];
 }
 
 + (NSColor *)failedColor {
-    return [NSColor colorWithRed:0.94 green:0.45 blue:0.12 alpha:1.0];
+    return [NSColor colorWithRed:0.941 green:0.455 blue:0.122 alpha:1.0];
 }
 
 + (NSColor *)abortedColor {
-    return [NSColor yellowColor];
+    return [NSColor colorWithRed:1 green:0.875 blue:0.051 alpha:1.0];
 }
 
 + (NSColor *)holdColor {
-    return [NSColor grayColor];
+    return [NSColor colorWithRed:0.004 green:0.263 blue:0.345 alpha:1.0];
 }
 
 + (NSColor *)waitingColor {
-    return [NSColor blueColor];
+    return [NSColor colorWithRed:0.683 green:0.649 blue:0.649 alpha:1.0];
 }
 
 @end

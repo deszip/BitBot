@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSColor *)progressColor;
 + (NSColor *)successColor;
-+ (NSColor *)pendingColor;
 + (NSColor *)failedColor;
 + (NSColor *)abortedColor;
 + (NSColor *)holdColor;

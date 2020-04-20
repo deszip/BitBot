@@ -24,12 +24,12 @@
     switch (buildStatus) {
         case 0:
             if (isOnHold) {
-                _statusImageName = @"hold-status";
+                _statusImageName = @"0-degree-status-icon";
                 _statusTitle = @"On hold";
                 _state = BRBuildStateHold;
                 _statusColor = [BRStyleSheet holdColor];
             } else {
-                _statusImageName = @"progress-status";
+                _statusImageName = @"13-degree-status-icon";
                 if (isWaiting) {
                     _statusTitle = @"Waiting for worker...";
                     _state = BRBuildStateWaitingForWorker;
@@ -43,14 +43,14 @@
             break;
             
         case 1:
-            _statusImageName = @"success-status";
+            _statusImageName = @"success-status-icon";
             _statusTitle = @"Success";
             _state = BRBuildStateSuccess;
             _statusColor = [BRStyleSheet successColor];
             break;
             
         case 2:
-            _statusImageName = @"failed-status";
+            _statusImageName = @"failure-status-icon";
             _statusTitle = @"Failed";
             _state = BRBuildStateFailed;
             _statusColor = [BRStyleSheet failedColor];
@@ -58,7 +58,7 @@
             
         case 3:
         case 4:
-            _statusImageName = @"abort-status";
+            _statusImageName = @"45-degree-status-icon";
             _statusTitle = @"Aborted";
             _state = BRBuildStateAborted;
             _statusColor = [BRStyleSheet abortedColor];
