@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "dots.png",
+      "filename" : "Logo-Title.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dots@2x.png",
+      "filename" : "Logo-Title@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

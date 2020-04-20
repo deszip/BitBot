@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
 @property (weak) IBOutlet NSView *topBar;
+
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
@@ -57,17 +58,32 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     [self setupUI];
     
+    // Services
     self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
-    
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
     
-    self.dataSource = [self.dependencyContainer appsDataSource];
+    // Buiuld menu controller
+    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
+                                                           syncEngine:self.syncEngine
+                                                          logObserver:[self.dependencyContainer logObserver]
+                                                          environment:self.environment];
+    [self.buildController bind:self.buildMenu toOutline:self.outlineView];
+    __weak __typeof (self) weakSelf = self;
+    [self.buildController setActionCallback:^(BRBuildMenuAction action, BRBuildInfo *buildInfo) {
+        if (action == BRBuildMenuActionShowLog) {
+            [weakSelf.logsPresenter presentLogs:buildInfo];
+        }
+    }];
+    
+    // Builds data source
+    BRCellBuilder *cellBuilder = [self.dependencyContainer cellBuilder];
+    self.dataSource = [self.dependencyContainer appsDataSourceWithCellBuilder:cellBuilder];
     [self.dataSource bind:self.outlineView];
     
+    // Settings menu controller
     self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment];
     [self.settingsController bind:self.settingsMenu];
-    __weak __typeof (self) weakSelf = self;
     [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
         switch (action) {
             case BRSettingsMenuNavigationActionAccounts:
@@ -79,17 +95,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
                 break;
                 
             default: break;
-        }
-    }];
-    
-    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
-                                                           syncEngine:self.syncEngine
-                                                          logObserver:[self.dependencyContainer logObserver]
-                                                          environment:self.environment];
-    [self.buildController bind:self.buildMenu toOutline:self.outlineView];
-    [self.buildController setActionCallback:^(BRBuildMenuAction action, BRBuildInfo *buildInfo) {
-        if (action == BRBuildMenuActionShowLog) {
-            [weakSelf.logsPresenter presentLogs:buildInfo];
         }
     }];
 }
@@ -124,7 +129,6 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.topBar setWantsLayer:YES];
     [self.topBar.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
     
-    //[self.outlineView.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
 

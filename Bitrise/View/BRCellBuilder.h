@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRCellBuilder : NSObject
 
+@property (copy, nonatomic) void (^menuPresenter)(NSButton *);
+
 - (BRAppCellView *)appCell:(BRApp *)app forOutline:(NSOutlineView *)outline;
 - (BRBuildCellView *)buildCell:(BRBuild *)build forOutline:(NSOutlineView *)outline;
 

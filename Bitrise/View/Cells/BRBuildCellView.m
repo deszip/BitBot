@@ -28,6 +28,7 @@ static const NSTimeInterval kSpinDuration = 1.0;
     if (self = [super initWithCoder:decoder]) {
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
+        [self setContainerColor:[NSColor clearColor]];
     }
     
     return self;
@@ -41,6 +42,8 @@ static const NSTimeInterval kSpinDuration = 1.0;
     
     [self.statusImageContainer.layer setMasksToBounds:YES];
     [self.statusImageContainer.layer setCornerRadius:10];
+    [self.statusImageContainer setWantsLayer:YES];
+    [self.statusImageContainer setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
     
     [self.accountLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.appTitleLabel setTextColor:[BRStyleSheet primaryTextColor]];
@@ -59,27 +62,30 @@ static const NSTimeInterval kSpinDuration = 1.0;
     [self.statusImageContainer.layer setBackgroundColor:color.CGColor];
 }
 
+
+- (IBAction)menuButtonClicked:(NSButton *)sender {
+    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+    [(NSOutlineView *)self.superview performClick:self];
+    [NSMenu popUpContextMenu:self.superview.menu withEvent:event forView:self.menuButton];
+}
+
 #pragma mark - Animations -
 
 - (void)spinImage:(BOOL)spin {
     if (spin) {
         // Assign layers
-        [self.statusImageContainer setWantsLayer:YES];
-        [self.statusImageContainer setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
-        CALayer *containerLayer = [self.statusImageContainer makeBackingLayer];
-        [self.statusImageContainer setLayer:containerLayer];
         CALayer *layer = [self.statusImage makeBackingLayer];
         [self.statusImage setLayer:layer];
         
         // Customize layer
         CGPoint center = CGPointMake(layer.superlayer.bounds.size.width / 2, layer.superlayer.bounds.size.height / 2);
         layer.position = center;
-        layer.anchorPoint = CGPointMake(0.5, 0.5);        
+        layer.anchorPoint = CGPointMake(0.5, 0.5);
         [layer setCornerRadius:self.statusImage.bounds.size.width / 2];
         
         // Build animation
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-        rotationAnimation.toValue = [NSNumber numberWithFloat: -M_PI * 2.0 * kSpinDuration ];
+        rotationAnimation.toValue = [NSNumber numberWithFloat: -M_PI * 2.0 * kSpinDuration];
         rotationAnimation.duration = kSpinDuration;
         rotationAnimation.cumulative = YES;
         rotationAnimation.repeatCount = HUGE_VALF;

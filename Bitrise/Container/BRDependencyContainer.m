@@ -35,8 +35,8 @@
 
 #pragma mark - BRDataSourceProvider -
 
-- (BRAppsDataSource *)appsDataSource {
-    return [[BRAppsDataSource alloc] initWithContainer:self.persistenceContainer cellBuilder:[self cellBuilder]];
+- (BRAppsDataSource *)appsDataSourceWithCellBuilder:(BRCellBuilder *)cellBuilder {
+    return [[BRAppsDataSource alloc] initWithContainer:self.persistenceContainer cellBuilder:cellBuilder];
 }
 
 - (BRAccountsDataSource *)accountsDataSource {

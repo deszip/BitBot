@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
                  syncEngine:(BRSyncEngine *)syncEngine
                 logObserver:(BRLogObserver *)logObserver
                 environment:(BREnvironment *)environment;
+
 - (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;
 
 @end

@@ -679,17 +679,17 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="107" y="-284"/>
+            <point key="canvasLocation" x="84" y="-573"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="BRMainWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Bitrise" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="963" y="445" width="460" height="460"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1669"/>
                         <value key="minSize" type="size" width="460" height="430"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -701,7 +701,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="96" y="-118.5"/>
+            <point key="canvasLocation" x="81" y="-150"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -729,7 +729,7 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6CE-dn-y2P">
-                                        <rect key="frame" x="215" y="8" width="70" height="52"/>
+                                        <rect key="frame" x="217" y="8" width="66" height="52"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pi6-jP-SB1">
                                                 <rect key="frame" x="0.0" y="18" width="10" height="17"/>
@@ -739,14 +739,14 @@
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Icon" id="eWE-Ib-XOi"/>
                                             </imageView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pB7-dD-15k">
-                                                <rect key="frame" x="16" y="10" width="56" height="33"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" title="BitBot" usesSingleLineMode="YES" id="GCG-70-XKm">
-                                                    <font key="font" size="24" name="AvenirNextCondensed-Regular"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </textFieldCell>
-                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rLA-YD-y9P">
+                                                <rect key="frame" x="18" y="12" width="48" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="29" id="Cjv-VP-ZUj"/>
+                                                    <constraint firstAttribute="width" constant="48" id="f3m-ck-ecT"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Title" id="bUX-2H-6rP"/>
+                                            </imageView>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -816,7 +816,7 @@
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ne7-WQ-C7u">
                                                                     <rect key="frame" x="10" y="13" width="480" height="90"/>
                                                                     <subviews>
-                                                                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szo-B6-Mtd" customClass="BRBuildContentView">
+                                                                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szo-B6-Mtd" customClass="BRBuildContentView">
                                                                             <rect key="frame" x="15" y="0.0" width="465" height="90"/>
                                                                             <subviews>
                                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Mv7-pf-SlE">
@@ -1064,10 +1064,10 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4af-Yt-dlz" customClass="BRBuildActionsView">
-                                                                                    <rect key="frame" x="415" y="9" width="50" height="73"/>
+                                                                                    <rect key="frame" x="415" y="37" width="50" height="53"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-yV-gGe">
-                                                                                            <rect key="frame" x="-2" y="58" width="29" height="15"/>
+                                                                                            <rect key="frame" x="-2" y="38" width="29" height="15"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="# 25" id="gzH-nu-JSZ">
                                                                                                 <font key="font" size="12" name="Jura-Medium"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1075,11 +1075,18 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="gSa-u4-f1t">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="IMB-fO-wQr">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstAttribute="height" constant="30" id="Hne-FS-ZLL"/>
+                                                                                                <constraint firstAttribute="width" constant="30" id="d2k-br-zBU"/>
+                                                                                            </constraints>
+                                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Triple-dots-icon" imagePosition="only" alignment="center" inset="2" id="IMB-fO-wQr">
                                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                                 <font key="font" metaFont="system"/>
                                                                                             </buttonCell>
+                                                                                            <connections>
+                                                                                                <action selector="menuButtonClicked:" target="CEk-3K-jXL" id="E1w-mr-vxv"/>
+                                                                                            </connections>
                                                                                         </button>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -1130,6 +1137,7 @@
                                                                 <outlet property="buildNumberLabel" destination="qC8-yV-gGe" id="XIZ-CB-hXq"/>
                                                                 <outlet property="buildTimeLabel" destination="zaL-kZ-Ud4" id="Br8-K2-0hQ"/>
                                                                 <outlet property="commitLabel" destination="h51-k2-hGy" id="2ai-9p-hFz"/>
+                                                                <outlet property="menuButton" destination="gSa-u4-f1t" id="fdx-Fg-hUS"/>
                                                                 <outlet property="statusImage" destination="Idm-IL-eUs" id="TDt-73-55f"/>
                                                                 <outlet property="statusImageContainer" destination="Mv7-pf-SlE" id="PbY-jc-bAp"/>
                                                                 <outlet property="triggerTimeLabel" destination="c5l-zK-olO" id="yZR-Sq-hkl"/>
@@ -2057,14 +2065,16 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
     </scenes>
     <resources>
         <image name="Logo-Icon" width="10" height="17"/>
+        <image name="Logo-Title" width="45.5" height="17.5"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="Settings-icon" width="20" height="20"/>
         <image name="TILTED RECTANGLE" width="1024" height="1024"/>
+        <image name="Triple-dots-icon" width="20" height="20"/>
         <image name="calendar" width="20" height="22"/>
         <image name="clock" width="22" height="22"/>
-        <image name="dots" width="431" height="9"/>
+        <image name="dots" width="431" height="11"/>
         <image name="flat-list" width="15" height="14"/>
         <image name="git-branch" width="24" height="24"/>
         <image name="list" width="18" height="17"/>

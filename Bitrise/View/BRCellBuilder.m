@@ -43,6 +43,10 @@
     BRBuildCellView *cell = [outline makeViewWithIdentifier:@"BRBuildCellView" owner:self];
     BRBuildStateInfo *buildStateInfo = [[[BRBuildInfo alloc] initWithBuild:build] stateInfo];
     
+    /// Status image
+    [cell setContainerColor:buildStateInfo.statusColor];
+    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
+    
     /// Progress animation
     if (buildStateInfo.state == BRBuildStateInProgress ||
         buildStateInfo.state == BRBuildStateWaitingForWorker) {
@@ -52,10 +56,6 @@
         [cell spinImage:NO];
         [cell setFinishedAt:build.finishedTime started:build.triggerTime];
     }
-    
-    /// Status image
-    [cell setContainerColor:buildStateInfo.statusColor];
-    [cell.statusImage setImage:[NSImage imageNamed:buildStateInfo.statusImageName]];
     
     // Parameters
     [cell.accountLabel setStringValue:build.app.account.username.uppercaseString];

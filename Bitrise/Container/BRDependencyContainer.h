@@ -21,7 +21,8 @@
 
 @protocol BRDataSourceProvider <NSObject>
 
-- (BRAppsDataSource *)appsDataSource;
+- (BRCellBuilder *)cellBuilder;
+- (BRAppsDataSource *)appsDataSourceWithCellBuilder:(BRCellBuilder *)cellBuilder;
 - (BRAccountsDataSource *)accountsDataSource;
 - (BRLogsDataSource *)logDataSource;
 

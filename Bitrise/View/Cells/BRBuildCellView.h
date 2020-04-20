@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSImageView *backgroundStatusImage;
 @property (weak) IBOutlet NSImageView *statusImage;
 
+@property (weak) IBOutlet NSButton *menuButton;
 @property (weak) IBOutlet NSTextField *accountLabel;
 @property (weak) IBOutlet NSTextField *appTitleLabel;
 @property (weak) IBOutlet NSTextField *branchLabel;
@@ -24,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak) IBOutlet NSTextField *triggerTimeLabel;
 @property (weak) IBOutlet NSTextField *buildTimeLabel;
 @property (weak) IBOutlet NSTextField *buildNumberLabel;
+
+#pragma mark - Handlers -
+@property (copy, nonatomic) void (^menuPresenter)(NSButton *);
 
 #pragma mark - Accessors -
 - (void)setContainerColor:(NSColor *)color;

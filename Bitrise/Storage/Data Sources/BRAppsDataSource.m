@@ -91,7 +91,11 @@
 }
 
 - (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
-    return [self.cellBuilder buildCell:item forOutline:outlineView];
+    BRBuildCellView *cell = [self.cellBuilder buildCell:item forOutline:outlineView];
+    
+    
+    
+    return cell;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate -
