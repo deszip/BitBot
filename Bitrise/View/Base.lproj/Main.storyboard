@@ -1229,7 +1229,7 @@
             <objects>
                 <windowController id="asu-PE-Roq" customClass="BRLogsWindowController" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="9PA-xQ-rRn">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="961" y="612" width="609" height="271"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
@@ -1332,6 +1332,7 @@
                     </window>
                     <connections>
                         <outlet property="statusView" destination="izk-bj-yoG" id="jeF-AH-Fyu"/>
+                        <outlet property="toolbar" destination="FK0-3D-QwS" id="tuX-n0-nqr"/>
                         <segue destination="xqt-If-8UY" kind="relationship" relationship="window.shadowedContentViewController" id="SW2-pD-3HD"/>
                     </connections>
                 </windowController>
@@ -1431,6 +1432,18 @@
                         <rect key="contentRect" x="516" y="564" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1669"/>
                         <value key="minSize" type="size" width="480" height="270"/>
+                        <toolbar key="toolbar" implicitIdentifier="BF02062B-5C3C-4651-A3D9-2DD559E6E5DE" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="TvV-6N-kRs">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="RvV-vX-3JG"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="2qm-br-19s"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="jBi-8f-CbP"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="zIk-jV-lMB"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="AWs-QA-lkj"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="AWs-QA-lkj"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="u6Y-Oa-61p" id="EES-4Z-4Za"/>
                         </connections>
@@ -1883,6 +1896,18 @@ Gw
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="1091" y="611" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <toolbar key="toolbar" implicitIdentifier="AB4EA364-C5FE-49F0-85CB-2A0594DFDBC0" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="zrY-Zm-u1b">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="c8r-04-KDd"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="2MN-4M-M3K"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="HKW-OF-Rgd"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="rUC-Cd-hzv"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fZK-02-76K"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="fZK-02-76K"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="jqU-3H-VNR" id="CgA-GY-hig"/>
                         </connections>

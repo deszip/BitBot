@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRLogsWindowController : NSWindowController
 
 @property (weak, nonatomic) IBOutlet BRLogStatusView *statusView;
+@property (weak) IBOutlet NSToolbar *toolbar;
 
 @end
 

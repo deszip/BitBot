@@ -8,6 +8,8 @@
 
 #import "BRLogsTextViewController.h"
 
+#import "BRStyleSheet.h"
+
 #import "BRLogsWindowController.h"
 #import "BRProgressObserver.h"
 
@@ -25,6 +27,12 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 @end
 
 @implementation BRLogsTextViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.logTextView setBackgroundColor:[BRStyleSheet backgroundColor]];
+}
 
 #pragma mark - Setup -
 

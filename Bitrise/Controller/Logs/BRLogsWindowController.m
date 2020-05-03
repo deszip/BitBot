@@ -8,6 +8,8 @@
 
 #import "BRLogsWindowController.h"
 
+#import "BRStyleSheet.h"
+
 @interface BRLogsWindowController ()
 
 @end
@@ -16,6 +18,9 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    self.window.titleVisibility = NSWindowTitleHidden;
+    self.window.backgroundColor = [BRStyleSheet backgroundColor];
 }
 
 @end

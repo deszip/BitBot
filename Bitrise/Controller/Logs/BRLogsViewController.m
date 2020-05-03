@@ -8,6 +8,8 @@
 
 #import "BRLogsViewController.h"
 
+#import "BRStyleSheet.h"
+
 @interface BRLogsViewController ()
 
 @property (strong, nonatomic) BRLogsDataSource *logDataSource;
@@ -23,6 +25,7 @@
     [super viewDidLoad];
     
     [self.logTextView setFont:[NSFont fontWithName:@"Menlo" size:12.0]];
+    [self.logTextView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
 
 - (void)setBuildSlug:(NSString *)buildSlug {

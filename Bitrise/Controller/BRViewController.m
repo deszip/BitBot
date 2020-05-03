@@ -8,11 +8,20 @@
 
 #import "BRViewController.h"
 
+#import "BRStyleSheet.h"
+
 @interface BRViewController ()
 
 @end
 
 @implementation BRViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.view setWantsLayer:YES];
+    [self.view.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
+}
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     id destination = segue.destinationController;

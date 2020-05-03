@@ -8,6 +8,8 @@
 
 #import "BRAccountsViewController.h"
 
+#import "BRStyleSheet.h"
+
 #import "BRKeyRequestContext.h"
 #import "BRKeyInputViewController.h"
 #import "BRAccountsMenuController.h"
@@ -37,6 +39,12 @@
 @implementation BRAccountsViewController
 
 @dynamic dependencyContainer;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
+}
 
 - (void)viewDidAppear {
     [super viewDidAppear];
