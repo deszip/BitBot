@@ -12,7 +12,7 @@
 
 #pragma mark - Base colors -
 
-+ (NSColor *)backgroundColor { return [NSColor colorWithRed:0.09 green:0.11 blue:0.13 alpha:1.0]; }
++ (NSColor *)backgroundColor { return [NSColor colorWithRed:22.0 / 255.0 green:27.0 / 255.0 blue:32.0 / 255.0 alpha:1.0]; }
 + (NSColor *)cellBackgroundColor { return [NSColor colorWithRed:0.11 green:0.13 blue:0.15 alpha:1.0]; }
 
 + (NSColor *)greenColor {
