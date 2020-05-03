@@ -764,17 +764,24 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="BrX-w6-zlu">
                                         <rect key="frame" x="25" y="0.0" width="450" height="25"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-aP-IJm">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bSE-Iy-03U" customClass="BRDotsView">
+                                                <rect key="frame" x="0.0" y="0.0" width="450" height="25"/>
+                                            </customView>
+                                            <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-aP-IJm">
                                                 <rect key="frame" x="0.0" y="0.0" width="450" height="25"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="dots" id="hwZ-hn-M08"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="wiv-aP-IJm" firstAttribute="top" secondItem="BrX-w6-zlu" secondAttribute="top" id="7CC-bK-7k2"/>
+                                            <constraint firstAttribute="bottom" secondItem="bSE-Iy-03U" secondAttribute="bottom" id="A73-PS-r6z"/>
+                                            <constraint firstAttribute="trailing" secondItem="bSE-Iy-03U" secondAttribute="trailing" id="JNd-L5-HR5"/>
                                             <constraint firstItem="wiv-aP-IJm" firstAttribute="leading" secondItem="BrX-w6-zlu" secondAttribute="leading" id="KXh-ov-Nss"/>
                                             <constraint firstAttribute="trailing" secondItem="wiv-aP-IJm" secondAttribute="trailing" id="PKH-UE-QMx"/>
                                             <constraint firstAttribute="height" constant="25" id="ZZD-qa-Ono"/>
                                             <constraint firstAttribute="bottom" secondItem="wiv-aP-IJm" secondAttribute="bottom" id="cxS-Y1-wLN"/>
+                                            <constraint firstItem="bSE-Iy-03U" firstAttribute="top" secondItem="BrX-w6-zlu" secondAttribute="top" id="far-Or-ur4"/>
+                                            <constraint firstItem="bSE-Iy-03U" firstAttribute="leading" secondItem="BrX-w6-zlu" secondAttribute="leading" id="xjs-Fm-vk1"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
