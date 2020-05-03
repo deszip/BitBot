@@ -871,11 +871,11 @@
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
-                                                                                        <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-lD-Wuc" customClass="BRBuildBranchView">
+                                                                                        <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-lD-Wuc" customClass="BRBuildBranchView">
                                                                                             <rect key="frame" x="0.0" y="27" width="345" height="15"/>
                                                                                             <subviews>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-eI-xql">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="15"/>
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="119" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TVV-TI-rlj">
                                                                                                             <rect key="frame" x="0.0" y="2" width="12" height="12"/>
@@ -885,8 +885,8 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="git-branch" id="Qj6-GW-xyQ"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-cH-HTt">
-                                                                                                            <rect key="frame" x="15" y="0.0" width="162" height="15"/>
+                                                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-cH-HTt">
+                                                                                                            <rect key="frame" x="15" y="0.0" width="106" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="feature/sdkd-enc-stub-api" usesSingleLineMode="YES" id="ToV-34-oy8">
                                                                                                                 <font key="font" size="12" name="Jura-Medium"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -904,7 +904,7 @@
                                                                                                     </customSpacing>
                                                                                                 </stackView>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TDX-7F-3md">
-                                                                                                    <rect key="frame" x="186" y="0.0" width="84" height="15"/>
+                                                                                                    <rect key="frame" x="130" y="0.0" width="113" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mKD-wi-NwE">
                                                                                                             <rect key="frame" x="0.0" y="2" width="12" height="12"/>
@@ -915,7 +915,7 @@
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="message-square" id="B7o-7b-0aM"/>
                                                                                                         </imageView>
                                                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h51-k2-hGy">
-                                                                                                            <rect key="frame" x="15" y="0.0" width="71" height="15"/>
+                                                                                                            <rect key="frame" x="15" y="0.0" width="100" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="develop develop" usesSingleLineMode="YES" id="sQr-Pk-f1M">
                                                                                                                 <font key="font" size="12" name="Jura-Medium"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1084,9 +1084,6 @@
                                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                                 <font key="font" metaFont="system"/>
                                                                                             </buttonCell>
-                                                                                            <connections>
-                                                                                                <action selector="menuButtonClicked:" target="CEk-3K-jXL" id="E1w-mr-vxv"/>
-                                                                                            </connections>
                                                                                         </button>
                                                                                     </subviews>
                                                                                     <constraints>

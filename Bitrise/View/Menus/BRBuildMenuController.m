@@ -32,8 +32,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRLogObserver *logObserver;
 @property (strong, nonatomic) BREnvironment *environment;
 
-@property (weak, nonatomic) NSMenu *menu;
 @property (weak, nonatomic) NSOutlineView *outlineView;
+@property (weak, nonatomic) NSView *triggeredView;
 
 @end
 
@@ -53,10 +53,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     return self;
 }
 
-- (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline {
-    self.menu = menu;
-    self.outlineView = outline;
-    self.outlineView.menu = self.menu;
+- (void)setMenu:(NSMenu *)menu {
+    _menu = menu;
     
     if (self.menu.itemArray.count == kMenuItemsCount) {
         [self.menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
@@ -72,12 +70,30 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     }
 }
 
+- (void)bindToOutline:(NSOutlineView *)outline {
+    self.outlineView = outline;
+    self.outlineView.menu = self.menu;
+}
+
+- (void)bindToButton:(NSButton *)button {
+    [button setTarget:self];
+    [button setAction:@selector(showMenu:)];
+}
+
+#pragma mark - Presentation -
+
+- (void)showMenu:(NSButton *)button {
+    self.triggeredView = button;
+    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+    [NSMenu popUpContextMenu:self.menu withEvent:event forView:button];
+}
+
 #pragma mark - Actions -
 
 - (void)rebuild {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
+    BRBuild *build = [self selectedBuild];
+    if (build) {
+        BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:build];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
                 BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
@@ -90,9 +106,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (void)abort {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:(BRBuild *)selectedItem];
+    BRBuild *build = [self selectedBuild];
+    if (build) {
+        BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:build];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
                 BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
@@ -105,25 +121,25 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (void)showLog {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:(BRBuild *)selectedItem];
+    BRBuild *build = [self selectedBuild];
+    if (build) {
+        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:build];
         BR_SAFE_CALL(self.actionCallback, BRBuildMenuActionShowLog, buildInfo);
     }
 }
 
 - (void)downloadLog {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRDownloadLogsCommand *command = [[BRDownloadLogsCommand alloc] initWithBuildSlug:[(BRBuild *)selectedItem slug]];
+    BRBuild *build = [self selectedBuild];
+    if (build) {
+        BRDownloadLogsCommand *command = [[BRDownloadLogsCommand alloc] initWithBuildSlug:build.slug];
         [command execute:nil];
     }
 }
 
 - (void)openBuild {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BROpenBuildCommand *command = [[BROpenBuildCommand alloc] initWithBuildSlug:[(BRBuild *)selectedItem slug]];
+    BRBuild *build = [self selectedBuild];
+    if (build) {
+        BROpenBuildCommand *command = [[BROpenBuildCommand alloc] initWithBuildSlug:build.slug];
         [command execute:nil];
     }
 }
@@ -131,26 +147,31 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 #pragma mark - NSMenuItemValidation -
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BRBuild class]]) {
-        BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:selectedItem];
-        
-        BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
-        BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
-                                   buildInfo.stateInfo.state == BRBuildStateHold;
-        BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold && !buildInProgress;
-        
-        switch (menuItem.tag) {
-            case BRBuildMenuItemRebuild: return !buildInProgress;
-            case BRBuildMenuItemAbort: return buildCouldBeAborted;
-            case BRBuildMenuItemShowLog: return buildLogAvailable;
-            case BRBuildMenuItemDownload: return buildLogAvailable;
-            case BRBuildMenuItemOpenBuild: return YES;
-            default: return NO;
-        }
-    }
+    BRBuild *build = [self selectedBuild];
+    BRBuildInfo *buildInfo = [[BRBuildInfo alloc] initWithBuild:build];
+    return [self menuItem:menuItem isValidFor:buildInfo];
+}
+
+- (BOOL)menuItem:(NSMenuItem *)menuItem isValidFor:(BRBuildInfo *)buildInfo {
+    BOOL buildInProgress = buildInfo.stateInfo.state == BRBuildStateInProgress;
+    BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
+    buildInfo.stateInfo.state == BRBuildStateHold;
+    BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold && !buildInProgress;
     
-    return NO;
+    switch (menuItem.tag) {
+        case BRBuildMenuItemRebuild: return !buildInProgress;
+        case BRBuildMenuItemAbort: return buildCouldBeAborted;
+        case BRBuildMenuItemShowLog: return buildLogAvailable;
+        case BRBuildMenuItemDownload: return buildLogAvailable;
+        case BRBuildMenuItemOpenBuild: return YES;
+        default: return NO;
+    }
+}
+
+#pragma mark - Build provider -
+
+- (BRBuild *)selectedBuild {
+    return BR_SAFE_CALL(self.buildProvider, self.triggeredView);
 }
 
 @end

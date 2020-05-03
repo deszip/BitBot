@@ -23,6 +23,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
 
 @interface BRBuildMenuController : NSObject
 
+@property (weak, nonatomic) NSMenu *menu;
+@property (copy, nonatomic) BRBuild * (^buildProvider)(NSView * _Nullable targetView);
 @property (copy, nonatomic) void (^actionCallback)(BRBuildMenuAction action, BRBuildInfo *buildInfo);
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api
@@ -30,7 +32,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
                 logObserver:(BRLogObserver *)logObserver
                 environment:(BREnvironment *)environment;
 
-- (void)bind:(NSMenu *)menu toOutline:(NSOutlineView *)outline;
+- (void)bindToOutline:(NSOutlineView *)outline;
+- (void)bindToButton:(NSButton *)button;
 
 @end
 

@@ -13,6 +13,7 @@
 
 @interface BRCellBuilder ()
 
+@property (strong, nonatomic) BRBuildMenuController *buildMenuController;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 @property (strong, nonatomic) NSDateFormatter *durationFormatter;
 
@@ -20,8 +21,9 @@
 
 @implementation BRCellBuilder
 
-- (instancetype)init {
+- (instancetype)initWithMenuController:(BRBuildMenuController *)menuController {
     if (self= [super init]) {
+        _buildMenuController = menuController;
         _timeFormatter = [NSDateFormatter new];
         [_timeFormatter setTimeZone:[NSTimeZone localTimeZone]];
         [_timeFormatter setDateFormat:@"dd.MM.yyyy @ HH:mm"];
@@ -66,6 +68,8 @@
     [cell.triggerTimeLabel setStringValue:[self.timeFormatter stringFromDate:build.triggerTime]];
     
     [cell.buildNumberLabel setStringValue:[NSString stringWithFormat:@"#%li", build.buildNumber.integerValue]];
+    
+    [self.buildMenuController bindToButton:cell.menuButton];
     
     return cell;
 }

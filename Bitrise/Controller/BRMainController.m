@@ -58,18 +58,31 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     [self setupUI];
     
+    // For use in closures
+    __weak __typeof(self) weakSelf = self;
+    
     // Services
     self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
     
-    // Buiuld menu controller
+    // Build menu controller
     self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                            syncEngine:self.syncEngine
                                                           logObserver:[self.dependencyContainer logObserver]
                                                           environment:self.environment];
-    [self.buildController bind:self.buildMenu toOutline:self.outlineView];
-    __weak __typeof (self) weakSelf = self;
+    self.buildController.menu = self.buildMenu;
+    self.buildController.buildProvider = ^BRBuild* (NSView *targetView) {
+        id selectedItem = [weakSelf.outlineView itemAtRow:[weakSelf.outlineView clickedRow]];
+        if (!selectedItem) {
+            selectedItem = [weakSelf.outlineView itemAtRow:[weakSelf.outlineView rowForView:targetView]];
+        }
+        if ([selectedItem isKindOfClass:[BRBuild class]]) {
+            return selectedItem;
+        }
+        return nil;
+    };
+    [self.buildController bindToOutline:self.outlineView];
     [self.buildController setActionCallback:^(BRBuildMenuAction action, BRBuildInfo *buildInfo) {
         if (action == BRBuildMenuActionShowLog) {
             [weakSelf.logsPresenter presentLogs:buildInfo];
@@ -77,7 +90,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     }];
     
     // Builds data source
-    BRCellBuilder *cellBuilder = [self.dependencyContainer cellBuilder];
+    BRCellBuilder *cellBuilder = [[BRCellBuilder alloc] initWithMenuController:self.buildController];
     self.dataSource = [self.dependencyContainer appsDataSourceWithCellBuilder:cellBuilder];
     [self.dataSource bind:self.outlineView];
     

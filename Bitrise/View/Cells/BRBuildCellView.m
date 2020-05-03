@@ -16,6 +16,8 @@ static const NSTimeInterval kSpinDuration = 1.0;
 
 @interface BRBuildCellView ()
 
+@property (strong, nonatomic) NSTrackingArea *trackingArea;
+
 @property (weak) IBOutlet NSView *backgroundView;
 @property (strong, nonatomic) NSDateFormatter *durationFormatter;
 @property (strong, nonatomic) NSTimer *timer;
@@ -29,6 +31,13 @@ static const NSTimeInterval kSpinDuration = 1.0;
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
         [self setContainerColor:[NSColor clearColor]];
+        
+        NSTrackingAreaOptions options = (NSTrackingMouseEnteredAndExited |
+                                         NSTrackingActiveInKeyWindow |
+                                         NSTrackingInVisibleRect |
+                                         NSTrackingEnabledDuringMouseDrag);
+        NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:self.frame options:options owner:self userInfo:nil];
+        [self addTrackingArea:trackingArea];
     }
     
     return self;
@@ -53,6 +62,16 @@ static const NSTimeInterval kSpinDuration = 1.0;
     [self.triggerTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildNumberLabel setTextColor:[BRStyleSheet secondaryTextColor]];
+    
+    [self.menuButton setHidden:YES];
+}
+
+- (void)mouseEntered:(NSEvent *)event {
+    [self.menuButton setHidden:NO];
+}
+
+- (void)mouseExited:(NSEvent *)event {
+    [self.menuButton setHidden:YES];
 }
 
 #pragma mark - Accessors -
@@ -60,13 +79,6 @@ static const NSTimeInterval kSpinDuration = 1.0;
 - (void)setContainerColor:(NSColor *)color {
     [self.statusImageContainer setWantsLayer:YES];
     [self.statusImageContainer.layer setBackgroundColor:color.CGColor];
-}
-
-
-- (IBAction)menuButtonClicked:(NSButton *)sender {
-    NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-    [(NSOutlineView *)self.superview performClick:self];
-    [NSMenu popUpContextMenu:self.superview.menu withEvent:event forView:self.menuButton];
 }
 
 #pragma mark - Animations -
