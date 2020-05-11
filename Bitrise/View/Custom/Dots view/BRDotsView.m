@@ -36,11 +36,14 @@
         
         /// Dot layer builder
         NSUInteger lineHeight = 1.0;
-        NSUInteger lineSpacing = 2.0;
+        NSUInteger lineSpacing = 3.0;
         NSUInteger lineLayerHeight = lineHeight + (lineSpacing * 2);
         NSUInteger lineCount = floor(rect.size.height / lineLayerHeight);
+        
+        NSLog(@"Adding %lu dot layers...", (unsigned long)lineCount);
+        
         for (NSUInteger i = 0; i < lineCount; i++) {
-            CALayer *lineLayer = [self buildLayerAtIndex:i height:lineHeight spacing:lineSpacing inRect:rect];
+            CALayer *lineLayer = [self buildLayerAtIndex:i count:lineCount height:lineHeight spacing:lineSpacing inRect:rect];
             [self.layer addSublayer:lineLayer];
         }
     }
@@ -49,19 +52,12 @@
 }
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {
-    
-    NSLog(@"Frame: %f", layer.frame.size.width);
-    NSLog(@"Bounds: %f", layer.bounds.size.width);
-    NSLog(@"Sublayers: %@", layer.sublayers);
-    
     [layer.sublayers enumerateObjectsUsingBlock:^(__kindof CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addMask:obj];
-        NSLog(@"    Frame: %f / %f", obj.frame.size.width, obj.mask.frame.size.width);
-        NSLog(@"    Bounds: %f / %f", obj.bounds.size.width, obj.mask.bounds.size.width);
     }];
 }
 
-- (CALayer *)buildLayerAtIndex:(NSUInteger)index height:(CGFloat)lineHeight spacing:(CGFloat)spacing inRect:(CGRect)rect {
+- (CALayer *)buildLayerAtIndex:(NSUInteger)index count:(NSUInteger)count height:(CGFloat)lineHeight spacing:(CGFloat)spacing inRect:(CGRect)rect {
     NSUInteger lineLayerHeight = lineHeight + (spacing * 2);
     
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
@@ -69,7 +65,13 @@
     gradientLayer.startPoint = CGPointMake(0.0, 1.0);
     gradientLayer.endPoint = CGPointMake(1.0, 1.0);
     gradientLayer.locations = @[@(0), @(0.2), @(0.8), @(1.0)];
-    gradientLayer.frame = CGRectMake(0, (lineLayerHeight * index) + spacing, rect.size.width, lineHeight);
+    
+    CGFloat layerWidth = rect.size.width * (1.0 - (0.1 * (count - index)));
+    CGFloat layerMargin = (rect.size.width - layerWidth) / 2.0;
+    gradientLayer.frame = CGRectMake(layerMargin, (lineLayerHeight * index) + spacing, layerWidth, lineHeight);
+    
+    NSLog(@"Dot layer #%lu: %f", (unsigned long)index, layerWidth);
+    
     NSArray *colors = @[ (id)[NSColor clearColor].CGColor,
                          (id)[BRStyleSheet greenColor].CGColor,
                          (id)[BRStyleSheet greenColor].CGColor,
@@ -87,7 +89,7 @@
     maskLayer.frame = CGRectMake(0, 0, layer.bounds.size.width, layer.bounds.size.height);
     maskLayer.strokeColor = [BRStyleSheet greenColor].CGColor;
     maskLayer.lineWidth = layer.bounds.size.height;
-    maskLayer.lineDashPattern = @[@(layer.bounds.size.height), @(layer.bounds.size.height)];
+    maskLayer.lineDashPattern = @[@(1), @(5)];
     CGMutablePathRef pathRef = CGPathCreateMutable();
     CGPathMoveToPoint(pathRef, nil, 0, layer.bounds.size.height);
     CGPathAddLineToPoint(pathRef, nil, layer.bounds.size.width, layer.bounds.size.height);
