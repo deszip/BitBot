@@ -8,6 +8,13 @@
 
 #import "BRStyleSheet.h"
 
+//RGB color macro
+#define NSColorFromRGBA(rgbaValue) [NSColor \
+    colorWithRed:((float)((rgbaValue & 0xFF000000) >> 24))/255.0 \
+    green:((float)((rgbaValue & 0xFF0000) >> 16))/255.0 \
+    blue:((float)((rgbaValue & 0xFF00) >> 8)) / 255.0 \
+    alpha:(float)(rgbaValue & 0xFF)]
+
 @implementation BRStyleSheet
 
 #pragma mark - Base colors -
@@ -25,6 +32,10 @@
 
 + (NSColor *)secondaryTextColor {
     return [NSColor colorWithRed:0.78 green:0.85 blue:0.95 alpha:1.0];
+}
+
++ (NSColor *)buildIconTintColor {
+    return NSColorFromRGBA(0xC7DAF3FF);
 }
 
 #pragma mark - Build colors -
@@ -52,5 +63,10 @@
 + (NSColor *)waitingColor {
     return [NSColor colorWithRed:0.683 green:0.649 blue:0.649 alpha:1.0];
 }
+
+#pragma mark - UI Constants -
+
++ (CGFloat)buildIconCorenerRadius { return 8.0; }
++ (NSTimeInterval)buildIconSpinDurationSec { return 1.0; }
 
 @end

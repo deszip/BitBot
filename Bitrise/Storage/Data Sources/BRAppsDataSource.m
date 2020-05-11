@@ -92,10 +92,11 @@
 
 - (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
     BRBuildCellView *cell = [self.cellBuilder buildCell:item forOutline:outlineView];
-    
-    
-    
     return cell;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
+    return NO;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate -

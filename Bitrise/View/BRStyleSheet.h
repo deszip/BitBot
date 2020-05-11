@@ -7,6 +7,7 @@
 //
 
 #import <AppKit/AppKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSColor *)greenColor;
 + (NSColor *)primaryTextColor;
 + (NSColor *)secondaryTextColor;
++ (NSColor *)buildIconTintColor;
 
 #pragma mark - Build colors -
 
@@ -28,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSColor *)abortedColor;
 + (NSColor *)holdColor;
 + (NSColor *)waitingColor;
+
+#pragma mark - UI Constants -
++ (CGFloat)buildIconCorenerRadius;
++ (NSTimeInterval)buildIconSpinDurationSec;
 
 @end
 

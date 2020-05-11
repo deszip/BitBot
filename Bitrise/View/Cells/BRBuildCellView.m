@@ -9,10 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "BRBuildCellView.h"
-
 #import "BRStyleSheet.h"
-
-static const NSTimeInterval kSpinDuration = 1.0;
 
 @interface BRBuildCellView ()
 
@@ -50,7 +47,7 @@ static const NSTimeInterval kSpinDuration = 1.0;
     [self.layer setMasksToBounds:YES];
     
     [self.statusImageContainer.layer setMasksToBounds:YES];
-    [self.statusImageContainer.layer setCornerRadius:10];
+    [self.statusImageContainer.layer setCornerRadius:[BRStyleSheet buildIconCorenerRadius]];
     [self.statusImageContainer setWantsLayer:YES];
     [self.statusImageContainer setLayerContentsRedrawPolicy:NSViewLayerContentsRedrawOnSetNeedsDisplay];
     
@@ -62,6 +59,7 @@ static const NSTimeInterval kSpinDuration = 1.0;
     [self.triggerTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildNumberLabel setTextColor:[BRStyleSheet secondaryTextColor]];
+    
     
     [self.menuButton setHidden:YES];
 }
@@ -97,8 +95,8 @@ static const NSTimeInterval kSpinDuration = 1.0;
         
         // Build animation
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-        rotationAnimation.toValue = [NSNumber numberWithFloat: -M_PI * 2.0 * kSpinDuration];
-        rotationAnimation.duration = kSpinDuration;
+        rotationAnimation.toValue = [NSNumber numberWithFloat: -M_PI * 2.0 * [BRStyleSheet buildIconSpinDurationSec]];
+        rotationAnimation.duration = [BRStyleSheet buildIconSpinDurationSec];
         rotationAnimation.cumulative = YES;
         rotationAnimation.repeatCount = HUGE_VALF;
         [layer addAnimation:rotationAnimation forKey:@"transform"];

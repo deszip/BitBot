@@ -882,10 +882,10 @@
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
-                                                                                        <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-lD-Wuc" customClass="BRBuildBranchView">
+                                                                                        <stackView distribution="equalCentering" orientation="horizontal" alignment="centerY" spacing="11" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-lD-Wuc" customClass="BRBuildBranchView">
                                                                                             <rect key="frame" x="0.0" y="27" width="325" height="15"/>
                                                                                             <subviews>
-                                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-eI-xql">
+                                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-eI-xql">
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="105" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TVV-TI-rlj">
@@ -894,7 +894,7 @@
                                                                                                                 <constraint firstAttribute="height" constant="12" id="E7Z-31-Qox"/>
                                                                                                                 <constraint firstAttribute="width" constant="12" id="ytO-Do-keg"/>
                                                                                                             </constraints>
-                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="git-branch" id="Qj6-GW-xyQ"/>
+                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="git-branch" id="Qj6-GW-xyQ"/>
                                                                                                         </imageView>
                                                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-cH-HTt">
                                                                                                             <rect key="frame" x="15" y="0.0" width="92" height="15"/>
@@ -923,7 +923,7 @@
                                                                                                                 <constraint firstAttribute="height" constant="12" id="8Ff-yz-Vme"/>
                                                                                                                 <constraint firstAttribute="width" constant="12" id="fvO-8e-SGL"/>
                                                                                                             </constraints>
-                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="message-square" id="B7o-7b-0aM"/>
+                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="message-square" id="B7o-7b-0aM"/>
                                                                                                         </imageView>
                                                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h51-k2-hGy">
                                                                                                             <rect key="frame" x="15" y="0.0" width="100" height="15"/>
@@ -952,7 +952,7 @@
                                                                                                                 <constraint firstAttribute="width" constant="12" id="3Jb-Tc-iLt"/>
                                                                                                                 <constraint firstAttribute="height" constant="12" id="4Nn-nr-H68"/>
                                                                                                             </constraints>
-                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="list" id="z3C-8e-zYQ"/>
+                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="list" id="z3C-8e-zYQ"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sSb-xQ-bbg">
                                                                                                             <rect key="frame" x="15" y="0.0" width="51" height="15"/>
@@ -996,11 +996,11 @@
                                                                                                                 <constraint firstAttribute="height" constant="12" id="99o-GH-GH4"/>
                                                                                                                 <constraint firstAttribute="width" constant="12" id="P6X-fN-feQ"/>
                                                                                                             </constraints>
-                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="calendar" id="Dxg-fa-MFv"/>
+                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="calendar" id="Dxg-fa-MFv"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5l-zK-olO">
                                                                                                             <rect key="frame" x="15" y="0.0" width="90" height="15"/>
-                                                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="12.01.2019 11:08" id="ydG-b7-4Es">
+                                                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="12.01.2019 11:08" usesSingleLineMode="YES" id="ydG-b7-4Es">
                                                                                                                 <font key="font" size="12" name="Jura-Medium"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1025,11 +1025,11 @@
                                                                                                                 <constraint firstAttribute="width" constant="12" id="QtD-yy-qSq"/>
                                                                                                                 <constraint firstAttribute="height" constant="12" id="mG3-Dc-cov"/>
                                                                                                             </constraints>
-                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="clock" id="SG2-ld-xP9"/>
+                                                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="clock" id="SG2-ld-xP9"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zaL-kZ-Ud4">
                                                                                                             <rect key="frame" x="15" y="0.0" width="45" height="15"/>
-                                                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="1m 55s" id="nlN-mZ-4mf">
+                                                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="1m 55s" usesSingleLineMode="YES" id="nlN-mZ-4mf">
                                                                                                                 <font key="font" size="12" name="Jura-Medium"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1396,15 +1396,15 @@
                                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-Pg-oCd">
                                                             <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        <size key="minSize" width="548" height="342"/>
+                                                                        <size key="minSize" width="563" height="342"/>
                                                                         <size key="maxSize" width="563" height="10000000"/>
                                                                         <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                     </textView>
@@ -1415,7 +1415,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
-                                                                <rect key="frame" x="548" y="0.0" width="15" height="342"/>
+                                                                <rect key="frame" x="547" y="0.0" width="16" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                         </scrollView>
@@ -2113,13 +2113,13 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
         <image name="ShadowTop" width="430" height="25"/>
         <image name="TILTED RECTANGLE" width="1024" height="1024"/>
         <image name="TripleDotsShadowed" width="70" height="90"/>
-        <image name="calendar" width="20" height="22"/>
-        <image name="clock" width="22" height="22"/>
+        <image name="calendar" width="10" height="10"/>
+        <image name="clock" width="10" height="10"/>
         <image name="dots" width="431" height="11"/>
         <image name="flat-list" width="15" height="14"/>
-        <image name="git-branch" width="24" height="24"/>
-        <image name="list" width="18" height="17"/>
-        <image name="message-square" width="24" height="24"/>
+        <image name="git-branch" width="10" height="10"/>
+        <image name="list" width="10" height="10"/>
+        <image name="message-square" width="10" height="10"/>
         <image name="stack-list" width="20" height="13"/>
     </resources>
 </document>

@@ -1,17 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "clock.png",
+      "filename" : "stopwatch icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "clock@2x.png",
+      "filename" : "stopwatch icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "clock@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
