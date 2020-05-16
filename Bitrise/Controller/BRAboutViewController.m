@@ -9,6 +9,7 @@
 #import "BRAboutViewController.h"
 
 #import "BRAboutTextView.h"
+#import "BRStyleSheet.h"
 
 @interface BRAboutViewController ()
 
@@ -21,7 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.aboutTextView setAutomaticLinkDetectionEnabled:YES];
+    [self.aboutTextView setFont:[BRStyleSheet proximaNova:15.0]];
 }
 
 - (void)viewDidAppear {

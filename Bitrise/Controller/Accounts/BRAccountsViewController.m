@@ -22,6 +22,8 @@
 
 @interface BRAccountsViewController ()
 
+@property (weak) IBOutlet NSTextField *titleField;
+@property (weak) IBOutlet NSBox *containerBox;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *controlMenu;
 @property (weak) IBOutlet NSButton *addButton;
@@ -48,6 +50,11 @@
 
 - (void)viewDidAppear {
     [super viewDidAppear];
+    
+    // UI
+    [self.titleField setFont:[BRStyleSheet proximaNova:16.0]];
+    [self.containerBox setBorderColor:[BRStyleSheet boxBorderColor]];
+    [self.containerBox setFillColor:[NSColor clearColor]];
     
     // Dependencies
     self.api = [self.dependencyContainer bitriseAPI];

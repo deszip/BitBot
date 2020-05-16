@@ -60,6 +60,15 @@
     [self.buildTimeLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.buildNumberLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     
+    /// Fonts
+    [self.accountLabel setFont:[BRStyleSheet accountNameFont]];
+    [self.appTitleLabel setFont:[BRStyleSheet appNameFont]];
+    [self.branchLabel setFont:[BRStyleSheet buildDetailsFont]];
+    [self.commitLabel setFont:[BRStyleSheet buildDetailsFont]];
+    [self.workflowLabel setFont:[BRStyleSheet buildDetailsFont]];
+    [self.triggerTimeLabel setFont:[BRStyleSheet buildDetailsFont]];
+    [self.buildTimeLabel setFont:[BRStyleSheet buildDetailsFont]];
+    [self.buildNumberLabel setFont:[BRStyleSheet buildDetailsFont]];
     
     [self.menuButton setHidden:YES];
 }

@@ -8,7 +8,7 @@
 
 #import "BRStyleSheet.h"
 
-//RGB color macro
+/// RGB color macro
 #define NSColorFromRGBA(rgbaValue) [NSColor \
     colorWithRed:((float)((rgbaValue & 0xFF000000) >> 24))/255.0 \
     green:((float)((rgbaValue & 0xFF0000) >> 16))/255.0 \
@@ -16,6 +16,28 @@
     alpha:(float)(rgbaValue & 0xFF)]
 
 @implementation BRStyleSheet
+
+#pragma mark - Fonts -
+
++ (NSFont *)proximaNova:(CGFloat)size {
+    return [NSFont fontWithName:@"ProximaNova-Regular" size:size];
+}
+
++ (NSFont *)accountNameFont {
+    return [BRStyleSheet proximaNova:12.0];
+}
+
++ (NSFont *)appNameFont {
+    return [BRStyleSheet proximaNova:20.0];
+}
+
++ (NSFont *)buildDetailsFont {
+    return [BRStyleSheet proximaNova:12.0];
+}
+
++ (NSFont *)accountListFont {
+    return [BRStyleSheet proximaNova:12.0];
+}
 
 #pragma mark - Base colors -
 
@@ -36,6 +58,10 @@
 
 + (NSColor *)buildIconTintColor {
     return NSColorFromRGBA(0xC7DAF3FF);
+}
+
++ (NSColor *)boxBorderColor {
+    return [[BRStyleSheet greenColor] colorWithAlphaComponent:0.5];
 }
 
 #pragma mark - Build colors -
@@ -67,6 +93,7 @@
 #pragma mark - UI Constants -
 
 + (CGFloat)buildIconCorenerRadius { return 8.0; }
++ (CGFloat)accountIconCorenerRadius { return 8.0; }
 + (NSTimeInterval)buildIconSpinDurationSec { return 1.0; }
 
 @end

@@ -8,6 +8,18 @@
 
 #import "BRAccountCellView.h"
 
+#import "BRStyleSheet.h"
+
 @implementation BRAccountCellView
+
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    
+    [self.accountNameLabel setFont:[BRStyleSheet accountListFont]];
+    [self.emailLabel setFont:[BRStyleSheet accountListFont]];
+    
+    [self.avatarImageView setWantsLayer:YES];
+    [self.avatarImageView.layer setCornerRadius:[BRStyleSheet accountIconCorenerRadius]];
+}
 
 @end

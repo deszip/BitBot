@@ -733,31 +733,21 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6CE-dn-y2P">
-                                        <rect key="frame" x="217" y="25" width="66" height="52"/>
+                                        <rect key="frame" x="212" y="25" width="76" height="52"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pi6-jP-SB1">
-                                                <rect key="frame" x="0.0" y="18" width="10" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="17" id="C14-hs-Eqs"/>
-                                                    <constraint firstAttribute="width" constant="10" id="nKI-9r-inl"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Icon" id="eWE-Ib-XOi"/>
-                                            </imageView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rLA-YD-y9P">
-                                                <rect key="frame" x="18" y="12" width="48" height="29"/>
+                                                <rect key="frame" x="0.0" y="12" width="76" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="29" id="Cjv-VP-ZUj"/>
-                                                    <constraint firstAttribute="width" constant="48" id="f3m-ck-ecT"/>
+                                                    <constraint firstAttribute="width" constant="76" id="f3m-ck-ecT"/>
                                                 </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo-Title" id="bUX-2H-6rP"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="bUX-2H-6rP"/>
                                             </imageView>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
@@ -861,12 +851,12 @@
                                                                                     <rect key="frame" x="50" y="6" width="325" height="90"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5G-n9-Q9E">
-                                                                                            <rect key="frame" x="-2" y="76" width="111" height="14"/>
+                                                                                            <rect key="frame" x="-2" y="76" width="112" height="14"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="14" id="Bnp-Wa-dku"/>
                                                                                             </constraints>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="IGOR.ASHARENKOV" usesSingleLineMode="YES" id="nTH-LG-n3k">
-                                                                                                <font key="font" size="12" name="Jura-Medium"/>
+                                                                                                <font key="font" size="12" name="ProximaNova-Regular"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </textFieldCell>
@@ -1396,15 +1386,15 @@
                                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-Pg-oCd">
                                                             <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        <size key="minSize" width="563" height="342"/>
+                                                                        <size key="minSize" width="548" height="342"/>
                                                                         <size key="maxSize" width="563" height="10000000"/>
                                                                         <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                     </textView>
@@ -1415,7 +1405,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
-                                                                <rect key="frame" x="547" y="0.0" width="16" height="342"/>
+                                                                <rect key="frame" x="548" y="0.0" width="15" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                         </scrollView>
@@ -1509,9 +1499,8 @@
                             </customView>
                             <box boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="q5X-dj-LCv">
                                 <rect key="frame" x="20" y="20" width="450" height="450"/>
-                                <view key="contentView" id="Dd8-zu-KpR">
+                                <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dd8-zu-KpR">
                                     <rect key="frame" x="1" y="1" width="448" height="448"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="117-93-udm">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="448"/>
@@ -1786,9 +1775,11 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="yXC-fe-QRP" id="hs1-dq-Gcu"/>
+                        <outlet property="containerBox" destination="q5X-dj-LCv" id="dZ3-kp-Wgj"/>
                         <outlet property="controlMenu" destination="Qsv-eV-BMd" id="cuu-3D-C2p"/>
                         <outlet property="outlineView" destination="RU5-K3-JO8" id="qAI-NK-bgS"/>
                         <outlet property="removeButton" destination="ZyA-Uw-bYm" id="Idc-ai-1VR"/>
+                        <outlet property="titleField" destination="hzh-dd-bfA" id="0Qq-Vb-h2Q"/>
                         <segue destination="pi4-fd-2TY" kind="sheet" identifier="BRKeyInputViewController" id="OvU-b2-oMp"/>
                     </connections>
                 </viewController>
@@ -1942,37 +1933,37 @@ Gw
             <objects>
                 <viewController id="q3v-hi-t6E" customClass="BRAboutViewController" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="508"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-zH-Sot">
-                                <rect key="frame" x="20" y="20" width="400" height="350"/>
+                                <rect key="frame" x="20" y="20" width="400" height="469"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-A7-HCu">
-                                        <rect key="frame" x="0.0" y="64" width="150" height="222"/>
+                                        <rect key="frame" x="0.0" y="127" width="150" height="215"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-zw-3Vr">
-                                                <rect key="frame" x="0.0" y="72" width="150" height="150"/>
+                                                <rect key="frame" x="0.0" y="65" width="150" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bb9-zw-3Vr" secondAttribute="height" multiplier="1:1" id="RDN-yV-FRp"/>
                                                 </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="TILTED RECTANGLE" id="WhP-0z-q5u"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon-1" id="WhP-0z-q5u"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j63-6n-mGW">
-                                                <rect key="frame" x="30" y="0.0" width="90" height="62"/>
+                                                <rect key="frame" x="31" y="0.0" width="89" height="55"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-Wd-kcM">
-                                                        <rect key="frame" x="-2" y="18" width="94" height="44"/>
+                                                        <rect key="frame" x="-2" y="16" width="93" height="39"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="BitBot" id="2EW-45-DXz">
-                                                            <font key="font" size="32" name="AvenirNext-UltraLight"/>
+                                                            <font key="font" size="32" name="ProximaNova-Regular"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="azh-8G-J61">
-                                                        <rect key="frame" x="10" y="0.0" width="70" height="18"/>
+                                                        <rect key="frame" x="11" y="0.0" width="67" height="16"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version 0.1" id="kdh-jg-TOx">
-                                                            <font key="font" size="13" name="AvenirNext-UltraLight"/>
+                                                            <font key="font" size="13" name="ProximaNova-Regular"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                                         </textFieldCell>
@@ -2001,44 +1992,43 @@ Gw
                                         </customSpacing>
                                     </stackView>
                                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-pU-ZTL">
-                                        <rect key="frame" x="160" y="0.0" width="240" height="350"/>
+                                        <rect key="frame" x="160" y="0.0" width="240" height="469"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="X3U-v3-un2">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="350"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="469"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ryo-DS-wy4" customClass="BRAboutTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="350"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="469"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="240" height="350"/>
+                                                    <size key="minSize" width="240" height="469"/>
                                                     <size key="maxSize" width="240" height="10000000"/>
                                                     <attributedString key="textStorage">
                                                         <fragment>
-                                                            <string key="content">BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of it's features. Before use add your personal access token in account list. I wont steal it. I promise :)
+                                                            <string key="content">BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of it's features. Before use add your personal access token in account list. We wont steal it. We promise :)
 </string>
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="13" name="AvenirNext-UltraLight"/>
+                                                                <font key="NSFont" size="14" name="ProximaNova-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <string key="content" base64-UTF8="YES">
-Cg
+                                                            <string key="content"> Awesome design and tons of patience were contributed by Kotki https://kotki.co 
 </string>
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="13" name="AvenirNext-UltraLight"/>
+                                                                <font key="NSFont" size="14" name="ProximaNova-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <mutableString key="content">BitBot was built to work for my current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop me a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com/deszip/BitBot 
-BitBot and me are not associated or affiliated with Bitrise in any way.</mutableString>
+                                                            <mutableString key="content">BitBot was built to work for our current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop us a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com/deszip/BitBot 
+BitBot and we are not associated or affiliated with Bitrise in any way. </mutableString>
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="13" name="AvenirNext-UltraLight"/>
+                                                                <font key="NSFont" size="14" name="ProximaNova-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -2099,19 +2089,18 @@ BitBot and me are not associated or affiliated with Bitrise in any way.</mutable
                     </menu>
                 </popUpButtonCell>
             </objects>
-            <point key="canvasLocation" x="1314" y="386"/>
+            <point key="canvasLocation" x="1358" y="324"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Logo-Icon" width="10" height="17"/>
-        <image name="Logo-Title" width="45.5" height="17.5"/>
+        <image name="Icon-1" width="1024" height="1024"/>
+        <image name="Logo" width="76" height="29"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="Settings-icon" width="20" height="20"/>
         <image name="ShadowBottom" width="430" height="25"/>
         <image name="ShadowTop" width="430" height="25"/>
-        <image name="TILTED RECTANGLE" width="1024" height="1024"/>
         <image name="TripleDotsShadowed" width="70" height="90"/>
         <image name="calendar" width="10" height="10"/>
         <image name="clock" width="10" height="10"/>

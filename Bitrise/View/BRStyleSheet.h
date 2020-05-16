@@ -13,17 +13,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRStyleSheet : NSObject
 
-#pragma mark - Base colors -
+#pragma mark - Fonts -
++ (NSFont *)proximaNova:(CGFloat)size;
++ (NSFont *)accountNameFont;
++ (NSFont *)appNameFont;
++ (NSFont *)buildDetailsFont;
++ (NSFont *)accountListFont;
 
+#pragma mark - Base colors -
 + (NSColor *)backgroundColor;
 + (NSColor *)cellBackgroundColor;
 + (NSColor *)greenColor;
 + (NSColor *)primaryTextColor;
 + (NSColor *)secondaryTextColor;
 + (NSColor *)buildIconTintColor;
++ (NSColor *)boxBorderColor;
 
 #pragma mark - Build colors -
-
 + (NSColor *)progressColor;
 + (NSColor *)successColor;
 + (NSColor *)failedColor;
@@ -33,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - UI Constants -
 + (CGFloat)buildIconCorenerRadius;
++ (CGFloat)accountIconCorenerRadius;
 + (NSTimeInterval)buildIconSpinDurationSec;
 
 @end

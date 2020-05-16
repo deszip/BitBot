@@ -8,12 +8,18 @@
 
 #import "BRManagingAppCellView.h"
 
+#import "BRStyleSheet.h"
+
 @implementation BRManagingAppCellView
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    // Drawing code here.
+    [self.appName setFont:[BRStyleSheet accountListFont]];
+    [self.appRepoURL setFont:[BRStyleSheet accountListFont]];
+    
+    [self.appIcon setWantsLayer:YES];
+    [self.appIcon.layer setCornerRadius:[BRStyleSheet accountIconCorenerRadius]];
 }
 
 @end

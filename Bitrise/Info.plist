@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1621</string>
+	<string>1650</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -38,6 +38,7 @@
 		<string>Jura-VariableFont_wght.ttf</string>
 		<string>Jura-Bold.ttf</string>
 		<string>Jura-Medium.ttf</string>
+		<string>ProximaNova-Regular.otf</string>
 	</array>
 </dict>
 </plist>
