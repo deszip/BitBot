@@ -24,7 +24,7 @@
 }
 
 + (NSFont *)accountNameFont {
-    return [BRStyleSheet proximaNova:12.0];
+    return [BRStyleSheet proximaNova:14.0];
 }
 
 + (NSFont *)appNameFont {
@@ -32,11 +32,11 @@
 }
 
 + (NSFont *)buildDetailsFont {
-    return [BRStyleSheet proximaNova:12.0];
+    return [BRStyleSheet proximaNova:14.0];
 }
 
 + (NSFont *)accountListFont {
-    return [BRStyleSheet proximaNova:12.0];
+    return [BRStyleSheet proximaNova:14.0];
 }
 
 #pragma mark - Base colors -

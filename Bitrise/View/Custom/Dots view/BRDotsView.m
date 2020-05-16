@@ -11,6 +11,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BRStyleSheet.h"
 
+static const NSUInteger kDotSize = 1;
+static const NSUInteger kSpacingSize = 5;
+
 @interface BRDotsView() <CALayerDelegate>
 
 @end
@@ -52,44 +55,61 @@
 }
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {
-    [layer.sublayers enumerateObjectsUsingBlock:^(__kindof CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self addMask:obj];
+    [layer.sublayers enumerateObjectsUsingBlock:^(__kindof CALayer *layer, NSUInteger idx, BOOL *stop) {
+        [self addMaskTo:layer];
     }];
 }
 
 - (CALayer *)buildLayerAtIndex:(NSUInteger)index count:(NSUInteger)count height:(CGFloat)lineHeight spacing:(CGFloat)spacing inRect:(CGRect)rect {
     NSUInteger lineLayerHeight = lineHeight + (spacing * 2);
     
+    // Gradient layer setup
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.autoresizingMask = NSViewWidthSizable;
     gradientLayer.startPoint = CGPointMake(0.0, 1.0);
     gradientLayer.endPoint = CGPointMake(1.0, 1.0);
-    gradientLayer.locations = @[@(0), @(0.2), @(0.8), @(1.0)];
+    gradientLayer.locations = @[@(0), @(0.5), @(0.5), @(1.0)];
+    NSArray *colors = @[ (id)[[BRStyleSheet greenColor] colorWithAlphaComponent:0.2].CGColor,
+                         (id)[BRStyleSheet greenColor].CGColor,
+                         (id)[BRStyleSheet greenColor].CGColor,
+                         (id)[[BRStyleSheet greenColor] colorWithAlphaComponent:0.2].CGColor ];
+    gradientLayer.colors = colors;
     
-    CGFloat layerWidth = rect.size.width * (1.0 - (0.1 * (count - index)));
+    // Non-linear width for layers
+    CGFloat layerPercentage = 0.0;
+    switch (index) {
+        case 0: layerPercentage = 0.5; break;
+        case 1: layerPercentage = 0.7; break;
+        case 2: layerPercentage = 1.0; break;
+        default: break;
+    }
+    
+    // We need to align layers so dots are in a same rows
+    CGFloat layerWidth = rect.size.width * layerPercentage;
+    NSUInteger segmentSize = kDotSize + kSpacingSize;
+    double rem = @(layerWidth).integerValue % (segmentSize * 2);
+    if (rem > 0) {
+        layerWidth -= rem;
+    }
+    
+    // Set margin so that layer is centered
     CGFloat layerMargin = (rect.size.width - layerWidth) / 2.0;
     gradientLayer.frame = CGRectMake(layerMargin, (lineLayerHeight * index) + spacing, layerWidth, lineHeight);
     
-    NSLog(@"Dot layer #%lu: %f", (unsigned long)index, layerWidth);
+    [self addMaskTo:gradientLayer];
     
-    NSArray *colors = @[ (id)[NSColor clearColor].CGColor,
-                         (id)[BRStyleSheet greenColor].CGColor,
-                         (id)[BRStyleSheet greenColor].CGColor,
-                         (id)[NSColor clearColor].CGColor ];
-    gradientLayer.colors = colors;
-    
-    [self addMask:gradientLayer];
+    NSLog(@"Dot layer #%lu: %f, percentage: %f", (unsigned long)index, layerWidth, layerPercentage);
     
     return gradientLayer;
 }
 
-- (void)addMask:(CALayer *)layer {
+- (void)addMaskTo:(CALayer *)layer {
     CAShapeLayer *maskLayer = [CAShapeLayer new];
     maskLayer.contentsScale = NSScreen.mainScreen.backingScaleFactor;
     maskLayer.frame = CGRectMake(0, 0, layer.bounds.size.width, layer.bounds.size.height);
     maskLayer.strokeColor = [BRStyleSheet greenColor].CGColor;
     maskLayer.lineWidth = layer.bounds.size.height;
-    maskLayer.lineDashPattern = @[@(1), @(5)];
+    maskLayer.lineDashPattern = @[@(kDotSize), @(kSpacingSize)];
     CGMutablePathRef pathRef = CGPathCreateMutable();
     CGPathMoveToPoint(pathRef, nil, 0, layer.bounds.size.height);
     CGPathAddLineToPoint(pathRef, nil, layer.bounds.size.width, layer.bounds.size.height);

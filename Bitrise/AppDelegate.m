@@ -8,11 +8,13 @@
 
 #import "AppDelegate.h"
 
+#import "BRStyleSheet.h"
 #import "BRLogger.h"
 #import "BRAnalytics.h"
 #import "BRSyncCommand.h"
 #import "BRMainController.h"
 #import "BRDependencyContainer.h"
+#import "NSPopover+MISSINGBackgroundView.h"
 
 @interface AppDelegate () <NSPopoverDelegate>
 
@@ -44,6 +46,7 @@
         
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         _popover = [[NSPopover alloc] init];
+        _popover.backgroundColor = [BRStyleSheet backgroundColor];
         _popover.delegate = self;
         
         NSStoryboard *mainStoryboard = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];

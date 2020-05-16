@@ -4,6 +4,7 @@ PODS:
   - EasyMapping/Core (0.22.1)
   - Expecta (1.0.6)
   - Mixpanel-OSX-Community (2.1.1)
+  - "NSPopover+MISSINGBackgroundView (1.0.6)"
   - OCMock (3.4.3)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
@@ -13,15 +14,18 @@ DEPENDENCIES:
   - EasyMapping
   - Expecta (~> 1.0.6)
   - Mixpanel-OSX-Community (from `https://github.com/orta/mixpanel-osx-unofficial.git`)
+  - "NSPopover+MISSINGBackgroundView"
   - OCMock (~> 3.4.3)
   - SDWebImage (~> 5.0.6)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - EasyMapping
     - Expecta
     - OCMock
     - SDWebImage
+  trunk:
+    - "NSPopover+MISSINGBackgroundView"
 
 EXTERNAL SOURCES:
   Mixpanel-OSX-Community:
@@ -36,9 +40,10 @@ SPEC CHECKSUMS:
   EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Mixpanel-OSX-Community: a322ca7be517cdbe0107717f45975a6d0697a304
+  "NSPopover+MISSINGBackgroundView": 06a134ea85280a8f0436c9c99fa18400ae84cf15
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: b31a14d9b80f65a8232262f818b1d534ce9d8e99
+PODFILE CHECKSUM: 310da2858f40777393f06df44558b1816c2b8c71
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.9.1
