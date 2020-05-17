@@ -26,7 +26,7 @@
         _buildMenuController = menuController;
         _timeFormatter = [NSDateFormatter new];
         [_timeFormatter setTimeZone:[NSTimeZone localTimeZone]];
-        [_timeFormatter setDateFormat:@"dd.MM.yyyy @ HH:mm"];
+        [_timeFormatter setDateFormat:@"dd.MM.yyyy '@' HH:mm"];
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
     }
