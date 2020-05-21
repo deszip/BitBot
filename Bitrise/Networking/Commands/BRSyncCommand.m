@@ -30,7 +30,7 @@
             // Notifications
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
             if (builds.count > 0) {
-                [environment postNotifications:builds forApp:result.app];
+                [environment postNotifications:builds];
             }
             
 #if FEATURE_LIVE_LOG

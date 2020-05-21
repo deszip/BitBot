@@ -25,6 +25,7 @@
         case 0:
             if (isOnHold) {
                 _statusImageName = @"0-degree-status-icon";
+                _notificationImageName = @"hold_notification";
                 _statusTitle = @"On hold";
                 _state = BRBuildStateHold;
                 _statusColor = [BRStyleSheet holdColor];
@@ -38,12 +39,14 @@
                     _statusTitle = @"In progress...";
                     _state = BRBuildStateInProgress;
                     _statusColor = [BRStyleSheet progressColor];
+                    _notificationImageName = @"progress_notification";
                 }
             }
             break;
             
         case 1:
             _statusImageName = @"success-status-icon";
+            _notificationImageName = @"success_notification";
             _statusTitle = @"Success";
             _state = BRBuildStateSuccess;
             _statusColor = [BRStyleSheet successColor];
@@ -51,6 +54,7 @@
             
         case 2:
             _statusImageName = @"failure-status-icon";
+            _notificationImageName = @"failed_notification";
             _statusTitle = @"Failed";
             _state = BRBuildStateFailed;
             _statusColor = [BRStyleSheet failedColor];
@@ -59,6 +63,7 @@
         case 3:
         case 4:
             _statusImageName = @"45-degree-status-icon";
+            _notificationImageName = @"abort_notification";
             _statusTitle = @"Aborted";
             _state = BRBuildStateAborted;
             _statusColor = [BRStyleSheet abortedColor];

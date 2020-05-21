@@ -812,13 +812,13 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="BRBuildCellView" translatesAutoresizingMaskIntoConstraints="NO" id="CEk-3K-jXL" customClass="BRBuildCellView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="549" height="122"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="500" height="122"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ne7-WQ-C7u">
-                                                                    <rect key="frame" x="10" y="13" width="529" height="96"/>
+                                                                    <rect key="frame" x="10" y="13" width="480" height="96"/>
                                                                     <subviews>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szo-B6-Mtd" customClass="BRBuildContentView">
-                                                                            <rect key="frame" x="15" y="0.0" width="494" height="96"/>
+                                                                            <rect key="frame" x="15" y="0.0" width="445" height="96"/>
                                                                             <subviews>
                                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Mv7-pf-SlE">
                                                                                     <rect key="frame" x="0.0" y="6" width="30" height="90"/>
@@ -848,7 +848,7 @@
                                                                                     </constraints>
                                                                                 </customView>
                                                                                 <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-zv-646" customClass="BRBuildInfoView">
-                                                                                    <rect key="frame" x="50" y="6" width="444" height="90"/>
+                                                                                    <rect key="frame" x="50" y="6" width="395" height="90"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5G-n9-Q9E">
                                                                                             <rect key="frame" x="-2" y="76" width="112" height="14"/>
@@ -862,7 +862,7 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Vp9-Fy-Sm7">
-                                                                                            <rect key="frame" x="-2" y="43" width="448" height="32"/>
+                                                                                            <rect key="frame" x="-2" y="43" width="399" height="32"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="32" id="Snt-NC-Npg"/>
                                                                                             </constraints>
@@ -1078,7 +1078,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="NLr-ma-tnY">
-                                                                            <rect key="frame" x="459" y="0.0" width="70" height="96"/>
+                                                                            <rect key="frame" x="410" y="0.0" width="70" height="96"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-yV-gGe">
                                                                                     <rect key="frame" x="-2" y="76" width="74" height="20"/>

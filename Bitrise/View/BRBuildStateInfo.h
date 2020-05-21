@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, BRBuildState) {
 
 @property (assign, nonatomic, readonly) BRBuildState state;
 @property (strong, nonatomic, readonly) NSString *statusImageName;
+@property (strong, nonatomic, readonly) NSString *notificationImageName;
 @property (strong, nonatomic, readonly) NSString *statusTitle;
 @property (strong, nonatomic, readonly) NSColor *statusColor;
 

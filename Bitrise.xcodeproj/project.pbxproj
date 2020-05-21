@@ -144,6 +144,7 @@
 		D98C54142439EC3A00CA1D57 /* Jura-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */; };
 		D98C54152439EC3A00CA1D57 /* Jura-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */; };
 		D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
+		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 /* End PBXBuildFile section */
@@ -366,6 +367,8 @@
 		D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-Medium.ttf"; sourceTree = "<group>"; };
 		D996EBCF245F17E500DC4F6B /* BRDotsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDotsView.h; sourceTree = "<group>"; };
 		D996EBD0245F17E500DC4F6B /* BRDotsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDotsView.m; sourceTree = "<group>"; };
+		D99BEB3224715C9B00BA90EC /* BRNotificationDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRNotificationDispatcher.h; sourceTree = "<group>"; };
+		D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRNotificationDispatcher.m; sourceTree = "<group>"; };
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				0E30344721CEE217001757C0 /* BRAutorun.m */,
 				0E1E9F20227D81E7002F7ED1 /* BRAnalytics.h */,
 				0E1E9F21227D81E7002F7ED1 /* BRAnalytics.m */,
+				D99BEB3224715C9B00BA90EC /* BRNotificationDispatcher.h */,
+				D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -1138,6 +1143,7 @@
 				0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */,
 				0E3C0B11211760C000F2EA35 /* BROpenBuildCommand.m in Sources */,
 				D96DDE9224436F78005F5998 /* BRScroller.m in Sources */,
+				D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */,
 				0E42CB0620EC896B0033CD03 /* BRBuildCellView.m in Sources */,
 				0EAB9DDB2225AD7C00A21D23 /* BRLogsParser.m in Sources */,
 				0ECFF27721CD186E005EC4A4 /* BRSyncResult.m in Sources */,
@@ -1398,6 +1404,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Bitrise/Vendored",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1425,6 +1432,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Bitrise/Vendored",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";

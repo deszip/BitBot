@@ -14,14 +14,16 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 @interface BREnvironment ()
 
 @property (strong, nonatomic) BRAutorun *autorun;
+@property (strong, nonatomic) BRNotificationDispatcher *notificationDispatcher;
 
 @end
 
 @implementation BREnvironment
 
-- (instancetype)initWithAutorun:(BRAutorun *)autorun {
+- (instancetype)initWithAutorun:(BRAutorun *)autorun notificationsDispatcher:(BRNotificationDispatcher *)nDispatcher {
     if (self = [super init]) {
         _autorun = autorun;
+        _notificationDispatcher = nDispatcher;
     }
     
     return self;
@@ -30,7 +32,6 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 - (void)handleAppLaunch {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kBRFirstLaunchKey]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kBRFirstLaunchKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
         [self toggleNotifications];
     }
 }
@@ -48,52 +49,15 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 #pragma mark - Notifications -
 
 - (BOOL)notificationsEnabled {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kBRNotificationsKey];
+    return [self.notificationDispatcher notificationsEnabled];
 }
 
 - (void)toggleNotifications {
-    [[NSUserDefaults standardUserDefaults] setBool:![self notificationsEnabled] forKey:kBRNotificationsKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.notificationDispatcher toggleNotifications];
 }
 
-- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds forApp:(BRAppInfo *)appInfo {
-    if (![self notificationsEnabled] || !builds.count) {
-        return;
-    }
-    
-    [builds enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
-        NSUserNotification *notification = [NSUserNotification new];
-        notification.identifier = [NSString stringWithFormat:@"%@-%lu", buildInfo.slug, (unsigned long)buildInfo.stateInfo.state];
-        notification.title = appInfo.title;
-        
-        switch (buildInfo.stateInfo.state) {
-            case BRBuildStateHold:
-                notification.subtitle = @"build on hold";
-                break;
-            case BRBuildStateInProgress:
-                notification.subtitle = @"build started";
-                break;
-            case BRBuildStateFailed:
-                notification.subtitle = @"build failed";
-                break;
-            case BRBuildStateAborted:
-                notification.subtitle = @"build aborted";
-                break;
-            case BRBuildStateSuccess:
-                notification.subtitle = @"build finished";
-                break;
-            
-            default:
-                notification.subtitle = @"build state undefined";
-                break;
-        }
-        
-        notification.contentImage = [NSImage imageNamed:buildInfo.stateInfo.statusImageName];
-        notification.informativeText = [NSString stringWithFormat:@"Branch: %@, workflow: %@", buildInfo.branchName, buildInfo.workflowName];
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-    }];
+- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds {
+    [self.notificationDispatcher postNotifications:builds];
 }
 
 #pragma mark - Autorun -

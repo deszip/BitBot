@@ -73,7 +73,9 @@
 #pragma mark - BREnvironmentProvider -
 
 - (BREnvironment *)appEnvironment {
-    return [[BREnvironment alloc] initWithAutorun:[BRAutorun new]];
+    BRNotificationDispatcher *nDispatcher = [[BRNotificationDispatcher alloc] initWithDefaults:[NSUserDefaults standardUserDefaults]
+                                                                                            nc:[NSUserNotificationCenter defaultUserNotificationCenter]];
+    return [[BREnvironment alloc] initWithAutorun:[BRAutorun new] notificationsDispatcher:nDispatcher];
 }
 
 @end

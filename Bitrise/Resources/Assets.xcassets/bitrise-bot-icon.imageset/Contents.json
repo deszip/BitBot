@@ -1,55 +1,57 @@
 {
   "images" : [
     {
+      "filename" : "bit-bot-statusbar-icon@2x-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "Bitrise Icon - Transparent Bg-1.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "light"
         }
       ],
+      "filename" : "bit-bot-statusbar-icon@2x-2.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "Bitrise Icon - Transparent Bg.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
       ],
+      "filename" : "bit-bot-statusbar-icon@2x.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "bit-bot-statusbar-icon@2x@2x-1.png",
       "idiom" : "universal",
-      "filename" : "Bitrise Icon - Transparent Bg@2x-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
-      "scale" : "2x",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "light"
         }
-      ]
+      ],
+      "filename" : "bit-bot-statusbar-icon@2x@2x-2.png",
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
-      "idiom" : "universal",
-      "filename" : "Bitrise Icon - Transparent Bg@2x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
       ],
+      "filename" : "bit-bot-statusbar-icon@2x@2x.png",
+      "idiom" : "universal",
       "scale" : "2x"
     },
     {
@@ -57,28 +59,28 @@
       "scale" : "3x"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "light"
         }
-      ]
+      ],
+      "idiom" : "universal",
+      "scale" : "3x"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

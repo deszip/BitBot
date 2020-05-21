@@ -116,6 +116,12 @@
     
     [self.api getBuilds:request completion:^(NSArray<BRBuildInfo *> *builds, NSError *error) {
         if (builds) {
+            // Populate builds with app name
+            [builds enumerateObjectsUsingBlock:^(BRBuildInfo *build, NSUInteger idx, BOOL *stop) {
+                build.appName = app.title;
+            }];
+            
+            // Run sync
             if (self.syncCallback) {
                 BRSyncDiff *diff = [self diffForBuilds:builds runningBuilds:runningBuildSlugs];
                 BRAppInfo *appInfo = [[BRAppInfo alloc] initWithApp:app];

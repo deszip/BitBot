@@ -10,14 +10,16 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BRAutorun.h"
-#import "BRAppInfo.h"
-#import "BRBuildInfo.h"
+#import "BRNotificationDispatcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BREnvironment : NSObject
 
-- (instancetype)initWithAutorun:(BRAutorun *)autorun;
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithAutorun:(BRAutorun *)autorun notificationsDispatcher:(BRNotificationDispatcher *)nDispatcher NS_DESIGNATED_INITIALIZER;
 
 - (void)handleAppLaunch;
 
@@ -29,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)notificationsEnabled;
 - (void)toggleNotifications;
-- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds forApp:(BRAppInfo *)appInfo;
+- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds;
 
 #pragma mark - Autorun -
 
