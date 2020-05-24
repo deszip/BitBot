@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "bit-bot-statusbar-icon@2x-1.png",
+      "filename" : "bit-bot-statusbar-icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,6 @@
           "value" : "light"
         }
       ],
-      "filename" : "bit-bot-statusbar-icon@2x-2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -23,13 +22,12 @@
           "value" : "dark"
         }
       ],
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
       "filename" : "bit-bot-statusbar-icon@2x.png",
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "bit-bot-statusbar-icon@2x@2x-1.png",
-      "idiom" : "universal",
       "scale" : "2x"
     },
     {
@@ -39,7 +37,6 @@
           "value" : "light"
         }
       ],
-      "filename" : "bit-bot-statusbar-icon@2x@2x-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -50,7 +47,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "bit-bot-statusbar-icon@2x@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -82,5 +78,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

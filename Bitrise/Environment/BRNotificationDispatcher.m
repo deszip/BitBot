@@ -11,6 +11,7 @@
 #import "BRLogger.h"
 #import "NSArray+FRP.h"
 
+static const NSTimeInterval kNotificationTTL = 1;
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
 
 @interface BRNotificationDispatcher() <NSUserNotificationCenterDelegate>
@@ -53,14 +54,23 @@ static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
         return [self notificationFor:buildInfo];
     }] enumerateObjectsUsingBlock:^(NSUserNotification *notification, NSUInteger idx, BOOL *stop) {
         [self.nc deliverNotification:notification];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self cleanupDeliveredNotifications];
+        });
     }];
 }
 
 #pragma mark - Private API -
 
+- (void)cleanupDeliveredNotifications {
+    [self.nc.deliveredNotifications enumerateObjectsUsingBlock:^(NSUserNotification *notification, NSUInteger idx, BOOL *stop) {
+        [self.nc removeDeliveredNotification:notification];
+    }];
+}
+
 - (NSUserNotification *)notificationFor:(BRBuildInfo *)buildInfo {
     NSUserNotification *notification = [NSUserNotification new];
-    notification.identifier = [NSString stringWithFormat:@"%@-%lu", buildInfo.slug, (unsigned long)buildInfo.stateInfo.state];
+    notification.identifier = [self notificationID:buildInfo];
     notification.title = buildInfo.appName;
     
     switch (buildInfo.stateInfo.state) {
@@ -89,10 +99,19 @@ static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
     notification.informativeText = [NSString stringWithFormat:@"Branch: %@, workflow: %@", buildInfo.branchName, buildInfo.workflowName];
     notification.soundName = NSUserNotificationDefaultSoundName;
     
+    // Build actions for state
     notification.actionButtonTitle = @"Action";
     notification.otherButtonTitle = @"Other";
     
     return notification;
+}
+
+- (NSString *)notificationID:(BRBuildInfo *)buildInfo {
+    return [NSString stringWithFormat:@"%@-%lu", buildInfo.slug, (unsigned long)buildInfo.stateInfo.state];
+}
+
+- (BRBuildState)stateFromNotificationID:(NSString *)notificationID {
+    return (BRBuildState)[[[notificationID componentsSeparatedByString:@"-"] lastObject] integerValue];
 }
 
 #pragma mark - NSUserNotificationCenterDelegate -
