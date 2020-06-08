@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "Logo.png",
+      "filename" : "BitBot Logo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Logo@2x.png",
+      "filename" : "BitBot Logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
