@@ -12,7 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, BRAppsDataSourceState) {
+    BRAppsDataSourceStateEmpty = 0,
+    BRAppsDataSourceStateHasData
+};
+
 @interface BRAppsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
+
+@property (assign, nonatomic, readonly) BRAppsDataSourceState state;
+@property (copy, nonatomic) void (^stateCallback)(BRAppsDataSourceState);
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithContainer:(NSPersistentContainer *)container cellBuilder:(BRCellBuilder *)cellBuilder  NS_DESIGNATED_INITIALIZER;

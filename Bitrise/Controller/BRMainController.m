@@ -46,6 +46,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (weak) IBOutlet NSView *topBar;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
+@property (weak) IBOutlet NSView *emptyView;
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
 
@@ -92,7 +93,11 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     // Builds data source
     BRCellBuilder *cellBuilder = [[BRCellBuilder alloc] initWithMenuController:self.buildController];
     self.dataSource = [self.dependencyContainer appsDataSourceWithCellBuilder:cellBuilder];
+    [self.dataSource setStateCallback:^(BRAppsDataSourceState state) {
+        [weakSelf handleDataSourceState:state];
+    }];
     [self.dataSource bind:self.outlineView];
+    [self handleDataSourceState:self.dataSource.state];
     
     // Settings menu controller
     self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment];
@@ -143,6 +148,11 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.topBar.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
     
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
+}
+
+- (void)handleDataSourceState:(BRAppsDataSourceState)state {
+    self.outlineView.hidden = state == BRAppsDataSourceStateEmpty;
+    self.emptyView.hidden = state == BRAppsDataSourceStateHasData;
 }
 
 @end

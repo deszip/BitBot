@@ -759,6 +759,63 @@
                                     <constraint firstItem="6CE-dn-y2P" firstAttribute="centerX" secondItem="82J-cI-jpS" secondAttribute="centerX" id="apR-9t-fOR"/>
                                 </constraints>
                             </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="lhQ-nT-Gbv">
+                                <rect key="frame" x="0.0" y="0.0" width="482" height="585"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zH8-me-VMT">
+                                        <rect key="frame" x="94" y="200" width="294" height="185"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="60f-GI-8mC">
+                                                <rect key="frame" x="164" y="53" width="130" height="132"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EmptyIcon" id="f2i-wX-89C"/>
+                                            </imageView>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RRZ-Aq-4k6">
+                                                <rect key="frame" x="204" y="37" width="92" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="lMT-qo-6Zd">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BUq-g1-K2L">
+                                                <rect key="frame" x="219" y="9" width="81" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ysV-sp-RcN">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-0c-kFG">
+                                                <rect key="frame" x="259" y="0.0" width="37" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="VOb-Vx-rKW">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="294" id="b5a-GF-9hb"/>
+                                            <constraint firstAttribute="height" constant="185" id="wji-HY-9Ws"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zH8-me-VMT" firstAttribute="centerX" secondItem="lhQ-nT-Gbv" secondAttribute="centerX" id="qIr-4a-zH8"/>
+                                    <constraint firstItem="zH8-me-VMT" firstAttribute="centerY" secondItem="lhQ-nT-Gbv" secondAttribute="centerY" id="zK3-2K-yBE"/>
+                                </constraints>
+                            </customView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="90" horizontalPageScroll="10" verticalLineScroll="90" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jro-eN-807">
                                 <rect key="frame" x="0.0" y="0.0" width="482" height="585"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYZ-ht-aUh">
@@ -1180,8 +1237,12 @@
                         <constraints>
                             <constraint firstItem="82J-cI-jpS" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="0X7-7F-bek"/>
                             <constraint firstItem="82J-cI-jpS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="2Iq-iy-SiV"/>
+                            <constraint firstAttribute="trailing" secondItem="lhQ-nT-Gbv" secondAttribute="trailing" id="8wo-g2-oOI"/>
                             <constraint firstAttribute="trailing" secondItem="82J-cI-jpS" secondAttribute="trailing" id="99B-dg-Gbh"/>
                             <constraint firstItem="ASy-l0-zdF" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="CCL-lx-6ee"/>
+                            <constraint firstItem="lhQ-nT-Gbv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="KVD-52-kWt"/>
+                            <constraint firstAttribute="bottom" secondItem="lhQ-nT-Gbv" secondAttribute="bottom" id="OwF-cz-Yg3"/>
+                            <constraint firstItem="lhQ-nT-Gbv" firstAttribute="top" secondItem="82J-cI-jpS" secondAttribute="bottom" id="XxY-Wj-uES"/>
                             <constraint firstItem="jro-eN-807" firstAttribute="top" secondItem="82J-cI-jpS" secondAttribute="bottom" id="YuJ-fU-BzC"/>
                             <constraint firstItem="vu4-qP-MPy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="blM-8u-fS4"/>
                             <constraint firstAttribute="trailing" secondItem="ASy-l0-zdF" secondAttribute="trailing" id="e0g-Qf-V7K"/>
@@ -1195,6 +1256,7 @@
                     </view>
                     <connections>
                         <outlet property="buildMenu" destination="Q6c-WQ-hru" id="n3V-JU-dc4"/>
+                        <outlet property="emptyView" destination="lhQ-nT-Gbv" id="jxe-DC-jmu"/>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>
                         <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
                         <outlet property="topBar" destination="82J-cI-jpS" id="D4C-Sf-sOB"/>
@@ -2094,6 +2156,7 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
         </scene>
     </scenes>
     <resources>
+        <image name="EmptyIcon" width="130" height="130"/>
         <image name="Icon-1" width="1024" height="1024"/>
         <image name="Logo" width="84" height="29"/>
         <image name="NSActionTemplate" width="14" height="14"/>
