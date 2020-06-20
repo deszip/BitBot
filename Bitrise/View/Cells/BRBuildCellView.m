@@ -11,6 +11,8 @@
 #import "BRBuildCellView.h"
 #import "BRStyleSheet.h"
 
+#define SHOWS_MENU_BUTTON 0
+
 @interface BRBuildCellView ()
 
 @property (strong, nonatomic) NSTrackingArea *trackingArea;
@@ -27,14 +29,18 @@
     if (self = [super initWithCoder:decoder]) {
         _durationFormatter = [NSDateFormatter new];
         [_durationFormatter setDateFormat:@"m'm' s's'"];
+        
         [self setContainerColor:[NSColor clearColor]];
         
+#if SHOWS_MENU_BUTTON
         NSTrackingAreaOptions options = (NSTrackingMouseEnteredAndExited |
                                          NSTrackingActiveInKeyWindow |
                                          NSTrackingInVisibleRect |
                                          NSTrackingEnabledDuringMouseDrag);
         NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:self.frame options:options owner:self userInfo:nil];
         [self addTrackingArea:trackingArea];
+#endif
+        
     }
     
     return self;
