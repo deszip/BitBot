@@ -10,10 +10,12 @@
 
 #import "BRStyleSheet.h"
 
+#import "BREmptyView.h"
 #import "BRContainerBuilder.h"
 #import "BRAppsDataSource.h"
 #import "BRAccountsViewController.h"
 
+#import "BRCommandFactory.h"
 #import "BRSyncCommand.h"
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
@@ -21,6 +23,7 @@
 #import "BRLogsTextViewController.h"
 #import "BRSegue.h"
 #import "BRLogsWindowPresenter.h"
+#import "BRAccountsObserver.h"
 
 
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -37,16 +40,19 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
 @property (strong, nonatomic) BREnvironment *environment;
+@property (strong, nonatomic) BRCommandFactory *commandFactory;
 
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
 @property (strong, nonatomic) BRBuildMenuController *buildController;
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
+@property (strong, nonatomic) BRAccountsObserver *accountObserver;
+
 @property (weak) IBOutlet NSView *topBar;
 
 @property (weak) IBOutlet NSOutlineView *outlineView;
-@property (weak) IBOutlet NSView *emptyView;
+@property (weak) IBOutlet BREmptyView *emptyView;
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
 
@@ -66,12 +72,16 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
+    self.accountObserver = [self.dependencyContainer accountsObserver];
+    [self.accountObserver start:^(BRAccountsState state) {
+        [weakSelf handleAccountsState:state];
+    }];
     
     // Build menu controller
-    self.buildController = [[BRBuildMenuController alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
-                                                           syncEngine:self.syncEngine
-                                                          logObserver:[self.dependencyContainer logObserver]
-                                                          environment:self.environment];
+    self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
+                                                     syncEngine:self.syncEngine
+                                                    environment:self.environment];
+    self.buildController = [[BRBuildMenuController alloc] initWithCommandFactory:self.commandFactory];
     self.buildController.menu = self.buildMenu;
     self.buildController.buildProvider = ^BRBuild* (NSView *targetView) {
         id selectedItem = [weakSelf.outlineView itemAtRow:[weakSelf.outlineView clickedRow]];
@@ -93,11 +103,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     // Builds data source
     BRCellBuilder *cellBuilder = [[BRCellBuilder alloc] initWithMenuController:self.buildController];
     self.dataSource = [self.dependencyContainer appsDataSourceWithCellBuilder:cellBuilder];
-    [self.dataSource setStateCallback:^(BRAppsDataSourceState state) {
-        [weakSelf handleDataSourceState:state];
-    }];
     [self.dataSource bind:self.outlineView];
-    [self handleDataSourceState:self.dataSource.state];
     
     // Settings menu controller
     self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment];
@@ -115,10 +121,16 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
             default: break;
         }
     }];
+    
+    // Empty view callback
+    [self.emptyView setCallback:^{
+        [weakSelf performSegueWithIdentifier:kAccountWindowSegue sender:weakSelf];
+    }];
 }
 
 - (void)viewDidAppear {
     [super viewDidAppear];
+    [self.outlineView reloadData];
     [self.dataSource fetch];
 }
 
@@ -150,9 +162,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
 
-- (void)handleDataSourceState:(BRAppsDataSourceState)state {
-    self.outlineView.hidden = state == BRAppsDataSourceStateEmpty;
-    self.emptyView.hidden = state == BRAppsDataSourceStateHasData;
+- (void)handleAccountsState:(BRAccountsState)state {
+    self.outlineView.hidden = state == BRAccountsStateEmpty;
+    self.emptyView.hidden = state == BRAccountsStateHasData;
 }
 
 @end

@@ -17,9 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSyncCommand : BRCommand
 
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine
-                   logObserver:(BRLogObserver *)logObserver
-                   environment:(BREnvironment *)environment;
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment NS_DESIGNATED_INITIALIZER;
 
 @end
 

@@ -23,21 +23,15 @@
     return [NSFont fontWithName:@"ProximaNova-Regular" size:size];
 }
 
-+ (NSFont *)accountNameFont {
-    return [BRStyleSheet proximaNova:14.0];
-}
-
-+ (NSFont *)appNameFont {
-    return [BRStyleSheet proximaNova:20.0];
-}
-
-+ (NSFont *)buildDetailsFont {
-    return [BRStyleSheet proximaNova:14.0];
-}
-
-+ (NSFont *)accountListFont {
-    return [BRStyleSheet proximaNova:14.0];
-}
++ (NSFont *)accountNameFont {   return [BRStyleSheet proximaNova:14.0]; }
++ (NSFont *)appNameFont {       return [BRStyleSheet proximaNova:20.0]; }
++ (NSFont *)buildDetailsFont {  return [BRStyleSheet proximaNova:14.0]; }
++ (NSFont *)accountListFont {   return [BRStyleSheet proximaNova:14.0]; }
++ (NSFont *)emptyTitleFont {    return [BRStyleSheet proximaNova:20.0]; }
++ (NSFont *)emptySubtitleFont { return [BRStyleSheet proximaNova:14.0]; }
++ (NSFont *)aboutTitleFont {    return [BRStyleSheet proximaNova:32.0]; }
++ (NSFont *)aboutVersionFont {  return [BRStyleSheet proximaNova:13.0]; }
++ (NSFont *)aboutTextFont {     return [BRStyleSheet proximaNova:15.0]; }
 
 #pragma mark - Base colors -
 
@@ -62,6 +56,10 @@
 
 + (NSColor *)boxBorderColor {
     return [[BRStyleSheet greenColor] colorWithAlphaComponent:0.5];
+}
+
++ (NSColor *)textColor {
+    return [NSColor colorWithRed:199.0 / 255.0 green:218.0 / 255.0 blue:243.0 / 255.0 alpha:1.0];
 }
 
 #pragma mark - Build colors -

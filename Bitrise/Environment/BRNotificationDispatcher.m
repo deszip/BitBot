@@ -11,8 +11,17 @@
 #import "BRLogger.h"
 #import "NSArray+FRP.h"
 
-static const NSTimeInterval kNotificationTTL = 1;
+static const NSTimeInterval kNotificationTTL = 15;
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
+static NSString * const kBRNotificationPrimaryActionKey = @"kBRNotificationPrimaryActionKey";
+static NSString * const kBRNotificationSecondaryActionKey = @"kBRNotificationSecondaryActionKey";
+static NSString * const kBRNotificationBuildInfoKey = @"kBRNotificationBuildInfoKey";
+
+typedef NS_ENUM(NSUInteger, BRNotificationAction) {
+    BRNotificationActionOpen = 0,
+    BRNotificationActionAbort,
+    BRNotificationActionRebuild
+};
 
 @interface BRNotificationDispatcher() <NSUserNotificationCenterDelegate>
 
@@ -54,7 +63,7 @@ static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
         return [self notificationFor:buildInfo];
     }] enumerateObjectsUsingBlock:^(NSUserNotification *notification, NSUInteger idx, BOOL *stop) {
         [self.nc deliverNotification:notification];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kNotificationTTL * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self cleanupDeliveredNotifications];
         });
     }];
@@ -69,22 +78,34 @@ static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
 }
 
 - (NSUserNotification *)notificationFor:(BRBuildInfo *)buildInfo {
+    NSMutableDictionary *userInfo = [@{ kBRNotificationPrimaryActionKey : @(BRNotificationActionOpen),
+                                        kBRNotificationBuildInfoKey : buildInfo } mutableCopy];
+    
     NSUserNotification *notification = [NSUserNotification new];
     notification.identifier = [self notificationID:buildInfo];
     notification.title = buildInfo.appName;
+    notification.actionButtonTitle = @"Open build";
     
     switch (buildInfo.stateInfo.state) {
         case BRBuildStateHold:
             notification.subtitle = @"build on hold";
+            notification.otherButtonTitle = @"Abort";
+            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionAbort);
             break;
         case BRBuildStateInProgress:
             notification.subtitle = @"build started";
+            notification.otherButtonTitle = @"Abort";
+            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionAbort);
             break;
         case BRBuildStateFailed:
             notification.subtitle = @"build failed";
+            notification.otherButtonTitle = @"Rebuild";
+            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionRebuild);
             break;
         case BRBuildStateAborted:
             notification.subtitle = @"build aborted";
+            notification.otherButtonTitle = @"Rebuild";
+            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionRebuild);
             break;
         case BRBuildStateSuccess:
             notification.subtitle = @"build finished";
@@ -98,10 +119,6 @@ static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
     notification.contentImage = [NSImage imageNamed:buildInfo.stateInfo.notificationImageName];
     notification.informativeText = [NSString stringWithFormat:@"Branch: %@, workflow: %@", buildInfo.branchName, buildInfo.workflowName];
     notification.soundName = NSUserNotificationDefaultSoundName;
-    
-    // Build actions for state
-    notification.actionButtonTitle = @"Action";
-    notification.otherButtonTitle = @"Other";
     
     return notification;
 }

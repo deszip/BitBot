@@ -138,6 +138,9 @@
 		D97355432402F980003FCE9B /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
 		D97355442402F980003FCE9B /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
 		D97355452402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */; };
+		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
+		D982D8A9249E7ED70099F0A5 /* BRAccountsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */; };
+		D982D8AC249E8BDC0099F0A5 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
 		D98C540A2439D02500CA1D57 /* BRStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C54092439D02500CA1D57 /* BRStyleSheet.m */; };
 		D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
 		D98C54112439EB8500CA1D57 /* Jura-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */; };
@@ -358,6 +361,12 @@
 		D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
 		D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
 		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
+		D982D8A4249E157C0099F0A5 /* BREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BREmptyView.h; sourceTree = "<group>"; };
+		D982D8A5249E157C0099F0A5 /* BREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BREmptyView.m; sourceTree = "<group>"; };
+		D982D8A7249E7ED70099F0A5 /* BRAccountsObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsObserver.h; sourceTree = "<group>"; };
+		D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsObserver.m; sourceTree = "<group>"; };
+		D982D8AA249E8BDC0099F0A5 /* BRCommandFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommandFactory.h; sourceTree = "<group>"; };
+		D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCommandFactory.m; sourceTree = "<group>"; };
 		D98C54082439D02500CA1D57 /* BRStyleSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStyleSheet.h; sourceTree = "<group>"; };
 		D98C54092439D02500CA1D57 /* BRStyleSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStyleSheet.m; sourceTree = "<group>"; };
 		D98C540C2439DAB300CA1D57 /* BRPlaceholderViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPlaceholderViews.h; sourceTree = "<group>"; };
@@ -586,6 +595,8 @@
 		0E51716121D2AD89000D470E /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				D982D8AA249E8BDC0099F0A5 /* BRCommandFactory.h */,
+				D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */,
 				0E3C0B062117607A00F2EA35 /* BRRebuildCommand.h */,
 				0E3C0B072117607A00F2EA35 /* BRRebuildCommand.m */,
 				0E3C0B092117609900F2EA35 /* BRAbortCommand.h */,
@@ -651,6 +662,8 @@
 				0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */,
 				0E52AB7E2242A4A60020A943 /* BRLogStorage.h */,
 				0E52AB7F2242A4A60020A943 /* BRLogStorage.m */,
+				D982D8A7249E7ED70099F0A5 /* BRAccountsObserver.h */,
+				D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -836,6 +849,8 @@
 				0E1ED8F222282B3200A432B1 /* BRLogStatusView.m */,
 				D96DDE9024436F78005F5998 /* BRScroller.h */,
 				D96DDE9124436F78005F5998 /* BRScroller.m */,
+				D982D8A4249E157C0099F0A5 /* BREmptyView.h */,
+				D982D8A5249E157C0099F0A5 /* BREmptyView.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1137,6 +1152,7 @@
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
 				0E42CB0A20EC89D00033CD03 /* BRAppsDataSource.m in Sources */,
+				D982D8AC249E8BDC0099F0A5 /* BRCommandFactory.m in Sources */,
 				0E8DFB5021DA2E7700E7E5AC /* BRKeyRequestContext.m in Sources */,
 				0E4AD08D2205FEBA00257E8E /* BRLogsViewController.m in Sources */,
 				0E1ED8F322282B3200A432B1 /* BRLogStatusView.m in Sources */,
@@ -1155,6 +1171,7 @@
 				0E93B70220F08EF2001A6C15 /* BRRemoveAccountCommand.m in Sources */,
 				0EE1B85D21B4363D005D5140 /* NSHashTable+FRP.m in Sources */,
 				0E30344921CEE218001757C0 /* BRAutorun.m in Sources */,
+				D982D8A9249E7ED70099F0A5 /* BRAccountsObserver.m in Sources */,
 				0E4AD0812205D65A00257E8E /* BRBuildLog+Mapping.m in Sources */,
 				0E3C0B0B2117609900F2EA35 /* BRAbortCommand.m in Sources */,
 				0EB3ED5821E619F7003F0364 /* BRRebuildRequest.m in Sources */,
@@ -1169,6 +1186,7 @@
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
 				0EAB9DCD2222CFFC00A21D23 /* BRStorage.m in Sources */,
 				D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */,
+				D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */,
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
 				0EC53F45221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,

@@ -13,6 +13,7 @@
 
 @interface BRAboutViewController ()
 
+@property (weak) IBOutlet NSTextField *nameField;
 @property (weak) IBOutlet NSTextField *versionField;
 @property (unsafe_unretained) IBOutlet BRAboutTextView *aboutTextView;
 
@@ -23,8 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.nameField setFont:[BRStyleSheet aboutTitleFont]];
+    [self.versionField setFont:[BRStyleSheet aboutVersionFont]];
+    
     [self.aboutTextView setAutomaticLinkDetectionEnabled:YES];
-    [self.aboutTextView setFont:[BRStyleSheet proximaNova:15.0]];
+    [self.aboutTextView setFont:[BRStyleSheet aboutTextFont]];
+    
+    [self.aboutTextView setTextColor:[BRStyleSheet textColor]];
+    [self.nameField setTextColor:[BRStyleSheet textColor]];
+    [self.versionField setTextColor:[BRStyleSheet textColor]];
 }
 
 - (void)viewDidAppear {

@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "Group 10.png",
+      "filename" : "bit-bot-icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 10@2x.png",
+      "filename" : "bit-bot-icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -48,6 +48,10 @@
     return [[BRLogsDataSource alloc] initWithContainer:self.persistenceContainer logPresenter:logPresenter];
 }
 
+- (BRAccountsObserver *)accountsObserver {
+    return [[BRAccountsObserver alloc] initWithContainer:self.persistenceContainer];
+}
+
 #pragma mark - BRInteractionProvider -
 
 - (BRSyncEngine *)syncEngine {

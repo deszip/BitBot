@@ -9,10 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-#import "BRBitriseAPI.h"
-#import "BRSyncEngine.h"
-#import "BRLogObserver.h"
-#import "BREnvironment.h"
+#import "BRCommandFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,10 +24,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuAction) {
 @property (copy, nonatomic) BRBuild * (^buildProvider)(NSView * _Nullable targetView);
 @property (copy, nonatomic) void (^actionCallback)(BRBuildMenuAction action, BRBuildInfo *buildInfo);
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api
-                 syncEngine:(BRSyncEngine *)syncEngine
-                logObserver:(BRLogObserver *)logObserver
-                environment:(BREnvironment *)environment;
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithCommandFactory:(BRCommandFactory *)commandFactory NS_DESIGNATED_INITIALIZER;
 
 - (void)bindToOutline:(NSOutlineView *)outline;
 - (void)bindToButton:(NSButton *)button;

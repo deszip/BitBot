@@ -14,9 +14,7 @@
 @interface BRAbortCommand ()
 
 @property (strong, nonatomic) BRBitriseAPI *api;
-@property (copy, nonatomic) NSString *appSlug;
-@property (copy, nonatomic) NSString *buildSlug;
-@property (copy, nonatomic) NSString *token;
+@property (strong, nonatomic) BRBuild *build;
 
 @end
 
@@ -25,22 +23,17 @@
 - (instancetype)initWithAPI:(BRBitriseAPI *)api build:(BRBuild *)build {
     if (self = [super init]) {
         _api = api;
-        _appSlug = build.app.slug;
-        _buildSlug = build.slug;
-        _token = build.app.account.token;
+        _build = build;
     }
     
     return self;
 }
 
 - (void)execute:(BRCommandResult)callback {
-    BRAbortRequest *request = [[BRAbortRequest alloc] initWithToken:self.token
-                                                            appSlug:self.appSlug
-                                                          buildSlug:self.buildSlug];
-    [self.api abortBuild:request completion:^(BOOL status, NSError *error) {
-        BR_SAFE_CALL(callback, status, error);
-    }];
-    
+    BRAbortRequest *request = [[BRAbortRequest alloc] initWithToken:self.build.app.account.token
+                                                            appSlug:self.build.app.slug
+                                                          buildSlug:self.build.slug];
+    [self.api abortBuild:request completion:^(BOOL status, NSError *error) { BR_SAFE_CALL(callback, status, error); }];
     [[BRAnalytics analytics] trackAbortAction];
 }
 

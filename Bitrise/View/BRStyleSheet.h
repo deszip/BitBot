@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFont *)appNameFont;
 + (NSFont *)buildDetailsFont;
 + (NSFont *)accountListFont;
++ (NSFont *)emptyTitleFont;
++ (NSFont *)emptySubtitleFont;
++ (NSFont *)aboutTitleFont;
++ (NSFont *)aboutVersionFont;
++ (NSFont *)aboutTextFont;
 
 #pragma mark - Base colors -
 + (NSColor *)backgroundColor;
@@ -28,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSColor *)secondaryTextColor;
 + (NSColor *)buildIconTintColor;
 + (NSColor *)boxBorderColor;
++ (NSColor *)textColor;
 
 #pragma mark - Build colors -
 + (NSColor *)progressColor;

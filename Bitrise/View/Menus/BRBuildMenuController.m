@@ -10,11 +10,6 @@
 
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildInfo.h"
-#import "BRAbortCommand.h"
-#import "BRRebuildCommand.h"
-#import "BRSyncCommand.h"
-#import "BRDownloadLogsCommand.h"
-#import "BROpenBuildCommand.h"
 
 static const NSUInteger kMenuItemsCount = 5;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
@@ -27,10 +22,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @interface BRBuildMenuController ()
 
-@property (strong, nonatomic) BRBitriseAPI *api;
-@property (strong, nonatomic) BRSyncEngine *syncEngine;
-@property (strong, nonatomic) BRLogObserver *logObserver;
-@property (strong, nonatomic) BREnvironment *environment;
+@property (strong, nonatomic) BRCommandFactory *commandFactory;
 
 @property (weak, nonatomic) NSOutlineView *outlineView;
 @property (weak, nonatomic) NSView *triggeredView;
@@ -39,15 +31,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @implementation BRBuildMenuController
 
-- (instancetype)initWithAPI:(BRBitriseAPI *)api
-                 syncEngine:(BRSyncEngine *)syncEngine
-                logObserver:(BRLogObserver *)logObserver
-                environment:(BREnvironment *)environment {
+- (instancetype)initWithCommandFactory:(BRCommandFactory *)commandFactory {
     if (self = [super init]) {
-        _api = api;
-        _syncEngine = syncEngine;
-        _logObserver = logObserver;
-        _environment = environment;
+        _commandFactory = commandFactory;
     }
     
     return self;
@@ -93,12 +79,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)rebuild {
     BRBuild *build = [self selectedBuild];
     if (build) {
-        BRRebuildCommand *command = [[BRRebuildCommand alloc] initWithAPI:self.api build:build];
-        [command execute:^(BOOL result, NSError *error) {
+        BRRebuildCommand *command = [self.commandFactory rebuildCommand:build];
+        [command execute: ^(BOOL result, NSError *error) {
             if (result) {
-                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
-                                                                       logObserver:self.logObserver
-                                                                       environment:self.environment];
+                BRSyncCommand *syncCommand = [self.commandFactory syncCommand];
                 [syncCommand execute:nil];
             }
         }];
@@ -108,12 +92,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)abort {
     BRBuild *build = [self selectedBuild];
     if (build) {
-        BRAbortCommand *command = [[BRAbortCommand alloc] initWithAPI:self.api build:build];
+        BRAbortCommand *command = [self.commandFactory abortCommand:build];
         [command execute:^(BOOL result, NSError *error) {
             if (result) {
-                BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:self.syncEngine
-                                                                       logObserver:self.logObserver
-                                                                       environment:self.environment];
+                BRSyncCommand *syncCommand = [self.commandFactory syncCommand];
                 [syncCommand execute:nil];
             }
         }];
@@ -131,7 +113,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)downloadLog {
     BRBuild *build = [self selectedBuild];
     if (build) {
-        BRDownloadLogsCommand *command = [[BRDownloadLogsCommand alloc] initWithBuildSlug:build.slug];
+        BRDownloadLogsCommand *command = [self.commandFactory logsCommand:build.slug];
         [command execute:nil];
     }
 }
@@ -139,7 +121,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)openBuild {
     BRBuild *build = [self selectedBuild];
     if (build) {
-        BROpenBuildCommand *command = [[BROpenBuildCommand alloc] initWithBuildSlug:build.slug];
+        BROpenBuildCommand *command = [self.commandFactory openCommand:build.slug];
         [command execute:nil];
     }
 }

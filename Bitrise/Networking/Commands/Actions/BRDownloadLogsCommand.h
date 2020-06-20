@@ -14,7 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRDownloadLogsCommand : BRCommand
 
-- (instancetype)initWithBuildSlug:(NSString *)buildSlug;
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug NS_DESIGNATED_INITIALIZER;
 
 @end
 

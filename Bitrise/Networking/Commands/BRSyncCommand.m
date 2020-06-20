@@ -20,9 +20,7 @@
 
 @implementation BRSyncCommand
 
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine
-                   logObserver:(BRLogObserver *)logObserver
-                   environment:(BREnvironment *)environment {
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;
         
@@ -32,19 +30,6 @@
             if (builds.count > 0) {
                 [environment postNotifications:builds];
             }
-            
-#if FEATURE_LIVE_LOG
-            // Logs observing
-            NSArray *runningBuilds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.running];
-            NSSet <NSString *> *runningBuildsSlugs = [NSSet setWithArray:[runningBuilds aps_map:^NSString*(BRBuildInfo *buildInfo) {
-                return buildInfo.slug;
-            }]];
-
-            [runningBuildsSlugs enumerateObjectsUsingBlock:^(NSString *buildSlug, BOOL *stop) {
-                [logObserver startObservingBuild:buildSlug];
-            }];
-#endif
-            
             [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
                                                   running:result.diff.running.count
                                                  finished:result.diff.finished.count];

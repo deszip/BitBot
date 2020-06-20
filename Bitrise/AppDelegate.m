@@ -19,6 +19,7 @@
 @interface AppDelegate () <NSPopoverDelegate>
 
 @property (strong, nonatomic) BRDependencyContainer *dependencyContainer;
+@property (strong, nonatomic) BRCommandFactory *commandFactory;
 @property (strong, nonatomic) BRObserver *observer;
 
 @property (strong, nonatomic) BRMainController *mainController;
@@ -67,10 +68,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[BRAnalytics analytics] start];
     
+    self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
+                                                     syncEngine:[self.dependencyContainer syncEngine]
+                                                    environment:[self.dependencyContainer appEnvironment]];
+    
     // Start sync
-    BRSyncCommand *syncCommand = [[BRSyncCommand alloc] initSyncEngine:[self.dependencyContainer syncEngine]
-                                                           logObserver:[self.dependencyContainer logObserver]
-                                                           environment:[self.dependencyContainer appEnvironment]];
+    BRSyncCommand *syncCommand = [self.commandFactory syncCommand];
     [self.observer startObserving:syncCommand];
     
     // Build status item

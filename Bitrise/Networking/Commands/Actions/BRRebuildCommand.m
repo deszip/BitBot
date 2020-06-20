@@ -14,11 +14,7 @@
 @interface BRRebuildCommand ()
 
 @property (strong, nonatomic) BRBitriseAPI *api;
-@property (copy, nonatomic) NSString *appSlug;
-@property (copy, nonatomic) NSString *token;
-@property (copy, nonatomic) NSString *branch;
-@property (copy, nonatomic) NSString *commit;
-@property (copy, nonatomic) NSString *workflow;
+@property (strong, nonatomic) BRBuild *build;
 
 @end
 
@@ -27,20 +23,18 @@
 - (instancetype)initWithAPI:(BRBitriseAPI *)api build:(BRBuild *)build {
     if (self = [super init]) {
         _api = api;
-        _appSlug = build.app.slug;
-        _token = build.app.account.token;
-        _branch = build.branch;
-        _commit = build.commitHash;
-        _workflow = build.workflow;
+        _build = build;
     }
     
     return self;
 }
 
 - (void)execute:(BRCommandResult)callback {
-    BRRebuildRequest *request = [[BRRebuildRequest alloc] initWithToken:self.token appSlug:self.appSlug branch:self.branch];
-    [request setCommit:self.commit];
-    [request setWorkflow:self.workflow];
+    BRRebuildRequest *request = [[BRRebuildRequest alloc] initWithToken:self.build.app.account.token
+                                                                appSlug:self.build.app.slug
+                                                                 branch:self.build.branch];
+    [request setCommit:self.build.commitHash];
+    [request setWorkflow:self.build.workflow];
     
     [self.api rebuild:request completion:^(BOOL status, NSError * _Nullable error) {
         BR_SAFE_CALL(callback, status, error);

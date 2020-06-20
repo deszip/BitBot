@@ -101,11 +101,6 @@
 
 #pragma mark - NSFetchedResultsControllerDelegate -
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    _state = controller.sections.count == 0 ? BRAppsDataSourceStateEmpty : BRAppsDataSourceStateHasData;
-    self.stateCallback(self.state);
-}
-
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
     switch (type) {
