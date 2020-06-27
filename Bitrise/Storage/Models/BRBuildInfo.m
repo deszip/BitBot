@@ -8,6 +8,13 @@
 
 #import "BRBuildInfo.h"
 
+static NSString * const kRawResponseKey = @"kRawResponseKey";
+static NSString * const kAppNameKey = @"kAppNameKey";
+static NSString * const kStateInfoKey = @"kStateInfoKey";
+static NSString * const kSlugKey = @"kSlugKey";
+static NSString * const kBranchNameKey = @"kBranchNameKey";
+static NSString * const kWorkflowNameKey = @"kWorkflowNameKey";
+
 @interface BRBuildInfo ()
 
 @end
@@ -39,6 +46,34 @@
         _appName = build.app.title;
         _branchName = build.branch;
         _workflowName = build.workflow;
+    }
+    
+    return self;
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+    [aCoder encodeObject:self.rawResponse forKey:kRawResponseKey];
+    [aCoder encodeObject:self.appName forKey:kAppNameKey];
+    [aCoder encodeObject:self.stateInfo forKey:kStateInfoKey];
+    [aCoder encodeObject:self.slug forKey:kSlugKey];
+    [aCoder encodeObject:self.branchName forKey:kBranchNameKey];
+    [aCoder encodeObject:self.workflowName forKey:kWorkflowNameKey];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
+    if (self = [super init]) {
+        _rawResponse = [aDecoder decodeObjectOfClass:[NSDictionary class] forKey:kRawResponseKey];
+        _appName = [aDecoder decodeObjectOfClass:[NSString class] forKey:kAppNameKey];
+        _stateInfo = [aDecoder decodeObjectOfClass:[BRBuildStateInfo class] forKey:kStateInfoKey];
+        _slug = [aDecoder decodeObjectOfClass:[NSString class] forKey:kSlugKey];
+        _branchName = [aDecoder decodeObjectOfClass:[NSString class] forKey:kBranchNameKey];
+        _workflowName = [aDecoder decodeObjectOfClass:[NSString class] forKey:kWorkflowNameKey];
     }
     
     return self;

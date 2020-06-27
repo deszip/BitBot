@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1060,7 +1060,7 @@
                                                                             <rect key="frame" x="392" y="0.0" width="70" height="115"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-yV-gGe">
-                                                                                    <rect key="frame" x="-2" y="99" width="74" height="16"/>
+                                                                                    <rect key="frame" x="-2" y="86" width="74" height="16"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="16" id="A6w-4K-YmO"/>
                                                                                     </constraints>
@@ -1085,7 +1085,7 @@
                                                                                 <constraint firstAttribute="trailing" secondItem="DJq-ZJ-DgM" secondAttribute="trailing" id="Xeh-Jh-Bvc"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="qC8-yV-gGe" secondAttribute="trailing" id="g38-Lu-cUQ"/>
                                                                                 <constraint firstAttribute="width" constant="70" id="qTT-BA-Ngh"/>
-                                                                                <constraint firstItem="qC8-yV-gGe" firstAttribute="top" secondItem="NLr-ma-tnY" secondAttribute="top" id="t4F-1i-iMd"/>
+                                                                                <constraint firstItem="qC8-yV-gGe" firstAttribute="top" secondItem="NLr-ma-tnY" secondAttribute="top" constant="13" id="t4F-1i-iMd"/>
                                                                                 <constraint firstItem="DJq-ZJ-DgM" firstAttribute="leading" secondItem="NLr-ma-tnY" secondAttribute="leading" id="wvq-D2-UQ2"/>
                                                                             </constraints>
                                                                         </customView>
@@ -1182,9 +1182,9 @@
                                                     <constraint firstAttribute="width" constant="130" id="0uf-co-AGK"/>
                                                     <constraint firstAttribute="height" constant="34" id="j2Z-VR-DC0"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="AddButtonImage" imagePosition="left" alternateImage="AddButtonImage" inset="2" id="ysV-sp-RcN">
+                                                <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="AddButtonImage" imagePosition="only" alternateImage="AddButtonImage" inset="2" id="ysV-sp-RcN">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="controlContent"/>
+                                                    <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                                 <color key="contentTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
@@ -2171,7 +2171,7 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
                 <customObject id="Bi9-kT-DPp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <popUpButtonCell type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="yIX-UY-ndX" id="wBS-Id-XT6">
                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                    <font key="font" metaFont="system"/>
+                    <font key="font" metaFont="menu"/>
                     <menu key="menu" id="D98-B1-J96">
                         <items>
                             <menuItem title="Item 1" state="on" id="yIX-UY-ndX"/>

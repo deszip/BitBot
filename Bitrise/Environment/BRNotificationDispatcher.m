@@ -11,17 +11,11 @@
 #import "BRLogger.h"
 #import "NSArray+FRP.h"
 
+#import "BROpenBuildCommand.h"
+
 static const NSTimeInterval kNotificationTTL = 15;
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
-static NSString * const kBRNotificationPrimaryActionKey = @"kBRNotificationPrimaryActionKey";
-static NSString * const kBRNotificationSecondaryActionKey = @"kBRNotificationSecondaryActionKey";
-static NSString * const kBRNotificationBuildInfoKey = @"kBRNotificationBuildInfoKey";
-
-typedef NS_ENUM(NSUInteger, BRNotificationAction) {
-    BRNotificationActionOpen = 0,
-    BRNotificationActionAbort,
-    BRNotificationActionRebuild
-};
+static NSString * const kBRNotificationBuildSlugKey = @"kBRNotificationBuildSlugKey";
 
 @interface BRNotificationDispatcher() <NSUserNotificationCenterDelegate>
 
@@ -78,8 +72,7 @@ typedef NS_ENUM(NSUInteger, BRNotificationAction) {
 }
 
 - (NSUserNotification *)notificationFor:(BRBuildInfo *)buildInfo {
-    NSMutableDictionary *userInfo = [@{ kBRNotificationPrimaryActionKey : @(BRNotificationActionOpen),
-                                        kBRNotificationBuildInfoKey : buildInfo } mutableCopy];
+    NSMutableDictionary *userInfo = [@{ kBRNotificationBuildSlugKey : buildInfo.slug } mutableCopy];
     
     NSUserNotification *notification = [NSUserNotification new];
     notification.identifier = [self notificationID:buildInfo];
@@ -87,35 +80,15 @@ typedef NS_ENUM(NSUInteger, BRNotificationAction) {
     notification.actionButtonTitle = @"Open build";
     
     switch (buildInfo.stateInfo.state) {
-        case BRBuildStateHold:
-            notification.subtitle = @"build on hold";
-            notification.otherButtonTitle = @"Abort";
-            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionAbort);
-            break;
-        case BRBuildStateInProgress:
-            notification.subtitle = @"build started";
-            notification.otherButtonTitle = @"Abort";
-            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionAbort);
-            break;
-        case BRBuildStateFailed:
-            notification.subtitle = @"build failed";
-            notification.otherButtonTitle = @"Rebuild";
-            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionRebuild);
-            break;
-        case BRBuildStateAborted:
-            notification.subtitle = @"build aborted";
-            notification.otherButtonTitle = @"Rebuild";
-            userInfo[kBRNotificationSecondaryActionKey] = @(BRNotificationActionRebuild);
-            break;
-        case BRBuildStateSuccess:
-            notification.subtitle = @"build finished";
-            break;
-            
-        default:
-            notification.subtitle = @"build state undefined";
-            break;
+        case BRBuildStateHold:          notification.subtitle = @"Build on hold"; break;
+        case BRBuildStateInProgress:    notification.subtitle = @"Build started"; break;
+        case BRBuildStateFailed:        notification.subtitle = @"Build failed"; break;
+        case BRBuildStateAborted:       notification.subtitle = @"Build aborted"; break;
+        case BRBuildStateSuccess:       notification.subtitle = @"Build finished"; break;
+        default:                        notification.subtitle = @"Build state undefined"; break;
     }
     
+    notification.userInfo = userInfo;
     notification.contentImage = [NSImage imageNamed:buildInfo.stateInfo.notificationImageName];
     notification.informativeText = [NSString stringWithFormat:@"Branch: %@, workflow: %@", buildInfo.branchName, buildInfo.workflowName];
     notification.soundName = NSUserNotificationDefaultSoundName;
@@ -136,24 +109,23 @@ typedef NS_ENUM(NSUInteger, BRNotificationAction) {
 - (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification {
     
     BRLog(LL_VERBOSE, LL_CORE, @"Notification activated: %@", notification);
-    
+
     switch (notification.activationType) {
-        case NSUserNotificationActivationTypeAdditionalActionClicked:
-            BRLog(LL_VERBOSE, LL_CORE, @"Additional action clicked");
-            break;
-        
-        case NSUserNotificationActivationTypeActionButtonClicked:
+        case NSUserNotificationActivationTypeActionButtonClicked: {
             BRLog(LL_VERBOSE, LL_CORE, @"Action clicked");
+            BROpenBuildCommand *openCommand = [[BROpenBuildCommand alloc] initWithBuildSlug:notification.userInfo[kBRNotificationBuildSlugKey]];
+            [openCommand execute:nil];
             break;
+        }
             
-        case NSUserNotificationActivationTypeContentsClicked:
+        case NSUserNotificationActivationTypeContentsClicked: {
             BRLog(LL_VERBOSE, LL_CORE, @"Content clicked");
+            [center removeDeliveredNotification:notification];
             break;
+        }
             
-        default:
-            break;
+        default: break;
     }
 }
-
 
 @end

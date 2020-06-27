@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, BRBuildState) {
     BRBuildStateAborted
 };
 
-@interface BRBuildStateInfo : NSObject
+@interface BRBuildStateInfo : NSObject <NSSecureCoding>
 
 @property (assign, nonatomic, readonly) BRBuildState state;
 @property (strong, nonatomic, readonly) NSString *statusImageName;

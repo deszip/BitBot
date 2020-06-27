@@ -103,7 +103,7 @@
         [self.statusImage setLayer:layer];
         
         // Customize layer
-        CGPoint center = CGPointMake(layer.superlayer.bounds.size.width / 2, layer.superlayer.bounds.size.height / 2);
+        CGPoint center = CGPointMake(layer.superlayer.bounds.size.width / 2, (layer.superlayer.bounds.size.height / 2) + 10.0);
         layer.position = center;
         layer.anchorPoint = CGPointMake(0.5, 0.5);
         [layer setCornerRadius:self.statusImage.bounds.size.width / 2];

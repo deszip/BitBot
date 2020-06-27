@@ -12,12 +12,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRBuildInfo : NSObject
+@interface BRBuildInfo : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic, readonly) NSDictionary *rawResponse;
-
 @property (copy, nonatomic) NSString *appName;
-
 @property (strong, nonatomic, readonly) BRBuildStateInfo *stateInfo;
 @property (copy, nonatomic, readonly) NSString *slug;
 @property (copy, nonatomic, readonly) NSString *branchName;

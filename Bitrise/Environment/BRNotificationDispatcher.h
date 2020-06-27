@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithDefaults:(NSUserDefaults *)defaults nc:(NSUserNotificationCenter *)nc NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDefaults:(NSUserDefaults *)defaults
+                              nc:(NSUserNotificationCenter *)nc NS_DESIGNATED_INITIALIZER;
 
 #pragma mark - Notifications info -
 - (BOOL)notificationsEnabled;

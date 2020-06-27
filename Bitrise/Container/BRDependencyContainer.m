@@ -11,6 +11,7 @@
 #import "BRContainerBuilder.h"
 #import "BRCellBuilder.h"
 #import "BRAutorun.h"
+#import "BRCommandFactory.h"
 
 @interface BRDependencyContainer ()
 

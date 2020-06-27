@@ -10,6 +10,12 @@
 
 #import "BRStyleSheet.h"
 
+static NSString * const kStateKey = @"kStateKey";
+static NSString * const kStatusImageNameKey = @"kStatusImageNameKey";
+static NSString * const kNotificationImageNameKey = @"kNotificationImageNameKey";
+static NSString * const kStatusTitleKey = @"kStatusTitleKey";
+static NSString * const kStatusColorKey = @"kStatusColorKey";
+
 @implementation BRBuildStateInfo
 
 - (instancetype)initWithBuildStatus:(NSUInteger)buildStatus holdStatus:(BOOL)holdStatus waiting:(BOOL)isWaiting {
@@ -35,6 +41,7 @@
                     _statusTitle = @"Waiting for worker...";
                     _state = BRBuildStateWaitingForWorker;
                     _statusColor = [BRStyleSheet waitingColor];
+                    _notificationImageName = @"unknown_notification";
                 } else {
                     _statusTitle = @"In progress...";
                     _state = BRBuildStateInProgress;
@@ -69,6 +76,32 @@
             _statusColor = [BRStyleSheet abortedColor];
             break;
     }
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+    [aCoder encodeObject:@(self.state) forKey:kStateKey];
+    [aCoder encodeObject:self.statusImageName forKey:kStatusImageNameKey];
+    [aCoder encodeObject:self.notificationImageName forKey:kNotificationImageNameKey];
+    [aCoder encodeObject:self.statusTitle forKey:kStatusTitleKey];
+    [aCoder encodeObject:self.statusColor forKey:kStatusColorKey];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
+    if (self = [super init]) {
+        _state = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:kStateKey] integerValue];
+        _statusImageName = [aDecoder decodeObjectOfClass:[NSString class] forKey:kStatusImageNameKey];
+        _notificationImageName = [aDecoder decodeObjectOfClass:[BRBuildStateInfo class] forKey:kNotificationImageNameKey];
+        _statusTitle = [aDecoder decodeObjectOfClass:[NSString class] forKey:kStatusTitleKey];
+        _statusColor = [aDecoder decodeObjectOfClass:[NSColor class] forKey:kStatusColorKey];
+    }
+    
+    return self;
 }
 
 @end
