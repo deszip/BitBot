@@ -16,7 +16,9 @@
     [super drawRect:dirtyRect];
     
     [self.appName setFont:[BRStyleSheet accountListFont]];
+    [self.appName setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.appRepoURL setFont:[BRStyleSheet accountListFont]];
+    [self.appRepoURL setTextColor:[BRStyleSheet secondaryTextColor]];
     
     [self.appIcon setWantsLayer:YES];
     [self.appIcon.layer setCornerRadius:[BRStyleSheet accountIconCorenerRadius]];

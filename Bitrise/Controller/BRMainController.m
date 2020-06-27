@@ -25,7 +25,6 @@
 #import "BRLogsWindowPresenter.h"
 #import "BRAccountsObserver.h"
 
-
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
     BRBuildMenuItemRebuild,

@@ -16,7 +16,9 @@
     [super drawRect:dirtyRect];
     
     [self.accountNameLabel setFont:[BRStyleSheet accountListFont]];
+    [self.accountNameLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.emailLabel setFont:[BRStyleSheet accountListFont]];
+    [self.emailLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     
     [self.avatarImageView setWantsLayer:YES];
     [self.avatarImageView.layer setCornerRadius:[BRStyleSheet accountIconCorenerRadius]];

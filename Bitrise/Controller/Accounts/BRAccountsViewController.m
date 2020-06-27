@@ -53,6 +53,7 @@
     
     // UI
     [self.titleField setFont:[BRStyleSheet proximaNova:16.0]];
+    [self.titleField setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.containerBox setBorderColor:[BRStyleSheet boxBorderColor]];
     [self.containerBox setFillColor:[NSColor clearColor]];
     
