@@ -23,6 +23,10 @@
     return [NSFont fontWithName:@"ProximaNova-Regular" size:size];
 }
 
++ (NSFont *)jbMono:(CGFloat)size {
+    return [NSFont fontWithName:@"JetBrains Mono" size:size];
+}
+
 + (NSFont *)accountNameFont {   return [BRStyleSheet proximaNova:14.0]; }
 + (NSFont *)appNameFont {       return [BRStyleSheet proximaNova:20.0]; }
 + (NSFont *)buildDetailsFont {  return [BRStyleSheet proximaNova:14.0]; }
@@ -32,6 +36,9 @@
 + (NSFont *)aboutTitleFont {    return [BRStyleSheet proximaNova:32.0]; }
 + (NSFont *)aboutVersionFont {  return [BRStyleSheet proximaNova:13.0]; }
 + (NSFont *)aboutTextFont {     return [BRStyleSheet proximaNova:15.0]; }
+
++ (NSFont *)logFont {           return [BRStyleSheet jbMono:12.0]; }
++ (NSFont *)logStatusFont {     return [BRStyleSheet jbMono:10.0]; }
 
 #pragma mark - Base colors -
 

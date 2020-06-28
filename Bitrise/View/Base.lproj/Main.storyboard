@@ -1144,10 +1144,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="482" height="585"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zH8-me-VMT">
-                                        <rect key="frame" x="94" y="198" width="294" height="189"/>
+                                        <rect key="frame" x="94" y="163" width="294" height="260"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="60f-GI-8mC">
-                                                <rect key="frame" x="122" y="139" width="50" height="50"/>
+                                                <rect key="frame" x="122" y="210" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="pjg-o2-nWB"/>
                                                     <constraint firstAttribute="height" constant="50" id="sAE-Ba-e7W"/>
@@ -1155,7 +1155,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EmptyIcon" id="f2i-wX-89C"/>
                                             </imageView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-0c-kFG">
-                                                <rect key="frame" x="-2" y="99" width="298" height="25"/>
+                                                <rect key="frame" x="-2" y="170" width="298" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="tgs-C0-0Wa"/>
                                                 </constraints>
@@ -1165,17 +1165,82 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RRZ-Aq-4k6">
-                                                <rect key="frame" x="-2" y="49" width="298" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="Tcr-bS-rDM"/>
-                                                </constraints>
-                                                <textFieldCell key="cell" selectable="YES" enabled="NO" alignment="center" title="Let’s add the first one by adding your Bitrise personal access token. It’s secure, trust us." id="lMT-qo-6Zd">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
+                                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8G-Wc-GAu">
+                                                <rect key="frame" x="27" y="49" width="240" height="106"/>
+                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="UWO-2r-XAX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="106"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" id="o7A-9p-aS2" customClass="BRAboutTextView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="106"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <size key="minSize" width="240" height="106"/>
+                                                            <size key="maxSize" width="240" height="10000000"/>
+                                                            <attributedString key="textStorage">
+                                                                <fragment content="Let’s add the first one by adding your Bitrise personal access token. It’s secure, trust us.">
+                                                                    <attributes>
+                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment>
+                                                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                                    <attributes>
+                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <font key="NSFont" size="14" name="ProximaNova-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content=" ">
+                                                                    <attributes>
+                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <font key="NSFont" size="14" name="ProximaNova-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content="Please refer here for instructions:">
+                                                                    <attributes>
+                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment>
+                                                                    <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                                    <attributes>
+                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <font key="NSFont" size="14" name="ProximaNova-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content="https://discuss.bitrise.io/t/personal-access-tokens-beta/1383">
+                                                                    <attributes>
+                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        </textView>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="yCc-LA-3aW">
+                                                    <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="dkx-qh-TBn">
+                                                    <rect key="frame" x="-100" y="-100" width="15" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BUq-g1-K2L">
                                                 <rect key="frame" x="82" y="0.0" width="130" height="34"/>
                                                 <constraints>
@@ -1196,9 +1261,7 @@
                                             <constraint firstAttribute="trailing" secondItem="VWF-0c-kFG" secondAttribute="trailing" id="47q-Ed-pTu"/>
                                             <constraint firstItem="VWF-0c-kFG" firstAttribute="leading" secondItem="zH8-me-VMT" secondAttribute="leading" id="MyE-Ic-k1D"/>
                                             <constraint firstAttribute="width" constant="294" id="b5a-GF-9hb"/>
-                                            <constraint firstItem="RRZ-Aq-4k6" firstAttribute="leading" secondItem="zH8-me-VMT" secondAttribute="leading" id="ccA-y0-hh4"/>
-                                            <constraint firstAttribute="height" constant="189" id="wji-HY-9Ws"/>
-                                            <constraint firstAttribute="trailing" secondItem="RRZ-Aq-4k6" secondAttribute="trailing" id="zrt-i5-iIx"/>
+                                            <constraint firstAttribute="height" constant="260" id="wji-HY-9Ws"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -1221,7 +1284,7 @@
                                 <connections>
                                     <outlet property="addAccountButton" destination="BUq-g1-K2L" id="UJh-iI-Ckz"/>
                                     <outlet property="emptyIcon" destination="60f-GI-8mC" id="HBz-vq-1ba"/>
-                                    <outlet property="subtitleField" destination="RRZ-Aq-4k6" id="yBG-hP-hUG"/>
+                                    <outlet property="subtitleTextView" destination="o7A-9p-aS2" id="LFr-TZ-0nG"/>
                                     <outlet property="titleField" destination="VWF-0c-kFG" id="M1i-h2-aSW"/>
                                 </connections>
                             </customView>
@@ -1237,7 +1300,7 @@
                                     </imageView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-aP-IJm">
                                         <rect key="frame" x="25" y="0.0" width="432" height="25"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyUpOrDown" image="dots" id="hwZ-hn-M08"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="dots" id="hwZ-hn-M08"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -1384,12 +1447,12 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ow5-SZ-UdE">
-                                                    <rect key="frame" x="0.0" y="3" width="219" height="20"/>
+                                                    <rect key="frame" x="0.0" y="4" width="219" height="19"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bLy-ex-VQV">
-                                                            <rect key="frame" x="8" y="1" width="203" height="19"/>
+                                                            <rect key="frame" x="8" y="1" width="203" height="18"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="19" id="Hj0-H9-dD7"/>
+                                                                <constraint firstAttribute="height" constant="18" id="Hj0-H9-dD7"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="BitBot: feature/logs, development" id="xeK-zb-Bh5">
                                                                 <font key="font" size="10" name="Menlo-Regular"/>
@@ -1420,7 +1483,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ow5-SZ-UdE" firstAttribute="leading" secondItem="izk-bj-yoG" secondAttribute="leading" id="6Ea-6F-c0y"/>
-                                                <constraint firstItem="ow5-SZ-UdE" firstAttribute="top" secondItem="izk-bj-yoG" secondAttribute="top" constant="3" id="Vf2-Xb-o8J"/>
+                                                <constraint firstItem="ow5-SZ-UdE" firstAttribute="top" secondItem="izk-bj-yoG" secondAttribute="top" constant="4" id="Vf2-Xb-o8J"/>
                                                 <constraint firstAttribute="trailing" secondItem="ow5-SZ-UdE" secondAttribute="trailing" id="dca-c6-dWG"/>
                                                 <constraint firstAttribute="bottom" secondItem="ow5-SZ-UdE" secondAttribute="bottom" id="rcg-gn-cJm"/>
                                             </constraints>
@@ -1429,7 +1492,7 @@
                                                 <outlet property="statusField" destination="bLy-ex-VQV" id="EFf-Df-LoI"/>
                                             </connections>
                                         </view>
-                                        <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="fillColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </box>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="dPk-vs-VCz"/>
@@ -1528,6 +1591,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logScrollView" destination="jwf-Pg-oCd" id="dZV-Le-Gzv"/>
                         <outlet property="logTextView" destination="PCO-NY-c1K" id="SjA-Yl-kx3"/>
                         <outlet property="logsTabView" destination="cbc-IN-zEz" id="LLW-Ec-vD4"/>
                     </connections>

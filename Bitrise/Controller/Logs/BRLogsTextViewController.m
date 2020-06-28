@@ -9,7 +9,7 @@
 #import "BRLogsTextViewController.h"
 
 #import "BRStyleSheet.h"
-
+#import "BRLogScroller.h"
 #import "BRLogsWindowController.h"
 #import "BRProgressObserver.h"
 
@@ -23,6 +23,7 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 @property (weak) IBOutlet NSTabView *logsTabView;
 @property (weak) IBOutlet NSTextView *logTextView;
+@property (weak) IBOutlet NSScrollView *logScrollView;
 
 @end
 
@@ -32,6 +33,8 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
     [super viewDidLoad];
     
     [self.logTextView setBackgroundColor:[BRStyleSheet backgroundColor]];
+    [self.logScrollView setVerticalScroller:[BRLogScroller new]];
+    [self.logScrollView setAutohidesScrollers:YES];
 }
 
 #pragma mark - Setup -

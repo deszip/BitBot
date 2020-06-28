@@ -8,6 +8,7 @@
 
 #import "BRLogStatusView.h"
 
+#import "BRStyleSheet.h"
 #import "BRProgressObserver.h"
 
 @interface BRLogStatusView ()
@@ -18,6 +19,17 @@
 @end
 
 @implementation BRLogStatusView
+
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    
+    [self setWantsLayer:YES];
+    [self.layer setCornerRadius:5.0];
+    [self.layer setBackgroundColor:[NSColor grayColor].CGColor];
+    
+    [self.statusField setFont:[BRStyleSheet logStatusFont]];
+    [self.statusField setTextColor:[BRStyleSheet primaryTextColor]];
+}
 
 - (void)addProgress:(NSProgress *)progress {
     if (!progress) {

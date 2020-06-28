@@ -9,6 +9,7 @@
 #import "BRLogPresenter.h"
 
 #import "BRMacro.h"
+#import "BRStyleSheet.h"
 
 @interface BRLogPresenter ()
 
@@ -21,7 +22,7 @@
 - (instancetype)initWithANSIHelper:(AMR_ANSIEscapeHelper *)helper {
     if (self = [super init]) {
         _helper = helper;
-        _helper.font = [NSFont fontWithName:@"JetBrains Mono" size:12];
+        _helper.font = [BRStyleSheet logFont];
         _helper.defaultStringColor = [NSColor whiteColor];
         
         _helper.ansiColors = [@{ @(AMR_SGRCodeFgRed)    : NSColorFromRGB(0xFF2158),

@@ -9,12 +9,14 @@
 #import "BREmptyView.h"
 
 #import "BRStyleSheet.h"
+#import "BRAboutTextView.h"
 
 @interface BREmptyView ()
 
 @property (weak) IBOutlet NSImageView *emptyIcon;
 @property (weak) IBOutlet NSTextField *titleField;
 @property (weak) IBOutlet NSTextField *subtitleField;
+@property (weak) IBOutlet BRAboutTextView *subtitleTextView;
 @property (weak) IBOutlet NSButton *addAccountButton;
 
 @end
@@ -29,6 +31,10 @@
  
     [self.titleField setFont:[BRStyleSheet emptyTitleFont]];
     [self.subtitleField setFont:[BRStyleSheet emptySubtitleFont]];
+    
+    [self.subtitleTextView setAutomaticLinkDetectionEnabled:YES];
+    [self.subtitleTextView setTextColor:[BRStyleSheet textColor]];
+    [self.subtitleTextView setFont:[BRStyleSheet emptySubtitleFont]];
 }
 
 - (IBAction)addAccount:(id)sender {

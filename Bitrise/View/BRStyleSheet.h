@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Fonts -
 + (NSFont *)proximaNova:(CGFloat)size;
++ (NSFont *)jbMono:(CGFloat)size;
+
 + (NSFont *)accountNameFont;
 + (NSFont *)appNameFont;
 + (NSFont *)buildDetailsFont;
@@ -24,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFont *)aboutTitleFont;
 + (NSFont *)aboutVersionFont;
 + (NSFont *)aboutTextFont;
++ (NSFont *)logFont;
++ (NSFont *)logStatusFont;
 
 #pragma mark - Base colors -
 + (NSColor *)backgroundColor;
