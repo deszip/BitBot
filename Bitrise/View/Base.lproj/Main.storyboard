@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1179,51 +1179,21 @@
                                                             <size key="minSize" width="240" height="106"/>
                                                             <size key="maxSize" width="240" height="10000000"/>
                                                             <attributedString key="textStorage">
-                                                                <fragment content="Let’s add the first one by adding your Bitrise personal access token. It’s secure, trust us.">
+                                                                <fragment>
+                                                                    <string key="content">Let’s add the first one by adding your Bitrise personal access token. It’s secure, trust us.
+</string>
                                                                     <attributes>
                                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                                        <font key="NSFont" size="12" name="ProximaNova-Regular"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
                                                                 <fragment>
-                                                                    <string key="content" base64-UTF8="YES">
-Cg
-</string>
+                                                                    <string key="content"> Please refer here for instructions:
+https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                     <attributes>
                                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="14" name="ProximaNova-Regular"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content=" ">
-                                                                    <attributes>
-                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="14" name="ProximaNova-Regular"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="Please refer here for instructions:">
-                                                                    <attributes>
-                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="12" name="Helvetica"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment>
-                                                                    <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                                                    <attributes>
-                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="14" name="ProximaNova-Regular"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="https://discuss.bitrise.io/t/personal-access-tokens-beta/1383">
-                                                                    <attributes>
-                                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                                        <font key="NSFont" size="12" name="ProximaNova-Regular"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                                     </attributes>
                                                                 </fragment>
@@ -1249,7 +1219,7 @@ Cg
                                                 </constraints>
                                                 <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="AddButtonImage" imagePosition="only" alternateImage="AddButtonImage" inset="2" id="ysV-sp-RcN">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="cellTitle"/>
+                                                    <font key="font" metaFont="controlContent"/>
                                                 </buttonCell>
                                                 <color key="contentTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
@@ -2235,7 +2205,7 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
                 <customObject id="Bi9-kT-DPp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <popUpButtonCell type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="yIX-UY-ndX" id="wBS-Id-XT6">
                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                    <font key="font" metaFont="menu"/>
+                    <font key="font" metaFont="system"/>
                     <menu key="menu" id="D98-B1-J96">
                         <items>
                             <menuItem title="Item 1" state="on" id="yIX-UY-ndX"/>
