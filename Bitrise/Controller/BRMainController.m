@@ -11,6 +11,7 @@
 #import "BRStyleSheet.h"
 
 #import "BREmptyView.h"
+#import "BRAboutTextView.h"
 #import "BRContainerBuilder.h"
 #import "BRAppsDataSource.h"
 #import "BRAccountsViewController.h"
@@ -50,6 +51,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (weak) IBOutlet NSView *topBar;
 
+@property (unsafe_unretained) IBOutlet BRAboutTextView *hintView;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet BREmptyView *emptyView;
 @property (strong) IBOutlet NSMenu *buildMenu;
@@ -157,6 +159,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)setupUI {
     [self.topBar setWantsLayer:YES];
     [self.topBar.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
+    
+    [self.hintView setAutomaticLinkDetectionEnabled:YES];
+    [self.hintView setFont:[BRStyleSheet aboutTextFont]];
     
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
