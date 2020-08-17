@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ATSApplicationFontsPath</key>
+	<string>Fonts/</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -19,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1939</string>
+	<string>1943</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -34,13 +36,5 @@
 	<string>NSApplication</string>
 	<key>NSUserNotificationAlertStyle</key>
 	<string>alert</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>JetBrainsMono-Regular.ttf</string>
-		<string>Jura-VariableFont_wght.ttf</string>
-		<string>Jura-Bold.ttf</string>
-		<string>Jura-Medium.ttf</string>
-		<string>ProximaNova-Regular.otf</string>
-	</array>
 </dict>
 </plist>
