@@ -8,14 +8,16 @@
 
 #import "BRAboutViewController.h"
 
+#import "BRDisableableScrollView.h"
 #import "BRAboutTextView.h"
 #import "BRStyleSheet.h"
 
 @interface BRAboutViewController ()
 
+@property (weak) IBOutlet BRDisableableScrollView *scrollView;
 @property (weak) IBOutlet NSTextField *nameField;
 @property (weak) IBOutlet NSTextField *versionField;
-@property (unsafe_unretained) IBOutlet BRAboutTextView *aboutTextView;
+@property (weak) IBOutlet BRAboutTextView *aboutTextView;
 
 @end
 
@@ -23,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.scrollView.scrollingEnabled = NO;
     
     [self.nameField setFont:[BRStyleSheet aboutTitleFont]];
     [self.versionField setFont:[BRStyleSheet aboutVersionFont]];

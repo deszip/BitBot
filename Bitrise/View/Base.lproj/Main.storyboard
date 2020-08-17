@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1318,6 +1318,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                     <connections>
                         <outlet property="buildMenu" destination="Q6c-WQ-hru" id="n3V-JU-dc4"/>
                         <outlet property="emptyView" destination="lhQ-nT-Gbv" id="jxe-DC-jmu"/>
+                        <outlet property="hintView" destination="o7A-9p-aS2" id="GIa-9A-1QG"/>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>
                         <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
                         <outlet property="topBar" destination="82J-cI-jpS" id="D4C-Sf-sOB"/>
@@ -2058,14 +2059,14 @@ Gw
             <objects>
                 <viewController id="q3v-hi-t6E" customClass="BRAboutViewController" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="510"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-zH-Sot">
-                                <rect key="frame" x="20" y="20" width="400" height="469"/>
+                                <rect key="frame" x="20" y="20" width="400" height="480"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGk-A7-HCu">
-                                        <rect key="frame" x="0.0" y="127" width="150" height="215"/>
+                                        <rect key="frame" x="0.0" y="133" width="150" height="215"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bb9-zw-3Vr">
                                                 <rect key="frame" x="0.0" y="65" width="150" height="150"/>
@@ -2116,18 +2117,18 @@ Gw
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-pU-ZTL">
-                                        <rect key="frame" x="160" y="0.0" width="240" height="469"/>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-pU-ZTL" customClass="BRDisableableScrollView">
+                                        <rect key="frame" x="160" y="0.0" width="240" height="480"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="X3U-v3-un2">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="469"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="480"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="ryo-DS-wy4" customClass="BRAboutTextView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="469"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="480"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="240" height="469"/>
+                                                    <size key="minSize" width="240" height="480"/>
                                                     <size key="maxSize" width="240" height="10000000"/>
                                                     <attributedString key="textStorage">
                                                         <fragment>
@@ -2199,6 +2200,7 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
                     <connections>
                         <outlet property="aboutTextView" destination="ryo-DS-wy4" id="vbu-H4-EqQ"/>
                         <outlet property="nameField" destination="C2e-Wd-kcM" id="gYd-WS-nEU"/>
+                        <outlet property="scrollView" destination="Yoq-pU-ZTL" id="eTO-db-9bm"/>
                         <outlet property="versionField" destination="azh-8G-J61" id="aYs-Tm-hrg"/>
                     </connections>
                 </viewController>
