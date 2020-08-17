@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -2060,7 +2060,7 @@ Gw
                 <viewController id="q3v-hi-t6E" customClass="BRAboutViewController" sceneMemberID="viewController">
                     <view key="view" id="Kq8-xr-Mh1">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="510"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-zH-Sot">
                                 <rect key="frame" x="20" y="20" width="400" height="480"/>
@@ -2150,7 +2150,7 @@ Gw
                                                             </attributes>
                                                         </fragment>
                                                         <fragment>
-                                                            <mutableString key="content">BitBot was built to work for our current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop us a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com/deszip/BitBot 
+                                                            <mutableString key="content">BitBot was built to work for our current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop us a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com/deszip/BitBot. If you want to support us - just star the repo :) 
 BitBot and we are not associated or affiliated with Bitrise in any way. </mutableString>
                                                             <attributes>
                                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -2205,17 +2205,6 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
                     </connections>
                 </viewController>
                 <customObject id="Bi9-kT-DPp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <popUpButtonCell type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="yIX-UY-ndX" id="wBS-Id-XT6">
-                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                    <font key="font" metaFont="system"/>
-                    <menu key="menu" id="D98-B1-J96">
-                        <items>
-                            <menuItem title="Item 1" state="on" id="yIX-UY-ndX"/>
-                            <menuItem title="Item 2" id="fR3-dV-6bu"/>
-                            <menuItem title="Item 3" id="wbG-sg-XVI"/>
-                        </items>
-                    </menu>
-                </popUpButtonCell>
             </objects>
             <point key="canvasLocation" x="1358" y="324"/>
         </scene>
