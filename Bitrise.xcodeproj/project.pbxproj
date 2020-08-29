@@ -146,9 +146,6 @@
 		D982D8AC249E8BDC0099F0A5 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
 		D98C540A2439D02500CA1D57 /* BRStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C54092439D02500CA1D57 /* BRStyleSheet.m */; };
 		D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
-		D98C54112439EB8500CA1D57 /* Jura-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */; };
-		D98C54142439EC3A00CA1D57 /* Jura-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */; };
-		D98C54152439EC3A00CA1D57 /* Jura-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */; };
 		D996A18524DB26E200DBFE83 /* BRDisableableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */; };
 		D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
 		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
@@ -1452,7 +1449,7 @@
 					"$(PROJECT_DIR)/Bitrise/Vendored",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
@@ -1480,7 +1477,7 @@
 					"$(PROJECT_DIR)/Bitrise/Vendored",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
