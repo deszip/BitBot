@@ -9,6 +9,13 @@ BitBot was built to work for my current project so it definitely lacks a lot of 
 
 BitBot and I are not associated or affiliated with Bitrise in any way.
 
+### Install
+Get BitBot from the [AppStore](https://apps.apple.com/ua/app/bitbot/id1469773841?l=ru&mt=12).
+
+This will give you automated updates which is handy.
+
+Don't forget to rate it if you liked it :)
+
 # ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot-1.png)
 # ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot-2.png)
 # ![BitBot](https://github.com/deszip/BitBot/raw/master/screenshot-3.png)
