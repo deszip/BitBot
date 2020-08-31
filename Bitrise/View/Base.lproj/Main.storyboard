@@ -814,7 +814,7 @@
                                                                                         <constraint firstItem="Idm-IL-eUs" firstAttribute="leading" secondItem="Mv7-pf-SlE" secondAttribute="leading" id="Qx4-Nj-N4c"/>
                                                                                         <constraint firstAttribute="height" constant="90" id="SWu-Dh-xDB"/>
                                                                                         <constraint firstItem="Nvh-D2-Lrc" firstAttribute="leading" secondItem="Mv7-pf-SlE" secondAttribute="leading" id="dFR-7n-5AG"/>
-                                                                                        <constraint firstItem="Idm-IL-eUs" firstAttribute="centerY" secondItem="Mv7-pf-SlE" secondAttribute="centerY" constant="-10" id="jhn-eD-5uR"/>
+                                                                                        <constraint firstItem="Idm-IL-eUs" firstAttribute="centerY" secondItem="Mv7-pf-SlE" secondAttribute="centerY" id="jhn-eD-5uR"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="Idm-IL-eUs" secondAttribute="trailing" id="umV-zK-4CQ"/>
                                                                                     </constraints>
                                                                                 </customView>
