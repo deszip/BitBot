@@ -14,6 +14,7 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     dateFormatter.dateFormat = EKRFC_3339DatetimeFormat;
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
     return [EKManagedObjectMapping mappingForEntityName:NSStringFromClass([self class]) withBlock:^(EKManagedObjectMapping *mapping) {
         [mapping mapKeyPath:@"triggered_at" toProperty:@"triggerTime" withDateFormatter:dateFormatter];
         [mapping mapKeyPath:@"started_on_worker_at" toProperty:@"startTime" withDateFormatter:dateFormatter];
