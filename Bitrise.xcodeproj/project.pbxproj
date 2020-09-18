@@ -152,6 +152,23 @@
 		D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
+		DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */; };
+		DEBE8C202513B7FD00CF079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */; };
+		DEBE8C232513B7FD00CF079A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */; };
+		DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C512514A79100CF079A /* BuildsView.swift */; };
+		DEBE8C592514A7B300CF079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
+		DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C5F2514A80400CF079A /* String+Localization.swift */; };
+		DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C672514A9E600CF079A /* EmptyStateView.swift */; };
+		DEBE8C6F2514E04A00CF079A /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */; };
+		DEBE8C7D2514E73500CF079A /* Proxima Nova Alt Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
+		DEBE8C7E2514E73500CF079A /* Proxima Nova Alt Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
+		DEBE8C7F2514E73500CF079A /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F4246FFDF300DF2C50 /* Proxima Nova Bold.otf */; };
+		DEBE8C802514E73500CF079A /* Proxima Nova Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F3246FFDF300DF2C50 /* Proxima Nova Extrabold.otf */; };
+		DEBE8C812514E73500CF079A /* Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F5246FFDF400DF2C50 /* Proxima Nova Black.otf */; };
+		DEBE8C822514E73500CF079A /* Proxima Nova Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F6246FFDF400DF2C50 /* Proxima Nova Thin.otf */; };
+		DEBE8C832514E73500CF079A /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
+		DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */; };
+		DEBE8C942514F4E100CF079A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C932514F4E100CF079A /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -420,6 +437,16 @@
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
+		DEBE8C192513B7FB00CF079A /* BitriseATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitriseATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseATVApp.swift; sourceTree = "<group>"; };
+		DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DEBE8C242513B7FD00CF079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEBE8C512514A79100CF079A /* BuildsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsView.swift; sourceTree = "<group>"; };
+		DEBE8C5F2514A80400CF079A /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		DEBE8C672514A9E600CF079A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximaFontModifier.swift; sourceTree = "<group>"; };
+		DEBE8C932514F4E100CF079A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		EB550FAE0B12AA5E5BBED2E8 /* libPods-Bitrise.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bitrise.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCC38F36C8ABB179E968B54 /* libPods-BitriseTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -438,6 +465,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B9EB643B31D43C782DFEAE2 /* libPods-BitriseTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEBE8C162513B7FB00CF079A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +496,7 @@
 			children = (
 				0E42CAD720EC7A7E0033CD03 /* Bitrise */,
 				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
+				DEBE8C1A2513B7FB00CF079A /* BitriseATV */,
 				0E42CAD620EC7A7E0033CD03 /* Products */,
 				69A9F2BFB5AB6510F4520CA0 /* Pods */,
 				C13880202AEAF4B31EFDD304 /* Frameworks */,
@@ -473,6 +508,7 @@
 			children = (
 				0E42CAD520EC7A7E0033CD03 /* Bitrise.app */,
 				0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */,
+				DEBE8C192513B7FB00CF079A /* BitriseATV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -987,6 +1023,94 @@
 			path = "Dots view";
 			sourceTree = "<group>";
 		};
+		DEBE8C1A2513B7FB00CF079A /* BitriseATV */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C5D2514A7F400CF079A /* Common */,
+				DEBE8C432513BBA200CF079A /* Features */,
+				DEBE8C2D2513B82500CF079A /* Supporting Files */,
+				DEBE8C2C2513B81F00CF079A /* Resources */,
+				DEBE8C2B2513B81400CF079A /* Application */,
+				DEBE8C212513B7FD00CF079A /* Preview Content */,
+			);
+			path = BitriseATV;
+			sourceTree = "<group>";
+		};
+		DEBE8C212513B7FD00CF079A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DEBE8C2B2513B81400CF079A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DEBE8C2C2513B81F00CF079A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DEBE8C2D2513B82500CF079A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C242513B7FD00CF079A /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEBE8C432513BBA200CF079A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C502514A78700CF079A /* Builds */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		DEBE8C502514A78700CF079A /* Builds */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C512514A79100CF079A /* BuildsView.swift */,
+				DEBE8C672514A9E600CF079A /* EmptyStateView.swift */,
+			);
+			path = Builds;
+			sourceTree = "<group>";
+		};
+		DEBE8C5D2514A7F400CF079A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C8A2514EF3C00CF079A /* Style */,
+				DEBE8C5E2514A7F700CF079A /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DEBE8C5E2514A7F700CF079A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C5F2514A80400CF079A /* String+Localization.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DEBE8C8A2514EF3C00CF079A /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */,
+				DEBE8C932514F4E100CF079A /* Color+Extension.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1029,12 +1153,30 @@
 			productReference = 0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DEBE8C182513B7FB00CF079A /* BitriseATV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitriseATV" */;
+			buildPhases = (
+				DEBE8C152513B7FB00CF079A /* Sources */,
+				DEBE8C162513B7FB00CF079A /* Frameworks */,
+				DEBE8C172513B7FB00CF079A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitriseATV;
+			productName = BitriseATV;
+			productReference = DEBE8C192513B7FB00CF079A /* BitriseATV.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0E42CACD20EC7A7E0033CD03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
@@ -1049,6 +1191,9 @@
 					0E42CAEA20EC7A800033CD03 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = 0E42CAD420EC7A7E0033CD03;
+					};
+					DEBE8C182513B7FB00CF079A = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
@@ -1067,6 +1212,7 @@
 			targets = (
 				0E42CAD420EC7A7E0033CD03 /* Bitrise */,
 				0E42CAEA20EC7A800033CD03 /* BitriseTests */,
+				DEBE8C182513B7FB00CF079A /* BitriseATV */,
 			);
 		};
 /* End PBXProject section */
@@ -1087,6 +1233,24 @@
 			files = (
 				0EAB9DCC2222CFED00A21D23 /* LogResponse_10chunks_finished.json in Resources */,
 				0EAB9DCF2222D1D700A21D23 /* LogResponse_10chunks_running.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEBE8C172513B7FB00CF079A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBE8C7E2514E73500CF079A /* Proxima Nova Alt Thin.otf in Resources */,
+				DEBE8C232513B7FD00CF079A /* Preview Assets.xcassets in Resources */,
+				DEBE8C802514E73500CF079A /* Proxima Nova Extrabold.otf in Resources */,
+				DEBE8C6F2514E04A00CF079A /* ProximaNova-Regular.otf in Resources */,
+				DEBE8C7F2514E73500CF079A /* Proxima Nova Bold.otf in Resources */,
+				DEBE8C812514E73500CF079A /* Proxima Nova Black.otf in Resources */,
+				DEBE8C592514A7B300CF079A /* Assets.xcassets in Resources */,
+				DEBE8C832514E73500CF079A /* Proxima Nova Alt Light.otf in Resources */,
+				DEBE8C822514E73500CF079A /* Proxima Nova Thin.otf in Resources */,
+				DEBE8C202513B7FD00CF079A /* Assets.xcassets in Resources */,
+				DEBE8C7D2514E73500CF079A /* Proxima Nova Alt Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1289,6 +1453,19 @@
 				0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */,
 				0EC53F46221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED4F21E3453F003F0364 /* BRBuild+Mapping.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEBE8C152513B7FB00CF079A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */,
+				DEBE8C942514F4E100CF079A /* Color+Extension.swift in Sources */,
+				DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */,
+				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
+				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,
+				DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1528,6 +1705,60 @@
 			};
 			name = Release;
 		};
+		DEBE8C252513B7FD00CF079A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
+				DEVELOPMENT_TEAM = RM2T974B84;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.atv.BitBot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+			};
+			name = Debug;
+		};
+		DEBE8C262513B7FD00CF079A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BitriseATV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1554,6 +1785,15 @@
 			buildConfigurations = (
 				0E42CAF820EC7A800033CD03 /* Debug */,
 				0E42CAF920EC7A800033CD03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitriseATV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEBE8C252513B7FD00CF079A /* Debug */,
+				DEBE8C262513B7FD00CF079A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
