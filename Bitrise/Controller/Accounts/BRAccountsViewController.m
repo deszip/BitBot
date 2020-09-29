@@ -56,6 +56,8 @@
     [self.titleField setTextColor:[BRStyleSheet secondaryTextColor]];
     [self.containerBox setBorderColor:[BRStyleSheet boxBorderColor]];
     [self.containerBox setFillColor:[NSColor clearColor]];
+    [self.addButton setContentTintColor:[BRStyleSheet boxBorderColor]];
+    [self.removeButton setContentTintColor:[BRStyleSheet boxBorderColor]];
     
     // Dependencies
     self.api = [self.dependencyContainer bitriseAPI];
