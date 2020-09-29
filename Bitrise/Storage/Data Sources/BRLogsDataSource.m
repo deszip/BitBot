@@ -104,8 +104,6 @@
         }
     }
     
-    BRLog(LL_VERBOSE, LL_UI, @"Logs DS got content: %d, size: %d", lineCount, content.length);
-    
     return content;
 }
 
