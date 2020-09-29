@@ -13,8 +13,7 @@
 @class BRLogEntry;
 
 // Log tags
-static NSString * const LL_WEBSOCKET            = @"UI";
-static NSString * const LL_REQUESTFLOW          = @"SYNC";
+static NSString * const LL_UI                   = @"UI";
 static NSString * const LL_STORAGE              = @"STORAGE";
 static NSString * const LL_CORE                 = @"CORE";
 static NSString * const LL_LOGSYNC              = @"LOGSYNC";

@@ -86,14 +86,17 @@
     
     NSString *insertion = [self contentFromLine:0];
     NSAttributedString *attrLine = [self.logPresenter decoratedLine:insertion];
+    
+    [[self.textView textStorage] beginEditing];
     [[self.textView textStorage] appendAttributedString:attrLine];
+    [[self.textView textStorage] endEditing];
 }
 
 #pragma mark - Text processing -
 
 - (NSString *)contentFromLine:(NSUInteger)startLine {
     NSUInteger lineCount = [[self.logFRC.sections[0] objects] count];
-    NSMutableString *content = [@"" mutableCopy];
+    NSMutableString *content = [NSMutableString new];
     for (NSUInteger lineIndex = startLine; lineIndex < lineCount; lineIndex++) {
         BRLogLine *line = [self.logFRC objectAtIndexPath:[NSIndexPath indexPathForItem:lineIndex inSection:0]];
         if (line) {
