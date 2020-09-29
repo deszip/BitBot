@@ -163,6 +163,10 @@
 		DE2A26BC2523140400D5762E /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE4865FB25235EB600D5D80F /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4865FA25235EB600D5D80F /* DependencyContainer.swift */; };
 		DE48660B25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE48660A25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift */; };
+		DE486611252361EE00D5D80F /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE486610252361EE00D5D80F /* AccountsView.swift */; };
+		DE4866162523633E00D5D80F /* AccountsConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4866152523633E00D5D80F /* AccountsConnector.swift */; };
+		DE4866222523658E00D5D80F /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4866212523658E00D5D80F /* AddAccountView.swift */; };
+		DE48662A2523668600D5D80F /* AddAccountConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4866292523668600D5D80F /* AddAccountConnector.swift */; };
 		DE6C912B252216C0001B2332 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C912A252216C0001B2332 /* Store.swift */; };
 		DE6C9133252216FD001B2332 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9132252216FD001B2332 /* Observer.swift */; };
 		DE6C913825221756001B2332 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C913725221756001B2332 /* AppState.swift */; };
@@ -462,6 +466,10 @@
 		DE2A269E25230F1400D5762E /* Bitrise-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bitrise-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE4865FA25235EB600D5D80F /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		DE48660A25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAccountsObserver+Dispatch.swift"; sourceTree = "<group>"; };
+		DE486610252361EE00D5D80F /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		DE4866152523633E00D5D80F /* AccountsConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsConnector.swift; sourceTree = "<group>"; };
+		DE4866212523658E00D5D80F /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
+		DE4866292523668600D5D80F /* AddAccountConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountConnector.swift; sourceTree = "<group>"; };
 		DE6C912A252216C0001B2332 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DE6C9132252216FD001B2332 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		DE6C913725221756001B2332 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -1072,6 +1080,24 @@
 			path = "Dependency Injection";
 			sourceTree = "<group>";
 		};
+		DE48660F252361E600D5D80F /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				DE486610252361EE00D5D80F /* AccountsView.swift */,
+				DE4866152523633E00D5D80F /* AccountsConnector.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		DE4866202523658100D5D80F /* Add Account */ = {
+			isa = PBXGroup;
+			children = (
+				DE4866212523658E00D5D80F /* AddAccountView.swift */,
+				DE4866292523668600D5D80F /* AddAccountConnector.swift */,
+			);
+			path = "Add Account";
+			sourceTree = "<group>";
+		};
 		DE6C9129252216B8001B2332 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,6 +1169,8 @@
 		DEBE8C432513BBA200CF079A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				DE4866202523658100D5D80F /* Add Account */,
+				DE48660F252361E600D5D80F /* Accounts */,
 				DEBE8C502514A78700CF079A /* Builds */,
 			);
 			path = Features;
@@ -1545,10 +1573,12 @@
 				DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */,
 				DE48660B25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift in Sources */,
 				DE2A266F25230CAB00D5762E /* Action.swift in Sources */,
+				DE486611252361EE00D5D80F /* AccountsView.swift in Sources */,
 				DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */,
 				DE2A26B8252313FE00D5762E /* BRContainerBuilder.m in Sources */,
 				DE6C913825221756001B2332 /* AppState.swift in Sources */,
 				DE2A267425230CC700D5762E /* BuildsConnector.swift in Sources */,
+				DE4866222523658E00D5D80F /* AddAccountView.swift in Sources */,
 				DE2A26B02523113200D5762E /* BRAccountsObserver.m in Sources */,
 				DE6C91502522188B001B2332 /* Connector.swift in Sources */,
 				DE2A266A25230CA100D5762E /* Graph.swift in Sources */,
@@ -1557,6 +1587,8 @@
 				DE4865FB25235EB600D5D80F /* DependencyContainer.swift in Sources */,
 				DE2A26B4252313DB00D5762E /* bitrise.xcdatamodeld in Sources */,
 				DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */,
+				DE4866162523633E00D5D80F /* AccountsConnector.swift in Sources */,
+				DE48662A2523668600D5D80F /* AddAccountConnector.swift in Sources */,
 				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
 				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,
 				DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */,

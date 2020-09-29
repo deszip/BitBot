@@ -14,5 +14,10 @@ extension Graph {
 
 struct AccountsNode {
     let graph: Graph
+    
     var hasAccounts: Bool { return graph.state.accountsState.hasAccounts }
+    
+    func add(personalAccessToken: String) {
+        graph.dispatch(AddPersonalAccessToken(token: personalAccessToken))
+    }
 }

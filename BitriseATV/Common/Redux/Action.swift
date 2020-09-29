@@ -13,3 +13,7 @@ protocol Action {}
 struct UpdateAccountsState: Action {
     var hasAccounts: Bool
 }
+
+struct AddPersonalAccessToken: Action {
+    var token: String
+}
