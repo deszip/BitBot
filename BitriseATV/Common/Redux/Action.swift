@@ -9,3 +9,7 @@
 import Foundation
 
 protocol Action {}
+
+struct UpdateAccountsState: Action {
+    var hasAccounts: Bool
+}

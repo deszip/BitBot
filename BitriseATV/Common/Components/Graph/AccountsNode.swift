@@ -14,5 +14,5 @@ extension Graph {
 
 struct AccountsNode {
     let graph: Graph
-    var hasAccounts: Bool { return true }//!graph.state.accounts.isEmpty }
+    var hasAccounts: Bool { return graph.state.accountsState.hasAccounts }
 }

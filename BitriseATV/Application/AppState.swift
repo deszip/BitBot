@@ -10,9 +10,9 @@ import Foundation
 
 struct AppState {
     
+    var accountsState = AccountsState()
     
-    
-    public mutating func reduce(_ action: Action) {
-        
+    mutating func reduce(_ action: Action) {
+        accountsState.reduce(action)
     }
 }

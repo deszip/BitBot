@@ -152,11 +152,17 @@
 		D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
-		DE2A266825230CA100D5762E /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266425230CA100D5762E /* Accounts.swift */; };
+		DE2A266825230CA100D5762E /* AccountsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266425230CA100D5762E /* AccountsState.swift */; };
 		DE2A266925230CA100D5762E /* AccountsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266625230CA100D5762E /* AccountsNode.swift */; };
 		DE2A266A25230CA100D5762E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266725230CA100D5762E /* Graph.swift */; };
 		DE2A266F25230CAB00D5762E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266E25230CAB00D5762E /* Action.swift */; };
 		DE2A267425230CC700D5762E /* BuildsConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A267325230CC700D5762E /* BuildsConnector.swift */; };
+		DE2A26B02523113200D5762E /* BRAccountsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */; };
+		DE2A26B4252313DB00D5762E /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
+		DE2A26B8252313FE00D5762E /* BRContainerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */; };
+		DE2A26BC2523140400D5762E /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
+		DE4865FB25235EB600D5D80F /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4865FA25235EB600D5D80F /* DependencyContainer.swift */; };
+		DE48660B25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE48660A25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift */; };
 		DE6C912B252216C0001B2332 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C912A252216C0001B2332 /* Store.swift */; };
 		DE6C9133252216FD001B2332 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9132252216FD001B2332 /* Observer.swift */; };
 		DE6C913825221756001B2332 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C913725221756001B2332 /* AppState.swift */; };
@@ -448,11 +454,14 @@
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
-		DE2A266425230CA100D5762E /* Accounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
+		DE2A266425230CA100D5762E /* AccountsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsState.swift; sourceTree = "<group>"; };
 		DE2A266625230CA100D5762E /* AccountsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsNode.swift; sourceTree = "<group>"; };
 		DE2A266725230CA100D5762E /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		DE2A266E25230CAB00D5762E /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		DE2A267325230CC700D5762E /* BuildsConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildsConnector.swift; sourceTree = "<group>"; };
+		DE2A269E25230F1400D5762E /* Bitrise-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bitrise-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE4865FA25235EB600D5D80F /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		DE48660A25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BRAccountsObserver+Dispatch.swift"; sourceTree = "<group>"; };
 		DE6C912A252216C0001B2332 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DE6C9132252216FD001B2332 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		DE6C913725221756001B2332 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -552,6 +561,7 @@
 				0E8E9B5020F07FF400494DEB /* Networking */,
 				0E8E9B5120F0817600494DEB /* Storage */,
 				0E42CAFC20EC7B070033CD03 /* Resources */,
+				DE2A269E25230F1400D5762E /* Bitrise-Bridging-Header.h */,
 			);
 			path = Bitrise;
 			sourceTree = "<group>";
@@ -1054,6 +1064,14 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
+		DE4865F925235E9A00D5D80F /* Dependency Injection */ = {
+			isa = PBXGroup;
+			children = (
+				DE4865FA25235EB600D5D80F /* DependencyContainer.swift */,
+			);
+			path = "Dependency Injection";
+			sourceTree = "<group>";
+		};
 		DE6C9129252216B8001B2332 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -1070,7 +1088,7 @@
 		DE6C913F25221773001B2332 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DE2A266425230CA100D5762E /* Accounts.swift */,
+				DE2A266425230CA100D5762E /* AccountsState.swift */,
 				DE2A266525230CA100D5762E /* Graph */,
 			);
 			path = Components;
@@ -1143,6 +1161,7 @@
 		DEBE8C5D2514A7F400CF079A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DE4865F925235E9A00D5D80F /* Dependency Injection */,
 				DE6C913F25221773001B2332 /* Components */,
 				DE6C9129252216B8001B2332 /* Redux */,
 				DEBE8C8A2514EF3C00CF079A /* Style */,
@@ -1155,6 +1174,7 @@
 			isa = PBXGroup;
 			children = (
 				DEBE8C5F2514A80400CF079A /* String+Localization.swift */,
+				DE48660A25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1518,18 +1538,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6C912B252216C0001B2332 /* Store.swift in Sources */,
-				DE2A266825230CA100D5762E /* Accounts.swift in Sources */,
+				DE2A26BC2523140400D5762E /* BRLogger.m in Sources */,
+				DE2A266825230CA100D5762E /* AccountsState.swift in Sources */,
 				DE2A266925230CA100D5762E /* AccountsNode.swift in Sources */,
 				DE6C9133252216FD001B2332 /* Observer.swift in Sources */,
 				DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */,
+				DE48660B25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift in Sources */,
 				DE2A266F25230CAB00D5762E /* Action.swift in Sources */,
 				DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */,
+				DE2A26B8252313FE00D5762E /* BRContainerBuilder.m in Sources */,
 				DE6C913825221756001B2332 /* AppState.swift in Sources */,
 				DE2A267425230CC700D5762E /* BuildsConnector.swift in Sources */,
+				DE2A26B02523113200D5762E /* BRAccountsObserver.m in Sources */,
 				DE6C91502522188B001B2332 /* Connector.swift in Sources */,
 				DE2A266A25230CA100D5762E /* Graph.swift in Sources */,
 				DEBE8C942514F4E100CF079A /* Color+Extension.swift in Sources */,
 				DE6C914B252217E1001B2332 /* EnvironmentStore.swift in Sources */,
+				DE4865FB25235EB600D5D80F /* DependencyContainer.swift in Sources */,
+				DE2A26B4252313DB00D5762E /* bitrise.xcdatamodeld in Sources */,
 				DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */,
 				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
 				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,
@@ -1793,6 +1819,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1819,6 +1846,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;

@@ -25,7 +25,7 @@
     BOOL isDir;
     if (![[NSFileManager defaultManager] fileExistsAtPath:appDirectoryURL.path isDirectory:&isDir]) {
         NSError *error;
-        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:NO attributes:nil error:&error];
+        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:YES attributes:nil error:&error];
         if (!result) {
             BRLog(LL_WARN, LL_STORAGE, @"Failed to create app directory: %@", error);
             return nil;
