@@ -12,16 +12,16 @@ import SwiftUI
 struct BitriseATVApp: App {
     
     let dependencyContainer = DependencyContainer()
+    let store: Store<AppState, Action>
     let accountsObserver: BRAccountsObserver
-        
-    let store = Store<AppState, Action>(initial: AppState()) { (state, action) in
-        print("Reduce\t\t\t", action)
-        state.reduce(action)
-    }
+    let commandsDispatcher: CommandsDispatcher
     
     init() {
+        store = dependencyContainer.store()
         accountsObserver = dependencyContainer.accountsObserver()
         accountsObserver.dispatchEvents(to: store)
+        commandsDispatcher = dependencyContainer.commandDispatcher()
+        store.subscribe(observer: commandsDispatcher.asObserver)
     }
     
     var body: some Scene {

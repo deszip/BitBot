@@ -6,8 +6,8 @@
 //  Copyright © 2020 Bitrise. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "BitriseCompat.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

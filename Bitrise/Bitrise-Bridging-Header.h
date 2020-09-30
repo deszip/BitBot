@@ -8,3 +8,7 @@
 
 #import "BRContainerBuilder.h"
 #import "BRAccountsObserver.h"
+#import "BRCommand.h"
+#import "BRGetAccountCommand.h"
+#import "BRSyncEngine.h"
+#import "BRBitriseAPI.h"

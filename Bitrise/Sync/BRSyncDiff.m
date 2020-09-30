@@ -7,6 +7,7 @@
 //
 
 #import "BRSyncDiff.h"
+#import "BRBuildInfo.h"
 
 @implementation BRSyncDiff
 

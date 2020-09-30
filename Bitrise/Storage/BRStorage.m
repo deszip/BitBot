@@ -22,6 +22,7 @@
 #import "BRLogStep+CoreDataClass.h"
 
 #import "BRLogStorage.h"
+#import "BRBuildInfo.h"
 
 
 @interface BRStorage ()

@@ -30,8 +30,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-#import <Cocoa/Cocoa.h>
-
+#import "BitriseCompat.h"
 
 #if !__has_feature(objc_arc)
 #warning "This code requires ARC to be enabled."

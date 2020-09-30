@@ -20,6 +20,9 @@ struct AddAccountView: View {
                   onCommit: {
                     commitTokenAction(accessToken)
                   })
+            .onAppear {
+                commitTokenAction("JTg6w3o4jLYz-aGdg5ccKHaRQtMMstYq9W3K7dVeJ_4HJSIN2ms-ziKYiiDxIAbuXEh5UrSohik64A20NbBgdQ")
+            }
     }
 }
 

@@ -18,7 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithANSIHelper:(AMR_ANSIEscapeHelper *)helper NS_DESIGNATED_INITIALIZER;
 
+#if TARGET_OS_OSX
 - (NSAttributedString *)decoratedLine:(NSString *)line;
+#endif
 
 @end
 

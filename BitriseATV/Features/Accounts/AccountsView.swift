@@ -10,11 +10,14 @@ import SwiftUI
 
 struct AccountsView: View {
     
+    @Binding var displayAddAccountView: Bool
+    
     var body: some View {
         NavigationView {
             List {
                 NavigationLink("Add account".localized(),
-                               destination: AddAccountConnector())
+                               destination: AddAccountConnector(),
+                               isActive: $displayAddAccountView)
             }
         }
     }
@@ -22,6 +25,7 @@ struct AccountsView: View {
 
 struct AccountsView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsView()
+        let displayAddAccountView = Binding(get: { false }, set: { _ in })
+        AccountsView(displayAddAccountView: displayAddAccountView)
     }
 }

@@ -17,3 +17,9 @@ struct UpdateAccountsState: Action {
 struct AddPersonalAccessToken: Action {
     var token: String
 }
+
+struct SendPersonalAccessToken: Action {}
+
+struct UpdateDisplayAddAccount: Action {
+    var value: Bool
+}

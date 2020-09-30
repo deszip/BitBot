@@ -10,6 +10,8 @@ import SwiftUI
 
 struct AccountsConnector: Connector {
     func map(graph: Graph) -> some View {
-        AccountsView()
+        let displayAddAccountView = Binding<Bool>(get: { graph.accounts.displayAddAccountView },
+                                                  set: { graph.accounts.displayAddAccountView = $0 })
+        return AccountsView(displayAddAccountView: displayAddAccountView)
     }
 }

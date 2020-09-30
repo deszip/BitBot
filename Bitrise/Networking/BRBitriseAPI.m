@@ -9,6 +9,7 @@
 #import "BRBitriseAPI.h"
 
 #import "BRMacro.h"
+#import "BRBuildInfo.h"
 
 NSString * const kBRBitriseAPIDomain = @"kBRBitriseAPIDomain";
 
