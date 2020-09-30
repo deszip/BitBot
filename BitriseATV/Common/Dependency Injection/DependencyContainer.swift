@@ -9,14 +9,16 @@
 import Foundation
 
 final class DependencyContainer {
-    private let persistentContainer: NSPersistentContainer
+    private let _persistentContainer: NSPersistentContainer
     private let _store = Store<AppState, Action>(initial: AppState()) { (state, action) in
         print("Reduce\t\t\t", action)
         state.reduce(action)
     }
     
-    init() {
-        persistentContainer = BRContainerBuilder().buildContainer()
+    static let shared = DependencyContainer()
+    
+    private init() {
+        _persistentContainer = BRContainerBuilder().buildContainer()
     }
     
     func store() -> Store<AppState, Action> {
@@ -24,7 +26,7 @@ final class DependencyContainer {
     }
     
     func accountsObserver() -> BRAccountsObserver {
-        BRAccountsObserver(container: persistentContainer)
+        BRAccountsObserver(container: persistentContainer())
     }
     
     func bitriseAPI() -> BRBitriseAPI {
@@ -32,7 +34,7 @@ final class DependencyContainer {
     }
     
     func storage() -> BRStorage {
-        BRStorage(context: persistentContainer.newBackgroundContext())
+        BRStorage(context: persistentContainer().newBackgroundContext())
     }
     
     func syncEngine() -> BRSyncEngine {
@@ -42,5 +44,9 @@ final class DependencyContainer {
     
     func commandDispatcher() -> CommandsDispatcher {
         CommandsDispatcher(dependencyContainer: self)
+    }
+    
+    func persistentContainer() -> NSPersistentContainer {
+        _persistentContainer
     }
 }

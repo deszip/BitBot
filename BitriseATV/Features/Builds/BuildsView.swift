@@ -8,9 +8,20 @@
 
 import SwiftUI
 
+// TODO: - Extract TabView to higher level
+
 struct BuildsView: View {
     var body: some View {
-        Text("hello")
+        TabView {
+            Text("hello")
+                .tabItem{
+                    Text("Builds")
+                }
+            AccountsConnector()
+                .tabItem {
+                    Text("Accounts")
+                }
+        }
     }
 }
 

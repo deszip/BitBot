@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct BitriseATVApp: App {
     
-    let dependencyContainer = DependencyContainer()
+    let dependencyContainer = DependencyContainer.shared
     let store: Store<AppState, Action>
     let accountsObserver: BRAccountsObserver
     let commandsDispatcher: CommandsDispatcher
