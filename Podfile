@@ -1,12 +1,16 @@
- platform :osx, '10.12'
-
-target 'Bitrise' do
+def sharedPods 
 
   pod 'EasyMapping'
   pod 'SDWebImage', '~> 5.0.6'
-  pod "NSPopover+MISSINGBackgroundView"
 
-  pod 'Mixpanel-OSX-Community', :git => 'https://github.com/orta/mixpanel-osx-unofficial.git'
+  pod 'Mixpanel'
+
+end
+
+target 'Bitrise' do
+  platform :osx, '10.12'
+  pod "NSPopover+MISSINGBackgroundView"
+  sharedPods()
 
   target 'BitriseTests' do
     inherit! :search_paths
@@ -16,4 +20,9 @@ target 'Bitrise' do
     
   end
 
+end
+
+target 'BitriseATV' do
+  platform :tvos, '14.0'
+  sharedPods()
 end

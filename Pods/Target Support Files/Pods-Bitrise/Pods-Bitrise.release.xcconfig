@@ -1,7 +1,7 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/EasyMapping" "${PODS_ROOT}/Headers/Public/Expecta" "${PODS_ROOT}/Headers/Public/Mixpanel-OSX-Community" "${PODS_ROOT}/Headers/Public/NSPopover+MISSINGBackgroundView" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/SDWebImage"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/EasyMapping" "${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-OSX-Community" "${PODS_CONFIGURATION_BUILD_DIR}/NSPopover+MISSINGBackgroundView" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"EasyMapping" -l"Mixpanel-OSX-Community" -l"NSPopover+MISSINGBackgroundView" -l"SDWebImage" -framework "AppKit" -framework "Cocoa" -framework "CoreData" -framework "Foundation" -framework "ImageIO" -framework "SystemConfiguration"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) MIXPANEL_MACOS
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/EasyMapping" "${PODS_ROOT}/Headers/Public/Expecta" "${PODS_ROOT}/Headers/Public/Mixpanel" "${PODS_ROOT}/Headers/Public/NSPopover+MISSINGBackgroundView" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/SDWebImage"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/EasyMapping-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-macOS" "${PODS_CONFIGURATION_BUILD_DIR}/NSPopover+MISSINGBackgroundView" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage-macOS"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"EasyMapping-macOS" -l"Mixpanel-macOS" -l"NSPopover+MISSINGBackgroundView" -l"SDWebImage-macOS" -l"icucore" -framework "AppKit" -framework "Cocoa" -framework "CoreData" -framework "Foundation" -framework "IOKit" -framework "ImageIO"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
