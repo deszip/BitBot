@@ -223,6 +223,8 @@
 		DEBE8C942514F4E100CF079A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C932514F4E100CF079A /* Color+Extension.swift */; };
 		DEC610E125261750005CA940 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E025261750005CA940 /* RootView.swift */; };
 		DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E8252617CD005CA940 /* RootConnector.swift */; };
+		DEC610EF252623DD005CA940 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610EE252623DD005CA940 /* AccountView.swift */; };
+		DEC610F725262568005CA940 /* AccountConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610F625262568005CA940 /* AccountConnector.swift */; };
 		FB02B3090600F1FF36BAD500 /* libPods-Bitrise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C98B51BEBE16EC3923FFFA8 /* libPods-Bitrise.a */; };
 /* End PBXBuildFile section */
 
@@ -530,6 +532,8 @@
 		DEBE8C932514F4E100CF079A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		DEC610E025261750005CA940 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		DEC610E8252617CD005CA940 /* RootConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootConnector.swift; sourceTree = "<group>"; };
+		DEC610EE252623DD005CA940 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		DEC610F625262568005CA940 /* AccountConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConnector.swift; sourceTree = "<group>"; };
 		FBA7010A9A2D7C38641E76E5 /* Pods-BitriseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.release.xcconfig"; path = "Target Support Files/Pods-BitriseTests/Pods-BitriseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1139,6 +1143,7 @@
 		DE48660F252361E600D5D80F /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				DEC610ED252623D4005CA940 /* Account */,
 				DE486610252361EE00D5D80F /* AccountsView.swift */,
 				DE4866152523633E00D5D80F /* AccountsConnector.swift */,
 				DE9E046E2524F3F400B23FA8 /* AccountsProvider.swift */,
@@ -1283,6 +1288,15 @@
 				DEC610E8252617CD005CA940 /* RootConnector.swift */,
 			);
 			path = RootView;
+			sourceTree = "<group>";
+		};
+		DEC610ED252623D4005CA940 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				DEC610EE252623DD005CA940 /* AccountView.swift */,
+				DEC610F625262568005CA940 /* AccountConnector.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1672,6 +1686,7 @@
 				DE3CD06D252469E500DD5948 /* ASQueue.m in Sources */,
 				DE486643252459FC00D5D80F /* BRSyncOperation.m in Sources */,
 				DE2A266F25230CAB00D5762E /* Action.swift in Sources */,
+				DEC610EF252623DD005CA940 /* AccountView.swift in Sources */,
 				DE486611252361EE00D5D80F /* AccountsView.swift in Sources */,
 				DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */,
 				DE2A26B8252313FE00D5762E /* BRContainerBuilder.m in Sources */,
@@ -1691,6 +1706,7 @@
 				DE3CD079252469FD00DD5948 /* BRAppInfo.m in Sources */,
 				DE9E046F2524F3F400B23FA8 /* AccountsProvider.swift in Sources */,
 				DE3CD071252469ED00DD5948 /* BRAPIRequest.m in Sources */,
+				DEC610F725262568005CA940 /* AccountConnector.swift in Sources */,
 				DE48663F252459D200D5D80F /* BRAddAccountOperation.m in Sources */,
 				DE48664F25245AAE00D5D80F /* BRAnalytics.m in Sources */,
 				DE3CD09A25246F5A00DD5948 /* BRBitriseAPI.m in Sources */,

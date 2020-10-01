@@ -10,5 +10,6 @@ import Foundation
 
 struct AccountViewModel: Identifiable {
     let id = UUID()
-    let name: String
+    let userName: String
+    let email: String
 }
