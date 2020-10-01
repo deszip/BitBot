@@ -23,3 +23,7 @@ struct SendPersonalAccessToken: Action {}
 struct UpdateDisplayAddAccount: Action {
     var value: Bool
 }
+
+struct UpdateSelectedTab: Action {
+    var tab: AppState.RootTab
+}

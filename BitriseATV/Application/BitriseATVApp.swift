@@ -27,7 +27,7 @@ struct BitriseATVApp: App {
     var body: some Scene {
         WindowGroup {
             StoreProvider(store: store) {
-                BuildsConnector()
+                RootConnector()
             }
         }
     }

@@ -12,16 +12,7 @@ import SwiftUI
 
 struct BuildsView: View {
     var body: some View {
-        TabView {
-            Text("hello")
-                .tabItem{
-                    Text("Builds")
-                }
-            AccountsConnector()
-                .tabItem {
-                    Text("Accounts")
-                }
-        }
+        Text("Builds")
     }
 }
 

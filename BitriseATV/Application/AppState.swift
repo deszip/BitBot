@@ -10,9 +10,26 @@ import Foundation
 
 struct AppState {
     
+    enum RootTab {
+        case builds
+        case accounts
+    }
+    
+    var rootTab: RootTab = .builds
     var accountsState = AccountsState()
     
     mutating func reduce(_ action: Action) {
         accountsState.reduce(action)
+        switch action {
+        case let action as UpdateAccountsState:
+            if action.hasAccounts {
+                rootTab = .builds
+            } else {
+                rootTab = .accounts
+            }
+        case let action as UpdateSelectedTab:
+            rootTab = action.tab
+        default: break
+        }
     }
 }

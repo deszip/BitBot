@@ -221,6 +221,8 @@
 		DEBE8C832514E73500CF079A /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */; };
 		DEBE8C942514F4E100CF079A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C932514F4E100CF079A /* Color+Extension.swift */; };
+		DEC610E125261750005CA940 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E025261750005CA940 /* RootView.swift */; };
+		DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E8252617CD005CA940 /* RootConnector.swift */; };
 		FB02B3090600F1FF36BAD500 /* libPods-Bitrise.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C98B51BEBE16EC3923FFFA8 /* libPods-Bitrise.a */; };
 /* End PBXBuildFile section */
 
@@ -526,6 +528,8 @@
 		DEBE8C672514A9E600CF079A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximaFontModifier.swift; sourceTree = "<group>"; };
 		DEBE8C932514F4E100CF079A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		DEC610E025261750005CA940 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		DEC610E8252617CD005CA940 /* RootConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootConnector.swift; sourceTree = "<group>"; };
 		FBA7010A9A2D7C38641E76E5 /* Pods-BitriseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseTests.release.xcconfig"; path = "Target Support Files/Pods-BitriseTests/Pods-BitriseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1223,6 +1227,7 @@
 		DEBE8C432513BBA200CF079A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				DEC610DC25261739005CA940 /* RootView */,
 				DE4866202523658100D5D80F /* Add Account */,
 				DE48660F252361E600D5D80F /* Accounts */,
 				DEBE8C502514A78700CF079A /* Builds */,
@@ -1269,6 +1274,15 @@
 				DEBE8C932514F4E100CF079A /* Color+Extension.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		DEC610DC25261739005CA940 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				DEC610E025261750005CA940 /* RootView.swift */,
+				DEC610E8252617CD005CA940 /* RootConnector.swift */,
+			);
+			path = RootView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1688,6 +1702,7 @@
 				DE3CD0E1252481EF00DD5948 /* BRLogStorage.m in Sources */,
 				DE3CD0A225246F6900DD5948 /* BRLogInfo.m in Sources */,
 				DE6C914B252217E1001B2332 /* EnvironmentStore.swift in Sources */,
+				DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */,
 				DE4865FB25235EB600D5D80F /* DependencyContainer.swift in Sources */,
 				DE3CD0CC252477EE00DD5948 /* BRStyleSheet.m in Sources */,
 				DE48664725245A6100D5D80F /* BRAccountRequest.m in Sources */,
@@ -1700,6 +1715,7 @@
 				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,
 				DE48663B252458AB00D5D80F /* BRSyncEngine.m in Sources */,
 				DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */,
+				DEC610E125261750005CA940 /* RootView.swift in Sources */,
 				DE3CD09625246F5400DD5948 /* BRStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
