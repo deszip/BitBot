@@ -1,6 +1,6 @@
  platform :osx, '10.12'
 
-target 'Bitrise' do
+target 'BitBot' do
 
   pod 'EasyMapping'
   pod 'SDWebImage', '~> 5.0.6'
@@ -8,7 +8,7 @@ target 'Bitrise' do
 
   pod 'Mixpanel-OSX-Community', :git => 'https://github.com/orta/mixpanel-osx-unofficial.git'
 
-  target 'BitriseTests' do
+  target 'BitBotTests' do
     inherit! :search_paths
   
     pod 'OCMock', '~> 3.4.3'
