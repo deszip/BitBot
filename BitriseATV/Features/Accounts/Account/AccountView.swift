@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AccountView: View {
     
+    let imageURL: URL?
     let userName: String
     let email: String
     
@@ -18,11 +19,22 @@ struct AccountView: View {
             //do smth
         }) {
             HStack {
-                Image(systemName: "pencil")
+                AsyncImage(url: imageURL)
+                    .placeholder(.defaultAvatar)
+                    .resizable()
+                    .frame(width: 180, height: 180)
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(20)
                 VStack(alignment: .leading) {
                     Text(userName)
                     Text(email)
                 }
+            }
+        }
+        .frame(height: 200)
+        .contextMenu {
+            Button("Delete account".localized()) {
+                //delete acc
             }
         }
     }
@@ -30,7 +42,8 @@ struct AccountView: View {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(userName: "vladislavsosiuk",
+        AccountView(imageURL: nil,
+                    userName: "vladislavsosiuk",
                     email: "vladislavsosiuk@gmail.com")
     }
 }

@@ -13,7 +13,8 @@ struct AccountConnector: Connector {
     let accountViewModel: AccountViewModel
     
     func map(graph: Graph) -> some View {
-        AccountView(userName: accountViewModel.userName,
+        AccountView(imageURL: accountViewModel.imageURL,
+                    userName: accountViewModel.userName,
                     email: accountViewModel.email)
     }
 }

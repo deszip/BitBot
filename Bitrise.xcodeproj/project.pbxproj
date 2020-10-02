@@ -152,6 +152,8 @@
 		D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
+		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
+		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
 		DE2A266825230CA100D5762E /* AccountsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266425230CA100D5762E /* AccountsState.swift */; };
 		DE2A266925230CA100D5762E /* AccountsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266625230CA100D5762E /* AccountsNode.swift */; };
 		DE2A266A25230CA100D5762E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266725230CA100D5762E /* Graph.swift */; };
@@ -498,6 +500,8 @@
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
+		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		DE0FE2E72527623F00C12804 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		DE2A266425230CA100D5762E /* AccountsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsState.swift; sourceTree = "<group>"; };
 		DE2A266625230CA100D5762E /* AccountsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsNode.swift; sourceTree = "<group>"; };
 		DE2A266725230CA100D5762E /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -1128,6 +1132,7 @@
 			isa = PBXGroup;
 			children = (
 				DE3CD08E25246A7500DD5948 /* CommandsDispatcher.swift */,
+				DE0FE2E225275A8900C12804 /* AsyncImage.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1277,6 +1282,7 @@
 			children = (
 				DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */,
 				DEBE8C932514F4E100CF079A /* Color+Extension.swift */,
+				DE0FE2E72527623F00C12804 /* Image+Extension.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -1699,6 +1705,7 @@
 				DE4866222523658E00D5D80F /* AddAccountView.swift in Sources */,
 				DE2A26B02523113200D5762E /* BRAccountsObserver.m in Sources */,
 				DE6C91502522188B001B2332 /* Connector.swift in Sources */,
+				DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */,
 				DE3CD08525246A1100DD5948 /* BRCommand.m in Sources */,
 				DE3CD0A625246F7300DD5948 /* BRBuildInfo.m in Sources */,
 				DE3CD07D25246A0400DD5948 /* BRBuildsRequest.m in Sources */,
@@ -1729,6 +1736,7 @@
 				DE48662A2523668600D5D80F /* AddAccountConnector.swift in Sources */,
 				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
 				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,
+				DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */,
 				DE48663B252458AB00D5D80F /* BRSyncEngine.m in Sources */,
 				DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */,
 				DEC610E125261750005CA940 /* RootView.swift in Sources */,

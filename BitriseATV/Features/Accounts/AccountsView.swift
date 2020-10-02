@@ -34,7 +34,8 @@ struct AccountsView_Previews: PreviewProvider {
         let displayAddAccountView = Binding(get: { false }, set: { _ in })
         AccountsView(displayAddAccountView: displayAddAccountView,
                      accounts: [],
-                     accountRow: { _ in AccountView(userName: "test",
+                     accountRow: { _ in AccountView(imageURL: nil,
+                                                    userName: "test",
                                                     email: "test@email.com")})
     }
 }

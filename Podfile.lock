@@ -3,6 +3,9 @@ PODS:
     - EasyMapping/Core (= 0.22.1)
   - EasyMapping/Core (0.22.1)
   - Expecta (1.0.6)
+  - Kingfisher/Core (5.15.5)
+  - Kingfisher/SwiftUI (5.15.5):
+    - Kingfisher/Core
   - Mixpanel (3.6.3)
   - "NSPopover+MISSINGBackgroundView (1.0.6)"
   - OCMock (3.4.3)
@@ -13,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - EasyMapping
   - Expecta (~> 1.0.6)
+  - Kingfisher/SwiftUI
   - Mixpanel
   - "NSPopover+MISSINGBackgroundView"
   - OCMock (~> 3.4.3)
@@ -25,17 +29,19 @@ SPEC REPOS:
     - OCMock
     - SDWebImage
   trunk:
+    - Kingfisher
     - Mixpanel
     - "NSPopover+MISSINGBackgroundView"
 
 SPEC CHECKSUMS:
   EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  Kingfisher: e3ec347a5ab8817b7585ef46923a2d2b9a7d8fbe
   Mixpanel: 0e9d50ecc6398e1082e690ddedf6968e57e81935
   "NSPopover+MISSINGBackgroundView": 06a134ea85280a8f0436c9c99fa18400ae84cf15
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
 
-PODFILE CHECKSUM: 8b13646fb22f8d7993363c98347c70b123e3c8db
+PODFILE CHECKSUM: 21edb4a7007316097f2a4ee2bbf93d0e275e502c
 
 COCOAPODS: 1.9.3

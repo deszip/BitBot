@@ -1,7 +1,6 @@
 def sharedPods 
 
   pod 'EasyMapping'
-  pod 'SDWebImage', '~> 5.0.6'
 
   pod 'Mixpanel'
 
@@ -10,6 +9,7 @@ end
 target 'Bitrise' do
   platform :osx, '10.12'
   pod "NSPopover+MISSINGBackgroundView"
+  pod 'SDWebImage', '~> 5.0.6'
   sharedPods()
 
   target 'BitriseTests' do
@@ -24,5 +24,6 @@ end
 
 target 'BitriseATV' do
   platform :tvos, '14.0'
+  pod 'Kingfisher/SwiftUI'
   sharedPods()
 end

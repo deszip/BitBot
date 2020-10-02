@@ -10,6 +10,7 @@ import Foundation
 
 struct AccountViewModel: Identifiable {
     let id = UUID()
+    let imageURL: URL?
     let userName: String
     let email: String
 }
