@@ -299,7 +299,7 @@
 		0E3C0B0F211760C000F2EA35 /* BROpenBuildCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BROpenBuildCommand.h; sourceTree = "<group>"; };
 		0E3C0B10211760C000F2EA35 /* BROpenBuildCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BROpenBuildCommand.m; sourceTree = "<group>"; };
 		0E3C0B122117627700F2EA35 /* BRCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCommand.m; sourceTree = "<group>"; };
-		0E42CAD520EC7A7E0033CD03 /* Bitrise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitrise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E42CAD520EC7A7E0033CD03 /* BitBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0E42CADE20EC7A800033CD03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 		0E42CAE320EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E42CAE420EC7A800033CD03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bitrise.entitlements; sourceTree = "<group>"; };
-		0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitriseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E42CAF120EC7A800033CD03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E42CAFD20EC7BB40033CD03 /* BRMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMainController.h; sourceTree = "<group>"; };
 		0E42CAFE20EC7BB40033CD03 /* BRMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMainController.m; sourceTree = "<group>"; };
@@ -597,8 +597,8 @@
 		0E42CAD620EC7A7E0033CD03 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E42CAD520EC7A7E0033CD03 /* Bitrise.app */,
-				0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */,
+				0E42CAD520EC7A7E0033CD03 /* BitBot.app */,
+				0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */,
 				DEBE8C192513B7FB00CF079A /* BitriseATV.app */,
 			);
 			name = Products;
@@ -1308,9 +1308,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E42CAD420EC7A7E0033CD03 /* Bitrise */ = {
+		0E42CAD420EC7A7E0033CD03 /* BitBot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E42CAF420EC7A800033CD03 /* Build configuration list for PBXNativeTarget "Bitrise" */;
+			buildConfigurationList = 0E42CAF420EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitBot" */;
 			buildPhases = (
 				37CA7BDCA1707BEA7645A343 /* [CP] Check Pods Manifest.lock */,
 				0E42CAD120EC7A7E0033CD03 /* Sources */,
@@ -1323,14 +1323,14 @@
 			);
 			dependencies = (
 			);
-			name = Bitrise;
+			name = BitBot;
 			productName = Bitrise;
-			productReference = 0E42CAD520EC7A7E0033CD03 /* Bitrise.app */;
+			productReference = 0E42CAD520EC7A7E0033CD03 /* BitBot.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0E42CAEA20EC7A800033CD03 /* BitriseTests */ = {
+		0E42CAEA20EC7A800033CD03 /* BitBotTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E42CAF720EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitriseTests" */;
+			buildConfigurationList = 0E42CAF720EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitBotTests" */;
 			buildPhases = (
 				A7917E112161A2B34BE824C1 /* [CP] Check Pods Manifest.lock */,
 				0E42CAE720EC7A800033CD03 /* Sources */,
@@ -1342,9 +1342,9 @@
 			dependencies = (
 				0E42CAED20EC7A800033CD03 /* PBXTargetDependency */,
 			);
-			name = BitriseTests;
+			name = BitBotTests;
 			productName = BitriseTests;
-			productReference = 0E42CAEB20EC7A800033CD03 /* BitriseTests.xctest */;
+			productReference = 0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DEBE8C182513B7FB00CF079A /* BitriseATV */ = {
@@ -1405,8 +1405,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E42CAD420EC7A7E0033CD03 /* Bitrise */,
-				0E42CAEA20EC7A800033CD03 /* BitriseTests */,
+				0E42CAD420EC7A7E0033CD03 /* BitBot */,
+				0E42CAEA20EC7A800033CD03 /* BitBotTests */,
 				DEBE8C182513B7FB00CF079A /* BitriseATV */,
 			);
 		};
@@ -1749,7 +1749,7 @@
 /* Begin PBXTargetDependency section */
 		0E42CAED20EC7A800033CD03 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0E42CAD420EC7A7E0033CD03 /* Bitrise */;
+			target = 0E42CAD420EC7A7E0033CD03 /* BitBot */;
 			targetProxy = 0E42CAEC20EC7A800033CD03 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1954,7 +1954,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BR.BitriseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitrise.app/Contents/MacOS/Bitrise";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBot.app/Contents/MacOS/BitBot";
 			};
 			name = Debug;
 		};
@@ -1976,7 +1976,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = BR.BitriseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bitrise.app/Contents/MacOS/Bitrise";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBot.app/Contents/MacOS/BitBot";
 			};
 			name = Release;
 		};
@@ -2050,7 +2050,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E42CAF420EC7A800033CD03 /* Build configuration list for PBXNativeTarget "Bitrise" */ = {
+		0E42CAF420EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitBot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E42CAF520EC7A800033CD03 /* Debug */,
@@ -2059,7 +2059,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E42CAF720EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitriseTests" */ = {
+		0E42CAF720EC7A800033CD03 /* Build configuration list for PBXNativeTarget "BitBotTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E42CAF820EC7A800033CD03 /* Debug */,

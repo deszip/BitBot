@@ -6,13 +6,13 @@ def sharedPods
 
 end
 
-target 'Bitrise' do
+target 'BitBot' do
   platform :osx, '10.12'
   pod "NSPopover+MISSINGBackgroundView"
   pod 'SDWebImage', '~> 5.0.6'
   sharedPods()
 
-  target 'BitriseTests' do
+  target 'BitBotTests' do
     inherit! :search_paths
   
     pod 'OCMock', '~> 3.4.3'
