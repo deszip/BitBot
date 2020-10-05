@@ -14,6 +14,8 @@ struct AccountView: View {
     let userName: String
     let email: String
     
+    let deleteAction: () -> Void
+    
     var body: some View {
         Button(action: {
             //do smth
@@ -34,7 +36,7 @@ struct AccountView: View {
         .frame(height: 200)
         .contextMenu {
             Button("Delete account".localized()) {
-                //delete acc
+                deleteAction()
             }
         }
     }
@@ -44,6 +46,7 @@ struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         AccountView(imageURL: nil,
                     userName: "vladislavsosiuk",
-                    email: "vladislavsosiuk@gmail.com")
+                    email: "vladislavsosiuk@gmail.com",
+                    deleteAction: { })
     }
 }

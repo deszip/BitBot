@@ -10,11 +10,12 @@ import SwiftUI
 
 struct AccountConnector: Connector {
     
-    let accountViewModel: AccountViewModel
+    let account: BTRAccount
     
     func map(graph: Graph) -> some View {
-        AccountView(imageURL: accountViewModel.imageURL,
-                    userName: accountViewModel.userName,
-                    email: accountViewModel.email)
+        AccountView(imageURL: account.avatarURL.flatMap { URL(string: $0) },
+                    userName: account.username ?? "",
+                    email: account.email ?? "" ,
+                    deleteAction: { graph.accounts.deleteAccount(withSlug: account.slug ?? "") })
     }
 }

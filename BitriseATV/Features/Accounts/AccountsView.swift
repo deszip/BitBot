@@ -11,9 +11,9 @@ import SwiftUI
 struct AccountsView<AccountRow: View>: View {
     
     @Binding var displayAddAccountView: Bool
-    var accounts: [AccountViewModel]
+    var accounts: [BTRAccount]
     
-    let accountRow: (AccountViewModel) -> AccountRow
+    let accountRow: (BTRAccount) -> AccountRow
     
     var body: some View {
         NavigationView {
@@ -21,7 +21,7 @@ struct AccountsView<AccountRow: View>: View {
                 NavigationLink("Add account".localized(),
                                destination: AddAccountConnector(),
                                isActive: $displayAddAccountView)
-                ForEach(accounts) { account in
+                ForEach(accounts, id: \.slug) { account in
                     accountRow(account)
                 }
             }
@@ -36,6 +36,7 @@ struct AccountsView_Previews: PreviewProvider {
                      accounts: [],
                      accountRow: { _ in AccountView(imageURL: nil,
                                                     userName: "test",
-                                                    email: "test@email.com")})
+                                                    email: "test@email.com",
+                                                    deleteAction: {})})
     }
 }

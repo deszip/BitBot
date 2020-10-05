@@ -29,17 +29,27 @@ extension CommandsDispatcher {
     }
     
     private func observe(state: AppState) {
-        let command: BRCommand
-        let action: Action
+        
+        var commands: [BRCommand] = []
+        var actions: [Action] = []
         switch state.accountsState.addAccountsCommand {
         case .idle:
-            return
+            break
         case .execute(let token):
-            command = BRGetAccountCommand(syncEngine: dependencyContainer.syncEngine(),
-                                          token: token)
-            action = SendPersonalAccessToken()
+            commands.append(BRGetAccountCommand(syncEngine: dependencyContainer.syncEngine(),
+                                                token: token))
+            actions.append(SendPersonalAccessToken())
         }
-        command.execute()
-        store.dispatch(action: action)
+        switch state.accountsState.deleteAccountCommand {
+        case .idle:
+            break
+        case .execute(let slug):
+            commands.append(BRRemoveAccountCommand(api: dependencyContainer.bitriseAPI(),
+                                                   storage: dependencyContainer.storage(),
+                                                   slug: slug))
+            actions.append(DeleteAccountCommandSent())
+        }
+        commands.forEach { $0.execute(nil) }
+        actions.forEach { store.dispatch(action: $0) }
     }
 }

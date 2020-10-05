@@ -39,11 +39,8 @@ private extension AccountsConnector {
     func accountsView(graph: Graph) -> some View {
         let displayAddAccountView = Binding<Bool>(get: { graph.accounts.displayAddAccountView },
                                                   set: { graph.accounts.displayAddAccountView = $0 })
-        let accounts = accountsProvider.accounts.map { AccountViewModel(imageURL: $0.avatarURL.flatMap { URL(string: $0) },
-                                                                        userName: $0.username ?? "",
-                                                                        email: $0.email ?? "") }
         return AccountsView(displayAddAccountView: displayAddAccountView,
-                            accounts: accounts,
-                            accountRow: { AccountConnector(accountViewModel: $0) })
+                            accounts: accountsProvider.accounts,
+                            accountRow: { AccountConnector(account: $0) })
     }
 }

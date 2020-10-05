@@ -12,3 +12,4 @@
 #import "BRGetAccountCommand.h"
 #import "BRSyncEngine.h"
 #import "BRBitriseAPI.h"
+#import "BRRemoveAccountCommand.h"

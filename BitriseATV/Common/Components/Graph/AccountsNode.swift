@@ -24,4 +24,8 @@ struct AccountsNode {
     func add(personalAccessToken: String) {
         graph.dispatch(AddPersonalAccessToken(token: personalAccessToken))
     }
+    
+    func deleteAccount(withSlug slug: String) {
+        graph.dispatch(DeleteAccount(slug: slug))
+    }
 }

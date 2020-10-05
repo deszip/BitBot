@@ -227,6 +227,7 @@
 		DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E8252617CD005CA940 /* RootConnector.swift */; };
 		DEC610EF252623DD005CA940 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610EE252623DD005CA940 /* AccountView.swift */; };
 		DEC610F725262568005CA940 /* AccountConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610F625262568005CA940 /* AccountConnector.swift */; };
+		DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
 		F5FD61F5E120797737923475 /* libPods-BitBot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4592E252F47089546A803FDB /* libPods-BitBot.a */; };
 /* End PBXBuildFile section */
 
@@ -1709,6 +1710,7 @@
 				DE3CD08525246A1100DD5948 /* BRCommand.m in Sources */,
 				DE3CD0A625246F7300DD5948 /* BRBuildInfo.m in Sources */,
 				DE3CD07D25246A0400DD5948 /* BRBuildsRequest.m in Sources */,
+				DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */,
 				DE3CD0E5252481FC00DD5948 /* BRLogsParser.m in Sources */,
 				DE3CD079252469FD00DD5948 /* BRAppInfo.m in Sources */,
 				DE9E046F2524F3F400B23FA8 /* AccountsProvider.swift in Sources */,

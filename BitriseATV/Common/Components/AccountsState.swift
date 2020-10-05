@@ -15,9 +15,15 @@ struct AccountsState {
         case execute(token: String)
     }
     
+    enum DeleteAccountCommand {
+        case idle
+        case execute(slug: String)
+    }
+    
     var hasAccounts: Bool = false
     var addAccountsCommand: AddAccountCommand = .idle
     var displayAddAccountView: Bool = false
+    var deleteAccountCommand: DeleteAccountCommand = .idle
     
     mutating func reduce(_ action: Action) {
         switch action {
@@ -30,6 +36,10 @@ struct AccountsState {
             displayAddAccountView = false
         case let action as UpdateDisplayAddAccount:
             displayAddAccountView = action.value
+        case let action as DeleteAccount:
+            deleteAccountCommand = .execute(slug: action.slug)
+        case let action as DeleteAccountCommandSent:
+            deleteAccountCommand = .idle
         default:
             break
         }

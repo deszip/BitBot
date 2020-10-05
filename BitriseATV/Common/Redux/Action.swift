@@ -27,3 +27,9 @@ struct UpdateDisplayAddAccount: Action {
 struct UpdateSelectedTab: Action {
     var tab: AppState.RootTab
 }
+
+struct DeleteAccount: Action {
+    var slug: String
+}
+
+struct DeleteAccountCommandSent: Action {}
