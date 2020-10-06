@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-#if TARGE_OS_OSX
+#if TARGET_OS_OSX
 - (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment NS_DESIGNATED_INITIALIZER;
 #else
 - (instancetype)initSyncEngine:(BRSyncEngine *)engine NS_DESIGNATED_INITIALIZER;
