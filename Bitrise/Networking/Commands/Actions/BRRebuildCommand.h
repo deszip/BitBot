@@ -6,8 +6,6 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
 #import "BRCommand.h"
 #import "BRBitriseAPI.h"
 

@@ -228,6 +228,12 @@
 		DEC610EF252623DD005CA940 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610EE252623DD005CA940 /* AccountView.swift */; };
 		DEC610F725262568005CA940 /* AccountConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610F625262568005CA940 /* AccountConnector.swift */; };
 		DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
+		DEF04D7E252C9181008C4C97 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
+		DEF04D82252C9251008C4C97 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
+		DEF04D8E252C9291008C4C97 /* BRAbortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B0A2117609900F2EA35 /* BRAbortCommand.m */; };
+		DEF04D92252C929B008C4C97 /* BRRebuildCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B072117607A00F2EA35 /* BRRebuildCommand.m */; };
+		DEF04D9C252C92D5008C4C97 /* BRRebuildRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */; };
+		DEF04DA0252C9335008C4C97 /* BRAbortRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */; };
 		F5FD61F5E120797737923475 /* libPods-BitBot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4592E252F47089546A803FDB /* libPods-BitBot.a */; };
 /* End PBXBuildFile section */
 
@@ -1695,6 +1701,7 @@
 				DE2A266F25230CAB00D5762E /* Action.swift in Sources */,
 				DEC610EF252623DD005CA940 /* AccountView.swift in Sources */,
 				DE486611252361EE00D5D80F /* AccountsView.swift in Sources */,
+				DEF04D8E252C9291008C4C97 /* BRAbortCommand.m in Sources */,
 				DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */,
 				DE2A26B8252313FE00D5762E /* BRContainerBuilder.m in Sources */,
 				DE6C913825221756001B2332 /* AppState.swift in Sources */,
@@ -1710,6 +1717,7 @@
 				DE3CD08525246A1100DD5948 /* BRCommand.m in Sources */,
 				DE3CD0A625246F7300DD5948 /* BRBuildInfo.m in Sources */,
 				DE3CD07D25246A0400DD5948 /* BRBuildsRequest.m in Sources */,
+				DEF04D7E252C9181008C4C97 /* BRCommandFactory.m in Sources */,
 				DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */,
 				DE3CD0E5252481FC00DD5948 /* BRLogsParser.m in Sources */,
 				DE3CD079252469FD00DD5948 /* BRAppInfo.m in Sources */,
@@ -1718,6 +1726,7 @@
 				DEC610F725262568005CA940 /* AccountConnector.swift in Sources */,
 				DE48663F252459D200D5D80F /* BRAddAccountOperation.m in Sources */,
 				DE48664F25245AAE00D5D80F /* BRAnalytics.m in Sources */,
+				DEF04D92252C929B008C4C97 /* BRRebuildCommand.m in Sources */,
 				DE3CD09A25246F5A00DD5948 /* BRBitriseAPI.m in Sources */,
 				DE9E04822524FBCE00B23FA8 /* NSArray+FRP.m in Sources */,
 				DE2A266A25230CA100D5762E /* Graph.swift in Sources */,
@@ -1728,13 +1737,16 @@
 				DE3CD0A225246F6900DD5948 /* BRLogInfo.m in Sources */,
 				DE6C914B252217E1001B2332 /* EnvironmentStore.swift in Sources */,
 				DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */,
+				DEF04D82252C9251008C4C97 /* BRSyncCommand.m in Sources */,
 				DE4865FB25235EB600D5D80F /* DependencyContainer.swift in Sources */,
 				DE3CD0CC252477EE00DD5948 /* BRStyleSheet.m in Sources */,
 				DE48664725245A6100D5D80F /* BRAccountRequest.m in Sources */,
 				DE2A26B4252313DB00D5762E /* bitrise.xcdatamodeld in Sources */,
 				DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */,
 				DE3CD08925246A2E00DD5948 /* ASOperation.m in Sources */,
+				DEF04DA0252C9335008C4C97 /* BRAbortRequest.m in Sources */,
 				DE4866162523633E00D5D80F /* AccountsConnector.swift in Sources */,
+				DEF04D9C252C92D5008C4C97 /* BRRebuildRequest.m in Sources */,
 				DE48662A2523668600D5D80F /* AddAccountConnector.swift in Sources */,
 				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
 				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,

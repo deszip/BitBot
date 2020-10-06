@@ -20,6 +20,7 @@
 
 @implementation BRSyncCommand
 
+#if TARGET_OS_OSX
 - (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;
@@ -36,6 +37,19 @@
         };
     }
     
+    return self;
+}
+#endif
+
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine {
+    if (self = [super init]) {
+        _syncEngine = engine;
+        _syncEngine.syncCallback = ^(BRSyncResult *result) {
+            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
+                                                  running:result.diff.running.count
+                                                 finished:result.diff.finished.count];
+        };
+    }
     return self;
 }
 
