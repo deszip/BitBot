@@ -25,7 +25,8 @@ struct AccountsFlow<A: View, E: View>: View {
 
 struct AccountsConnector: Connector {
     
-    @StateObject private var accountsProvider = AccountsProvider(persistentContainer: DependencyContainer.shared.persistentContainer())
+    @StateObject private var accountsProvider = DataProvider<BTRAccount>(persistentContainer: DependencyContainer.shared.persistentContainer(),
+                                                                         sortKey: "username")
     
     func map(graph: Graph) -> some View {
         
@@ -40,7 +41,7 @@ private extension AccountsConnector {
         let displayAddAccountView = Binding<Bool>(get: { graph.accounts.displayAddAccountView },
                                                   set: { graph.accounts.displayAddAccountView = $0 })
         return AccountsView(displayAddAccountView: displayAddAccountView,
-                            accounts: accountsProvider.accounts,
+                            accounts: accountsProvider.data,
                             accountRow: { AccountConnector(account: $0) })
     }
 }

@@ -9,14 +9,15 @@
 import Foundation
 import CoreData
 
-final class AccountsProvider: NSObject, ObservableObject {
-    @Published var accounts: [BTRAccount] = []
+final class DataProvider<T: NSManagedObject>: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+    @Published var data: [T] = []
     
     private let context: NSManagedObjectContext
-    private lazy var frc: NSFetchedResultsController<BTRAccount> = {
-        let request = BTRAccount.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "username",
-                                                   ascending: true)]
+    private let sortKey: String
+    private lazy var frc: NSFetchedResultsController<T> = {
+        let request = T.fetchRequest() as! NSFetchRequest<T>
+        request.sortDescriptors = [NSSortDescriptor(key: sortKey,
+                                                    ascending: true)]
         context.automaticallyMergesChangesFromParent = true
         return NSFetchedResultsController(fetchRequest: request,
                                           managedObjectContext: context,
@@ -24,21 +25,24 @@ final class AccountsProvider: NSObject, ObservableObject {
                                           cacheName: nil)
     }()
     
-    init(persistentContainer: NSPersistentContainer) {
+    init(persistentContainer: NSPersistentContainer,
+         sortKey: String) {
         context = persistentContainer.viewContext
+        self.sortKey = sortKey
         super.init()
         frc.delegate = self
         fetch()
     }
-}
-
-extension AccountsProvider: NSFetchedResultsControllerDelegate {
+    
+    // MARK: - NSFetchedResultsControllerDelegate
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         update()
     }
+    
 }
 
-private extension AccountsProvider {
+private extension DataProvider {
     func fetch() {
         do {
             try frc.performFetch()
@@ -49,6 +53,6 @@ private extension AccountsProvider {
     }
     
     func update() {
-        accounts = frc.sections?.first?.objects as? [BTRAccount] ?? []
+        data = frc.sections?.first?.objects as? [T] ?? []
     }
 }

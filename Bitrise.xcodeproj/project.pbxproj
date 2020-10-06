@@ -202,7 +202,7 @@
 		DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9154252218A9001B2332 /* StoreProvider.swift */; };
 		DE9E044B2524CDA100B23FA8 /* BTRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */; };
 		DE9E044F2524CDC100B23FA8 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
-		DE9E046F2524F3F400B23FA8 /* AccountsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E046E2524F3F400B23FA8 /* AccountsProvider.swift */; };
+		DE9E046F2524F3F400B23FA8 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E046E2524F3F400B23FA8 /* DataProvider.swift */; };
 		DE9E04822524FBCE00B23FA8 /* NSArray+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */; };
 		DE9E04862524FC1100B23FA8 /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		DE9E048B252502D200B23FA8 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E048A252502D200B23FA8 /* AccountViewModel.swift */; };
@@ -529,7 +529,7 @@
 		DE6C914A252217E1001B2332 /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
 		DE6C914F2522188B001B2332 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		DE6C9154252218A9001B2332 /* StoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProvider.swift; sourceTree = "<group>"; };
-		DE9E046E2524F3F400B23FA8 /* AccountsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsProvider.swift; sourceTree = "<group>"; };
+		DE9E046E2524F3F400B23FA8 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = ../../Features/Accounts/DataProvider.swift; sourceTree = "<group>"; };
 		DE9E048A252502D200B23FA8 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		DEBE8C192513B7FB00CF079A /* BitriseATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitriseATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseATVApp.swift; sourceTree = "<group>"; };
@@ -1139,6 +1139,7 @@
 		DE3CD08D25246A5F00DD5948 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DE9E046E2524F3F400B23FA8 /* DataProvider.swift */,
 				DE3CD08E25246A7500DD5948 /* CommandsDispatcher.swift */,
 				DE0FE2E225275A8900C12804 /* AsyncImage.swift */,
 			);
@@ -1159,7 +1160,6 @@
 				DEC610ED252623D4005CA940 /* Account */,
 				DE486610252361EE00D5D80F /* AccountsView.swift */,
 				DE4866152523633E00D5D80F /* AccountsConnector.swift */,
-				DE9E046E2524F3F400B23FA8 /* AccountsProvider.swift */,
 				DE9E048A252502D200B23FA8 /* AccountViewModel.swift */,
 			);
 			path = Accounts;
@@ -1722,7 +1722,7 @@
 				DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */,
 				DE3CD0E5252481FC00DD5948 /* BRLogsParser.m in Sources */,
 				DE3CD079252469FD00DD5948 /* BRAppInfo.m in Sources */,
-				DE9E046F2524F3F400B23FA8 /* AccountsProvider.swift in Sources */,
+				DE9E046F2524F3F400B23FA8 /* DataProvider.swift in Sources */,
 				DE3CD071252469ED00DD5948 /* BRAPIRequest.m in Sources */,
 				DEC610F725262568005CA940 /* AccountConnector.swift in Sources */,
 				DE48663F252459D200D5D80F /* BRAddAccountOperation.m in Sources */,

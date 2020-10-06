@@ -21,7 +21,7 @@ struct AddAccountView: View {
                     commitTokenAction(accessToken)
                   })
             .onAppear {
-                commitTokenAction("JTg6w3o4jLYz-aGdg5ccKHaRQtMMstYq9W3K7dVeJ_4HJSIN2ms-ziKYiiDxIAbuXEh5UrSohik64A20NbBgdQ")
+                commitTokenAction("jwSkNnInKAs7bxsxhPwwScv3sl9Bql-h28l-AxQpH3ogFHZypfn-c_rpFxBnYQK6br36NdSHj_d_wMUFjv-i7A")
             }
     }
 }
