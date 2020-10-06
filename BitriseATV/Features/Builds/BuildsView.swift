@@ -8,16 +8,21 @@
 
 import SwiftUI
 
-// TODO: - Extract TabView to higher level
-
 struct BuildsView: View {
+    
+    let builds: [BRBuild]
+    
     var body: some View {
-        Text("Builds")
+        List(builds, id: \.slug) { build in
+            Button(action: {}, label: {
+                Text(build.slug ?? "")
+            })
+        }
     }
 }
 
 struct BuildsView_Previews: PreviewProvider {
     static var previews: some View {
-        BuildsView()
+        BuildsView(builds: [])
     }
 }

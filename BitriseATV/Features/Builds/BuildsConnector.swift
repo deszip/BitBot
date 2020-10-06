@@ -9,7 +9,11 @@
 import SwiftUI
 
 struct BuildsConnector: Connector {
+    
+    @StateObject private var buildsProvider = DataProvider<BRBuild>(persistentContainer: DependencyContainer.shared.persistentContainer(),
+                                                                    sortKey: "triggerTime")
+    
     func map(graph: Graph) -> some View {
-        BuildsView()
+        BuildsView(builds: buildsProvider.data)
     }
 }

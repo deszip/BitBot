@@ -15,3 +15,4 @@
 #import "BRRemoveAccountCommand.h"
 #import "BRCommandFactory.h"
 #import "BRObserver.h"
+#import "BRBuild+CoreDataClass.h"
