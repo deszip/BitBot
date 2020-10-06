@@ -38,7 +38,7 @@ struct AccountsState {
             displayAddAccountView = action.value
         case let action as DeleteAccount:
             deleteAccountCommand = .execute(slug: action.slug)
-        case let action as DeleteAccountCommandSent:
+        case is DeleteAccountCommandSent:
             deleteAccountCommand = .idle
         default:
             break
