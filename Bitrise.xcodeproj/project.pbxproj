@@ -200,6 +200,8 @@
 		DE6C914B252217E1001B2332 /* EnvironmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C914A252217E1001B2332 /* EnvironmentStore.swift */; };
 		DE6C91502522188B001B2332 /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C914F2522188B001B2332 /* Connector.swift */; };
 		DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9154252218A9001B2332 /* StoreProvider.swift */; };
+		DE6CA106252CBCEE00287F5C /* BuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6CA105252CBCEE00287F5C /* BuildView.swift */; };
+		DE6CA10E252CBD3700287F5C /* BuildConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6CA10D252CBD3700287F5C /* BuildConnector.swift */; };
 		DE9E044B2524CDA100B23FA8 /* BTRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */; };
 		DE9E044F2524CDC100B23FA8 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		DE9E046F2524F3F400B23FA8 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E046E2524F3F400B23FA8 /* DataProvider.swift */; };
@@ -529,6 +531,8 @@
 		DE6C914A252217E1001B2332 /* EnvironmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStore.swift; sourceTree = "<group>"; };
 		DE6C914F2522188B001B2332 /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		DE6C9154252218A9001B2332 /* StoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProvider.swift; sourceTree = "<group>"; };
+		DE6CA105252CBCEE00287F5C /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
+		DE6CA10D252CBD3700287F5C /* BuildConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConnector.swift; sourceTree = "<group>"; };
 		DE9E046E2524F3F400B23FA8 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = ../../Features/Accounts/DataProvider.swift; sourceTree = "<group>"; };
 		DE9E048A252502D200B23FA8 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		DEBE8C192513B7FB00CF079A /* BitriseATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitriseATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1196,6 +1200,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		DE6CA104252CBCE400287F5C /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				DE6CA105252CBCEE00287F5C /* BuildView.swift */,
+				DE6CA10D252CBD3700287F5C /* BuildConnector.swift */,
+			);
+			path = Build;
+			sourceTree = "<group>";
+		};
 		DEBE8C1A2513B7FB00CF079A /* BitriseATV */ = {
 			isa = PBXGroup;
 			children = (
@@ -1256,6 +1269,7 @@
 		DEBE8C502514A78700CF079A /* Builds */ = {
 			isa = PBXGroup;
 			children = (
+				DE6CA104252CBCE400287F5C /* Build */,
 				DE2A267325230CC700D5762E /* BuildsConnector.swift */,
 				DEBE8C512514A79100CF079A /* BuildsView.swift */,
 				DEBE8C672514A9E600CF079A /* EmptyStateView.swift */,
@@ -1687,6 +1701,7 @@
 			files = (
 				DE6C912B252216C0001B2332 /* Store.swift in Sources */,
 				DE2A26BC2523140400D5762E /* BRLogger.m in Sources */,
+				DE6CA10E252CBD3700287F5C /* BuildConnector.swift in Sources */,
 				DE2A266825230CA100D5762E /* AccountsState.swift in Sources */,
 				DE2A266925230CA100D5762E /* AccountsNode.swift in Sources */,
 				DE3CD0C42524718200DD5948 /* BRBuildStateInfo.m in Sources */,
@@ -1696,6 +1711,7 @@
 				DE6C9133252216FD001B2332 /* Observer.swift in Sources */,
 				DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */,
 				DE48660B25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift in Sources */,
+				DE6CA106252CBCEE00287F5C /* BuildView.swift in Sources */,
 				DE3CD08F25246A7500DD5948 /* CommandsDispatcher.swift in Sources */,
 				DE3CD06D252469E500DD5948 /* ASQueue.m in Sources */,
 				DE486643252459FC00D5D80F /* BRSyncOperation.m in Sources */,

@@ -8,21 +8,28 @@
 
 import SwiftUI
 
-struct BuildsView: View {
+struct BuildsView<BuildRow: View>: View {
     
     let builds: [BRBuild]
+    let row: (BRBuild) -> BuildRow
     
     var body: some View {
         List(builds, id: \.slug) { build in
-            Button(action: {}, label: {
-                Text(build.slug ?? "")
-            })
+            row(build)
         }
     }
 }
 
 struct BuildsView_Previews: PreviewProvider {
     static var previews: some View {
-        BuildsView(builds: [])
+        BuildsView(builds: [],
+                   row: { _ in BuildView(userName: "",
+                                         buildNumber: "",
+                                         appName: "",
+                                         branchName: "",
+                                         commitMessage: "",
+                                         workflow: "",
+                                         date: "",
+                                         buildingTime: "") })
     }
 }

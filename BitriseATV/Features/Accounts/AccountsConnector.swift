@@ -26,7 +26,8 @@ struct AccountsFlow<A: View, E: View>: View {
 struct AccountsConnector: Connector {
     
     @StateObject private var accountsProvider = DataProvider<BTRAccount>(persistentContainer: DependencyContainer.shared.persistentContainer(),
-                                                                         sortKey: "username")
+                                                                         sortKey: "username",
+                                                                         ascending: true)
     
     func map(graph: Graph) -> some View {
         

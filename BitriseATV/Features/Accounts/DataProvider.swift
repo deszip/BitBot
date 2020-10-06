@@ -14,10 +14,11 @@ final class DataProvider<T: NSManagedObject>: NSObject, ObservableObject, NSFetc
     
     private let context: NSManagedObjectContext
     private let sortKey: String
+    private let ascending: Bool
     private lazy var frc: NSFetchedResultsController<T> = {
         let request = T.fetchRequest() as! NSFetchRequest<T>
         request.sortDescriptors = [NSSortDescriptor(key: sortKey,
-                                                    ascending: true)]
+                                                    ascending: ascending)]
         context.automaticallyMergesChangesFromParent = true
         return NSFetchedResultsController(fetchRequest: request,
                                           managedObjectContext: context,
@@ -26,9 +27,11 @@ final class DataProvider<T: NSManagedObject>: NSObject, ObservableObject, NSFetc
     }()
     
     init(persistentContainer: NSPersistentContainer,
-         sortKey: String) {
+         sortKey: String,
+         ascending: Bool) {
         context = persistentContainer.viewContext
         self.sortKey = sortKey
+        self.ascending = ascending
         super.init()
         frc.delegate = self
         fetch()
