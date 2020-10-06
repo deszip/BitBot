@@ -49,4 +49,13 @@ final class DependencyContainer {
     func persistentContainer() -> NSPersistentContainer {
         _persistentContainer
     }
+    
+    func commandFactory() -> BRCommandFactory {
+        BRCommandFactory(api: bitriseAPI(),
+                         syncEngine: syncEngine())
+    }
+    
+    func commandObserver() -> BRObserver {
+        BRObserver()
+    }
 }

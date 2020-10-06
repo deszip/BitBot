@@ -234,6 +234,7 @@
 		DEF04D92252C929B008C4C97 /* BRRebuildCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B072117607A00F2EA35 /* BRRebuildCommand.m */; };
 		DEF04D9C252C92D5008C4C97 /* BRRebuildRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */; };
 		DEF04DA0252C9335008C4C97 /* BRAbortRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */; };
+		DEF04DAF252CAC5F008C4C97 /* BRObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C720D20F90A5B00E5A082 /* BRObserver.m */; };
 		F5FD61F5E120797737923475 /* libPods-BitBot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4592E252F47089546A803FDB /* libPods-BitBot.a */; };
 /* End PBXBuildFile section */
 
@@ -1735,6 +1736,7 @@
 				DE9E044B2524CDA100B23FA8 /* BTRAccount+Mapping.m in Sources */,
 				DE3CD0E1252481EF00DD5948 /* BRLogStorage.m in Sources */,
 				DE3CD0A225246F6900DD5948 /* BRLogInfo.m in Sources */,
+				DEF04DAF252CAC5F008C4C97 /* BRObserver.m in Sources */,
 				DE6C914B252217E1001B2332 /* EnvironmentStore.swift in Sources */,
 				DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */,
 				DEF04D82252C9251008C4C97 /* BRSyncCommand.m in Sources */,

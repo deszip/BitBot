@@ -13,3 +13,5 @@
 #import "BRSyncEngine.h"
 #import "BRBitriseAPI.h"
 #import "BRRemoveAccountCommand.h"
+#import "BRCommandFactory.h"
+#import "BRObserver.h"
