@@ -67,6 +67,7 @@ struct BuildConnector: Connector {
         } else {
             rotator.finish()
             buildRunningTimer.finish()
+            rotation = 0
         }
         let rotator = self.rotator
         let buildRunningTimer = self.buildRunningTimer
