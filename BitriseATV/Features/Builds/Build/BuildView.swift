@@ -48,7 +48,6 @@ struct BuildView: View {
                             .proximaFont(size: 42, weight: .regular)
                     }
                     Text(appName)
-                        .foregroundColor(.white)
                         .proximaFont(size: 60, weight: .regular)
                     HStack {
                         ImageText(imageName: "git-branch",

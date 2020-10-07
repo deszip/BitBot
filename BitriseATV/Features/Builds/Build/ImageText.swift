@@ -19,6 +19,7 @@ struct ImageText: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 25, height: 25)
+                .colorMultiply(.BBBuildTintColor)
             Text(text)
                 .foregroundColor(.BBBuildTintColor)
                 .proximaFont(size: 42, weight: .regular)
