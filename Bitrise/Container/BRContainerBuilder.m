@@ -19,8 +19,13 @@
 - (NSPersistentContainer *)buildContainerOfType:(NSString *)type {
     NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
     NSPersistentStoreDescription *storeDescription = [NSPersistentStoreDescription new];
-    NSURL *appsURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask][0];
-    NSURL *appDirectoryURL = [appsURL URLByAppendingPathComponent:@"/Bitrise"];
+#if TARGET_OS_OSX
+    NSSearchPathDirectory directory = NSApplicationSupportDirectory;
+#else
+    NSSearchPathDirectory directory = NSCachesDirectory;
+#endif
+    NSURL *appsURL = [[NSFileManager defaultManager] URLsForDirectory:directory inDomains:NSUserDomainMask][0];
+    NSURL *appDirectoryURL = [appsURL URLByAppendingPathComponent:@"Bitrise"];
     
     BOOL isDir;
     if (![[NSFileManager defaultManager] fileExistsAtPath:appDirectoryURL.path isDirectory:&isDir]) {
