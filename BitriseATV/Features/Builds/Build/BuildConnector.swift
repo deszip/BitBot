@@ -87,12 +87,11 @@ struct BuildConnector: Connector {
             }
             buildRunningTimer.action?()
         }
-        
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
                          rotation: rotation,
                          userName: build.app?.account?.username ?? "",
-                         buildNumber: build.buildNumber?.stringValue ?? "",
+                         buildNumber: "#\(build.buildNumber?.stringValue ?? "")",
                          appName: build.app?.title ?? "",
                          branchName: build.branch ?? "",
                          commitMessage: build.commitMessage ?? "no commit message".localized(),
