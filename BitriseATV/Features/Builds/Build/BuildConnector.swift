@@ -11,19 +11,22 @@ import SwiftUI
 struct BuildConnector: Connector {
     var build: BRBuild
     
-    @StateObject private var rotator = ObservableTimer<Double>(initialValue: 0,
-                                                               timeInterval: 1 / 360) {
-        if $0 < 360 {
-            return $0 + 1
-        } else {
-            return 0
-        }
-    }
+    @StateObject private var rotator = ObservableTimer(timeInterval: 1 / 360)
+    @State private var rotation: Double = 0
+    @StateObject private var buildRunningTimer = ObservableTimer(timeInterval: 1)
+    @State private var buildingTime: String = ""
     
     var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "dd.MM.yyyy '@' HH:mm"
+        return dateFormatter
+    }()
+    
+    var durationFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "m'm' s's'"
         return dateFormatter
     }()
     
@@ -60,13 +63,34 @@ struct BuildConnector: Connector {
         }
         if shouldStartTimer {
             rotator.start()
+            buildRunningTimer.start()
         } else {
             rotator.finish()
+            buildRunningTimer.finish()
+        }
+        let rotator = self.rotator
+        let buildRunningTimer = self.buildRunningTimer
+        let build = self.build
+        let durationFormatter = self.durationFormatter
+        let onAppear: () -> Void = {
+            rotator.action = {
+                if rotation < 360 {
+                    rotation += 1
+                } else {
+                    rotation = 0
+                }
+            }
+            buildRunningTimer.action = {
+                let buildDuration = build.envPrepareFinishedTime.flatMap { Date().timeIntervalSince($0) } ?? 0
+                let durationDate = Date(timeIntervalSince1970: buildDuration)
+                buildingTime = durationFormatter.string(from: durationDate)
+            }
+            buildRunningTimer.action?()
         }
         
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
-                         rotation: rotator.value,
+                         rotation: rotation,
                          userName: build.app?.account?.username ?? "",
                          buildNumber: build.buildNumber?.stringValue ?? "",
                          appName: build.app?.title ?? "",
@@ -74,6 +98,7 @@ struct BuildConnector: Connector {
                          commitMessage: build.commitMessage ?? "no commit message".localized(),
                          workflow: build.workflow ?? "",
                          date: build.triggerTime.flatMap { dateFormatter.string(from: $0) } ?? "",
-                         buildingTime: "reel time")
+                         buildingTime: buildingTime,
+                         onAppear: onAppear)
     }
 }

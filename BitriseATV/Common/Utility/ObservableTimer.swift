@@ -8,21 +8,16 @@
 
 import Combine
 
-class ObservableTimer<T: Equatable>: ObservableObject {
-    @Published var value: T
+class ObservableTimer: ObservableObject {
+    var action: (() -> Void)?
     
-    private let initialValue: T
+    var objectWillChange = ObservableObjectPublisher()
+    
     private let timeInterval: TimeInterval
-    private let action: (T) -> T
     private var cancellables: Set<AnyCancellable> = []
     
-    init(initialValue: T,
-         timeInterval: TimeInterval,
-         action: @escaping (T) -> T) {
-        self.value = initialValue
-        self.initialValue = initialValue
+    init(timeInterval: TimeInterval) {
         self.timeInterval = timeInterval
-        self.action = action
     }
     
     func start() {
@@ -32,8 +27,7 @@ class ObservableTimer<T: Equatable>: ObservableObject {
                       in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self else { return }
-                self.value = self.action(self.value)
+                self?.action?()
             }
             .store(in: &cancellables)
     }
@@ -41,9 +35,5 @@ class ObservableTimer<T: Equatable>: ObservableObject {
     func finish() {
         cancellables.forEach { $0.cancel() }
         cancellables = []
-        
-        if value != initialValue {
-            value = initialValue
-        }
     }
 }
