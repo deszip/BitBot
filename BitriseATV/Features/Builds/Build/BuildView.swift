@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct BuildView: View {
+    let buildColor: Color
+    let buildIconImageName: String
+    @Binding var rotation: Double
     let userName: String
     let buildNumber: String
     let appName: String
@@ -20,10 +23,19 @@ struct BuildView: View {
     
     var body: some View {
         Button(action: {}, label: {
-            HStack {
-                Rectangle()
-                    .fill(Color.red)
-                    .frame(width: 30)
+            HStack(alignment: .top) {
+                ZStack {
+                    Rectangle()
+                        .fill(buildColor)
+                        .frame(width: 75, height: 200)
+                        .cornerRadius(8)
+                    Image(buildIconImageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        .rotationEffect(Angle.degrees(rotation))
+                        .offset(y: -30)
+                }
                 VStack(alignment: .leading) {
                     HStack {
                         Text(userName)
@@ -48,13 +60,17 @@ struct BuildView: View {
 
 struct BuildView_Previews: PreviewProvider {
     static var previews: some View {
-        BuildView(userName: "",
-                  buildNumber: "",
-                  appName: "",
-                  branchName: "",
-                  commitMessage: "",
-                  workflow: "",
-                  date: "",
-                  buildingTime: "")
+        let binding = Binding<Double>(get: { 0 }, set: { _ in })
+        BuildView(buildColor: .BBSuccessColor,
+                  buildIconImageName: "0-degree-status-icon",
+                  rotation: binding,
+                  userName: "vladislav",
+                  buildNumber: "100",
+                  appName: "bit bot",
+                  branchName: "development",
+                  commitMessage: "commit",
+                  workflow: "deploy",
+                  date: "11.10.2020",
+                  buildingTime: "10m 20s")
     }
 }
