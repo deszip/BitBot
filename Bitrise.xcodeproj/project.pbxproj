@@ -202,7 +202,7 @@
 		DE6C9155252218A9001B2332 /* StoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9154252218A9001B2332 /* StoreProvider.swift */; };
 		DE6CA106252CBCEE00287F5C /* BuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6CA105252CBCEE00287F5C /* BuildView.swift */; };
 		DE6CA10E252CBD3700287F5C /* BuildConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6CA10D252CBD3700287F5C /* BuildConnector.swift */; };
-		DE6CA127252DB79A00287F5C /* ListRowViewRotator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6CA126252DB79A00287F5C /* ListRowViewRotator.swift */; };
+		DE6CA127252DB79A00287F5C /* ObservableTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6CA126252DB79A00287F5C /* ObservableTimer.swift */; };
 		DE9E044B2524CDA100B23FA8 /* BTRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */; };
 		DE9E044F2524CDC100B23FA8 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		DE9E046F2524F3F400B23FA8 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E046E2524F3F400B23FA8 /* DataProvider.swift */; };
@@ -535,7 +535,7 @@
 		DE6C9154252218A9001B2332 /* StoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProvider.swift; sourceTree = "<group>"; };
 		DE6CA105252CBCEE00287F5C /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
 		DE6CA10D252CBD3700287F5C /* BuildConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConnector.swift; sourceTree = "<group>"; };
-		DE6CA126252DB79A00287F5C /* ListRowViewRotator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowViewRotator.swift; sourceTree = "<group>"; };
+		DE6CA126252DB79A00287F5C /* ObservableTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTimer.swift; sourceTree = "<group>"; };
 		DE9E046E2524F3F400B23FA8 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = ../../Features/Accounts/DataProvider.swift; sourceTree = "<group>"; };
 		DE9E048A252502D200B23FA8 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		DEBE8C192513B7FB00CF079A /* BitriseATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitriseATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1150,7 +1150,7 @@
 				DE9E046E2524F3F400B23FA8 /* DataProvider.swift */,
 				DE3CD08E25246A7500DD5948 /* CommandsDispatcher.swift */,
 				DE0FE2E225275A8900C12804 /* AsyncImage.swift */,
-				DE6CA126252DB79A00287F5C /* ListRowViewRotator.swift */,
+				DE6CA126252DB79A00287F5C /* ObservableTimer.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1746,7 +1746,7 @@
 				DE3CD079252469FD00DD5948 /* BRAppInfo.m in Sources */,
 				DE9E046F2524F3F400B23FA8 /* DataProvider.swift in Sources */,
 				DE3CD071252469ED00DD5948 /* BRAPIRequest.m in Sources */,
-				DE6CA127252DB79A00287F5C /* ListRowViewRotator.swift in Sources */,
+				DE6CA127252DB79A00287F5C /* ObservableTimer.swift in Sources */,
 				DEC610F725262568005CA940 /* AccountConnector.swift in Sources */,
 				DE48663F252459D200D5D80F /* BRAddAccountOperation.m in Sources */,
 				DE48664F25245AAE00D5D80F /* BRAnalytics.m in Sources */,

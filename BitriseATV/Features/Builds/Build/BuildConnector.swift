@@ -11,7 +11,14 @@ import SwiftUI
 struct BuildConnector: Connector {
     var build: BRBuild
     
-    @StateObject private var rotator = ListRowViewRotator()
+    @StateObject private var rotator = ObservableTimer<Double>(initialValue: 0,
+                                                               timeInterval: 1 / 360) {
+        if $0 < 360 {
+            return $0 + 1
+        } else {
+            return 0
+        }
+    }
     
     var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -24,6 +31,7 @@ struct BuildConnector: Connector {
         var shouldRotate = false
         let buildColor: Color
         let buildIconImageName: String
+        var shouldStartTimer = false
         switch build.status?.intValue {
         case 0:
             if build.onHold?.boolValue ?? false {
@@ -36,6 +44,7 @@ struct BuildConnector: Connector {
                 } else {
                     buildColor = .BBProgressColor
                     shouldRotate = true
+                    shouldStartTimer = true
                 }
             }
         case 1:
@@ -51,11 +60,15 @@ struct BuildConnector: Connector {
             buildColor = .BBAbortedColor
             buildIconImageName = "45-degree-status-icon"
         }
-        rotator.shouldRotate = shouldRotate
+        if shouldStartTimer {
+            rotator.start()
+        } else {
+            rotator.finish()
+        }
         
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
-                         rotation: $rotator.rotation,
+                         rotation: $rotator.value,
                          userName: build.app?.account?.username ?? "",
                          buildNumber: build.buildNumber?.stringValue ?? "",
                          appName: build.app?.title ?? "",
