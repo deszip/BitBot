@@ -41,5 +41,8 @@ class ListRowViewRotator: ObservableObject {
     func finish() {
         cancellables.forEach { $0.cancel() }
         cancellables = []
+        if rotation != 0 {
+            rotation = 0
+        }
     }
 }
