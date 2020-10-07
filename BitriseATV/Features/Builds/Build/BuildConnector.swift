@@ -66,7 +66,7 @@ struct BuildConnector: Connector {
         
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
-                         rotation: $rotator.value,
+                         rotation: rotator.value,
                          userName: build.app?.account?.username ?? "",
                          buildNumber: build.buildNumber?.stringValue ?? "",
                          appName: build.app?.title ?? "",

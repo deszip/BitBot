@@ -11,7 +11,7 @@ import SwiftUI
 struct BuildView: View {
     let buildColor: Color
     let buildIconImageName: String
-    @Binding var rotation: Double
+    let rotation: Double
     let userName: String
     let buildNumber: String
     let appName: String
@@ -71,10 +71,9 @@ struct BuildView: View {
 
 struct BuildView_Previews: PreviewProvider {
     static var previews: some View {
-        let binding = Binding<Double>(get: { 0 }, set: { _ in })
         BuildView(buildColor: .BBSuccessColor,
                   buildIconImageName: "0-degree-status-icon",
-                  rotation: binding,
+                  rotation: 0,
                   userName: "vladislav",
                   buildNumber: "100",
                   appName: "bit bot",

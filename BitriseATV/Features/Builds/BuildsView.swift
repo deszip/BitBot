@@ -22,11 +22,10 @@ struct BuildsView<BuildRow: View>: View {
 
 struct BuildsView_Previews: PreviewProvider {
     static var previews: some View {
-        let binding = Binding<Double>(get: { 0 }, set: { _ in })
         BuildsView(builds: [],
                    row: { _ in BuildView(buildColor: .BBSuccessColor,
                                          buildIconImageName: "0-degree-status-icon",
-                                         rotation: binding,
+                                         rotation: 0,
                                          userName: "",
                                          buildNumber: "",
                                          appName: "",
