@@ -13,6 +13,13 @@ struct BuildConnector: Connector {
     
     @StateObject private var rotator = ListRowViewRotator()
     
+    var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "dd.MM.yyyy '@' HH:mm"
+        return dateFormatter
+    }()
+    
     func map(graph: Graph) -> some View {
         var shouldRotate = false
         let buildColor: Color
@@ -53,9 +60,9 @@ struct BuildConnector: Connector {
                          buildNumber: build.buildNumber?.stringValue ?? "",
                          appName: build.app?.title ?? "",
                          branchName: build.branch ?? "",
-                         commitMessage: build.commitMessage ?? "",
+                         commitMessage: build.commitMessage ?? "no commit message".localized(),
                          workflow: build.workflow ?? "",
-                         date: "real date",
+                         date: build.triggerTime.flatMap { dateFormatter.string(from: $0) } ?? "",
                          buildingTime: "reel time")
     }
 }

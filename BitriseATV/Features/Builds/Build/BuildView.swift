@@ -39,18 +39,29 @@ struct BuildView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(userName)
+                            .foregroundColor(.BBBuildTintColor)
+                            .proximaFont(size: 42, weight: .regular)
                         Spacer()
                         Text(buildNumber)
+                            .foregroundColor(.BBBuildTintColor)
+                            .proximaFont(size: 42, weight: .regular)
                     }
                     Text(appName)
+                        .foregroundColor(.white)
+                        .proximaFont(size: 60, weight: .regular)
                     HStack {
-                        Text(branchName)
-                        Text(commitMessage)
-                        Text(workflow)
+                        ImageText(imageName: "git-branch",
+                                  text: branchName)
+                        ImageText(imageName: "message-square",
+                                  text: commitMessage)
+                        ImageText(imageName: "list",
+                                  text: workflow)
                     }
                     HStack {
-                        Text(date)
-                        Text(buildingTime)
+                        ImageText(imageName: "calendar",
+                                  text: date)
+                        ImageText(imageName: "clock",
+                                  text: buildingTime)
                     }
                 }
             }

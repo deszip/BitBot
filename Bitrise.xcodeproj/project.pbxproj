@@ -226,6 +226,7 @@
 		DEBE8C832514E73500CF079A /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */; };
 		DEBE8C942514F4E100CF079A /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C932514F4E100CF079A /* Color+Extension.swift */; };
+		DEBF3665252DD64E00DC77B4 /* ImageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF3664252DD64E00DC77B4 /* ImageText.swift */; };
 		DEC610E125261750005CA940 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E025261750005CA940 /* RootView.swift */; };
 		DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E8252617CD005CA940 /* RootConnector.swift */; };
 		DEC610EF252623DD005CA940 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610EE252623DD005CA940 /* AccountView.swift */; };
@@ -547,6 +548,7 @@
 		DEBE8C672514A9E600CF079A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		DEBE8C8B2514EF5300CF079A /* ProximaFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximaFontModifier.swift; sourceTree = "<group>"; };
 		DEBE8C932514F4E100CF079A /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		DEBF3664252DD64E00DC77B4 /* ImageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageText.swift; sourceTree = "<group>"; };
 		DEC610E025261750005CA940 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		DEC610E8252617CD005CA940 /* RootConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootConnector.swift; sourceTree = "<group>"; };
 		DEC610EE252623DD005CA940 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -1208,6 +1210,7 @@
 			children = (
 				DE6CA105252CBCEE00287F5C /* BuildView.swift */,
 				DE6CA10D252CBD3700287F5C /* BuildConnector.swift */,
+				DEBF3664252DD64E00DC77B4 /* ImageText.swift */,
 			);
 			path = Build;
 			sourceTree = "<group>";
@@ -1772,6 +1775,7 @@
 				DE48662A2523668600D5D80F /* AddAccountConnector.swift in Sources */,
 				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
 				DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */,
+				DEBF3665252DD64E00DC77B4 /* ImageText.swift in Sources */,
 				DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */,
 				DE48663B252458AB00D5D80F /* BRSyncEngine.m in Sources */,
 				DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */,
