@@ -28,7 +28,6 @@ struct BuildConnector: Connector {
     }()
     
     func map(graph: Graph) -> some View {
-        var shouldRotate = false
         let buildColor: Color
         let buildIconImageName: String
         var shouldStartTimer = false
@@ -43,7 +42,6 @@ struct BuildConnector: Connector {
                     buildColor = .BBWaitingColor
                 } else {
                     buildColor = .BBProgressColor
-                    shouldRotate = true
                     shouldStartTimer = true
                 }
             }
