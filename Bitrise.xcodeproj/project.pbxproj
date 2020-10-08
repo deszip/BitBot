@@ -196,6 +196,9 @@
 		DE48664F25245AAE00D5D80F /* BRAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E9F21227D81E7002F7ED1 /* BRAnalytics.m */; };
 		DE626855252F09FF008A0F0B /* FocusSupportingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE626854252F09FE008A0F0B /* FocusSupportingTextField.swift */; };
 		DE62685A252F1E09008A0F0B /* UIColor+Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE626859252F1E09008A0F0B /* UIColor+Focus.swift */; };
+		DE626863252F26EC008A0F0B /* Font+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE626862252F26EC008A0F0B /* Font+Convenience.swift */; };
+		DE626868252F2865008A0F0B /* UIFont+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE626867252F2865008A0F0B /* UIFont+Convenience.swift */; };
+		DE62686D252F28F4008A0F0B /* UIColor+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62686C252F28F4008A0F0B /* UIColor+Convenience.swift */; };
 		DE6C912B252216C0001B2332 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C912A252216C0001B2332 /* Store.swift */; };
 		DE6C9133252216FD001B2332 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9132252216FD001B2332 /* Observer.swift */; };
 		DE6C913825221756001B2332 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C913725221756001B2332 /* AppState.swift */; };
@@ -531,6 +534,9 @@
 		DE4866292523668600D5D80F /* AddAccountConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountConnector.swift; sourceTree = "<group>"; };
 		DE626854252F09FE008A0F0B /* FocusSupportingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSupportingTextField.swift; sourceTree = "<group>"; };
 		DE626859252F1E09008A0F0B /* UIColor+Focus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Focus.swift"; sourceTree = "<group>"; };
+		DE626862252F26EC008A0F0B /* Font+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Convenience.swift"; sourceTree = "<group>"; };
+		DE626867252F2865008A0F0B /* UIFont+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Convenience.swift"; sourceTree = "<group>"; };
+		DE62686C252F28F4008A0F0B /* UIColor+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Convenience.swift"; sourceTree = "<group>"; };
 		DE6C912A252216C0001B2332 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DE6C9132252216FD001B2332 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		DE6C913725221756001B2332 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -1195,6 +1201,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DE626871252F28F6008A0F0B /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				DE626859252F1E09008A0F0B /* UIColor+Focus.swift */,
+				DE62686C252F28F4008A0F0B /* UIColor+Convenience.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 		DE6C9129252216B8001B2332 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,9 +1327,11 @@
 		DEBE8C5E2514A7F700CF079A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DE626871252F28F6008A0F0B /* UIColor */,
 				DEBE8C5F2514A80400CF079A /* String+Localization.swift */,
 				DE48660A25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift */,
-				DE626859252F1E09008A0F0B /* UIColor+Focus.swift */,
+				DE626862252F26EC008A0F0B /* Font+Convenience.swift */,
+				DE626867252F2865008A0F0B /* UIFont+Convenience.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1751,10 +1768,12 @@
 				DE4866222523658E00D5D80F /* AddAccountView.swift in Sources */,
 				DE2A26B02523113200D5762E /* BRAccountsObserver.m in Sources */,
 				DE6C91502522188B001B2332 /* Connector.swift in Sources */,
+				DE626868252F2865008A0F0B /* UIFont+Convenience.swift in Sources */,
 				DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */,
 				DE3CD08525246A1100DD5948 /* BRCommand.m in Sources */,
 				DE3CD0A625246F7300DD5948 /* BRBuildInfo.m in Sources */,
 				DE3CD07D25246A0400DD5948 /* BRBuildsRequest.m in Sources */,
+				DE626863252F26EC008A0F0B /* Font+Convenience.swift in Sources */,
 				DEF04D7E252C9181008C4C97 /* BRCommandFactory.m in Sources */,
 				DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */,
 				DE3CD0E5252481FC00DD5948 /* BRLogsParser.m in Sources */,
@@ -1797,6 +1816,7 @@
 				DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */,
 				DEC610E125261750005CA940 /* RootView.swift in Sources */,
 				DE3CD09625246F5400DD5948 /* BRStorage.m in Sources */,
+				DE62686D252F28F4008A0F0B /* UIColor+Convenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 
 extension UIColor {
-    static func color(named name: String, for colorScheme: ColorScheme, focused: Bool) -> UIColor? {
+    func resolvedColor(for colorScheme: ColorScheme, focused: Bool) -> UIColor {
         let userInterfaceStyle: UIUserInterfaceStyle
         switch colorScheme {
         case .dark:
@@ -21,6 +21,6 @@ extension UIColor {
             userInterfaceStyle = .light
         }
         let traitCollection = UITraitCollection(userInterfaceStyle: userInterfaceStyle)
-        return UIColor(named: name)?.resolvedColor(with: traitCollection)
+        return resolvedColor(with: traitCollection)
     }
 }

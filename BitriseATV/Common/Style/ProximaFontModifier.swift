@@ -23,7 +23,7 @@ struct ProximaFontModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .font(.custom("ProximaNova-\(weightString)", size: size))
+            .font(.proxima(weight: weight, size: size))
     }
 }
 

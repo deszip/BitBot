@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct AddAccountView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -24,8 +23,8 @@ struct AddAccountView: View {
             FocusSupportingTextField(placeholder: "Enter personal access token".localized(),
                                      text: $accessToken,
                                      keyboardType: .asciiCapable,
-                                     font: UIFont(name: "ProximaNova-Regular", size: 43)!) { focused in
-                return UIColor.color(named: "SecondaryTextColor", for: colorScheme, focused: focused)!
+                                     font: .proxima(weight: .regular, size: 43)) { focused in
+                return UIColor.secondaryText.resolvedColor(for: colorScheme, focused: focused)
             } onCommit: {
                 if !accessToken.isEmpty {
                     commitTokenAction(accessToken)
