@@ -31,6 +31,8 @@ struct AccountView: View {
                     Text(userName)
                     Text(email)
                 }
+                .foregroundColor(.BBBuildTintColor)
+                .proximaFont(size: 43, weight: .regular)
             }
         }
         .frame(height: 200)
