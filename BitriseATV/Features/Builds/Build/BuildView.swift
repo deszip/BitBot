@@ -20,7 +20,6 @@ struct BuildView: View {
     let workflow: String
     let date: String
     let buildingTime: String
-    let onAppear: () -> Void
     
     var body: some View {
         Button(action: {}, label: {
@@ -66,7 +65,6 @@ struct BuildView: View {
                 }
             }
         })
-        .onAppear(perform: onAppear)
     }
 }
 
@@ -82,7 +80,6 @@ struct BuildView_Previews: PreviewProvider {
                   commitMessage: "commit",
                   workflow: "deploy",
                   date: "11.10.2020",
-                  buildingTime: "10m 20s",
-                  onAppear: {})
+                  buildingTime: "10m 20s")
     }
 }

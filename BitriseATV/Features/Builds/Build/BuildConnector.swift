@@ -68,29 +68,25 @@ struct BuildConnector: Connector {
             rotator.finish()
             buildRunningTimer.finish()
         }
-        let rotator = self.rotator
-        let buildRunningTimer = self.buildRunningTimer
         let build = self.build
         let durationFormatter = self.durationFormatter
-        let onAppear: () -> Void = {
-            rotator.action = {
-                if rotation < 360 {
-                    rotation += 1
-                } else {
-                    rotation = 0
-                }
-            }
-            buildRunningTimer.action = {
-                let buildFinishedTime = build.finishedTime ?? Date()
-                let buildDuration = build.envPrepareFinishedTime.flatMap { buildFinishedTime.timeIntervalSince($0) } ?? 0
-                let durationDate = Date(timeIntervalSince1970: buildDuration)
-                buildingTime = durationFormatter.string(from: durationDate)
-            }
-            buildRunningTimer.action?()
-            if !rotator.isRunning {
+        rotator.action = {
+            if rotation < 360 {
+                rotation += 1
+            } else {
                 rotation = 0
             }
         }
+        rotator.resetAction = {
+            rotation = 0
+        }
+        buildRunningTimer.action = {
+            let buildFinishedTime = build.finishedTime ?? Date()
+            let buildDuration = build.envPrepareFinishedTime.flatMap { buildFinishedTime.timeIntervalSince($0) } ?? 0
+            let durationDate = Date(timeIntervalSince1970: buildDuration)
+            buildingTime = durationFormatter.string(from: durationDate)
+        }
+        buildRunningTimer.action?()
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
                          rotation: rotation,
@@ -101,7 +97,6 @@ struct BuildConnector: Connector {
                          commitMessage: build.commitMessage ?? "no commit message".localized(),
                          workflow: build.workflow ?? "",
                          date: build.triggerTime.flatMap { dateFormatter.string(from: $0) } ?? "",
-                         buildingTime: buildingTime,
-                         onAppear: onAppear)
+                         buildingTime: buildingTime)
     }
 }

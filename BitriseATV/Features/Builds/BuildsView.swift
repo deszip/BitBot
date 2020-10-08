@@ -33,7 +33,6 @@ struct BuildsView_Previews: PreviewProvider {
                                          commitMessage: "",
                                          workflow: "",
                                          date: "",
-                                         buildingTime: "",
-                                         onAppear: {}) })
+                                         buildingTime: "") })
     }
 }

@@ -10,9 +10,7 @@ import Combine
 
 class ObservableTimer: ObservableObject {
     var action: (() -> Void)?
-    var isRunning: Bool {
-        !cancellables.isEmpty
-    }
+    var resetAction: (() -> Void)?
     
     var objectWillChange = ObservableObjectPublisher()
     
@@ -38,5 +36,6 @@ class ObservableTimer: ObservableObject {
     func finish() {
         cancellables.forEach { $0.cancel() }
         cancellables = []
+        resetAction?()
     }
 }
