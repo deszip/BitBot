@@ -45,3 +45,7 @@ struct AbortBuildCommand: Action {
 }
 
 struct AbortBuildCommandSent: Action {}
+
+struct SyncCommand: Action {}
+
+struct SyncCommandSent: Action {}

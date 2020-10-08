@@ -46,6 +46,14 @@ final class DependencyContainer {
         CommandsDispatcher(dependencyContainer: self)
     }
     
+    func accountCommandDispatcher() -> AccountCommandsDispatcher {
+        AccountCommandsDispatcher(dependencyContainer: self)
+    }
+    
+    func buildCommandDispatcher() -> BuildCommandsDispatcher {
+        BuildCommandsDispatcher(dependencyContainer: self)
+    }
+    
     func persistentContainer() -> NSPersistentContainer {
         _persistentContainer
     }

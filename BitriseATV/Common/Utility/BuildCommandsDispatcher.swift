@@ -1,5 +1,5 @@
 //
-//  CommandsDispatcher.swift
+//  BuildCommandsDispatcher.swift
 //  BitriseATV
 //
 //  Created by Vladislav Sosiuk on 08.10.2020.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class CommandsDispatcher {
-    private let queue = DispatchQueue(label: "com.bitrise.commands_dispatcher")
+final class BuildCommandsDispatcher {
+    private let queue = DispatchQueue(label: "com.bitrise.build_commands_dispatcher")
     private let dependencyContainer: DependencyContainer
     private var store: Store<AppState, Action> {
         dependencyContainer.store()
@@ -20,7 +20,7 @@ final class CommandsDispatcher {
     }
 }
 
-extension CommandsDispatcher {
+extension BuildCommandsDispatcher {
     var asObserver: Observer<AppState> {
         Observer(queue: self.queue) { state in
             self.observe(state: state)
@@ -32,17 +32,29 @@ extension CommandsDispatcher {
         
         var commands: [BRCommand] = []
         var actions: [Action] = []
-        
-        switch state.syncCommandState {
+        switch state.buildsState.rebuildCommandState {
         case .idle:
             break
-        case .sync:
-            let command = dependencyContainer.commandFactory().syncCommand()
+        case .rebuild(let build):
+            let command = dependencyContainer.commandFactory().rebuildCommand(build)
             commands.append(command)
-            actions.append(SyncCommandSent())
+            actions.append(RebuildCommandSent())
+        }
+        
+        switch state.buildsState.abortBuildCommandState {
+        case .idle:
+            break
+        case .abort(let build):
+            let command = dependencyContainer.commandFactory().abortCommand(build)
+            commands.append(command)
+            actions.append(AbortBuildCommandSent())
         }
         commands.forEach {
-            $0.execute(nil)
+            $0.execute { [weak self] (result, _) in
+                if result {
+                    self?.store.dispatch(action: SyncCommand())
+                }
+            }
         }
         actions.forEach { store.dispatch(action: $0) }
     }

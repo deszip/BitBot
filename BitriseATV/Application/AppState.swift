@@ -15,7 +15,13 @@ struct AppState {
         case accounts
     }
     
+    enum SyncCommandState {
+        case idle
+        case sync
+    }
+    
     var rootTab: RootTab = .builds
+    var syncCommandState: SyncCommandState = .idle
     var accountsState = AccountsState()
     var buildsState = BuildsState()
     
@@ -31,6 +37,10 @@ struct AppState {
             }
         case let action as UpdateSelectedTab:
             rootTab = action.tab
+        case is SyncCommand:
+            syncCommandState = .sync
+        case is SyncCommandSent:
+            syncCommandState = .idle
         default: break
         }
     }
