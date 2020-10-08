@@ -34,6 +34,7 @@ class ObservableTimer: ObservableObject {
     }
     
     func finish() {
+        guard !cancellables.isEmpty else { return }
         cancellables.forEach { $0.cancel() }
         cancellables = []
         resetAction?()
