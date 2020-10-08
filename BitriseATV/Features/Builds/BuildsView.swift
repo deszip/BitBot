@@ -26,6 +26,7 @@ struct BuildsView_Previews: PreviewProvider {
                    row: { _ in BuildView(buildColor: .BBSuccessColor,
                                          buildIconImageName: "0-degree-status-icon",
                                          rotation: 0,
+                                         shouldRotating: false,
                                          userName: "",
                                          buildNumber: "",
                                          appName: "",

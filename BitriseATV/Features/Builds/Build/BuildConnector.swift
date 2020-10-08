@@ -73,9 +73,6 @@ struct BuildConnector: Connector {
         let build = self.build
         let durationFormatter = self.durationFormatter
         let onAppear: () -> Void = {
-            rotator.resetAction = {
-                rotation = 0
-            }
             rotator.action = {
                 if rotation < 360 {
                     rotation += 1
@@ -94,6 +91,7 @@ struct BuildConnector: Connector {
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
                          rotation: rotation,
+                         shouldRotating: shouldStartTimer,
                          userName: build.app?.account?.username ?? "",
                          buildNumber: "#\(build.buildNumber?.stringValue ?? "")",
                          appName: build.app?.title ?? "",

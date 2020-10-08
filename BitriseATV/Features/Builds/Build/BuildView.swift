@@ -12,6 +12,7 @@ struct BuildView: View {
     let buildColor: Color
     let buildIconImageName: String
     let rotation: Double
+    let shouldRotating: Bool
     let userName: String
     let buildNumber: String
     let appName: String
@@ -34,7 +35,7 @@ struct BuildView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)
-                        .rotationEffect(Angle.degrees(rotation))
+                        .rotationEffect(Angle.degrees(shouldRotating ? rotation : 0))
                         .offset(y: -30)
                 }
                 VStack(alignment: .leading) {
@@ -75,6 +76,7 @@ struct BuildView_Previews: PreviewProvider {
         BuildView(buildColor: .BBSuccessColor,
                   buildIconImageName: "0-degree-status-icon",
                   rotation: 0,
+                  shouldRotating: false,
                   userName: "vladislav",
                   buildNumber: "100",
                   appName: "bit bot",
