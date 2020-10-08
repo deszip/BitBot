@@ -10,6 +10,9 @@ import Combine
 
 class ObservableTimer: ObservableObject {
     var action: (() -> Void)?
+    var isRunning: Bool {
+        !cancellables.isEmpty
+    }
     
     var objectWillChange = ObservableObjectPublisher()
     

@@ -67,7 +67,6 @@ struct BuildConnector: Connector {
         } else {
             rotator.finish()
             buildRunningTimer.finish()
-            rotation = 0
         }
         let rotator = self.rotator
         let buildRunningTimer = self.buildRunningTimer
@@ -87,6 +86,9 @@ struct BuildConnector: Connector {
                 buildingTime = durationFormatter.string(from: durationDate)
             }
             buildRunningTimer.action?()
+            if !rotator.isRunning {
+                rotation = 0
+            }
         }
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
