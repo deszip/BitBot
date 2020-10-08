@@ -22,6 +22,7 @@ struct AccountsView<AccountRow: View>: View {
                                destination: AddAccountConnector(),
                                isActive: $displayAddAccountView)
                     .proximaFont(size: 43, weight: .regular)
+                    .foregroundColor(.BBBuildTintColor)
                 ForEach(accounts, id: \.slug) { account in
                     accountRow(account)
                 }
