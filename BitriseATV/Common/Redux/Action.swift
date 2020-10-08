@@ -33,3 +33,15 @@ struct DeleteAccount: Action {
 }
 
 struct DeleteAccountCommandSent: Action {}
+
+struct RebuildCommand: Action {
+    var build: BRBuild
+}
+
+struct RebuildCommandSent: Action {}
+
+struct AbortBuildCommand: Action {
+    var build: BRBuild
+}
+
+struct AbortBuildCommandSent: Action {}

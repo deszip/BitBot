@@ -21,7 +21,11 @@ struct BuildView: View {
     let workflow: String
     let date: String
     let buildingTime: String
+    let abortDisabled: Bool
+    let rebuildDisabled: Bool
     let onAppear: () -> Void
+    let abortAction: () -> Void
+    let rebuildAction: () -> Void
     
     var body: some View {
         Button(action: {}, label: {
@@ -67,6 +71,13 @@ struct BuildView: View {
                 }
             }
         })
+        .contextMenu {
+            Button("Abort build".localized(), action: abortAction)
+                .disabled(abortDisabled)
+            Button("Rebuild".localized(), action: rebuildAction)
+                .disabled(rebuildDisabled)
+            
+        }
         .onAppear(perform: onAppear)
     }
 }
@@ -85,6 +96,10 @@ struct BuildView_Previews: PreviewProvider {
                   workflow: "deploy",
                   date: "11.10.2020",
                   buildingTime: "10m 20s",
-                  onAppear: {})
+                  abortDisabled: false,
+                  rebuildDisabled: false,
+                  onAppear: {},
+                  abortAction: {},
+                  rebuildAction: {})
     }
 }

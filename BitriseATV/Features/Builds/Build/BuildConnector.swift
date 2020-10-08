@@ -34,11 +34,14 @@ struct BuildConnector: Connector {
         let buildColor: Color
         let buildIconImageName: String
         var shouldStartTimer = false
+        var buildInProgress = false
+        var buildCanBeAborted = false
         switch build.status?.intValue {
         case 0:
             if build.onHold?.boolValue ?? false {
                 buildColor = .BBHoldColor
                 buildIconImageName = "0-degree-status-icon"
+                buildCanBeAborted = true
             } else {
                 buildIconImageName = "13-degree-status-icon"
                 shouldStartTimer = true
@@ -46,6 +49,8 @@ struct BuildConnector: Connector {
                     buildColor = .BBWaitingColor
                 } else {
                     buildColor = .BBProgressColor
+                    buildInProgress = true
+                    buildCanBeAborted = true
                 }
             }
         case 1:
@@ -72,6 +77,8 @@ struct BuildConnector: Connector {
         let buildRunningTimer = self.buildRunningTimer
         let build = self.build
         let durationFormatter = self.durationFormatter
+        let rebuildDisabled = buildInProgress
+        let abortDisabled = !buildCanBeAborted
         let onAppear: () -> Void = {
             rotator.action = {
                 if rotation < 360 {
@@ -100,6 +107,10 @@ struct BuildConnector: Connector {
                          workflow: build.workflow ?? "",
                          date: build.triggerTime.flatMap { dateFormatter.string(from: $0) } ?? "",
                          buildingTime: buildingTime,
-                         onAppear: onAppear)
+                         abortDisabled: abortDisabled,
+                         rebuildDisabled: rebuildDisabled,
+                         onAppear: onAppear,
+                         abortAction: { graph.builds.abort(build: build) },
+                         rebuildAction: { graph.builds.rebuild(build: build) })
     }
 }

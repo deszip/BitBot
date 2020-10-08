@@ -49,6 +49,22 @@ extension CommandsDispatcher {
                                                    slug: slug))
             actions.append(DeleteAccountCommandSent())
         }
+        switch state.buildsState.rebuildCommandState {
+        case .idle:
+            break
+        case .rebuild(let build):
+            let command = dependencyContainer.commandFactory().rebuildCommand(build)
+            commands.append(command)
+            actions.append(RebuildCommandSent())
+        }
+        switch state.buildsState.abortBuildCommandState {
+        case .idle:
+            break
+        case .abort(let build):
+            let command = dependencyContainer.commandFactory().abortCommand(build)
+            commands.append(command)
+            actions.append(AbortBuildCommandSent())
+        }
         commands.forEach { $0.execute(nil) }
         actions.forEach { store.dispatch(action: $0) }
     }

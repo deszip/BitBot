@@ -35,6 +35,10 @@ struct BuildsView_Previews: PreviewProvider {
                                          workflow: "",
                                          date: "",
                                          buildingTime: "",
-                                         onAppear: {}) })
+                                         abortDisabled: false,
+                                         rebuildDisabled: false,
+                                         onAppear: {},
+                                         abortAction: {},
+                                         rebuildAction: {}) })
     }
 }

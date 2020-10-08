@@ -17,9 +17,11 @@ struct AppState {
     
     var rootTab: RootTab = .builds
     var accountsState = AccountsState()
+    var buildsState = BuildsState()
     
     mutating func reduce(_ action: Action) {
         accountsState.reduce(action)
+        buildsState.reduce(action)
         switch action {
         case let action as UpdateAccountsState:
             if action.hasAccounts {
