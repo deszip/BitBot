@@ -81,7 +81,8 @@ struct BuildConnector: Connector {
                 }
             }
             buildRunningTimer.action = {
-                let buildDuration = build.envPrepareFinishedTime.flatMap { Date().timeIntervalSince($0) } ?? 0
+                let buildFinishedTime = build.finishedTime ?? Date()
+                let buildDuration = build.envPrepareFinishedTime.flatMap { buildFinishedTime.timeIntervalSince($0) } ?? 0
                 let durationDate = Date(timeIntervalSince1970: buildDuration)
                 buildingTime = durationFormatter.string(from: durationDate)
             }
