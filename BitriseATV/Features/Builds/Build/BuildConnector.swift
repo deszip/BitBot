@@ -41,11 +41,11 @@ struct BuildConnector: Connector {
                 buildIconImageName = "0-degree-status-icon"
             } else {
                 buildIconImageName = "13-degree-status-icon"
+                shouldStartTimer = true
                 if build.startTime == nil {
                     buildColor = .BBWaitingColor
                 } else {
                     buildColor = .BBProgressColor
-                    shouldStartTimer = true
                 }
             }
         case 1:
