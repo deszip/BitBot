@@ -8,18 +8,17 @@
 
 import SwiftUI
 
-struct AccountView: View {
+struct AccountView<Destination: View>: View {
     
     let imageURL: URL?
     let userName: String
     let email: String
     
     let deleteAction: () -> Void
+    let destination: () -> Destination
     
     var body: some View {
-        Button(action: {
-            //do smth
-        }) {
+        NavigationLink(destination: destination()) {
             HStack {
                 AsyncImage(url: imageURL)
                     .placeholder(.defaultAvatar)
@@ -49,6 +48,7 @@ struct AccountView_Previews: PreviewProvider {
         AccountView(imageURL: nil,
                     userName: "vladislavsosiuk",
                     email: "vladislavsosiuk@gmail.com",
-                    deleteAction: { })
+                    deleteAction: { },
+                    destination: { Text("") })
     }
 }

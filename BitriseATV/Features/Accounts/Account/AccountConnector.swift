@@ -16,6 +16,7 @@ struct AccountConnector: Connector {
         AccountView(imageURL: account.avatarURL.flatMap { URL(string: $0) },
                     userName: account.username ?? "",
                     email: account.email ?? "" ,
-                    deleteAction: { graph.accounts.deleteAccount(withSlug: account.slug ?? "") })
+                    deleteAction: { graph.accounts.deleteAccount(withSlug: account.slug ?? "") },
+                    destination: { AppsConnector(apps: account.apps?.array as? [BRApp] ?? []) })
     }
 }

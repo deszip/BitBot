@@ -39,6 +39,7 @@ struct AccountsView_Previews: PreviewProvider {
                      accountRow: { _ in AccountView(imageURL: nil,
                                                     userName: "test",
                                                     email: "test@email.com",
-                                                    deleteAction: {})})
+                                                    deleteAction: {},
+                                                    destination: { Text("") })})
     }
 }

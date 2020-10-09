@@ -203,6 +203,10 @@
 		DE62687B252F4712008A0F0B /* BuildsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62687A252F4712008A0F0B /* BuildsState.swift */; };
 		DE626886252F4B4B008A0F0B /* BuildCommandsDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE626885252F4B4B008A0F0B /* BuildCommandsDispatcher.swift */; };
 		DE62688B252F4C76008A0F0B /* CommandsDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE62688A252F4C75008A0F0B /* CommandsDispatcher.swift */; };
+		DE6268A525304B62008A0F0B /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6268A425304B62008A0F0B /* AppView.swift */; };
+		DE6268AB25304CF1008A0F0B /* AppConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6268AA25304CF1008A0F0B /* AppConnector.swift */; };
+		DE6268B825304D53008A0F0B /* AppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6268B725304D53008A0F0B /* AppsView.swift */; };
+		DE6268BD25304DC8008A0F0B /* AppsConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6268BC25304DC8008A0F0B /* AppsConnector.swift */; };
 		DE6C912B252216C0001B2332 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C912A252216C0001B2332 /* Store.swift */; };
 		DE6C9133252216FD001B2332 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C9132252216FD001B2332 /* Observer.swift */; };
 		DE6C913825221756001B2332 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6C913725221756001B2332 /* AppState.swift */; };
@@ -545,6 +549,10 @@
 		DE62687A252F4712008A0F0B /* BuildsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsState.swift; sourceTree = "<group>"; };
 		DE626885252F4B4B008A0F0B /* BuildCommandsDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCommandsDispatcher.swift; sourceTree = "<group>"; };
 		DE62688A252F4C75008A0F0B /* CommandsDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsDispatcher.swift; sourceTree = "<group>"; };
+		DE6268A425304B62008A0F0B /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		DE6268AA25304CF1008A0F0B /* AppConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConnector.swift; sourceTree = "<group>"; };
+		DE6268B725304D53008A0F0B /* AppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsView.swift; sourceTree = "<group>"; };
+		DE6268BC25304DC8008A0F0B /* AppsConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsConnector.swift; sourceTree = "<group>"; };
 		DE6C912A252216C0001B2332 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DE6C9132252216FD001B2332 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		DE6C913725221756001B2332 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -1221,6 +1229,25 @@
 			path = UIColor;
 			sourceTree = "<group>";
 		};
+		DE62689825304B46008A0F0B /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				DE6268A925304CE7008A0F0B /* App */,
+				DE6268B725304D53008A0F0B /* AppsView.swift */,
+				DE6268BC25304DC8008A0F0B /* AppsConnector.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		DE6268A925304CE7008A0F0B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DE6268A425304B62008A0F0B /* AppView.swift */,
+				DE6268AA25304CF1008A0F0B /* AppConnector.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		DE6C9129252216B8001B2332 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -1303,6 +1330,7 @@
 		DEBE8C432513BBA200CF079A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				DE62689825304B46008A0F0B /* Apps */,
 				DEC610DC25261739005CA940 /* RootView */,
 				DE4866202523658100D5D80F /* Add Account */,
 				DE48660F252361E600D5D80F /* Accounts */,
@@ -1775,6 +1803,7 @@
 				DE6C913825221756001B2332 /* AppState.swift in Sources */,
 				DE2A267425230CC700D5762E /* BuildsConnector.swift in Sources */,
 				DE48664B25245AA700D5D80F /* BRSyncDiff.m in Sources */,
+				DE6268BD25304DC8008A0F0B /* AppsConnector.swift in Sources */,
 				DE9E044F2524CDC100B23FA8 /* BRApp+Mapping.m in Sources */,
 				DE9E048B252502D200B23FA8 /* AccountViewModel.swift in Sources */,
 				DE3CD0AA25246F7C00DD5948 /* BRAccountInfo.m in Sources */,
@@ -1784,6 +1813,7 @@
 				DE626868252F2865008A0F0B /* UIFont+Convenience.swift in Sources */,
 				DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */,
 				DE3CD08525246A1100DD5948 /* BRCommand.m in Sources */,
+				DE6268A525304B62008A0F0B /* AppView.swift in Sources */,
 				DE3CD0A625246F7300DD5948 /* BRBuildInfo.m in Sources */,
 				DE3CD07D25246A0400DD5948 /* BRBuildsRequest.m in Sources */,
 				DE626863252F26EC008A0F0B /* Font+Convenience.swift in Sources */,
@@ -1795,6 +1825,7 @@
 				DE3CD071252469ED00DD5948 /* BRAPIRequest.m in Sources */,
 				DE6CA127252DB79A00287F5C /* ObservableTimer.swift in Sources */,
 				DEC610F725262568005CA940 /* AccountConnector.swift in Sources */,
+				DE6268B825304D53008A0F0B /* AppsView.swift in Sources */,
 				DE48663F252459D200D5D80F /* BRAddAccountOperation.m in Sources */,
 				DE48664F25245AAE00D5D80F /* BRAnalytics.m in Sources */,
 				DEF04D92252C929B008C4C97 /* BRRebuildCommand.m in Sources */,
@@ -1822,6 +1853,7 @@
 				DEF04D9C252C92D5008C4C97 /* BRRebuildRequest.m in Sources */,
 				DE48662A2523668600D5D80F /* AddAccountConnector.swift in Sources */,
 				DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */,
+				DE6268AB25304CF1008A0F0B /* AppConnector.swift in Sources */,
 				DE626855252F09FF008A0F0B /* FocusSupportingTextField.swift in Sources */,
 				DE62688B252F4C76008A0F0B /* CommandsDispatcher.swift in Sources */,
 				DE62687B252F4712008A0F0B /* BuildsState.swift in Sources */,
