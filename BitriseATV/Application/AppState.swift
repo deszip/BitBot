@@ -13,6 +13,7 @@ struct AppState {
     enum RootTab {
         case builds
         case accounts
+        case settings
     }
     
     enum SyncCommandState {
@@ -24,12 +25,15 @@ struct AppState {
     var syncCommandState: SyncCommandState = .idle
     var accountsState = AccountsState()
     var buildsState = BuildsState()
+    var settingsState = SettingsState()
     
     mutating func reduce(_ action: Action) {
         accountsState.reduce(action)
         buildsState.reduce(action)
+        settingsState.reduce(action)
         switch action {
         case let action as UpdateAccountsState:
+            guard rootTab != .settings else { break }
             if action.hasAccounts {
                 rootTab = .builds
             } else {

@@ -13,17 +13,24 @@ struct RootView: View {
     @Binding var selectedTabIndex: AppState.RootTab
     
     var body: some View {
-        TabView(selection: $selectedTabIndex) {
-            BuildsConnector()
-                .tabItem {
-                    Text("Builds".localized())
-                }
-                .tag(AppState.RootTab.builds)
-            AccountsConnector()
-                .tabItem {
-                    Text("Accounts".localized())
-                }
-                .tag(AppState.RootTab.accounts)
+        NavigationView {
+            TabView(selection: $selectedTabIndex) {
+                BuildsConnector()
+                    .tabItem {
+                        Text("Builds".localized())
+                    }
+                    .tag(AppState.RootTab.builds)
+                AccountsConnector()
+                    .tabItem {
+                        Text("Accounts".localized())
+                    }
+                    .tag(AppState.RootTab.accounts)
+                SettingsConnector()
+                    .tabItem {
+                        Text("Settings".localized())
+                    }
+                    .tag(AppState.RootTab.settings)
+            }
         }
     }
 }

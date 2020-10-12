@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddAccountView: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentation
     
     @State private var accessToken: String = ""
     
@@ -28,6 +29,7 @@ struct AddAccountView: View {
             } onCommit: {
                 if !accessToken.isEmpty {
                     commitTokenAction(accessToken)
+                    presentation.wrappedValue.dismiss()
                 }
             }
         }

@@ -12,5 +12,13 @@ extension Image {
     static var defaultAvatar: Image {
         Image("avatar-default")
     }
+    
+    static var logo: Image {
+        Image("Logo")
+    }
+    
+    static var icon: Image {
+        Image("Icon")
+    }
 }
 

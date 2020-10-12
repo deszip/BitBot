@@ -20,10 +20,6 @@ struct AddPersonalAccessToken: Action {
 
 struct SendPersonalAccessToken: Action {}
 
-struct UpdateDisplayAddAccount: Action {
-    var value: Bool
-}
-
 struct UpdateSelectedTab: Action {
     var tab: AppState.RootTab
 }
@@ -49,3 +45,7 @@ struct AbortBuildCommandSent: Action {}
 struct SyncCommand: Action {}
 
 struct SyncCommandSent: Action {}
+
+struct UpdateAnalyticsDisabled: Action {
+    var value: Bool
+}

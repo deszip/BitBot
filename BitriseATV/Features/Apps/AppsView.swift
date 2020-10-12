@@ -14,12 +14,10 @@ struct AppsView<AppRow: View>: View {
     let row: (BRApp) -> AppRow
     
     var body: some View {
-        NavigationView {
-            List(apps, id: \.slug) { app in
-                row(app)
-            }
-            .navigationTitle("Apps".localized())
+        List(apps, id: \.slug) { app in
+            row(app)
         }
+        .navigationTitle("Apps".localized())
     }
 }
 

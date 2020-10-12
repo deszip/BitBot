@@ -16,10 +16,6 @@ struct AccountsNode {
     let graph: Graph
     
     var hasAccounts: Bool { graph.state.accountsState.hasAccounts }
-    var displayAddAccountView: Bool {
-        get { graph.state.accountsState.displayAddAccountView }
-        nonmutating set { graph.dispatch(UpdateDisplayAddAccount(value: newValue)) }
-    }
     
     func add(personalAccessToken: String) {
         graph.dispatch(AddPersonalAccessToken(token: personalAccessToken))

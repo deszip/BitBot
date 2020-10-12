@@ -22,7 +22,6 @@ struct AccountsState {
     
     var hasAccounts: Bool = false
     var addAccountsCommand: AddAccountCommand = .idle
-    var displayAddAccountView: Bool = false
     var deleteAccountCommand: DeleteAccountCommand = .idle
     
     mutating func reduce(_ action: Action) {
@@ -33,9 +32,6 @@ struct AccountsState {
             addAccountsCommand = .execute(token: action.token)
         case is SendPersonalAccessToken:
             addAccountsCommand = .idle
-            displayAddAccountView = false
-        case let action as UpdateDisplayAddAccount:
-            displayAddAccountView = action.value
         case let action as DeleteAccount:
             deleteAccountCommand = .execute(slug: action.slug)
         case is DeleteAccountCommandSent:
