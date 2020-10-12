@@ -45,3 +45,7 @@ struct SyncCommandSent: Action {}
 struct UpdateAnalyticsDisabled: Action {
     var value: Bool
 }
+
+struct UpdateSettings: Action {
+    var analyticsDisabled: Bool
+}

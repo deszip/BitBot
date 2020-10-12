@@ -38,6 +38,7 @@ struct SettingsView: View {
                             .foregroundColor(.BBBuildTintColor)
                             .proximaFont(size: 43, weight: .regular)
                     })
+                    .proximaFont(size: 43, weight: .regular)
                 }
                 .frame(maxWidth: .infinity)
             }

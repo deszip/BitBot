@@ -248,6 +248,7 @@
 		DEC610E9252617CD005CA940 /* RootConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610E8252617CD005CA940 /* RootConnector.swift */; };
 		DEC610EF252623DD005CA940 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610EE252623DD005CA940 /* AccountView.swift */; };
 		DEC610F725262568005CA940 /* AccountConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC610F625262568005CA940 /* AccountConnector.swift */; };
+		DED411102534A27900A711BC /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4110F2534A27800A711BC /* SettingsProvider.swift */; };
 		DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
 		DEF04D7E252C9181008C4C97 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
 		DEF04D82252C9251008C4C97 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
@@ -587,6 +588,7 @@
 		DEC610E8252617CD005CA940 /* RootConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootConnector.swift; sourceTree = "<group>"; };
 		DEC610EE252623DD005CA940 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		DEC610F625262568005CA940 /* AccountConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountConnector.swift; sourceTree = "<group>"; };
+		DED4110F2534A27800A711BC /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		F124CB0846A3F855B92A993A /* Pods-BitBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBot.debug.xcconfig"; path = "Target Support Files/Pods-BitBot/Pods-BitBot.debug.xcconfig"; sourceTree = "<group>"; };
 		F1E23A1CB67922F4EB72E734 /* Pods-BitBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotTests.debug.xcconfig"; path = "Target Support Files/Pods-BitBotTests/Pods-BitBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1189,6 +1191,7 @@
 				DE6CA126252DB79A00287F5C /* ObservableTimer.swift */,
 				DE626885252F4B4B008A0F0B /* BuildCommandsDispatcher.swift */,
 				DE62688A252F4C75008A0F0B /* CommandsDispatcher.swift */,
+				DED4110F2534A27800A711BC /* SettingsProvider.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1871,6 +1874,7 @@
 				DE2A26B4252313DB00D5762E /* bitrise.xcdatamodeld in Sources */,
 				DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */,
 				DE3CD08925246A2E00DD5948 /* ASOperation.m in Sources */,
+				DED411102534A27900A711BC /* SettingsProvider.swift in Sources */,
 				DEF04DA0252C9335008C4C97 /* BRAbortRequest.m in Sources */,
 				DE4866162523633E00D5D80F /* AccountsConnector.swift in Sources */,
 				DEF04D9C252C92D5008C4C97 /* BRRebuildRequest.m in Sources */,

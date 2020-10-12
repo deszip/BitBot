@@ -66,4 +66,8 @@ final class DependencyContainer {
     func commandObserver() -> BRObserver {
         BRObserver()
     }
+    
+    func settingsProvider() -> SettingsProvider {
+        SettingsProvider()
+    }
 }

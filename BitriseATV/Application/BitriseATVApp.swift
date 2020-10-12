@@ -18,6 +18,7 @@ struct BitriseATVApp: App {
     let accountCommandsDispatcher: AccountCommandsDispatcher
     let buildCommandsDispatcher: BuildCommandsDispatcher
     let commandObserver: BRObserver
+    let settingsProvider: SettingsProvider
     
     init() {
         store = dependencyContainer.store()
@@ -31,6 +32,9 @@ struct BitriseATVApp: App {
         store.subscribe(observer: buildCommandsDispatcher.asObserver)
         commandObserver = dependencyContainer.commandObserver()
         commandObserver.startObserving(dependencyContainer.commandFactory().syncCommand())
+        settingsProvider = dependencyContainer.settingsProvider()
+        store.subscribe(observer: settingsProvider.asObserver)
+        settingsProvider.load()
     }
     
     var body: some Scene {
