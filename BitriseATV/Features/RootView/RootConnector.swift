@@ -10,8 +10,6 @@ import SwiftUI
 
 struct RootConnector: Connector {
     func map(graph: Graph) -> some View {
-        let selectedTabIndex = Binding(get: { graph.selectedTab },
-                                       set: { graph.selectedTab = $0 })
-        return RootView(selectedTabIndex: selectedTabIndex)
+        return RootView()
     }
 }

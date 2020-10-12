@@ -10,18 +10,11 @@ import Foundation
 
 struct AppState {
     
-    enum RootTab {
-        case builds
-        case accounts
-        case settings
-    }
-    
     enum SyncCommandState {
         case idle
         case sync
     }
     
-    var rootTab: RootTab = .builds
     var syncCommandState: SyncCommandState = .idle
     var accountsState = AccountsState()
     var buildsState = BuildsState()
@@ -32,15 +25,6 @@ struct AppState {
         buildsState.reduce(action)
         settingsState.reduce(action)
         switch action {
-        case let action as UpdateAccountsState:
-            guard rootTab != .settings else { break }
-            if action.hasAccounts {
-                rootTab = .builds
-            } else {
-                rootTab = .accounts
-            }
-        case let action as UpdateSelectedTab:
-            rootTab = action.tab
         case is SyncCommand:
             syncCommandState = .sync
         case is SyncCommandSent:

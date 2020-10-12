@@ -16,9 +16,4 @@ struct Graph {
     
     let state: AppState
     let dispatch: (Action) -> ()
-    
-    var selectedTab: AppState.RootTab {
-        get { state.rootTab }
-        nonmutating set { dispatch(UpdateSelectedTab(tab: newValue)) }
-    }
 }
