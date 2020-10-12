@@ -22,6 +22,7 @@ class ObservableTimer: ObservableObject {
     
     func start() {
         guard cancellables.isEmpty else { return }
+        print("---ObservableTimer started")
         Timer.publish(every: timeInterval,
                       on: RunLoop.main,
                       in: .common)

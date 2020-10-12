@@ -77,11 +77,14 @@ struct BuildConnector: Connector {
         let rebuildDisabled = buildInProgress
         let abortDisabled = !buildCanBeAborted
         let onAppear: () -> Void = {
+            print("---started")
             if shouldStartTimer {
+                print("---started timers")
                 rotator.start()
                 buildRunningTimer.start()
             }
             rotator.action = {
+                print("---action")
                 if rotation < 360 {
                     rotation += 1
                 } else {
@@ -99,6 +102,7 @@ struct BuildConnector: Connector {
         let onDisappear: () -> Void = {
             rotator.finish()
             buildRunningTimer.finish()
+            print("---finished")
         }
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
