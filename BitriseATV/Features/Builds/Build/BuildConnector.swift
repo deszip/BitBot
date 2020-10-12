@@ -81,7 +81,6 @@ struct BuildConnector: Connector {
         let abortDisabled = !buildCanBeAborted
         let onAppear: () -> Void = {
             rotator.action = {
-                print("---action")
                 if rotation < 360 {
                     rotation += 1
                 } else {
