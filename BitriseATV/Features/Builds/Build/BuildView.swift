@@ -24,7 +24,6 @@ struct BuildView: View {
     let abortDisabled: Bool
     let rebuildDisabled: Bool
     let onAppear: () -> Void
-    let onDisappear: () -> Void
     let abortAction: () -> Void
     let rebuildAction: () -> Void
     
@@ -80,7 +79,6 @@ struct BuildView: View {
             
         }
         .onAppear(perform: onAppear)
-        .onDisappear(perform: onDisappear)
     }
 }
 
@@ -101,7 +99,6 @@ struct BuildView_Previews: PreviewProvider {
                   abortDisabled: false,
                   rebuildDisabled: false,
                   onAppear: {},
-                  onDisappear: {},
                   abortAction: {},
                   rebuildAction: {})
     }

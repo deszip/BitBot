@@ -38,7 +38,6 @@ struct BuildsView_Previews: PreviewProvider {
                                          abortDisabled: false,
                                          rebuildDisabled: false,
                                          onAppear: {},
-                                         onDisappear: {},
                                          abortAction: {},
                                          rebuildAction: {}) })
     }

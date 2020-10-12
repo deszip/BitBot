@@ -66,10 +66,13 @@ struct BuildConnector: Connector {
             buildColor = .BBAbortedColor
             buildIconImageName = "45-degree-status-icon"
         }
-        
-        rotator.finish()
-        buildRunningTimer.finish()
-        
+        if shouldStartTimer {
+            rotator.start()
+            buildRunningTimer.start()
+        } else {
+            rotator.finish()
+            buildRunningTimer.finish()
+        }
         let rotator = self.rotator
         let buildRunningTimer = self.buildRunningTimer
         let build = self.build
@@ -77,12 +80,6 @@ struct BuildConnector: Connector {
         let rebuildDisabled = buildInProgress
         let abortDisabled = !buildCanBeAborted
         let onAppear: () -> Void = {
-            print("---started")
-            if shouldStartTimer {
-                print("---started timers")
-                rotator.start()
-                buildRunningTimer.start()
-            }
             rotator.action = {
                 print("---action")
                 if rotation < 360 {
@@ -99,11 +96,6 @@ struct BuildConnector: Connector {
             }
             buildRunningTimer.action?()
         }
-        let onDisappear: () -> Void = {
-            rotator.finish()
-            buildRunningTimer.finish()
-            print("---finished")
-        }
         return BuildView(buildColor: buildColor,
                          buildIconImageName: buildIconImageName,
                          rotation: rotation,
@@ -119,7 +111,6 @@ struct BuildConnector: Connector {
                          abortDisabled: abortDisabled,
                          rebuildDisabled: rebuildDisabled,
                          onAppear: onAppear,
-                         onDisappear: onDisappear,
                          abortAction: { graph.builds.abort(build: build) },
                          rebuildAction: { graph.builds.rebuild(build: build) })
     }
