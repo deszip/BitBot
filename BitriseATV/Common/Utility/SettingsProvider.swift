@@ -17,7 +17,7 @@ class SettingsProvider {
     }
     
     func load() {
-        let action = UpdateAnalyticsDisabled(value: userDefaults.bool(forKey: Constants.analyticsAvailabilityKey))
+        let action = UpdateAnalyticsDisabledState(value: userDefaults.bool(forKey: Constants.analyticsAvailabilityKey))
         store.dispatch(action: action)
     }
 }

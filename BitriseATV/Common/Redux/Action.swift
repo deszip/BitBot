@@ -42,10 +42,15 @@ struct SyncCommand: Action {}
 
 struct SyncCommandSent: Action {}
 
-struct UpdateAnalyticsDisabled: Action {
+struct UpdateAnalyticsDisabledState: Action {
     var value: Bool
 }
 
-struct UpdateSettings: Action {
+struct UpdateAnalyticsDisabledSetting: Action {
     var analyticsDisabled: Bool
+}
+
+struct UpdateAppMetadata: Action {
+    var version: String
+    var buildNumber: String
 }

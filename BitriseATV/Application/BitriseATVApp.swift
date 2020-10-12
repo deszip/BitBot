@@ -35,6 +35,7 @@ struct BitriseATVApp: App {
         settingsProvider = dependencyContainer.settingsProvider()
         store.subscribe(observer: settingsProvider.asObserver)
         settingsProvider.load()
+        dependencyContainer.appMetadataProvider().load(to: store)
     }
     
     var body: some Scene {

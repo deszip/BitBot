@@ -27,7 +27,7 @@ struct SettingsView: View {
                 .frame(maxWidth: .infinity)
                 List {
                     NavigationLink(
-                        destination: Text("about"),
+                        destination: AboutConnector(),
                         label: {
                             Text("About".localized())
                                 .foregroundColor(.BBBuildTintColor)

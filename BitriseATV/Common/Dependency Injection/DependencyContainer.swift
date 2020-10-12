@@ -70,4 +70,8 @@ final class DependencyContainer {
     func settingsProvider() -> SettingsProvider {
         SettingsProvider()
     }
+    
+    func appMetadataProvider() -> AppMetadataProvider {
+        AppMetadataProvider()
+    }
 }

@@ -18,6 +18,14 @@ struct SettingsNode {
     
     var disableAnalytics: Bool {
         get { graph.state.settingsState.analyticsDisabled }
-        nonmutating set { graph.dispatch(UpdateSettings(analyticsDisabled: newValue)) }
+        nonmutating set { graph.dispatch(UpdateAnalyticsDisabledSetting(analyticsDisabled: newValue)) }
+    }
+    
+    var appVersion: String {
+        graph.state.settingsState.appVersion
+    }
+    
+    var buildNumber: String {
+        graph.state.settingsState.buildNumber
     }
 }
