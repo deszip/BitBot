@@ -30,13 +30,14 @@ struct AboutView: View {
             .frame(maxWidth: .infinity)
             Text(text)
                 .proximaFont(size: 33, weight: .regular)
+                .foregroundColor(.BBBuildTintColor)
         }
         .frame(maxWidth: .infinity)
     }
 }
 
 fileprivate var text = """
-BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of it's features. Before use add your personal access token in account list. We wont steal it. We promise :)
+BitBot is unofficial Bitrise CI client for tvOS. It uses Bitrise public API for all of it's features. Before use add your personal access token in account list. We wont steal it. We promise :)
 
 Awesome design and tons of patience were contributed by Kotki https://kotki.co 
 BitBot was built to work for our current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop us a line if you found one or need a feature.
