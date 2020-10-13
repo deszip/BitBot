@@ -17,11 +17,14 @@
 }
 
 - (NSPersistentContainer *)buildContainerOfType:(NSString *)type {
-    NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
     NSPersistentStoreDescription *storeDescription = [NSPersistentStoreDescription new];
 #if TARGET_OS_OSX
     NSSearchPathDirectory directory = NSApplicationSupportDirectory;
+    NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
 #else
+    NSPersistentCloudKitContainer *container = [NSPersistentCloudKitContainer persistentContainerWithName:@"bitrise"];
+    storeDescription.cloudKitContainerOptions = [[NSPersistentCloudKitContainerOptions alloc] initWithContainerIdentifier:@"iCloud.com.BitBot"];
+    storeDescription.cloudKitContainerOptions.databaseScope = CKDatabaseScopePrivate;
     NSSearchPathDirectory directory = NSCachesDirectory;
 #endif
     NSURL *appsURL = [[NSFileManager defaultManager] URLsForDirectory:directory inDomains:NSUserDomainMask][0];
