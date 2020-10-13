@@ -576,7 +576,7 @@
 		DE6E3FE225343D3800993BED /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		DE9E046E2524F3F400B23FA8 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = ../../Features/Accounts/DataProvider.swift; sourceTree = "<group>"; };
 		DE9E048A252502D200B23FA8 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		DEBE8C192513B7FB00CF079A /* BitriseATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitriseATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEBE8C192513B7FB00CF079A /* BitBotATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBotATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseATVApp.swift; sourceTree = "<group>"; };
 		DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -667,7 +667,7 @@
 			children = (
 				0E42CAD520EC7A7E0033CD03 /* BitBot.app */,
 				0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */,
-				DEBE8C192513B7FB00CF079A /* BitriseATV.app */,
+				DEBE8C192513B7FB00CF079A /* BitBotATV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1486,9 +1486,9 @@
 			productReference = 0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DEBE8C182513B7FB00CF079A /* BitriseATV */ = {
+		DEBE8C182513B7FB00CF079A /* BitBotATV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitriseATV" */;
+			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */;
 			buildPhases = (
 				BAB9254BF29A3830BA3D7BB8 /* [CP] Check Pods Manifest.lock */,
 				DEBE8C152513B7FB00CF079A /* Sources */,
@@ -1499,9 +1499,9 @@
 			);
 			dependencies = (
 			);
-			name = BitriseATV;
+			name = BitBotATV;
 			productName = BitriseATV;
-			productReference = DEBE8C192513B7FB00CF079A /* BitriseATV.app */;
+			productReference = DEBE8C192513B7FB00CF079A /* BitBotATV.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1546,7 +1546,7 @@
 			targets = (
 				0E42CAD420EC7A7E0033CD03 /* BitBot */,
 				0E42CAEA20EC7A800033CD03 /* BitBotTests */,
-				DEBE8C182513B7FB00CF079A /* BitriseATV */,
+				DEBE8C182513B7FB00CF079A /* BitBotATV */,
 			);
 		};
 /* End PBXProject section */
@@ -2169,7 +2169,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.atv.BitBot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BitBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2197,7 +2197,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BitriseATV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BitBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2240,7 +2240,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitriseATV" */ = {
+		DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DEBE8C252513B7FD00CF079A /* Debug */,

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DEBE8C182513B7FB00CF079A"
-               BuildableName = "BitriseATV.app"
-               BlueprintName = "BitriseATV"
+               BuildableName = "BitBotATV.app"
+               BlueprintName = "BitBotATV"
                ReferencedContainer = "container:Bitrise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DEBE8C182513B7FB00CF079A"
-            BuildableName = "BitriseATV.app"
-            BlueprintName = "BitriseATV"
+            BuildableName = "BitBotATV.app"
+            BlueprintName = "BitBotATV"
             ReferencedContainer = "container:Bitrise.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DEBE8C182513B7FB00CF079A"
-            BuildableName = "BitriseATV.app"
-            BlueprintName = "BitriseATV"
+            BuildableName = "BitBotATV.app"
+            BlueprintName = "BitBotATV"
             ReferencedContainer = "container:Bitrise.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
