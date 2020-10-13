@@ -24,6 +24,8 @@
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSFetchedResultsController *accountsFRC;
 
+@property (nonatomic, strong) NSMutableDictionary *accountAssociatedApps;
+
 @end
 
 @implementation BRAccountsDataSource
@@ -52,6 +54,7 @@
     if (![self.accountsFRC performFetch:&fetchError]) {
         BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch apps: %@", fetchError);
     }
+    [self updateAssociatedApps];
     [self.outlineView reloadData];
 }
 
@@ -68,7 +71,7 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     if ([item isKindOfClass:[BTRAccount class]]) {
-        return [[(BTRAccount *)item apps] objectAtIndex:index];
+        return [self.accountAssociatedApps[((BTRAccount *) item).slug] objectAtIndex:index];
     }
     
     return [self.accountsFRC.sections[0] objects][index];
@@ -140,6 +143,26 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.outlineView reloadData];
+}
+
+#pragma mark - Private
+
+- (void)updateAssociatedApps {
+    self.accountAssociatedApps = [NSMutableDictionary new];
+    for (BTRAccount *account in [self.accountsFRC fetchedObjects]) {
+        NSFetchRequest *appsRequest = [BRApp fetchRequest];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"account.slug == %@", account.slug];
+        appsRequest.predicate = predicate;
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+        appsRequest.sortDescriptors = @[sortDescriptor];
+        NSError *error = nil;
+        NSArray *apps = [self.container.viewContext executeFetchRequest:appsRequest error:&error];
+        if (error != nil) {
+            BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch apps: %@", error);
+            continue;
+        }
+        self.accountAssociatedApps[account.slug] = apps;
+    }
 }
 
 @end
