@@ -33,9 +33,6 @@ struct AddAccountView: View {
                 }
             }
         }
-//            .onAppear {
-//                commitTokenAction("")
-//            }
     }
 }
 
