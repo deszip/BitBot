@@ -54,7 +54,7 @@ struct BuildView: View {
                     }
                     Text(appName)
                         .proximaFont(size: 60, weight: .regular)
-                    HStack {
+                    HStack(alignment: .top) {
                         ImageText(imageName: "git-branch",
                                   text: branchName)
                         ImageText(imageName: "message-square",
