@@ -142,6 +142,7 @@
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self updateAssociatedApps];
     [self.outlineView reloadData];
 }
 
