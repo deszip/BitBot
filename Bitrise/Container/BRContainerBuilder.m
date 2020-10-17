@@ -23,7 +23,7 @@
     NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
 #else
     NSPersistentCloudKitContainer *container = [NSPersistentCloudKitContainer persistentContainerWithName:@"bitrise"];
-    storeDescription.cloudKitContainerOptions = [[NSPersistentCloudKitContainerOptions alloc] initWithContainerIdentifier:@"iCloud.com.BitBot"];
+    storeDescription.cloudKitContainerOptions = [[NSPersistentCloudKitContainerOptions alloc] initWithContainerIdentifier:@"iCloud.com.bitbot"];
     storeDescription.cloudKitContainerOptions.databaseScope = CKDatabaseScopePrivate;
     NSSearchPathDirectory directory = NSCachesDirectory;
 #endif

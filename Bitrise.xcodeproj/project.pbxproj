@@ -120,6 +120,8 @@
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */; };
+		D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
+		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
 		D943B24B24EAF1AB00084C59 /* Proxima Nova Alt Bold.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
 		D943B24C24EAF1AB00084C59 /* Proxima Nova Alt Light.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		D943B24D24EAF1AB00084C59 /* Proxima Nova Alt Thin.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
@@ -252,7 +254,6 @@
 		DED411172534B94E00A711BC /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED411162534B94E00A711BC /* AboutView.swift */; };
 		DED4111F2534BB7F00A711BC /* AboutConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4111E2534BB7F00A711BC /* AboutConnector.swift */; };
 		DED411242534BCFA00A711BC /* AppMetadataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED411232534BCFA00A711BC /* AppMetadataProvider.swift */; };
-		DED4112E2535CB3500A711BC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED4112D2535CB3500A711BC /* CloudKit.framework */; };
 		DEF04D49252B9CF6008C4C97 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
 		DEF04D7E252C9181008C4C97 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
 		DEF04D82252C9251008C4C97 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
@@ -488,6 +489,10 @@
 		7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseATV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.release.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.release.xcconfig"; sourceTree = "<group>"; };
 		A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.debug.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.debug.xcconfig"; sourceTree = "<group>"; };
+		D90BFB9F25372FF800DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVRelease.entitlements; sourceTree = "<group>"; };
+		D90BFBA52537388000DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		D90BFBA72537389F00DA473E /* BitBotATVDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVDebug.entitlements; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -577,7 +582,7 @@
 		DE6E3FE225343D3800993BED /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		DE9E046E2524F3F400B23FA8 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = ../../Features/Accounts/DataProvider.swift; sourceTree = "<group>"; };
 		DE9E048A252502D200B23FA8 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		DEBE8C192513B7FB00CF079A /* BitriseATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitriseATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEBE8C192513B7FB00CF079A /* BitBotATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBotATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseATVApp.swift; sourceTree = "<group>"; };
 		DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -596,8 +601,6 @@
 		DED411162534B94E00A711BC /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		DED4111E2534BB7F00A711BC /* AboutConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutConnector.swift; sourceTree = "<group>"; };
 		DED411232534BCFA00A711BC /* AppMetadataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetadataProvider.swift; sourceTree = "<group>"; };
-		DED411292535CB2D00A711BC /* BitriseATV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitriseATV.entitlements; sourceTree = "<group>"; };
-		DED4112D2535CB3500A711BC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		F124CB0846A3F855B92A993A /* Pods-BitBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBot.debug.xcconfig"; path = "Target Support Files/Pods-BitBot/Pods-BitBot.debug.xcconfig"; sourceTree = "<group>"; };
 		F1E23A1CB67922F4EB72E734 /* Pods-BitBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotTests.debug.xcconfig"; path = "Target Support Files/Pods-BitBotTests/Pods-BitBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -608,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5FD61F5E120797737923475 /* libPods-BitBot.a in Frameworks */,
+				D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,7 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */,
-				DED4112E2535CB3500A711BC /* CloudKit.framework in Frameworks */,
+				D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,7 +638,8 @@
 		0ABB74A886F68049AE2D5596 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DED4112D2535CB3500A711BC /* CloudKit.framework */,
+				D90BFBA52537388000DA473E /* CloudKit.framework */,
+				D90BFB9F25372FF800DA473E /* CloudKit.framework */,
 				4592E252F47089546A803FDB /* libPods-BitBot.a */,
 				6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */,
 				7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */,
@@ -658,6 +663,8 @@
 		0E42CACC20EC7A7E0033CD03 = {
 			isa = PBXGroup;
 			children = (
+				D90BFBA72537389F00DA473E /* BitBotATVDebug.entitlements */,
+				D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */,
 				0E42CAD720EC7A7E0033CD03 /* Bitrise */,
 				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
 				DEBE8C1A2513B7FB00CF079A /* BitriseATV */,
@@ -672,7 +679,7 @@
 			children = (
 				0E42CAD520EC7A7E0033CD03 /* BitBot.app */,
 				0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */,
-				DEBE8C192513B7FB00CF079A /* BitriseATV.app */,
+				DEBE8C192513B7FB00CF079A /* BitBotATV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1318,7 +1325,6 @@
 		DEBE8C1A2513B7FB00CF079A /* BitriseATV */ = {
 			isa = PBXGroup;
 			children = (
-				DED411292535CB2D00A711BC /* BitriseATV.entitlements */,
 				DEBE8C5D2514A7F400CF079A /* Common */,
 				DEBE8C432513BBA200CF079A /* Features */,
 				DEBE8C2D2513B82500CF079A /* Supporting Files */,
@@ -1492,9 +1498,9 @@
 			productReference = 0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DEBE8C182513B7FB00CF079A /* BitriseATV */ = {
+		DEBE8C182513B7FB00CF079A /* BitBotATV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitriseATV" */;
+			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */;
 			buildPhases = (
 				BAB9254BF29A3830BA3D7BB8 /* [CP] Check Pods Manifest.lock */,
 				DEBE8C152513B7FB00CF079A /* Sources */,
@@ -1505,9 +1511,9 @@
 			);
 			dependencies = (
 			);
-			name = BitriseATV;
+			name = BitBotATV;
 			productName = BitriseATV;
-			productReference = DEBE8C192513B7FB00CF079A /* BitriseATV.app */;
+			productReference = DEBE8C192513B7FB00CF079A /* BitBotATV.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1552,7 +1558,7 @@
 			targets = (
 				0E42CAD420EC7A7E0033CD03 /* BitBot */,
 				0E42CAEA20EC7A800033CD03 /* BitBotTests */,
-				DEBE8C182513B7FB00CF079A /* BitriseATV */,
+				DEBE8C182513B7FB00CF079A /* BitBotATV */,
 			);
 		};
 /* End PBXProject section */
@@ -2058,7 +2064,7 @@
 			baseConfigurationReference = F124CB0846A3F855B92A993A /* Pods-BitBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BitBotDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2092,7 +2098,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2110,7 +2116,7 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot MAS Profile";
 			};
 			name = Release;
 		};
@@ -2165,10 +2171,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = BitriseATV/BitriseATV.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = BitBotATVDebug.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
-				DEVELOPMENT_TEAM = RM2T974B84;
+				DEVELOPMENT_TEAM = AM5334753U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2176,8 +2183,9 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BitBot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV development";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
@@ -2195,9 +2203,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = BitriseATV/BitriseATV.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = BitBotATVRelease.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
+				DEVELOPMENT_TEAM = AM5334753U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2205,8 +2215,9 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BitriseATV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV AppStore";
 				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
@@ -2248,7 +2259,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitriseATV" */ = {
+		DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DEBE8C252513B7FD00CF079A /* Debug */,
