@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14838.16" systemVersion="19A471t" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" usedWithCloudKit="NO" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="BRApp" representedClassName="BRApp" syncable="YES" codeGenerationType="class">
         <attribute name="avatarURL" optional="YES" attributeType="String"/>
         <attribute name="buildToken" optional="YES" attributeType="String"/>
@@ -17,7 +17,7 @@
         <attribute name="status" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BTRAccount" inverseName="apps" inverseEntity="BTRAccount"/>
-        <relationship name="builds" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BRBuild" inverseName="app" inverseEntity="BRBuild"/>
+        <relationship name="builds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRBuild" inverseName="app" inverseEntity="BRBuild"/>
     </entity>
     <entity name="BRBuild" representedClassName="BRBuild" syncable="YES" codeGenerationType="class">
         <attribute name="abortReason" optional="YES" attributeType="String"/>
@@ -65,7 +65,7 @@
     <entity name="BRLogStep" representedClassName="BRLogStep" syncable="YES" codeGenerationType="class">
         <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BRLogLine" inverseName="step" inverseEntity="BRLogLine"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogLine" inverseName="step" inverseEntity="BRLogLine"/>
         <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="steps" inverseEntity="BRBuildLog"/>
     </entity>
     <entity name="BTRAccount" representedClassName="BTRAccount" syncable="YES" codeGenerationType="class">
@@ -75,14 +75,14 @@
         <attribute name="slug" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="BRApp" inverseName="account" inverseEntity="BRApp"/>
+        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRApp" inverseName="account" inverseEntity="BRApp"/>
     </entity>
     <elements>
-        <element name="BTRAccount" positionX="-536.609375" positionY="-83.33984375" width="128" height="148"/>
-        <element name="BRApp" positionX="-391.99609375" positionY="-47.59765625" width="128" height="300"/>
+        <element name="BRApp" positionX="-391.99609375" positionY="-47.59765625" width="128" height="298"/>
         <element name="BRBuild" positionX="-226.3125" positionY="-9.3984375" width="128" height="405"/>
         <element name="BRBuildLog" positionX="-36.48046875" positionY="259.98046875" width="128" height="163"/>
         <element name="BRLogLine" positionX="170.37109375" positionY="211.9140625" width="128" height="120"/>
-        <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="105"/>
+        <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="103"/>
+        <element name="BTRAccount" positionX="-536.609375" positionY="-83.33984375" width="128" height="148"/>
     </elements>
 </model>

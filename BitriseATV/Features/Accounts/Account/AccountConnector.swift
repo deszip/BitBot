@@ -17,6 +17,6 @@ struct AccountConnector: Connector {
                     userName: account.username ?? "",
                     email: account.email ?? "" ,
                     deleteAction: { graph.accounts.deleteAccount(withSlug: account.slug ?? "") },
-                    destination: { AppsConnector(apps: account.apps?.array as? [BRApp] ?? []) })
+                    destination: { AppsConnector(apps: Array(account.apps ?? [])) })
     }
 }
