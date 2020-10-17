@@ -120,6 +120,8 @@
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */; };
+		D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
+		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
 		D943B24B24EAF1AB00084C59 /* Proxima Nova Alt Bold.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
 		D943B24C24EAF1AB00084C59 /* Proxima Nova Alt Light.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		D943B24D24EAF1AB00084C59 /* Proxima Nova Alt Thin.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
@@ -487,6 +489,10 @@
 		7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseATV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.release.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.release.xcconfig"; sourceTree = "<group>"; };
 		A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.debug.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.debug.xcconfig"; sourceTree = "<group>"; };
+		D90BFB9F25372FF800DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVRelease.entitlements; sourceTree = "<group>"; };
+		D90BFBA52537388000DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		D90BFBA72537389F00DA473E /* BitBotATVDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVDebug.entitlements; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -605,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5FD61F5E120797737923475 /* libPods-BitBot.a in Frameworks */,
+				D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */,
+				D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +638,8 @@
 		0ABB74A886F68049AE2D5596 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D90BFBA52537388000DA473E /* CloudKit.framework */,
+				D90BFB9F25372FF800DA473E /* CloudKit.framework */,
 				4592E252F47089546A803FDB /* libPods-BitBot.a */,
 				6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */,
 				7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */,
@@ -653,6 +663,8 @@
 		0E42CACC20EC7A7E0033CD03 = {
 			isa = PBXGroup;
 			children = (
+				D90BFBA72537389F00DA473E /* BitBotATVDebug.entitlements */,
+				D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */,
 				0E42CAD720EC7A7E0033CD03 /* Bitrise */,
 				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
 				DEBE8C1A2513B7FB00CF079A /* BitriseATV */,
@@ -2052,7 +2064,7 @@
 			baseConfigurationReference = F124CB0846A3F855B92A993A /* Pods-BitBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BitBotDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -2086,7 +2098,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2104,7 +2116,7 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot MAS Profile";
 			};
 			name = Release;
 		};
@@ -2159,9 +2171,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = BitBotATVDebug.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
-				DEVELOPMENT_TEAM = RM2T974B84;
+				DEVELOPMENT_TEAM = AM5334753U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2169,8 +2183,9 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BitBot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV development";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
@@ -2188,8 +2203,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = BitBotATVRelease.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
+				DEVELOPMENT_TEAM = AM5334753U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2197,8 +2215,9 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.BitBot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV AppStore";
 				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
