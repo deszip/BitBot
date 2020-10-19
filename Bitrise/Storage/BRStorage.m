@@ -196,6 +196,7 @@
         [buildsInfo enumerateObjectsUsingBlock:^(BRBuildInfo *buildInfo, NSUInteger idx, BOOL *stop) {
             BRBuild *build = [EKManagedObjectMapper objectFromExternalRepresentation:buildInfo.rawResponse withMapping:[BRBuild objectMapping] inManagedObjectContext:self.context];
             build.app = apps[0];
+            build.createdAt = [NSDate date];
         }];
         result = [self saveContext:self.context error:error];
     } else {

@@ -26,6 +26,7 @@
         <attribute name="commitHash" optional="YES" attributeType="String"/>
         <attribute name="commitMessage" optional="YES" attributeType="String"/>
         <attribute name="commitURL" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="envPrepareFinishedTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="finishedTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="onHold" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
@@ -79,7 +80,7 @@
     </entity>
     <elements>
         <element name="BRApp" positionX="-391.99609375" positionY="-47.59765625" width="128" height="298"/>
-        <element name="BRBuild" positionX="-226.3125" positionY="-9.3984375" width="128" height="405"/>
+        <element name="BRBuild" positionX="-226.3125" positionY="-9.3984375" width="128" height="418"/>
         <element name="BRBuildLog" positionX="-36.48046875" positionY="259.98046875" width="128" height="163"/>
         <element name="BRLogLine" positionX="170.37109375" positionY="211.9140625" width="128" height="120"/>
         <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="103"/>

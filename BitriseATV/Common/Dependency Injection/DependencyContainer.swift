@@ -74,4 +74,8 @@ final class DependencyContainer {
     func appMetadataProvider() -> AppMetadataProvider {
         AppMetadataProvider()
     }
+    
+    func remoteStorageChangesObserver() -> RemoteStorageChangesObserver {
+        RemoteStorageChangesObserver()
+    }
 }

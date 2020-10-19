@@ -156,6 +156,7 @@
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
+		DE118155253C3E4900434A6F /* RemoteStorageChangesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE118154253C3E4900434A6F /* RemoteStorageChangesObserver.swift */; };
 		DE2A266825230CA100D5762E /* AccountsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266425230CA100D5762E /* AccountsState.swift */; };
 		DE2A266925230CA100D5762E /* AccountsNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266625230CA100D5762E /* AccountsNode.swift */; };
 		DE2A266A25230CA100D5762E /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2A266725230CA100D5762E /* Graph.swift */; };
@@ -540,6 +541,7 @@
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
 		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		DE0FE2E72527623F00C12804 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		DE118154253C3E4900434A6F /* RemoteStorageChangesObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageChangesObserver.swift; sourceTree = "<group>"; };
 		DE2A266425230CA100D5762E /* AccountsState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsState.swift; sourceTree = "<group>"; };
 		DE2A266625230CA100D5762E /* AccountsNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsNode.swift; sourceTree = "<group>"; };
 		DE2A266725230CA100D5762E /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -1211,6 +1213,7 @@
 				DE62688A252F4C75008A0F0B /* CommandsDispatcher.swift */,
 				DED4110F2534A27800A711BC /* SettingsProvider.swift */,
 				DED411232534BCFA00A711BC /* AppMetadataProvider.swift */,
+				DE118154253C3E4900434A6F /* RemoteStorageChangesObserver.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1841,6 +1844,7 @@
 				DE486637252458A400D5D80F /* BRGetAccountCommand.m in Sources */,
 				DE6C9133252216FD001B2332 /* Observer.swift in Sources */,
 				DEBE8C8C2514EF5400CF079A /* ProximaFontModifier.swift in Sources */,
+				DE118155253C3E4900434A6F /* RemoteStorageChangesObserver.swift in Sources */,
 				DE48660B25235FCB00D5D80F /* BRAccountsObserver+Dispatch.swift in Sources */,
 				DE6E3FD625343A6C00993BED /* SettingsConnector.swift in Sources */,
 				DE6CA106252CBCEE00287F5C /* BuildView.swift in Sources */,
