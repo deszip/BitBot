@@ -19,6 +19,7 @@ struct BitriseATVApp: App {
     let buildCommandsDispatcher: BuildCommandsDispatcher
     let commandObserver: BRObserver
     let settingsProvider: SettingsProvider
+    let remoteStorageChangesObserver: RemoteStorageChangesObserver
     
     init() {
         store = dependencyContainer.store()
@@ -36,6 +37,8 @@ struct BitriseATVApp: App {
         store.subscribe(observer: settingsProvider.asObserver)
         settingsProvider.load()
         dependencyContainer.appMetadataProvider().load(to: store)
+        remoteStorageChangesObserver = dependencyContainer.remoteStorageChangesObserver()
+        remoteStorageChangesObserver.setup()
     }
     
     var body: some Scene {
