@@ -10,7 +10,6 @@
 
 #import "BRAccountInfo.h"
 #import "BRAppInfo.h"
-#import "BRBuildInfo.h"
 #import "BRLogInfo.h"
 
 #import "BRAccountRequest.h"
@@ -19,6 +18,8 @@
 #import "BRAbortRequest.h"
 #import "BRRebuildRequest.h"
 #import "BRLogsRequest.h"
+
+@class BRBuildInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 

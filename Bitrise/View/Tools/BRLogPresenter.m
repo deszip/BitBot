@@ -36,6 +36,7 @@
     return self;
 }
 
+#if TARGET_OS_OSX
 - (NSAttributedString *)decoratedLine:(NSString *)line {
     NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
     [style setLineSpacing:5.0];
@@ -45,5 +46,6 @@
     
     return attrLine;
 }
+#endif
 
 @end

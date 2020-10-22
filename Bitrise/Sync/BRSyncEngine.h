@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BRBitriseAPI.h"
+@class BRBitriseAPI;
 #import "BRStorage.h"
 #import "BRSyncResult.h"
 

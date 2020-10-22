@@ -10,6 +10,7 @@
 
 #import "BRAnalytics.h"
 #import "BRAbortRequest.h"
+#import "BRBuild+CoreDataClass.h"
 
 @interface BRAbortCommand ()
 

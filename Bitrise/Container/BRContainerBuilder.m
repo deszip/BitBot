@@ -17,15 +17,24 @@
 }
 
 - (NSPersistentContainer *)buildContainerOfType:(NSString *)type {
-    NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
     NSPersistentStoreDescription *storeDescription = [NSPersistentStoreDescription new];
-    NSURL *appsURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask][0];
-    NSURL *appDirectoryURL = [appsURL URLByAppendingPathComponent:@"/Bitrise"];
+#if TARGET_OS_OSX
+    NSSearchPathDirectory directory = NSApplicationSupportDirectory;
+    NSPersistentContainer *container = [NSPersistentContainer persistentContainerWithName:@"bitrise"];
+#else
+    NSPersistentCloudKitContainer *container = [NSPersistentCloudKitContainer persistentContainerWithName:@"bitrise"];
+    storeDescription.cloudKitContainerOptions = [[NSPersistentCloudKitContainerOptions alloc] initWithContainerIdentifier:@"iCloud.com.bitbot"];
+    storeDescription.cloudKitContainerOptions.databaseScope = CKDatabaseScopePrivate;
+    [storeDescription setOption:@YES forKey:NSPersistentStoreRemoteChangeNotificationPostOptionKey];
+    NSSearchPathDirectory directory = NSCachesDirectory;
+#endif
+    NSURL *appsURL = [[NSFileManager defaultManager] URLsForDirectory:directory inDomains:NSUserDomainMask][0];
+    NSURL *appDirectoryURL = [appsURL URLByAppendingPathComponent:@"Bitrise"];
     
     BOOL isDir;
     if (![[NSFileManager defaultManager] fileExistsAtPath:appDirectoryURL.path isDirectory:&isDir]) {
         NSError *error;
-        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:NO attributes:nil error:&error];
+        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:YES attributes:nil error:&error];
         if (!result) {
             BRLog(LL_WARN, LL_STORAGE, @"Failed to create app directory: %@", error);
             return nil;

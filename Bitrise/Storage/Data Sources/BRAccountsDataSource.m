@@ -68,7 +68,8 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     if ([item isKindOfClass:[BTRAccount class]]) {
-        return [[(BTRAccount *)item apps] objectAtIndex:index];
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+        return [((BTRAccount *)item).apps sortedArrayUsingDescriptors:@[sortDescriptor]][index];
     }
     
     return [self.accountsFRC.sections[0] objects][index];

@@ -10,6 +10,7 @@
 
 #import "BRAnalytics.h"
 #import "BRRebuildRequest.h"
+#import "BRBuild+CoreDataClass.h"
 
 @interface BRRebuildCommand ()
 

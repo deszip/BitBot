@@ -11,7 +11,8 @@
 
 #import "BRAccountInfo.h"
 #import "BRAppInfo.h"
-#import "BRBuildInfo.h"
+@class BRBuildInfo;
+@class BRBuildLog;
 
 NS_ASSUME_NONNULL_BEGIN
 

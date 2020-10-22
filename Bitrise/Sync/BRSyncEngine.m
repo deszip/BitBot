@@ -11,6 +11,7 @@
 #import "ASQueue.h"
 #import "BRSyncOperation.h"
 #import "BRAddAccountOperation.h"
+#import "BRBitriseAPI.h"
 
 @interface BRSyncEngine ()
 

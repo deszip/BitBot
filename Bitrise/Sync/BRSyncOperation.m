@@ -10,13 +10,13 @@
 
 #import "BRLogger.h"
 
-#import "BRBuildStateInfo.h"
 #import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
 #import "BRSyncDiff.h"
 
 #import "BRAppsRequest.h"
 #import "BRBuildsRequest.h"
+#import "BRBuildInfo.h"
 
 @interface BRSyncOperation ()
 

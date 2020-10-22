@@ -6,10 +6,10 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
-
+#import "BitriseCompat.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
