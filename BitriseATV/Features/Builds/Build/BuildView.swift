@@ -33,7 +33,7 @@ struct BuildView: View {
                 ZStack {
                     Rectangle()
                         .fill(buildColor)
-                        .frame(width: 75, height: 200)
+                        .frame(width: 100)
                         .cornerRadius(8)
                     Image(buildIconImageName)
                         .resizable()
@@ -42,7 +42,8 @@ struct BuildView: View {
                         .rotationEffect(Angle.degrees(shouldRotating ? rotation : 0))
                         .offset(y: -30)
                 }
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading,
+                       spacing: 0) {
                     HStack {
                         Text(userName)
                             .foregroundColor(.BBBuildTintColor)
@@ -70,6 +71,8 @@ struct BuildView: View {
                     }
                 }
             }
+            .padding(.horizontal, 15)
+            .padding(.vertical, 25)
         })
         .contextMenu {
             Button("Abort build".localized(), action: abortAction)

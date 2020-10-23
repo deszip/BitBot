@@ -21,6 +21,7 @@ struct ImageText: View {
                 .frame(width: 25, height: 25)
                 .colorMultiply(.BBBuildTintColor)
             Text(text)
+                .lineLimit(1)
                 .foregroundColor(.BBBuildTintColor)
                 .proximaFont(size: 42, weight: .regular)
         }
