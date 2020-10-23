@@ -34,7 +34,7 @@ struct BuildView: View {
                     Rectangle()
                         .fill(buildColor)
                         .frame(width: 100)
-                        .cornerRadius(8)
+                        .cornerRadius(16)
                     Image(buildIconImageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
