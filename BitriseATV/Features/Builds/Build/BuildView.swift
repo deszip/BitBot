@@ -33,7 +33,7 @@ struct BuildView: View {
                 ZStack {
                     Rectangle()
                         .fill(buildColor)
-                        .frame(width: 100)
+                        .frame(width: 76)
                         .cornerRadius(16)
                     Image(buildIconImageName)
                         .resizable()
