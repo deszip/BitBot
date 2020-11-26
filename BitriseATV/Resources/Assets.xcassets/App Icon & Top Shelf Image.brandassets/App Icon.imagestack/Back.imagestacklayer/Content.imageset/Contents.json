@@ -1,10 +1,27 @@
 {
   "images" : [
     {
+      "filename" : "Layer 0.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Layer 0@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Layer 0@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Layer 0-1.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
+      "filename" : "Layer 0@2x-1.png",
       "idiom" : "tv",
       "scale" : "2x"
     }

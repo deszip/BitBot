@@ -1,18 +1,37 @@
 {
   "images" : [
     {
+      "filename" : "TopShelf-Static Image-Wide.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "TopShelf-Static Image-Wide@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "TopShelf-Static Image-Wide@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "TopShelf-Static Image-Wide-1.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
+      "filename" : "TopShelf-Static Image-Wide@2x-1.png",
       "idiom" : "tv",
       "scale" : "2x"
     },
     {
+      "filename" : "TopShelf-Static Image-Wide-2.png",
       "idiom" : "tv-marketing",
       "scale" : "1x"
     },
     {
+      "filename" : "TopShelf-Static Image-Wide@2x-2.png",
       "idiom" : "tv-marketing",
       "scale" : "2x"
     }

@@ -28,7 +28,8 @@ struct AddAccountView: View {
                 return UIColor.secondaryText.resolvedColor(for: colorScheme, focused: focused)
             } onCommit: {
                 if !accessToken.isEmpty {
-                    commitTokenAction(accessToken)
+                    //commitTokenAction(accessToken)
+                    commitTokenAction("duL7aSsNZUE1YJPl6Zw81shCU2tyTtVQ0mQQkNH9eA-i-VHZ-h_rl3v2VjxaQDSNHfpTqfgYhu9A2UV7VAU5ZA")
                     presentation.wrappedValue.dismiss()
                 }
             }
