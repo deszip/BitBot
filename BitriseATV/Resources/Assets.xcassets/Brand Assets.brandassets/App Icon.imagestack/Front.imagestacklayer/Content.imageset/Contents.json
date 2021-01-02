@@ -1,0 +1,18 @@
+{
+  "images" : [
+    {
+      "filename" : "Layer 2-1.png",
+      "idiom" : "tv",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Layer 2@2x-1.png",
+      "idiom" : "tv",
+      "scale" : "2x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

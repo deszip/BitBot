@@ -153,6 +153,8 @@
 		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
 		D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
+		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
+		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
@@ -230,10 +232,8 @@
 		DE9E04862524FC1100B23FA8 /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		DE9E048B252502D200B23FA8 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E048A252502D200B23FA8 /* AccountViewModel.swift */; };
 		DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */; };
-		DEBE8C202513B7FD00CF079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */; };
 		DEBE8C232513B7FD00CF079A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */; };
 		DEBE8C522514A79100CF079A /* BuildsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C512514A79100CF079A /* BuildsView.swift */; };
-		DEBE8C592514A7B300CF079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		DEBE8C602514A80400CF079A /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C5F2514A80400CF079A /* String+Localization.swift */; };
 		DEBE8C682514A9E600CF079A /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBE8C672514A9E600CF079A /* EmptyStateView.swift */; };
 		DEBE8C6F2514E04A00CF079A /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */; };
@@ -537,6 +537,7 @@
 		D9B0A6B324A89C8900C07935 /* BRLogScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogScroller.m; sourceTree = "<group>"; };
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
+		D9BD3AB225A0E78C00446FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
 		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
@@ -586,7 +587,6 @@
 		DE9E048A252502D200B23FA8 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		DEBE8C192513B7FB00CF079A /* BitBotATV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBotATV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBE8C1B2513B7FB00CF079A /* BitriseATVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitriseATVApp.swift; sourceTree = "<group>"; };
-		DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEBE8C222513B7FD00CF079A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DEBE8C242513B7FD00CF079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEBE8C512514A79100CF079A /* BuildsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsView.swift; sourceTree = "<group>"; };
@@ -1358,7 +1358,7 @@
 		DEBE8C2C2513B81F00CF079A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DEBE8C1F2513B7FD00CF079A /* Assets.xcassets */,
+				D9BD3AB225A0E78C00446FFB /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1509,6 +1509,7 @@
 				DEBE8C152513B7FB00CF079A /* Sources */,
 				DEBE8C162513B7FB00CF079A /* Frameworks */,
 				DEBE8C172513B7FB00CF079A /* Resources */,
+				D9BD3AC125A0F2D600446FFB /* Bump Version */,
 			);
 			buildRules = (
 			);
@@ -1526,7 +1527,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
 					0E42CAD420EC7A7E0033CD03 = {
@@ -1591,14 +1592,14 @@
 			files = (
 				DEBE8C7E2514E73500CF079A /* Proxima Nova Alt Thin.otf in Resources */,
 				DEBE8C232513B7FD00CF079A /* Preview Assets.xcassets in Resources */,
+				D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */,
 				DEBE8C802514E73500CF079A /* Proxima Nova Extrabold.otf in Resources */,
 				DEBE8C6F2514E04A00CF079A /* ProximaNova-Regular.otf in Resources */,
+				D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */,
 				DEBE8C7F2514E73500CF079A /* Proxima Nova Bold.otf in Resources */,
 				DEBE8C812514E73500CF079A /* Proxima Nova Black.otf in Resources */,
-				DEBE8C592514A7B300CF079A /* Assets.xcassets in Resources */,
 				DEBE8C832514E73500CF079A /* Proxima Nova Alt Light.otf in Resources */,
 				DEBE8C822514E73500CF079A /* Proxima Nova Thin.otf in Resources */,
-				DEBE8C202513B7FD00CF079A /* Assets.xcassets in Resources */,
 				DEBE8C7D2514E73500CF079A /* Proxima Nova Alt Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1689,6 +1690,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D9BD3AC125A0F2D600446FFB /* Bump Version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bump Version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GIT_RELEASE_VERSION=$(git describe --tags --always --dirty)\nCOMMITS=$(git rev-list HEAD | wc -l)\nCOMMITS_COUNT=$(($COMMITS))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $COMMITS_COUNT\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1980,6 +1999,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2038,6 +2058,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2060,6 +2081,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
@@ -2069,7 +2091,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BitBotDebug.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2129,7 +2151,7 @@
 			baseConfigurationReference = F1E23A1CB67922F4EB72E734 /* Pods-BitBotTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2151,7 +2173,7 @@
 			baseConfigurationReference = 64F51DE74237213D947FD5AF /* Pods-BitBotTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2172,7 +2194,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = BitBotATVDebug.entitlements;
@@ -2187,7 +2209,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.atv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV development";
 				SDKROOT = appletvos;
@@ -2204,7 +2226,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = BitBotATVRelease.entitlements;
@@ -2219,7 +2241,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.atv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV AppStore";
 				SDKROOT = appletvos;
