@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "69B0824A-458C-43EA-A34F-D21360134EF0",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Bitrise.xcodeproj",
+        "identifier" : "D91BD9C225A1BE7000EF8D66",
+        "name" : "BitBotATVTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -122,6 +122,7 @@
 		8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */; };
 		D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
 		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
+		D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */; };
 		D943B24B24EAF1AB00084C59 /* Proxima Nova Alt Bold.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
 		D943B24C24EAF1AB00084C59 /* Proxima Nova Alt Light.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		D943B24D24EAF1AB00084C59 /* Proxima Nova Alt Thin.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
@@ -273,6 +274,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0E42CAD420EC7A7E0033CD03;
 			remoteInfo = Bitrise;
+		};
+		D91BD9C825A1BE7000EF8D66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DEBE8C182513B7FB00CF079A;
+			remoteInfo = BitBotATV;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -494,6 +502,11 @@
 		D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVRelease.entitlements; sourceTree = "<group>"; };
 		D90BFBA52537388000DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		D90BFBA72537389F00DA473E /* BitBotATVDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVDebug.entitlements; sourceTree = "<group>"; };
+		D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotATVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBotATVTests.swift; sourceTree = "<group>"; };
+		D91BD9C725A1BE7000EF8D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
+		D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BitBotATV.xctestplan; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -625,6 +638,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D91BD9C025A1BE7000EF8D66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEBE8C162513B7FB00CF079A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,6 +690,7 @@
 				0E42CAD720EC7A7E0033CD03 /* Bitrise */,
 				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
 				DEBE8C1A2513B7FB00CF079A /* BitriseATV */,
+				D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */,
 				0E42CAD620EC7A7E0033CD03 /* Products */,
 				4983FB838EF9931C351A2EAB /* Pods */,
 				0ABB74A886F68049AE2D5596 /* Frameworks */,
@@ -682,6 +703,7 @@
 				0E42CAD520EC7A7E0033CD03 /* BitBot.app */,
 				0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */,
 				DEBE8C192513B7FB00CF079A /* BitBotATV.app */,
+				D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -689,6 +711,8 @@
 		0E42CAD720EC7A7E0033CD03 /* Bitrise */ = {
 			isa = PBXGroup;
 			children = (
+				D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */,
+				D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */,
 				0E42CAE320EC7A800033CD03 /* Info.plist */,
 				0E42CAE420EC7A800033CD03 /* main.m */,
 				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
@@ -1121,6 +1145,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */ = {
+			isa = PBXGroup;
+			children = (
+				D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */,
+				D91BD9C725A1BE7000EF8D66 /* Info.plist */,
+			);
+			path = BitBotATVTests;
+			sourceTree = "<group>";
+		};
 		D95F56EE246FFDE300DF2C50 /* Proxima */ = {
 			isa = PBXGroup;
 			children = (
@@ -1501,6 +1534,24 @@
 			productReference = 0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D91BD9C225A1BE7000EF8D66 /* BitBotATVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D91BD9CA25A1BE7000EF8D66 /* Build configuration list for PBXNativeTarget "BitBotATVTests" */;
+			buildPhases = (
+				D91BD9BF25A1BE7000EF8D66 /* Sources */,
+				D91BD9C025A1BE7000EF8D66 /* Frameworks */,
+				D91BD9C125A1BE7000EF8D66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D91BD9C925A1BE7000EF8D66 /* PBXTargetDependency */,
+			);
+			name = BitBotATVTests;
+			productName = BitBotATVTests;
+			productReference = D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DEBE8C182513B7FB00CF079A /* BitBotATV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */;
@@ -1526,7 +1577,7 @@
 		0E42CACD20EC7A7E0033CD03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
@@ -1541,6 +1592,10 @@
 					0E42CAEA20EC7A800033CD03 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = 0E42CAD420EC7A7E0033CD03;
+					};
+					D91BD9C225A1BE7000EF8D66 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = DEBE8C182513B7FB00CF079A;
 					};
 					DEBE8C182513B7FB00CF079A = {
 						CreatedOnToolsVersion = 12.0;
@@ -1563,6 +1618,7 @@
 				0E42CAD420EC7A7E0033CD03 /* BitBot */,
 				0E42CAEA20EC7A800033CD03 /* BitBotTests */,
 				DEBE8C182513B7FB00CF079A /* BitBotATV */,
+				D91BD9C225A1BE7000EF8D66 /* BitBotATVTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1583,6 +1639,13 @@
 			files = (
 				0EAB9DCC2222CFED00A21D23 /* LogResponse_10chunks_finished.json in Resources */,
 				0EAB9DCF2222D1D700A21D23 /* LogResponse_10chunks_running.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D91BD9C125A1BE7000EF8D66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1846,6 +1909,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D91BD9BF25A1BE7000EF8D66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEBE8C152513B7FB00CF079A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1958,6 +2029,11 @@
 			isa = PBXTargetDependency;
 			target = 0E42CAD420EC7A7E0033CD03 /* BitBot */;
 			targetProxy = 0E42CAEC20EC7A800033CD03 /* PBXContainerItemProxy */;
+		};
+		D91BD9C925A1BE7000EF8D66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DEBE8C182513B7FB00CF079A /* BitBotATV */;
+			targetProxy = D91BD9C825A1BE7000EF8D66 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2190,6 +2266,60 @@
 			};
 			name = Release;
 		};
+		D91BD9CB25A1BE7000EF8D66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = AM5334753U;
+				INFOPLIST_FILE = BitBotATVTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotATVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBotATV.app/BitBotATV";
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		D91BD9CC25A1BE7000EF8D66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = AM5334753U;
+				INFOPLIST_FILE = BitBotATVTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotATVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBotATV.app/BitBotATV";
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		DEBE8C252513B7FD00CF079A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */;
@@ -2281,6 +2411,15 @@
 			buildConfigurations = (
 				0E42CAF820EC7A800033CD03 /* Debug */,
 				0E42CAF920EC7A800033CD03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D91BD9CA25A1BE7000EF8D66 /* Build configuration list for PBXNativeTarget "BitBotATVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D91BD9CB25A1BE7000EF8D66 /* Debug */,
+				D91BD9CC25A1BE7000EF8D66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
