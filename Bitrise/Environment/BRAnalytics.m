@@ -12,6 +12,9 @@
 
 static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailabilityKey";
 
+static NSString * const kBRMixpanelOSXToken = @"ae64ff4c78b73e7f945f63aa02677fbb";
+static NSString * const kBRMixpanelATVToken = @"4d209b738bd7dc6965ad1325080f83f1";
+
 typedef NSString BRAnalyticsEvent;
 
 static BRAnalyticsEvent * const kQuitAppEvent = @"app_quit";
@@ -59,7 +62,11 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 }
 
 - (void)start {
-    [Mixpanel sharedInstanceWithToken:@"ae64ff4c78b73e7f945f63aa02677fbb"];
+#if TARGET_OS_OSX
+    [Mixpanel sharedInstanceWithToken:kBRMixpanelOSXToken];
+#else
+    [Mixpanel sharedInstanceWithToken:kBRMixpanelATVToken];
+#endif
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kBRAnalyticsAvailabilityKey] == nil) {
         [[BRAnalytics analytics] setEnabled:YES];
