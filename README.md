@@ -7,10 +7,14 @@ BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for
 
 BitBot was built to work for my current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Feel free to drop me a line if you found one or need a feature.
 
+BitBot also has version for Apple TV which makes Bitrise first CI in the world natively available on TV :)
+If you have a TV in the offcce or at home and it's switched off while you working - give it a try.
+BitBot TV available for free in [AppStore](https://apps.apple.com/us/app/bitbot-for-tv/id1545666168).
+
 BitBot and I are not associated or affiliated with Bitrise in any way.
 
 ### Install
-Get BitBot from the [AppStore](https://apps.apple.com/ua/app/bitbot/id1469773841?l=ru&mt=12).
+Get BitBot from the AppStore: [macOS](https://apps.apple.com/ua/app/bitbot/id1469773841?l=ru&mt=12), [tvOS](https://apps.apple.com/us/app/bitbot-for-tv/id1545666168)
 
 This will give you automated updates which is handy.
 
