@@ -73,6 +73,7 @@
         <attribute name="avatarURL" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="emailUnconfirmed" optional="YES" attributeType="String"/>
+        <attribute name="enabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="slug" optional="YES" attributeType="String"/>
         <attribute name="token" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
@@ -84,6 +85,6 @@
         <element name="BRBuildLog" positionX="-36.48046875" positionY="259.98046875" width="128" height="163"/>
         <element name="BRLogLine" positionX="170.37109375" positionY="211.9140625" width="128" height="120"/>
         <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="103"/>
-        <element name="BTRAccount" positionX="-536.609375" positionY="-83.33984375" width="128" height="134"/>
+        <element name="BTRAccount" positionX="-536.609375" positionY="-83.33984375" width="128" height="149"/>
     </elements>
 </model>

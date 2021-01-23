@@ -505,7 +505,7 @@
 		D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotATVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBotATVTests.swift; sourceTree = "<group>"; };
 		D91BD9C725A1BE7000EF8D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
+		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
 		D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BitBotATV.xctestplan; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -527,6 +527,7 @@
 		D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
 		D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
 		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
+		D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise_1.0.2.xcdatamodel; sourceTree = "<group>"; };
 		D982D8A4249E157C0099F0A5 /* BREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BREmptyView.h; sourceTree = "<group>"; };
 		D982D8A5249E157C0099F0A5 /* BREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BREmptyView.m; sourceTree = "<group>"; };
 		D982D8A7249E7ED70099F0A5 /* BRAccountsObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsObserver.h; sourceTree = "<group>"; };
@@ -2439,9 +2440,10 @@
 		0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */,
 				0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */,
 			);
-			currentVersion = 0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */;
+			currentVersion = D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */;
 			path = bitrise.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

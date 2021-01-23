@@ -17,6 +17,8 @@
     
     [self.accountNameLabel setFont:[BRStyleSheet accountListFont]];
     [self.accountNameLabel setTextColor:[BRStyleSheet secondaryTextColor]];
+    [self.noticeLabel setFont:[BRStyleSheet accountListFont]];
+    [self.noticeLabel setTextColor:[BRStyleSheet greenColor]];
     [self.emailLabel setFont:[BRStyleSheet accountListFont]];
     [self.emailLabel setTextColor:[BRStyleSheet secondaryTextColor]];
     

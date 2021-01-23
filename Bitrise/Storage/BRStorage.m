@@ -72,13 +72,23 @@
 - (BOOL)removeAccount:(NSString *)slug error:(NSError * __autoreleasing *)error {
     NSFetchRequest *request = [BTRAccount fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
-    
+
     NSError *requestError = nil;
     NSArray *accounts = [self.context executeFetchRequest:request error:&requestError];
     if (accounts.count > 0) {
         [accounts enumerateObjectsUsingBlock:^(BTRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
             [self.context deleteObject:nextAccount];
         }];
+        return [self saveContext:self.context error:error];
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)updateAccountStatus:(BOOL)status slug:(NSString *)slug error:(NSError * __autoreleasing *)error {
+    BTRAccount *account = [self fetchAccount:slug error:error];
+    if (account) {
+        account.enabled = status;
         return [self saveContext:self.context error:error];
     } else {
         return NO;
@@ -205,6 +215,20 @@
     }
     
     return result;
+}
+
+#pragma mark - Accessors -
+
+- (BTRAccount *)fetchAccount:(NSString *)slug error:(NSError * __autoreleasing *)error {
+    NSFetchRequest *request = [BTRAccount fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"slug = %@", slug];
+    
+    NSArray *accounts = [self.context executeFetchRequest:request error:error];
+    if (accounts.count > 0) {
+        return accounts.firstObject;
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - Logs -

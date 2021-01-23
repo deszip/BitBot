@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1674,14 +1674,35 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woq-MO-55P">
                                                                                                 <rect key="frame" x="50" y="2" width="356" height="36"/>
                                                                                                 <subviews>
-                                                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="13l-bF-KnQ">
-                                                                                                        <rect key="frame" x="-2" y="18" width="65" height="18"/>
-                                                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Account 1" id="TRk-Vw-pbT">
-                                                                                                            <font key="font" size="13" name="AvenirNext-Regular"/>
-                                                                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                                                        </textFieldCell>
-                                                                                                    </textField>
+                                                                                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hi6-YZ-s9n">
+                                                                                                        <rect key="frame" x="0.0" y="18" width="356" height="18"/>
+                                                                                                        <subviews>
+                                                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="13l-bF-KnQ">
+                                                                                                                <rect key="frame" x="-2" y="0.0" width="235" height="18"/>
+                                                                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Account 1" id="TRk-Vw-pbT">
+                                                                                                                    <font key="font" size="13" name="AvenirNext-Regular"/>
+                                                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                                                </textFieldCell>
+                                                                                                            </textField>
+                                                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s95-6L-FES">
+                                                                                                                <rect key="frame" x="229" y="2" width="129" height="16"/>
+                                                                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Label" id="ul7-Xw-jaW">
+                                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                                                </textFieldCell>
+                                                                                                            </textField>
+                                                                                                        </subviews>
+                                                                                                        <visibilityPriorities>
+                                                                                                            <integer value="1000"/>
+                                                                                                            <integer value="1000"/>
+                                                                                                        </visibilityPriorities>
+                                                                                                        <customSpacing>
+                                                                                                            <real value="3.4028234663852886e+38"/>
+                                                                                                            <real value="3.4028234663852886e+38"/>
+                                                                                                        </customSpacing>
+                                                                                                    </stackView>
                                                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GU7-k4-1ZL">
                                                                                                         <rect key="frame" x="-2" y="0.0" width="37" height="18"/>
                                                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Email" id="Ufo-Su-mLN">
@@ -1691,6 +1712,10 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                                         </textFieldCell>
                                                                                                     </textField>
                                                                                                 </subviews>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="trailing" secondItem="hi6-YZ-s9n" secondAttribute="trailing" id="XFO-la-U8t"/>
+                                                                                                    <constraint firstItem="hi6-YZ-s9n" firstAttribute="leading" secondItem="Woq-MO-55P" secondAttribute="leading" id="oGU-Sp-Ksp"/>
+                                                                                                </constraints>
                                                                                                 <visibilityPriorities>
                                                                                                     <integer value="1000"/>
                                                                                                     <integer value="1000"/>
@@ -1720,6 +1745,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                     <outlet property="accountNameLabel" destination="13l-bF-KnQ" id="lkq-0k-rix"/>
                                                                                     <outlet property="avatarImageView" destination="JEN-TZ-OAZ" id="lmL-9a-JFy"/>
                                                                                     <outlet property="emailLabel" destination="GU7-k4-1ZL" id="AWm-7S-p5Z"/>
+                                                                                    <outlet property="noticeLabel" destination="s95-6L-FES" id="k0s-B1-xFQ"/>
                                                                                 </connections>
                                                                             </tableCellView>
                                                                             <tableCellView identifier="BRManagingAppCellView" id="3Ds-cI-GkA" customClass="BRManagingAppCellView">
@@ -1818,7 +1844,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="55" height="25"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXC-fe-QRP">
-                                                            <rect key="frame" x="0.0" y="-2" width="25.5" height="29"/>
+                                                            <rect key="frame" x="0.0" y="-1.5" width="25.5" height="29"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="yXC-fe-QRP" secondAttribute="height" multiplier="1:1" id="kzN-hS-lda"/>
                                                             </constraints>
