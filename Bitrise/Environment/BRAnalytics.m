@@ -9,6 +9,7 @@
 #import "BRAnalytics.h"
 
 #import <Mixpanel/Mixpanel.h>
+@import TelemetryClient;
 
 static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailabilityKey";
 
@@ -64,6 +65,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)start {
 #if TARGET_OS_OSX
     [Mixpanel sharedInstanceWithToken:kBRMixpanelOSXToken];
+    
 #else
     [Mixpanel sharedInstanceWithToken:kBRMixpanelATVToken];
 #endif

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -156,6 +156,7 @@
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
 		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
+		D9CBE9DC2612753900E8780D /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = D9CBE9DB2612753900E8780D /* TelemetryClient */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
@@ -505,7 +506,7 @@
 		D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotATVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBotATVTests.swift; sourceTree = "<group>"; };
 		D91BD9C725A1BE7000EF8D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
+		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
 		D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BitBotATV.xctestplan; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -626,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5FD61F5E120797737923475 /* libPods-BitBot.a in Frameworks */,
+				D9CBE9DC2612753900E8780D /* TelemetryClient in Frameworks */,
 				D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1511,6 +1513,9 @@
 			dependencies = (
 			);
 			name = BitBot;
+			packageProductDependencies = (
+				D9CBE9DB2612753900E8780D /* TelemetryClient */,
+			);
 			productName = Bitrise;
 			productReference = 0E42CAD520EC7A7E0033CD03 /* BitBot.app */;
 			productType = "com.apple.product-type.application";
@@ -1611,6 +1616,9 @@
 				Base,
 			);
 			mainGroup = 0E42CACC20EC7A7E0033CD03;
+			packageReferences = (
+				D9CBE9DA2612753900E8780D /* XCRemoteSwiftPackageReference "SwiftClient" */,
+			);
 			productRefGroup = 0E42CAD620EC7A7E0033CD03 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2167,7 +2175,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BitBotDebug.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2190,7 +2198,7 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot development";
 			};
 			name = Debug;
 		};
@@ -2434,6 +2442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D9CBE9DA2612753900E8780D /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppTelemetry/SwiftClient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9CBE9DB2612753900E8780D /* TelemetryClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9CBE9DA2612753900E8780D /* XCRemoteSwiftPackageReference "SwiftClient" */;
+			productName = TelemetryClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */ = {
