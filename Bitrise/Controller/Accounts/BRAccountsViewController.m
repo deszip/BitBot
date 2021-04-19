@@ -115,7 +115,11 @@
                     
                 case BRKeyRequestContextTypeAccount: {
                     BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithSyncEngine:self.syncEngine token:input];
-                    [command execute:nil];
+                    [command execute:^(BOOL result, NSError *error) {
+                        if (result) {
+                            [self.outlineView reloadData];
+                        }
+                    }];
                     break;
                 }
                     

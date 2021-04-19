@@ -1511,15 +1511,15 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-Pg-oCd">
                                                             <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        <size key="minSize" width="563" height="342"/>
+                                                                        <size key="minSize" width="548" height="342"/>
                                                                         <size key="maxSize" width="563" height="10000000"/>
                                                                         <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                     </textView>
@@ -1530,7 +1530,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
-                                                                <rect key="frame" x="547" y="0.0" width="16" height="342"/>
+                                                                <rect key="frame" x="548" y="0.0" width="15" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                         </scrollView>
@@ -1661,7 +1661,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgT-nU-yrl">
-                                                                                        <rect key="frame" x="30" y="5" width="406" height="40"/>
+                                                                                        <rect key="frame" x="30" y="5" width="396" height="40"/>
                                                                                         <subviews>
                                                                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JEN-TZ-OAZ">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -1671,24 +1671,24 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                                 </constraints>
                                                                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="2oX-Xq-MJg"/>
                                                                                             </imageView>
-                                                                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woq-MO-55P">
-                                                                                                <rect key="frame" x="50" y="2" width="356" height="36"/>
+                                                                                            <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woq-MO-55P">
+                                                                                                <rect key="frame" x="50" y="2" width="346" height="36"/>
                                                                                                 <subviews>
-                                                                                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hi6-YZ-s9n">
-                                                                                                        <rect key="frame" x="0.0" y="18" width="356" height="18"/>
+                                                                                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hi6-YZ-s9n">
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="173" height="36"/>
                                                                                                         <subviews>
                                                                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="13l-bF-KnQ">
-                                                                                                                <rect key="frame" x="-2" y="0.0" width="235" height="18"/>
+                                                                                                                <rect key="frame" x="-2" y="18" width="65" height="18"/>
                                                                                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Account 1" id="TRk-Vw-pbT">
                                                                                                                     <font key="font" size="13" name="AvenirNext-Regular"/>
                                                                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 </textFieldCell>
                                                                                                             </textField>
-                                                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s95-6L-FES">
-                                                                                                                <rect key="frame" x="229" y="2" width="129" height="16"/>
-                                                                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Label" id="ul7-Xw-jaW">
-                                                                                                                    <font key="font" metaFont="system"/>
+                                                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GU7-k4-1ZL">
+                                                                                                                <rect key="frame" x="-2" y="0.0" width="37" height="18"/>
+                                                                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Email" id="Ufo-Su-mLN">
+                                                                                                                    <font key="font" size="13" name="AvenirNext-Regular"/>
                                                                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 </textFieldCell>
@@ -1703,17 +1703,17 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                                             <real value="3.4028234663852886e+38"/>
                                                                                                         </customSpacing>
                                                                                                     </stackView>
-                                                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GU7-k4-1ZL">
-                                                                                                        <rect key="frame" x="-2" y="0.0" width="37" height="18"/>
-                                                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Email" id="Ufo-Su-mLN">
-                                                                                                            <font key="font" size="13" name="AvenirNext-Regular"/>
+                                                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s95-6L-FES">
+                                                                                                        <rect key="frame" x="171" y="10" width="177" height="16"/>
+                                                                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="right" title="Label" id="ul7-Xw-jaW">
+                                                                                                            <font key="font" metaFont="system"/>
                                                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                         </textFieldCell>
                                                                                                     </textField>
                                                                                                 </subviews>
                                                                                                 <constraints>
-                                                                                                    <constraint firstAttribute="trailing" secondItem="hi6-YZ-s9n" secondAttribute="trailing" id="XFO-la-U8t"/>
+                                                                                                    <constraint firstAttribute="trailing" secondItem="s95-6L-FES" secondAttribute="trailing" id="Bi9-cQ-eeQ"/>
                                                                                                     <constraint firstItem="hi6-YZ-s9n" firstAttribute="leading" secondItem="Woq-MO-55P" secondAttribute="leading" id="oGU-Sp-Ksp"/>
                                                                                                 </constraints>
                                                                                                 <visibilityPriorities>
@@ -1737,7 +1737,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                                     </stackView>
                                                                                 </subviews>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="trailing" secondItem="zgT-nU-yrl" secondAttribute="trailing" constant="10" id="EuZ-5A-h1g"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="zgT-nU-yrl" secondAttribute="trailing" constant="20" id="EuZ-5A-h1g"/>
                                                                                     <constraint firstItem="zgT-nU-yrl" firstAttribute="centerY" secondItem="yp2-Cc-eu4" secondAttribute="centerY" id="T4A-Tp-TIM"/>
                                                                                     <constraint firstItem="zgT-nU-yrl" firstAttribute="leading" secondItem="yp2-Cc-eu4" secondAttribute="leading" constant="30" id="u30-rG-8QG"/>
                                                                                 </constraints>
