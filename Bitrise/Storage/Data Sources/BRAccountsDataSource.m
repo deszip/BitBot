@@ -124,7 +124,7 @@
         } else {
             cell.avatarImageView.alphaValue = 0.3;
             [cell.noticeLabel setHidden:NO];
-            [cell.noticeLabel setStringValue:@"Failed to sync"];
+            [cell.noticeLabel setStringValue:@"Sync failed"];
         }
         
         return cell;
