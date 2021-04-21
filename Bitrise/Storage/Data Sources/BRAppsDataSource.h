@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAppsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface BRAppsDataSource : NSObject
 
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;

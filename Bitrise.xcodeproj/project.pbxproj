@@ -149,6 +149,7 @@
 		D982D8AC249E8BDC0099F0A5 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
 		D98C540A2439D02500CA1D57 /* BRStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C54092439D02500CA1D57 /* BRStyleSheet.m */; };
 		D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
+		D993A77F2630727900BBE937 /* BRAppsDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */; };
 		D996A18524DB26E200DBFE83 /* BRDisableableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */; };
 		D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
 		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
@@ -505,7 +506,7 @@
 		D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotATVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBotATVTests.swift; sourceTree = "<group>"; };
 		D91BD9C725A1BE7000EF8D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
+		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
 		D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BitBotATV.xctestplan; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -540,6 +541,7 @@
 		D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-Bold.ttf"; sourceTree = "<group>"; };
 		D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-Medium.ttf"; sourceTree = "<group>"; };
+		D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppsDataSourceTests.m; sourceTree = "<group>"; };
 		D996A18324DB26E200DBFE83 /* BRDisableableScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDisableableScrollView.h; sourceTree = "<group>"; };
 		D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDisableableScrollView.m; sourceTree = "<group>"; };
 		D996EBCF245F17E500DC4F6B /* BRDotsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDotsView.h; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 		0EB3ED4821E3369D003F0364 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				D993A77D2630725C00BBE937 /* Data Sources */,
 				0EB3ED4921E336BD003F0364 /* BRStorageTests.m */,
 				0ED2793C223ABCBA008A35D6 /* BRLogsParserTests.m */,
 			);
@@ -1213,6 +1216,14 @@
 				D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */,
 			);
 			path = Jura;
+			sourceTree = "<group>";
+		};
+		D993A77D2630725C00BBE937 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */,
+			);
+			path = "Data Sources";
 			sourceTree = "<group>";
 		};
 		D996EBD2245F46BC00DC4F6B /* Dots view */ = {
@@ -1878,6 +1889,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D993A77F2630727900BBE937 /* BRAppsDataSourceTests.m in Sources */,
 				0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0E02C9AF22103ED100FCFE17 /* BRLogsDataSource.m in Sources */,
 				0E348F1B2213130A000343A1 /* BRLogLineView.m in Sources */,
