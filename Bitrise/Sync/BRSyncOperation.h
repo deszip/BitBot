@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSyncOperation : ASOperation
 
+@property (copy, nonatomic, nullable) void (^syncCallback)(BRSyncResult *result);
+
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithStorage:(BRStorage *)storage api:(BRBitriseAPI *)api NS_DESIGNATED_INITIALIZER;
-
-@property (copy, nonatomic, nullable) void (^syncCallback)(BRSyncResult *result);
 
 @end
 

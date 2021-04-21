@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)trackAnalyticsToggle;
 
 - (void)trackAccountAdd;
+- (void)trackAccountAddFailure;
 - (void)trackAccountRemove;
 - (void)trackSyncWithStarted:(NSUInteger)started
                      running:(NSUInteger)running
