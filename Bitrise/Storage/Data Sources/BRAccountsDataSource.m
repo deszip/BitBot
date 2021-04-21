@@ -85,7 +85,11 @@
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
     if ([item isKindOfClass:[BTRAccount class]]) {
-        return [[(BTRAccount *)item apps] count];
+        if ([(BTRAccount *)item enabled]) {
+            return [[(BTRAccount *)item apps] count];
+        } else {
+            return 0;
+        }
     }
     
     return [[self.accountsFRC.sections[0] objects] count];
@@ -113,6 +117,15 @@
             email = account.emailUnconfirmed;
         }
         [cell.emailLabel setStringValue:email];
+        
+        if (account.enabled) {
+            cell.avatarImageView.alphaValue = 1.0;
+            [cell.noticeLabel setHidden:YES];
+        } else {
+            cell.avatarImageView.alphaValue = 0.3;
+            [cell.noticeLabel setHidden:NO];
+            [cell.noticeLabel setStringValue:@"Sync failed"];
+        }
         
         return cell;
     }

@@ -528,6 +528,7 @@
 		D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
 		D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
 		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
+		D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise_1.0.2.xcdatamodel; sourceTree = "<group>"; };
 		D982D8A4249E157C0099F0A5 /* BREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BREmptyView.h; sourceTree = "<group>"; };
 		D982D8A5249E157C0099F0A5 /* BREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BREmptyView.m; sourceTree = "<group>"; };
 		D982D8A7249E7ED70099F0A5 /* BRAccountsObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsObserver.h; sourceTree = "<group>"; };
@@ -2199,7 +2200,7 @@
 					"$(PROJECT_DIR)/Bitrise/Vendored",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
@@ -2227,7 +2228,7 @@
 					"$(PROJECT_DIR)/Bitrise/Vendored",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot MAS Profile";
@@ -2451,9 +2452,10 @@
 		0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */,
 				0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */,
 			);
-			currentVersion = 0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */;
+			currentVersion = D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */;
 			path = bitrise.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -42,8 +42,14 @@
 }
 
 - (void)execute:(BRCommandResult)callback {
-    [self.syncEngine addAccount:self.token];
-    [[BRAnalytics analytics] trackAccountAdd];
+    [self.syncEngine addAccount:self.token callback:^(NSError * _Nullable error) {
+        callback(error == nil, error);
+        if (error) {
+            [[BRAnalytics analytics] trackAccountAddFailure];
+        } else {
+            [[BRAnalytics analytics] trackAccountAdd];
+        }
+    }];
 }
 
 

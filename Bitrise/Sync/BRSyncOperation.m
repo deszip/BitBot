@@ -62,12 +62,34 @@
             dispatch_group_enter(self.group);
             BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
             [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
+                // Handle failure
                 if (!appsInfo) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to get apps from API: %@", error);
+                    
+                    // 401 means acc is not working for some reason
+                    if ([error.domain isEqualToString:kBRBitriseAPIDomain] && error.code == 401 && account.enabled) {
+                        NSError *updateError;
+                        if ([self.storage updateAccountStatus:NO slug:account.slug error:&updateError]) {
+                            BRLog(LL_WARN, LL_STORAGE, @"Account %@ disabled", account.email);
+                        } else {
+                            BRLog(LL_WARN, LL_STORAGE, @"Failed to disable account: %@", updateError);
+                        }
+                    }
                     [super finish];
                     return;
                 }
                 
+                // Enable acc if it works fine
+                if (!account.enabled) {
+                    NSError *updateError;
+                    if ([self.storage updateAccountStatus:YES slug:account.slug error:&updateError]) {
+                        BRLog(LL_WARN, LL_STORAGE, @"Account %@ enabled", account.email);
+                    } else {
+                        BRLog(LL_WARN, LL_STORAGE, @"Failed to enable account: %@", updateError);
+                    }
+                }
+                
+                // Updates
                 NSError *updateAppsError;
                 if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to update apps: %@", updateAppsError);

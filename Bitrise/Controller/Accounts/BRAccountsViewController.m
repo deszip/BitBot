@@ -106,16 +106,16 @@
                 case BRKeyRequestContextTypeApp: {
                     BRAddBuildTokenCommand *command = [[BRAddBuildTokenCommand alloc] initWithStorage:self.storage appSlug:context.appSlug token:input];
                     [command execute:^(BOOL result, NSError *error) {
-                        if (result) {
-                            [self.outlineView reloadData];
-                        }
+                        [self handleResult:result error:error];
                     }];
                     break;
                 }
                     
                 case BRKeyRequestContextTypeAccount: {
                     BRGetAccountCommand *command = [[BRGetAccountCommand alloc] initWithSyncEngine:self.syncEngine token:input];
-                    [command execute:nil];
+                    [command execute:^(BOOL result, NSError *error) {
+                        [self handleResult:result error:error];
+                    }];
                     break;
                 }
                     
@@ -123,6 +123,18 @@
             }
         }];
     }
+}
+
+#pragma mark - Input handlers -
+
+- (void)handleResult:(BOOL)result error:(NSError *)error {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (result) {
+            [self.outlineView reloadData];
+        } else if (error) {
+            [self presentError:error];
+        }
+    });
 }
 
 #pragma mark - Notifications -

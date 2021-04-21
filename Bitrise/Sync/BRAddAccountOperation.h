@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRAddAccountOperation : ASOperation
 
+@property (copy, nonatomic, nullable) void (^resultCallback)(NSError * __nullable error);
+
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithStorage:(BRStorage *)storage api:(BRBitriseAPI *)api accountToken:(NSString *)token;
 
 @end

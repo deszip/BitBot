@@ -43,8 +43,9 @@
     [self.syncQueue addOperation:syncOperation];
 }
 
-- (void)addAccount:(NSString *)accountToken {
+- (void)addAccount:(NSString *)accountToken callback:(BRAddAccountCallback)callback {
     BRAddAccountOperation *accountOperation = [[BRAddAccountOperation alloc] initWithStorage:self.storage api:self.API accountToken:accountToken];
+    [accountOperation setResultCallback:callback];
     [self.syncQueue addOperation:accountOperation];
 }
 

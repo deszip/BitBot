@@ -25,6 +25,7 @@ static BRAnalyticsEvent * const kNotificationsToggleEvent = @"app_notificationst
 static BRAnalyticsEvent * const kAnalyticsToggleEvent = @"app_analyticstoggle";
 
 static BRAnalyticsEvent * const kAddAccountEvent = @"account_add";
+static BRAnalyticsEvent * const kAddAccountFailureEvent = @"account_add_failure";
 static BRAnalyticsEvent * const kRemoveAccountEvent = @"account_remove";
 static BRAnalyticsEvent * const kSyncEvent = @"build_sync";
 
@@ -96,6 +97,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)trackAnalyticsToggle { [self sendEvent:kAnalyticsToggleEvent properties:@{}]; }
 
 - (void)trackAccountAdd { [self sendEvent:kAddAccountEvent properties:@{}]; }
+- (void)trackAccountAddFailure { [self sendEvent:kAddAccountFailureEvent properties:@{}]; }
 - (void)trackAccountRemove { [self sendEvent:kRemoveAccountEvent properties:@{}]; }
 - (void)trackSyncWithStarted:(NSUInteger)started
                      running:(NSUInteger)running

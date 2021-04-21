@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BRAccountCellView : NSTableRowView
 
 @property (weak) IBOutlet NSTextField *accountNameLabel;
+@property (weak) IBOutlet NSTextField *noticeLabel;
 @property (weak) IBOutlet NSImageView *avatarImageView;
 @property (weak) IBOutlet NSTextField *emailLabel;
 

@@ -8,6 +8,7 @@
 
 #import "BRAddAccountOperation.h"
 
+#import "BRMacro.h"
 #import "BRSyncOperation.h"
 #import "BRAccountRequest.h"
 
@@ -39,6 +40,7 @@
         BRAccountRequest *request = [[BRAccountRequest alloc] initWithToken:self.token];
         [self.api getAccount:request completion:^(BRAccountInfo *accountInfo, NSError *error) {
             if (!accountInfo) {
+                BR_SAFE_CALL(self.resultCallback, error);
                 [super finish];
                 return;
             }
