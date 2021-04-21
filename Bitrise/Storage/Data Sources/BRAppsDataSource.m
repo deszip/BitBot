@@ -19,7 +19,7 @@
 #import "BRApp+CoreDataClass.h"
 #import "BRBuild+CoreDataClass.h"
 
-@interface BRAppsDataSource () <NSFetchedResultsControllerDelegate>
+@interface BRAppsDataSource () <NSFetchedResultsControllerDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (weak, nonatomic) NSOutlineView *outlineView;
 
@@ -38,16 +38,25 @@
         _buildsFRC = [self buildBuildsFRC:self.container.viewContext];
         [_buildsFRC setDelegate:self];
         [self fetch];
-        [self.outlineView reloadData];
     }
     
     return self;
 }
 
+#pragma mark - Actions -
+
 - (void)bind:(NSOutlineView *)outlineView {
     _outlineView = outlineView;
     self.outlineView.dataSource = self;
     self.outlineView.delegate = self;
+    [self.outlineView reloadData];
+}
+
+- (void)fetch {
+    NSError *fetchError = nil;
+    if (![self.buildsFRC performFetch:&fetchError]) {
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch builds: %@", fetchError);
+    }
     [self.outlineView reloadData];
 }
 
@@ -58,16 +67,6 @@
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
-}
-
-#pragma mark - Actions -
-
-- (void)fetch {
-    NSError *fetchError = nil;
-    if (![self.buildsFRC performFetch:&fetchError]) {
-        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch builds: %@", fetchError);
-    }
-    [self.outlineView reloadData];
 }
 
 #pragma mark - NSOutlineViewDataSource -
