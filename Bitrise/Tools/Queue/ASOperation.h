@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import <Sentry/Sentry.h>
 #import "ASQueue.h"
 
 @interface ASOperation : NSOperation
+
+@property (strong, nonatomic, readonly) id <SentrySpan> sentryTransaction;
 
 @property (strong, nonatomic) ASQueue *queue;
 

@@ -12,6 +12,9 @@ PODS:
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - Sentry (7.0.0-beta.0):
+    - Sentry/Core (= 7.0.0-beta.0)
+  - Sentry/Core (7.0.0-beta.0)
 
 DEPENDENCIES:
   - EasyMapping
@@ -21,6 +24,7 @@ DEPENDENCIES:
   - "NSPopover+MISSINGBackgroundView"
   - OCMock (~> 3.4.3)
   - SDWebImage (~> 5.0.6)
+  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -33,6 +37,15 @@ SPEC REPOS:
     - Mixpanel
     - "NSPopover+MISSINGBackgroundView"
 
+EXTERNAL SOURCES:
+  Sentry:
+    :git: https://github.com/getsentry/sentry-cocoa.git
+
+CHECKOUT OPTIONS:
+  Sentry:
+    :commit: cd561c7b8f5e0396f3510600167c17b2c076deed
+    :git: https://github.com/getsentry/sentry-cocoa.git
+
 SPEC CHECKSUMS:
   EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
@@ -41,7 +54,8 @@ SPEC CHECKSUMS:
   "NSPopover+MISSINGBackgroundView": 06a134ea85280a8f0436c9c99fa18400ae84cf15
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  Sentry: 542abd1868a121f29cd2303ac7cf78000e3f797c
 
-PODFILE CHECKSUM: 40817729a4f63b60420d73a810dea5439b97fa67
+PODFILE CHECKSUM: f69fd510bbde93eca44a7a0c0f9d77599ab222ca
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1

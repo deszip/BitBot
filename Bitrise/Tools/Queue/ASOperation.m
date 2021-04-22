@@ -58,7 +58,11 @@
 - (void)trackDuration:(BOOL)processing {
     NSTimeInterval current = [[NSDate date] timeIntervalSince1970];
     self.duration = processing ? current : current - self.duration;
-    if (!processing) {
+    
+    if (processing) {
+        _sentryTransaction = [SentrySDK startTransactionWithName:NSStringFromClass([self class]) operation:NSStringFromClass([self class])];
+    } else {
+        [_sentryTransaction finish];
         BRLog(LL_DEBUG, LL_CORE, @"%@: %f", NSStringFromClass([self class]), self.duration);
     }
 }

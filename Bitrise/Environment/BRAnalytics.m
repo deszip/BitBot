@@ -9,11 +9,14 @@
 #import "BRAnalytics.h"
 
 #import <Mixpanel/Mixpanel.h>
+#import <Sentry/Sentry.h>
 
 static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailabilityKey";
 
 static NSString * const kBRMixpanelOSXToken = @"ae64ff4c78b73e7f945f63aa02677fbb";
 static NSString * const kBRMixpanelATVToken = @"4d209b738bd7dc6965ad1325080f83f1";
+
+static NSString * const kBRSentryDSNPath = @"https://16702f55ff1346e49d6ae3aa41bffc8b@o577211.ingest.sentry.io/5731739";
 
 typedef NSString BRAnalyticsEvent;
 
@@ -65,6 +68,13 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)start {
 #if TARGET_OS_OSX
     [Mixpanel sharedInstanceWithToken:kBRMixpanelOSXToken];
+    
+    [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
+        options.dsn = kBRSentryDSNPath;
+        options.debug = YES;
+        options.tracesSampleRate = @1.0;
+    }];
+    
 #else
     [Mixpanel sharedInstanceWithToken:kBRMixpanelATVToken];
 #endif

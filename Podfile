@@ -10,6 +10,8 @@ target 'BitBot' do
   platform :osx, '10.12'
   pod "NSPopover+MISSINGBackgroundView"
   pod 'SDWebImage', '~> 5.0.6'
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git'
+  
   sharedPods()
 
   target 'BitBotTests' do
@@ -22,7 +24,7 @@ target 'BitBot' do
 
 end
 
-target 'BitriseATV' do
+target 'BitBotATV' do
   platform :tvos, '14.0'
   pod 'Kingfisher/SwiftUI'
   sharedPods()
