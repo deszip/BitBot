@@ -11,13 +11,14 @@
 #import "BRBuild+CoreDataClass.h"
 #import "BRBuildInfo.h"
 
-static const NSUInteger kMenuItemsCount = 5;
+static const NSUInteger kMenuItemsCount = 6;
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemRebuild = 0,
     BRBuildMenuItemAbort,
     BRBuildMenuItemShowLog,
     BRBuildMenuItemDownload,
-    BRBuildMenuItemOpenBuild
+    BRBuildMenuItemOpenBuild,
+    BRBuildMenuItemOpenArtefacts
 };
 
 @interface BRBuildMenuController ()
@@ -52,7 +53,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         [self.menu.itemArray[BRBuildMenuItemAbort]     setAction:@selector(abort)];
         [self.menu.itemArray[BRBuildMenuItemShowLog]   setAction:@selector(showLog)];
         [self.menu.itemArray[BRBuildMenuItemDownload]  setAction:@selector(downloadLog)];
-        [self.menu.itemArray[BRBuildMenuItemOpenBuild] setAction:@selector(openBuild)];
+        [self.menu.itemArray[BRBuildMenuItemOpenBuild] setAction:@selector(openBuildLogs)];
+        [self.menu.itemArray[BRBuildMenuItemOpenArtefacts] setAction:@selector(openBuildArtefacts)];
     }
 }
 
@@ -79,7 +81,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 #pragma mark - Actions -
 
 - (void)handleDoubleClick:(id)sender {
-    [self openBuild];
+    [self openBuildLogs];
 }
 
 - (void)rebuild {
@@ -124,10 +126,18 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     }
 }
 
-- (void)openBuild {
+- (void)openBuildLogs {
+    [self openBuildTab:BRBuildPageTabLogs];
+}
+
+- (void)openBuildArtefacts {
+    [self openBuildTab:BRBuildPageTabArtefacts];
+}
+
+- (void)openBuildTab:(BRBuildPageTab)tab {
     BRBuild *build = [self selectedBuild];
     if (build) {
-        BROpenBuildCommand *command = [self.commandFactory openCommand:build.slug];
+        BROpenBuildCommand *command = [self.commandFactory openCommand:build.slug tab:tab];
         [command execute:nil];
     }
 }
@@ -145,6 +155,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BOOL buildCouldBeAborted = buildInfo.stateInfo.state == BRBuildStateInProgress ||
     buildInfo.stateInfo.state == BRBuildStateHold;
     BOOL buildLogAvailable = buildInfo.stateInfo.state != BRBuildStateHold && !buildInProgress;
+    BOOL buildArtefactsAvailable = buildLogAvailable;
     
     switch (menuItem.tag) {
         case BRBuildMenuItemRebuild: return !buildInProgress;
@@ -152,6 +163,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         case BRBuildMenuItemShowLog: return buildLogAvailable;
         case BRBuildMenuItemDownload: return buildLogAvailable;
         case BRBuildMenuItemOpenBuild: return YES;
+        case BRBuildMenuItemOpenArtefacts: return buildArtefactsAvailable;
         default: return NO;
     }
 }

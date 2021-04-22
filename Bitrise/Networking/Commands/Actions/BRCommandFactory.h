@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BRAbortCommand *)abortCommand:(BRBuild *)build;
 #if TARGET_OS_OSX
 - (BRDownloadLogsCommand *)logsCommand:(NSString *)buildSlug;
-- (BROpenBuildCommand *)openCommand:(NSString *)buildSlug;
+- (BROpenBuildCommand *)openCommand:(NSString *)buildSlug tab:(BRBuildPageTab)tab;
 #endif
 - (BRSyncCommand *)syncCommand;
 

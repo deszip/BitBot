@@ -13,21 +13,33 @@
 @interface BROpenBuildCommand ()
 
 @property (copy, nonatomic) NSString *buildSlug;
+@property (assign, nonatomic) BRBuildPageTab tab;
 
 @end
 
 @implementation BROpenBuildCommand
 
-- (instancetype)initWithBuildSlug:(NSString *)buildSlug {
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug tab:(BRBuildPageTab)tab {
     if (self = [super init]) {
         _buildSlug = buildSlug;
+        _tab = tab;
     }
     
     return self;
 }
 
 - (void)execute:(BRCommandResult)callback {
-    NSString *buildPath = [NSString stringWithFormat:@"https://app.bitrise.io/build/%@", self.buildSlug];
+    NSMutableString *buildPath = [[NSString stringWithFormat:@"https://app.bitrise.io/build/%@", self.buildSlug] mutableCopy];
+    switch (self.tab) {
+        case BRBuildPageTabLogs:
+            [buildPath appendFormat:@"/#?tab=logs"];
+            break;
+            
+        case BRBuildPageTabArtefacts:
+            [buildPath appendFormat:@"/#?tab=artifacts"];
+            break;
+    }
+    
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:buildPath]];
     
     BR_SAFE_CALL(callback, YES, nil);
