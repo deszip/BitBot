@@ -59,6 +59,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 - (void)bindToOutline:(NSOutlineView *)outline {
     self.outlineView = outline;
     self.outlineView.menu = self.menu;
+    [self.outlineView setTarget:self];
+    self.outlineView.doubleAction = @selector(handleDoubleClick:);
 }
 
 - (void)bindToButton:(NSButton *)button {
@@ -75,6 +77,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 #pragma mark - Actions -
+
+- (void)handleDoubleClick:(id)sender {
+    [self openBuild];
+}
 
 - (void)rebuild {
     BRBuild *build = [self selectedBuild];
