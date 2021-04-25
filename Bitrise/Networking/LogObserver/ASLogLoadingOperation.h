@@ -6,7 +6,7 @@
 //  Copyright © 2019 Bitrise. All rights reserved.
 //
 
-#import "ASOperation.h"
+#import "BROperation.h"
 
 #import "ASLogOperation.h"
 #import "BRStorage.h"
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, BRLogLoadingState) {
 };
 typedef void(^BRLogLoadingCallback)(BRLogLoadingState state, NSProgress * _Nullable progress);
 
-@interface ASLogLoadingOperation : ASOperation <ASLogOperation>
+@interface ASLogLoadingOperation : BROperation <ASLogOperation>
 
 @property (copy, nonatomic, readonly) NSString *buildSlug;
 @property (copy, nonatomic) BRLogLoadingCallback loadingCallback;

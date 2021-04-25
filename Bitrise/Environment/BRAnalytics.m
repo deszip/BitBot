@@ -71,7 +71,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
     
     [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
         options.dsn = kBRSentryDSNPath;
-        options.debug = YES;
+//        options.debug = YES;
         options.tracesSampleRate = @1.0;
     }];
     

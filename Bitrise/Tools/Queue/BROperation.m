@@ -1,23 +1,23 @@
 //
-//  ASOperation.m
-//  AppSpector
+//  BROperation.m
+//  BitBot
 //
 //  Created by Deszip on 24/12/2017.
 //  Copyright © 2017 Deszip. All rights reserved.
 //
 
-#import "ASOperation.h"
+#import "BROperation.h"
 
 #import "BRLogger.h"
 
-@interface ASOperation ()
+@interface BROperation ()
 
 @property (assign, nonatomic) NSTimeInterval duration;
 @property (assign, nonatomic) BOOL processing;
 
 @end
 
-@implementation ASOperation
+@implementation BROperation
 
 - (void)setProcessing:(BOOL)processingState {
     [self trackDuration:processingState];
@@ -61,8 +61,10 @@
     
     if (processing) {
         _sentryTransaction = [SentrySDK startTransactionWithName:NSStringFromClass([self class]) operation:NSStringFromClass([self class])];
+        BRLog(LL_DEBUG, LL_SYNC, @"Started sentry transaction: %@", _sentryTransaction);
     } else {
         [_sentryTransaction finish];
+        BRLog(LL_DEBUG, LL_SYNC, @"Finished sentry transaction: %@", _sentryTransaction);
         BRLog(LL_DEBUG, LL_CORE, @"%@: %f", NSStringFromClass([self class]), self.duration);
     }
 }

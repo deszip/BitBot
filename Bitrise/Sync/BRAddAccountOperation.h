@@ -6,14 +6,14 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
-#import "ASOperation.h"
+#import "BROperation.h"
 
 #import "BRStorage.h"
 #import "BRBitriseAPI.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAddAccountOperation : ASOperation
+@interface BRAddAccountOperation : BROperation
 
 @property (copy, nonatomic, nullable) void (^resultCallback)(NSError * __nullable error);
 
