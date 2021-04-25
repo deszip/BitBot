@@ -61,10 +61,8 @@
     
     if (processing) {
         _sentryTransaction = [SentrySDK startTransactionWithName:NSStringFromClass([self class]) operation:NSStringFromClass([self class])];
-        BRLog(LL_DEBUG, LL_SYNC, @"Started sentry transaction: %@", _sentryTransaction);
     } else {
         [_sentryTransaction finish];
-        BRLog(LL_DEBUG, LL_SYNC, @"Finished sentry transaction: %@", _sentryTransaction);
         BRLog(LL_DEBUG, LL_CORE, @"%@: %f", NSStringFromClass([self class]), self.duration);
     }
 }
