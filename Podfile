@@ -2,6 +2,7 @@ def sharedPods
 
   pod 'EasyMapping'
 
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git'
   pod 'Mixpanel'
 
 end
@@ -10,7 +11,6 @@ target 'BitBot' do
   platform :osx, '10.12'
   pod "NSPopover+MISSINGBackgroundView"
   pod 'SDWebImage', '~> 5.0.6'
-  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git'
   
   sharedPods()
 
