@@ -16,10 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)analytics;
 
+// Controls if services are running
 - (void)start;
-- (void)toggle;
+- (void)stop;
+
+// Controls if analytics is allowed by user
 - (void)setEnabled:(BOOL)isEnabled;
 - (BOOL)isEnabled;
+
+// Switches enabled state and calls start/stop
+- (void)toggle;
 
 #pragma mark - Events -
 
