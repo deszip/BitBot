@@ -10,6 +10,7 @@
 
 #import <Sentry/Sentry.h>
 #import "BRLogger.h"
+#import "BRMacro.h"
 
 #import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
@@ -18,6 +19,8 @@
 #import "BRAppsRequest.h"
 #import "BRBuildsRequest.h"
 #import "BRBuildInfo.h"
+
+typedef void (^AppSyncCompletion)(NSError * _Nullable error);
 
 @interface BRSyncOperation ()
 
@@ -69,9 +72,7 @@
         
         [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
             dispatch_group_enter(self.group);
-            
-            id<SentrySpan> span = [self.sentryTransaction startChildWithOperation:[NSString stringWithFormat:@"account-sync-%lu", (unsigned long)idx]];
-            __block NSUInteger appsCount = 0;
+            id<SentrySpan> accountSpan = [self.sentryTransaction startChildWithOperation:[NSString stringWithFormat:@"account-sync-%lu", (unsigned long)idx]];
             
             BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
             [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
@@ -88,7 +89,8 @@
                             BRLog(LL_WARN, LL_STORAGE, @"Failed to disable account: %@", updateError);
                         }
                     }
-                    [self finish];
+                    [accountSpan finish];
+                    dispatch_group_leave(self.group);
                     return;
                 }
                 
@@ -106,7 +108,8 @@
                 NSError *updateAppsError;
                 if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to update apps: %@", updateAppsError);
-                    [self finish];
+                    [accountSpan finish];
+                    dispatch_group_leave(self.group);
                     return;
                 }
                 
@@ -114,24 +117,27 @@
                 NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&appsFetchError];
                 if (!apps) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch updated apps: %@", appsFetchError);
-                    [self finish];
+                    [accountSpan finish];
+                    dispatch_group_leave(self.group);
                     return;
                 }
                 
-                [span.context setTagValue:[NSString stringWithFormat:@"%lu", (unsigned long)apps.count] forKey:@"apps"];
+                [accountSpan.context setTagValue:[NSString stringWithFormat:@"%lu", (unsigned long)apps.count] forKey:@"apps"];
                 
                 NSError *fetchError;
                 NSArray <NSString *> *runningBuildSlugs = [[self.storage runningBuilds:&fetchError] aps_map:^id(BRBuild *build) {
                     return build.slug;
                 }];
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
-                    [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs];
+                    id<SentrySpan> appSpan = [accountSpan startChildWithOperation:[NSString stringWithFormat:@"app-sync-%lu", (unsigned long)idx]];
+                    [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs completion:^(NSError *error) {
+                        [appSpan finish];
+                    }];
                 }];
-                
+               
+                [accountSpan finish];
                 dispatch_group_leave(self.group);
             }];
-            
-            [span finish];
         }];
         
         dispatch_group_notify(self.group, self.queue.underlyingQueue, ^{
@@ -142,7 +148,6 @@
 
 - (void)finish {
     [self.sentryTransaction.context setTagValue:[NSString stringWithFormat:@"%lu", (unsigned long)self.accountsCount] forKey:@"accounts"];
-    
     [super finish];
 }
 
@@ -153,7 +158,7 @@
     return fetchTime;
 }
 
-- (void)updateBuilds:(BRApp *)app token:(NSString *)token runningBuilds:(NSArray <NSString *> *)runningBuildSlugs {
+- (void)updateBuilds:(BRApp *)app token:(NSString *)token runningBuilds:(NSArray <NSString *> *)runningBuildSlugs completion:(AppSyncCompletion)completion {
     dispatch_group_enter(self.group);
     
     NSTimeInterval fetchTime = [self fetchTime:app];
@@ -180,6 +185,7 @@
             BRLog(LL_WARN, LL_STORAGE, @"Failed to get builds from API: %@", error);
         }
         
+        BR_SAFE_CALL(completion, error);
         dispatch_group_leave(self.group);
     }];
 }

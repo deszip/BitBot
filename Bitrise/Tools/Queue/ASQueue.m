@@ -8,7 +8,7 @@
 
 #import "ASQueue.h"
 
-#import "ASOperation.h"
+#import "BROperation.h"
 
 static dispatch_queue_t underlyingQueue;
 
@@ -29,8 +29,8 @@ static dispatch_queue_t underlyingQueue;
 }
 
 - (void)addOperation:(NSOperation *)op {
-    if ([op isKindOfClass:[ASOperation class]]) {
-        [(ASOperation *)op setQueue:self];
+    if ([op isKindOfClass:[BROperation class]]) {
+        [(BROperation *)op setQueue:self];
     }
     
     [super addOperation:op];

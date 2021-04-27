@@ -11,7 +11,7 @@
 #import <Sentry/Sentry.h>
 #import "ASQueue.h"
 
-@interface ASOperation : NSOperation
+@interface BROperation : NSOperation
 
 @property (strong, nonatomic, readonly) id <SentrySpan> sentryTransaction;
 
