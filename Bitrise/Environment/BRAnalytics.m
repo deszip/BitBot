@@ -129,7 +129,6 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)startSentry:(NSString *)dsn {
     [SentrySDK startWithConfigureOptions:^(SentryOptions *options) {
         options.dsn = dsn;
-        options.debug = YES;
         options.tracesSampleRate = @1.0;
     }];
 }
