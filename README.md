@@ -1,3 +1,5 @@
+# ![BitBot](https://github.com/deszip/BitBot/raw/master/BB-github.jpg)
+
 # <img src="https://github.com/deszip/BitBot/raw/master/icon.png" width="64"> BitBot
 
 ![Build Status](https://app.bitrise.io/app/6db55ab6a5f1d22f/status.svg?token=XJCgNQGZP1aSbbEsrU1Jqw&branch=develop)
