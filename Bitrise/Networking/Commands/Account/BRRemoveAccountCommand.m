@@ -34,8 +34,12 @@
     [self.storage perform:^{
         NSError *error;
         BOOL result = [self.storage removeAccount:self.slug error:&error];
+        if (result) {
+            [[BRAnalytics analytics] trackAccountRemove];
+        } else {
+            [[BRAnalytics analytics] trackAccountRemoveError:error];
+        }
         BR_SAFE_CALL(callback, result, error);
-        [[BRAnalytics analytics] trackAccountRemove];
     }];
 }
 

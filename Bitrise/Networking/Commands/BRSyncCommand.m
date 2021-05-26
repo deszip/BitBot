@@ -39,7 +39,8 @@
     
     return self;
 }
-#endif
+
+#else
 
 - (instancetype)initSyncEngine:(BRSyncEngine *)engine {
     if (self = [super init]) {
@@ -52,6 +53,8 @@
     }
     return self;
 }
+
+#endif
 
 - (void)execute:(BRCommandResult)callback {
     [self.syncEngine sync];

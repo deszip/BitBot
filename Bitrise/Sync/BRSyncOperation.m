@@ -11,6 +11,7 @@
 #import <Sentry/Sentry.h>
 #import "BRLogger.h"
 #import "BRMacro.h"
+#import "BRAnalytics.h"
 
 #import "NSArray+FRP.h"
 #import "BRBuild+CoreDataClass.h"
@@ -58,6 +59,7 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
 
         if (!accounts) {
             BRLog(LL_DEBUG, LL_STORAGE, @"Failed to get accounts: %@", accFetchError);
+            [self handleError:accFetchError];
             [self finish];
             return;
         }
@@ -88,7 +90,10 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                         } else {
                             BRLog(LL_WARN, LL_STORAGE, @"Failed to disable account: %@", updateError);
                         }
+                    } else {
+                        [self handleError:error];
                     }
+                    
                     [accountSpan finish];
                     dispatch_group_leave(self.group);
                     return;
@@ -101,6 +106,7 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                         BRLog(LL_WARN, LL_STORAGE, @"Account %@ enabled", account.email);
                     } else {
                         BRLog(LL_WARN, LL_STORAGE, @"Failed to enable account: %@", updateError);
+                        [self handleError:updateError];
                     }
                 }
                 
@@ -108,6 +114,7 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                 NSError *updateAppsError;
                 if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to update apps: %@", updateAppsError);
+                    [self handleError:updateAppsError];
                     [accountSpan finish];
                     dispatch_group_leave(self.group);
                     return;
@@ -117,6 +124,7 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                 NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&appsFetchError];
                 if (!apps) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch updated apps: %@", appsFetchError);
+                    [self handleError:appsFetchError];
                     [accountSpan finish];
                     dispatch_group_leave(self.group);
                     return;
@@ -131,6 +139,9 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                 [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
                     id<SentrySpan> appSpan = [accountSpan startChildWithOperation:[NSString stringWithFormat:@"app-sync-%lu", (unsigned long)idx]];
                     [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs completion:^(NSError *error) {
+                        if (error) {
+                            [self handleError:error];
+                        }
                         [appSpan finish];
                     }];
                 }];
@@ -183,6 +194,7 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
             }
         } else {
             BRLog(LL_WARN, LL_STORAGE, @"Failed to get builds from API: %@", error);
+            [self handleError:error];
         }
         
         BR_SAFE_CALL(completion, error);
@@ -213,6 +225,10 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
     }];
     
     return [[BRSyncDiff alloc] initWithStartedBuilds:started runningBuilds:running finishedBuilds:finished];
+}
+
+- (void)handleError:(NSError *)error {
+    [[BRAnalytics analytics] trackSyncError:error];
 }
 
 @end

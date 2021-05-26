@@ -2,7 +2,7 @@ def sharedPods
 
   pod 'EasyMapping'
 
-  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git'
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.1.0'
   pod 'Mixpanel'
 
 end

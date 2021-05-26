@@ -16,7 +16,12 @@ static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailability
 static NSString * const kBRMixpanelOSXToken = @"ae64ff4c78b73e7f945f63aa02677fbb";
 static NSString * const kBRMixpanelATVToken = @"4d209b738bd7dc6965ad1325080f83f1";
 
+#if DEBUG
 static NSString * const kBRSentryOSXDSNPath = @"https://16702f55ff1346e49d6ae3aa41bffc8b@o577211.ingest.sentry.io/5731739";
+#else
+static NSString * const kBRSentryOSXDSNPath = @"https://c955ed8ebdfc4db6bc206bfec0db2af2@o577211.ingest.sentry.io/5783183";
+#endif
+
 static NSString * const kBRSentryATVDSNPath = @"https://eb1b1d1669e344d2a0799c79ec1c78ce@o577211.ingest.sentry.io/5737938";
 
 typedef NSString BRAnalyticsEvent;
@@ -147,13 +152,23 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)trackAnalyticsToggle { [self sendEvent:kAnalyticsToggleEvent properties:@{}]; }
 
 - (void)trackAccountAdd { [self sendEvent:kAddAccountEvent properties:@{}]; }
-- (void)trackAccountAddFailure { [self sendEvent:kAddAccountFailureEvent properties:@{}]; }
+- (void)trackAccountAddFailure:(NSError *)error {
+    [self sendEvent:kAddAccountFailureEvent properties:@{}];
+    [self sendError:error];
+}
 - (void)trackAccountRemove { [self sendEvent:kRemoveAccountEvent properties:@{}]; }
+- (void)trackAccountRemoveError:(NSError *)error {
+    [self sendEvent:kRemoveAccountEvent properties:@{}];
+    [self sendError:error];
+}
 - (void)trackSyncWithStarted:(NSUInteger)started
                      running:(NSUInteger)running
                     finished:(NSUInteger)finished { [self sendEvent:kSyncEvent properties:@{ @"started" : @(started),
                                                                                              @"running" : @(running),
                                                                                              @"finished" : @(finished) }]; }
+- (void)trackSyncError:(NSError *)error {
+    [self sendError:error];
+}
 
 - (void)trackRebuildAction { [self sendEvent:kRebuildActionEvent properties:@{}]; }
 - (void)trackAbortAction { [self sendEvent:kAbortActionEvent properties:@{}]; }
@@ -166,6 +181,16 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
     if ([self isEnabled]) {
         [[Mixpanel sharedInstance] track:name properties:properties];
     }
+}
+
+#pragma mark - Issues -
+
+- (void)sendError:(NSError *)error {
+    [SentrySDK captureError:error];
+    
+    SentryEvent *event = [[SentryEvent alloc] initWithError:error];
+    event.message = [[SentryMessage alloc] initWithFormatted:error.localizedDescription];
+    [SentrySDK captureEvent:event];
 }
 
 @end

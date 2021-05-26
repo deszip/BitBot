@@ -45,7 +45,7 @@
     [self.syncEngine addAccount:self.token callback:^(NSError * _Nullable error) {
         callback(error == nil, error);
         if (error) {
-            [[BRAnalytics analytics] trackAccountAddFailure];
+            [[BRAnalytics analytics] trackAccountAddFailure:error];
         } else {
             [[BRAnalytics analytics] trackAccountAdd];
         }
