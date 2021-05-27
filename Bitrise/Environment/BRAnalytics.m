@@ -188,9 +188,9 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)sendError:(NSError *)error {
     [SentrySDK captureError:error];
     
-    SentryEvent *event = [[SentryEvent alloc] initWithError:error];
-    event.message = [[SentryMessage alloc] initWithFormatted:error.localizedDescription];
-    [SentrySDK captureEvent:event];
+//    SentryEvent *event = [[SentryEvent alloc] initWithError:error];
+//    event.message = [[SentryMessage alloc] initWithFormatted:error.localizedDescription];
+//    [SentrySDK captureEvent:event];
 }
 
 @end
