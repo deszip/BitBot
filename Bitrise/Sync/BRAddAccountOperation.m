@@ -8,11 +8,14 @@
 
 #import "BRAddAccountOperation.h"
 
+#import <Sentry/Sentry.h>
 #import "BRMacro.h"
 #import "BRSyncOperation.h"
 #import "BRAccountRequest.h"
 
 @interface BRAddAccountOperation ()
+
+@property (strong, nonatomic) id <SentrySpan> sentryTransaction;
 
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRBitriseAPI *api;

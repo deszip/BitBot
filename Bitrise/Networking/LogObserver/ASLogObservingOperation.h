@@ -6,7 +6,7 @@
 //  Copyright © 2019 Bitrise. All rights reserved.
 //
 
-#import "ASOperation.h"
+#import "BROperation.h"
 
 #import "ASLogOperation.h"
 #import "BRStorage.h"
@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ASLogObservingOperation : ASOperation <ASLogOperation>
+@interface ASLogObservingOperation : BROperation <ASLogOperation>
 
 @property (copy, nonatomic, readonly) NSString *buildSlug;
 

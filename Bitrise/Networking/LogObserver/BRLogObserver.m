@@ -53,7 +53,7 @@
 
 - (void)stopObservingBuild:(NSString *)buildSlug {
     @synchronized (self) {
-        [[self operationsForBuild:buildSlug] enumerateObjectsUsingBlock:^(ASOperation <ASLogOperation> *operation, NSUInteger idx, BOOL *stop) {
+        [[self operationsForBuild:buildSlug] enumerateObjectsUsingBlock:^(BROperation <ASLogOperation> *operation, NSUInteger idx, BOOL *stop) {
             BRLog(LL_DEBUG, LL_LOGSYNC, @"BRLogObserver: cancelling observing operation: %@", buildSlug);
             [operation cancel];
         }];
@@ -71,7 +71,7 @@
 
 #pragma mark - Private API -
 
-- (NSArray <ASOperation <ASLogOperation> *> *)operationsForBuild:(NSString *)buildSlug {
+- (NSArray <BROperation <ASLogOperation> *> *)operationsForBuild:(NSString *)buildSlug {
     __block NSMutableArray <id<ASLogOperation>> *operations = [NSMutableArray array];
     [self.queue.operations enumerateObjectsUsingBlock:^(id <ASLogOperation> operation, NSUInteger idx, BOOL *stop) {
         if ([[operation buildSlug] isEqualToString:buildSlug]) {

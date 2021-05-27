@@ -59,8 +59,8 @@
     return [[BRDownloadLogsCommand alloc] initWithBuildSlug:buildSlug];
 }
 
-- (BROpenBuildCommand *)openCommand:(NSString *)buildSlug {
-    return [[BROpenBuildCommand alloc] initWithBuildSlug:buildSlug];
+- (BROpenBuildCommand *)openCommand:(NSString *)buildSlug tab:(BRBuildPageTab)tab {
+    return [[BROpenBuildCommand alloc] initWithBuildSlug:buildSlug tab:tab];
 }
 #endif
 

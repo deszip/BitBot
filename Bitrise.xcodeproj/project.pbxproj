@@ -102,7 +102,7 @@
 		0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */; };
 		0ED38CDD220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */; };
 		0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */; };
-		0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */; };
+		0EDC5DE421BBBB0A00AD41FE /* BROperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* BROperation.m */; };
 		0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */; };
 		0EDE7D0821B9346200A39CC4 /* BRSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */; };
 		0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */; };
@@ -119,7 +119,7 @@
 		0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
-		8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */; };
+		B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */; };
 		D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
 		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
 		D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */; };
@@ -177,7 +177,7 @@
 		DE3CD07D25246A0400DD5948 /* BRBuildsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */; };
 		DE3CD08125246A0A00DD5948 /* BRAppsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7521E88E8C003F0364 /* BRAppsRequest.m */; };
 		DE3CD08525246A1100DD5948 /* BRCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B122117627700F2EA35 /* BRCommand.m */; };
-		DE3CD08925246A2E00DD5948 /* ASOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */; };
+		DE3CD08925246A2E00DD5948 /* BROperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* BROperation.m */; };
 		DE3CD08F25246A7500DD5948 /* AccountCommandsDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3CD08E25246A7500DD5948 /* AccountCommandsDispatcher.swift */; };
 		DE3CD09625246F5400DD5948 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
 		DE3CD09A25246F5A00DD5948 /* BRBitriseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5420F0819E00494DEB /* BRBitriseAPI.m */; };
@@ -462,9 +462,9 @@
 		0ED38CDA220DE9000006FE69 /* ASLogLoadingOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASLogLoadingOperation.h; sourceTree = "<group>"; };
 		0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASLogLoadingOperation.m; sourceTree = "<group>"; };
 		0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASQueue.m; sourceTree = "<group>"; };
-		0EDC5DE021BBBB0A00AD41FE /* ASOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASOperation.h; sourceTree = "<group>"; };
+		0EDC5DE021BBBB0A00AD41FE /* BROperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BROperation.h; sourceTree = "<group>"; };
 		0EDC5DE121BBBB0A00AD41FE /* ASQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASQueue.h; sourceTree = "<group>"; };
-		0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASOperation.m; sourceTree = "<group>"; };
+		0EDC5DE221BBBB0A00AD41FE /* BROperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BROperation.m; sourceTree = "<group>"; };
 		0EDC5DE521BBFB0A00AD41FE /* BRSyncOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncOperation.h; sourceTree = "<group>"; };
 		0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncOperation.m; sourceTree = "<group>"; };
 		0EDE7D0621B9346200A39CC4 /* BRSyncEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncEngine.h; sourceTree = "<group>"; };
@@ -496,9 +496,11 @@
 		4592E252F47089546A803FDB /* libPods-BitBot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBotTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F51DE74237213D947FD5AF /* Pods-BitBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotTests.release.xcconfig"; path = "Target Support Files/Pods-BitBotTests/Pods-BitBotTests.release.xcconfig"; sourceTree = "<group>"; };
-		7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitriseATV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.release.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.release.xcconfig"; sourceTree = "<group>"; };
 		A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.debug.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.debug.xcconfig"; sourceTree = "<group>"; };
+		A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBotATV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.debug.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.debug.xcconfig"; sourceTree = "<group>"; };
+		D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.release.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.release.xcconfig"; sourceTree = "<group>"; };
 		D90BFB9F25372FF800DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVRelease.entitlements; sourceTree = "<group>"; };
 		D90BFBA52537388000DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -652,8 +654,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8605E0C237B585EB9BC0356C /* libPods-BitriseATV.a in Frameworks */,
 				D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */,
+				B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +669,7 @@
 				D90BFB9F25372FF800DA473E /* CloudKit.framework */,
 				4592E252F47089546A803FDB /* libPods-BitBot.a */,
 				6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */,
-				7E2C5865B43E250E9D3620EC /* libPods-BitriseATV.a */,
+				A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1078,8 +1080,8 @@
 			children = (
 				0EDC5DE121BBBB0A00AD41FE /* ASQueue.h */,
 				0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */,
-				0EDC5DE021BBBB0A00AD41FE /* ASOperation.h */,
-				0EDC5DE221BBBB0A00AD41FE /* ASOperation.m */,
+				0EDC5DE021BBBB0A00AD41FE /* BROperation.h */,
+				0EDC5DE221BBBB0A00AD41FE /* BROperation.m */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -1145,6 +1147,8 @@
 				64F51DE74237213D947FD5AF /* Pods-BitBotTests.release.xcconfig */,
 				A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */,
 				8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */,
+				C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */,
+				D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1759,7 +1763,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BitriseATV-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BitBotATV-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1843,7 +1847,7 @@
 				0E8E9B5520F0819E00494DEB /* BRBitriseAPI.m in Sources */,
 				0EC53F45221B19F900F47B47 /* BRLogsTextViewController.m in Sources */,
 				0EB3ED7021E7B7F4003F0364 /* BRAbortRequest.m in Sources */,
-				0EDC5DE421BBBB0A00AD41FE /* ASOperation.m in Sources */,
+				0EDC5DE421BBBB0A00AD41FE /* BROperation.m in Sources */,
 				0E93B70D20F0F9BB001A6C15 /* BTRAccount+Mapping.m in Sources */,
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
@@ -2011,7 +2015,7 @@
 				DE48664725245A6100D5D80F /* BRAccountRequest.m in Sources */,
 				DE2A26B4252313DB00D5762E /* bitrise.xcdatamodeld in Sources */,
 				DEBE8C1C2513B7FB00CF079A /* BitriseATVApp.swift in Sources */,
-				DE3CD08925246A2E00DD5948 /* ASOperation.m in Sources */,
+				DE3CD08925246A2E00DD5948 /* BROperation.m in Sources */,
 				DED411102534A27900A711BC /* SettingsProvider.swift in Sources */,
 				DEF04DA0252C9335008C4C97 /* BRAbortRequest.m in Sources */,
 				DE4866162523633E00D5D80F /* AccountsConnector.swift in Sources */,
@@ -2335,7 +2339,7 @@
 		};
 		DEBE8C252513B7FD00CF079A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */;
+			baseConfigurationReference = C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2367,7 +2371,7 @@
 		};
 		DEBE8C262513B7FD00CF079A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */;
+			baseConfigurationReference = D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1342,7 +1342,10 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                         <menuItem title="Download log" tag="3" id="xYZ-7g-NJy">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem title="Open build" tag="4" id="RNi-pd-njy">
+                        <menuItem title="Open build..." tag="4" id="RNi-pd-njy">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="Open artefacts..." tag="4" id="rW2-zB-52L">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                     </items>
@@ -1511,15 +1514,15 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-Pg-oCd">
                                                             <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        <size key="minSize" width="563" height="342"/>
+                                                                        <size key="minSize" width="548" height="342"/>
                                                                         <size key="maxSize" width="563" height="10000000"/>
                                                                         <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                     </textView>
@@ -1530,7 +1533,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
-                                                                <rect key="frame" x="547" y="0.0" width="16" height="342"/>
+                                                                <rect key="frame" x="548" y="0.0" width="15" height="342"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                         </scrollView>

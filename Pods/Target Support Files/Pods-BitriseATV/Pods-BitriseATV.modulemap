@@ -1,6 +1,0 @@
-module Pods_BitriseATV {
-  umbrella header "Pods-BitriseATV-umbrella.h"
-
-  export *
-  module * { export * }
-}

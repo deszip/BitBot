@@ -1,0 +1,6 @@
+module Pods_BitBotATV {
+  umbrella header "Pods-BitBotATV-umbrella.h"
+
+  export *
+  module * { export * }
+}

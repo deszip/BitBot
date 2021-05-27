@@ -16,10 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)analytics;
 
+// Controls if services are running
 - (void)start;
-- (void)toggle;
+- (void)stop;
+
+// Controls if analytics is allowed by user
 - (void)setEnabled:(BOOL)isEnabled;
 - (BOOL)isEnabled;
+
+// Switches enabled state and calls start/stop
+- (void)toggle;
 
 #pragma mark - Events -
 
@@ -31,11 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)trackAnalyticsToggle;
 
 - (void)trackAccountAdd;
-- (void)trackAccountAddFailure;
+- (void)trackAccountAddFailure:(NSError *)error;
 - (void)trackAccountRemove;
+- (void)trackAccountRemoveError:(NSError *)error;
 - (void)trackSyncWithStarted:(NSUInteger)started
                      running:(NSUInteger)running
                     finished:(NSUInteger)finished;
+- (void)trackSyncError:(NSError *)error;
 - (void)trackRebuildAction;
 - (void)trackAbortAction;
 - (void)trackLoadLogsAction;
