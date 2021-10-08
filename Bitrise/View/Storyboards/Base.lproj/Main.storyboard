@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1322,9 +1322,9 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>
                         <outlet property="settingsMenu" destination="Gbj-C2-212" id="bEI-Ue-dRa"/>
                         <outlet property="topBar" destination="82J-cI-jpS" id="D4C-Sf-sOB"/>
-                        <segue destination="jqU-3H-VNR" kind="show" identifier="kAboutWindowSegue" id="6rC-QE-sbB"/>
-                        <segue destination="u6Y-Oa-61p" kind="show" identifier="kAccountWindowSegue" id="NV4-Wk-TbZ"/>
-                        <segue destination="asu-PE-Roq" kind="show" identifier="kLogWindowSegue" id="PDf-H1-w4D"/>
+                        <segue destination="a1H-Wk-UhP" kind="show" identifier="kLogWindowSegue" id="sT9-V8-c2b"/>
+                        <segue destination="xeA-09-nhF" kind="show" identifier="kAboutWindowSegue" id="g7U-bW-7Fb"/>
+                        <segue destination="5Gz-Fb-DSu" kind="show" identifier="kAccountWindowSegue" id="K7v-aJ-sil"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1376,205 +1376,6 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
             <point key="canvasLocation" x="81" y="586.5"/>
         </scene>
         <!--Window Controller-->
-        <scene sceneID="FJH-sd-lo4">
-            <objects>
-                <windowController id="asu-PE-Roq" customClass="BRLogsWindowController" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="9PA-xQ-rRn">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="961" y="612" width="609" height="271"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-                        <value key="minSize" type="size" width="600" height="400"/>
-                        <toolbar key="toolbar" implicitIdentifier="2FDECCA6-87AD-4B1B-AC1A-28CFD72AD2B6" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="FK0-3D-QwS">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="m24-Qy-PdI"/>
-                                <toolbarItem implicitItemIdentifier="539042DC-5138-4A5B-BD7C-2B05A9232FE5" label="" paletteLabel="Custom View" id="ili-Gc-DPH">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="76" height="23"/>
-                                    <size key="maxSize" width="81" height="24"/>
-                                    <segmentedControl key="view" verticalHuggingPriority="750" id="2Se-V3-wTa">
-                                        <rect key="frame" x="0.0" y="14" width="77" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="0Wv-43-Ni0">
-                                            <font key="font" metaFont="system"/>
-                                            <segments>
-                                                <segment image="stack-list" width="35" selected="YES"/>
-                                                <segment image="flat-list" width="35">
-                                                    <nil key="label"/>
-                                                </segment>
-                                            </segments>
-                                            <connections>
-                                                <action selector="switchLogPresentation:" target="82d-mv-VxY" id="pMf-EY-jOR"/>
-                                            </connections>
-                                        </segmentedCell>
-                                    </segmentedControl>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E38EBD5A-252C-481B-A70B-4A7EE616368E" label="Custom View" paletteLabel="Custom View" tag="-1" id="ftk-vS-gMF">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="177" height="18"/>
-                                    <size key="maxSize" width="300" height="23"/>
-                                    <box key="view" misplaced="YES" boxType="custom" borderType="none" cornerRadius="4" title="Box" id="RwJ-Pi-dtN">
-                                        <rect key="frame" x="0.0" y="14" width="177" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <view key="contentView" id="izk-bj-yoG" customClass="BRLogStatusView">
-                                            <rect key="frame" x="0.0" y="0.0" width="177" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ow5-SZ-UdE">
-                                                    <rect key="frame" x="0.0" y="4" width="219" height="19"/>
-                                                    <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bLy-ex-VQV">
-                                                            <rect key="frame" x="8" y="1" width="203" height="18"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="18" id="Hj0-H9-dD7"/>
-                                                            </constraints>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="BitBot: feature/logs, development" id="xeK-zb-Bh5">
-                                                                <font key="font" size="10" name="Menlo-Regular"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </textField>
-                                                        <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="hdc-nt-y9y">
-                                                            <rect key="frame" x="60" y="-1" width="100" height="3"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="1" id="2dE-Cj-4Ue"/>
-                                                            </constraints>
-                                                        </progressIndicator>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="bLy-ex-VQV" firstAttribute="leading" secondItem="ow5-SZ-UdE" secondAttribute="leading" constant="10" id="Emh-Ga-BLz"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bLy-ex-VQV" secondAttribute="trailing" constant="10" id="Int-yB-FBZ"/>
-                                                    </constraints>
-                                                    <visibilityPriorities>
-                                                        <integer value="1000"/>
-                                                        <integer value="1000"/>
-                                                    </visibilityPriorities>
-                                                    <customSpacing>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                        <real value="3.4028234663852886e+38"/>
-                                                    </customSpacing>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ow5-SZ-UdE" firstAttribute="leading" secondItem="izk-bj-yoG" secondAttribute="leading" id="6Ea-6F-c0y"/>
-                                                <constraint firstItem="ow5-SZ-UdE" firstAttribute="top" secondItem="izk-bj-yoG" secondAttribute="top" constant="4" id="Vf2-Xb-o8J"/>
-                                                <constraint firstAttribute="trailing" secondItem="ow5-SZ-UdE" secondAttribute="trailing" id="dca-c6-dWG"/>
-                                                <constraint firstAttribute="bottom" secondItem="ow5-SZ-UdE" secondAttribute="bottom" id="rcg-gn-cJm"/>
-                                            </constraints>
-                                            <connections>
-                                                <outlet property="progressIndicator" destination="hdc-nt-y9y" id="S26-8p-5zF"/>
-                                                <outlet property="statusField" destination="bLy-ex-VQV" id="EFf-Df-LoI"/>
-                                            </connections>
-                                        </view>
-                                        <color key="fillColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                    </box>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="dPk-vs-VCz"/>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="m24-Qy-PdI"/>
-                                <toolbarItem reference="ftk-vS-gMF"/>
-                                <toolbarItem reference="m24-Qy-PdI"/>
-                            </defaultToolbarItems>
-                        </toolbar>
-                        <connections>
-                            <outlet property="delegate" destination="asu-PE-Roq" id="GOO-A1-uXo"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <outlet property="statusView" destination="izk-bj-yoG" id="jeF-AH-Fyu"/>
-                        <outlet property="toolbar" destination="FK0-3D-QwS" id="tuX-n0-nqr"/>
-                        <segue destination="xqt-If-8UY" kind="relationship" relationship="window.shadowedContentViewController" id="SW2-pD-3HD"/>
-                    </connections>
-                </windowController>
-                <customObject id="82d-mv-VxY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="97" y="1211"/>
-        </scene>
-        <!--Logs Text View Controller-->
-        <scene sceneID="cqh-Ps-RmD">
-            <objects>
-                <viewController id="xqt-If-8UY" customClass="BRLogsTextViewController" sceneMemberID="viewController">
-                    <view key="view" id="5te-AQ-jce">
-                        <rect key="frame" x="0.0" y="0.0" width="603" height="382"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9br-Ie-Rei">
-                                <rect key="frame" x="20" y="20" width="563" height="342"/>
-                                <subviews>
-                                    <tabView type="noTabsNoBorder" initialItem="6vB-IO-3fV" translatesAutoresizingMaskIntoConstraints="NO" id="cbc-IN-zEz">
-                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
-                                        <font key="font" metaFont="system"/>
-                                        <tabViewItems>
-                                            <tabViewItem label="Raw" identifier="1" id="6vB-IO-3fV">
-                                                <view key="view" id="0WD-S8-OIc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwf-Pg-oCd">
-                                                            <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
-                                                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Urt-nD-F0c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
-                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                <subviews>
-                                                                    <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" smartInsertDelete="YES" id="PCO-NY-c1K">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="548" height="342"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        <size key="minSize" width="548" height="342"/>
-                                                                        <size key="maxSize" width="563" height="10000000"/>
-                                                                        <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textView>
-                                                                </subviews>
-                                                            </clipView>
-                                                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="0lL-V5-psW">
-                                                                <rect key="frame" x="-100" y="-100" width="548" height="15"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </scroller>
-                                                            <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="sVu-nM-rxN">
-                                                                <rect key="frame" x="548" y="0.0" width="15" height="342"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </scroller>
-                                                        </scrollView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="jwf-Pg-oCd" firstAttribute="leading" secondItem="0WD-S8-OIc" secondAttribute="leading" id="LXr-0M-7g2"/>
-                                                        <constraint firstAttribute="bottom" secondItem="jwf-Pg-oCd" secondAttribute="bottom" id="kQz-oV-s0F"/>
-                                                        <constraint firstAttribute="trailing" secondItem="jwf-Pg-oCd" secondAttribute="trailing" id="sLj-TG-Ghf"/>
-                                                        <constraint firstItem="jwf-Pg-oCd" firstAttribute="top" secondItem="0WD-S8-OIc" secondAttribute="top" id="stQ-ss-CMR"/>
-                                                    </constraints>
-                                                </view>
-                                            </tabViewItem>
-                                        </tabViewItems>
-                                    </tabView>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="9br-Ie-Rei" firstAttribute="top" secondItem="5te-AQ-jce" secondAttribute="top" constant="20" id="4q2-hm-YWk"/>
-                            <constraint firstAttribute="trailing" secondItem="9br-Ie-Rei" secondAttribute="trailing" constant="20" id="dL6-Ag-nbQ"/>
-                            <constraint firstAttribute="bottom" secondItem="9br-Ie-Rei" secondAttribute="bottom" constant="20" id="n5I-yc-bLs"/>
-                            <constraint firstItem="9br-Ie-Rei" firstAttribute="leading" secondItem="5te-AQ-jce" secondAttribute="leading" constant="20" id="zXC-O2-uzb"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="logScrollView" destination="jwf-Pg-oCd" id="dZV-Le-Gzv"/>
-                        <outlet property="logTextView" destination="PCO-NY-c1K" id="SjA-Yl-kx3"/>
-                        <outlet property="logsTabView" destination="cbc-IN-zEz" id="LLW-Ec-vD4"/>
-                    </connections>
-                </viewController>
-                <customObject id="M4y-gM-Wf4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="121" y="1685"/>
-        </scene>
-        <!--Window Controller-->
         <scene sceneID="uh9-Ob-V4L">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="u6Y-Oa-61p" sceneMemberID="viewController">
@@ -1582,7 +1383,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="516" y="564" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1669"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <value key="minSize" type="size" width="480" height="270"/>
                         <toolbar key="toolbar" implicitIdentifier="BF02062B-5C3C-4651-A3D9-2DD559E6E5DE" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="TvV-6N-kRs">
                             <allowedToolbarItems/>
@@ -2066,7 +1867,7 @@ Gw
                         <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="1091" y="611" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <toolbar key="toolbar" implicitIdentifier="AB4EA364-C5FE-49F0-85CB-2A0594DFDBC0" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="zrY-Zm-u1b">
                             <allowedToolbarItems/>
                             <defaultToolbarItems/>
@@ -2237,6 +2038,30 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
             </objects>
             <point key="canvasLocation" x="1358" y="324"/>
         </scene>
+        <!--Logs-->
+        <scene sceneID="CwZ-1Y-mm9">
+            <objects>
+                <controllerPlaceholder storyboardName="Logs" id="a1H-Wk-UhP" sceneMemberID="viewController"/>
+                <customObject id="yAo-hv-hqV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="882"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="4Ap-5a-nhd">
+            <objects>
+                <controllerPlaceholder storyboardName="About" id="xeA-09-nhF" sceneMemberID="viewController"/>
+                <customObject id="i08-pz-qW4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="331"/>
+        </scene>
+        <!--Accounts-->
+        <scene sceneID="JEI-rr-yJo">
+            <objects>
+                <controllerPlaceholder storyboardName="Accounts" id="5Gz-Fb-DSu" sceneMemberID="viewController"/>
+                <customObject id="qup-5X-SDz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="508" y="49"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AddButtonImage" width="130" height="34"/>
@@ -2253,10 +2078,8 @@ BitBot and we are not associated or affiliated with Bitrise in any way. </mutabl
         <image name="calendar" width="10" height="10"/>
         <image name="clock" width="10" height="10"/>
         <image name="dots" width="431" height="11"/>
-        <image name="flat-list" width="15" height="14"/>
         <image name="git-branch" width="10" height="10"/>
         <image name="list" width="10" height="10"/>
         <image name="message-square" width="10" height="10"/>
-        <image name="stack-list" width="20" height="13"/>
     </resources>
 </document>

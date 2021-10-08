@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Vtl-Vt-uBP">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="fjJ-1U-Mzn">
+            <objects>
+                <windowController id="Vtl-Vt-uBP" customClass="BRLogsWindowController" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="0SF-RF-FVS">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="961" y="612" width="609" height="271"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+                        <value key="minSize" type="size" width="600" height="400"/>
+                        <view key="contentView" id="IA6-ch-DPh">
+                            <rect key="frame" x="0.0" y="0.0" width="609" height="271"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <toolbar key="toolbar" implicitIdentifier="2FDECCA6-87AD-4B1B-AC1A-28CFD72AD2B6" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="5ox-Gc-fTR">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="fMl-wa-Qy5"/>
+                                <toolbarItem implicitItemIdentifier="539042DC-5138-4A5B-BD7C-2B05A9232FE5" label="" paletteLabel="Custom View" id="DYS-Qb-EzQ">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="76" height="23"/>
+                                    <size key="maxSize" width="81" height="24"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="Z6O-m7-BCz">
+                                        <rect key="frame" x="0.0" y="14" width="77" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="8JA-P4-G1i">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment image="stack-list" width="35" selected="YES"/>
+                                                <segment image="flat-list" width="35">
+                                                    <nil key="label"/>
+                                                </segment>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E38EBD5A-252C-481B-A70B-4A7EE616368E" label="Custom View" paletteLabel="Custom View" tag="-1" title="Box" id="7KD-kx-zJ8">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="177" height="18"/>
+                                    <size key="maxSize" width="300" height="23"/>
+                                    <box key="view" misplaced="YES" boxType="custom" borderType="none" cornerRadius="4" title="Box" id="Eg2-pQ-EKv">
+                                        <rect key="frame" x="0.0" y="14" width="177" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <view key="contentView" id="0Af-4A-FHK" customClass="BRLogStatusView">
+                                            <rect key="frame" x="0.0" y="0.0" width="177" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpI-Ic-JMn">
+                                                    <rect key="frame" x="0.0" y="4" width="219" height="19"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W70-wF-g7h">
+                                                            <rect key="frame" x="8" y="1" width="203" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="mTQ-Ud-Ch0"/>
+                                                            </constraints>
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="BitBot: feature/logs, development" id="gaw-OJ-lAc">
+                                                                <font key="font" size="10" name="Menlo-Regular"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="cDh-2b-Hf0">
+                                                            <rect key="frame" x="60" y="-1" width="100" height="3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="e0Q-qr-MHD"/>
+                                                            </constraints>
+                                                        </progressIndicator>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="W70-wF-g7h" secondAttribute="trailing" constant="10" id="Gzo-hB-omN"/>
+                                                        <constraint firstItem="W70-wF-g7h" firstAttribute="leading" secondItem="rpI-Ic-JMn" secondAttribute="leading" constant="10" id="dwg-wH-hGx"/>
+                                                    </constraints>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="rpI-Ic-JMn" secondAttribute="bottom" id="87g-Ir-Ydv"/>
+                                                <constraint firstItem="rpI-Ic-JMn" firstAttribute="top" secondItem="0Af-4A-FHK" secondAttribute="top" constant="4" id="UQa-hB-8Oo"/>
+                                                <constraint firstAttribute="trailing" secondItem="rpI-Ic-JMn" secondAttribute="trailing" id="g6Y-1Q-BSP"/>
+                                                <constraint firstItem="rpI-Ic-JMn" firstAttribute="leading" secondItem="0Af-4A-FHK" secondAttribute="leading" id="xfm-tv-mSv"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="progressIndicator" destination="cDh-2b-Hf0" id="35e-a4-ecD"/>
+                                                <outlet property="statusField" destination="W70-wF-g7h" id="k2w-jS-V2s"/>
+                                            </connections>
+                                        </view>
+                                        <color key="fillColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </box>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="tKK-nB-fL9"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="fMl-wa-Qy5"/>
+                                <toolbarItem reference="7KD-kx-zJ8"/>
+                                <toolbarItem reference="fMl-wa-Qy5"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="Vtl-Vt-uBP" id="OJx-0t-lFB"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <outlet property="statusView" destination="0Af-4A-FHK" id="dea-HN-mY0"/>
+                        <outlet property="toolbar" destination="5ox-Gc-fTR" id="LOI-yp-Un9"/>
+                        <segue destination="4q0-XR-M1U" kind="relationship" relationship="window.shadowedContentViewController" id="Xt0-Wo-fve"/>
+                    </connections>
+                </windowController>
+                <customObject id="O6b-j7-hMJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="97" y="1211"/>
+        </scene>
+        <!--Logs Text View Controller-->
+        <scene sceneID="ciL-dG-LVD">
+            <objects>
+                <viewController id="4q0-XR-M1U" customClass="BRLogsTextViewController" sceneMemberID="viewController">
+                    <view key="view" id="uLb-ps-kbk">
+                        <rect key="frame" x="0.0" y="0.0" width="603" height="382"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hme-EX-8MI">
+                                <rect key="frame" x="20" y="20" width="563" height="342"/>
+                                <subviews>
+                                    <tabView type="noTabsNoBorder" initialItem="Rxr-LU-i0z" translatesAutoresizingMaskIntoConstraints="NO" id="6zE-Qe-jEQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                        <font key="font" metaFont="system"/>
+                                        <tabViewItems>
+                                            <tabViewItem label="Raw" identifier="1" id="Rxr-LU-i0z">
+                                                <view key="view" id="Pk6-Xm-BoZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06S-ot-WfG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cBq-YB-iRO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" smartInsertDelete="YES" id="OQt-na-GoA">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="563" height="342"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        <size key="minSize" width="563" height="342"/>
+                                                                        <size key="maxSize" width="563" height="10000000"/>
+                                                                        <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                            </clipView>
+                                                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="byz-be-FoB">
+                                                                <rect key="frame" x="-100" y="-100" width="548" height="15"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </scroller>
+                                                            <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="nu3-1l-hDe">
+                                                                <rect key="frame" x="547" y="0.0" width="16" height="342"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </scroller>
+                                                        </scrollView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="06S-ot-WfG" firstAttribute="leading" secondItem="Pk6-Xm-BoZ" secondAttribute="leading" id="OTp-BQ-6fC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="06S-ot-WfG" secondAttribute="trailing" id="Wai-HK-OO2"/>
+                                                        <constraint firstAttribute="bottom" secondItem="06S-ot-WfG" secondAttribute="bottom" id="fPV-UR-BY2"/>
+                                                        <constraint firstItem="06S-ot-WfG" firstAttribute="top" secondItem="Pk6-Xm-BoZ" secondAttribute="top" id="gmo-ps-fll"/>
+                                                    </constraints>
+                                                </view>
+                                            </tabViewItem>
+                                        </tabViewItems>
+                                    </tabView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hme-EX-8MI" secondAttribute="bottom" constant="20" id="6So-RV-IGM"/>
+                            <constraint firstItem="hme-EX-8MI" firstAttribute="leading" secondItem="uLb-ps-kbk" secondAttribute="leading" constant="20" id="HTE-jt-aua"/>
+                            <constraint firstAttribute="trailing" secondItem="hme-EX-8MI" secondAttribute="trailing" constant="20" id="b4H-PJ-YU3"/>
+                            <constraint firstItem="hme-EX-8MI" firstAttribute="top" secondItem="uLb-ps-kbk" secondAttribute="top" constant="20" id="wW1-xo-cx6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logScrollView" destination="06S-ot-WfG" id="Pt7-QR-P5k"/>
+                        <outlet property="logTextView" destination="OQt-na-GoA" id="8hE-po-g40"/>
+                        <outlet property="logsTabView" destination="6zE-Qe-jEQ" id="D2g-oM-Wbn"/>
+                    </connections>
+                </viewController>
+                <customObject id="eLG-tE-SvL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121" y="1685"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="flat-list" width="15" height="14"/>
+        <image name="stack-list" width="20" height="13"/>
+    </resources>
+</document>

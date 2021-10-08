@@ -147,6 +147,9 @@
 		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
 		D982D8A9249E7ED70099F0A5 /* BRAccountsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */; };
 		D982D8AC249E8BDC0099F0A5 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
+		D98338522710F5F200D80E24 /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98338512710F5F200D80E24 /* Logs.storyboard */; };
+		D98338542710F5FC00D80E24 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98338532710F5FC00D80E24 /* About.storyboard */; };
+		D98338562710F60700D80E24 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98338552710F60700D80E24 /* Accounts.storyboard */; };
 		D98C540A2439D02500CA1D57 /* BRStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C54092439D02500CA1D57 /* BRStyleSheet.m */; };
 		D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
 		D993A77F2630727900BBE937 /* BRAppsDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */; };
@@ -537,6 +540,9 @@
 		D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsObserver.m; sourceTree = "<group>"; };
 		D982D8AA249E8BDC0099F0A5 /* BRCommandFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCommandFactory.h; sourceTree = "<group>"; };
 		D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCommandFactory.m; sourceTree = "<group>"; };
+		D98338512710F5F200D80E24 /* Logs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
+		D98338532710F5FC00D80E24 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		D98338552710F60700D80E24 /* Accounts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
 		D98C54082439D02500CA1D57 /* BRStyleSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStyleSheet.h; sourceTree = "<group>"; };
 		D98C54092439D02500CA1D57 /* BRStyleSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStyleSheet.m; sourceTree = "<group>"; };
 		D98C540C2439DAB300CA1D57 /* BRPlaceholderViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPlaceholderViews.h; sourceTree = "<group>"; };
@@ -752,11 +758,11 @@
 		0E42CAFA20EC7AEF0033CD03 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D98338502710D5A800D80E24 /* Storyboards */,
 				D97355302402F51E003FCE9B /* Tools */,
 				0EF766C121E264C500E64E0C /* Custom */,
 				0E30344321CEDDA6001757C0 /* Menus */,
 				0E42CB0020EC893C0033CD03 /* Cells */,
-				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
 				0E51715721D149FD000D470E /* BRSegue.h */,
 				0EEF655520F5B2AB0012C45D /* BRCellBuilder.h */,
 				0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */,
@@ -1213,6 +1219,17 @@
 			path = Mono;
 			sourceTree = "<group>";
 		};
+		D98338502710D5A800D80E24 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
+				D98338512710F5F200D80E24 /* Logs.storyboard */,
+				D98338532710F5FC00D80E24 /* About.storyboard */,
+				D98338552710F60700D80E24 /* Accounts.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		D98C540F2439EB6800CA1D57 /* Jura */ = {
 			isa = PBXGroup;
 			children = (
@@ -1644,7 +1661,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98338522710F5F200D80E24 /* Logs.storyboard in Resources */,
+				D98338562710F60700D80E24 /* Accounts.storyboard in Resources */,
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
+				D98338542710F5FC00D80E24 /* About.storyboard in Resources */,
 				0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
