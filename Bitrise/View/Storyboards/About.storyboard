@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="6rk-dz-Ego">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="elL-Cx-4l5">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="6rk-dz-Ego" sceneMemberID="viewController">
+                    <window key="window" title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="lyx-5z-XN8">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="1091" y="611" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+                        <view key="contentView" id="fZt-Fb-onc">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <toolbar key="toolbar" implicitIdentifier="AB4EA364-C5FE-49F0-85CB-2A0594DFDBC0" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="qsj-Ic-EPK">
+                            <allowedToolbarItems/>
+                            <defaultToolbarItems/>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="6rk-dz-Ego" id="51N-WP-8FZ"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Kaw-Ih-coa" kind="relationship" relationship="window.shadowedContentViewController" id="O1h-0D-IX1"/>
+                    </connections>
+                </windowController>
+                <customObject id="DKb-Dd-zqp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="720" y="386"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="5Mv-ic-EQn">
+            <objects>
+                <viewController id="Kaw-Ih-coa" customClass="BRAboutViewController" sceneMemberID="viewController">
+                    <view key="view" id="6M8-cN-1iN">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="530"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jR4-44-mkz">
+                                <rect key="frame" x="20" y="20" width="400" height="480"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4W-Tt-YDk">
+                                        <rect key="frame" x="0.0" y="133" width="150" height="215"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdq-Dc-Qhf">
+                                                <rect key="frame" x="0.0" y="65" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="fdq-Dc-Qhf" secondAttribute="height" multiplier="1:1" id="15W-WG-VEq"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Icon" id="KWI-bc-Z5E"/>
+                                            </imageView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oOb-bq-aVT">
+                                                <rect key="frame" x="31" y="0.0" width="89" height="55"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5D9-Xt-eb6">
+                                                        <rect key="frame" x="-2" y="16" width="93" height="39"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="BitBot" id="DJX-ix-6Vm">
+                                                            <font key="font" size="32" name="ProximaNova-Regular"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qaS-om-0Ke">
+                                                        <rect key="frame" x="11" y="0.0" width="67" height="16"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="version 0.1" id="23z-9X-rSy">
+                                                            <font key="font" size="13" name="ProximaNova-Regular"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="XjN-OK-SYn"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-4h-XZC" customClass="BRDisableableScrollView">
+                                        <rect key="frame" x="160" y="0.0" width="240" height="480"/>
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="3Eb-uL-P9t">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="480"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="WYH-rb-iYq" customClass="BRAboutTextView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="480"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <size key="minSize" width="240" height="480"/>
+                                                    <size key="maxSize" width="240" height="10000000"/>
+                                                    <attributedString key="textStorage">
+                                                        <fragment>
+                                                            <string key="content">BitBot is unofficial Bitrise CI client for macOS. It uses Bitrise public API for all of it's features. Before use add your personal access token in account list. We wont steal it. We promise :)
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="ProximaNova-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content"> Awesome design and tons of patience were contributed by Kotki https://kotki.co 
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="ProximaNova-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <mutableString key="content">BitBot was built to work for our current project so it definitely lacks a lot of functionality available via Bitrise API and is full of bugs. Fell free to drop us a line if you found one or need a feature.  BitBot is opensource, feel free to contribute or just blame my code here: https://github.com/deszip/BitBot. If you want to support us - just star the repo :) 
+BitBot and we are not associated or affiliated with Bitrise in any way. </mutableString>
+                                                            <attributes>
+                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="14" name="ProximaNova-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="0ca-vv-Qh9"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ahx-Fa-FJ8">
+                                            <rect key="frame" x="-100" y="-100" width="240" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="fiq-HY-Bg7">
+                                            <rect key="frame" x="-100" y="-100" width="15" height="324"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="y9R-4h-XZC" secondAttribute="bottom" id="d5R-Dc-flr"/>
+                                    <constraint firstItem="y9R-4h-XZC" firstAttribute="top" secondItem="jR4-44-mkz" secondAttribute="top" id="ev1-vw-5yE"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jR4-44-mkz" firstAttribute="top" secondItem="6M8-cN-1iN" secondAttribute="top" constant="30" id="6Xj-D9-jKS"/>
+                            <constraint firstAttribute="bottom" secondItem="jR4-44-mkz" secondAttribute="bottom" constant="20" id="85v-Dg-olF"/>
+                            <constraint firstAttribute="trailing" secondItem="jR4-44-mkz" secondAttribute="trailing" constant="20" id="iat-7l-Fmo"/>
+                            <constraint firstItem="jR4-44-mkz" firstAttribute="leading" secondItem="6M8-cN-1iN" secondAttribute="leading" constant="20" id="vwY-GG-4j9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutTextView" destination="WYH-rb-iYq" id="U26-Rx-9ur"/>
+                        <outlet property="nameField" destination="5D9-Xt-eb6" id="wT5-SG-Wbg"/>
+                        <outlet property="scrollView" destination="y9R-4h-XZC" id="PSa-OS-AFz"/>
+                        <outlet property="versionField" destination="qaS-om-0Ke" id="vjs-bh-6fU"/>
+                    </connections>
+                </viewController>
+                <customObject id="CTN-XJ-eS9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="324"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon" width="1024" height="1024"/>
+    </resources>
+</document>
