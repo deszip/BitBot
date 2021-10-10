@@ -42,6 +42,10 @@
 
 #pragma mark - Base colors -
 
++ (NSColor *)defaultBackgroundColor {
+    return [NSColor windowBackgroundColor];
+}
+
 + (NSColor *)backgroundColor {
     return [NSColor colorNamed:@"BackgroundColor"];
 }

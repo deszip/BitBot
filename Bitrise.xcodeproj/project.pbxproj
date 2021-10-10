@@ -163,6 +163,7 @@
 		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
 		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
+		D9E6005027137ABF0057AB8B /* BRWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E6004F27137ABF0057AB8B /* BRWindowController.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
 		DE118155253C3E4900434A6F /* RemoteStorageChangesObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE118154253C3E4900434A6F /* RemoteStorageChangesObserver.swift */; };
@@ -570,6 +571,8 @@
 		D9BD3AB225A0E78C00446FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
+		D9E6004E27137ABF0057AB8B /* BRWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRWindowController.h; sourceTree = "<group>"; };
+		D9E6004F27137ABF0057AB8B /* BRWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRWindowController.m; sourceTree = "<group>"; };
 		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		DE0FE2E72527623F00C12804 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		DE118154253C3E4900434A6F /* RemoteStorageChangesObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageChangesObserver.swift; sourceTree = "<group>"; };
@@ -794,6 +797,8 @@
 				0E42CAFE20EC7BB40033CD03 /* BRMainController.m */,
 				0EF766BE21E2637900E64E0C /* BRAboutViewController.h */,
 				0EF766BF21E2637900E64E0C /* BRAboutViewController.m */,
+				D9E6004E27137ABF0057AB8B /* BRWindowController.h */,
+				D9E6004F27137ABF0057AB8B /* BRWindowController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1916,6 +1921,7 @@
 				0ECFF27A21CD1C10005EC4A4 /* BRSyncDiff.m in Sources */,
 				0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */,
 				0EAB9D7C221F0A1A00A21D23 /* BRProgressObserver.m in Sources */,
+				D9E6005027137ABF0057AB8B /* BRWindowController.m in Sources */,
 				0E8DFB4A21D7A7D700E7E5AC /* BRAccountsMenuController.m in Sources */,
 				D9A9CB512713166300E7CF43 /* BRDependencyInjector.m in Sources */,
 				0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */,

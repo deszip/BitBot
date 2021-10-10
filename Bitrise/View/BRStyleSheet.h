@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFont *)logStatusFont;
 
 #pragma mark - Base colors -
++ (NSColor *)defaultBackgroundColor;
 + (NSColor *)backgroundColor;
 + (NSColor *)cellBackgroundColor;
 + (NSColor *)greenColor;

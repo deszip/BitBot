@@ -43,6 +43,7 @@
 @protocol BREnvironmentProvider <NSObject>
 
 - (BREnvironment *)appEnvironment;
+- (NSNotificationCenter *)notificationCenter;
 
 @end
 

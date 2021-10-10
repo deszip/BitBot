@@ -49,14 +49,19 @@
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
 
+- (void)setDependencyContainer:(id<BRDataSourceProvider,BRInteractionProvider>)dependencyContainer {
+    [super setDependencyContainer:dependencyContainer];
+}
+
 - (void)viewDidAppear {
     [super viewDidAppear];
     
     // UI
+//    [self.view.layer setBackgroundColor:[BRStyleSheet defaultBackgroundColor].CGColor];
     [self.titleField setFont:[BRStyleSheet proximaNova:16.0]];
     [self.titleField setTextColor:[BRStyleSheet secondaryTextColor]];
-    [self.containerBox setBorderColor:[BRStyleSheet boxBorderColor]];
-    [self.containerBox setFillColor:[NSColor clearColor]];
+    //[self.containerBox setBorderColor:[BRStyleSheet boxBorderColor]];
+    //[self.containerBox setFillColor:[NSColor clearColor]];
     [self.addButton setContentTintColor:[BRStyleSheet boxBorderColor]];
     [self.removeButton setContentTintColor:[BRStyleSheet boxBorderColor]];
     

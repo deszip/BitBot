@@ -83,4 +83,8 @@
     return [[BREnvironment alloc] initWithAutorun:[BRAutorun new] notificationsDispatcher:nDispatcher];
 }
 
+- (NSNotificationCenter *)notificationCenter {
+    return [NSNotificationCenter defaultCenter];
+}
+
 @end

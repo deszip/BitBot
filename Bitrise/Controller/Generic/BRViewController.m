@@ -21,11 +21,10 @@
     [super viewDidLoad];
     
     [self.view setWantsLayer:YES];
-    [self.view.layer setBackgroundColor:[BRStyleSheet backgroundColor].CGColor];
 }
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
+    [BRDependencyInjector propagat  eContainer:self.dependencyContainer toSegue:segue];
 }
 
 @end
