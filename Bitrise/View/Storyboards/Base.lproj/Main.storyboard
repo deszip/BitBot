@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1424,25 +1425,46 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                     <window key="window" title="BitBot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="R5o-0w-Fba">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="245" y="311" width="480" height="270"/>
+                        <rect key="contentRect" x="245" y="311" width="590" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <view key="contentView" id="xQD-Kr-vvC">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="590" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
-                        <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="QIg-Tr-dX6">
+                        <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="QIg-Tr-dX6">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="WB8-vs-t9q"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="WBP-gd-COl"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="tlS-bI-RLU"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="OHQ-rb-CFd"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="WCz-Cp-dfB"/>
+                                <toolbarItem implicitItemIdentifier="F7E31FC0-B562-4DA6-AF0A-973EBB352E09" label="Schedule" paletteLabel="Schedule" tag="-1" bordered="YES" selectable="YES" id="QuP-3A-RwM">
+                                    <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="32" height="25"/>
+                                    <size key="maxSize" width="32" height="25"/>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4365229F-1051-4ACB-A81E-5AFE385FE548" label="Stats" paletteLabel="Stats" tag="-1" bordered="YES" selectable="YES" id="VQ3-tI-Q6S">
+                                    <imageReference key="image" image="chart.bar" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="36" height="25"/>
+                                    <size key="maxSize" width="36" height="25"/>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="C7DF607E-DB79-40AB-AC07-4547BA83DB47" label="Info" paletteLabel="Info" tag="-1" bordered="YES" selectable="YES" id="yS2-8M-h89">
+                                    <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="31" height="25"/>
+                                    <size key="maxSize" width="31" height="25"/>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D0E66B84-992F-44EC-90DF-27B4BAF0B749" label="About" paletteLabel="About" tag="-1" bordered="YES" selectable="YES" id="eax-vF-OgI">
+                                    <imageReference key="image" image="StatusIcon" symbolScale="large"/>
+                                    <size key="minSize" width="32" height="25"/>
+                                    <size key="maxSize" width="32" height="25"/>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="WB8-vs-t9q"/>
-                                <toolbarItem reference="WBP-gd-COl"/>
-                                <toolbarItem reference="WCz-Cp-dfB"/>
-                                <toolbarItem reference="tlS-bI-RLU"/>
+                                <toolbarItem reference="yS2-8M-h89"/>
+                                <toolbarItem reference="QuP-3A-RwM"/>
+                                <toolbarItem reference="VQ3-tI-Q6S"/>
+                                <toolbarItem reference="OHQ-rb-CFd"/>
+                                <toolbarItem reference="eax-vF-OgI"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -1455,7 +1477,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 </windowController>
                 <customObject id="55A-By-efz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933" y="883"/>
+            <point key="canvasLocation" x="988" y="883"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Xgq-Ku-6SM">
@@ -1476,22 +1498,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 </splitViewController>
                 <customObject id="olB-sc-aTk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="1244"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="WCl-Tq-X1d">
-            <objects>
-                <viewController id="VpI-Kj-bYe" sceneMemberID="viewController">
-                    <view key="view" id="wiU-b2-3TJ">
-                        <rect key="frame" x="0.0" y="0.0" width="149" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <viewLayoutGuide key="safeArea" id="Y1X-ky-yyA"/>
-                        <viewLayoutGuide key="layoutMargins" id="3cn-b4-OLc"/>
-                    </view>
-                </viewController>
-                <customObject id="Qsa-JB-ll3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="514" y="1729"/>
+            <point key="canvasLocation" x="933" y="1309"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qd4-E5-j6B">
@@ -1506,7 +1513,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 </viewController>
                 <customObject id="NLY-MR-oZb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="887" y="1729"/>
+            <point key="canvasLocation" x="1097" y="1801"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="0Xk-2w-SDN">
@@ -1544,7 +1551,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 <controllerPlaceholder storyboardName="Accounts" id="Jua-uc-76S" sceneMemberID="viewController"/>
                 <customObject id="qHg-Qs-c9M" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361" y="1437"/>
+            <point key="canvasLocation" x="839" y="1665"/>
         </scene>
     </scenes>
     <resources>
@@ -1555,11 +1562,15 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
         <image name="Settings-icon" width="20" height="20"/>
         <image name="ShadowBottom" width="430" height="25"/>
         <image name="ShadowTop" width="430" height="25"/>
+        <image name="StatusIcon" width="22" height="22"/>
         <image name="TripleDotsShadowed" width="70" height="90"/>
         <image name="calendar" width="10" height="10"/>
+        <image name="calendar" catalog="system" width="20" height="17"/>
+        <image name="chart.bar" catalog="system" width="24" height="18"/>
         <image name="clock" width="10" height="10"/>
         <image name="dots" width="431" height="11"/>
         <image name="git-branch" width="10" height="10"/>
+        <image name="info.circle" catalog="system" width="19" height="19"/>
         <image name="list" width="10" height="10"/>
         <image name="message-square" width="10" height="10"/>
     </resources>

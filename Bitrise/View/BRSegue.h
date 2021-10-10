@@ -10,5 +10,6 @@
 
 static NSString * const kAboutWindowSegue = @"kAboutWindowSegue";
 static NSString * const kAccountWindowSegue = @"kAccountWindowSegue";
+static NSString * const kAccountInputWindowSegue = @"kAccountInputWindowSegue";
 static NSString * const kLogWindowSegue = @"kLogWindowSegue";
 static NSString * const kStandaloneWindowSegue = @"kStandaloneWindowSegue";

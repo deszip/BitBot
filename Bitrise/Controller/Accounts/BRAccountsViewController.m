@@ -9,6 +9,7 @@
 #import "BRAccountsViewController.h"
 
 #import "BRStyleSheet.h"
+#import "BRSegue.h"
 
 #import "BRKeyRequestContext.h"
 #import "BRKeyInputViewController.h"
@@ -70,7 +71,7 @@
     __weak typeof(self) weakSelf = self;
     [self.menuController setActionCallback:^(BRAppMenuAction action, NSString *slug) {
         if (action == BRAppMenuActionAddKey) {
-            [weakSelf performSegueWithIdentifier:@"BRKeyInputViewController" sender:[BRKeyRequestContext appContext:slug]];
+            [weakSelf performSegueWithIdentifier:kAccountInputWindowSegue sender:[BRKeyRequestContext appContext:slug]];
         }
         if (action == BRAppMenuActionRemoveAccount) {
             [weakSelf confirmDeletion:^{
@@ -151,7 +152,7 @@
 #pragma mark - Actions -
 
 - (IBAction)addAccount:(NSButton *)sender {
-    [self performSegueWithIdentifier:@"BRKeyInputViewController" sender:[BRKeyRequestContext accountContext]];
+    [self performSegueWithIdentifier:kAccountInputWindowSegue sender:[BRKeyRequestContext accountContext]];
 }
 
 - (IBAction)removeAccount:(NSButton *)sender {

@@ -319,7 +319,7 @@
                         <outlet property="containerBox" destination="1yp-cd-Lma" id="ZNU-8B-Ynl"/>
                         <outlet property="outlineView" destination="HsN-Qa-97v" id="wZe-cQ-0TS"/>
                         <outlet property="removeButton" destination="T4y-ES-Pdv" id="WU3-Yr-Yz7"/>
-                        <segue destination="iG7-Nh-Yok" kind="sheet" identifier="BRKeyInputViewController" id="wEi-MJ-lji"/>
+                        <segue destination="iG7-Nh-Yok" kind="sheet" identifier="kAccountInputWindowSegue" id="wEi-MJ-lji"/>
                     </connections>
                 </viewController>
                 <customObject id="GXG-K8-3Fi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

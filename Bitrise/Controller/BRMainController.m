@@ -137,9 +137,11 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
+    [[(NSWindowController *)segue.destinationController window] setLevel:NSMainMenuWindowLevel];
     
-    [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
-    [[(NSWindowController *)segue.destinationController window] setLevel:NSFloatingWindowLevel];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[(NSWindowController *)segue.destinationController window] makeKeyAndOrderFront:self];
+    });
     
     if ([segue.identifier isEqualToString:kLogWindowSegue]) {
         BRLogsTextViewController *logController = (BRLogsTextViewController *)[(NSWindowController *)segue.destinationController contentViewController];
