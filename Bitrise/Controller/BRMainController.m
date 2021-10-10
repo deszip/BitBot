@@ -149,6 +149,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 #pragma mark - Actions -
 
+- (IBAction)openStandaloneWindow:(NSButton *)sender {
+    [self performSegueWithIdentifier:kStandaloneWindowSegue sender:self];
+}
+
 - (IBAction)openSettingsMenu:(NSButton *)sender {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
