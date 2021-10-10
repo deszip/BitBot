@@ -24,7 +24,7 @@
 }
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    [BRDependencyInjector propagat  eContainer:self.dependencyContainer toSegue:segue];
+    [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
 }
 
 @end
