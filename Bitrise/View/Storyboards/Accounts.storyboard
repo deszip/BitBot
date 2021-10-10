@@ -1,67 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="eLg-XZ-ftj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="qmq-L7-CkP">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Window Controller-->
-        <scene sceneID="Dil-AZ-aQz">
-            <objects>
-                <windowController showSeguePresentationStyle="single" id="eLg-XZ-ftj" sceneMemberID="viewController">
-                    <window key="window" title="Accounts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="vvn-J1-ORT">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="516" y="564" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
-                        <view key="contentView" id="eYF-Xb-AmL">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </view>
-                        <toolbar key="toolbar" implicitIdentifier="BF02062B-5C3C-4651-A3D9-2DD559E6E5DE" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="fo4-Ns-rHl">
-                            <allowedToolbarItems/>
-                            <defaultToolbarItems/>
-                        </toolbar>
-                        <connections>
-                            <outlet property="delegate" destination="eLg-XZ-ftj" id="IiE-9x-cYB"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="qmq-L7-CkP" kind="relationship" relationship="window.shadowedContentViewController" id="2vP-ki-KYV"/>
-                    </connections>
-                </windowController>
-                <customObject id="dxE-9N-y8f" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="720" y="761"/>
-        </scene>
         <!--Accounts View Controller-->
         <scene sceneID="Voq-J5-7gY">
             <objects>
-                <viewController id="qmq-L7-CkP" customClass="BRAccountsViewController" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="qmq-L7-CkP" customClass="BRAccountsViewController" sceneMemberID="viewController">
                     <view key="view" id="6a9-EA-O8n">
-                        <rect key="frame" x="0.0" y="0.0" width="490" height="520"/>
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="490"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-dc-gxB">
-                                <rect key="frame" x="0.0" y="470" width="490" height="50"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dyx-TQ-P0S">
-                                        <rect key="frame" x="209" y="14" width="72" height="22"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Accounts" id="wZ1-ji-wcC">
-                                            <font key="font" size="16" name="AvenirNext-Regular"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="A0i-M8-Cpp"/>
-                                    <constraint firstItem="dyx-TQ-P0S" firstAttribute="centerY" secondItem="Z0o-dc-gxB" secondAttribute="centerY" id="Ioj-xk-svy"/>
-                                    <constraint firstItem="dyx-TQ-P0S" firstAttribute="centerX" secondItem="Z0o-dc-gxB" secondAttribute="centerX" id="qKn-kW-kiS"/>
-                                </constraints>
-                            </customView>
                             <box boxType="custom" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1yp-cd-Lma">
                                 <rect key="frame" x="20" y="20" width="450" height="450"/>
                                 <view key="contentView" id="ohX-bl-UfN">
@@ -356,12 +308,9 @@
                             </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Z0o-dc-gxB" firstAttribute="top" secondItem="6a9-EA-O8n" secondAttribute="top" id="6lw-SR-WIL"/>
-                            <constraint firstItem="1yp-cd-Lma" firstAttribute="top" secondItem="Z0o-dc-gxB" secondAttribute="bottom" id="Ij7-zE-C1J"/>
                             <constraint firstAttribute="trailing" secondItem="1yp-cd-Lma" secondAttribute="trailing" constant="20" id="NFX-MB-JRq"/>
-                            <constraint firstItem="Z0o-dc-gxB" firstAttribute="leading" secondItem="6a9-EA-O8n" secondAttribute="leading" id="Tos-Ck-5Jr"/>
+                            <constraint firstItem="1yp-cd-Lma" firstAttribute="top" secondItem="6a9-EA-O8n" secondAttribute="top" constant="20" id="d7N-nk-ukC"/>
                             <constraint firstItem="1yp-cd-Lma" firstAttribute="leading" secondItem="6a9-EA-O8n" secondAttribute="leading" constant="20" id="mms-gT-5pO"/>
-                            <constraint firstAttribute="trailing" secondItem="Z0o-dc-gxB" secondAttribute="trailing" id="pdu-dJ-Y0k"/>
                             <constraint firstAttribute="bottom" secondItem="1yp-cd-Lma" secondAttribute="bottom" constant="20" id="zsX-F7-MRk"/>
                         </constraints>
                     </view>
@@ -370,7 +319,6 @@
                         <outlet property="containerBox" destination="1yp-cd-Lma" id="ZNU-8B-Ynl"/>
                         <outlet property="outlineView" destination="HsN-Qa-97v" id="wZe-cQ-0TS"/>
                         <outlet property="removeButton" destination="T4y-ES-Pdv" id="WU3-Yr-Yz7"/>
-                        <outlet property="titleField" destination="dyx-TQ-P0S" id="12C-iC-nYE"/>
                         <segue destination="iG7-Nh-Yok" kind="sheet" identifier="BRKeyInputViewController" id="wEi-MJ-lji"/>
                     </connections>
                 </viewController>

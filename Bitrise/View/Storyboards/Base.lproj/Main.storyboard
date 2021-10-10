@@ -1341,8 +1341,8 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                         <outlet property="topBar" destination="82J-cI-jpS" id="D4C-Sf-sOB"/>
                         <segue destination="a1H-Wk-UhP" kind="show" identifier="kLogWindowSegue" id="sT9-V8-c2b"/>
                         <segue destination="xeA-09-nhF" kind="show" identifier="kAboutWindowSegue" id="g7U-bW-7Fb"/>
-                        <segue destination="5Gz-Fb-DSu" kind="show" identifier="kAccountWindowSegue" id="K7v-aJ-sil"/>
                         <segue destination="7O9-Al-Awq" kind="show" identifier="kStandaloneWindowSegue" id="3p1-MO-ius"/>
+                        <segue destination="iuw-Pb-DE9" kind="show" identifier="kAccountWindowSegue" id="nPm-Wq-vuL"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1399,7 +1399,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 <controllerPlaceholder storyboardName="Logs" id="a1H-Wk-UhP" sceneMemberID="viewController"/>
                 <customObject id="yAo-hv-hqV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="558" y="533"/>
+            <point key="canvasLocation" x="558" y="444"/>
         </scene>
         <!--About-->
         <scene sceneID="4Ap-5a-nhd">
@@ -1415,14 +1415,14 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 <controllerPlaceholder storyboardName="Accounts" id="5Gz-Fb-DSu" sceneMemberID="viewController"/>
                 <customObject id="qup-5X-SDz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="572" y="461"/>
+            <point key="canvasLocation" x="1422" y="453"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="LfZ-qu-pIx">
             <objects>
                 <windowController id="7O9-Al-Awq" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="R5o-0w-Fba">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                    <window key="window" title="BitBot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="R5o-0w-Fba">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="311" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
@@ -1455,23 +1455,23 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 </windowController>
                 <customObject id="55A-By-efz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="799"/>
+            <point key="canvasLocation" x="933" y="883"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Xgq-Ku-6SM">
             <objects>
-                <splitViewController id="jUQ-s9-OvR" sceneMemberID="viewController">
+                <splitViewController id="jUQ-s9-OvR" customClass="BRSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="aIw-bE-dke"/>
-                        <splitViewItem id="vFX-Rr-erx"/>
+                        <splitViewItem id="9XU-H2-9a9"/>
+                        <splitViewItem id="pPL-WV-ket"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="9pf-Gx-t0g">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
                     <connections>
-                        <segue destination="VpI-Kj-bYe" kind="relationship" relationship="splitItems" id="C7n-KE-ggn"/>
-                        <segue destination="Xj4-ho-45Z" kind="relationship" relationship="splitItems" id="9uG-Ao-j7h"/>
+                        <segue destination="Jua-uc-76S" kind="relationship" relationship="splitItems" id="hlN-yP-AJE"/>
+                        <segue destination="Xj4-ho-45Z" kind="relationship" relationship="splitItems" id="hUI-2U-5nK"/>
                     </connections>
                 </splitViewController>
                 <customObject id="olB-sc-aTk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1491,7 +1491,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 </viewController>
                 <customObject id="Qsa-JB-ll3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="556" y="1647"/>
+            <point key="canvasLocation" x="514" y="1729"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qd4-E5-j6B">
@@ -1506,7 +1506,45 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                 </viewController>
                 <customObject id="NLY-MR-oZb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="1647"/>
+            <point key="canvasLocation" x="887" y="1729"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="0Xk-2w-SDN">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="iuw-Pb-DE9" sceneMemberID="viewController">
+                    <window key="window" title="Accounts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="b05-u5-gxa">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="516" y="564" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1255"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
+                        <view key="contentView" id="AdO-07-kKp">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <toolbar key="toolbar" implicitIdentifier="BF02062B-5C3C-4651-A3D9-2DD559E6E5DE" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="54V-Yq-Xz1">
+                            <allowedToolbarItems/>
+                            <defaultToolbarItems/>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="iuw-Pb-DE9" id="gmP-ri-RPU"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="5Gz-Fb-DSu" kind="relationship" relationship="window.shadowedContentViewController" id="nlJ-Ib-ec8"/>
+                    </connections>
+                </windowController>
+                <customObject id="ydd-nD-Qyh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="453"/>
+        </scene>
+        <!--Accounts-->
+        <scene sceneID="fcA-VH-1yC">
+            <objects>
+                <controllerPlaceholder storyboardName="Accounts" id="Jua-uc-76S" sceneMemberID="viewController"/>
+                <customObject id="qHg-Qs-c9M" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="361" y="1437"/>
         </scene>
     </scenes>
     <resources>

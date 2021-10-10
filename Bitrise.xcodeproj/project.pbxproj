@@ -156,6 +156,8 @@
 		D996A18524DB26E200DBFE83 /* BRDisableableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */; };
 		D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
 		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
+		D9A9CB4D2713104B00E7CF43 /* BRSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */; };
+		D9A9CB512713166300E7CF43 /* BRDependencyInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB502713166300E7CF43 /* BRDependencyInjector.m */; };
 		D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
@@ -557,6 +559,10 @@
 		D996EBD0245F17E500DC4F6B /* BRDotsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDotsView.m; sourceTree = "<group>"; };
 		D99BEB3224715C9B00BA90EC /* BRNotificationDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRNotificationDispatcher.h; sourceTree = "<group>"; };
 		D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRNotificationDispatcher.m; sourceTree = "<group>"; };
+		D9A9CB4B2713104B00E7CF43 /* BRSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSplitViewController.h; sourceTree = "<group>"; };
+		D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSplitViewController.m; sourceTree = "<group>"; };
+		D9A9CB4F2713166300E7CF43 /* BRDependencyInjector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDependencyInjector.h; sourceTree = "<group>"; };
+		D9A9CB502713166300E7CF43 /* BRDependencyInjector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDependencyInjector.m; sourceTree = "<group>"; };
 		D9B0A6B224A89C8900C07935 /* BRLogScroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogScroller.h; sourceTree = "<group>"; };
 		D9B0A6B324A89C8900C07935 /* BRLogScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogScroller.m; sourceTree = "<group>"; };
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
@@ -781,10 +787,9 @@
 		0E42CAFB20EC7AF60033CD03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D9A9CB4E271315FE00E7CF43 /* Generic */,
 				0EAB9D79221F099100A21D23 /* Accounts */,
 				0EAB9D78221F096F00A21D23 /* Logs */,
-				0E73598520EF93B8007E15A7 /* BRViewController.h */,
-				0E73598620EF93B8007E15A7 /* BRViewController.m */,
 				0E42CAFD20EC7BB40033CD03 /* BRMainController.h */,
 				0E42CAFE20EC7BB40033CD03 /* BRMainController.m */,
 				0EF766BE21E2637900E64E0C /* BRAboutViewController.h */,
@@ -1255,6 +1260,19 @@
 				D996EBD0245F17E500DC4F6B /* BRDotsView.m */,
 			);
 			path = "Dots view";
+			sourceTree = "<group>";
+		};
+		D9A9CB4E271315FE00E7CF43 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				0E73598520EF93B8007E15A7 /* BRViewController.h */,
+				0E73598620EF93B8007E15A7 /* BRViewController.m */,
+				D9A9CB4B2713104B00E7CF43 /* BRSplitViewController.h */,
+				D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */,
+				D9A9CB4F2713166300E7CF43 /* BRDependencyInjector.h */,
+				D9A9CB502713166300E7CF43 /* BRDependencyInjector.m */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		DE2A266525230CA100D5762E /* Graph */ = {
@@ -1819,6 +1837,7 @@
 				0E1ED8F722282C3400A432B1 /* BRLogsWindowController.m in Sources */,
 				0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */,
 				0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */,
+				D9A9CB4D2713104B00E7CF43 /* BRSplitViewController.m in Sources */,
 				0E73598720EF93B8007E15A7 /* BRViewController.m in Sources */,
 				0E02C9AE22103ED100FCFE17 /* BRLogsDataSource.m in Sources */,
 				0EFB325C22020B5E0045C376 /* BRLogObserver.m in Sources */,
@@ -1898,6 +1917,7 @@
 				0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */,
 				0EAB9D7C221F0A1A00A21D23 /* BRProgressObserver.m in Sources */,
 				0E8DFB4A21D7A7D700E7E5AC /* BRAccountsMenuController.m in Sources */,
+				D9A9CB512713166300E7CF43 /* BRDependencyInjector.m in Sources */,
 				0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */,
 				0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */,
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
