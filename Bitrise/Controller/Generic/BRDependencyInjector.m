@@ -8,6 +8,7 @@
 
 #import "BRDependencyInjector.h"
 
+#import "BRWindowController.h"
 #import "BRViewController.h"
 #import "BRSplitViewController.h"
 
@@ -15,6 +16,10 @@
 
 + (void)propagateContainer:(id)container toSegue:(NSStoryboardSegue *)segue {
     id destination = segue.destinationController;
+    
+    if ([destination isKindOfClass:[BRWindowController class]]) {
+        [(BRWindowController *)destination setDependencyContainer:container];
+    }
     if ([destination isKindOfClass:[NSWindowController class]]) {
         NSViewController *contentController = [(NSWindowController *)destination contentViewController];
         [self propagateContainer:container toController:contentController];

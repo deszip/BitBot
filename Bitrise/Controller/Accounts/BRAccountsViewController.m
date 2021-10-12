@@ -24,7 +24,6 @@
 @interface BRAccountsViewController ()
 
 @property (weak) IBOutlet NSTextField *titleField;
-@property (weak) IBOutlet NSBox *containerBox;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (strong) IBOutlet NSMenu *controlMenu;
 @property (weak) IBOutlet NSButton *addButton;
@@ -57,11 +56,8 @@
     [super viewDidAppear];
     
     // UI
-//    [self.view.layer setBackgroundColor:[BRStyleSheet defaultBackgroundColor].CGColor];
     [self.titleField setFont:[BRStyleSheet proximaNova:16.0]];
     [self.titleField setTextColor:[BRStyleSheet secondaryTextColor]];
-    //[self.containerBox setBorderColor:[BRStyleSheet boxBorderColor]];
-    //[self.containerBox setFillColor:[NSColor clearColor]];
     [self.addButton setContentTintColor:[BRStyleSheet boxBorderColor]];
     [self.removeButton setContentTintColor:[BRStyleSheet boxBorderColor]];
     

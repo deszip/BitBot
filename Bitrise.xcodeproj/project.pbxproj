@@ -120,6 +120,7 @@
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */; };
+		D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D902E1EF271571CB00B7742A /* Standalone.storyboard */; };
 		D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
 		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
 		D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */; };
@@ -507,6 +508,7 @@
 		A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBotATV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.debug.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.debug.xcconfig"; sourceTree = "<group>"; };
 		D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.release.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.release.xcconfig"; sourceTree = "<group>"; };
+		D902E1EF271571CB00B7742A /* Standalone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Standalone.storyboard; sourceTree = "<group>"; };
 		D90BFB9F25372FF800DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVRelease.entitlements; sourceTree = "<group>"; };
 		D90BFBA52537388000DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS14.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -1236,6 +1238,7 @@
 				D98338512710F5F200D80E24 /* Logs.storyboard */,
 				D98338532710F5FC00D80E24 /* About.storyboard */,
 				D98338552710F60700D80E24 /* Accounts.storyboard */,
+				D902E1EF271571CB00B7742A /* Standalone.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1689,6 +1692,7 @@
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
 				D98338542710F5FC00D80E24 /* About.storyboard in Resources */,
 				0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */,
+				D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
