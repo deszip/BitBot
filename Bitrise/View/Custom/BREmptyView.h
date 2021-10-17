@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BREmptyView : NSView
 
-@property (copy, nonatomic) void (^callback)();
+@property (copy, nonatomic) void (^callback)(void);
 
 @end
 

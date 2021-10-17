@@ -15,8 +15,6 @@
 
 @interface BRAddAccountOperation ()
 
-@property (strong, nonatomic) id <SentrySpan> sentryTransaction;
-
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRBitriseAPI *api;
 
