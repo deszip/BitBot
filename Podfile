@@ -1,9 +1,8 @@
 def sharedPods 
 
   pod 'EasyMapping'
-
-  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.1.0'
   pod 'Mixpanel'
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.1.0'
 
 end
 
@@ -13,15 +12,14 @@ target 'BitBot' do
   pod 'SDWebImage', '~> 5.0.6'
   
   sharedPods()
+end
 
-  target 'BitBotTests' do
-    inherit! :search_paths
+target 'BitBotTests' do
+  inherit! :search_paths
   
-    pod 'OCMock', '~> 3.4.3'
-    pod 'Expecta', '~> 1.0.6'
-    
-  end
-
+  pod 'OCMock', '~> 3.4.3'
+  pod 'Expecta', '~> 1.0.6'
+  
 end
 
 target 'BitBotATV' do

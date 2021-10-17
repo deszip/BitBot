@@ -50,7 +50,7 @@
 }
 
 - (BRAccountsObserver *)accountsObserver {
-    return [[BRAccountsObserver alloc] initWithContainer:self.persistenceContainer];
+    return [[BRAccountsObserver alloc] initWithContext:self.persistenceContainer.viewContext];
 }
 
 #pragma mark - BRInteractionProvider -

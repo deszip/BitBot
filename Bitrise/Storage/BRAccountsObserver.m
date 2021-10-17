@@ -15,17 +15,17 @@
 
 @property (copy, nonatomic) void (^stateCallback)(BRAccountsState);
 
-@property (strong, nonatomic) NSPersistentContainer *container;
+@property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSFetchedResultsController *accountsFRC;
 
 @end
 
 @implementation BRAccountsObserver
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container {
+- (instancetype)initWithContext:(NSManagedObjectContext *)context {
     if (self = [super init]) {
-        _container = container;
-        _accountsFRC = [self buildAccountsFRC:self.container.viewContext];
+        _context = context;
+        _accountsFRC = [self buildAccountsFRC:self.context];
         [_accountsFRC setDelegate:self];
     }
     
