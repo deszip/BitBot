@@ -24,7 +24,7 @@ typedef void(^BRAccountsStateCallback)(BRAccountsState state);
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithContext:(NSManagedObjectContext *)context NS_DESIGNATED_INITIALIZER;
 
 - (void)start:(BRAccountsStateCallback)callback;
 

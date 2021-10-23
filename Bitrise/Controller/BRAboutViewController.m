@@ -23,6 +23,8 @@
 
 @implementation BRAboutViewController
 
+@synthesize dependencyContainer;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

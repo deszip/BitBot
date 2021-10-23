@@ -313,8 +313,8 @@ typedef enum
  @discussion    This method attempts to find the closest ANSI color to
                 aColor and return its SGR code.
 
- @param aColor          The color to get a closest color SGR code match for
- @param aForeground     Whether you want a foreground or background color code
+ @param color          The color to get a closest color SGR code match for
+ @param foreground     Whether you want a foreground or background color code
 
  @result        SGR code for the ANSI color that is closest to aColor.
  */

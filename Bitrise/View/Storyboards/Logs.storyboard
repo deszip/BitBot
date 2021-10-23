@@ -13,11 +13,11 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="preferred" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="0SF-RF-FVS">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="961" y="612" width="609" height="271"/>
+                        <rect key="contentRect" x="961" y="612" width="600" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
                         <value key="minSize" type="size" width="600" height="400"/>
                         <view key="contentView" id="IA6-ch-DPh">
-                            <rect key="frame" x="0.0" y="0.0" width="609" height="271"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <toolbar key="toolbar" implicitIdentifier="2FDECCA6-87AD-4B1B-AC1A-28CFD72AD2B6" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="5ox-Gc-fTR">
@@ -45,15 +45,15 @@
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="177" height="18"/>
                                     <size key="maxSize" width="300" height="23"/>
-                                    <box key="view" misplaced="YES" boxType="custom" borderType="none" cornerRadius="4" title="Box" id="Eg2-pQ-EKv">
-                                        <rect key="frame" x="0.0" y="14" width="177" height="23"/>
+                                    <box key="view" boxType="custom" borderType="none" cornerRadius="4" title="Box" id="Eg2-pQ-EKv">
+                                        <rect key="frame" x="0.0" y="14" width="219" height="23"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <view key="contentView" id="0Af-4A-FHK" customClass="BRLogStatusView">
-                                            <rect key="frame" x="0.0" y="0.0" width="177" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="219" height="23"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpI-Ic-JMn">
-                                                    <rect key="frame" x="0.0" y="4" width="219" height="19"/>
+                                                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rpI-Ic-JMn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="219" height="19"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W70-wF-g7h">
                                                             <rect key="frame" x="8" y="1" width="203" height="18"/>

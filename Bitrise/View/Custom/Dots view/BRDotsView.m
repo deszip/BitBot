@@ -65,7 +65,7 @@ static const NSUInteger kSpacingSize = 5;
     
     // Gradient layer setup
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.autoresizingMask = NSViewWidthSizable;
+    gradientLayer.autoresizingMask = kCALayerWidthSizable;
     gradientLayer.startPoint = CGPointMake(0.0, 1.0);
     gradientLayer.endPoint = CGPointMake(1.0, 1.0);
     gradientLayer.locations = @[@(0), @(0.5), @(0.5), @(1.0)];
@@ -114,7 +114,7 @@ static const NSUInteger kSpacingSize = 5;
     CGPathMoveToPoint(pathRef, nil, 0, layer.bounds.size.height);
     CGPathAddLineToPoint(pathRef, nil, layer.bounds.size.width, layer.bounds.size.height);
     maskLayer.path = pathRef;
-    maskLayer.autoresizingMask = NSViewWidthSizable;
+    maskLayer.autoresizingMask = kCALayerWidthSizable;
     
     layer.mask = maskLayer;
 }

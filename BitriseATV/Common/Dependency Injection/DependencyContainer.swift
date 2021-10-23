@@ -26,7 +26,7 @@ final class DependencyContainer {
     }
     
     func accountsObserver() -> BRAccountsObserver {
-        BRAccountsObserver(container: persistentContainer())
+        BRAccountsObserver(context: persistentContainer().viewContext)
     }
     
     func bitriseAPI() -> BRBitriseAPI {
