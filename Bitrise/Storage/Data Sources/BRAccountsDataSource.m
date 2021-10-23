@@ -17,20 +17,24 @@
 #import "BRAccountCellView.h"
 #import "BRManagingAppCellView.h"
 
+NSNotificationName kAccountSelectedNotification = @"kAccountSelectedNotification";
+
 @interface BRAccountsDataSource () <NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) NSOutlineView *outlineView;
 
 @property (strong, nonatomic) NSPersistentContainer *container;
+@property (strong, nonatomic) NSNotificationCenter *notificationCenter;
 @property (strong, nonatomic) NSFetchedResultsController *accountsFRC;
 
 @end
 
 @implementation BRAccountsDataSource
 
-- (instancetype)initWithContainer:(NSPersistentContainer *)container {
+- (instancetype)initWithContainer:(NSPersistentContainer *)container notificationCenter:(NSNotificationCenter *)notificationCenter {
     if (self = [super init]) {
         _container = container;
+        _notificationCenter = notificationCenter;
         _accountsFRC = [self buildAccountsFRC:self.container.viewContext];
         [_accountsFRC setDelegate:self];
     }
@@ -96,6 +100,11 @@
 }
 
 #pragma mark - NSOutlineViewDelegate -
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    BTRAccount *selectedAccount = (BTRAccount *)[self.outlineView itemAtRow:[self.outlineView selectedRow]];
+    [self.notificationCenter postNotificationName:kAccountSelectedNotification object:self userInfo:@{ @"AccountID" : selectedAccount.slug }];
+}
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
     return 52.0;

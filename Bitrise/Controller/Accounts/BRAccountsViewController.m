@@ -35,6 +35,7 @@
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
 @property (strong, nonatomic) BRAccountsDataSource *dataSource;
+@property (strong, nonatomic) NSNotificationCenter *notificationCenter;
 
 @end
 
@@ -66,6 +67,7 @@
     self.storage = [self.dependencyContainer storage];
     self.dataSource = [self.dependencyContainer accountsDataSource];
     self.syncEngine = [self.dependencyContainer syncEngine];
+    self.notificationCenter = [self.dependencyContainer notificationCenter];
     
     // Menu controller setup
     self.menuController = [[BRAccountsMenuController alloc] initWithAPI:self.api storage:self.storage];
@@ -87,7 +89,7 @@
     [self.dataSource fetch];
     
     // Outline selection
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleSelection:) name:NSOutlineViewSelectionDidChangeNotification object:self.outlineView];
+    [self.notificationCenter addObserver:self selector:@selector(handleSelection:) name:NSOutlineViewSelectionDidChangeNotification object:self.outlineView];
     [self.removeButton setEnabled:NO];
 }
 

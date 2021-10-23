@@ -41,7 +41,7 @@
 }
 
 - (BRAccountsDataSource *)accountsDataSource {
-    return [[BRAccountsDataSource alloc] initWithContainer:self.persistenceContainer];
+    return [[BRAccountsDataSource alloc] initWithContainer:self.persistenceContainer notificationCenter:[self notificationCenter]];
 }
 
 - (BRLogsDataSource *)logDataSource {
