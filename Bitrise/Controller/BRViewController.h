@@ -12,6 +12,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//@protocol BRViewController
+//
+//@dynamic id dependencyContainer;
+//
+//@end
+
 @interface BRViewController : NSViewController
 
 @property (strong, nonatomic) id dependencyContainer;

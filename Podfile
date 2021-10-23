@@ -7,8 +7,7 @@ def sharedPods
 end
 
 target 'BitBot' do
-  platform :osx, '10.12'
-  pod "NSPopover+MISSINGBackgroundView"
+  platform :osx, '10.14'
   pod 'SDWebImage', '~> 5.0.6'
   
   sharedPods()

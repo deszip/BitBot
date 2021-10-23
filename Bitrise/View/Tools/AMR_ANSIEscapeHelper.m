@@ -856,7 +856,7 @@ AMR_HSB getHSBFromColor(NSColor *color)
     CGFloat hue = 0.0;
     CGFloat saturation = 0.0;
     CGFloat brightness = 0.0;
-    [[color colorUsingColorSpaceName:NSCalibratedRGBColorSpace]
+    [[color colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]]
         getHue:&hue
         saturation:&saturation
         brightness:&brightness
@@ -966,7 +966,7 @@ BOOL floatsEqual(CGFloat first, CGFloat second, CGFloat maxAbsError)
         // below.)
         //
         // subjective ordering of colors from most to least 'distinctive':
-        int colorDistinctivenessOrder[6] = {
+        unsigned long colorDistinctivenessOrder[6] = {
             AMR_SGRCodeFgRed+AMR_SGRCodeShift,
             AMR_SGRCodeFgMagenta+AMR_SGRCodeShift,
             AMR_SGRCodeFgBlue+AMR_SGRCodeShift,

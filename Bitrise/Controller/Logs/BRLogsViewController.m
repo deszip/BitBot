@@ -21,6 +21,8 @@
 
 @implementation BRLogsViewController
 
+@synthesize dependencyContainer;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
