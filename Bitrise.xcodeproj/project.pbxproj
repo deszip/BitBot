@@ -161,6 +161,7 @@
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
 		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
 		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
+		D9C48B322724130000EE097C /* NSPopover+MISSINGBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
@@ -564,6 +565,8 @@
 		D9B2E7EF23F94F5600C211F5 /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
 		D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		D9BD3AB225A0E78C00446FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPopover+MISSINGBackgroundView.m"; sourceTree = "<group>"; };
+		D9C48B312724130000EE097C /* NSPopover+MISSINGBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPopover+MISSINGBackgroundView.h"; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
 		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
@@ -731,6 +734,7 @@
 				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
 				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
 				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
+				D9C48B2C2724111B00EE097C /* Dependencies */,
 				0E9F413620FEFA510083D646 /* Tools */,
 				0E7A18BB21CCE5970096E1E6 /* Environment */,
 				0E73597E20EF8D73007E15A7 /* Container */,
@@ -1258,6 +1262,15 @@
 				D996EBD0245F17E500DC4F6B /* BRDotsView.m */,
 			);
 			path = "Dots view";
+			sourceTree = "<group>";
+		};
+		D9C48B2C2724111B00EE097C /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				D9C48B312724130000EE097C /* NSPopover+MISSINGBackgroundView.h */,
+				D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */,
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		DE2A266525230CA100D5762E /* Graph */ = {
@@ -1893,6 +1906,7 @@
 				0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */,
 				D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */,
 				0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */,
+				D9C48B322724130000EE097C /* NSPopover+MISSINGBackgroundView.m in Sources */,
 				0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */,
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
 				0E51715F21D20E96000D470E /* BRActionDispatcher.m in Sources */,

@@ -1,13 +1,12 @@
 PODS:
-  - EasyMapping (0.22.1):
-    - EasyMapping/Core (= 0.22.1)
-  - EasyMapping/Core (0.22.1)
+  - EasyMapping (0.24.0):
+    - EasyMapping/Core (= 0.24.0)
+  - EasyMapping/Core (0.24.0)
   - Expecta (1.0.6)
-  - Kingfisher/Core (5.15.5)
-  - Kingfisher/SwiftUI (5.15.5):
+  - Kingfisher/Core (5.15.8)
+  - Kingfisher/SwiftUI (5.15.8):
     - Kingfisher/Core
-  - Mixpanel (3.6.3)
-  - "NSPopover+MISSINGBackgroundView (1.0.6)"
+  - Mixpanel (3.9.0)
   - OCMock (3.4.3)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
@@ -21,21 +20,18 @@ DEPENDENCIES:
   - Expecta (~> 1.0.6)
   - Kingfisher/SwiftUI
   - Mixpanel
-  - "NSPopover+MISSINGBackgroundView"
   - OCMock (~> 3.4.3)
   - SDWebImage (~> 5.0.6)
   - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `7.1.0`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - EasyMapping
     - Expecta
-    - OCMock
-    - SDWebImage
-  trunk:
     - Kingfisher
     - Mixpanel
-    - "NSPopover+MISSINGBackgroundView"
+    - OCMock
+    - SDWebImage
 
 EXTERNAL SOURCES:
   Sentry:
@@ -48,15 +44,14 @@ CHECKOUT OPTIONS:
     :tag: 7.1.0
 
 SPEC CHECKSUMS:
-  EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
+  EasyMapping: a86b28c64613e3b5784e05c42a40da7b103ef41c
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  Kingfisher: e3ec347a5ab8817b7585ef46923a2d2b9a7d8fbe
-  Mixpanel: 0e9d50ecc6398e1082e690ddedf6968e57e81935
-  "NSPopover+MISSINGBackgroundView": 06a134ea85280a8f0436c9c99fa18400ae84cf15
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  Mixpanel: e1bf380762c15f4a9fd1373f15c91253462f1ea5
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   Sentry: d1665cb9c0d9ca39d81214ced2ade8c6da4a44d4
 
-PODFILE CHECKSUM: 4dc7e8546a4a64a4f49f73c55ae3672afde6186f
+PODFILE CHECKSUM: 143e360e6129b31afa7c1598a6e820d423deb195
 
 COCOAPODS: 1.10.2

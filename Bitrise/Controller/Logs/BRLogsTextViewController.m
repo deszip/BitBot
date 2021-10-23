@@ -29,6 +29,8 @@ static void *BRLogsTextViewControllerContext = &BRLogsTextViewControllerContext;
 
 @implementation BRLogsTextViewController
 
+@synthesize dependencyContainer;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

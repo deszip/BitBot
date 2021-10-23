@@ -8,7 +8,6 @@ end
 
 target 'BitBot' do
   platform :osx, '10.14'
-  pod "NSPopover+MISSINGBackgroundView"
   pod 'SDWebImage', '~> 5.0.6'
   
   sharedPods()

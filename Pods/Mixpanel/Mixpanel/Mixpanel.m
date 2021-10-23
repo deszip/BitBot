@@ -31,7 +31,7 @@
 #error The Mixpanel library must be compiled with ARC enabled
 #endif
 
-#define VERSION @"3.6.3"
+#define VERSION @"3.9.0"
 
 NSString *const MPNotificationTypeMini = @"mini";
 NSString *const MPNotificationTypeTakeover = @"takeover";
@@ -71,7 +71,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
 
 + (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken launchOptions:(NSDictionary *)launchOptions
 {
-    return [Mixpanel sharedInstanceWithToken:apiToken launchOptions:launchOptions trackCrashes:YES automaticPushTracking:YES];
+    return [Mixpanel sharedInstanceWithToken:apiToken launchOptions:launchOptions trackCrashes:NO automaticPushTracking:NO];
 }
 
 + (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken
@@ -81,7 +81,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
 
 + (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken optOutTrackingByDefault:(BOOL)optOutTrackingByDefault
 {
-    return [Mixpanel sharedInstanceWithToken:apiToken launchOptions:nil trackCrashes:YES automaticPushTracking:YES optOutTrackingByDefault:optOutTrackingByDefault];
+    return [Mixpanel sharedInstanceWithToken:apiToken launchOptions:nil trackCrashes:NO automaticPushTracking:NO optOutTrackingByDefault:optOutTrackingByDefault];
 }
 
 + (nullable Mixpanel *)sharedInstance
@@ -237,7 +237,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
     return [self initWithToken:apiToken
                  launchOptions:launchOptions
                  flushInterval:flushInterval
-                  trackCrashes:YES];
+                  trackCrashes:NO];
 }
 
 - (instancetype)initWithToken:(NSString *)apiToken
@@ -249,7 +249,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
                  launchOptions:launchOptions
                  flushInterval:flushInterval
                   trackCrashes:trackCrashes
-         automaticPushTracking:YES];
+         automaticPushTracking:NO];
 }
 
 - (instancetype)initWithToken:(NSString *)apiToken andFlushInterval:(NSUInteger)flushInterval
@@ -474,7 +474,9 @@ static CTTelephonyNetworkInfo *telephonyInfo;
                             [self.peopleQueue addObject:r];
                         }
                     }
-                    [self.people.unidentifiedQueue removeAllObjects];
+                    @synchronized (self) {
+                        [self.people.unidentifiedQueue removeAllObjects];
+                    }
                     [self archivePeople];
                 }
             } else {
@@ -894,12 +896,13 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
         return;
     }
 
-    properties = [properties copy];
     [Mixpanel assertPropertyTypes:properties];
     dispatch_async(self.serialQueue, ^{
-        NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithDictionary:self.superProperties];
-        [tmp addEntriesFromDictionary:properties];
-        self.superProperties = [NSDictionary dictionaryWithDictionary:tmp];
+        @synchronized (self) {
+            NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithDictionary:self.superProperties];
+            [tmp addEntriesFromDictionary:properties];
+            self.superProperties = [NSDictionary dictionaryWithDictionary:tmp];
+        }
         [self archiveProperties];
     });
 }
@@ -914,17 +917,19 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
     if ([self hasOptedOutTracking]) {
         return;
     }
-    properties = [properties copy];
+    
     [Mixpanel assertPropertyTypes:properties];
     dispatch_async(self.serialQueue, ^{
-        NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithDictionary:self.superProperties];
-        for (NSString *key in properties) {
-            id value = tmp[key];
-            if (value == nil || [value isEqual:defaultValue]) {
-                tmp[key] = properties[key];
+        @synchronized (self) {
+            NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithDictionary:self.superProperties];
+            for (NSString *key in properties) {
+                id value = tmp[key];
+                if (value == nil || [value isEqual:defaultValue]) {
+                    tmp[key] = properties[key];
+                }
             }
+            self.superProperties = [NSDictionary dictionaryWithDictionary:tmp];
         }
-        self.superProperties = [NSDictionary dictionaryWithDictionary:tmp];
         [self archiveProperties];
     });
 }
@@ -932,9 +937,11 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 - (void)unregisterSuperProperty:(NSString *)propertyName
 {
     dispatch_async(self.serialQueue, ^{
-        NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithDictionary:self.superProperties];
-        tmp[propertyName] = nil;
-        self.superProperties = [NSDictionary dictionaryWithDictionary:tmp];
+        @synchronized (self) {
+            NSMutableDictionary *tmp = [NSMutableDictionary dictionaryWithDictionary:self.superProperties];
+            tmp[propertyName] = nil;
+            self.superProperties = [NSDictionary dictionaryWithDictionary:tmp];
+        }
         [self archiveProperties];
     });
 }
@@ -942,7 +949,9 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 - (void)clearSuperProperties
 {
     dispatch_async(self.serialQueue, ^{
-        self.superProperties = @{};
+        @synchronized (self) {
+            self.superProperties = @{};
+        }
         [self archiveProperties];
     });
 }
@@ -964,14 +973,22 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
         MPLogError(@"Mixpanel cannot time an empty event");
         return;
     }
+    
     dispatch_async(self.serialQueue, ^{
-        self.timedEvents[event] = startTime;
+        @synchronized (self) {
+            self.timedEvents[event] = startTime;
+        }
     });
 }
 
 - (double)eventElapsedTime:(NSString *)event
 {
-    NSNumber *startTime = self.timedEvents[event];
+    __block NSNumber *startTime;
+    
+    dispatch_sync(self.serialQueue, ^{
+        startTime = self.timedEvents[event];
+    });
+    
     if (startTime == nil) {
         return 0;
     } else {
@@ -979,9 +996,26 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
     }
 }
 
+- (void)clearTimedEvent:(NSString *)event
+{
+    if (event.length == 0) {
+        MPLogError(@"Mixpanel cannot clear the timer for an empty event");
+        return;
+    }
+    
+    dispatch_async(self.serialQueue, ^{
+        @synchronized (self) {
+            [self.timedEvents removeObjectForKey:event];
+        }
+    });
+}
+
 - (void)clearTimedEvents
-{   dispatch_async(self.serialQueue, ^{
-        self.timedEvents = [NSMutableDictionary dictionary];
+{
+    dispatch_async(self.serialQueue, ^{
+        @synchronized (self) {
+            self.timedEvents = [NSMutableDictionary dictionary];
+        }
     });
 }
 
@@ -1035,9 +1069,11 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 
 - (void)optOutTracking{
     dispatch_async(self.serialQueue, ^{
-        [self.eventsQueue removeAllObjects];
-        [self.peopleQueue removeAllObjects];
-        [self.groupsQueue removeAllObjects];
+        @synchronized (self) {
+            [self.eventsQueue removeAllObjects];
+            [self.peopleQueue removeAllObjects];
+            [self.groupsQueue removeAllObjects];
+        }
     });
     if (self.people.distinctId) {
         [self.people deleteUser];
@@ -1045,17 +1081,20 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
         [self flush];
     }
     dispatch_async(self.serialQueue, ^{
-        self.alias = nil;
-        self.people.distinctId = nil;
-        self.userId = nil;
-        self.anonymousId = [self defaultDistinctId];
-        self.distinctId = self.anonymousId;
-        self.hadPersistedDistinctId = NO;
-        self.superProperties = [NSDictionary new];
-        [self.people.unidentifiedQueue removeAllObjects];
-        [self.timedEvents removeAllObjects];
-        [self archive];
+        @synchronized (self) {
+            self.alias = nil;
+            self.people.distinctId = nil;
+            self.userId = nil;
+            self.anonymousId = [self defaultDistinctId];
+            self.distinctId = self.anonymousId;
+            self.hadPersistedDistinctId = NO;
+            self.superProperties = [NSDictionary new];
+            [self.people.unidentifiedQueue removeAllObjects];
+            [self.timedEvents removeAllObjects];
+            [self archive];
+        }
     });
+    
     self.optOutStatus = YES;
     [self archiveOptOut];
 }
@@ -1233,9 +1272,11 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
     NSString *filePath = [self eventsFilePath];
     MPLogInfo(@"%@ archiving events data to %@: %@", self, filePath, self.eventsQueue);
     dispatch_sync(self.archiveQueue, ^{
-        NSArray *shadowEventsQueue =  [self.eventsQueue copy];
-        if (![self archiveObject:shadowEventsQueue withFilePath:filePath]) {
-            MPLogError(@"%@ unable to archive event data", self);
+        @synchronized (self) {
+            NSArray *shadowEventsQueue = [self.eventsQueue copy];
+            if (![self archiveObject:shadowEventsQueue withFilePath:filePath]) {
+                MPLogError(@"%@ unable to archive event data", self);
+            }
         }
     });
 }
@@ -1245,9 +1286,11 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
     NSString *filePath = [self peopleFilePath];
     MPLogInfo(@"%@ archiving people data to %@: %@", self, filePath, self.peopleQueue);
     dispatch_sync(self.archiveQueue, ^{
-        NSArray *shadowPeopleQueue = [self.peopleQueue copy];
-        if (![self archiveObject:shadowPeopleQueue withFilePath:filePath]) {
-            MPLogError(@"%@ unable to archive people data", self);
+        @synchronized (self) {
+            NSArray *shadowPeopleQueue = [self.peopleQueue copy];
+            if (![self archiveObject:shadowPeopleQueue withFilePath:filePath]) {
+                MPLogError(@"%@ unable to archive people data", self);
+            }
         }
     });
 }
@@ -1257,9 +1300,11 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
     NSString *filePath = [self groupsFilePath];
     MPLogInfo(@"%@ archiving groups data to %@: %@", self, filePath, self.groupsQueue);
     dispatch_sync(self.archiveQueue, ^{
-        NSArray *shadowGroupQueue = [self.groupsQueue copy];
-        if (![self archiveObject:shadowGroupQueue withFilePath:filePath]) {
-            MPLogError(@"%@ unable to archive groups data", self);
+        @synchronized (self) {
+            NSArray *shadowGroupQueue = [self.groupsQueue copy];
+            if (![self archiveObject:shadowGroupQueue withFilePath:filePath]) {
+                MPLogError(@"%@ unable to archive groups data", self);
+            }
         }
     });
 }
@@ -1269,24 +1314,25 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
     NSString *filePath = [self propertiesFilePath];
     NSMutableDictionary *p = [NSMutableDictionary dictionary];
     dispatch_sync(self.archiveQueue, ^{
-        NSArray *shadowUnidentifiedQueue = [self.people.unidentifiedQueue copy];
-        NSArray *shadowShownNotifications = [self.shownNotifications copy];
-        NSArray *shadowTimeEvents = [self.timedEvents copy];
-    
-        [p setValue:self.anonymousId forKey:@"anonymousId"];
-        [p setValue:self.distinctId forKey:@"distinctId"];
-        [p setValue:self.userId forKey:@"userId"];
-        [p setValue:self.alias forKey:@"alias"];
-        [p setValue:[NSNumber numberWithBool:self.hadPersistedDistinctId] forKey:@"hadPersistedDistinctId"];
-        [p setValue:self.superProperties forKey:@"superProperties"];
-        [p setValue:self.people.distinctId forKey:@"peopleDistinctId"];
-        [p setValue:shadowUnidentifiedQueue forKey:@"peopleUnidentifiedQueue"];
-        [p setValue:shadowShownNotifications forKey:@"shownNotifications"];
-        [p setValue:shadowTimeEvents forKey:@"timedEvents"];
-        [p setValue:self.automaticEventsEnabled forKey:@"automaticEvents"];
-        MPLogInfo(@"%@ archiving properties data to %@: %@", self, filePath, p);
-        if (![self archiveObject:p withFilePath:filePath]) {
-            MPLogError(@"%@ unable to archive properties data", self);
+        @synchronized (self) {
+            NSArray *shadowUnidentifiedQueue = [self.people.unidentifiedQueue copy];
+            NSArray *shadowShownNotifications = [self.shownNotifications copy];
+            NSArray *shadowTimeEvents = [self.timedEvents copy];
+            [p setValue:self.anonymousId forKey:@"anonymousId"];
+            [p setValue:self.distinctId forKey:@"distinctId"];
+            [p setValue:self.userId forKey:@"userId"];
+            [p setValue:self.alias forKey:@"alias"];
+            [p setValue:[NSNumber numberWithBool:self.hadPersistedDistinctId] forKey:@"hadPersistedDistinctId"];
+            [p setValue:self.superProperties forKey:@"superProperties"];
+            [p setValue:self.people.distinctId forKey:@"peopleDistinctId"];
+            [p setValue:shadowUnidentifiedQueue forKey:@"peopleUnidentifiedQueue"];
+            [p setValue:shadowShownNotifications forKey:@"shownNotifications"];
+            [p setValue:shadowTimeEvents forKey:@"timedEvents"];
+            [p setValue:self.automaticEventsEnabled forKey:@"automaticEvents"];
+            MPLogInfo(@"%@ archiving properties data to %@: %@", self, filePath, p);
+            if (![self archiveObject:p withFilePath:filePath]) {
+                MPLogError(@"%@ unable to archive properties data", self);
+            }
         }
     });
 }
@@ -1324,8 +1370,21 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 - (BOOL)archiveObject:(id)object withFilePath:(NSString *)filePath
 {
     @try {
-        if (![NSKeyedArchiver archiveRootObject:object toFile:filePath]) {
-            return NO;
+        if (@available(iOS 11, macOS 10.13, tvOS 11, watchOS 4, *)) {
+            NSError *error = nil;
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object requiringSecureCoding:NO error:&error];
+            if (error) {
+                MPLogError(@"%@ got error while archiving data: %@", self, error);
+            }
+            if (error || !data) {
+                return NO;
+            } else {
+                [data writeToFile:filePath atomically:YES];
+            }
+        } else {
+            if (![NSKeyedArchiver archiveRootObject:object toFile:filePath]) {
+                return NO;
+            }
         }
     } @catch (NSException* exception) {
         MPLogError(@"Got exception: %@, reason: %@. You can only send to Mixpanel values that inherit from NSObject and implement NSCoding.", exception.name, exception.reason);
@@ -1370,7 +1429,16 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 {
     id unarchivedData = nil;
     @try {
-        unarchivedData = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        if (@available(iOS 11, macOS 10.13, tvOS 11, watchOS 4, *)) {
+            NSError *error = nil;
+            NSData *data = [NSData dataWithContentsOfFile:filePath];
+            unarchivedData = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSObject class] fromData:data error:&error];
+            if (error) {
+                MPLogError(@"%@ got error while unarchiving data in %@: %@", self, filePath, error);
+            }
+        } else {
+            unarchivedData = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        }
         // this check is inside the try-catch as the unarchivedData may be a non-NSObject, not responding to `isKindOfClass:` or `respondsToSelector:`
         if (![unarchivedData isKindOfClass:class]) {
             unarchivedData = nil;
@@ -1520,7 +1588,12 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
             }];
             return radio.length == 0 ? @"None" : [radio copy];
         } else {
-            NSString *radio = telephonyInfo.currentRadioAccessTechnology;
+            NSString *radio = nil;
+            if (@available(iOS 12, *)) {
+                radio = [[telephonyInfo.serviceCurrentRadioAccessTechnology allValues] firstObject];
+            } else {
+                radio = telephonyInfo.currentRadioAccessTechnology;
+            }
             if (!radio) {
                 radio = @"None";
             } else if ([radio hasPrefix:@"CTRadioAccessTechnology"]) {
@@ -1580,7 +1653,12 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 
 #if !MIXPANEL_NO_REACHABILITY_SUPPORT
     if (![Mixpanel isAppExtension]) {
-        CTCarrier *carrier = [telephonyInfo subscriberCellularProvider];
+        CTCarrier *carrier = nil;
+        if (@available(iOS 12, *)) {
+            carrier = [[telephonyInfo serviceSubscriberCellularProviders] allValues].firstObject;
+        } else {
+            carrier = [telephonyInfo subscriberCellularProvider];
+        }
         [p setValue:carrier.carrierName forKey:@"$carrier"];
     }
 #endif
@@ -1616,10 +1694,12 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
 
         // cellular info
         [self setCurrentRadio];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(setCurrentRadio)
-                                                     name:CTRadioAccessTechnologyDidChangeNotification
-                                                   object:nil];
+        // Temporarily remove the ability to monitor the radio change due to a crash issue might relate to the api from Apple
+        // https://openradar.appspot.com/46873673
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(setCurrentRadio)
+//                                                     name:CTRadioAccessTechnologyDidChangeNotification
+//                                                   object:nil];
 #endif // MIXPANEL_NO_REACHABILITY_SUPPORT
 
 #if !MIXPANEL_NO_APP_LIFECYCLE_SUPPORT
@@ -2311,7 +2391,7 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
             NSMutableArray *notifications = [NSMutableArray arrayWithArray:_notifications];
             [notifications removeObject:notification];
             self.notifications = [NSArray arrayWithArray:notifications];
-        }        
+        }
         return;
     }
 
