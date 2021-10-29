@@ -162,6 +162,7 @@
 		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
 		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		D9C48B322724130000EE097C /* NSPopover+MISSINGBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */; };
+		D9D1D66A272C36C50057948E /* BRAccountsDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
@@ -567,6 +568,7 @@
 		D9BD3AB225A0E78C00446FFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPopover+MISSINGBackgroundView.m"; sourceTree = "<group>"; };
 		D9C48B312724130000EE097C /* NSPopover+MISSINGBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPopover+MISSINGBackgroundView.h"; sourceTree = "<group>"; };
+		D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsDataSourceTests.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
 		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
@@ -1251,6 +1253,7 @@
 			isa = PBXGroup;
 			children = (
 				D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */,
+				D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -1935,6 +1938,7 @@
 				0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0E02C9AF22103ED100FCFE17 /* BRLogsDataSource.m in Sources */,
 				0E348F1B2213130A000343A1 /* BRLogLineView.m in Sources */,
+				D9D1D66A272C36C50057948E /* BRAccountsDataSourceTests.m in Sources */,
 				0E92F5DD223D0111007AC61B /* BRLogStepView.m in Sources */,
 				0E1E9F23227D81E7002F7ED1 /* BRAnalytics.m in Sources */,
 				0EBA9D6D2217F9EF007234EB /* BRLogInfo.m in Sources */,
