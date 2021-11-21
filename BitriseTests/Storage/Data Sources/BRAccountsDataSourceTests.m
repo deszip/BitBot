@@ -21,7 +21,7 @@
 @property (strong, nonatomic) BRMockBuilder *mockBuilder;
 @property (strong, nonatomic) NSPersistentContainer *containerMock;
 
-@property (strong, nonatomic) BRAccountsDataSource* dataSource;
+@property (strong, nonatomic) BRAccountsDataSource *dataSource;
 
 @end
 
