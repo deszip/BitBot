@@ -49,9 +49,9 @@
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
 
-- (void)setDependencyContainer:(id<BRDataSourceProvider,BRInteractionProvider>)dependencyContainer {
-    [super setDependencyContainer:dependencyContainer];
-}
+//- (void)setDependencyContainer:(id<BRDataSourceProvider,BRInteractionProvider>)dependencyContainer {
+//    [super setDependencyContainer:dependencyContainer];
+//}
 
 - (void)viewDidAppear {
     [super viewDidAppear];

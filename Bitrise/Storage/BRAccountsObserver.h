@@ -8,6 +8,8 @@
 
 #import <CoreData/CoreData.h>
 
+#import "BTRAccount+CoreDataClass.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, BRAccountsState) {
@@ -16,6 +18,7 @@ typedef NS_ENUM(NSUInteger, BRAccountsState) {
 };
 
 typedef void(^BRAccountsStateCallback)(BRAccountsState state);
+typedef void(^BRAccountUpdateCallback)(BTRAccount *account);
 
 @interface BRAccountsObserver : NSObject
 
@@ -26,7 +29,8 @@ typedef void(^BRAccountsStateCallback)(BRAccountsState state);
 
 - (instancetype)initWithContext:(NSManagedObjectContext *)context NS_DESIGNATED_INITIALIZER;
 
-- (void)start:(BRAccountsStateCallback)callback;
+- (void)startStateObserving:(BRAccountsStateCallback)callback;
+- (void)startAccountObserving:(NSString *)accountSlug callback:(BRAccountUpdateCallback)callback;
 
 @end
 

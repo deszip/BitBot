@@ -14,6 +14,7 @@
 @interface BRAccountsObserver () <NSFetchedResultsControllerDelegate>
 
 @property (copy, nonatomic) void (^stateCallback)(BRAccountsState);
+@property (strong, nonatomic) NSMutableDictionary <NSString *, NSMutableArray<BRAccountUpdateCallback> *> *accountCallbacks;
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSFetchedResultsController *accountsFRC;
@@ -27,6 +28,7 @@
         _context = context;
         _accountsFRC = [self buildAccountsFRC:self.context];
         [_accountsFRC setDelegate:self];
+        _accountCallbacks = [@{} mutableCopy];
     }
     
     return self;
@@ -43,24 +45,40 @@
 
 #pragma mark - Public API -
 
-- (void)start:(BRAccountsStateCallback)callback {
-    self.stateCallback = callback;
+- (void)startStateObserving:(BRAccountsStateCallback)callback {
+    [self fetch];
     
-    NSError *fetchError = nil;
-    if (![self.accountsFRC performFetch:&fetchError]) {
-        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch apps: %@", fetchError);
+    self.stateCallback = callback;
+    [self updateState];
+}
+
+- (void)startAccountObserving:(NSString *)accountSlug callback:(BRAccountUpdateCallback)callback {
+    [self fetch];
+    
+    if (!self.accountCallbacks[accountSlug]) {
+        self.accountCallbacks[accountSlug] = [@[callback] mutableCopy];
+    } else {
+        [self.accountCallbacks[accountSlug] addObject:callback];
     }
     
-    [self updateState];
+    [self updateAccount:accountSlug];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate -
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self updateState];
+    [self updateAllAccountObservers];
 }
 
 #pragma mark - Private -
+
+- (void)fetch {
+    NSError *fetchError = nil;
+    if (![self.accountsFRC performFetch:&fetchError]) {
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch apps: %@", fetchError);
+    }
+}
 
 - (void)updateState {
     NSUInteger itemsCount = [[self.accountsFRC.sections valueForKeyPath:@"objects.@unionOfObjects.@count"][0] integerValue];
@@ -70,4 +88,24 @@
         self.stateCallback(self.state);
     }
 }
+
+- (void)updateAccount:(NSString *)accountSlug {
+    NSArray *accounts = [[self.accountsFRC.sections valueForKeyPath:@"objects.@unionOfObjects"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"slug=%@", accountSlug]];
+    
+    if (accounts.firstObject) {
+        [self.accountCallbacks[accountSlug] enumerateObjectsUsingBlock:^(BRAccountUpdateCallback callback, NSUInteger idx, BOOL *stop) {
+            callback(accounts.firstObject);
+        }];
+    }
+}
+
+- (void)updateAllAccountObservers {
+    NSArray <BTRAccount *> *accounts = [self.accountsFRC.sections valueForKeyPath:@"objects.@unionOfObjects"];
+    [accounts enumerateObjectsUsingBlock:^(BTRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
+        [self.accountCallbacks[nextAccount.slug] enumerateObjectsUsingBlock:^(BRAccountUpdateCallback callback, NSUInteger idx, BOOL *stop) {
+            callback(nextAccount);
+        }];
+    }];
+}
+
 @end

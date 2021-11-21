@@ -11,6 +11,7 @@
 #import "BRWindowController.h"
 #import "BRViewController.h"
 #import "BRSplitViewController.h"
+#import "BRTabViewController.h"
 
 @implementation BRDependencyInjector
 
@@ -35,6 +36,9 @@
     }
     if ([controller isKindOfClass:[BRSplitViewController class]]) {
         [(BRSplitViewController *)controller setDependencyContainer:container];
+    }
+    if ([controller isKindOfClass:[BRTabViewController class]]) {
+        [(BRTabViewController *)controller setDependencyContainer:container];
     }
 }
 

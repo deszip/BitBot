@@ -144,6 +144,8 @@
 		D943B25B24EAF1C300084C59 /* JetBrainsMono-Medium-Italic.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */; };
 		D943B25C24EAF1C300084C59 /* JetBrainsMono-Medium.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
 		D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
+		D964CE77274A53EC007157FB /* BRAccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */; };
+		D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE79274A5D01007157FB /* BRTabViewController.m */; };
 		D96DDE9224436F78005F5998 /* BRScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96DDE9124436F78005F5998 /* BRScroller.m */; };
 		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
 		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
@@ -530,6 +532,10 @@
 		D95F56F4246FFDF300DF2C50 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
 		D95F56F5246FFDF400DF2C50 /* Proxima Nova Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Black.otf"; sourceTree = "<group>"; };
 		D95F56F6246FFDF400DF2C50 /* Proxima Nova Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Thin.otf"; sourceTree = "<group>"; };
+		D964CE75274A53EC007157FB /* BRAccountInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountInfoViewController.h; sourceTree = "<group>"; };
+		D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountInfoViewController.m; sourceTree = "<group>"; };
+		D964CE78274A5D01007157FB /* BRTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTabViewController.h; sourceTree = "<group>"; };
+		D964CE79274A5D01007157FB /* BRTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTabViewController.m; sourceTree = "<group>"; };
 		D96DDE9024436F78005F5998 /* BRScroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRScroller.h; sourceTree = "<group>"; };
 		D96DDE9124436F78005F5998 /* BRScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRScroller.m; sourceTree = "<group>"; };
 		D97355312402F558003FCE9B /* BRLogPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogPresenter.h; sourceTree = "<group>"; };
@@ -1038,6 +1044,8 @@
 				0E8DFB4C21DA28EC00E7E5AC /* BRKeyInputViewController.m */,
 				0E8DFB4E21DA2E7700E7E5AC /* BRKeyRequestContext.h */,
 				0E8DFB4F21DA2E7700E7E5AC /* BRKeyRequestContext.m */,
+				D964CE75274A53EC007157FB /* BRAccountInfoViewController.h */,
+				D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -1289,6 +1297,8 @@
 				D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */,
 				D9A9CB4F2713166300E7CF43 /* BRDependencyInjector.h */,
 				D9A9CB502713166300E7CF43 /* BRDependencyInjector.m */,
+				D964CE78274A5D01007157FB /* BRTabViewController.h */,
+				D964CE79274A5D01007157FB /* BRTabViewController.m */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -1861,6 +1871,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */,
 				D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */,
 				0E1ED8F722282C3400A432B1 /* BRLogsWindowController.m in Sources */,
 				0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */,
@@ -1948,6 +1959,7 @@
 				D9E6005027137ABF0057AB8B /* BRWindowController.m in Sources */,
 				0E8DFB4A21D7A7D700E7E5AC /* BRAccountsMenuController.m in Sources */,
 				D9A9CB512713166300E7CF43 /* BRDependencyInjector.m in Sources */,
+				D964CE77274A53EC007157FB /* BRAccountInfoViewController.m in Sources */,
 				0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */,
 				0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */,
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,

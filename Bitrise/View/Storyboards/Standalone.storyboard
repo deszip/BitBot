@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,7 +105,7 @@
         <!--Tab View Controller-->
         <scene sceneID="3zv-PJ-INE">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="pXK-dp-5uX" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="pXK-dp-5uX" customClass="BRTabViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="mos-C4-Ljs"/>
                         <tabViewItem identifier="" id="K8v-9v-wDy"/>
@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="504" y="2073"/>
         </scene>
-        <!--View Controller-->
+        <!--Account Info View Controller-->
         <scene sceneID="CUj-PB-VS4">
             <objects>
-                <viewController id="Xi6-sO-g7e" sceneMemberID="viewController">
+                <viewController id="Xi6-sO-g7e" customClass="BRAccountInfoViewController" sceneMemberID="viewController">
                     <view key="view" id="Fsy-2X-aAY">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -213,9 +213,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSTouchBarQuickLookTemplate" width="26" height="16"/>
-        <image name="calendar" catalog="system" width="20" height="17"/>
-        <image name="chart.bar" catalog="system" width="24" height="18"/>
-        <image name="info.circle" catalog="system" width="19" height="19"/>
+        <image name="NSTouchBarQuickLookTemplate" width="26" height="17"/>
+        <image name="calendar" catalog="system" width="21" height="18"/>
+        <image name="chart.bar" catalog="system" width="25" height="19"/>
+        <image name="info.circle" catalog="system" width="20" height="20"/>
     </resources>
 </document>

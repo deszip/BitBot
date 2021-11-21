@@ -75,7 +75,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
     self.accountObserver = [self.dependencyContainer accountsObserver];
-    [self.accountObserver start:^(BRAccountsState state) {
+    [self.accountObserver startStateObserving:^(BRAccountsState state) {
         [weakSelf handleAccountsState:state];
     }];
     
