@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) BRMockBuilder *mockBuilder;
 @property (strong, nonatomic) NSPersistentContainer *containerMock;
+@property (strong, nonatomic) id notificationCenterMock;
 
 @property (strong, nonatomic) BRAccountsDataSource* dataSource;
 
@@ -31,14 +32,15 @@
     [super setUp];
     
     self.containerMock = [[BRContainerBuilder new] buildContainerOfType:NSInMemoryStoreType];
-    self.dataSource = [[BRAccountsDataSource alloc] initWithContainer:self.containerMock];
+    self.notificationCenterMock = OCMClassMock([NSNotificationCenter class]);
+    self.dataSource = [[BRAccountsDataSource alloc] initWithContainer:self.containerMock notificationCenter:self.notificationCenterMock];
     
     self.mockBuilder = [[BRMockBuilder alloc] initWithContext:self.containerMock.viewContext];
 }
 
 - (void)tearDown {
-
     self.containerMock = nil;
+    self.notificationCenterMock = nil;
     self.dataSource = nil;
     self.mockBuilder = nil;
     

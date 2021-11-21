@@ -57,7 +57,7 @@
     XCTestExpectation *e = [self expectationWithDescription:@""];
     e.inverted = YES;
     
-    [self.observer start:^(BRAccountsState state) { [e fulfill]; }];
+    [self.observer startStateObserving:^(BRAccountsState state) { [e fulfill]; }];
     
     [self waitForExpectations:@[e] timeout:0.1];
 }
@@ -66,7 +66,7 @@
     XCTestExpectation *e = [self expectationWithDescription:@""];
     [self.mockBuilder buildAccountWithToken:kAccountToken slug:kAccountSlug];
     
-    [self.observer start:^(BRAccountsState state) {
+    [self.observer startStateObserving:^(BRAccountsState state) {
         expect(state).to.equal(BRAccountsStateHasData);
         expect(self.observer.state).to.equal(BRAccountsStateHasData);
         [e fulfill];
@@ -78,7 +78,7 @@
 - (void)testObserverHandlesContextChangeAfetrStart {
     XCTestExpectation *e = [self expectationWithDescription:@""];
     
-    [self.observer start:^(BRAccountsState state) {
+    [self.observer startStateObserving:^(BRAccountsState state) {
         expect(state).to.equal(BRAccountsStateHasData);
         expect(self.observer.state).to.equal(BRAccountsStateHasData);
         [e fulfill];
@@ -95,10 +95,10 @@
     e1.inverted = YES;
     XCTestExpectation *e2 = [self expectationWithDescription:@""];
     
-    [self.observer start:^(BRAccountsState state) {
+    [self.observer startStateObserving:^(BRAccountsState state) {
         [e1 fulfill];
     }];
-    [self.observer start:^(BRAccountsState state) {
+    [self.observer startStateObserving:^(BRAccountsState state) {
         [e2 fulfill];
     }];
     
