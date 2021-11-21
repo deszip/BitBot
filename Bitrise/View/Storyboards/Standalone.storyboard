@@ -26,7 +26,7 @@
         <!--Window Controller-->
         <scene sceneID="BXw-iw-Qri">
             <objects>
-                <windowController id="fMf-Me-oJY" customClass="BRWindowController" sceneMemberID="viewController">
+                <windowController id="fMf-Me-oJY" customClass="BRStandaloneWindowController" sceneMemberID="viewController">
                     <window key="window" title="BitBot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="XeY-TY-Agc">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -42,16 +42,25 @@
                                     <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
                                     <size key="minSize" width="32" height="25"/>
                                     <size key="maxSize" width="32" height="25"/>
+                                    <connections>
+                                        <action selector="displaySchedule:" target="fMf-Me-oJY" id="078-Ud-0kx"/>
+                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="CF8BEBCA-A358-4E31-8DF4-F6C3135A755D" label="Stats" paletteLabel="Stats" tag="-1" bordered="YES" selectable="YES" id="9VC-Jt-5of">
                                     <imageReference key="image" image="chart.bar" catalog="system" symbolScale="large"/>
                                     <size key="minSize" width="36" height="25"/>
                                     <size key="maxSize" width="36" height="25"/>
+                                    <connections>
+                                        <action selector="displayStats:" target="fMf-Me-oJY" id="JHy-lP-T0k"/>
+                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="FA1F770F-B4C2-4CDA-B5BB-8178C6A99B7D" label="Info" paletteLabel="Info" tag="-1" bordered="YES" selectable="YES" id="8n2-mG-a6p">
                                     <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
                                     <size key="minSize" width="31" height="25"/>
                                     <size key="maxSize" width="31" height="25"/>
+                                    <connections>
+                                        <action selector="displayInfo:" target="fMf-Me-oJY" id="VtY-P3-I6l"/>
+                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="1FDF71F5-77F5-443A-B421-E9392A880B59" label="About" paletteLabel="About" tag="-1" bordered="YES" selectable="YES" id="z58-NL-oI7">
                                     <imageReference key="image" image="NSTouchBarQuickLookTemplate" symbolScale="large"/>
@@ -102,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="355" y="1625"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Standalone Tab View Controller-->
         <scene sceneID="3zv-PJ-INE">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="pXK-dp-5uX" customClass="BRTabViewController" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="pXK-dp-5uX" customClass="BRStandaloneTabViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="mos-C4-Ljs"/>
                         <tabViewItem identifier="" id="K8v-9v-wDy"/>

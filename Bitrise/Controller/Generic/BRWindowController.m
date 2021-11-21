@@ -24,4 +24,13 @@
     [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
 }
 
+- (void)setDependencyContainer:(id)dependencyContainer {
+    _dependencyContainer = dependencyContainer;
+    [self didSetContainer];
+}
+
+- (void)didSetContainer {
+    //...
+}
+
 @end

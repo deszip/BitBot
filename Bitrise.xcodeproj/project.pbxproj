@@ -121,6 +121,8 @@
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */; };
 		D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D902E1EF271571CB00B7742A /* Standalone.storyboard */; };
+		D9069EBF274AC6B100C626BF /* BRStandaloneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */; };
+		D9069EC3274ACCBC00C626BF /* BRStandaloneTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */; };
 		D90712F9271C60AF00BCDFE8 /* BRAccountsObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D90712F8271C60AF00BCDFE8 /* BRAccountsObserverTests.m */; };
 		D90BFBA025372FF800DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
 		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
@@ -515,6 +517,10 @@
 		C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.debug.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.debug.xcconfig"; sourceTree = "<group>"; };
 		D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.release.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.release.xcconfig"; sourceTree = "<group>"; };
 		D902E1EF271571CB00B7742A /* Standalone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Standalone.storyboard; sourceTree = "<group>"; };
+		D9069EBD274AC6B100C626BF /* BRStandaloneWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStandaloneWindowController.h; sourceTree = "<group>"; };
+		D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStandaloneWindowController.m; sourceTree = "<group>"; };
+		D9069EC1274ACCBC00C626BF /* BRStandaloneTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStandaloneTabViewController.h; sourceTree = "<group>"; };
+		D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStandaloneTabViewController.m; sourceTree = "<group>"; };
 		D90712F8271C60AF00BCDFE8 /* BRAccountsObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsObserverTests.m; sourceTree = "<group>"; };
 		D90BFB9F25372FF800DA473E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D90BFBA42537387D00DA473E /* BitBotATVRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotATVRelease.entitlements; sourceTree = "<group>"; };
@@ -809,6 +815,7 @@
 		0E42CAFB20EC7AF60033CD03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D9069EC0274ACC9300C626BF /* Standalone */,
 				D9A9CB4E271315FE00E7CF43 /* Generic */,
 				0EAB9D79221F099100A21D23 /* Accounts */,
 				0EAB9D78221F096F00A21D23 /* Logs */,
@@ -816,8 +823,6 @@
 				0E42CAFE20EC7BB40033CD03 /* BRMainController.m */,
 				0EF766BE21E2637900E64E0C /* BRAboutViewController.h */,
 				0EF766BF21E2637900E64E0C /* BRAboutViewController.m */,
-				D9E6004E27137ABF0057AB8B /* BRWindowController.h */,
-				D9E6004F27137ABF0057AB8B /* BRWindowController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1193,6 +1198,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D9069EC0274ACC9300C626BF /* Standalone */ = {
+			isa = PBXGroup;
+			children = (
+				D9069EBD274AC6B100C626BF /* BRStandaloneWindowController.h */,
+				D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */,
+				D9069EC1274ACCBC00C626BF /* BRStandaloneTabViewController.h */,
+				D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */,
+			);
+			path = Standalone;
+			sourceTree = "<group>";
+		};
 		D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1296,6 +1312,8 @@
 		D9A9CB4E271315FE00E7CF43 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				D9E6004E27137ABF0057AB8B /* BRWindowController.h */,
+				D9E6004F27137ABF0057AB8B /* BRWindowController.m */,
 				0E73598520EF93B8007E15A7 /* BRViewController.h */,
 				0E73598620EF93B8007E15A7 /* BRViewController.m */,
 				D9A9CB4B2713104B00E7CF43 /* BRSplitViewController.h */,
@@ -1897,6 +1915,7 @@
 				0E4AD08D2205FEBA00257E8E /* BRLogsViewController.m in Sources */,
 				0E1ED8F322282B3200A432B1 /* BRLogStatusView.m in Sources */,
 				0EF766C421E264E400E64E0C /* BRAboutTextView.m in Sources */,
+				D9069EC3274ACCBC00C626BF /* BRStandaloneTabViewController.m in Sources */,
 				0E3C0B11211760C000F2EA35 /* BROpenBuildCommand.m in Sources */,
 				D96DDE9224436F78005F5998 /* BRScroller.m in Sources */,
 				D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */,
@@ -1922,6 +1941,7 @@
 				0E4AD07D2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,
 				D964CE7D274AAC78007157FB /* BRSyncAccountsCommand.m in Sources */,
+				D9069EBF274AC6B100C626BF /* BRStandaloneWindowController.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,
