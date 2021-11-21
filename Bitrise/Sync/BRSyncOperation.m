@@ -53,31 +53,31 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
     
     self.group = dispatch_group_create();
     
-    [self.storage perform:^{
-        NSError *accFetchError;
-        NSArray <BTRAccount *> *accounts = [self.storage accounts:&accFetchError];
+    NSError *accFetchError;
+    NSArray <BTRAccount *> *accounts = [self.storage accounts:&accFetchError];
 
-        if (!accounts) {
-            BRLog(LL_DEBUG, LL_STORAGE, @"Failed to get accounts: %@", accFetchError);
-            [self handleError:accFetchError];
-            [self finish];
-            return;
-        }
+    if (!accounts) {
+        BRLog(LL_DEBUG, LL_STORAGE, @"Failed to get accounts: %@", accFetchError);
+        [self handleError:accFetchError];
+        [self finish];
+        return;
+    }
+    
+    if (accounts.count == 0) {
+        BRLog(LL_DEBUG, LL_STORAGE, @"No accounts, nothing to do...");
+        [self finish];
+        return;
+    }
+    
+    self.accountsCount = accounts.count;
+    
+    [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
+        dispatch_group_enter(self.group);
+        id<SentrySpan> accountSpan = [self.sentryTransaction startChildWithOperation:[NSString stringWithFormat:@"account-sync-%lu", (unsigned long)idx]];
         
-        if (accounts.count == 0) {
-            BRLog(LL_DEBUG, LL_STORAGE, @"No accounts, nothing to do...");
-            [self finish];
-            return;
-        }
-        
-        self.accountsCount = accounts.count;
-        
-        [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
-            dispatch_group_enter(self.group);
-            id<SentrySpan> accountSpan = [self.sentryTransaction startChildWithOperation:[NSString stringWithFormat:@"account-sync-%lu", (unsigned long)idx]];
-            
-            BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
-            [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
+        BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
+        [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
+            [self.storage perform:^{
                 // Handle failure
                 if (!appsInfo) {
                     BRLog(LL_WARN, LL_STORAGE, @"Failed to get apps from API: %@", error);
@@ -150,11 +150,11 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                 dispatch_group_leave(self.group);
             }];
         }];
-        
-        dispatch_group_notify(self.group, self.queue.underlyingQueue, ^{
-            [self finish];
-        });
     }];
+    
+    dispatch_group_notify(self.group, self.queue.underlyingQueue, ^{
+        [self finish];
+    });
 }
 
 - (void)finish {

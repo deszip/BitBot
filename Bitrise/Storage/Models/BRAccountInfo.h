@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic, readonly) NSString *username;
 @property (copy, nonatomic, readonly) NSString *slug;
 @property (strong, nonatomic, readonly) NSURL *avatarURL;
+@property (strong, nonatomic, readonly) NSDate *creationDate;
+@property (assign, nonatomic, readonly) BOOL hasUsedOrgTrial;
+@property (copy, nonatomic, readonly) NSString *paymentProcessor;
 
 - (instancetype)initWithResponse:(NSDictionary *)response token:(NSString *)token;
 - (instancetype)initWithAccount:(BTRAccount *)account;

@@ -7,10 +7,16 @@
 //
 
 #import "BRCommand.h"
+#import "BRSyncEngine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSyncAccountsCommand : BRCommand
+
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithSyncEngine:(BRSyncEngine *)engine NS_DESIGNATED_INITIALIZER;
 
 @end
 

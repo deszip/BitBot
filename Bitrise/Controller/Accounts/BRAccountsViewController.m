@@ -19,6 +19,7 @@
 #import "BRGetAccountCommand.h"
 #import "BRRemoveAccountCommand.h"
 #import "BRSyncCommand.h"
+#import "BRSyncAccountsCommand.h"
 #import "BRAddBuildTokenCommand.h"
 
 @interface BRAccountsViewController ()
@@ -37,6 +38,8 @@
 @property (strong, nonatomic) BRAccountsDataSource *dataSource;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter;
 
+@property (strong, nonatomic) BRSyncAccountsCommand *syncAccountsCommand;
+
 @end
 
 @implementation BRAccountsViewController
@@ -48,10 +51,6 @@
     
     [self.outlineView setBackgroundColor:[BRStyleSheet backgroundColor]];
 }
-
-//- (void)setDependencyContainer:(id<BRDataSourceProvider,BRInteractionProvider>)dependencyContainer {
-//    [super setDependencyContainer:dependencyContainer];
-//}
 
 - (void)viewDidAppear {
     [super viewDidAppear];
@@ -91,6 +90,12 @@
     // Outline selection
     [self.notificationCenter addObserver:self selector:@selector(handleSelection:) name:NSOutlineViewSelectionDidChangeNotification object:self.outlineView];
     [self.removeButton setEnabled:NO];
+    
+    // Sync accounts
+    self.syncAccountsCommand = [[BRSyncAccountsCommand alloc] initWithSyncEngine:self.syncEngine];
+    [self.syncAccountsCommand execute:nil];
+    
+    // Select first account
 }
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {

@@ -26,6 +26,7 @@
 
 - (instancetype)initWithStorage:(BRStorage *)storage api:(BRBitriseAPI *)api accountToken:(NSString *)token {
     if (self = [super init]) {
+        _shallowUpdate = NO;
         _storage = storage;
         _api = api;
         _token = token;
@@ -48,7 +49,7 @@
             
             NSError *fetchError;
             BOOL result = [self.storage saveAccount:accountInfo error:&fetchError];
-            if (result) {
+            if (result && !self.shallowUpdate) {
                 // Dispatch sync
                 BRSyncOperation *syncOperation = [[BRSyncOperation alloc] initWithStorage:self.storage api:self.api];
                 [self.queue addOperation:syncOperation];

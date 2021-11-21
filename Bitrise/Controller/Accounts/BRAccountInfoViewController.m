@@ -8,12 +8,18 @@
 
 #import "BRAccountInfoViewController.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 #import "BRLogger.h"
+#import "BTRAccount+CoreDataClass.h"
+#import "BRApp+CoreDataClass.h"
 
 @interface BRAccountInfoViewController ()
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter;
+
+@property (weak) IBOutlet NSImageView *avatarImageView;
 
 @end
 
@@ -34,7 +40,15 @@
     NSString *accSlug = notification.userInfo[@"AccountID"];
     [self.accountObserver startAccountObserving:accSlug callback:^(BTRAccount *account) {
         BRLog(LL_VERBOSE, LL_UI, @"Account selected: %@", account);
+        [self update:account];
     }];
+}
+
+#pragma mark - UI update
+
+- (void)update:(BTRAccount *)account {
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL]
+                            placeholderImage:[NSImage imageNamed:@"avatar-default"]];
 }
 
 @end

@@ -9,12 +9,14 @@
 #import "BRAccountsObserver.h"
 
 #import "BRLogger.h"
+#import "BRMacro.h"
 #import "BTRAccount+CoreDataClass.h"
 
 @interface BRAccountsObserver () <NSFetchedResultsControllerDelegate>
 
-@property (copy, nonatomic) void (^stateCallback)(BRAccountsState);
-@property (strong, nonatomic) NSMutableDictionary <NSString *, NSMutableArray<BRAccountUpdateCallback> *> *accountCallbacks;
+@property (copy, nonatomic) BRAccountsStateCallback stateCallback;
+@property (copy, nonatomic) NSString *accountSlug;
+@property (copy, nonatomic) BRAccountUpdateCallback accountCallback;
 
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSFetchedResultsController *accountsFRC;
@@ -28,7 +30,6 @@
         _context = context;
         _accountsFRC = [self buildAccountsFRC:self.context];
         [_accountsFRC setDelegate:self];
-        _accountCallbacks = [@{} mutableCopy];
     }
     
     return self;
@@ -55,12 +56,8 @@
 - (void)startAccountObserving:(NSString *)accountSlug callback:(BRAccountUpdateCallback)callback {
     [self fetch];
     
-    if (!self.accountCallbacks[accountSlug]) {
-        self.accountCallbacks[accountSlug] = [@[callback] mutableCopy];
-    } else {
-        [self.accountCallbacks[accountSlug] addObject:callback];
-    }
-    
+    self.accountSlug = accountSlug;
+    self.accountCallback = callback;
     [self updateAccount:accountSlug];
 }
 
@@ -68,7 +65,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self updateState];
-    [self updateAllAccountObservers];
+    [self updateAccount:self.accountSlug];
 }
 
 #pragma mark - Private -
@@ -85,27 +82,16 @@
     BRAccountsState nextState = itemsCount == 0 ? BRAccountsStateEmpty : BRAccountsStateHasData;
     if (nextState != _state) {
         _state = nextState;
-        self.stateCallback(self.state);
+        BR_SAFE_CALL(self.stateCallback, self.state);
     }
 }
 
 - (void)updateAccount:(NSString *)accountSlug {
-    NSArray *accounts = [[self.accountsFRC.sections valueForKeyPath:@"objects.@unionOfObjects"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"slug=%@", accountSlug]];
+    NSArray *accounts = [[self.accountsFRC.sections valueForKeyPath:@"objects"][0] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"slug=%@", accountSlug]];
     
     if (accounts.firstObject) {
-        [self.accountCallbacks[accountSlug] enumerateObjectsUsingBlock:^(BRAccountUpdateCallback callback, NSUInteger idx, BOOL *stop) {
-            callback(accounts.firstObject);
-        }];
+        BR_SAFE_CALL(self.accountCallback, accounts.firstObject);
     }
-}
-
-- (void)updateAllAccountObservers {
-    NSArray <BTRAccount *> *accounts = [self.accountsFRC.sections valueForKeyPath:@"objects.@unionOfObjects"];
-    [accounts enumerateObjectsUsingBlock:^(BTRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
-        [self.accountCallbacks[nextAccount.slug] enumerateObjectsUsingBlock:^(BRAccountUpdateCallback callback, NSUInteger idx, BOOL *stop) {
-            callback(nextAccount);
-        }];
-    }];
 }
 
 @end

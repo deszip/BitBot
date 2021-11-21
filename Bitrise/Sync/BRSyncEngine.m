@@ -43,7 +43,21 @@
     [self.syncQueue addOperation:syncOperation];
 }
 
-- (void)addAccount:(NSString *)accountToken callback:(BRAddAccountCallback)callback {
+- (void)syncAccounts {
+    [self.storage perform:^{
+        NSError *error;
+        NSArray <BTRAccount *> *accounts = [self.storage accounts:&error];
+        if (accounts) {
+            [accounts enumerateObjectsUsingBlock:^(BTRAccount *nextAccount, NSUInteger idx, BOOL *stop) {
+                BRAddAccountOperation *accountOperation = [[BRAddAccountOperation alloc] initWithStorage:self.storage api:self.API accountToken:nextAccount.token];
+                accountOperation.shallowUpdate = YES;
+                [self.syncQueue addOperation:accountOperation];
+            }];
+        }
+    }];
+}
+
+- (void)addAccount:(NSString *)accountToken callback:(BREngineCallback)callback {
     BRAddAccountOperation *accountOperation = [[BRAddAccountOperation alloc] initWithStorage:self.storage api:self.API accountToken:accountToken];
     [accountOperation setResultCallback:callback];
     [self.syncQueue addOperation:accountOperation];

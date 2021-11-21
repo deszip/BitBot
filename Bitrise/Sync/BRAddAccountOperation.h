@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRAddAccountOperation : BROperation
 
+@property (assign, nonatomic) BOOL shallowUpdate;
 @property (copy, nonatomic, nullable) void (^resultCallback)(NSError * __nullable error);
 
 - (instancetype)new NS_UNAVAILABLE;

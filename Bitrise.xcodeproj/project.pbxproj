@@ -146,6 +146,7 @@
 		D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
 		D964CE77274A53EC007157FB /* BRAccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */; };
 		D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE79274A5D01007157FB /* BRTabViewController.m */; };
+		D964CE7D274AAC78007157FB /* BRSyncAccountsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */; };
 		D96DDE9224436F78005F5998 /* BRScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96DDE9124436F78005F5998 /* BRScroller.m */; };
 		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
 		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
@@ -536,6 +537,8 @@
 		D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountInfoViewController.m; sourceTree = "<group>"; };
 		D964CE78274A5D01007157FB /* BRTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRTabViewController.h; sourceTree = "<group>"; };
 		D964CE79274A5D01007157FB /* BRTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRTabViewController.m; sourceTree = "<group>"; };
+		D964CE7B274AAC78007157FB /* BRSyncAccountsCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSyncAccountsCommand.h; sourceTree = "<group>"; };
+		D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncAccountsCommand.m; sourceTree = "<group>"; };
 		D96DDE9024436F78005F5998 /* BRScroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRScroller.h; sourceTree = "<group>"; };
 		D96DDE9124436F78005F5998 /* BRScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRScroller.m; sourceTree = "<group>"; };
 		D97355312402F558003FCE9B /* BRLogPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogPresenter.h; sourceTree = "<group>"; };
@@ -898,6 +901,8 @@
 				0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */,
 				0E93B70020F08EF2001A6C15 /* BRRemoveAccountCommand.h */,
 				0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */,
+				D964CE7B274AAC78007157FB /* BRSyncAccountsCommand.h */,
+				D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1916,6 +1921,7 @@
 				0E348F1A2213130A000343A1 /* BRLogLineView.m in Sources */,
 				0E4AD07D2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,
+				D964CE7D274AAC78007157FB /* BRSyncAccountsCommand.m in Sources */,
 				0E42CAE520EC7A800033CD03 /* main.m in Sources */,
 				0EDC5DE321BBBB0A00AD41FE /* ASQueue.m in Sources */,
 				0E42CAFF20EC7BB40033CD03 /* BRMainController.m in Sources */,

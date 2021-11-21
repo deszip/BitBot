@@ -14,14 +14,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^BRAddAccountCallback)(NSError * __nullable error);
+typedef void(^BREngineCallback)(NSError * __nullable error);
 
 @interface BRSyncEngine : NSObject
 
 - (instancetype)initWithAPI:(BRBitriseAPI *)api storage:(BRStorage *)storage;
 
 - (void)sync;
-- (void)addAccount:(NSString *)accountToken callback:(BRAddAccountCallback)callback;
+- (void)syncAccounts;
+- (void)addAccount:(NSString *)accountToken callback:(BREngineCallback)callback;
 
 @property (copy, nonatomic, nullable) void (^syncCallback)(BRSyncResult *result);
 

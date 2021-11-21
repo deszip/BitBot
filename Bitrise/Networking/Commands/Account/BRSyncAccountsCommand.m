@@ -8,6 +8,24 @@
 
 #import "BRSyncAccountsCommand.h"
 
+@interface BRSyncAccountsCommand ()
+
+@property (strong, nonatomic, readonly) BRSyncEngine *syncEngine;
+
+@end
+
 @implementation BRSyncAccountsCommand
+
+- (instancetype)initWithSyncEngine:(BRSyncEngine *)engine {
+    if (self = [super init]) {
+        _syncEngine = engine;
+    }
+    
+    return self;
+}
+
+- (void)execute:(BRCommandResult)callback {
+    [self.syncEngine syncAccounts];
+}
 
 @end

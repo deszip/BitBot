@@ -26,6 +26,9 @@
         _username = account.username;
         _slug = account.slug;
         _avatarURL = [NSURL URLWithString:account.avatarURL];
+        _creationDate = account.creationDate;
+        _hasUsedOrgTrial = account.hasUsedOrgTrial;
+        _paymentProcessor = account.paymentProcessor;
     }
     
     return self;
@@ -36,6 +39,9 @@
         _username = self.rawResponce[@"username"];
         _slug = self.rawResponce[@"slug"];
         _avatarURL = [NSURL URLWithString:self.rawResponce[@"avatar_url"]];
+        _creationDate = [NSDate date];
+        _hasUsedOrgTrial = [self.rawResponce[@"has_used_organization_trial"] boolValue];
+        _paymentProcessor = self.rawResponce[@"payment_processor"];
     }
 }
 
