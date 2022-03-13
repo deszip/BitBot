@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -293,7 +293,7 @@
 		D996C6A627DE2EEA005C76C9 /* JetBrainsMono-ExtraBold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D973553A2402F97F003FCE9B /* JetBrainsMono-ExtraBold.ttf */; };
 		D996C6A727DE2EEA005C76C9 /* JetBrainsMono-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
 		D996C6A827DE2F33005C76C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
-		D996C6A927DE2FBC005C76C9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; platformFilter = maccatalyst; };
+		D996C6A927DE2FBC005C76C9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; };
 		D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
 		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
 		D9A9CB4D2713104B00E7CF43 /* BRSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */; };
@@ -2962,13 +2962,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = BitBotMenu/BitBotMenu.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AM5334753U;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BitBotMenu/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bitrise. All rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -2979,8 +2980,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.bitbotMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Debug;
@@ -2993,13 +2995,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = BitBotMenu/BitBotMenu.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AM5334753U;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BitBotMenu/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bitrise. All rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -3010,8 +3013,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.bitbotMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
