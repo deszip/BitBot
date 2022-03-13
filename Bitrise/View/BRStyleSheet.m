@@ -43,7 +43,11 @@
 #pragma mark - Base colors -
 
 + (NSColor *)defaultBackgroundColor {
+#if TARGET_OS_OSX
     return [NSColor windowBackgroundColor];
+#else
+    return [self backgroundColor];
+#endif
 }
 
 + (NSColor *)backgroundColor {

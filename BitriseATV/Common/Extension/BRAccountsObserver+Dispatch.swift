@@ -11,7 +11,7 @@ import Foundation
 extension BRAccountsObserver {
     func dispatchEvents(to store: Store<AppState, Action>) {
         store.dispatch(action: UpdateAccountsState(hasAccounts: false))
-        self.start { (state) in
+        self.startStateObserving { (state) in
             let hasAccounts: Bool
             switch state {
             case .empty:
