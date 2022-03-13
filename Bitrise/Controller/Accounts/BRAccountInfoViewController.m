@@ -32,6 +32,7 @@
     
     _notificationCenter = [self.dependencyContainer notificationCenter];
     [self.notificationCenter addObserver:self selector:@selector(handleAccountSelection:) name:kAccountSelectedNotification object:nil];
+    [self.notificationCenter addObserver:self selector:@selector(handleAppSelection:) name:kAppSelectedNotification object:nil];
 }
 
 #pragma mark - Notifications -
@@ -44,11 +45,15 @@
     }];
 }
 
+- (void)handleAppSelection:(NSNotification *)notification {
+    //NSString *appSlug = notification.userInfo[@"AppID"];
+    // @TODO: Add app observer...
+}
+
 #pragma mark - UI update
 
 - (void)update:(BTRAccount *)account {
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL]
-                            placeholderImage:[NSImage imageNamed:@"avatar-default"]];
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL] placeholderImage:[NSImage imageNamed:@"avatar-default"]];
 }
 
 @end

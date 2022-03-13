@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSNotificationName kAccountSelectedNotification;
+extern NSNotificationName kAppSelectedNotification;
 
 @interface BRAccountsDataSource : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate>
 

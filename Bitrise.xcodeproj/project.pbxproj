@@ -762,12 +762,11 @@
 				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
 				DE3CD0D0252478AE00DD5948 /* BitriseCompat.h */,
 				DE2A269E25230F1400D5762E /* Bitrise-Bridging-Header.h */,
-				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
 				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
+				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
 				D9C48B2C2724111B00EE097C /* Dependencies */,
 				0E9F413620FEFA510083D646 /* Tools */,
 				0E7A18BB21CCE5970096E1E6 /* Environment */,
-				0E73597E20EF8D73007E15A7 /* Container */,
 				0E42CAFB20EC7AF60033CD03 /* Controller */,
 				0E42CAFA20EC7AEF0033CD03 /* View */,
 				0EDE7D0521B9344200A39CC4 /* Sync */,
@@ -1277,6 +1276,7 @@
 				D98338532710F5FC00D80E24 /* About.storyboard */,
 				D98338552710F60700D80E24 /* Accounts.storyboard */,
 				D902E1EF271571CB00B7742A /* Standalone.storyboard */,
+				0E73597E20EF8D73007E15A7 /* Container */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";

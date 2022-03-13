@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,12 +28,13 @@
             <objects>
                 <windowController id="fMf-Me-oJY" customClass="BRStandaloneWindowController" sceneMemberID="viewController">
                     <window key="window" title="BitBot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="XeY-TY-Agc">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="516" y="566" width="572" height="270"/>
+                        <rect key="contentRect" x="473" y="903" width="600" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1667"/>
+                        <value key="minSize" type="size" width="300" height="200"/>
                         <view key="contentView" id="uyO-tm-Xxn">
-                            <rect key="frame" x="0.0" y="0.0" width="572" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="si2-EQ-wNE">
@@ -95,7 +96,7 @@
             <objects>
                 <splitViewController id="bSF-uz-oea" customClass="BRSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="f5b-8c-TJE"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="249" behavior="sidebar" id="f5b-8c-TJE"/>
                         <splitViewItem id="3Ot-NG-m7n"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="xtD-C1-R9a">

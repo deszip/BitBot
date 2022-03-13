@@ -18,6 +18,7 @@
 #import "BRManagingAppCellView.h"
 
 NSNotificationName kAccountSelectedNotification = @"kAccountSelectedNotification";
+NSNotificationName kAppSelectedNotification = @"kAppSelectedNotification";
 
 @interface BRAccountsDataSource () <NSFetchedResultsControllerDelegate>
 
@@ -102,8 +103,16 @@ NSNotificationName kAccountSelectedNotification = @"kAccountSelectedNotification
 #pragma mark - NSOutlineViewDelegate -
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification {
-    BTRAccount *selectedAccount = (BTRAccount *)[self.outlineView itemAtRow:[self.outlineView selectedRow]];
-    [self.notificationCenter postNotificationName:kAccountSelectedNotification object:self userInfo:@{ @"AccountID" : selectedAccount.slug }];
+    id selectedItem = [self.outlineView itemAtRow:[self.outlineView selectedRow]];
+    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
+        BTRAccount *selectedAccount = (BTRAccount *)selectedItem;
+        [self.notificationCenter postNotificationName:kAccountSelectedNotification object:self userInfo:@{ @"AccountID" : selectedAccount.slug }];
+    }
+    
+    if ([selectedItem isKindOfClass:[BRApp class]]) {
+        BRApp *selectedApp = (BRApp *)selectedItem;
+        [self.notificationCenter postNotificationName:kAppSelectedNotification object:self userInfo:@{ @"AppID" : selectedApp.slug }];
+    }
 }
 
 - (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item {
