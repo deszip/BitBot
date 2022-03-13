@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -120,6 +120,7 @@
 		0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
 		0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
 		B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */; };
+		BF29F416EDF60A5B023FD1B1 /* libPods-BitBotMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8751F6DE46A1B49F794403ED /* libPods-BitBotMenu.a */; };
 		D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D902E1EF271571CB00B7742A /* Standalone.storyboard */; };
 		D9069EBF274AC6B100C626BF /* BRStandaloneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */; };
 		D9069EC3274ACCBC00C626BF /* BRStandaloneTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */; };
@@ -161,6 +162,138 @@
 		D98C540E2439DAB300CA1D57 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
 		D993A77F2630727900BBE937 /* BRAppsDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */; };
 		D996A18524DB26E200DBFE83 /* BRDisableableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */; };
+		D996C60127DE1B00005C76C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C60027DE1B00005C76C9 /* AppDelegate.m */; };
+		D996C60427DE1B00005C76C9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C60327DE1B00005C76C9 /* ViewController.m */; };
+		D996C60627DE1B01005C76C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D996C60527DE1B01005C76C9 /* Assets.xcassets */; };
+		D996C60B27DE1B01005C76C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C60A27DE1B01005C76C9 /* main.m */; };
+		D996C61627DE1B01005C76C9 /* BitBotMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C61527DE1B01005C76C9 /* BitBotMenuTests.m */; };
+		D996C62027DE1B01005C76C9 /* BitBotMenuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C61F27DE1B01005C76C9 /* BitBotMenuUITests.m */; };
+		D996C62227DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C62127DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m */; };
+		D996C62D27DE2C5C005C76C9 /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
+		D996C62E27DE2C5C005C76C9 /* BRGetAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */; };
+		D996C62F27DE2C5C005C76C9 /* BRProgressObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9D7B221F0A1A00A21D23 /* BRProgressObserver.m */; };
+		D996C63027DE2C5C005C76C9 /* NSPopover+MISSINGBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */; };
+		D996C63127DE2C5C005C76C9 /* BRAccountsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */; };
+		D996C63227DE2C5C005C76C9 /* BRAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E9F21227D81E7002F7ED1 /* BRAnalytics.m */; };
+		D996C63327DE2C5C005C76C9 /* BROperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE221BBBB0A00AD41FE /* BROperation.m */; };
+		D996C63427DE2C5C005C76C9 /* BRStandaloneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */; };
+		D996C63527DE2C5C005C76C9 /* BRLogsTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC53F44221B19F900F47B47 /* BRLogsTextViewController.m */; };
+		D996C63627DE2C5C005C76C9 /* BRDownloadLogsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B0D211760AC00F2EA35 /* BRDownloadLogsCommand.m */; };
+		D996C63727DE2C5C005C76C9 /* BRAccountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B4E20F07D2000494DEB /* BRAccountCellView.m */; };
+		D996C63827DE2C5C005C76C9 /* BRAppsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7521E88E8C003F0364 /* BRAppsRequest.m */; };
+		D996C63927DE2C5C005C76C9 /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
+		D996C63A27DE2C5C005C76C9 /* BRLogsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9DDA2225AD7C00A21D23 /* BRLogsParser.m */; };
+		D996C63B27DE2C5C005C76C9 /* NSSet+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85521B4363D005D5140 /* NSSet+FRP.m */; };
+		D996C63C27DE2C5C005C76C9 /* BRBuildStateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B012117008200F2EA35 /* BRBuildStateInfo.m */; };
+		D996C63D27DE2C5C005C76C9 /* BRAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6FD20F085E8001A6C15 /* BRAccountInfo.m */; };
+		D996C63E27DE2C5C005C76C9 /* BRAccountsMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DFB4921D7A7D700E7E5AC /* BRAccountsMenuController.m */; };
+		D996C63F27DE2C5C005C76C9 /* BRBuildCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0520EC896B0033CD03 /* BRBuildCellView.m */; };
+		D996C64027DE2C5C005C76C9 /* BRBuildMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51715B21D2074E000D470E /* BRBuildMenuController.m */; };
+		D996C64127DE2C5C005C76C9 /* BRAboutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766C321E264E300E64E0C /* BRAboutTextView.m */; };
+		D996C64227DE2C5C005C76C9 /* BRStandaloneTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */; };
+		D996C64327DE2C5C005C76C9 /* BRLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD08C2205FEBA00257E8E /* BRLogsViewController.m */; };
+		D996C64427DE2C5C005C76C9 /* BRSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE7D0721B9346200A39CC4 /* BRSyncEngine.m */; };
+		D996C64527DE2C5C005C76C9 /* BRRebuildRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5721E619F7003F0364 /* BRRebuildRequest.m */; };
+		D996C64627DE2C5C005C76C9 /* BRContainerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597620EDF0A0007E15A7 /* BRContainerBuilder.m */; };
+		D996C64727DE2C5C005C76C9 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
+		D996C64827DE2C5C005C76C9 /* BRAddBuildTokenCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766A521DDDF6C00E64E0C /* BRAddBuildTokenCommand.m */; };
+		D996C64927DE2C5C005C76C9 /* ASLogObservingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD07C2205D01600257E8E /* ASLogObservingOperation.m */; };
+		D996C64A27DE2C5C005C76C9 /* BRAbortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B0A2117609900F2EA35 /* BRAbortCommand.m */; };
+		D996C64B27DE2C5C005C76C9 /* BRObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C720D20F90A5B00E5A082 /* BRObserver.m */; };
+		D996C64C27DE2C5C005C76C9 /* BRStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B6F620F0837B001A6C15 /* BRStorage.m */; };
+		D996C64D27DE2C5C005C76C9 /* NSHashTable+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85421B4363D005D5140 /* NSHashTable+FRP.m */; };
+		D996C64E27DE2C5C005C76C9 /* BRSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */; };
+		D996C64F27DE2C5C005C76C9 /* BREnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A18BD21CCE5B10096E1E6 /* BREnvironment.m */; };
+		D996C65027DE2C5C005C76C9 /* BRLogsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1ED8F622282C3400A432B1 /* BRLogsWindowController.m */; };
+		D996C65127DE2C5C005C76C9 /* BRKeyInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DFB4C21DA28EC00E7E5AC /* BRKeyInputViewController.m */; };
+		D996C65227DE2C5C005C76C9 /* BRAppsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0920EC89D00033CD03 /* BRAppsDataSource.m */; };
+		D996C65327DE2C5C005C76C9 /* BRSyncCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70420F09A85001A6C15 /* BRSyncCommand.m */; };
+		D996C65427DE2C5C005C76C9 /* BRStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C54092439D02500CA1D57 /* BRStyleSheet.m */; };
+		D996C65527DE2C5C005C76C9 /* BRLogStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E92F5DB223D0111007AC61B /* BRLogStepView.m */; };
+		D996C65627DE2C5C005C76C9 /* BRPlaceholderViews.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C540D2439DAB300CA1D57 /* BRPlaceholderViews.m */; };
+		D996C65727DE2C5C005C76C9 /* NSArray+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85B21B4363D005D5140 /* NSArray+FRP.m */; };
+		D996C65827DE2C5C005C76C9 /* BRAppCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0220EC89550033CD03 /* BRAppCellView.m */; };
+		D996C65927DE2C5C005C76C9 /* BRAccountRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7821E890E1003F0364 /* BRAccountRequest.m */; };
+		D996C65A27DE2C5C005C76C9 /* BRMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CAFE20EC7BB40033CD03 /* BRMainController.m */; };
+		D996C65B27DE2C5D005C76C9 /* BRRebuildCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B072117607A00F2EA35 /* BRRebuildCommand.m */; };
+		D996C65C27DE2C5D005C76C9 /* BRAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF766BF21E2637900E64E0C /* BRAboutViewController.m */; };
+		D996C65D27DE2C5D005C76C9 /* BRLogsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD0882205F9D200257E8E /* BRLogsRequest.m */; };
+		D996C65E27DE2C5D005C76C9 /* BRAddAccountOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DFB4321D792D000E7E5AC /* BRAddAccountOperation.m */; };
+		D996C65F27DE2C5D005C76C9 /* BRAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891720F201400023FCCE /* BRAppInfo.m */; };
+		D996C66027DE2C5D005C76C9 /* NSDictionary+FRP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1B85221B4363D005D5140 /* NSDictionary+FRP.m */; };
+		D996C66127DE2C5D005C76C9 /* BRApp+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD893C20F4893B0023FCCE /* BRApp+Mapping.m */; };
+		D996C66227DE2C5D005C76C9 /* BRManagingAppCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DFB4621D7A05C00E7E5AC /* BRManagingAppCellView.m */; };
+		D996C66327DE2C5D005C76C9 /* BRCellBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEF655620F5B2AB0012C45D /* BRCellBuilder.m */; };
+		D996C66427DE2C5D005C76C9 /* BRLogInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA9D6B2217F9EF007234EB /* BRLogInfo.m */; };
+		D996C66527DE2C5D005C76C9 /* BRAccountsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73598320EF8ED3007E15A7 /* BRAccountsDataSource.m */; };
+		D996C66627DE2C5D005C76C9 /* BRAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73597920EDF5D5007E15A7 /* BRAccountsViewController.m */; };
+		D996C66727DE2C5D005C76C9 /* BRActionDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E51715E21D20E96000D470E /* BRActionDispatcher.m */; };
+		D996C66827DE2C5D005C76C9 /* BRAutorun.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E30344721CEE217001757C0 /* BRAutorun.m */; };
+		D996C66927DE2C5D005C76C9 /* BRSettingsMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E30344521CEDDD0001757C0 /* BRSettingsMenuController.m */; };
+		D996C66A27DE2C5D005C76C9 /* BRBitriseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5420F0819E00494DEB /* BRBitriseAPI.m */; };
+		D996C66B27DE2C5D005C76C9 /* BRKeyRequestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8DFB4F21DA2E7700E7E5AC /* BRKeyRequestContext.m */; };
+		D996C66C27DE2C5D005C76C9 /* ASQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DDF21BBBB0A00AD41FE /* ASQueue.m */; };
+		D996C66D27DE2C5D005C76C9 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
+		D996C66E27DE2C5D005C76C9 /* BRTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE79274A5D01007157FB /* BRTabViewController.m */; };
+		D996C66F27DE2C5D005C76C9 /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
+		D996C67027DE2C5D005C76C9 /* BRLogLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E348F192213130A000343A1 /* BRLogLineView.m */; };
+		D996C67127DE2C5D005C76C9 /* BRBuildsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED7221E7BC92003F0364 /* BRBuildsRequest.m */; };
+		D996C67227DE2C5D005C76C9 /* BRBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70820F0D110001A6C15 /* BRBuildInfo.m */; };
+		D996C67327DE2C5D005C76C9 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
+		D996C67427DE2C5D005C76C9 /* BRCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B122117627700F2EA35 /* BRCommand.m */; };
+		D996C67527DE2C5D005C76C9 /* BRLogsWindowPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9D75221F043100A21D23 /* BRLogsWindowPresenter.m */; };
+		D996C67627DE2C5D005C76C9 /* BRDependencyInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB502713166300E7CF43 /* BRDependencyInjector.m */; };
+		D996C67727DE2C5D005C76C9 /* BROpenBuildCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3C0B10211760C000F2EA35 /* BROpenBuildCommand.m */; };
+		D996C67827DE2C5D005C76C9 /* BRLogStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E1ED8F222282B3200A432B1 /* BRLogStatusView.m */; };
+		D996C67927DE2C5D005C76C9 /* BRSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EDC5DE621BBFB0A00AD41FE /* BRSyncOperation.m */; };
+		D996C67A27DE2C5D005C76C9 /* BRSyncDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27921CD1C10005EC4A4 /* BRSyncDiff.m */; };
+		D996C67B27DE2C5D005C76C9 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
+		D996C67C27DE2C5D005C76C9 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
+		D996C67D27DE2C5D005C76C9 /* BRLogsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E02C9AD22103ED100FCFE17 /* BRLogsDataSource.m */; };
+		D996C67E27DE2C5D005C76C9 /* BTRAccount+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70C20F0F9BB001A6C15 /* BTRAccount+Mapping.m */; };
+		D996C67F27DE2C5D005C76C9 /* BRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73598620EF93B8007E15A7 /* BRViewController.m */; };
+		D996C68027DE2C5D005C76C9 /* BRBuildLog+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E4AD0802205D65A00257E8E /* BRBuildLog+Mapping.m */; };
+		D996C68127DE2C5D005C76C9 /* BRDisableableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */; };
+		D996C68227DE2C5D005C76C9 /* BRSyncResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECFF27621CD186E005EC4A4 /* BRSyncResult.m */; };
+		D996C68327DE2C5D005C76C9 /* BRWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E6004F27137ABF0057AB8B /* BRWindowController.m */; };
+		D996C68427DE2C5D005C76C9 /* BRLogStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E52AB7F2242A4A60020A943 /* BRLogStorage.m */; };
+		D996C68527DE2C5D005C76C9 /* ASLogLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED38CDB220DE9000006FE69 /* ASLogLoadingOperation.m */; };
+		D996C68627DE2C5D005C76C9 /* BRAbortRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED6F21E7B7F4003F0364 /* BRAbortRequest.m */; };
+		D996C68727DE2C5D005C76C9 /* BRRemoveAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E93B70120F08EF2001A6C15 /* BRRemoveAccountCommand.m */; };
+		D996C68827DE2C5D005C76C9 /* BRScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96DDE9124436F78005F5998 /* BRScroller.m */; };
+		D996C68927DE2C5D005C76C9 /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
+		D996C68A27DE2C5D005C76C9 /* BRSyncAccountsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */; };
+		D996C68B27DE2C5D005C76C9 /* BRAccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */; };
+		D996C68C27DE2C5D005C76C9 /* BRAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3ED5421E617FA003F0364 /* BRAPIRequest.m */; };
+		D996C68D27DE2C5D005C76C9 /* BRDependencyContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73598020EF8D92007E15A7 /* BRDependencyContainer.m */; };
+		D996C68E27DE2C5D005C76C9 /* BRLogObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB325B22020B5E0045C376 /* BRLogObserver.m */; };
+		D996C68F27DE2C6D005C76C9 /* bitrise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */; };
+		D996C69027DE2DCB005C76C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CAE020EC7A800033CD03 /* Main.storyboard */; };
+		D996C69127DE2DCB005C76C9 /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98338512710F5F200D80E24 /* Logs.storyboard */; };
+		D996C69227DE2DCB005C76C9 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98338532710F5FC00D80E24 /* About.storyboard */; };
+		D996C69327DE2DCB005C76C9 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98338552710F60700D80E24 /* Accounts.storyboard */; };
+		D996C69427DE2E26005C76C9 /* Standalone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D902E1EF271571CB00B7742A /* Standalone.storyboard */; };
+		D996C69527DE2EE9005C76C9 /* JetBrainsMono-Bold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97355382402F97F003FCE9B /* JetBrainsMono-Bold.ttf */; };
+		D996C69627DE2EE9005C76C9 /* Proxima Nova Alt Bold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
+		D996C69727DE2EE9005C76C9 /* Jura-Bold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D98C54122439EC3900CA1D57 /* Jura-Bold.ttf */; };
+		D996C69827DE2EE9005C76C9 /* JetBrainsMono-Medium-Italic.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */; };
+		D996C69927DE2EE9005C76C9 /* JetBrainsMono-Bold-Italic.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97355372402F97F003FCE9B /* JetBrainsMono-Bold-Italic.ttf */; };
+		D996C69A27DE2EE9005C76C9 /* JetBrainsMono-Italic.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */; };
+		D996C69B27DE2EE9005C76C9 /* ProximaNova-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */; };
+		D996C69C27DE2EEA005C76C9 /* Proxima Nova Alt Light.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
+		D996C69D27DE2EEA005C76C9 /* Proxima Nova Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F5246FFDF400DF2C50 /* Proxima Nova Black.otf */; };
+		D996C69E27DE2EEA005C76C9 /* JetBrainsMono-ExtraBold-Italic.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */; };
+		D996C69F27DE2EEA005C76C9 /* Jura-VariableFont_wght.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D98C54102439EB7A00CA1D57 /* Jura-VariableFont_wght.ttf */; };
+		D996C6A027DE2EEA005C76C9 /* Jura-Medium.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D98C54132439EC3A00CA1D57 /* Jura-Medium.ttf */; };
+		D996C6A127DE2EEA005C76C9 /* Proxima Nova Bold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F4246FFDF300DF2C50 /* Proxima Nova Bold.otf */; };
+		D996C6A227DE2EEA005C76C9 /* Proxima Nova Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F6246FFDF400DF2C50 /* Proxima Nova Thin.otf */; };
+		D996C6A327DE2EEA005C76C9 /* Proxima Nova Extrabold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56F3246FFDF300DF2C50 /* Proxima Nova Extrabold.otf */; };
+		D996C6A427DE2EEA005C76C9 /* JetBrainsMono-Medium.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
+		D996C6A527DE2EEA005C76C9 /* Proxima Nova Alt Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
+		D996C6A627DE2EEA005C76C9 /* JetBrainsMono-ExtraBold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D973553A2402F97F003FCE9B /* JetBrainsMono-ExtraBold.ttf */; };
+		D996C6A727DE2EEA005C76C9 /* JetBrainsMono-Regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
+		D996C6A827DE2F33005C76C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
+		D996C6A927DE2FBC005C76C9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFB9F25372FF800DA473E /* CloudKit.framework */; platformFilter = maccatalyst; };
 		D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */ = {isa = PBXBuildFile; fileRef = D996EBD0245F17E500DC4F6B /* BRDotsView.m */; };
 		D99BEB3424715C9B00BA90EC /* BRNotificationDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */; };
 		D9A9CB4D2713104B00E7CF43 /* BRSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */; };
@@ -298,6 +431,20 @@
 			remoteGlobalIDString = DEBE8C182513B7FB00CF079A;
 			remoteInfo = BitBotATV;
 		};
+		D996C61227DE1B01005C76C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D996C5FC27DE1B00005C76C9;
+			remoteInfo = BitBotMenu;
+		};
+		D996C61C27DE1B01005C76C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D996C5FC27DE1B00005C76C9;
+			remoteInfo = BitBotMenu;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -328,6 +475,34 @@
 				D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */,
 			);
 			name = "Copy Fonts";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C6AA27DE2FEE005C76C9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				D996C69927DE2EE9005C76C9 /* JetBrainsMono-Bold-Italic.ttf in CopyFiles */,
+				D996C69527DE2EE9005C76C9 /* JetBrainsMono-Bold.ttf in CopyFiles */,
+				D996C69C27DE2EEA005C76C9 /* Proxima Nova Alt Light.otf in CopyFiles */,
+				D996C6A327DE2EEA005C76C9 /* Proxima Nova Extrabold.otf in CopyFiles */,
+				D996C69727DE2EE9005C76C9 /* Jura-Bold.ttf in CopyFiles */,
+				D996C6A027DE2EEA005C76C9 /* Jura-Medium.ttf in CopyFiles */,
+				D996C69827DE2EE9005C76C9 /* JetBrainsMono-Medium-Italic.ttf in CopyFiles */,
+				D996C6A227DE2EEA005C76C9 /* Proxima Nova Thin.otf in CopyFiles */,
+				D996C6A427DE2EEA005C76C9 /* JetBrainsMono-Medium.ttf in CopyFiles */,
+				D996C69E27DE2EEA005C76C9 /* JetBrainsMono-ExtraBold-Italic.ttf in CopyFiles */,
+				D996C6A627DE2EEA005C76C9 /* JetBrainsMono-ExtraBold.ttf in CopyFiles */,
+				D996C6A527DE2EEA005C76C9 /* Proxima Nova Alt Thin.otf in CopyFiles */,
+				D996C6A727DE2EEA005C76C9 /* JetBrainsMono-Regular.ttf in CopyFiles */,
+				D996C69A27DE2EE9005C76C9 /* JetBrainsMono-Italic.ttf in CopyFiles */,
+				D996C69F27DE2EEA005C76C9 /* Jura-VariableFont_wght.ttf in CopyFiles */,
+				D996C6A127DE2EEA005C76C9 /* Proxima Nova Bold.otf in CopyFiles */,
+				D996C69627DE2EE9005C76C9 /* Proxima Nova Alt Bold.otf in CopyFiles */,
+				D996C69B27DE2EE9005C76C9 /* ProximaNova-Regular.otf in CopyFiles */,
+				D996C69D27DE2EEA005C76C9 /* Proxima Nova Black.otf in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -512,8 +687,11 @@
 		6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBotTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F51DE74237213D947FD5AF /* Pods-BitBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotTests.release.xcconfig"; path = "Target Support Files/Pods-BitBotTests/Pods-BitBotTests.release.xcconfig"; sourceTree = "<group>"; };
 		8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.release.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.release.xcconfig"; sourceTree = "<group>"; };
+		8751F6DE46A1B49F794403ED /* libPods-BitBotMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBotMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D4B65651B1B5745349F720 /* Pods-BitriseATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitriseATV.debug.xcconfig"; path = "Target Support Files/Pods-BitriseATV/Pods-BitriseATV.debug.xcconfig"; sourceTree = "<group>"; };
 		A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BitBotATV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9672671C71F16680F43A616 /* Pods-BitBotMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotMenu.release.xcconfig"; path = "Target Support Files/Pods-BitBotMenu/Pods-BitBotMenu.release.xcconfig"; sourceTree = "<group>"; };
+		B70AEA0CF0EAE7B193D459B3 /* Pods-BitBotMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotMenu.debug.xcconfig"; path = "Target Support Files/Pods-BitBotMenu/Pods-BitBotMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.debug.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.debug.xcconfig"; sourceTree = "<group>"; };
 		D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitBotATV.release.xcconfig"; path = "Target Support Files/Pods-BitBotATV/Pods-BitBotATV.release.xcconfig"; sourceTree = "<group>"; };
 		D902E1EF271571CB00B7742A /* Standalone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Standalone.storyboard; sourceTree = "<group>"; };
@@ -577,6 +755,20 @@
 		D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppsDataSourceTests.m; sourceTree = "<group>"; };
 		D996A18324DB26E200DBFE83 /* BRDisableableScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDisableableScrollView.h; sourceTree = "<group>"; };
 		D996A18424DB26E200DBFE83 /* BRDisableableScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDisableableScrollView.m; sourceTree = "<group>"; };
+		D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitBotMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D996C5FF27DE1B00005C76C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D996C60027DE1B00005C76C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D996C60227DE1B00005C76C9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D996C60327DE1B00005C76C9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D996C60527DE1B01005C76C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D996C60A27DE1B01005C76C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D996C60C27DE1B01005C76C9 /* BitBotMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotMenu.entitlements; sourceTree = "<group>"; };
+		D996C61127DE1B01005C76C9 /* BitBotMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D996C61527DE1B01005C76C9 /* BitBotMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBotMenuTests.m; sourceTree = "<group>"; };
+		D996C61B27DE1B01005C76C9 /* BitBotMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D996C61F27DE1B01005C76C9 /* BitBotMenuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBotMenuUITests.m; sourceTree = "<group>"; };
+		D996C62127DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBotMenuUITestsLaunchTests.m; sourceTree = "<group>"; };
+		D996C62C27DE1B1B005C76C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D996EBCF245F17E500DC4F6B /* BRDotsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDotsView.h; sourceTree = "<group>"; };
 		D996EBD0245F17E500DC4F6B /* BRDotsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDotsView.m; sourceTree = "<group>"; };
 		D99BEB3224715C9B00BA90EC /* BRNotificationDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRNotificationDispatcher.h; sourceTree = "<group>"; };
@@ -689,6 +881,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D996C5FA27DE1B00005C76C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF29F416EDF60A5B023FD1B1 /* libPods-BitBotMenu.a in Frameworks */,
+				D996C6A927DE2FBC005C76C9 /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C60E27DE1B01005C76C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C61827DE1B01005C76C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEBE8C162513B7FB00CF079A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -709,6 +924,7 @@
 				4592E252F47089546A803FDB /* libPods-BitBot.a */,
 				6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */,
 				A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */,
+				8751F6DE46A1B49F794403ED /* libPods-BitBotMenu.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -735,6 +951,9 @@
 				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
 				DEBE8C1A2513B7FB00CF079A /* BitriseATV */,
 				D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */,
+				D996C5FE27DE1B00005C76C9 /* BitBotMenu */,
+				D996C61427DE1B01005C76C9 /* BitBotMenuTests */,
+				D996C61E27DE1B01005C76C9 /* BitBotMenuUITests */,
 				0E42CAD620EC7A7E0033CD03 /* Products */,
 				4983FB838EF9931C351A2EAB /* Pods */,
 				0ABB74A886F68049AE2D5596 /* Frameworks */,
@@ -748,6 +967,9 @@
 				0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */,
 				DEBE8C192513B7FB00CF079A /* BitBotATV.app */,
 				D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */,
+				D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */,
+				D996C61127DE1B01005C76C9 /* BitBotMenuTests.xctest */,
+				D996C61B27DE1B01005C76C9 /* BitBotMenuUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -762,8 +984,8 @@
 				0E42CAE620EC7A800033CD03 /* Bitrise.entitlements */,
 				DE3CD0D0252478AE00DD5948 /* BitriseCompat.h */,
 				DE2A269E25230F1400D5762E /* Bitrise-Bridging-Header.h */,
-				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
 				0E42CAD820EC7A7E0033CD03 /* AppDelegate.h */,
+				0E42CAD920EC7A7E0033CD03 /* AppDelegate.m */,
 				D9C48B2C2724111B00EE097C /* Dependencies */,
 				0E9F413620FEFA510083D646 /* Tools */,
 				0E7A18BB21CCE5970096E1E6 /* Environment */,
@@ -1193,6 +1415,8 @@
 				8737EB33A867885C0D9BD854 /* Pods-BitriseATV.release.xcconfig */,
 				C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */,
 				D84A7482A583FF266B3A58C9 /* Pods-BitBotATV.release.xcconfig */,
+				B70AEA0CF0EAE7B193D459B3 /* Pods-BitBotMenu.debug.xcconfig */,
+				A9672671C71F16680F43A616 /* Pods-BitBotMenu.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1298,6 +1522,38 @@
 				D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */,
 			);
 			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		D996C5FE27DE1B00005C76C9 /* BitBotMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D996C62C27DE1B1B005C76C9 /* Info.plist */,
+				D996C5FF27DE1B00005C76C9 /* AppDelegate.h */,
+				D996C60027DE1B00005C76C9 /* AppDelegate.m */,
+				D996C60227DE1B00005C76C9 /* ViewController.h */,
+				D996C60327DE1B00005C76C9 /* ViewController.m */,
+				D996C60527DE1B01005C76C9 /* Assets.xcassets */,
+				D996C60A27DE1B01005C76C9 /* main.m */,
+				D996C60C27DE1B01005C76C9 /* BitBotMenu.entitlements */,
+			);
+			path = BitBotMenu;
+			sourceTree = "<group>";
+		};
+		D996C61427DE1B01005C76C9 /* BitBotMenuTests */ = {
+			isa = PBXGroup;
+			children = (
+				D996C61527DE1B01005C76C9 /* BitBotMenuTests.m */,
+			);
+			path = BitBotMenuTests;
+			sourceTree = "<group>";
+		};
+		D996C61E27DE1B01005C76C9 /* BitBotMenuUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D996C61F27DE1B01005C76C9 /* BitBotMenuUITests.m */,
+				D996C62127DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m */,
+			);
+			path = BitBotMenuUITests;
 			sourceTree = "<group>";
 		};
 		D996EBD2245F46BC00DC4F6B /* Dots view */ = {
@@ -1663,6 +1919,61 @@
 			productReference = D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D996C5FC27DE1B00005C76C9 /* BitBotMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D996C62327DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenu" */;
+			buildPhases = (
+				E578D1E38A2F05E4694AA7DF /* [CP] Check Pods Manifest.lock */,
+				D996C5F927DE1B00005C76C9 /* Sources */,
+				D996C5FA27DE1B00005C76C9 /* Frameworks */,
+				D996C5FB27DE1B00005C76C9 /* Resources */,
+				D996C6AA27DE2FEE005C76C9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitBotMenu;
+			productName = BitBotMenu;
+			productReference = D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D996C61027DE1B01005C76C9 /* BitBotMenuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D996C62627DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenuTests" */;
+			buildPhases = (
+				D996C60D27DE1B01005C76C9 /* Sources */,
+				D996C60E27DE1B01005C76C9 /* Frameworks */,
+				D996C60F27DE1B01005C76C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D996C61327DE1B01005C76C9 /* PBXTargetDependency */,
+			);
+			name = BitBotMenuTests;
+			productName = BitBotMenuTests;
+			productReference = D996C61127DE1B01005C76C9 /* BitBotMenuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D996C61A27DE1B01005C76C9 /* BitBotMenuUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D996C62927DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenuUITests" */;
+			buildPhases = (
+				D996C61727DE1B01005C76C9 /* Sources */,
+				D996C61827DE1B01005C76C9 /* Frameworks */,
+				D996C61927DE1B01005C76C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D996C61D27DE1B01005C76C9 /* PBXTargetDependency */,
+			);
+			name = BitBotMenuUITests;
+			productName = BitBotMenuUITests;
+			productReference = D996C61B27DE1B01005C76C9 /* BitBotMenuUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		DEBE8C182513B7FB00CF079A /* BitBotATV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */;
@@ -1708,6 +2019,17 @@
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = DEBE8C182513B7FB00CF079A;
 					};
+					D996C5FC27DE1B00005C76C9 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					D996C61027DE1B01005C76C9 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = D996C5FC27DE1B00005C76C9;
+					};
+					D996C61A27DE1B01005C76C9 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = D996C5FC27DE1B00005C76C9;
+					};
 					DEBE8C182513B7FB00CF079A = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -1730,6 +2052,9 @@
 				0E42CAEA20EC7A800033CD03 /* BitBotTests */,
 				DEBE8C182513B7FB00CF079A /* BitBotATV */,
 				D91BD9C225A1BE7000EF8D66 /* BitBotATVTests */,
+				D996C5FC27DE1B00005C76C9 /* BitBotMenu */,
+				D996C61027DE1B01005C76C9 /* BitBotMenuTests */,
+				D996C61A27DE1B01005C76C9 /* BitBotMenuUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1758,6 +2083,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D91BD9C125A1BE7000EF8D66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C5FB27DE1B00005C76C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D996C69427DE2E26005C76C9 /* Standalone.storyboard in Resources */,
+				D996C6A827DE2F33005C76C9 /* Assets.xcassets in Resources */,
+				D996C69027DE2DCB005C76C9 /* Main.storyboard in Resources */,
+				D996C69127DE2DCB005C76C9 /* Logs.storyboard in Resources */,
+				D996C69227DE2DCB005C76C9 /* About.storyboard in Resources */,
+				D996C69327DE2DCB005C76C9 /* Accounts.storyboard in Resources */,
+				D996C60627DE1B01005C76C9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C60F27DE1B01005C76C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C61927DE1B01005C76C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1886,6 +2239,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GIT_RELEASE_VERSION=$(git describe --tags --always --dirty)\nCOMMITS=$(git rev-list HEAD | wc -l)\nCOMMITS_COUNT=$(($COMMITS))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $COMMITS_COUNT\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+		E578D1E38A2F05E4694AA7DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitBotMenu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2044,6 +2419,132 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D996C5F927DE1B00005C76C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D996C60427DE1B00005C76C9 /* ViewController.m in Sources */,
+				D996C64F27DE2C5C005C76C9 /* BREnvironment.m in Sources */,
+				D996C68C27DE2C5D005C76C9 /* BRAPIRequest.m in Sources */,
+				D996C67727DE2C5D005C76C9 /* BROpenBuildCommand.m in Sources */,
+				D996C64027DE2C5C005C76C9 /* BRBuildMenuController.m in Sources */,
+				D996C65227DE2C5C005C76C9 /* BRAppsDataSource.m in Sources */,
+				D996C60B27DE1B01005C76C9 /* main.m in Sources */,
+				D996C64327DE2C5C005C76C9 /* BRLogsViewController.m in Sources */,
+				D996C65C27DE2C5D005C76C9 /* BRAboutViewController.m in Sources */,
+				D996C67527DE2C5D005C76C9 /* BRLogsWindowPresenter.m in Sources */,
+				D996C67A27DE2C5D005C76C9 /* BRSyncDiff.m in Sources */,
+				D996C63B27DE2C5C005C76C9 /* NSSet+FRP.m in Sources */,
+				D996C68F27DE2C6D005C76C9 /* bitrise.xcdatamodeld in Sources */,
+				D996C67E27DE2C5D005C76C9 /* BTRAccount+Mapping.m in Sources */,
+				D996C66727DE2C5D005C76C9 /* BRActionDispatcher.m in Sources */,
+				D996C64B27DE2C5C005C76C9 /* BRObserver.m in Sources */,
+				D996C64527DE2C5C005C76C9 /* BRRebuildRequest.m in Sources */,
+				D996C63E27DE2C5C005C76C9 /* BRAccountsMenuController.m in Sources */,
+				D996C68927DE2C5D005C76C9 /* BRDotsView.m in Sources */,
+				D996C65F27DE2C5D005C76C9 /* BRAppInfo.m in Sources */,
+				D996C63827DE2C5C005C76C9 /* BRAppsRequest.m in Sources */,
+				D996C66027DE2C5D005C76C9 /* NSDictionary+FRP.m in Sources */,
+				D996C62F27DE2C5C005C76C9 /* BRProgressObserver.m in Sources */,
+				D996C63427DE2C5C005C76C9 /* BRStandaloneWindowController.m in Sources */,
+				D996C68227DE2C5D005C76C9 /* BRSyncResult.m in Sources */,
+				D996C64927DE2C5C005C76C9 /* ASLogObservingOperation.m in Sources */,
+				D996C68B27DE2C5D005C76C9 /* BRAccountInfoViewController.m in Sources */,
+				D996C68327DE2C5D005C76C9 /* BRWindowController.m in Sources */,
+				D996C65327DE2C5C005C76C9 /* BRSyncCommand.m in Sources */,
+				D996C66927DE2C5D005C76C9 /* BRSettingsMenuController.m in Sources */,
+				D996C64727DE2C5C005C76C9 /* AMR_ANSIEscapeHelper.m in Sources */,
+				D996C65827DE2C5C005C76C9 /* BRAppCellView.m in Sources */,
+				D996C64627DE2C5C005C76C9 /* BRContainerBuilder.m in Sources */,
+				D996C66227DE2C5D005C76C9 /* BRManagingAppCellView.m in Sources */,
+				D996C64E27DE2C5C005C76C9 /* BRSplitViewController.m in Sources */,
+				D996C66D27DE2C5D005C76C9 /* BRLogger.m in Sources */,
+				D996C67027DE2C5D005C76C9 /* BRLogLineView.m in Sources */,
+				D996C66127DE2C5D005C76C9 /* BRApp+Mapping.m in Sources */,
+				D996C68427DE2C5D005C76C9 /* BRLogStorage.m in Sources */,
+				D996C66827DE2C5D005C76C9 /* BRAutorun.m in Sources */,
+				D996C67827DE2C5D005C76C9 /* BRLogStatusView.m in Sources */,
+				D996C63127DE2C5C005C76C9 /* BRAccountsObserver.m in Sources */,
+				D996C65527DE2C5C005C76C9 /* BRLogStepView.m in Sources */,
+				D996C68E27DE2C5D005C76C9 /* BRLogObserver.m in Sources */,
+				D996C67227DE2C5D005C76C9 /* BRBuildInfo.m in Sources */,
+				D996C60127DE1B00005C76C9 /* AppDelegate.m in Sources */,
+				D996C64827DE2C5C005C76C9 /* BRAddBuildTokenCommand.m in Sources */,
+				D996C65927DE2C5C005C76C9 /* BRAccountRequest.m in Sources */,
+				D996C63927DE2C5C005C76C9 /* BRNotificationDispatcher.m in Sources */,
+				D996C66427DE2C5D005C76C9 /* BRLogInfo.m in Sources */,
+				D996C67127DE2C5D005C76C9 /* BRBuildsRequest.m in Sources */,
+				D996C67B27DE2C5D005C76C9 /* BREmptyView.m in Sources */,
+				D996C65627DE2C5C005C76C9 /* BRPlaceholderViews.m in Sources */,
+				D996C66327DE2C5D005C76C9 /* BRCellBuilder.m in Sources */,
+				D996C68D27DE2C5D005C76C9 /* BRDependencyContainer.m in Sources */,
+				D996C68A27DE2C5D005C76C9 /* BRSyncAccountsCommand.m in Sources */,
+				D996C64127DE2C5C005C76C9 /* BRAboutTextView.m in Sources */,
+				D996C62D27DE2C5C005C76C9 /* BRBuild+Mapping.m in Sources */,
+				D996C63027DE2C5C005C76C9 /* NSPopover+MISSINGBackgroundView.m in Sources */,
+				D996C63327DE2C5C005C76C9 /* BROperation.m in Sources */,
+				D996C63F27DE2C5C005C76C9 /* BRBuildCellView.m in Sources */,
+				D996C65B27DE2C5D005C76C9 /* BRRebuildCommand.m in Sources */,
+				D996C65027DE2C5C005C76C9 /* BRLogsWindowController.m in Sources */,
+				D996C66C27DE2C5D005C76C9 /* ASQueue.m in Sources */,
+				D996C67D27DE2C5D005C76C9 /* BRLogsDataSource.m in Sources */,
+				D996C66B27DE2C5D005C76C9 /* BRKeyRequestContext.m in Sources */,
+				D996C63C27DE2C5C005C76C9 /* BRBuildStateInfo.m in Sources */,
+				D996C65A27DE2C5C005C76C9 /* BRMainController.m in Sources */,
+				D996C68127DE2C5D005C76C9 /* BRDisableableScrollView.m in Sources */,
+				D996C64D27DE2C5C005C76C9 /* NSHashTable+FRP.m in Sources */,
+				D996C63227DE2C5C005C76C9 /* BRAnalytics.m in Sources */,
+				D996C66E27DE2C5D005C76C9 /* BRTabViewController.m in Sources */,
+				D996C66527DE2C5D005C76C9 /* BRAccountsDataSource.m in Sources */,
+				D996C67F27DE2C5D005C76C9 /* BRViewController.m in Sources */,
+				D996C68727DE2C5D005C76C9 /* BRRemoveAccountCommand.m in Sources */,
+				D996C68627DE2C5D005C76C9 /* BRAbortRequest.m in Sources */,
+				D996C63727DE2C5C005C76C9 /* BRAccountCellView.m in Sources */,
+				D996C63D27DE2C5C005C76C9 /* BRAccountInfo.m in Sources */,
+				D996C67C27DE2C5D005C76C9 /* BRCommandFactory.m in Sources */,
+				D996C67427DE2C5D005C76C9 /* BRCommand.m in Sources */,
+				D996C64A27DE2C5C005C76C9 /* BRAbortCommand.m in Sources */,
+				D996C63527DE2C5C005C76C9 /* BRLogsTextViewController.m in Sources */,
+				D996C65127DE2C5C005C76C9 /* BRKeyInputViewController.m in Sources */,
+				D996C65427DE2C5C005C76C9 /* BRStyleSheet.m in Sources */,
+				D996C66627DE2C5D005C76C9 /* BRAccountsViewController.m in Sources */,
+				D996C62E27DE2C5C005C76C9 /* BRGetAccountCommand.m in Sources */,
+				D996C64427DE2C5C005C76C9 /* BRSyncEngine.m in Sources */,
+				D996C67627DE2C5D005C76C9 /* BRDependencyInjector.m in Sources */,
+				D996C67327DE2C5D005C76C9 /* BRLogScroller.m in Sources */,
+				D996C63627DE2C5C005C76C9 /* BRDownloadLogsCommand.m in Sources */,
+				D996C66A27DE2C5D005C76C9 /* BRBitriseAPI.m in Sources */,
+				D996C64C27DE2C5C005C76C9 /* BRStorage.m in Sources */,
+				D996C65E27DE2C5D005C76C9 /* BRAddAccountOperation.m in Sources */,
+				D996C66F27DE2C5D005C76C9 /* BRLogPresenter.m in Sources */,
+				D996C65D27DE2C5D005C76C9 /* BRLogsRequest.m in Sources */,
+				D996C65727DE2C5C005C76C9 /* NSArray+FRP.m in Sources */,
+				D996C68527DE2C5D005C76C9 /* ASLogLoadingOperation.m in Sources */,
+				D996C64227DE2C5C005C76C9 /* BRStandaloneTabViewController.m in Sources */,
+				D996C67927DE2C5D005C76C9 /* BRSyncOperation.m in Sources */,
+				D996C63A27DE2C5C005C76C9 /* BRLogsParser.m in Sources */,
+				D996C68827DE2C5D005C76C9 /* BRScroller.m in Sources */,
+				D996C68027DE2C5D005C76C9 /* BRBuildLog+Mapping.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C60D27DE1B01005C76C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D996C61627DE1B01005C76C9 /* BitBotMenuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D996C61727DE1B01005C76C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D996C62027DE1B01005C76C9 /* BitBotMenuUITests.m in Sources */,
+				D996C62227DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEBE8C152513B7FB00CF079A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2161,6 +2662,16 @@
 			isa = PBXTargetDependency;
 			target = DEBE8C182513B7FB00CF079A /* BitBotATV */;
 			targetProxy = D91BD9C825A1BE7000EF8D66 /* PBXContainerItemProxy */;
+		};
+		D996C61327DE1B01005C76C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
+			targetProxy = D996C61227DE1B01005C76C9 /* PBXContainerItemProxy */;
+		};
+		D996C61D27DE1B01005C76C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
+			targetProxy = D996C61C27DE1B01005C76C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2443,6 +2954,142 @@
 			};
 			name = Release;
 		};
+		D996C62427DE1B01005C76C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B70AEA0CF0EAE7B193D459B3 /* Pods-BitBotMenu.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = BitBotMenu/BitBotMenu.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AM5334753U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BitBotMenu/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bitrise. All rights reserved.";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		D996C62527DE1B01005C76C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9672671C71F16680F43A616 /* Pods-BitBotMenu.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = BitBotMenu/BitBotMenu.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AM5334753U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BitBotMenu/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bitrise. All rights reserved.";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		D996C62727DE1B01005C76C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AM5334753U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBotMenu.app/Contents/MacOS/BitBotMenu";
+			};
+			name = Debug;
+		};
+		D996C62827DE1B01005C76C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AM5334753U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBotMenu.app/Contents/MacOS/BitBotMenu";
+			};
+			name = Release;
+		};
+		D996C62A27DE1B01005C76C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AM5334753U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_TARGET_NAME = BitBotMenu;
+			};
+			name = Debug;
+		};
+		D996C62B27DE1B01005C76C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AM5334753U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenuUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_TARGET_NAME = BitBotMenu;
+			};
+			name = Release;
+		};
 		DEBE8C252513B7FD00CF079A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */;
@@ -2543,6 +3190,33 @@
 			buildConfigurations = (
 				D91BD9CB25A1BE7000EF8D66 /* Debug */,
 				D91BD9CC25A1BE7000EF8D66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D996C62327DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D996C62427DE1B01005C76C9 /* Debug */,
+				D996C62527DE1B01005C76C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D996C62627DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D996C62727DE1B01005C76C9 /* Debug */,
+				D996C62827DE1B01005C76C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D996C62927DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenuUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D996C62A27DE1B01005C76C9 /* Debug */,
+				D996C62B27DE1B01005C76C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
