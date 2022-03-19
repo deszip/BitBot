@@ -12,9 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRWindowController : NSWindowController
+@protocol BRDependencyContainerOwner <NSObject>
 
 @property (strong, nonatomic) id dependencyContainer;
+
+@end
+
+@interface BRWindowController : NSWindowController <BRDependencyContainerOwner>
+
+//@property (strong, nonatomic) id dependencyContainer;
 
 - (void)didSetContainer;
 

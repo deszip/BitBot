@@ -18,6 +18,9 @@
                                     <items>
                                         <menuItem title="About Bitrise" id="ugf-h9-WNx">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="67p-YY-yAj" kind="show" id="Q9A-sh-dMG"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="EVP-fe-HDx"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="5EE-nT-2fx"/>
@@ -400,7 +403,7 @@
                 <controllerPlaceholder storyboardName="About" id="67p-YY-yAj" sceneMemberID="viewController"/>
                 <customObject id="Hvy-hI-gwP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="835" y="1201"/>
+            <point key="canvasLocation" x="764" y="771"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="BXw-iw-Qri">
@@ -442,12 +445,12 @@
                                         <action selector="displayInfo:" target="fMf-Me-oJY" id="VtY-P3-I6l"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1FDF71F5-77F5-443A-B421-E9392A880B59" label="About" paletteLabel="About" tag="-1" bordered="YES" selectable="YES" id="z58-NL-oI7">
-                                    <imageReference key="image" image="NSTouchBarQuickLookTemplate" symbolScale="large"/>
+                                <toolbarItem implicitItemIdentifier="1FDF71F5-77F5-443A-B421-E9392A880B59" label="Settings" paletteLabel="Settings" tag="-1" bordered="YES" selectable="YES" id="z58-NL-oI7">
+                                    <imageReference key="image" image="settings" symbolScale="large"/>
                                     <size key="minSize" width="38" height="25"/>
                                     <size key="maxSize" width="38" height="25"/>
                                     <connections>
-                                        <segue destination="67p-YY-yAj" kind="show" id="BOX-Nc-M3l"/>
+                                        <action selector="displaySettings:" target="fMf-Me-oJY" id="SrA-g6-oAf"/>
                                     </connections>
                                 </toolbarItem>
                             </allowedToolbarItems>
@@ -499,6 +502,7 @@
                         <tabViewItem identifier="" id="mos-C4-Ljs"/>
                         <tabViewItem identifier="" id="K8v-9v-wDy"/>
                         <tabViewItem identifier="" id="VxS-ea-muu"/>
+                        <tabViewItem id="aEi-uc-5o0"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="fhz-fr-YRK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -513,6 +517,7 @@
                         <segue destination="Xi6-sO-g7e" kind="relationship" relationship="tabItems" id="zGJ-08-YX3"/>
                         <segue destination="hEf-mh-bsV" kind="relationship" relationship="tabItems" id="Ojv-us-nvD"/>
                         <segue destination="5c8-yq-Ynp" kind="relationship" relationship="tabItems" id="hGu-EH-Mrw"/>
+                        <segue destination="gKG-IJ-7Xc" kind="relationship" relationship="tabItems" id="Za6-rF-0U8"/>
                     </connections>
                 </tabViewController>
                 <customObject id="6IS-Z1-eEu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -686,11 +691,24 @@
             </objects>
             <point key="canvasLocation" x="1001" y="2606"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Bkf-Cr-eeb">
+            <objects>
+                <viewController id="gKG-IJ-7Xc" sceneMemberID="viewController">
+                    <view key="view" id="cIr-Pp-Mnh">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="jyh-BQ-Unr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1472" y="2606"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="NSTouchBarQuickLookTemplate" width="26" height="17"/>
         <image name="calendar" catalog="system" width="21" height="18"/>
         <image name="chart.bar" catalog="system" width="25" height="19"/>
         <image name="info.circle" catalog="system" width="20" height="20"/>
+        <image name="settings" width="22" height="22"/>
     </resources>
 </document>

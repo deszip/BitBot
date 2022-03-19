@@ -138,4 +138,8 @@
 //    return self.detachableWindowController.window;
 //}
 
+- (void)loadDependencyContainer:(id<BRDependencyContainerOwner>)owner {
+    [owner setDependencyContainer:self.dependencyContainer];
+}
+
 @end
