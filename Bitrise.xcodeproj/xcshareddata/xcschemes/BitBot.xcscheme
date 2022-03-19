@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Bitrise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D996C5FC27DE1B00005C76C9"
+               BuildableName = "BitBotMenu.app"
+               BlueprintName = "BitBotMenu"
+               ReferencedContainer = "container:Bitrise.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

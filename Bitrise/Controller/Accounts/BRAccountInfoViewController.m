@@ -35,6 +35,18 @@
     [self.notificationCenter addObserver:self selector:@selector(handleAppSelection:) name:kAppSelectedNotification object:nil];
 }
 
+- (IBAction)runMenu:(id)sender {
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *helperAppPath = [[mainBundle bundlePath] stringByAppendingString:@"/Contents/Resources/BitBotMenu.app"];
+    NSURL *menuAppURL = [NSURL fileURLWithPath:helperAppPath];
+    
+    NSWorkspaceOpenConfiguration *cfg = [NSWorkspaceOpenConfiguration configuration];
+    [cfg setEnvironment:@{}];
+    [[NSWorkspace sharedWorkspace] openApplicationAtURL:menuAppURL configuration:cfg completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
+            NSLog(@"App: %@, error: %@", app, error);
+    }];
+}
+
 #pragma mark - Notifications -
 
 - (void)handleAccountSelection:(NSNotification *)notification {

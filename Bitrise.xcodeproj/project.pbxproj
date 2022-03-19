@@ -122,6 +122,7 @@
 		B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */; };
 		BF29F416EDF60A5B023FD1B1 /* libPods-BitBotMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8751F6DE46A1B49F794403ED /* libPods-BitBotMenu.a */; };
 		D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D902E1EF271571CB00B7742A /* Standalone.storyboard */; };
+		D903838927E5D69B000A6F65 /* BitBotMenu.app in Resources */ = {isa = PBXBuildFile; fileRef = D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */; };
 		D9069EBF274AC6B100C626BF /* BRStandaloneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */; };
 		D9069EC3274ACCBC00C626BF /* BRStandaloneTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */; };
 		D90712F9271C60AF00BCDFE8 /* BRAccountsObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D90712F8271C60AF00BCDFE8 /* BRAccountsObserverTests.m */; };
@@ -423,6 +424,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0E42CAD420EC7A7E0033CD03;
 			remoteInfo = Bitrise;
+		};
+		D903838A27E5D774000A6F65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D996C5FC27DE1B00005C76C9;
+			remoteInfo = BitBotMenu;
 		};
 		D91BD9C825A1BE7000EF8D66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1876,6 +1884,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D903838B27E5D774000A6F65 /* PBXTargetDependency */,
 			);
 			name = BitBot;
 			productName = Bitrise;
@@ -2064,6 +2073,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D903838927E5D69B000A6F65 /* BitBotMenu.app in Resources */,
 				D98338522710F5F200D80E24 /* Logs.storyboard in Resources */,
 				D98338562710F60700D80E24 /* Accounts.storyboard in Resources */,
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
@@ -2658,6 +2668,11 @@
 			target = 0E42CAD420EC7A7E0033CD03 /* BitBot */;
 			targetProxy = 0E42CAEC20EC7A800033CD03 /* PBXContainerItemProxy */;
 		};
+		D903838B27E5D774000A6F65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
+			targetProxy = D903838A27E5D774000A6F65 /* PBXContainerItemProxy */;
+		};
 		D91BD9C925A1BE7000EF8D66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DEBE8C182513B7FB00CF079A /* BitBotATV */;
@@ -2962,10 +2977,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = BitBotMenu/BitBotMenu.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AM5334753U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BitBotMenu/Info.plist;
@@ -2982,7 +2998,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.bitbotMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot menu app developer ID";
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Debug;
@@ -2995,10 +3012,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = BitBotMenu/BitBotMenu.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AM5334753U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BitBotMenu/Info.plist;
@@ -3015,7 +3033,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.bitbotMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "BitBot menu app developer ID";
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
