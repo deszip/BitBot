@@ -9,7 +9,6 @@
 #import "BRTabViewController.h"
 
 #import "AppDelegate.h"
-#import "BRDependencyInjector.h"
 
 @implementation BRTabViewController
 

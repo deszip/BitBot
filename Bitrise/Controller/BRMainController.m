@@ -9,7 +9,6 @@
 #import "BRMainController.h"
 
 #import "BRStyleSheet.h"
-#import "BRDependencyInjector.h"
 
 #import "BREmptyView.h"
 #import "BRAboutTextView.h"

@@ -9,7 +9,6 @@
 #import "BRSplitViewController.h"
 
 #import "AppDelegate.h"
-#import "BRDependencyInjector.h"
 
 @interface BRSplitViewController ()
 

@@ -10,7 +10,6 @@
 
 #import "AppDelegate.h"
 #import "BRStyleSheet.h"
-#import "BRDependencyInjector.h"
 
 @interface BRViewController ()
 
