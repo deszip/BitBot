@@ -8,7 +8,7 @@
 
 #import "BRWindowController.h"
 
-#import "BRDependencyInjector.h"
+#import "AppDelegate.h"
 
 @interface BRWindowController ()
 
@@ -18,19 +18,8 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-}
-
-- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
-}
-
-- (void)setDependencyContainer:(id)dependencyContainer {
-    _dependencyContainer = dependencyContainer;
-    [self didSetContainer];
-}
-
-- (void)didSetContainer {
-    //...
+    
+    _dependencyContainer = [(AppDelegate *)[[NSApplication sharedApplication] delegate] dependencyContainer];
 }
 
 @end

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRSplitViewController : NSSplitViewController
 
-@property (strong, nonatomic) id dependencyContainer;
+@property (strong, nonatomic, readonly) id dependencyContainer;
 
 @end
 

@@ -8,19 +8,15 @@
 
 #import "BRTabViewController.h"
 
+#import "AppDelegate.h"
 #import "BRDependencyInjector.h"
 
 @implementation BRTabViewController
 
-- (void)setDependencyContainer:(id)dependencyContainer {
-    _dependencyContainer = dependencyContainer;
-    [self.tabViewItems enumerateObjectsUsingBlock:^(__kindof NSTabViewItem *item, NSUInteger idx, BOOL *stop) {
-        [BRDependencyInjector propagateContainer:self.dependencyContainer toController:item.viewController];
-    }];
-}
+- (void)viewDidLoad {
+    [super viewDidLoad];
 
-- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
+    _dependencyContainer = [(AppDelegate *)[[NSApplication sharedApplication] delegate] dependencyContainer];
 }
 
 @end

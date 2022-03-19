@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRTabViewController : NSTabViewController
 
-@property (strong, nonatomic) id dependencyContainer;
+@property (strong, nonatomic, readonly) id dependencyContainer;
 
 @end
 

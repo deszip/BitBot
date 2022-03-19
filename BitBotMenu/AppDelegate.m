@@ -13,13 +13,11 @@
 #import "BRAnalytics.h"
 #import "BRSyncCommand.h"
 #import "BRMainController.h"
-#import "BRDependencyContainer.h"
 #import "NSPopover+MISSINGBackgroundView.h"
 
 
 @interface AppDelegate () <NSPopoverDelegate>
 
-@property (strong, nonatomic) BRDependencyContainer *dependencyContainer;
 @property (strong, nonatomic) BRCommandFactory *commandFactory;
 @property (strong, nonatomic) BRObserver *observer;
 
@@ -54,9 +52,7 @@
         NSStoryboard *mainStoryboard = [NSStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         
         _mainController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainController"];
-        _mainController.dependencyContainer = _dependencyContainer;
         _detachableMainController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainController"];
-        _detachableMainController.dependencyContainer = _dependencyContainer;
         
         _detachableWindowController = [mainStoryboard instantiateControllerWithIdentifier:@"BRMainWindow"];
         [_detachableWindowController.window setLevel:NSFloatingWindowLevel];

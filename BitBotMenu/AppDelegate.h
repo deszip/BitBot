@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "BRDependencyContainer.h"
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (strong, nonatomic, readonly) BRDependencyContainer *dependencyContainer;
 
 @end
 

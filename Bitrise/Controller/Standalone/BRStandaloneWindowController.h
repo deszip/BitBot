@@ -21,6 +21,8 @@ extern NSNotificationName kStandaloneTabSelectedNotification;
 
 @interface BRStandaloneWindowController : BRWindowController
 
+@property (strong, nonatomic, readonly) id <BREnvironmentProvider> dependencyContainer;
+
 @end
 
 NS_ASSUME_NONNULL_END

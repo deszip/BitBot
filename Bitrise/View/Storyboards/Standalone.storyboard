@@ -446,7 +446,7 @@
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="1FDF71F5-77F5-443A-B421-E9392A880B59" label="Settings" paletteLabel="Settings" tag="-1" bordered="YES" selectable="YES" id="z58-NL-oI7">
-                                    <imageReference key="image" image="settings" symbolScale="large"/>
+                                    <imageReference key="image" image="NSSmartBadgeTemplate" symbolScale="large"/>
                                     <size key="minSize" width="38" height="25"/>
                                     <size key="maxSize" width="38" height="25"/>
                                     <connections>
@@ -608,17 +608,6 @@
                                     <constraint firstAttribute="height" constant="52" id="Z01-1f-rjg"/>
                                 </constraints>
                             </customView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="afx-Ld-Y6y">
-                                <rect key="frame" x="188" y="56" width="75" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NFO-hV-Req">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runMenu:" target="Xi6-sO-g7e" id="hXn-yx-31P"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dXO-PI-cln" secondAttribute="trailing" constant="20" id="17U-yg-rP5"/>
@@ -691,13 +680,112 @@
             </objects>
             <point key="canvasLocation" x="1001" y="2606"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="Bkf-Cr-eeb">
             <objects>
-                <viewController id="gKG-IJ-7Xc" sceneMemberID="viewController">
+                <viewController id="gKG-IJ-7Xc" customClass="BRSettingsViewController" sceneMemberID="viewController">
                     <view key="view" id="cIr-Pp-Mnh">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btI-hh-V74">
+                                <rect key="frame" x="0.0" y="248" width="450" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="LUR-XF-ZjP"/>
+                                </constraints>
+                            </customView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qt-Zm-LyZ">
+                                <rect key="frame" x="24.5" y="66" width="401" height="162"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fAd-8h-FuZ">
+                                        <rect key="frame" x="-2" y="145" width="171" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show build notifications" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="qqa-rf-QjY">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zxa-uh-fTe">
+                                        <rect key="frame" x="-2" y="119" width="128" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Disable analytics" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="8I9-Gx-ynd">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <box title="Menu app" translatesAutoresizingMaskIntoConstraints="NO" id="J7Z-OP-PDP">
+                                        <rect key="frame" x="-3" y="-4" width="407" height="114"/>
+                                        <view key="contentView" id="cBV-nv-t7B">
+                                            <rect key="frame" x="3" y="3" width="401" height="96"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vq-U6-7Im">
+                                                    <rect key="frame" x="5" y="5" width="391" height="86"/>
+                                                    <subviews>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-Bc-Lgc">
+                                                            <rect key="frame" x="-2" y="56" width="221" height="31"/>
+                                                            <buttonCell key="cell" type="check" title="Show menu app in the menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2i-nz-toG">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                            <connections>
+                                                                <action selector="toggleMenuApp:" target="gKG-IJ-7Xc" id="B1f-0b-dbL"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlR-VU-CTx">
+                                                            <rect key="frame" x="-2" y="28" width="393" height="30"/>
+                                                            <buttonCell key="cell" type="check" title="Keep menu app running in the background when I quit BitBot" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="pMt-1Z-l4z">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                        </button>
+                                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rpb-2O-l7R">
+                                                            <rect key="frame" x="-2" y="-1" width="298" height="31"/>
+                                                            <buttonCell key="cell" type="check" title="Start menu app when I log in to my computer" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="LH8-R8-MGZ">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                        </button>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="9Vq-U6-7Im" secondAttribute="trailing" constant="5" id="D1c-2d-3fZ"/>
+                                                <constraint firstItem="9Vq-U6-7Im" firstAttribute="top" secondItem="cBV-nv-t7B" secondAttribute="top" constant="5" id="GQY-XW-5Zi"/>
+                                                <constraint firstItem="9Vq-U6-7Im" firstAttribute="leading" secondItem="cBV-nv-t7B" secondAttribute="leading" constant="5" id="gBo-TC-Tdy"/>
+                                                <constraint firstAttribute="bottom" secondItem="9Vq-U6-7Im" secondAttribute="bottom" constant="5" id="gTn-d6-Jpd"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="SKT-p5-9em"/>
+                                        </constraints>
+                                    </box>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="btI-hh-V74" secondAttribute="trailing" id="NOL-zP-QnO"/>
+                            <constraint firstItem="btI-hh-V74" firstAttribute="leading" secondItem="cIr-Pp-Mnh" secondAttribute="leading" id="chx-6S-vin"/>
+                            <constraint firstItem="btI-hh-V74" firstAttribute="top" secondItem="cIr-Pp-Mnh" secondAttribute="top" id="mVj-uv-44E"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="jyh-BQ-Unr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -706,9 +794,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="calendar" catalog="system" width="21" height="18"/>
         <image name="chart.bar" catalog="system" width="25" height="19"/>
         <image name="info.circle" catalog="system" width="20" height="20"/>
-        <image name="settings" width="22" height="22"/>
     </resources>
 </document>

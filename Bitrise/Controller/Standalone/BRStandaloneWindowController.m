@@ -25,10 +25,6 @@ NSNotificationName kStandaloneTabSelectedNotification = @"kStandaloneTabSelected
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-//    self.dependencyContainer = [(AppDelegate *)[[NSApplication sharedApplication] delegate]
-}
-
-- (void)didSetContainer {
     self.notificationCenter = [self.dependencyContainer notificationCenter];
 }
 
