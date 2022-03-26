@@ -122,7 +122,6 @@
 		B6085FB37966F37D39919AAA /* libPods-BitBotATV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */; };
 		BF29F416EDF60A5B023FD1B1 /* libPods-BitBotMenu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8751F6DE46A1B49F794403ED /* libPods-BitBotMenu.a */; };
 		D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D902E1EF271571CB00B7742A /* Standalone.storyboard */; };
-		D903838927E5D69B000A6F65 /* BitBotMenu.app in Resources */ = {isa = PBXBuildFile; fileRef = D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */; };
 		D903839127E66D66000A6F65 /* BRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D903839027E66D66000A6F65 /* BRSettingsViewController.m */; };
 		D9069EBF274AC6B100C626BF /* BRStandaloneWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */; };
 		D9069EC3274ACCBC00C626BF /* BRStandaloneTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */; };
@@ -153,6 +152,9 @@
 		D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE79274A5D01007157FB /* BRTabViewController.m */; };
 		D964CE7D274AAC78007157FB /* BRSyncAccountsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */; };
 		D96DDE9224436F78005F5998 /* BRScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96DDE9124436F78005F5998 /* BRScroller.m */; };
+		D971033D27EF632600058E78 /* BRLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = D971033C27EF632600058E78 /* BRLauncher.m */; };
+		D971033E27EF632600058E78 /* BRLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = D971033C27EF632600058E78 /* BRLauncher.m */; };
+		D971033F27EF6DFD00058E78 /* BitBotMenu.app in Resources */ = {isa = PBXBuildFile; fileRef = D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */; };
 		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
 		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
 		D982D8A9249E7ED70099F0A5 /* BRAccountsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */; };
@@ -169,8 +171,6 @@
 		D996C60627DE1B01005C76C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D996C60527DE1B01005C76C9 /* Assets.xcassets */; };
 		D996C60B27DE1B01005C76C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C60A27DE1B01005C76C9 /* main.m */; };
 		D996C61627DE1B01005C76C9 /* BitBotMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C61527DE1B01005C76C9 /* BitBotMenuTests.m */; };
-		D996C62027DE1B01005C76C9 /* BitBotMenuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C61F27DE1B01005C76C9 /* BitBotMenuUITests.m */; };
-		D996C62227DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D996C62127DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m */; };
 		D996C62D27DE2C5C005C76C9 /* BRBuild+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EFD891420F1FDE10023FCCE /* BRBuild+Mapping.m */; };
 		D996C62E27DE2C5C005C76C9 /* BRGetAccountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E9B5720F0820D00494DEB /* BRGetAccountCommand.m */; };
 		D996C62F27DE2C5C005C76C9 /* BRProgressObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB9D7B221F0A1A00A21D23 /* BRProgressObserver.m */; };
@@ -439,13 +439,6 @@
 			remoteInfo = BitBotATV;
 		};
 		D996C61227DE1B01005C76C9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D996C5FC27DE1B00005C76C9;
-			remoteInfo = BitBotMenu;
-		};
-		D996C61C27DE1B01005C76C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
 			proxyType = 1;
@@ -734,6 +727,8 @@
 		D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSyncAccountsCommand.m; sourceTree = "<group>"; };
 		D96DDE9024436F78005F5998 /* BRScroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRScroller.h; sourceTree = "<group>"; };
 		D96DDE9124436F78005F5998 /* BRScroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRScroller.m; sourceTree = "<group>"; };
+		D971033B27EF632600058E78 /* BRLauncher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLauncher.h; sourceTree = "<group>"; };
+		D971033C27EF632600058E78 /* BRLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLauncher.m; sourceTree = "<group>"; };
 		D97355312402F558003FCE9B /* BRLogPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRLogPresenter.h; sourceTree = "<group>"; };
 		D97355322402F558003FCE9B /* BRLogPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRLogPresenter.m; sourceTree = "<group>"; };
 		D97355362402F97F003FCE9B /* JetBrainsMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Italic.ttf"; sourceTree = "<group>"; };
@@ -774,9 +769,6 @@
 		D996C60C27DE1B01005C76C9 /* BitBotMenu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotMenu.entitlements; sourceTree = "<group>"; };
 		D996C61127DE1B01005C76C9 /* BitBotMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D996C61527DE1B01005C76C9 /* BitBotMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBotMenuTests.m; sourceTree = "<group>"; };
-		D996C61B27DE1B01005C76C9 /* BitBotMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitBotMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D996C61F27DE1B01005C76C9 /* BitBotMenuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBotMenuUITests.m; sourceTree = "<group>"; };
-		D996C62127DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitBotMenuUITestsLaunchTests.m; sourceTree = "<group>"; };
 		D996C62C27DE1B1B005C76C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D996EBCF245F17E500DC4F6B /* BRDotsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDotsView.h; sourceTree = "<group>"; };
 		D996EBD0245F17E500DC4F6B /* BRDotsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDotsView.m; sourceTree = "<group>"; };
@@ -904,13 +896,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D996C61827DE1B01005C76C9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DEBE8C162513B7FB00CF079A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -960,7 +945,6 @@
 				D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */,
 				D996C5FE27DE1B00005C76C9 /* BitBotMenu */,
 				D996C61427DE1B01005C76C9 /* BitBotMenuTests */,
-				D996C61E27DE1B01005C76C9 /* BitBotMenuUITests */,
 				0E42CAD620EC7A7E0033CD03 /* Products */,
 				4983FB838EF9931C351A2EAB /* Pods */,
 				0ABB74A886F68049AE2D5596 /* Frameworks */,
@@ -976,7 +960,6 @@
 				D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */,
 				D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */,
 				D996C61127DE1B01005C76C9 /* BitBotMenuTests.xctest */,
-				D996C61B27DE1B01005C76C9 /* BitBotMenuUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1180,6 +1163,8 @@
 				0E1E9F21227D81E7002F7ED1 /* BRAnalytics.m */,
 				D99BEB3224715C9B00BA90EC /* BRNotificationDispatcher.h */,
 				D99BEB3324715C9B00BA90EC /* BRNotificationDispatcher.m */,
+				D971033B27EF632600058E78 /* BRLauncher.h */,
+				D971033C27EF632600058E78 /* BRLauncher.m */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -1562,15 +1547,6 @@
 				D996C61527DE1B01005C76C9 /* BitBotMenuTests.m */,
 			);
 			path = BitBotMenuTests;
-			sourceTree = "<group>";
-		};
-		D996C61E27DE1B01005C76C9 /* BitBotMenuUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D996C61F27DE1B01005C76C9 /* BitBotMenuUITests.m */,
-				D996C62127DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m */,
-			);
-			path = BitBotMenuUITests;
 			sourceTree = "<group>";
 		};
 		D996EBD2245F46BC00DC4F6B /* Dots view */ = {
@@ -1972,24 +1948,6 @@
 			productReference = D996C61127DE1B01005C76C9 /* BitBotMenuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D996C61A27DE1B01005C76C9 /* BitBotMenuUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D996C62927DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenuUITests" */;
-			buildPhases = (
-				D996C61727DE1B01005C76C9 /* Sources */,
-				D996C61827DE1B01005C76C9 /* Frameworks */,
-				D996C61927DE1B01005C76C9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D996C61D27DE1B01005C76C9 /* PBXTargetDependency */,
-			);
-			name = BitBotMenuUITests;
-			productName = BitBotMenuUITests;
-			productReference = D996C61B27DE1B01005C76C9 /* BitBotMenuUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		DEBE8C182513B7FB00CF079A /* BitBotATV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */;
@@ -2042,10 +2000,6 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = D996C5FC27DE1B00005C76C9;
 					};
-					D996C61A27DE1B01005C76C9 = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = D996C5FC27DE1B00005C76C9;
-					};
 					DEBE8C182513B7FB00CF079A = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -2070,7 +2024,6 @@
 				D91BD9C225A1BE7000EF8D66 /* BitBotATVTests */,
 				D996C5FC27DE1B00005C76C9 /* BitBotMenu */,
 				D996C61027DE1B01005C76C9 /* BitBotMenuTests */,
-				D996C61A27DE1B01005C76C9 /* BitBotMenuUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -2080,7 +2033,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D903838927E5D69B000A6F65 /* BitBotMenu.app in Resources */,
+				D971033F27EF6DFD00058E78 /* BitBotMenu.app in Resources */,
 				D98338522710F5F200D80E24 /* Logs.storyboard in Resources */,
 				D98338562710F60700D80E24 /* Accounts.storyboard in Resources */,
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
@@ -2121,13 +2074,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D996C60F27DE1B01005C76C9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D996C61927DE1B01005C76C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2289,6 +2235,7 @@
 				D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */,
 				D996EBD1245F17E500DC4F6B /* BRDotsView.m in Sources */,
 				0E1ED8F722282C3400A432B1 /* BRLogsWindowController.m in Sources */,
+				D971033D27EF632600058E78 /* BRLauncher.m in Sources */,
 				0E30344621CEDDD0001757C0 /* BRSettingsMenuController.m in Sources */,
 				0E93B70920F0D110001A6C15 /* BRBuildInfo.m in Sources */,
 				D9A9CB4D2713104B00E7CF43 /* BRSplitViewController.m in Sources */,
@@ -2443,6 +2390,7 @@
 				D996C60427DE1B00005C76C9 /* ViewController.m in Sources */,
 				D996C64F27DE2C5C005C76C9 /* BREnvironment.m in Sources */,
 				D996C68C27DE2C5D005C76C9 /* BRAPIRequest.m in Sources */,
+				D971033E27EF632600058E78 /* BRLauncher.m in Sources */,
 				D996C67727DE2C5D005C76C9 /* BROpenBuildCommand.m in Sources */,
 				D996C64027DE2C5C005C76C9 /* BRBuildMenuController.m in Sources */,
 				D996C65227DE2C5C005C76C9 /* BRAppsDataSource.m in Sources */,
@@ -2549,15 +2497,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D996C61627DE1B01005C76C9 /* BitBotMenuTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D996C61727DE1B01005C76C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D996C62027DE1B01005C76C9 /* BitBotMenuUITests.m in Sources */,
-				D996C62227DE1B01005C76C9 /* BitBotMenuUITestsLaunchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2688,11 +2627,6 @@
 			isa = PBXTargetDependency;
 			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
 			targetProxy = D996C61227DE1B01005C76C9 /* PBXContainerItemProxy */;
-		};
-		D996C61D27DE1B01005C76C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
-			targetProxy = D996C61C27DE1B01005C76C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3083,42 +3017,6 @@
 			};
 			name = Release;
 		};
-		D996C62A27DE1B01005C76C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AM5334753U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_TARGET_NAME = BitBotMenu;
-			};
-			name = Debug;
-		};
-		D996C62B27DE1B01005C76C9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AM5334753U;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = BR.BitBotMenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_TARGET_NAME = BitBotMenu;
-			};
-			name = Release;
-		};
 		DEBE8C252513B7FD00CF079A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */;
@@ -3237,15 +3135,6 @@
 			buildConfigurations = (
 				D996C62727DE1B01005C76C9 /* Debug */,
 				D996C62827DE1B01005C76C9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D996C62927DE1B01005C76C9 /* Build configuration list for PBXNativeTarget "BitBotMenuUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D996C62A27DE1B01005C76C9 /* Debug */,
-				D996C62B27DE1B01005C76C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

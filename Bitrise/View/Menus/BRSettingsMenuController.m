@@ -24,15 +24,17 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 @interface BRSettingsMenuController () <NSMenuItemValidation>
 
 @property (strong, nonatomic) BREnvironment *environment;
+@property (strong, nonatomic) BRLauncher *launcher;
 @property (weak, nonatomic) NSMenu *menu;
 
 @end
 
 @implementation BRSettingsMenuController
 
-- (instancetype)initWithEnvironment:(BREnvironment *)environment {
+- (instancetype)initWithEnvironment:(BREnvironment *)environment appLauncher:(BRLauncher *)appLauncher {
     if (self = [super init]) {
         _environment = environment;
+        _launcher = appLauncher;
     }
     
     return self;
@@ -85,7 +87,7 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 
 - (void)quitApp {
     [[BRAnalytics analytics] trackQuitApp];
-    [self.environment quitApp];
+    [self.launcher quit];
 }
 
 #pragma mark - NSMenuItemValidation -

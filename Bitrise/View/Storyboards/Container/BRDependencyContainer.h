@@ -19,6 +19,7 @@
 #import "BRObserver.h"
 #import "BREnvironment.h"
 #import "BRLogObserver.h"
+#import "BRLauncher.h"
 
 @protocol BRDataSourceProvider <NSObject>
 
@@ -44,6 +45,7 @@
 
 - (BREnvironment *)appEnvironment;
 - (NSNotificationCenter *)notificationCenter;
+- (BRLauncher *)appLauncher;
 
 @end
 

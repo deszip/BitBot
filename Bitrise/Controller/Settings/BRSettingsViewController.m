@@ -8,22 +8,44 @@
 
 #import "BRSettingsViewController.h"
 
+#import "BRLauncher.h"
+
 @interface BRSettingsViewController ()
+
+@property (weak) IBOutlet NSButton *menuAppCheckbox;
+
+@property (strong, nonatomic) BRLauncher *launcher;
 
 @end
 
 @implementation BRSettingsViewController
 
-- (IBAction)toggleMenuApp:(id)sender {
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *menuAppPath = [[mainBundle bundlePath] stringByAppendingString:@"/Contents/Resources/BitBotMenu.app"];
-    NSURL *menuAppURL = [NSURL fileURLWithPath:menuAppPath];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    [[NSWorkspace sharedWorkspace] openApplicationAtURL:menuAppURL
-                                          configuration:[NSWorkspaceOpenConfiguration configuration]
-                                      completionHandler:^(NSRunningApplication * _Nullable app, NSError * _Nullable error) {
-            NSLog(@"App: %@, error: %@", app, error);
-    }];
+    self.launcher = [self.dependencyContainer appLauncher];
+}
+
+- (void)viewDidAppear {
+    [super viewDidAppear];
+    
+    [self updateMenuAppCheckboxState];
+}
+
+- (IBAction)toggleMenuApp:(NSButton *)sender {
+    if (sender.state == NSControlStateValueOn && [self.launcher menuAppIsRunning] == NO) {
+        [self.launcher launchMenuApp];
+    }
+    
+    if (sender.state == NSControlStateValueOff) {
+        [self.launcher killMenuApp];
+    }
+}
+
+#pragma mark - UI state
+
+- (void)updateMenuAppCheckboxState {
+    [self.menuAppCheckbox setState:[self.launcher menuAppIsRunning] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
 @end

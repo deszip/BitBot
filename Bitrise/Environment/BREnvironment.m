@@ -69,10 +69,4 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
     [self.autorun toggleAutolaunch];
 }
 
-#pragma mark - Quit -
-
-- (void)quitApp {
-    [NSApp terminate:self];
-}
-
 @end

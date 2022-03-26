@@ -87,4 +87,8 @@
     return [NSNotificationCenter defaultCenter];
 }
 
+- (BRLauncher *)appLauncher {
+    return [BRLauncher new];
+}
+
 @end

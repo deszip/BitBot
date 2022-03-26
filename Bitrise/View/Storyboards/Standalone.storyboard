@@ -695,7 +695,7 @@
                                 </constraints>
                             </customView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qt-Zm-LyZ">
-                                <rect key="frame" x="24.5" y="66" width="401" height="162"/>
+                                <rect key="frame" x="25" y="66" width="401" height="162"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fAd-8h-FuZ">
                                         <rect key="frame" x="-2" y="145" width="171" height="18"/>
@@ -787,6 +787,9 @@
                             <constraint firstItem="btI-hh-V74" firstAttribute="top" secondItem="cIr-Pp-Mnh" secondAttribute="top" id="mVj-uv-44E"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="menuAppCheckbox" destination="BJy-Bc-Lgc" id="ftY-fK-06h"/>
+                    </connections>
                 </viewController>
                 <customObject id="jyh-BQ-Unr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

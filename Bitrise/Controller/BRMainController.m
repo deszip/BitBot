@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
 @property (strong, nonatomic) BREnvironment *environment;
+@property (strong, nonatomic) BRLauncher *appLauncher;
 @property (strong, nonatomic) BRCommandFactory *commandFactory;
 
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
@@ -73,6 +74,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
     self.syncEngine = [self.dependencyContainer syncEngine];
     self.environment = [self.dependencyContainer appEnvironment];
+    self.appLauncher = [self.dependencyContainer appLauncher];
     self.accountObserver = [self.dependencyContainer accountsObserver];
     [self.accountObserver startStateObserving:^(BRAccountsState state) {
         [weakSelf handleAccountsState:state];
@@ -107,7 +109,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.dataSource bind:self.outlineView];
     
     // Settings menu controller
-    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment];
+    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment appLauncher:[self.dependencyContainer appLauncher]];
     [self.settingsController bind:self.settingsMenu];
     [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
         switch (action) {
@@ -150,7 +152,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 #pragma mark - Actions -
 
 - (IBAction)openStandaloneWindow:(NSButton *)sender {
-    [self performSegueWithIdentifier:kStandaloneWindowSegue sender:self];
+    //[self performSegueWithIdentifier:kStandaloneWindowSegue sender:self];
+    [self.appLauncher launchMainApp];
 }
 
 - (IBAction)openSettingsMenu:(NSButton *)sender {
