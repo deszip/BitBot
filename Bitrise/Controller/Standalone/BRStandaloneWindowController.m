@@ -8,6 +8,7 @@
 
 #import "BRStandaloneWindowController.h"
 
+#import "AppDelegate.h"
 #import "BRSplitViewController.h"
 #import "BRTabViewController.h"
 
@@ -21,7 +22,9 @@ NSNotificationName kStandaloneTabSelectedNotification = @"kStandaloneTabSelected
 
 @implementation BRStandaloneWindowController
 
-- (void)didSetContainer {
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    
     self.notificationCenter = [self.dependencyContainer notificationCenter];
 }
 
@@ -35,6 +38,10 @@ NSNotificationName kStandaloneTabSelectedNotification = @"kStandaloneTabSelected
 
 - (IBAction)displayStats:(id)sender {
     [self notifyTabSwitchTo:BRStandaloneTabStats];
+}
+
+- (IBAction)displaySettings:(id)sender {
+    [self notifyTabSwitchTo:BRStandaloneTabSettings];
 }
 
 #pragma mark - Private

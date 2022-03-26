@@ -8,7 +8,7 @@
 
 #import "BRSplitViewController.h"
 
-#import "BRDependencyInjector.h"
+#import "AppDelegate.h"
 
 @interface BRSplitViewController ()
 
@@ -18,17 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)setDependencyContainer:(id)dependencyContainer {
-    _dependencyContainer = dependencyContainer;
-    [self.splitViewItems enumerateObjectsUsingBlock:^(__kindof NSSplitViewItem *item, NSUInteger idx, BOOL *stop) {
-        [BRDependencyInjector propagateContainer:self.dependencyContainer toController:item.viewController];
-    }];
-}
-
-- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
+    
+    _dependencyContainer = [(AppDelegate *)[[NSApplication sharedApplication] delegate] dependencyContainer];
 }
 
 @end

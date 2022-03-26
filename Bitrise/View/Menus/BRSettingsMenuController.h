@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BREnvironment.h"
+#import "BRLauncher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuNavigationAction) {
 
 @property (copy, nonatomic) void (^navigationCallback)(BRSettingsMenuNavigationAction);
 
-- (instancetype)initWithEnvironment:(BREnvironment *)environment;
+- (instancetype)initWithEnvironment:(BREnvironment *)environment appLauncher:(BRLauncher *)appLauncher;
 - (void)bind:(NSMenu *)menu;
 
 @end

@@ -1,16 +1,16 @@
 //
-//  BRAccountInfoViewController.h
+//  BRSettingsViewController.h
 //  BitBot
 //
-//  Created by Deszip on 21.11.2021.
-//  Copyright © 2021 Bitrise. All rights reserved.
+//  Created by Deszip on 19.03.2022.
+//  Copyright © 2022 Bitrise. All rights reserved.
 //
 
 #import "BRViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAccountInfoViewController : BRViewController
+@interface BRSettingsViewController : BRViewController
 
 @property (strong, nonatomic, readonly) id <BREnvironmentProvider, BRDataSourceProvider> dependencyContainer;
 

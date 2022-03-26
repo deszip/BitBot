@@ -13,12 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, BRStandaloneTab) {
     BRStandaloneTabInfo = 0,
     BRStandaloneTabSchedule = 1,
-    BRStandaloneTabStats = 2
+    BRStandaloneTabStats = 2,
+    BRStandaloneTabSettings = 3
 };
 
 extern NSNotificationName kStandaloneTabSelectedNotification;
 
 @interface BRStandaloneWindowController : BRWindowController
+
+@property (strong, nonatomic, readonly) id <BREnvironmentProvider> dependencyContainer;
 
 @end
 

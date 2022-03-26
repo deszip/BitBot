@@ -8,8 +8,8 @@
 
 #import "BRViewController.h"
 
+#import "AppDelegate.h"
 #import "BRStyleSheet.h"
-#import "BRDependencyInjector.h"
 
 @interface BRViewController ()
 
@@ -21,10 +21,7 @@
     [super viewDidLoad];
     
     [self.view setWantsLayer:YES];
-}
-
-- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    [BRDependencyInjector propagateContainer:self.dependencyContainer toSegue:segue];
+    _dependencyContainer = [(AppDelegate *)[[NSApplication sharedApplication] delegate] dependencyContainer];
 }
 
 @end

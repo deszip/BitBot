@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -756,7 +755,7 @@
                                             <constraint firstAttribute="height" constant="20" id="LCG-AN-GRj"/>
                                             <constraint firstAttribute="width" constant="20" id="NRG-Hs-ewa"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Settings-icon" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" imageScaling="proportionallyDown" inset="2" id="PEr-bj-wYS">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Icon" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="PEr-bj-wYS">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -1458,6 +1457,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
     <resources>
         <image name="AddButtonImage" width="130" height="34"/>
         <image name="EmptyIcon" width="50" height="50"/>
+        <image name="Icon" width="1024" height="1024"/>
         <image name="Logo" width="84" height="29"/>
         <image name="NSActionTemplate" width="15" height="15"/>
         <image name="Settings-icon" width="20" height="20"/>

@@ -38,10 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
 
-#pragma mark - Quit -
-
-- (void)quitApp;
-
 @end
 
 NS_ASSUME_NONNULL_END

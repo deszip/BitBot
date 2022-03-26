@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  BitBot
+//  BitBotMenu
 //
-//  Created by Deszip on 04/07/2018.
-//  Copyright © 2018 BitBot. All rights reserved.
+//  Created by Deszip on 13.03.2022.
+//  Copyright © 2022 Bitrise. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
