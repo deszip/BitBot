@@ -23,7 +23,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        BRContainerBuilder *containerBuilder = [BRContainerBuilder new];
+        BRContainerBuilder *containerBuilder = [[BRContainerBuilder alloc] initWithEnv:[self appEnvironment]];
         _persistenceContainer = [containerBuilder buildContainer];
     }
     
