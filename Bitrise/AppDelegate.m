@@ -17,10 +17,13 @@
 #import "BRDependencyContainer.h"
 #import "NSPopover+MISSINGBackgroundView.h"
 
+#import "BRCoreController.h"
+
 @interface AppDelegate () <NSPopoverDelegate>
 
 @property (strong, nonatomic) BRCommandFactory *commandFactory;
 @property (strong, nonatomic) BRObserver *observer;
+@property (strong, nonatomic) BRCoreController *coreController;
 
 @property (strong, nonatomic) BRStandaloneWindowController *mainController;
 
@@ -44,7 +47,10 @@
         self.observer = [self.dependencyContainer commandObserver];
         self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                          syncEngine:[self.dependencyContainer syncEngine]
-                                                        environment:[self.dependencyContainer appEnvironment]];    }
+                                                        environment:[self.dependencyContainer appEnvironment]];
+        _coreController = [BRCoreController new];
+        [self.coreController establishConnection];
+    }
 
     return self;
 }
@@ -53,6 +59,13 @@
     // Start sync
     BRSyncCommand *syncCommand = [self.commandFactory syncCommand];
     [self.observer startObserving:syncCommand];
+    
+    // Test core connection
+    NSString *request = @"Test";
+    NSLog(@"Sending to core: %@", request);
+    [self.coreController testConnection:request response:^(NSString *response) {
+        NSLog(@"Got response from core: %@", response);
+    }];
 }
 
 @end

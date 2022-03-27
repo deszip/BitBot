@@ -15,11 +15,13 @@
 #import "BRMainController.h"
 #import "NSPopover+MISSINGBackgroundView.h"
 
+//#import "BRCoreController.h"
 
 @interface AppDelegate () <NSPopoverDelegate>
 
 @property (strong, nonatomic) BRCommandFactory *commandFactory;
 @property (strong, nonatomic) BRObserver *observer;
+//@property (strong, nonatomic) BRCoreController *coreController;
 
 @property (strong, nonatomic) BRMainController *mainController;
 @property (strong, nonatomic) BRMainController *detachableMainController;
@@ -43,6 +45,8 @@
         _dependencyContainer = [BRDependencyContainer new];
         [[_dependencyContainer appEnvironment] handleAppLaunch];
         _observer = [_dependencyContainer commandObserver];
+//        _coreController = [BRCoreController new];
+//        [self.coreController establishConnection];
         
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
         _popover = [[NSPopover alloc] init];

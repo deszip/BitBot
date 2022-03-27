@@ -26,6 +26,8 @@
 #import "BRLogsWindowPresenter.h"
 #import "BRAccountsObserver.h"
 
+#import "BRCoreController.h"
+
 typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemUndefined = 0,
     BRBuildMenuItemRebuild,
@@ -49,6 +51,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
+
+@property (strong, nonatomic) BRCoreController *coreController;
 
 @property (weak) IBOutlet NSView *topBar;
 
@@ -79,6 +83,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.accountObserver startStateObserving:^(BRAccountsState state) {
         [weakSelf handleAccountsState:state];
     }];
+    _coreController = [BRCoreController new];
+    [self.coreController establishConnection];
     
     // Build menu controller
     self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
@@ -152,13 +158,19 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 #pragma mark - Actions -
 
 - (IBAction)openStandaloneWindow:(NSButton *)sender {
-    //[self performSegueWithIdentifier:kStandaloneWindowSegue sender:self];
     [self.appLauncher launchMainApp];
 }
 
 - (IBAction)openSettingsMenu:(NSButton *)sender {
-    NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
-    [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
+    // Test core connection
+    NSString *request = @"Test menu";
+    NSLog(@"Sending to core: %@", request);
+    [self.coreController testConnection:request response:^(NSString *response) {
+        NSLog(@"Got response from core: %@", response);
+    }];
+    
+//    NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
+//    [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
 }
 
 #pragma mark - UI setup -

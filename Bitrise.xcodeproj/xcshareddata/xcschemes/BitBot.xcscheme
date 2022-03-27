@@ -83,6 +83,16 @@
                referenceType = "1">
             </LocationScenarioReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D996C61027DE1B01005C76C9"
+               BuildableName = "BitBotMenuTests.xctest"
+               BlueprintName = "BitBotMenuTests"
+               ReferencedContainer = "container:Bitrise.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
