@@ -21,7 +21,7 @@
 @implementation BRSyncCommand
 
 #if TARGET_OS_OSX
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine notificationsDispatcher:(BRNotificationDispatcher *)notificationsDispatcher {
     if (self = [super init]) {
         _syncEngine = engine;
         
@@ -29,7 +29,7 @@
             // Notifications
             NSArray *builds = [result.diff.started arrayByAddingObjectsFromArray:result.diff.finished];
             if (builds.count > 0) {
-                [environment postNotifications:builds];
+                [notificationsDispatcher postNotifications:builds];
             }
             [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
                                                   running:result.diff.running.count

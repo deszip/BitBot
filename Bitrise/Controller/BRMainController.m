@@ -83,7 +83,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     // Build menu controller
     self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                      syncEngine:self.syncEngine
-                                                    environment:self.environment];
+                                                    notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];
     self.buildController = [[BRBuildMenuController alloc] initWithCommandFactory:self.commandFactory];
     self.buildController.menu = self.buildMenu;
     self.buildController.buildProvider = ^BRBuild* (NSView *targetView) {
@@ -109,7 +109,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.dataSource bind:self.outlineView];
     
     // Settings menu controller
-    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment appLauncher:[self.dependencyContainer appLauncher]];
+    self.settingsController = [[BRSettingsMenuController alloc]
+                               initWithEnvironment:self.environment
+                               appLauncher:[self.dependencyContainer appLauncher]
+                               notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];
     [self.settingsController bind:self.settingsMenu];
     [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
         switch (action) {

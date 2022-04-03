@@ -40,11 +40,13 @@
 
         // Build depencencies
         _dependencyContainer = [BRDependencyContainer new];
-        [[self.dependencyContainer appEnvironment] handleAppLaunch];
+        [[_dependencyContainer appEnvironment] handleAppLaunch:^{
+            [[self.dependencyContainer notificationDispatcher] enableNotifications];
+        }];
         self.observer = [self.dependencyContainer commandObserver];
         self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
-                                                         syncEngine:[self.dependencyContainer syncEngine]
-                                                        environment:[self.dependencyContainer appEnvironment]];    }
+                                                         syncEngine:[self.dependencyContainer syncEngine]            
+                                            notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];    }
 
     return self;
 }

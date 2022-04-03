@@ -300,6 +300,7 @@
 		D9A9CB4D2713104B00E7CF43 /* BRSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A9CB4C2713104B00E7CF43 /* BRSplitViewController.m */; };
 		D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0A6B324A89C8900C07935 /* BRLogScroller.m */; };
 		D9B2E7F123F94F5600C211F5 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B2E7F023F94F5600C211F5 /* AMR_ANSIEscapeHelper.m */; };
+		D9B5DAE727F0F41200E52BD0 /* BREnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7A18BD21CCE5B10096E1E6 /* BREnvironment.m */; };
 		D9BD3AB325A0E78C00446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9BD3AB225A0E78C00446FFB /* Assets.xcassets */; };
 		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		D9C48B322724130000EE097C /* NSPopover+MISSINGBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */; };
@@ -2525,6 +2526,7 @@
 				DE3CD06D252469E500DD5948 /* ASQueue.m in Sources */,
 				DE486643252459FC00D5D80F /* BRSyncOperation.m in Sources */,
 				DE2A266F25230CAB00D5762E /* Action.swift in Sources */,
+				D9B5DAE727F0F41200E52BD0 /* BREnvironment.m in Sources */,
 				DEC610EF252623DD005CA940 /* AccountView.swift in Sources */,
 				DE486611252361EE00D5D80F /* AccountsView.swift in Sources */,
 				DEF04D8E252C9291008C4C97 /* BRAbortCommand.m in Sources */,

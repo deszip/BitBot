@@ -45,10 +45,10 @@
 
 - (BREnvironment *)appEnvironment;
 - (NSNotificationCenter *)notificationCenter;
+- (BRNotificationDispatcher *)notificationDispatcher;
 - (BRLauncher *)appLauncher;
 
 @end
-
 
 @interface BRDependencyContainer : NSObject <BRDataSourceProvider, BRInteractionProvider, BREnvironmentProvider>
 

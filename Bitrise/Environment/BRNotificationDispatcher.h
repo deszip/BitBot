@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 #import "BRAppInfo.h"
 #import "BRBuildInfo.h"
@@ -18,11 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (instancetype)initWithDefaults:(NSUserDefaults *)defaults
                               nc:(NSUserNotificationCenter *)nc NS_DESIGNATED_INITIALIZER;
+#pragma clang diagnostic pop
 
 #pragma mark - Notifications info -
 - (BOOL)notificationsEnabled;
+- (void)enableNotifications;
 - (void)toggleNotifications;
 
 #pragma mark - Notifications actions -

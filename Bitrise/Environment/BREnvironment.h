@@ -7,36 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
 
 #import "BRAutorun.h"
-#import "BRNotificationDispatcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BREnvironment : NSObject
 
+#if TARGET_OS_OSX
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithAutorun:(BRAutorun *)autorun NS_DESIGNATED_INITIALIZER;
+#endif
 
-- (instancetype)initWithAutorun:(BRAutorun *)autorun notificationsDispatcher:(BRNotificationDispatcher *)nDispatcher NS_DESIGNATED_INITIALIZER;
-
-- (void)handleAppLaunch;
+- (void)handleAppLaunch:(void(^)(void))firstLaunchHandler;
 
 #pragma mark - Info -
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
 
-#pragma mark - Notifications -
-
-- (BOOL)notificationsEnabled;
-- (void)toggleNotifications;
-- (void)postNotifications:(NSArray<BRBuildInfo *> *)builds;
-
+#if TARGET_OS_OSX
 #pragma mark - Autorun -
-
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
+#endif
 
 @end
 

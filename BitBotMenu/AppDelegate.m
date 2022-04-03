@@ -41,7 +41,9 @@
 #endif
         
         _dependencyContainer = [BRDependencyContainer new];
-        [[_dependencyContainer appEnvironment] handleAppLaunch];
+        [[_dependencyContainer appEnvironment] handleAppLaunch:^{
+            [[self.dependencyContainer notificationDispatcher] enableNotifications];
+        }];
         _observer = [_dependencyContainer commandObserver];
         
         _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
@@ -66,8 +68,8 @@
     [[BRAnalytics analytics] start];
     
     self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
-                                                     syncEngine:[self.dependencyContainer syncEngine]
-                                                    environment:[self.dependencyContainer appEnvironment]];
+                                                     syncEngine:[self.dependencyContainer syncEngine]            
+                                        notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];
     
     // Start sync
     BRSyncCommand *syncCommand = [self.commandFactory syncCommand];

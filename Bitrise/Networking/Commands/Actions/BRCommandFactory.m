@@ -13,7 +13,7 @@
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
 #if TARGET_OS_OSX
-@property (strong, nonatomic) BREnvironment *environment;
+@property (strong, nonatomic) BRNotificationDispatcher *notificationsDispatcher;
 #endif
 
 @end
@@ -23,11 +23,11 @@
 #if TARGET_OS_OSX
 - (instancetype)initWithAPI:(BRBitriseAPI *)api
                  syncEngine:(BRSyncEngine *)syncEngine
-                environment:(BREnvironment *)environment {
+    notificationsDispatcher:(BRNotificationDispatcher *)notificationsDispatcher {
     if (self = [super init]) {
         _api = api;
         _syncEngine = syncEngine;
-        _environment = environment;
+        _notificationsDispatcher = notificationsDispatcher;
     }
     
     return self;
@@ -66,7 +66,7 @@
 
 - (BRSyncCommand *)syncCommand {
 #if TARGET_OS_OSX
-    return [[BRSyncCommand alloc] initSyncEngine:self.syncEngine environment:self.environment];
+    return [[BRSyncCommand alloc] initSyncEngine:self.syncEngine notificationsDispatcher:self.notificationsDispatcher];
 #else
     return [[BRSyncCommand alloc] initSyncEngine:self.syncEngine];
 #endif

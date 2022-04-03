@@ -13,6 +13,7 @@
 #import "BRLogObserver.h"
 #if TARGET_OS_OSX
 #import "BREnvironment.h"
+#import "BRNotificationDispatcher.h"
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 
 #if TARGET_OS_OSX
-- (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment NS_DESIGNATED_INITIALIZER;
+- (instancetype)initSyncEngine:(BRSyncEngine *)engine notificationsDispatcher:(BRNotificationDispatcher *)notificationsDispatcher NS_DESIGNATED_INITIALIZER;
 #else
 - (instancetype)initSyncEngine:(BRSyncEngine *)engine NS_DESIGNATED_INITIALIZER;
 #endif

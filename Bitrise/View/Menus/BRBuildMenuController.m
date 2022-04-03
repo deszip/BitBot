@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     BRBuildMenuItemOpenArtefacts
 };
 
-@interface BRBuildMenuController ()
+@interface BRBuildMenuController () <NSMenuItemValidation>
 
 @property (strong, nonatomic) BRCommandFactory *commandFactory;
 

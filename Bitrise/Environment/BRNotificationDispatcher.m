@@ -13,6 +13,11 @@
 
 #import "BROpenBuildCommand.h"
 
+/// For NSUserNotification and friends
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+
 static const NSTimeInterval kNotificationTTL = 15;
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
 static NSString * const kBRNotificationBuildSlugKey = @"kBRNotificationBuildSlugKey";
@@ -30,7 +35,7 @@ static NSString * const kBRNotificationBuildSlugKey = @"kBRNotificationBuildSlug
     if (self = [super init]) {
         _defaults = defaults;
         _nc = nc;
-        [_nc  setDelegate:self];
+        [_nc setDelegate:self];
     }
     
     return self;
@@ -40,6 +45,10 @@ static NSString * const kBRNotificationBuildSlugKey = @"kBRNotificationBuildSlug
 
 - (BOOL)notificationsEnabled {
     return [self.defaults boolForKey:kBRNotificationsKey];
+}
+
+- (void)enableNotifications {
+    [self.defaults setBool:YES forKey:kBRNotificationsKey];
 }
 
 - (void)toggleNotifications {
@@ -129,3 +138,5 @@ static NSString * const kBRNotificationBuildSlugKey = @"kBRNotificationBuildSlug
 }
 
 @end
+
+#pragma clang diagnostic pop
