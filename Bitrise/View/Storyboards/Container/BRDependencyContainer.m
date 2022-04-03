@@ -8,7 +8,7 @@
 
 #import "BRDependencyContainer.h"
 
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRCellBuilder.h"
 #import "BRAutorun.h"
 #import "BRCommandFactory.h"
@@ -23,7 +23,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        BRContainerBuilder *containerBuilder = [[BRContainerBuilder alloc] initWithEnv:[self appEnvironment]];
+        BRPersistentContainerBuilder *containerBuilder = [[BRPersistentContainerBuilder alloc] initWithEnv:[self appEnvironment]];
         _persistenceContainer = [containerBuilder buildContainer];
     }
     

@@ -1,5 +1,5 @@
 //
-//  BRContainerBuilder.h
+//  BRPersistentContainerBuilder.h
 //  BitBot
 //
 //  Created by Deszip on 05/07/2018.
@@ -13,15 +13,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRContainerBuilder : NSObject
+@interface BRPersistentContainerBuilder : NSObject
 
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithEnv:(BREnvironment *)environment NS_DESIGNATED_INITIALIZER;
 
+#pragma mark - Builder API
 - (NSPersistentContainer *)buildContainer;
 - (NSPersistentContainer *)buildContainerOfType:(NSString *)type;
+- (NSPersistentContainer *)buildContainerOfType:(NSString *)type atURL:(NSURL *)storeURL;
+
+#pragma mark - Migration API
+- (void)migrateStoreToAppGroupContainer;
 
 @end
 

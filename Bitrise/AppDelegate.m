@@ -42,6 +42,7 @@
         _dependencyContainer = [BRDependencyContainer new];
         [[_dependencyContainer appEnvironment] handleAppLaunch:^{
             [[self.dependencyContainer notificationDispatcher] enableNotifications];
+            
         }];
         self.observer = [self.dependencyContainer commandObserver];
         self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]

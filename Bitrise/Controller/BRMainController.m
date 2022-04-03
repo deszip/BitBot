@@ -12,7 +12,7 @@
 
 #import "BREmptyView.h"
 #import "BRAboutTextView.h"
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRAppsDataSource.h"
 #import "BRAccountsViewController.h"
 
