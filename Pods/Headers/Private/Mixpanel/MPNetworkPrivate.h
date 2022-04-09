@@ -1,1 +1,1 @@
-../../../Mixpanel/Mixpanel/MPNetworkPrivate.h
+../../../Mixpanel/Sources/MPNetworkPrivate.h

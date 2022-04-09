@@ -83,7 +83,9 @@ handleSignal(int sigNum, siginfo_t *signalInfo, void *userContext)
 {
     SentryCrashLOG_DEBUG("Trapped signal %d", sigNum);
     if (g_isEnabled) {
-        sentrycrashmc_suspendEnvironment();
+        thread_act_array_t threads = NULL;
+        mach_msg_type_number_t numThreads = 0;
+        sentrycrashmc_suspendEnvironment(&threads, &numThreads);
         sentrycrashcm_notifyFatalExceptionCaptured(false);
 
         SentryCrashLOG_DEBUG("Filling out context.");
@@ -104,7 +106,7 @@ handleSignal(int sigNum, siginfo_t *signalInfo, void *userContext)
         crashContext->stackCursor = &g_stackCursor;
 
         sentrycrashcm_handleException(crashContext);
-        sentrycrashmc_resumeEnvironment();
+        sentrycrashmc_resumeEnvironment(threads, numThreads);
         sentrycrash_async_backtrace_decref(g_stackCursor.async_caller);
     }
 
@@ -175,6 +177,13 @@ installSignalHandler()
                 sigaction(fatalSignals[i], &g_previousSignalHandlers[i], NULL);
             }
             goto failed;
+        } else {
+            // The previous handler was `SIG_IGN` -- restore the original handler so
+            // we don't override the `SIG_IGN` and report a crash when the application
+            // would have ignored the signal otherwise.
+            if (g_previousSignalHandlers[i].sa_handler == SIG_IGN) {
+                sigaction(fatalSignals[i], &g_previousSignalHandlers[i], NULL);
+            }
         }
     }
     SentryCrashLOG_DEBUG("Signal handlers installed.");

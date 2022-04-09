@@ -1,4 +1,5 @@
 #import "SentryDefines.h"
+#import "SentryProfilingConditionals.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -65,6 +66,12 @@ NS_SWIFT_NAME(Options)
 @property (nonatomic, assign) NSUInteger maxBreadcrumbs;
 
 /**
+ * When enabled, the SDK adds breadcrumbs for each network request. Default value is YES.
+ * As this feature uses swizzling, disabling enableSwizzling also disables this feature.
+ */
+@property (nonatomic, assign) BOOL enableNetworkBreadcrumbs;
+
+/**
  * The maximum number of envelopes to keep in cache. Default is 30.
  */
 @property (nonatomic, assign) NSUInteger maxCacheItems;
@@ -103,9 +110,9 @@ NS_SWIFT_NAME(Options)
 + (NSArray<NSString *> *)defaultIntegrations;
 
 /**
- * Indicates the percentage of events being sent to Sentry. Setting this to 0 or NIL discards all
- * events, 1.0 sends all events, 0.01 collects 1% of all events. The default is 1. The value needs
- * to be >= 0.0 and <= 1.0. When setting a value out of range  the SDK sets it to the default
+ * Indicates the percentage of events being sent to Sentry. Setting this to 0 discards all
+ * events, 1.0 or NIL sends all events, 0.01 collects 1% of all events. The default is 1. The value
+ * needs to be >= 0.0 and <= 1.0. When setting a value out of range  the SDK sets it to the default
  * of 1.0.
  */
 @property (nullable, nonatomic, copy) NSNumber *sampleRate;
@@ -116,7 +123,7 @@ NS_SWIFT_NAME(Options)
 @property (nonatomic, assign) BOOL enableAutoSessionTracking;
 
 /**
- * Whether to enable to enable out of memory tracking or not. Default is YES.
+ * Whether to enable out of memory tracking or not. Default is YES.
  */
 @property (nonatomic, assign) BOOL enableOutOfMemoryTracking;
 
@@ -135,6 +142,16 @@ NS_SWIFT_NAME(Options)
 @property (nonatomic, assign) BOOL attachStacktrace;
 
 /**
+ * Attention: This is an experimental feature. Turning this feature on can have an impact on
+ * the grouping of your issues.
+ *
+ * When enabled, the SDK stitches stack traces of asynchronous code together.
+ *
+ * This feature is disabled by default.
+ */
+@property (nonatomic, assign) BOOL stitchAsyncCode;
+
+/**
  * Describes the Sentry SDK and its configuration used to capture and transmit an event.
  */
 @property (nonatomic, readonly, strong) SentrySdkInfo *sdkInfo;
@@ -151,11 +168,45 @@ NS_SWIFT_NAME(Options)
  * When enabled, the SDK sends personal identifiable along with events. The default is
  * <code>NO</code>.
  *
- * @discussion When the user of an event doesn't contain an IP address, the SDK sets it to
- * <code>{{auto}}</code> to instruct the server to use the connection IP address as the user
- * address.
+ * @discussion When the user of an event doesn't contain an IP address, and this flag is
+ * <code>YES</code>, the SDK sets it to <code>{{auto}}</code> to instruct the server to use the
+ * connection IP address as the user address. Due to backward compatibility concerns, Sentry set the
+ * IP address to <code>{{auto}}</code> out of the box for Cocoa. If you want to stop Sentry from
+ * using the connections IP address, you have to enable Prevent Storing of IP Addresses in your
+ * project settings in Sentry.
  */
 @property (nonatomic, assign) BOOL sendDefaultPii;
+
+/**
+ * When enabled, the SDK tracks performance for UIViewController subclasses and HTTP requests
+ * automatically. It also measures the app start and slow and frozen frames. The default is
+ * <code>YES</code>. Note: Performance Monitoring must be enabled for this flag to take effect. See:
+ * https://docs.sentry.io/platforms/apple/performance/
+ */
+@property (nonatomic, assign) BOOL enableAutoPerformanceTracking;
+
+#if SENTRY_HAS_UIKIT
+/**
+ * When enabled, the SDK tracks performance for UIViewController subclasses. The default is
+ * <code>YES</code>.
+ */
+@property (nonatomic, assign) BOOL enableUIViewControllerTracking;
+#endif
+
+/**
+ * When enabled, the SDK adds breadcrumbs for HTTP requests and tracks performance for HTTP
+ * requests if auto performance tracking and enableSwizzling are enabled. The default is
+ * <code>YES</code>.
+ */
+@property (nonatomic, assign) BOOL enableNetworkTracking;
+
+/**
+ * This feature is EXPERIMENTAL.
+ *
+ * When enabled, the SDK tracks performance for file IO reads and writes with NSData if auto
+ * performance tracking and enableSwizzling are enabled. The default is <code>NO</code>.
+ */
+@property (nonatomic, assign) BOOL enableFileIOTracking;
 
 /**
  * Indicates the percentage of the tracing data that is collected. Setting this to 0 or NIL discards
@@ -171,6 +222,12 @@ NS_SWIFT_NAME(Options)
  * be >= 0.0 and <= 1.0 or NIL. When returning a value out of range the SDK uses the default of 0.
  */
 @property (nullable, nonatomic) SentryTracesSamplerCallback tracesSampler;
+
+/**
+ * If tracing should be enabled or not. Returns YES if either a tracesSampleRate > 0 and <=1 or a
+ * tracesSampler is set otherwise NO.
+ */
+@property (nonatomic, assign, readonly) BOOL isTracingEnabled;
 
 /**
  * A list of string prefixes of framework names that belong to the app. This option takes precedence
@@ -205,6 +262,41 @@ NS_SWIFT_NAME(Options)
  * Set as delegate on the NSURLSession used for all network data-transfer tasks performed by Sentry.
  */
 @property (nullable, nonatomic, weak) id<NSURLSessionDelegate> urlSessionDelegate;
+
+/**
+ * Controls if the `tracestate` header is attached to envelopes and HTTP client integrations.
+ *
+ * Note: this is an experimental API and will be removed without notice.
+ */
+@property (nonatomic) BOOL experimentalEnableTraceSampling;
+
+/**
+ * Wether the SDK should use swizzling or not. Default is YES.
+ *
+ * @discussion When turned off the following features are disabled: breadcrumbs for touch events and
+ * navigation with UIViewControllers, automatic instrumentation for UIViewControllers, automatic
+ * instrumentation for HTTP requests, automatic instrumentation for file IO with NSData, and
+ * automatically added sentry-trace header to HTTP requests for distributed tracing.
+ */
+@property (nonatomic, assign) BOOL enableSwizzling;
+
+/**
+ * This feature is experimental.
+ *
+ * When enabled, the SDK tracks the performance of Core Data operations. It requires enabling
+ * performance monitoring. The default is <code>NO</code>.
+ * @see <https://docs.sentry.io/platforms/apple/performance/>
+ */
+@property (nonatomic, assign) BOOL enableCoreDataTracking;
+
+#if SENTRY_TARGET_PROFILING_SUPPORTED
+/**
+ * Whether to enable the sampling profiler. Default is NO.
+ * @note This is a beta feature that is currently not available to all Sentry customers. This
+ * feature is not supported on watchOS or tvOS.
+ */
+@property (nonatomic, assign) BOOL enableProfiling;
+#endif
 
 @end
 

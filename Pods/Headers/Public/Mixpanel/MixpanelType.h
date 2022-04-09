@@ -1,1 +1,1 @@
-../../../Mixpanel/Mixpanel/MixpanelType.h
+../../../Mixpanel/Sources/MixpanelType.h

@@ -8,7 +8,6 @@
 
 #import "BRSyncOperation.h"
 
-#import <Sentry/Sentry.h>
 #import "BRLogger.h"
 #import "BRMacro.h"
 #import "BRAnalytics.h"
@@ -35,6 +34,15 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
 
 @end
 
+
+/**
+ - get running builds
+ - iterate accounts from storage
+    - get apps for account
+    - in case we got 401 - disable acc or enable back otherwise
+    - save apps to storage
+    - update app builds
+ */
 @implementation BRSyncOperation
 
 - (instancetype)initWithStorage:(BRStorage *)storage api:(BRBitriseAPI *)api {
@@ -72,81 +80,74 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
         
         self.accountsCount = accounts.count;
         
+        // Prefetched running builds for per-app update later
+        NSError *fetchError;
+        NSArray <NSString *> *runningBuildSlugs = [[self.storage runningBuilds:&fetchError] aps_map:^id(BRBuild *build) {
+            return build.slug;
+        }];
+        
         [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
             dispatch_group_enter(self.group);
-            id<SentrySpan> accountSpan = [self.sentryTransaction startChildWithOperation:[NSString stringWithFormat:@"account-sync-%lu", (unsigned long)idx]];
             
             BRAppsRequest *appsRequest = [[BRAppsRequest alloc] initWithToken:account.token];
             [self.api getApps:appsRequest completion:^(NSArray<BRAppInfo *> *appsInfo, NSError *error) {
-                // Handle failure
-                if (!appsInfo) {
-                    BRLog(LL_WARN, LL_STORAGE, @"Failed to get apps from API: %@", error);
-                    
-                    // 401 means acc is not working for some reason
-                    if ([error.domain isEqualToString:kBRBitriseAPIDomain] && error.code == 401 && account.enabled) {
-                        NSError *updateError;
-                        if ([self.storage updateAccountStatus:NO slug:account.slug error:&updateError]) {
-                            BRLog(LL_WARN, LL_STORAGE, @"Account %@ disabled", account.email);
+                [self.storage perform:^{
+                    // Handle failure
+                    if (!appsInfo) {
+                        BRLog(LL_WARN, LL_STORAGE, @"Failed to get apps from API: %@", error);
+                        
+                        // 401 means acc is not working for some reason
+                        if ([error.domain isEqualToString:kBRBitriseAPIDomain] && error.code == 401 && account.enabled) {
+                            NSError *updateError;
+                            if ([self.storage updateAccountStatus:NO slug:account.slug error:&updateError]) {
+                                BRLog(LL_WARN, LL_STORAGE, @"Account %@ disabled", account.email);
+                            } else {
+                                BRLog(LL_WARN, LL_STORAGE, @"Failed to disable account: %@", updateError);
+                            }
                         } else {
-                            BRLog(LL_WARN, LL_STORAGE, @"Failed to disable account: %@", updateError);
-                        }
-                    } else {
-                        [self handleError:error];
-                    }
-                    
-                    [accountSpan finish];
-                    dispatch_group_leave(self.group);
-                    return;
-                }
-                
-                // Enable acc if it works fine
-                if (!account.enabled) {
-                    NSError *updateError;
-                    if ([self.storage updateAccountStatus:YES slug:account.slug error:&updateError]) {
-                        BRLog(LL_WARN, LL_STORAGE, @"Account %@ enabled", account.email);
-                    } else {
-                        BRLog(LL_WARN, LL_STORAGE, @"Failed to enable account: %@", updateError);
-                        [self handleError:updateError];
-                    }
-                }
-                
-                // Updates
-                NSError *updateAppsError;
-                if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
-                    BRLog(LL_WARN, LL_STORAGE, @"Failed to update apps: %@", updateAppsError);
-                    [self handleError:updateAppsError];
-                    [accountSpan finish];
-                    dispatch_group_leave(self.group);
-                    return;
-                }
-                
-                NSError *appsFetchError;
-                NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&appsFetchError];
-                if (!apps) {
-                    BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch updated apps: %@", appsFetchError);
-                    [self handleError:appsFetchError];
-                    [accountSpan finish];
-                    dispatch_group_leave(self.group);
-                    return;
-                }
-                
-                [accountSpan.context setTagValue:[NSString stringWithFormat:@"%lu", (unsigned long)apps.count] forKey:@"apps"];
-                
-                NSError *fetchError;
-                NSArray <NSString *> *runningBuildSlugs = [[self.storage runningBuilds:&fetchError] aps_map:^id(BRBuild *build) {
-                    return build.slug;
-                }];
-                [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
-                    id<SentrySpan> appSpan = [accountSpan startChildWithOperation:[NSString stringWithFormat:@"app-sync-%lu", (unsigned long)idx]];
-                    [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs completion:^(NSError *error) {
-                        if (error) {
                             [self handleError:error];
                         }
-                        [appSpan finish];
+                        dispatch_group_leave(self.group);
+                        return;
+                    }
+                    
+                    // Enable acc if it works fine
+                    if (!account.enabled) {
+                        NSError *updateError;
+                        if ([self.storage updateAccountStatus:YES slug:account.slug error:&updateError]) {
+                            BRLog(LL_WARN, LL_STORAGE, @"Account %@ enabled", account.email);
+                        } else {
+                            BRLog(LL_WARN, LL_STORAGE, @"Failed to enable account: %@", updateError);
+                            [self handleError:updateError];
+                        }
+                    }
+                    
+                    // Updates
+                    NSError *updateAppsError;
+                    if (![self.storage updateApps:appsInfo forAccount:account error:&updateAppsError]) {
+                        BRLog(LL_WARN, LL_STORAGE, @"Failed to update apps: %@", updateAppsError);
+                        [self handleError:updateAppsError];
+                        dispatch_group_leave(self.group);
+                        return;
+                    }
+                    
+                    NSError *appsFetchError;
+                    NSArray <BRApp *> *apps = [self.storage appsForAccount:account error:&appsFetchError];
+                    if (!apps) {
+                        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch updated apps: %@", appsFetchError);
+                        [self handleError:appsFetchError];
+                        dispatch_group_leave(self.group);
+                        return;
+                    }
+
+                    [apps enumerateObjectsUsingBlock:^(BRApp *app, NSUInteger idx, BOOL *stop) {
+                        [self updateBuilds:app token:account.token runningBuilds:runningBuildSlugs completion:^(NSError *error) {
+                            if (error) {
+                                [self handleError:error];
+                            }
+                        }];
                     }];
                 }];
-               
-                [accountSpan finish];
                 dispatch_group_leave(self.group);
             }];
         }];
@@ -158,7 +159,6 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
 }
 
 - (void)finish {
-    [self.sentryTransaction.context setTagValue:[NSString stringWithFormat:@"%lu", (unsigned long)self.accountsCount] forKey:@"accounts"];
     [super finish];
 }
 
@@ -189,9 +189,12 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                 BRSyncResult *result = [[BRSyncResult alloc] initWithApp:appInfo diff:diff];
                 self.syncCallback(result);
             }
-            if (![self.storage saveBuilds:builds forApp:app.slug error:&error]) {
-                BRLog(LL_WARN, LL_STORAGE, @"Failed to save builds: %@", error);
-            }
+            [self.storage perform:^{
+                NSError *saveError = nil;
+                if (![self.storage saveBuilds:builds forApp:app.slug error:&saveError]) {
+                    BRLog(LL_WARN, LL_STORAGE, @"Failed to save builds: %@", saveError);
+                }
+            }];
         } else {
             BRLog(LL_WARN, LL_STORAGE, @"Failed to get builds from API: %@", error);
             [self handleError:error];

@@ -1,11 +1,12 @@
 #import "SentryClient.h"
 #import <Foundation/Foundation.h>
 
-@class SentryId;
+@class SentryEnvelopeItem, SentryId;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SentryClient (Private)
+@interface
+SentryClient (Private)
 
 - (SentryFileManager *)fileManager;
 
@@ -22,6 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (SentryId *)captureCrashEvent:(SentryEvent *)event
                     withSession:(SentrySession *)session
                       withScope:(SentryScope *)scope;
+
+- (SentryId *)captureEvent:(SentryEvent *)event
+                  withScope:(SentryScope *)scope
+    additionalEnvelopeItems:(NSArray<SentryEnvelopeItem *> *)additionalEnvelopeItems
+    NS_SWIFT_NAME(capture(event:scope:additionalEnvelopeItems:));
 
 /**
  * Needed by hybrid SDKs as react-native to synchronously store an envelope to disk.
