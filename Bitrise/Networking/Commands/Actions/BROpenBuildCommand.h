@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BRCommand.h"
+#import "BREnvironment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +23,7 @@ typedef NS_ENUM(NSUInteger, BRBuildPageTab) {
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithBuildSlug:(NSString *)buildSlug tab:(BRBuildPageTab)tab NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug tab:(BRBuildPageTab)tab environment:(BREnvironment * _Nullable)environment NS_DESIGNATED_INITIALIZER;
 
 @end
 

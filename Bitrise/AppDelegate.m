@@ -103,6 +103,12 @@
     }
 }
 
+- (void)hidePopover {
+    if (self.popover.shown) {
+        [self.popover performClose:self];
+    }
+}
+
 #pragma mark - NSPopoverDelegate -
 
 - (BOOL)popoverShouldDetach:(NSPopover *)popover {

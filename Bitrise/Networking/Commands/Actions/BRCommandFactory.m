@@ -60,7 +60,7 @@
 }
 
 - (BROpenBuildCommand *)openCommand:(NSString *)buildSlug tab:(BRBuildPageTab)tab {
-    return [[BROpenBuildCommand alloc] initWithBuildSlug:buildSlug tab:tab];
+    return [[BROpenBuildCommand alloc] initWithBuildSlug:buildSlug tab:tab environment:self.environment];
 }
 #endif
 
