@@ -7,6 +7,7 @@
 #import "SentrySDK+Private.h"
 #import "SentryScope.h"
 #import "SentrySwizzle.h"
+#import "SentryUIViewControllerSanitizer.h"
 
 #if SENTRY_HAS_UIKIT
 #    import <UIKit/UIKit.h>
@@ -19,9 +20,13 @@
 - (void)start
 {
     [self addEnabledCrumb];
+    [self trackApplicationUIKitNotifications];
+}
+
+- (void)startSwizzle
+{
     [self swizzleSendAction];
     [self swizzleViewDidAppear];
-    [self trackApplicationUIKitNotifications];
 }
 
 - (void)stop
@@ -132,9 +137,10 @@
                 NSDictionary *data = nil;
                 for (UITouch *touch in event.allTouches) {
                     if (touch.phase == UITouchPhaseCancelled || touch.phase == UITouchPhaseEnded) {
-                        data = @ { @"view" : [NSString stringWithFormat:@"%@", touch.view] };
+                        data = [SentryBreadcrumbTracker extractDataFromView:touch.view];
                     }
                 }
+
                 SentryBreadcrumb *crumb = [[SentryBreadcrumb alloc] initWithLevel:kSentryLevelInfo
                                                                          category:@"touch"];
                 crumb.type = @"user";
@@ -170,7 +176,7 @@
                 SentryBreadcrumb *crumb = [[SentryBreadcrumb alloc] initWithLevel:kSentryLevelInfo
                                                                          category:@"ui.lifecycle"];
                 crumb.type = @"navigation";
-                NSString *viewControllerName = [SentryBreadcrumbTracker
+                NSString *viewControllerName = [SentryUIViewControllerSanitizer
                     sanitizeViewControllerName:[NSString stringWithFormat:@"%@", self]];
                 crumb.data = @ { @"screen" : viewControllerName };
 
@@ -191,31 +197,29 @@
 #endif
 }
 
-+ (NSRegularExpression *)viewControllerRegex
+#if SENTRY_HAS_UIKIT
++ (NSDictionary *)extractDataFromView:(UIView *)view
 {
-    static dispatch_once_t onceTokenRegex;
-    static NSRegularExpression *regex = nil;
-    dispatch_once(&onceTokenRegex, ^{
-        NSString *pattern = @"[<.](\\w+)";
-        regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
-    });
-    return regex;
-}
+    NSMutableDictionary *result =
+        @{ @"view" : [NSString stringWithFormat:@"%@", view] }.mutableCopy;
 
-+ (NSString *)sanitizeViewControllerName:(NSString *)controller
-{
-    NSRange searchedRange = NSMakeRange(0, [controller length]);
-    NSArray *matches = [[self.class viewControllerRegex] matchesInString:controller
-                                                                 options:0
-                                                                   range:searchedRange];
-    NSMutableArray *strings = [NSMutableArray array];
-    for (NSTextCheckingResult *match in matches) {
-        [strings addObject:[controller substringWithRange:[match rangeAtIndex:1]]];
+    if (view.tag > 0) {
+        [result setValue:[NSNumber numberWithInteger:view.tag] forKey:@"tag"];
     }
-    if ([strings count] > 0) {
-        return [strings componentsJoinedByString:@"."];
+
+    if (view.accessibilityIdentifier && ![view.accessibilityIdentifier isEqualToString:@""]) {
+        [result setValue:view.accessibilityIdentifier forKey:@"accessibilityIdentifier"];
     }
-    return controller;
+
+    if ([view isKindOfClass:UIButton.class]) {
+        UIButton *button = (UIButton *)view;
+        if (button.currentTitle && ![button.currentTitle isEqual:@""]) {
+            [result setValue:[button currentTitle] forKey:@"title"];
+        }
+    }
+
+    return result;
 }
+#endif
 
 @end

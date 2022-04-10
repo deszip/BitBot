@@ -1,1 +1,1 @@
-../../../Mixpanel/Mixpanel/MPLogger.h
+../../../Mixpanel/Sources/MPLogger.h

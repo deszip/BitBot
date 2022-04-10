@@ -21,6 +21,7 @@
 @implementation BRSyncCommand
 
 #if TARGET_OS_OSX
+
 - (instancetype)initSyncEngine:(BRSyncEngine *)engine environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _syncEngine = engine;

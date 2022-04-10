@@ -6,14 +6,14 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - Kingfisher/SwiftUI (5.15.8):
     - Kingfisher/Core
-  - Mixpanel (3.9.0)
+  - Mixpanel (4.1.3)
   - OCMock (3.4.3)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
-  - Sentry (7.1.0):
-    - Sentry/Core (= 7.1.0)
-  - Sentry/Core (7.1.0)
+  - Sentry (7.12.0):
+    - Sentry/Core (= 7.12.0)
+  - Sentry/Core (7.12.0)
 
 DEPENDENCIES:
   - EasyMapping
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - Mixpanel
   - OCMock (~> 3.4.3)
   - SDWebImage (~> 5.0.6)
-  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `7.1.0`)
+  - Sentry (from `https://github.com/getsentry/sentry-cocoa.git`, tag `7.12.0`)
 
 SPEC REPOS:
   trunk:
@@ -36,22 +36,22 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
-    :tag: 7.1.0
+    :tag: 7.12.0
 
 CHECKOUT OPTIONS:
   Sentry:
     :git: https://github.com/getsentry/sentry-cocoa.git
-    :tag: 7.1.0
+    :tag: 7.12.0
 
 SPEC CHECKSUMS:
   EasyMapping: a86b28c64613e3b5784e05c42a40da7b103ef41c
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Mixpanel: e1bf380762c15f4a9fd1373f15c91253462f1ea5
+  Mixpanel: e1946068db90518aa5abc05deb63176c109b7e00
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
-  Sentry: d1665cb9c0d9ca39d81214ced2ade8c6da4a44d4
+  Sentry: d2f889ed77bd7f8c51b1934dbabddbc553790630
 
-PODFILE CHECKSUM: 143e360e6129b31afa7c1598a6e820d423deb195
+PODFILE CHECKSUM: 27ef9c072fefea39b98d5c09c9512f14e562ef18
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2

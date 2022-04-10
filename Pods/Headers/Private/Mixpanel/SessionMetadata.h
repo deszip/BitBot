@@ -1,1 +1,1 @@
-../../../Mixpanel/Mixpanel/SessionMetadata.h
+../../../Mixpanel/Sources/SessionMetadata.h
