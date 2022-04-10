@@ -122,11 +122,12 @@ typedef void (^APICallback)(NSDictionary * _Nullable, NSError * _Nullable);
             return [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
         } else {
             // Status is not ok but we still have reponse, get reason from it
-            NSDictionary *reason = [NSJSONSerialization JSONObjectWithData:data options:0 error:error];
+            NSError *deserializationError;
+            NSDictionary *reason = [NSJSONSerialization JSONObjectWithData:data options:0 error:&deserializationError];
             if (reason) {
                 *error = [NSError errorWithDomain:kBRBitriseAPIDomain code:statusCode userInfo:@{ NSLocalizedDescriptionKey : reason[@"message"] }];
             } else {
-                *error = [NSError errorWithDomain:kBRBitriseAPIDomain code:statusCode userInfo:@{ NSLocalizedDescriptionKey : @"Unknown error" }];
+                *error = [NSError errorWithDomain:kBRBitriseAPIDomain code:statusCode userInfo:@{ NSUnderlyingErrorKey : deserializationError }];
             }
             return nil;
         }
