@@ -147,8 +147,9 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
                             }
                         }];
                     }];
+                    
+                    dispatch_group_leave(self.group);
                 }];
-                dispatch_group_leave(self.group);
             }];
         }];
         
