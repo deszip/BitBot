@@ -30,9 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
 
+#if TARGET_OS_OSX
 #pragma mark - App control -
 - (void)hidePopover;
-- (void)quitApp;
+#endif
 
 @end
 

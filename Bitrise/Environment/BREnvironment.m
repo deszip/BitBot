@@ -8,7 +8,10 @@
 
 #import "BREnvironment.h"
 
+#if TARGET_OS_OSX
 #import "AppDelegate.h"
+#endif
+
 #import "BRMacro.h"
 
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
@@ -22,6 +25,7 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 
 @implementation BREnvironment
 
+#if TARGET_OS_OSX
 - (instancetype)initWithAutorun:(BRAutorun *)autorun {
     if (self = [super init]) {
         _autorun = autorun;
@@ -29,6 +33,7 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
     
     return self;
 }
+#endif
 
 - (void)handleAppLaunch:(void(^)(void))firstLaunchHandler {
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kBRFirstLaunchKey]) {
@@ -59,12 +64,10 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 
 #pragma mark - App control -
 
+#if TARGET_OS_OSX
 - (void)hidePopover {
     [(AppDelegate *)[NSApp delegate] hidePopover];
 }
-
-- (void)quitApp {
-    [NSApp terminate:self];
-}
+#endif
 
 @end
