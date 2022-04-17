@@ -1,1 +1,1 @@
-../../../Mixpanel/Mixpanel/MixpanelExceptionHandler.h
+../../../Mixpanel/Sources/MixpanelExceptionHandler.h

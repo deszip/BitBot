@@ -30,7 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Autorun -
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
-#endif
+
+#pragma mark - App control -
+
+- (void)hidePopover;
+- (void)quitApp;
 
 @end
 

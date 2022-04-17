@@ -1,8 +1,7 @@
 def sharedPods 
   pod 'EasyMapping'
   pod 'Mixpanel'
-  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.1.0'
-end
+  pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.12.0'
 
 def macosPods
   pod 'SDWebImage', '~> 5.0.6'

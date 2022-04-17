@@ -993,10 +993,10 @@
 		0E42CAEE20EC7A800033CD03 /* BitriseTests */ = {
 			isa = PBXGroup;
 			children = (
+				0E42CAF120EC7A800033CD03 /* Info.plist */,
 				0EAB9DC92222CFC100A21D23 /* Stubs */,
 				0EAB9DC22222C53800A21D23 /* TestTools */,
 				0EB3ED4821E3369D003F0364 /* Storage */,
-				0E42CAF120EC7A800033CD03 /* Info.plist */,
 			);
 			path = BitriseTests;
 			sourceTree = "<group>";
@@ -2778,8 +2778,8 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.1.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
@@ -2803,8 +2803,8 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.1.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot MAS Profile";

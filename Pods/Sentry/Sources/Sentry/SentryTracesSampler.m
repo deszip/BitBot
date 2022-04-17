@@ -1,8 +1,11 @@
 #import "SentryTracesSampler.h"
+#import "SentryDependencyContainer.h"
 #import "SentryOptions.h"
 #import "SentrySamplingContext.h"
 #import "SentryTransactionContext.h"
 #import <SentryOptions+Private.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 @implementation SentryTracesSampler {
     SentryOptions *_options;
@@ -19,7 +22,7 @@
 
 - (instancetype)initWithOptions:(SentryOptions *)options
 {
-    return [self initWithOptions:options random:[[SentryRandom alloc] init]];
+    return [self initWithOptions:options random:[SentryDependencyContainer sharedInstance].random];
 }
 
 - (SentrySampleDecision)sample:(SentrySamplingContext *)context
@@ -56,3 +59,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,7 @@
 
 #import "BREnvironment.h"
 
+#import "AppDelegate.h"
 #import "BRMacro.h"
 
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
@@ -54,6 +55,16 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 
 - (void)toggleAutolaunch {
     [self.autorun toggleAutolaunch];
+}
+
+#pragma mark - App control -
+
+- (void)hidePopover {
+    [(AppDelegate *)[NSApp delegate] hidePopover];
+}
+
+- (void)quitApp {
+    [NSApp terminate:self];
 }
 
 @end

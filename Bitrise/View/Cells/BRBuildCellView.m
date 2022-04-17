@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSTrackingArea *trackingArea;
 
 @property (weak) IBOutlet NSView *backgroundView;
-@property (strong, nonatomic) NSDateFormatter *durationFormatter;
+@property (strong, nonatomic) NSDateComponentsFormatter *durationFormatter;
 @property (strong, nonatomic) NSTimer *timer;
 
 @end
@@ -27,8 +27,10 @@
 
 - (instancetype)initWithCoder:(NSCoder *)decoder {
     if (self = [super initWithCoder:decoder]) {
-        _durationFormatter = [NSDateFormatter new];
-        [_durationFormatter setDateFormat:@"m'm' s's'"];
+        _durationFormatter = [NSDateComponentsFormatter new];
+        _durationFormatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+        _durationFormatter.unitsStyle = NSDateComponentsFormatterUnitsStyleAbbreviated;
+        _durationFormatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorDropLeading;
         
         [self setContainerColor:[NSColor clearColor]];
         
@@ -145,8 +147,7 @@
 #pragma mark - Time calculations -
 
 - (void)updateBuildTime:(NSTimeInterval)buildDuration {
-    NSDate *buildDurationDate = [NSDate dateWithTimeIntervalSince1970:buildDuration];
-    [self.buildTimeLabel setStringValue:[NSString stringWithFormat:@"%@", [self.durationFormatter stringFromDate:buildDurationDate]]];
+    [self.buildTimeLabel setStringValue:[NSString stringWithFormat:@"%@", [self.durationFormatter stringFromTimeInterval:buildDuration]]];
 }
 
 @end

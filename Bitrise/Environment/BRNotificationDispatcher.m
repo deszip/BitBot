@@ -122,7 +122,9 @@ static NSString * const kBRNotificationBuildSlugKey = @"kBRNotificationBuildSlug
     switch (notification.activationType) {
         case NSUserNotificationActivationTypeActionButtonClicked: {
             BRLog(LL_VERBOSE, LL_CORE, @"Action clicked");
-            BROpenBuildCommand *openCommand = [[BROpenBuildCommand alloc] initWithBuildSlug:notification.userInfo[kBRNotificationBuildSlugKey] tab:BRBuildPageTabLogs];
+            BROpenBuildCommand *openCommand = [[BROpenBuildCommand alloc] initWithBuildSlug:notification.userInfo[kBRNotificationBuildSlugKey]
+                                                                                        tab:BRBuildPageTabLogs
+                                                                                environment:nil];
             [openCommand execute:nil];
             break;
         }

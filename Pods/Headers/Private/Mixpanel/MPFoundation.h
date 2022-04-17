@@ -1,1 +1,1 @@
-../../../Mixpanel/Mixpanel/MPFoundation.h
+../../../Mixpanel/Sources/MPFoundation.h

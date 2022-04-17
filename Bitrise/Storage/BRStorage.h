@@ -16,6 +16,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^BRStorageAction)(void);
 typedef void(^BRAccountsListResult)(NSArray <BRAccountInfo *> * _Nullable accounts, NSError * _Nullable error);
 typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
@@ -23,7 +24,7 @@ typedef void(^BRStorageResult)(BOOL result, NSError * _Nullable error);
 
 - (instancetype)initWithContext:(NSManagedObjectContext *)context;
 
-- (void)perform:(void (^)(void))action;
+- (void)perform:(BRStorageAction)action;
 
 #pragma mark - Accounts -
 - (NSArray <BTRAccount *> *)accounts:(NSError * __autoreleasing *)error;

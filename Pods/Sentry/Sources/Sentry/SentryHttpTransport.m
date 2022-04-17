@@ -10,8 +10,8 @@
 #import "SentryLog.h"
 #import "SentryNSURLRequest.h"
 #import "SentryOptions.h"
-#import "SentryRateLimitCategoryMapper.h"
 #import "SentrySerialization.h"
+#import "SentryTraceState.h"
 
 @interface
 SentryHttpTransport ()
@@ -56,22 +56,55 @@ SentryHttpTransport ()
 
 - (void)sendEvent:(SentryEvent *)event attachments:(NSArray<SentryAttachment *> *)attachments
 {
-    NSMutableArray<SentryEnvelopeItem *> *items = [self buildEnvelopeItems:event
-                                                               attachments:attachments];
-    SentryEnvelope *envelope = [[SentryEnvelope alloc] initWithId:event.eventId items:items];
-
-    [self sendEnvelope:envelope];
+    [self sendEvent:event traceState:nil attachments:attachments];
 }
 
 - (void)sendEvent:(SentryEvent *)event
       withSession:(SentrySession *)session
       attachments:(NSArray<SentryAttachment *> *)attachments
 {
+    [self sendEvent:event withSession:session traceState:nil attachments:attachments];
+}
+
+- (void)sendEvent:(SentryEvent *)event
+       traceState:(nullable SentryTraceState *)traceState
+      attachments:(NSArray<SentryAttachment *> *)attachments
+{
+    [self sendEvent:event
+                     traceState:traceState
+                    attachments:attachments
+        additionalEnvelopeItems:@[]];
+}
+
+- (void)sendEvent:(SentryEvent *)event
+                 traceState:(nullable SentryTraceState *)traceState
+                attachments:(NSArray<SentryAttachment *> *)attachments
+    additionalEnvelopeItems:(NSArray<SentryEnvelopeItem *> *)additionalEnvelopeItems
+{
+    NSMutableArray<SentryEnvelopeItem *> *items = [self buildEnvelopeItems:event
+                                                               attachments:attachments];
+    [items addObjectsFromArray:additionalEnvelopeItems];
+
+    SentryEnvelopeHeader *envelopeHeader = [[SentryEnvelopeHeader alloc] initWithId:event.eventId
+                                                                         traceState:traceState];
+    SentryEnvelope *envelope = [[SentryEnvelope alloc] initWithHeader:envelopeHeader items:items];
+
+    [self sendEnvelope:envelope];
+}
+
+- (void)sendEvent:(SentryEvent *)event
+      withSession:(SentrySession *)session
+       traceState:(SentryTraceState *)traceState
+      attachments:(NSArray<SentryAttachment *> *)attachments
+{
     NSMutableArray<SentryEnvelopeItem *> *items = [self buildEnvelopeItems:event
                                                                attachments:attachments];
     [items addObject:[[SentryEnvelopeItem alloc] initWithSession:session]];
 
-    SentryEnvelope *envelope = [[SentryEnvelope alloc] initWithId:event.eventId items:items];
+    SentryEnvelopeHeader *envelopeHeader = [[SentryEnvelopeHeader alloc] initWithId:event.eventId
+                                                                         traceState:traceState];
+
+    SentryEnvelope *envelope = [[SentryEnvelope alloc] initWithHeader:envelopeHeader items:items];
 
     [self sendEnvelope:envelope];
 }
@@ -123,7 +156,6 @@ SentryHttpTransport ()
 
 #pragma mark private methods
 
-// TODO: This has to move somewhere else, we are missing the whole beforeSend flow
 - (void)sendAllCachedEnvelopes
 {
     @synchronized(self) {
@@ -185,8 +217,6 @@ SentryHttpTransport ()
     [self.requestManager
                addRequest:request
         completionHandler:^(NSHTTPURLResponse *_Nullable response, NSError *_Nullable error) {
-            // TODO: How does beforeSend work here
-
             // If the response is not nil we had an internet connection.
             // We don't worry about errors here.
             if (nil != response) {

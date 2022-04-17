@@ -14,15 +14,17 @@
 
 @property (copy, nonatomic) NSString *buildSlug;
 @property (assign, nonatomic) BRBuildPageTab tab;
+@property (assign, nonatomic, nullable) BREnvironment *environment;
 
 @end
 
 @implementation BROpenBuildCommand
 
-- (instancetype)initWithBuildSlug:(NSString *)buildSlug tab:(BRBuildPageTab)tab {
+- (instancetype)initWithBuildSlug:(NSString *)buildSlug tab:(BRBuildPageTab)tab environment:(BREnvironment *)environment {
     if (self = [super init]) {
         _buildSlug = buildSlug;
         _tab = tab;
+        _environment = environment;
     }
     
     return self;
@@ -41,6 +43,7 @@
     }
     
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:buildPath]];
+    [self.environment hidePopover];
     
     BR_SAFE_CALL(callback, YES, nil);
     
