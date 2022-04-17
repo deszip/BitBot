@@ -81,7 +81,6 @@ typedef void (^AppSyncCompletion)(NSError * _Nullable error);
     
     [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
         dispatch_group_enter(self.group);
-        id<SentrySpan> accountSpan = [self.sentryTransaction startChildWithOperation:[NSString stringWithFormat:@"account-sync-%lu", (unsigned long)idx]];
         
         // Prefetched running builds for per-app update later
         NSError *fetchError;

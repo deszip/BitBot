@@ -28,7 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 #if TARGET_OS_OSX
 - (instancetype)initWithAPI:(BRBitriseAPI *)api
                  syncEngine:(BRSyncEngine *)syncEngine
-    notificationsDispatcher:(BRNotificationDispatcher *)notificationsDispatcher;
+    notificationsDispatcher:(BRNotificationDispatcher *)notificationsDispatcher
+                environment:(BREnvironment *)environment;
 #else
 - (instancetype)initWithAPI:(BRBitriseAPI *)api
                  syncEngine:(BRSyncEngine *)syncEngine;

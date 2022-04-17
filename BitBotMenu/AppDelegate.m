@@ -69,7 +69,8 @@
     
     self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                      syncEngine:[self.dependencyContainer syncEngine]            
-                                        notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];
+                                        notificationsDispatcher:[self.dependencyContainer notificationDispatcher]
+                                                    environment:[self.dependencyContainer appEnvironment]];
     
     // Start sync
     BRSyncCommand *syncCommand = [self.commandFactory syncCommand];

@@ -47,7 +47,10 @@
         self.observer = [self.dependencyContainer commandObserver];
         self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                          syncEngine:[self.dependencyContainer syncEngine]            
-                                            notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];    }
+                                            notificationsDispatcher:[self.dependencyContainer notificationDispatcher]        
+                                                        environment:[self.dependencyContainer appEnvironment]];
+        
+    }
 
     return self;
 }

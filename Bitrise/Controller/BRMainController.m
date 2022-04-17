@@ -83,7 +83,8 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     // Build menu controller
     self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
                                                      syncEngine:self.syncEngine
-                                                    notificationsDispatcher:[self.dependencyContainer notificationDispatcher]];
+                                                    notificationsDispatcher:[self.dependencyContainer notificationDispatcher]
+                                                    environment:[self.dependencyContainer appEnvironment]];
     self.buildController = [[BRBuildMenuController alloc] initWithCommandFactory:self.commandFactory];
     self.buildController.menu = self.buildMenu;
     self.buildController.buildProvider = ^BRBuild* (NSView *targetView) {

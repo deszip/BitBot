@@ -11,7 +11,7 @@
 #import "Expecta/Expecta.h"
 
 #import <CoreData/CoreData.h>
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRMockBuilder.h"
 
 #import "BRAccountsDataSource.h"
@@ -31,7 +31,9 @@
 - (void)setUp {
     [super setUp];
     
-    self.containerMock = [[BRContainerBuilder new] buildContainerOfType:NSInMemoryStoreType];
+
+    BRPersistentContainerBuilder *containerBuilder = [[BRPersistentContainerBuilder alloc] initWithEnv:OCMClassMock([BREnvironment class])];
+    self.containerMock = [containerBuilder buildContainerOfType:NSInMemoryStoreType];
     self.notificationCenterMock = OCMClassMock([NSNotificationCenter class]);
     self.dataSource = [[BRAccountsDataSource alloc] initWithContainer:self.containerMock notificationCenter:self.notificationCenterMock];
     

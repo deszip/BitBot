@@ -199,7 +199,7 @@
 		1FD59E5F38CE51CBB26459F536CE04ED /* OCMReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E991EABB720618DF7C17E9B2A0B76E8E /* OCMReturnValueProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		203024ACF63F6AAC70135FF1C2827437 /* SentryCrashInstallationReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7116038B43C14E7D5E8C03CE2311BDF9 /* SentryCrashInstallationReporter.m */; };
 		204D5EBB4242A678F7E5C6CE952EC537 /* EKManagedObjectModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F98BAD715063A6ECCBDBC1083415617 /* EKManagedObjectModel.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		208A51E5562EE818E1564DA668639316 /* Pods-BitBotTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB85262F5F33A0C16F18E0EB8E0C8CF /* Pods-BitBotTests-dummy.m */; };
+		208A51E5562EE818E1564DA668639316 /* Pods-BitBotTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 001F4D63A8519E60ACE66672B8C3D52C /* Pods-BitBotTests-dummy.m */; };
 		209F5690A0254D8B596EF10A9242E94A /* NSArray+FlattenArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 77216FDBEBCAD2258020B9A04117F546 /* NSArray+FlattenArray.m */; };
 		210F1C1DF9955C6A6BB2372229B4B3DA /* SentryBreadcrumbTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 28B47EE1BE729EBC74B55D3FFD44FC92 /* SentryBreadcrumbTracker.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		212EF0CFF6C73DA12D712BBA1FCDDFB0 /* SentryUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 223E41D9AA1AEA1F176F0E1010FA0A1B /* SentryUser.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -307,7 +307,7 @@
 		3901B2CC225A8DEEC6B49AFC192DB3E1 /* ExpectaSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = F71B1B554FC29A1FE87F0ED58EDCCF05 /* ExpectaSupport.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		393CC0CD4B0A9865B9BB7E25D58F6C9B /* SentryCrashLogger.c in Sources */ = {isa = PBXBuildFile; fileRef = 648719B6A0CEB033DADD7E332529F69B /* SentryCrashLogger.c */; };
 		394329332682F2AEC712C832D10F5499 /* SentryClient+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 88665D9A62E130239D5BF8CBD0C33D33 /* SentryClient+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		396C29EBFAFF07652408FF4766C92220 /* Pods-BitBotATV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8B4F5B5F48C2BEC0FE0781579AF143 /* Pods-BitBotATV-dummy.m */; };
+		396C29EBFAFF07652408FF4766C92220 /* Pods-BitBotATV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E17A10483A8CF4604DEED1AB6682769 /* Pods-BitBotATV-dummy.m */; };
 		397B92F3CD04FF52582C53851E115248 /* SentryCrashVarArgs.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED59716A1672B876184CA49BD716A77 /* SentryCrashVarArgs.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		397FF10513B2432D209A1CE8FB80FD39 /* SentryCoreDataSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3A45B916F8FE48D7A297C641C15278 /* SentryCoreDataSwizzling.m */; };
 		39ABC708202B20D3986AA5B0A0220588 /* SentryClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D3248D6985F5278E8D10357586812A /* SentryClient.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -446,7 +446,7 @@
 		57E13A6D7A085887C25D9C08CEBC5E65 /* ImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADBD40A50D477E9DC040BFA586E6C6E /* ImageDataProvider.swift */; };
 		588126FB0D6618E894B8AC998F114BB5 /* EKSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = E175CD3EB49B02A80BF11C132EF85EC2 /* EKSerializer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		58B9611573FB65A50DDF0EF8FCB3E20E /* EXPMatchers.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DCB3C56760C1503BE52BD5E0DDA9F5D /* EXPMatchers.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		58F6FEA72B8AD219F76C67953ADA762D /* Pods-BitBot-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B84BCB752C7801A42B7566DCD7F888B /* Pods-BitBot-dummy.m */; };
+		58F6FEA72B8AD219F76C67953ADA762D /* Pods-BitBot-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7341749F3214B605E990DDDB44D400C /* Pods-BitBot-dummy.m */; };
 		5968FFD3788C8FB17F487D58A77E4EFB /* EKMappingBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = CF454345D667406F6391877A84679F1B /* EKMappingBlocks.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		59756B0DE1F1FD13DC58DD6B8B9A7BA7 /* SentryCrashWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA74D1DDB499C18CB69AA48BA30D692 /* SentryCrashWrapper.m */; };
 		5991E0A934BA5CD6CDD70E2F95A62A56 /* SentryCoreDataSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = 01FFE446F78714D749F7C6DD45661B43 /* SentryCoreDataSwizzling.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -492,6 +492,7 @@
 		631077BC6D4CEF431A951B57ED30425C /* SentryClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D3248D6985F5278E8D10357586812A /* SentryClient.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		63208F190D223FAEEF01BE8B13515458 /* NSDictionary+SentrySanitize.m in Sources */ = {isa = PBXBuildFile; fileRef = E41BB8F842755E9ABB63418F0EC0E66E /* NSDictionary+SentrySanitize.m */; };
 		632B3CABF7BC2EBCCACCCD7B84A0E3CA /* UIViewController+Sentry.h in Headers */ = {isa = PBXBuildFile; fileRef = B9AB3BE97F62AE85A701D00E2FC3F7DC /* UIViewController+Sentry.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		6357D1119BE6B318C9835AFAAF1E1936 /* Pods-BitBotMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B0A1AFB77257D9FCE26240844BBE68 /* Pods-BitBotMenu-dummy.m */; };
 		6376767A6929C360BF88A5181A7E0F35 /* OCMBlockArgCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F48ADB97BA6A9E2912CED43D4E7A474B /* OCMBlockArgCaller.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		639AF36F5CBF4B50706BE305028AA1B6 /* EXPMatchers+equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC7827371031E64C9EFB87FD926744D /* EXPMatchers+equal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		63FB6441899471DCF1EBD2935E13D395 /* SentrySerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD5AC71C150895CDEB843C8BD13969 /* SentrySerialization.m */; };
@@ -1040,7 +1041,7 @@
 		D200E7EF264CA195E39AA085AED7A73D /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F145927494954BD34F6E0C96A44F961 /* UIButton+Kingfisher.swift */; };
 		D215D21A7BFC146E9A243D573BB4090D /* SentryCrashReportConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B41E26FE3013845A3DE6385C01C246 /* SentryCrashReportConverter.m */; };
 		D23BA2089C9BCDDB969AC912EE05D882 /* SentryAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 963158813EBCF40E4F53C17A2645D960 /* SentryAttachment.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D23C7D7D039CA18423428A15EA2D3807 /* Pods-BitBotATV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B724904092136FEEDB93380DA4070C0 /* Pods-BitBotATV-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D23C7D7D039CA18423428A15EA2D3807 /* Pods-BitBotATV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 51E4A7D1779D9A86BB204AFA309BC7C0 /* Pods-BitBotATV-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D264805ABA3A279A81B714E922B133EA /* SentryCrashMach.h in Headers */ = {isa = PBXBuildFile; fileRef = 80C6E331786C017432A7269F0D42E654 /* SentryCrashMach.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D26D5B0E80426B75789D92BDE50A9F1B /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C7A1118DC76B00F56686D1428D36E2 /* SDWebImageDownloaderOperation.m */; };
 		D285B25813E188DA939F3ED94A939BD9 /* SentryCrashMonitor_User.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FFFCD2D429AC4B9A46E957B9F0AC150 /* SentryCrashMonitor_User.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -1294,8 +1295,6 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 74A6508FB061133A1E28C2850A437667;
-			remoteInfo = "EasyMapping-tvOS";
 			remoteGlobalIDString = DC371B7477C88184274EC6710690F97C;
 			remoteInfo = Expecta;
 		};
@@ -1305,6 +1304,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E8022D22FAA6690B5E1C379C1BCE1491;
 			remoteInfo = Kingfisher;
+		};
+		46E6D9F3A496666A951571B2CD5A34A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E2EC09E06710CFBAD6AF578E2A14F7C;
+			remoteInfo = "Mixpanel-macOS";
 		};
 		7A6A6317391550988ECC4D3E60DDC44D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1320,19 +1326,33 @@
 			remoteGlobalIDString = 74A6508FB061133A1E28C2850A437667;
 			remoteInfo = "EasyMapping-tvOS";
 		};
+		928351B2E9BDA35AB25062A9B47C1F69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61C08C8B4FDF80F2237C00557D267969;
+			remoteInfo = "EasyMapping-macOS";
+		};
 		94EEACB69E9D2E49940D1ED2680B8881 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
-			remoteInfo = SDWebImage;
+			remoteGlobalIDString = C260B5A26D3CD54F215E5E39371483B6;
+			remoteInfo = OCMock;
 		};
-		A1404320F2F85D1DD375EC7F52B4C1CC /* PBXContainerItemProxy */ = {
+		9A1D052626BD57430361F98CFDABB217 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9AA8A98273205387E6FF9B148A006F31;
 			remoteInfo = "Sentry-macOS";
+		};
+		A1404320F2F85D1DD375EC7F52B4C1CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBD5E5EA15DC8E29C6771390FFF80639;
+			remoteInfo = "Mixpanel-tvOS";
 		};
 		A269C71618D69C8070A760BB26B87932 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1341,12 +1361,17 @@
 			remoteGlobalIDString = 8E2EC09E06710CFBAD6AF578E2A14F7C;
 			remoteInfo = "Mixpanel-macOS";
 		};
+		AD532C18D26A9EEAA416EC389D119C9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
+			remoteInfo = SDWebImage;
+		};
 		B346EBC24304C36FA105EF01D493D234 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DC371B7477C88184274EC6710690F97C;
-			remoteInfo = Expecta;
 			remoteGlobalIDString = DDC5B143847B1E75AB9687D42E6EF6B8;
 			remoteInfo = "Sentry-tvOS";
 		};
@@ -1361,12 +1386,13 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E8022D22FAA6690B5E1C379C1BCE1491;
-			remoteInfo = Kingfisher;
+			remoteGlobalIDString = 3847153A6E5EEFB86565BA840768F429;
+			remoteInfo = SDWebImage;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001F4D63A8519E60ACE66672B8C3D52C /* Pods-BitBotTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBotTests-dummy.m"; sourceTree = "<group>"; };
 		01FFE446F78714D749F7C6DD45661B43 /* SentryCoreDataSwizzling.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCoreDataSwizzling.h; path = Sources/Sentry/include/SentryCoreDataSwizzling.h; sourceTree = "<group>"; };
 		0259F2D25F4000C824D6E2730E59E118 /* SDAsyncBlockOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAsyncBlockOperation.h; path = SDWebImage/Private/SDAsyncBlockOperation.h; sourceTree = "<group>"; };
 		02A312B3B6584A869E6C2425F57C7695 /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/SDWebImageCompat.h; sourceTree = "<group>"; };
@@ -1378,6 +1404,7 @@
 		054CCB6C7C28B9F6C19C858BA565EC55 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/General/Kingfisher.swift; sourceTree = "<group>"; };
 		0599EF2A68C6302E2F6181D040944D62 /* SentryNSDataTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryNSDataTracker.m; path = Sources/Sentry/SentryNSDataTracker.m; sourceTree = "<group>"; };
 		05E4E3A70ADAE5E2BC4074DB430CFE62 /* SentryDebugMeta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryDebugMeta.h; path = Sources/Sentry/Public/SentryDebugMeta.h; sourceTree = "<group>"; };
+		060A7C8DD72A520F3F6146EB3B9359C7 /* Pods-BitBotATV-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBotATV-acknowledgements.plist"; sourceTree = "<group>"; };
 		06D0E58636426B3A29E7A399C3F000F4 /* SentryAppStartMeasurement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryAppStartMeasurement.h; path = Sources/Sentry/Public/SentryAppStartMeasurement.h; sourceTree = "<group>"; };
 		06D4757DA5E3E8FA544146EC949D590C /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		0750950BB60F670F773C35AEC2EA5184 /* SentryCrashSysCtl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashSysCtl.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashSysCtl.h; sourceTree = "<group>"; };
@@ -1397,10 +1424,10 @@
 		0B138A999028E4C5F95DDA6A2BC00538 /* OCMInvocationExpectation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMInvocationExpectation.h; path = Source/OCMock/OCMInvocationExpectation.h; sourceTree = "<group>"; };
 		0B543089CA2B4CB7D16847742433537F /* SDWebImageIndicator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageIndicator.h; path = SDWebImage/SDWebImageIndicator.h; sourceTree = "<group>"; };
 		0B5FA9B2133D29C71C1CC32816C7B1A4 /* SentryCrashMonitor_Deadlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashMonitor_Deadlock.m; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor_Deadlock.m; sourceTree = "<group>"; };
-		0B84BCB752C7801A42B7566DCD7F888B /* Pods-BitBot-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBot-dummy.m"; sourceTree = "<group>"; };
 		0BCAF2FA2293AA99A0EC3B8955AFDAE8 /* Sentry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sentry.h; path = Sources/Sentry/Public/Sentry.h; sourceTree = "<group>"; };
 		0C274E557D08555898D2D4C8FD8AF522 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/SDAnimatedImageView.m; sourceTree = "<group>"; };
 		0C90CDA6EF1F0D80C91C14C681864F10 /* SentryLogOutput.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryLogOutput.m; path = Sources/Sentry/SentryLogOutput.m; sourceTree = "<group>"; };
+		0CC4E9E0B2FDEE927C720F034633763B /* Pods-BitBotMenu */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-BitBotMenu"; path = "libPods-BitBotMenu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D50208E4CE124E80BDB2BE8D394ECEE /* SentryCrashPlatformSpecificDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashPlatformSpecificDefines.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashPlatformSpecificDefines.h; sourceTree = "<group>"; };
 		0DC5047BE61E92708102433374A115DD /* SentryOutOfMemoryTrackingIntegration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryOutOfMemoryTrackingIntegration.h; path = Sources/Sentry/include/SentryOutOfMemoryTrackingIntegration.h; sourceTree = "<group>"; };
 		0DCA9FE1DFB8881FC077B03F89C285A3 /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Views/Indicator.swift; sourceTree = "<group>"; };
@@ -1410,6 +1437,7 @@
 		0ED4F0C10D27F038F9B0FEAC3F4DC443 /* SentryPerformanceTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryPerformanceTracker.m; path = Sources/Sentry/SentryPerformanceTracker.m; sourceTree = "<group>"; };
 		0EEF86284BA0C007D24EEE2E49A32F45 /* NSImage+Compatibility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Compatibility.m"; path = "SDWebImage/NSImage+Compatibility.m"; sourceTree = "<group>"; };
 		0EF33914B7B8FA60DBE65A99E4E05CA0 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebCache.m"; path = "SDWebImage/UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		0FF4A0BD5A9BAC89A4569EEFFE5AC353 /* Pods-BitBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1010F109E09FCC2BFC76F5604ABD853C /* EXPMatchers+beLessThanOrEqualTo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beLessThanOrEqualTo.h"; path = "Expecta/Matchers/EXPMatchers+beLessThanOrEqualTo.h"; sourceTree = "<group>"; };
 		105F389AB1DAF47E1655A88D0F1A1AC1 /* SDWeakProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWeakProxy.m; path = SDWebImage/Private/SDWeakProxy.m; sourceTree = "<group>"; };
 		108335E274885BF2FAC5D9487B1898A4 /* OCMFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMFunctions.h; path = Source/OCMock/OCMFunctions.h; sourceTree = "<group>"; };
@@ -1423,7 +1451,7 @@
 		138DE787AEC5B2857EEC2A9D694C7CE3 /* OCMPassByRefSetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMPassByRefSetter.m; path = Source/OCMock/OCMPassByRefSetter.m; sourceTree = "<group>"; };
 		13FDBB550624AC101A2164853588E818 /* SentryCrashMemory.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashMemory.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashMemory.c; sourceTree = "<group>"; };
 		141A313993997BB2CE52751585B85A93 /* MixpanelPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MixpanelPrivate.h; path = Sources/MixpanelPrivate.h; sourceTree = "<group>"; };
-		14A5388595A1D1C81EF01AB89A8478D4 /* Pods-BitBot-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBot-acknowledgements.markdown"; sourceTree = "<group>"; };
+		145C43C8FC8F9F4BF7AF4FED3DD67514 /* Pods-BitBotATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotATV.release.xcconfig"; sourceTree = "<group>"; };
 		14E1454D674C5C456F3534E80B563573 /* SentryRandom.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryRandom.h; path = Sources/Sentry/include/SentryRandom.h; sourceTree = "<group>"; };
 		14EB246EB860D7A192290EC915B8D44B /* MixpanelWatchProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MixpanelWatchProperties.h; path = Sources/MixpanelWatchProperties.h; sourceTree = "<group>"; };
 		15505F40ED79C4E7BBD2F19E3E45921A /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Sources/Networking/SessionDelegate.swift; sourceTree = "<group>"; };
@@ -1440,7 +1468,6 @@
 		175CB920FC06BA203A8D865532C98DA5 /* EasyMapping-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EasyMapping-macOS-dummy.m"; sourceTree = "<group>"; };
 		176F8F0DE80857A723E2701EF4065F06 /* Mixpanel-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Mixpanel-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		17948F7DA2935CB0CA8A9A165C3DD127 /* SentryHub+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SentryHub+Private.h"; path = "Sources/Sentry/include/SentryHub+Private.h"; sourceTree = "<group>"; };
-		17A69362E1FC166F5C2F8F3C55D67E3F /* Pods-BitBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		17BC39026BB1ADF55166C9B543005E8D /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		184190CA8793AAAB7685DAF1B3285E8B /* UIImage+GIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+GIF.m"; path = "SDWebImage/UIImage+GIF.m"; sourceTree = "<group>"; };
 		1892BF16AC12AC502AC32BD66B531C7E /* SentryCrashDynamicLinker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashDynamicLinker.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashDynamicLinker.h; sourceTree = "<group>"; };
@@ -1465,7 +1492,6 @@
 		1EF408C565BBCEE218215C7414510C3D /* Kingfisher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kingfisher.h; path = Sources/Kingfisher.h; sourceTree = "<group>"; };
 		20603FE3EA528B3224570C54D8CE5A55 /* SentryByteCountFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryByteCountFormatter.h; path = Sources/Sentry/include/SentryByteCountFormatter.h; sourceTree = "<group>"; };
 		2088937434F89913CE8201C5549E8B59 /* SentrySDK.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentrySDK.m; path = Sources/Sentry/SentrySDK.m; sourceTree = "<group>"; };
-		21C7B5AF640DAF194C58F14F0E88A87D /* Pods-BitBotATV-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBotATV-acknowledgements.plist"; sourceTree = "<group>"; };
 		21EE7EA4BB4A7F733EFA30E0B39299A7 /* OCMLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMLocation.m; path = Source/OCMock/OCMLocation.m; sourceTree = "<group>"; };
 		22349E51E26EE37EF7863EBA5062FA81 /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Image/Placeholder.swift; sourceTree = "<group>"; };
 		223E41D9AA1AEA1F176F0E1010FA0A1B /* SentryUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryUser.h; path = Sources/Sentry/Public/SentryUser.h; sourceTree = "<group>"; };
@@ -1487,6 +1513,7 @@
 		25B488E2E4B49A279567C24008C7CA97 /* ImageFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFormat.swift; path = Sources/Image/ImageFormat.swift; sourceTree = "<group>"; };
 		25D5F7713FEFE5A00A51E8388DF0BA45 /* SentryCrashInstallation+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SentryCrashInstallation+Private.h"; path = "Sources/SentryCrash/Installations/SentryCrashInstallation+Private.h"; sourceTree = "<group>"; };
 		261CA4681556A457F0B3F60D6DA5D16B /* SentryRetryAfterHeaderParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryRetryAfterHeaderParser.h; path = Sources/Sentry/include/SentryRetryAfterHeaderParser.h; sourceTree = "<group>"; };
+		263EDF2FC6B75A27CCB5A3AFA55363FC /* Pods-BitBotATV-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBotATV-acknowledgements.markdown"; sourceTree = "<group>"; };
 		263FCAF03895F125AFD402723EADBFA9 /* SDImageCacheDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheDefine.h; path = SDWebImage/SDImageCacheDefine.h; sourceTree = "<group>"; };
 		26690524F233ED2A00CFD994F5B44B78 /* SentryAttachment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryAttachment.m; path = Sources/Sentry/SentryAttachment.m; sourceTree = "<group>"; };
 		26AF9223C40C1736C9A9A00546311704 /* SDImageCachesManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManager.h; path = SDWebImage/SDImageCachesManager.h; sourceTree = "<group>"; };
@@ -1498,12 +1525,10 @@
 		286FFB6FF4776038EA94879CC1CECF27 /* SDAnimatedImageRep.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageRep.m; path = SDWebImage/SDAnimatedImageRep.m; sourceTree = "<group>"; };
 		28B47EE1BE729EBC74B55D3FFD44FC92 /* SentryBreadcrumbTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryBreadcrumbTracker.h; path = Sources/Sentry/include/SentryBreadcrumbTracker.h; sourceTree = "<group>"; };
 		292F4B7656E09A014B3EE19A48E3990B /* NSObject+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+OCMAdditions.h"; path = "Source/OCMock/NSObject+OCMAdditions.h"; sourceTree = "<group>"; };
-		298DE2A21DD8DFBCCC013ED8A37AFD59 /* Pods-BitBotATV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotATV.release.xcconfig"; sourceTree = "<group>"; };
 		29E15EF867DE68A3FAC71C3B3DE0D9D6 /* SDmetamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDmetamacros.h; path = SDWebImage/Private/SDmetamacros.h; sourceTree = "<group>"; };
 		2A58CBF0F9B07CA8695CAF1DD02EC8BE /* SentryThreadHandle.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = SentryThreadHandle.cpp; path = Sources/Sentry/SentryThreadHandle.cpp; sourceTree = "<group>"; };
 		2A75EFD8283613009A139EAE2D6A4C4A /* SDDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDiskCache.m; path = SDWebImage/SDDiskCache.m; sourceTree = "<group>"; };
 		2B2F2479C8BD9633639402B966B6CFF1 /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMAdditions.m"; path = "Source/OCMock/NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
-		2B8B4F5B5F48C2BEC0FE0781579AF143 /* Pods-BitBotATV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBotATV-dummy.m"; sourceTree = "<group>"; };
 		2BC24A830E19683050E0F507484B3956 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/General/KingfisherManager.swift; sourceTree = "<group>"; };
 		2C16DACE4F5A2AFECB4982B9AFF86287 /* SentryCurrentDate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCurrentDate.h; path = Sources/Sentry/include/SentryCurrentDate.h; sourceTree = "<group>"; };
 		2C17FA40608AF9723BB5209AF379DA06 /* SentryLevelMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryLevelMapper.m; path = Sources/Sentry/SentryLevelMapper.m; sourceTree = "<group>"; };
@@ -1514,7 +1539,6 @@
 		2D417AAE62F4351851A658C21C1CCCC8 /* UIImage+ForceDecode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+ForceDecode.h"; path = "SDWebImage/UIImage+ForceDecode.h"; sourceTree = "<group>"; };
 		2D85C908F97C74096D7C50BF55E5D9AE /* SentryCrashFileUtils.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashFileUtils.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashFileUtils.c; sourceTree = "<group>"; };
 		2D8D3A97FEE6519315BA0AC02E97079E /* SentryCrashMonitor_CPPException.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = SentryCrashMonitor_CPPException.cpp; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor_CPPException.cpp; sourceTree = "<group>"; };
-		2DB85262F5F33A0C16F18E0EB8E0C8CF /* Pods-BitBotTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBotTests-dummy.m"; sourceTree = "<group>"; };
 		2DEF26F931ABFC7B643B51C116AE6668 /* NSData+Sentry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+Sentry.h"; path = "Sources/Sentry/include/NSData+Sentry.h"; sourceTree = "<group>"; };
 		2E12C8803BD33C2058C98B7B6A4BF21C /* SentryCrashCPU.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashCPU.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashCPU.h; sourceTree = "<group>"; };
 		2E2C9B8CBF0CF9DD452B6598937EBF91 /* EXPMatchers+conformTo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+conformTo.h"; path = "Expecta/Matchers/EXPMatchers+conformTo.h"; sourceTree = "<group>"; };
@@ -1553,7 +1577,6 @@
 		3ACE95B8B3373E0B60B4609F400B9F63 /* NSData+Sentry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+Sentry.m"; path = "Sources/Sentry/NSData+Sentry.m"; sourceTree = "<group>"; };
 		3AF7451068E244B26A58EABE4B31BE4A /* SentryDefaultObjCRuntimeWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryDefaultObjCRuntimeWrapper.h; path = Sources/Sentry/SentryDefaultObjCRuntimeWrapper.h; sourceTree = "<group>"; };
 		3B4B7FF72E3C41C3CEF750735ED6F42F /* SentryCoreDataTrackingIntegration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCoreDataTrackingIntegration.h; path = Sources/Sentry/include/SentryCoreDataTrackingIntegration.h; sourceTree = "<group>"; };
-		3B724904092136FEEDB93380DA4070C0 /* Pods-BitBotATV-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BitBotATV-umbrella.h"; sourceTree = "<group>"; };
 		3C2C806662696227BA550C5A1AD7FE91 /* EXPMatchers+beginWith.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beginWith.m"; path = "Expecta/Matchers/EXPMatchers+beginWith.m"; sourceTree = "<group>"; };
 		3CA25617ED43F9B28F37E0C51D1B5047 /* Mixpanel-tvOS */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Mixpanel-tvOS"; path = "libMixpanel-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF8B7359ED78DA7B5AED298D1A31A3D /* OCMPassByRefSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMPassByRefSetter.h; path = Source/OCMock/OCMPassByRefSetter.h; sourceTree = "<group>"; };
@@ -1589,7 +1612,6 @@
 		44AA7ADE0522361D99409CF4498AB7B4 /* NSError+SentrySimpleConstructor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+SentrySimpleConstructor.h"; path = "Sources/SentryCrash/Recording/Tools/NSError+SentrySimpleConstructor.h"; sourceTree = "<group>"; };
 		44C7A1118DC76B00F56686D1428D36E2 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
 		4562819B269B5F5DA520049FC8339A1D /* SDImageAPNGCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAPNGCoder.h; path = SDWebImage/SDImageAPNGCoder.h; sourceTree = "<group>"; };
-		456AD22FE7425CEF9CCB07B74D2628F0 /* Pods-BitBotTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBotTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		45A455C2BA89570041BD8C416100CF95 /* NSDictionary+SentrySanitize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+SentrySanitize.h"; path = "Sources/Sentry/include/NSDictionary+SentrySanitize.h"; sourceTree = "<group>"; };
 		45A62A41A252C6A2BDC9E8A2BE34F68E /* SentryEnvelopeItemType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryEnvelopeItemType.h; path = Sources/Sentry/Public/SentryEnvelopeItemType.h; sourceTree = "<group>"; };
 		45C3A0C444FA22BB74CD7A06C077B513 /* UIImage+Metadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Metadata.h"; path = "SDWebImage/UIImage+Metadata.h"; sourceTree = "<group>"; };
@@ -1608,6 +1630,7 @@
 		4820B73BF9004FD55645935D5C4823DC /* SentryMeta.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryMeta.m; path = Sources/Sentry/SentryMeta.m; sourceTree = "<group>"; };
 		483EB2248D8B8DF0E34696F549716697 /* SentryCrashMonitor_NSException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashMonitor_NSException.m; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor_NSException.m; sourceTree = "<group>"; };
 		48A2863D9396CAECFB75A88DCC83AE32 /* Mixpanel-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Mixpanel-tvOS-dummy.m"; path = "../Mixpanel-tvOS/Mixpanel-tvOS-dummy.m"; sourceTree = "<group>"; };
+		49478DE88571A0330B958DAE5F45166D /* Pods-BitBotATV.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BitBotATV.modulemap"; sourceTree = "<group>"; };
 		49D4653A55D68BF3EECC688200E1D827 /* SentryHook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryHook.h; path = Sources/SentryCrash/Recording/Tools/SentryHook.h; sourceTree = "<group>"; };
 		4A397009E1654E0943C8479BB2D02CD4 /* SentrySystemEventBreadcrumbs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentrySystemEventBreadcrumbs.m; path = Sources/Sentry/SentrySystemEventBreadcrumbs.m; sourceTree = "<group>"; };
 		4A3EE30B0D2F612D30F06A176EF1BFB2 /* EKSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKSerializer.m; path = Sources/EasyMapping/EKSerializer.m; sourceTree = "<group>"; };
@@ -1616,12 +1639,12 @@
 		4B588757DE0D71BB5CCB97B8F3849CDB /* SentrySwizzle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentrySwizzle.h; path = Sources/Sentry/include/SentrySwizzle.h; sourceTree = "<group>"; };
 		4B61EE32A2EE36488FBC5A1483E802E4 /* SentryAsynchronousOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryAsynchronousOperation.m; path = Sources/Sentry/SentryAsynchronousOperation.m; sourceTree = "<group>"; };
 		4B62BD6BAB1907CA82D8265C029609C6 /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImageManager.m; sourceTree = "<group>"; };
-		4B8128A487CD674959BF7DC3296CA01D /* Pods-BitBotATV-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBotATV-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4BDDE89A03C6BDD9EDFDD6934821987C /* EasyMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EasyMapping.h; path = Sources/EasyMapping/EasyMapping.h; sourceTree = "<group>"; };
 		4BEACEA05A7C64CEB6016846F79B1279 /* SentryInAppLogic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryInAppLogic.h; path = Sources/Sentry/include/SentryInAppLogic.h; sourceTree = "<group>"; };
 		4C8112913589E8CDF27E946FD5DDE6D0 /* EKManagedObjectModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectModel.m; path = Sources/EasyMapping/EKManagedObjectModel.m; sourceTree = "<group>"; };
 		4D4C9684CA19E1C85584F354538B3521 /* RetryStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryStrategy.swift; path = Sources/Networking/RetryStrategy.swift; sourceTree = "<group>"; };
 		4D5022150592EA7FC4FB3681AF98B8E4 /* SentryUIViewControllerSanitizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryUIViewControllerSanitizer.m; path = Sources/Sentry/SentryUIViewControllerSanitizer.m; sourceTree = "<group>"; };
+		4D7276A91AF743A467284EF1B52EBE5A /* Pods-BitBotMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotMenu.release.xcconfig"; sourceTree = "<group>"; };
 		4E36351F8E1D3124365625ABBEDD3D6D /* SentryCrashReport.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashReport.c; path = Sources/SentryCrash/Recording/SentryCrashReport.c; sourceTree = "<group>"; };
 		4E3C0FFDCFABC1D334AFCF2CF33629E1 /* OCMBlockArgCaller.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMBlockArgCaller.h; path = Source/OCMock/OCMBlockArgCaller.h; sourceTree = "<group>"; };
 		4E4C4320381DBB808FC1A38D6B85487D /* SentryException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryException.m; path = Sources/Sentry/SentryException.m; sourceTree = "<group>"; };
@@ -1631,7 +1654,6 @@
 		4EE17E80E6B395EA0A0B3787A152FB7A /* SentryNSError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryNSError.h; path = Sources/Sentry/Public/SentryNSError.h; sourceTree = "<group>"; };
 		4F90612E1A1131FE063EF8AFF32F8450 /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Sources/Networking/RedirectHandler.swift; sourceTree = "<group>"; };
 		4F98BAD715063A6ECCBDBC1083415617 /* EKManagedObjectModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKManagedObjectModel.h; path = Sources/EasyMapping/EKManagedObjectModel.h; sourceTree = "<group>"; };
-		4FD1228EA2E85C9985EC483AD3EEC37E /* Pods-BitBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBot.debug.xcconfig"; sourceTree = "<group>"; };
 		4FF12EA64CDEE37987D31DA930E4EDE7 /* SentryCrashLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashLogger.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashLogger.h; sourceTree = "<group>"; };
 		505CE2DF76024F977DC0124534870C18 /* SentryCrashStackCursor_SelfThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashStackCursor_SelfThread.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashStackCursor_SelfThread.h; sourceTree = "<group>"; };
 		50867867BCAEC4F4DBEFCC863ABEED37 /* SentryCrashCachedData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashCachedData.h; path = Sources/SentryCrash/Recording/SentryCrashCachedData.h; sourceTree = "<group>"; };
@@ -1640,6 +1662,7 @@
 		511694EFD8C66D254CE2A3F9E7A11C53 /* SentryEnvelope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryEnvelope.h; path = Sources/Sentry/Public/SentryEnvelope.h; sourceTree = "<group>"; };
 		5167D7EEB0B7C59CA78A61E7EE9EBE90 /* SentryCrashReportWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashReportWriter.h; path = Sources/SentryCrash/Recording/SentryCrashReportWriter.h; sourceTree = "<group>"; };
 		518B08E45C569FB90308B0D5F7CD1D97 /* MemoryStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MemoryStorage.swift; path = Sources/Cache/MemoryStorage.swift; sourceTree = "<group>"; };
+		51E4A7D1779D9A86BB204AFA309BC7C0 /* Pods-BitBotATV-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BitBotATV-umbrella.h"; sourceTree = "<group>"; };
 		51F538676A1DA774E229953906FEEC52 /* SentryThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryThread.h; path = Sources/Sentry/Public/SentryThread.h; sourceTree = "<group>"; };
 		521B9EBA83A68CCBDD9AD63AC3A9DBB5 /* NSBezierPath+RoundedCorners.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+RoundedCorners.m"; path = "SDWebImage/Private/NSBezierPath+RoundedCorners.m"; sourceTree = "<group>"; };
 		52265934691FEC30FB8EBA568FA3D795 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image/Image.swift; sourceTree = "<group>"; };
@@ -1703,7 +1726,6 @@
 		6119B9D01E3BC30C3D96A602C1BA26B9 /* SDWebImageCacheSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCacheSerializer.h; path = SDWebImage/SDWebImageCacheSerializer.h; sourceTree = "<group>"; };
 		61417A0FDB944A986E43979BCA666B73 /* SentryEnvelope.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryEnvelope.m; path = Sources/Sentry/SentryEnvelope.m; sourceTree = "<group>"; };
 		615FFD952EF5A77F5899707052AFBA4B /* Container+SentryDeepSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Container+SentryDeepSearch.h"; path = "Sources/SentryCrash/Reporting/Filters/Tools/Container+SentryDeepSearch.h"; sourceTree = "<group>"; };
-		618DA7F1FC6944A9A00D902E64D718B7 /* Pods-BitBotATV.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BitBotATV.modulemap"; sourceTree = "<group>"; };
 		61929DFFE6D8F4ECAE05D2641885C0CB /* SentryLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryLog.m; path = Sources/Sentry/SentryLog.m; sourceTree = "<group>"; };
 		61C5F27C53BA60840A6E5AB0C3E549E4 /* Deprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecated.swift; path = Sources/General/Deprecated.swift; sourceTree = "<group>"; };
 		61D912D06CEE94A5932466258D1E9F85 /* SDImageCacheConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCacheConfig.m; path = SDWebImage/SDImageCacheConfig.m; sourceTree = "<group>"; };
@@ -1721,6 +1743,7 @@
 		6479D33AE61B7A05E5B98CADEB428B02 /* SentryCoreDataTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCoreDataTracker.m; path = Sources/Sentry/SentryCoreDataTracker.m; sourceTree = "<group>"; };
 		648719B6A0CEB033DADD7E332529F69B /* SentryCrashLogger.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashLogger.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashLogger.c; sourceTree = "<group>"; };
 		6546235C1B75C3066178D336EF5BEF15 /* fishhook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fishhook.h; path = Sources/SentryCrash/Recording/Tools/fishhook.h; sourceTree = "<group>"; };
+		6556804E2927ACFA2227F3EAA5CAE656 /* Pods-BitBotMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		6559B597525A81822A356E2394968945 /* NSButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSButton+WebCache.h"; path = "SDWebImage/NSButton+WebCache.h"; sourceTree = "<group>"; };
 		659A53A711660432645B26473A622204 /* SentryInAppLogic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryInAppLogic.m; path = Sources/Sentry/SentryInAppLogic.m; sourceTree = "<group>"; };
 		662E1B44B4A9C44D69C334A69ED90B26 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+ImageContentType.m"; path = "SDWebImage/NSData+ImageContentType.m"; sourceTree = "<group>"; };
@@ -1728,6 +1751,7 @@
 		66D5C0D1216F5FE1DE69DDFC57D3EF78 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
 		672C6D75A424B2F3BFFDBE968F50171C /* NSValue+Expecta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+Expecta.h"; path = "Expecta/NSValue+Expecta.h"; sourceTree = "<group>"; };
 		6753FFCF8E5D6DD56300B9F4BFA33A02 /* SentryProfilingLogging.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryProfilingLogging.mm; path = Sources/Sentry/SentryProfilingLogging.mm; sourceTree = "<group>"; };
+		678B21733032B043AE90111BF6223BCE /* Pods-BitBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotTests.release.xcconfig"; sourceTree = "<group>"; };
 		678D5B186540011848005F104ABF034A /* EXPMatchers+beLessThanOrEqualTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beLessThanOrEqualTo.m"; path = "Expecta/Matchers/EXPMatchers+beLessThanOrEqualTo.m"; sourceTree = "<group>"; };
 		67ABD066258BE8B245981B5ED1D69B44 /* SentryCrashID.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashID.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashID.c; sourceTree = "<group>"; };
 		67F7F3FBF4729F720F4E9552DC9427CB /* SentryRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryRequestOperation.m; path = Sources/Sentry/SentryRequestOperation.m; sourceTree = "<group>"; };
@@ -1742,10 +1766,10 @@
 		6BFAF716EA4BD82E58F2C19AF30800F5 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		6C64E6D7219B509F38466B1A24B923BB /* SentryCrashString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashString.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashString.h; sourceTree = "<group>"; };
 		6CD83823305961371A2760DE69B9A826 /* SentryCrashStackEntryMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashStackEntryMapper.h; path = Sources/Sentry/include/SentryCrashStackEntryMapper.h; sourceTree = "<group>"; };
-		6D36DF8121B4044216DF887F9A7EA8BD /* Pods-BitBot-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBot-acknowledgements.plist"; sourceTree = "<group>"; };
 		6D38A58FB191715346C1469F666246CC /* SentryFileManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryFileManager.h; path = Sources/Sentry/include/SentryFileManager.h; sourceTree = "<group>"; };
 		6E2CD62FB72D347526FF8BCF45D7ADE5 /* SentryScope.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryScope.m; path = Sources/Sentry/SentryScope.m; sourceTree = "<group>"; };
 		6E2E65D151CA50025496E96508729F96 /* SentryUserFeedback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryUserFeedback.h; path = Sources/Sentry/Public/SentryUserFeedback.h; sourceTree = "<group>"; };
+		6E4F213F8AA361FCD98EB02ECE3A3E14 /* Pods-BitBot-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBot-acknowledgements.plist"; sourceTree = "<group>"; };
 		6E8C4510FDE3F1D6F0ACBF906BEA1A88 /* SentryThreadHandle.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = SentryThreadHandle.hpp; path = Sources/Sentry/include/SentryThreadHandle.hpp; sourceTree = "<group>"; };
 		6E8FF032B46D17778345B08EF4378105 /* EXPMatchers+beGreaterThan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beGreaterThan.h"; path = "Expecta/Matchers/EXPMatchers+beGreaterThan.h"; sourceTree = "<group>"; };
 		6EDD5AC71C150895CDEB843C8BD13969 /* SentrySerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentrySerialization.m; path = Sources/Sentry/SentrySerialization.m; sourceTree = "<group>"; };
@@ -1758,7 +1782,6 @@
 		6FF0B0F6FD20A46B54E1E28E9D9FBB16 /* SentryCrashCachedData.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashCachedData.c; path = Sources/SentryCrash/Recording/SentryCrashCachedData.c; sourceTree = "<group>"; };
 		6FF5403CFFB62271E048A176C0AA0E29 /* EasyMapping-tvOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EasyMapping-tvOS-prefix.pch"; path = "../EasyMapping-tvOS/EasyMapping-tvOS-prefix.pch"; sourceTree = "<group>"; };
 		709855F9998D7B7AB690DD6A0C7E5628 /* SentryNetworkTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryNetworkTracker.h; path = Sources/Sentry/include/SentryNetworkTracker.h; sourceTree = "<group>"; };
-		70B4ECF8EB965BEFCBC17F7120D404FA /* Pods-BitBotATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotATV.debug.xcconfig"; sourceTree = "<group>"; };
 		70EE26FE02DC58D669BEFBB5979D32A7 /* EXPMatchers+raise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raise.h"; path = "Expecta/Matchers/EXPMatchers+raise.h"; sourceTree = "<group>"; };
 		7113A2A23F1DF034AD9AE74C1781B45F /* MPJSONHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPJSONHandler.m; path = Sources/MPJSONHandler.m; sourceTree = "<group>"; };
 		7116038B43C14E7D5E8C03CE2311BDF9 /* SentryCrashInstallationReporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashInstallationReporter.m; path = Sources/Sentry/SentryCrashInstallationReporter.m; sourceTree = "<group>"; };
@@ -1804,6 +1827,7 @@
 		7D0DCC55B2387852935BBBF362566EBD /* Mixpanel-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mixpanel-macOS-dummy.m"; sourceTree = "<group>"; };
 		7D47A824214C0E9F1BCCA39224BA87DA /* EXPMatchers+beNil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beNil.m"; path = "Expecta/Matchers/EXPMatchers+beNil.m"; sourceTree = "<group>"; };
 		7D625184F3742456CAEEB76518540CC5 /* SentryProfilingConditionals.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryProfilingConditionals.h; path = Sources/Sentry/Public/SentryProfilingConditionals.h; sourceTree = "<group>"; };
+		7D9CA9F4D19B3F91538B471471E75789 /* Pods-BitBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBot.release.xcconfig"; sourceTree = "<group>"; };
 		7DCB3C56760C1503BE52BD5E0DDA9F5D /* EXPMatchers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPMatchers.h; path = Expecta/Matchers/EXPMatchers.h; sourceTree = "<group>"; };
 		7DF8678CBE47DC232F8300EF88B76ED8 /* SentryCrashStackCursor_MachineContext.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashStackCursor_MachineContext.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashStackCursor_MachineContext.c; sourceTree = "<group>"; };
 		7E15292B934668B7B929288CAEADA179 /* SentryCrashJSONCodec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashJSONCodec.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashJSONCodec.h; sourceTree = "<group>"; };
@@ -1854,12 +1878,12 @@
 		8BAABD431F562E15AB1052F5BE2A930D /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/General/ImageSource/Resource.swift; sourceTree = "<group>"; };
 		8BBEDFC46D10DB6E7FF9BB26C2F933BC /* OCMInvocationStub.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationStub.m; path = Source/OCMock/OCMInvocationStub.m; sourceTree = "<group>"; };
 		8C0D2FB76F2BA8B7C2A2732C9F692721 /* AutomaticEvents.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AutomaticEvents.h; path = Sources/AutomaticEvents.h; sourceTree = "<group>"; };
-		8C26A4BB3B912B165DC20DB7D54CB0C8 /* Pods-BitBotTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBotTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8C3FFF0B84C6B0C77538B5B5E1C3022C /* EKManagedObjectMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKManagedObjectMapper.m; path = Sources/EasyMapping/EKManagedObjectMapper.m; sourceTree = "<group>"; };
 		8C6E2557C6DA8D041D5B4D39634020B0 /* SentryCrashCPU_x86_32.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashCPU_x86_32.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashCPU_x86_32.c; sourceTree = "<group>"; };
 		8C8DBB0FE68C4E4C8B13DAF37258DAD1 /* SDImageGIFCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageGIFCoder.m; path = SDWebImage/SDImageGIFCoder.m; sourceTree = "<group>"; };
 		8D4FCF0C96FFED52FD3378732162A6F3 /* EXPMatchers+beNil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beNil.h"; path = "Expecta/Matchers/EXPMatchers+beNil.h"; sourceTree = "<group>"; };
 		8E1289CE4209BBA58621355D0E7F0891 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
+		8E17A10483A8CF4604DEED1AB6682769 /* Pods-BitBotATV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBotATV-dummy.m"; sourceTree = "<group>"; };
 		8ED59716A1672B876184CA49BD716A77 /* SentryCrashVarArgs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashVarArgs.h; path = Sources/SentryCrash/Reporting/Filters/Tools/SentryCrashVarArgs.h; sourceTree = "<group>"; };
 		8F0EAE19876AE208F6DBE2BDFD1F72BA /* SentryCrashDefaultBinaryImageProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashDefaultBinaryImageProvider.m; path = Sources/Sentry/SentryCrashDefaultBinaryImageProvider.m; sourceTree = "<group>"; };
 		8F85C203381CE879B985EC5AC70AE634 /* SessionMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SessionMetadata.h; path = Sources/SessionMetadata.h; sourceTree = "<group>"; };
@@ -1868,6 +1892,7 @@
 		908D42DF92E4C968E5324346C339C906 /* SentryDsn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryDsn.h; path = Sources/Sentry/Public/SentryDsn.h; sourceTree = "<group>"; };
 		91A587059B2F584E10F7C4187818088D /* SDImageLoadersManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageLoadersManager.m; path = SDWebImage/SDImageLoadersManager.m; sourceTree = "<group>"; };
 		91BDEBB0138AAB1DF86CFD5AF097BB61 /* SDWebImageTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageTransition.m; path = SDWebImage/SDWebImageTransition.m; sourceTree = "<group>"; };
+		91BE1D181724958F20F175277F3506B0 /* Pods-BitBotTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBotTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		91EBEB12D2456CF2DF8CA27E3B9CFDA4 /* SentryInstallation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryInstallation.h; path = Sources/Sentry/include/SentryInstallation.h; sourceTree = "<group>"; };
 		91EF2F7ADF8592BE09CCE46E07A905DD /* SentryFileIOTrackingIntegration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryFileIOTrackingIntegration.h; path = Sources/Sentry/include/SentryFileIOTrackingIntegration.h; sourceTree = "<group>"; };
 		923E6F39A2A1B1158CE7336632000902 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
@@ -1901,6 +1926,7 @@
 		97D8EE8886E256FC461D1968277F3C68 /* SentryCrashJSONCodecObjC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashJSONCodecObjC.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashJSONCodecObjC.h; sourceTree = "<group>"; };
 		9828C1B6E749D17F619976C5772C47A8 /* OCMBlockCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockCaller.m; path = Source/OCMock/OCMBlockCaller.m; sourceTree = "<group>"; };
 		9889C64B9042289539549EB821AE6EFD /* SentryMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryMessage.h; path = Sources/Sentry/Public/SentryMessage.h; sourceTree = "<group>"; };
+		99A79CB810023E6C772A4670563DE466 /* Pods-BitBot-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBot-acknowledgements.markdown"; sourceTree = "<group>"; };
 		99AA51F705CBEDB7E88980C15411743C /* EKMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKMapper.m; path = Sources/EasyMapping/EKMapper.m; sourceTree = "<group>"; };
 		99AC487A0AB10DB68753506D76E7B420 /* OCMMacroState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMMacroState.m; path = Source/OCMock/OCMMacroState.m; sourceTree = "<group>"; };
 		9ADB193CECDC424418640CF81F026C81 /* SentryAppStartTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryAppStartTracker.m; path = Sources/Sentry/SentryAppStartTracker.m; sourceTree = "<group>"; };
@@ -1912,12 +1938,14 @@
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB73A5B381FB155F87FC94DD9BAA77B /* OCMObserverRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMObserverRecorder.m; path = Source/OCMock/OCMObserverRecorder.m; sourceTree = "<group>"; };
 		9DE3F7F81CCFFCA37D11880F604D1259 /* SentryFramesTrackingIntegration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryFramesTrackingIntegration.h; path = Sources/Sentry/include/SentryFramesTrackingIntegration.h; sourceTree = "<group>"; };
+		9F6536774B52F422E57181C747A4D537 /* Pods-BitBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBot.debug.xcconfig"; sourceTree = "<group>"; };
 		9F818A90E34FD5B3492ADBC8A16F8A47 /* SentryFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryFrame.m; path = Sources/Sentry/SentryFrame.m; sourceTree = "<group>"; };
 		9FE0A60C90ABD87BDA0B69937066170F /* SentryANRTrackingIntegration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryANRTrackingIntegration.m; path = Sources/Sentry/SentryANRTrackingIntegration.m; sourceTree = "<group>"; };
 		A09894967204F420E5631AA790F5D9F7 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/Extensions/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		A129135A62273A6FB27B0BBDF6F3C763 /* SDWebImageDownloaderConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderConfig.h; path = SDWebImage/SDWebImageDownloaderConfig.h; sourceTree = "<group>"; };
 		A1A8BDF7DBB01310DB9E65187DBB3250 /* SDWebImageDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDefine.h; path = SDWebImage/SDWebImageDefine.h; sourceTree = "<group>"; };
 		A1B6A3526B77B00B50EBB34BDEE5515A /* SentryBreadcrumb.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryBreadcrumb.m; path = Sources/Sentry/SentryBreadcrumb.m; sourceTree = "<group>"; };
+		A22EA56304F86790FB9391F88DF414BE /* Pods-BitBotATV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotATV.debug.xcconfig"; sourceTree = "<group>"; };
 		A2324BBDCACE059815792CCB1334B029 /* SentryCrashObjCApple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashObjCApple.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashObjCApple.h; sourceTree = "<group>"; };
 		A27D4550725BBB007DC5D4CF4C2C43EA /* SentrySDK+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SentrySDK+Private.h"; path = "Sources/Sentry/include/SentrySDK+Private.h"; sourceTree = "<group>"; };
 		A29B99EA28E7B0F6FC1A331E428D0167 /* SentryScreenFrames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryScreenFrames.h; path = Sources/Sentry/Public/SentryScreenFrames.h; sourceTree = "<group>"; };
@@ -1936,6 +1964,7 @@
 		A5ED14E35E6520F82CE5657BA11A4075 /* SentryCrashMonitorType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashMonitorType.h; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitorType.h; sourceTree = "<group>"; };
 		A678436C06BCE3CE2401F8B3DDCB2537 /* SentryDisplayLinkWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryDisplayLinkWrapper.h; path = Sources/Sentry/include/SentryDisplayLinkWrapper.h; sourceTree = "<group>"; };
 		A67E5B8C4E9422283EFE09A8BBBC48DD /* OCMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMockObject.h; path = Source/OCMock/OCMockObject.h; sourceTree = "<group>"; };
+		A7341749F3214B605E990DDDB44D400C /* Pods-BitBot-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBot-dummy.m"; sourceTree = "<group>"; };
 		A7629B2EE8325F669A9942B6BF8964C2 /* MPNetwork.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPNetwork.h; path = Sources/MPNetwork.h; sourceTree = "<group>"; };
 		A7DE7A433D4444B966DC0E02863535FF /* SentryCrashMachineContextWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashMachineContextWrapper.h; path = Sources/Sentry/include/SentryCrashMachineContextWrapper.h; sourceTree = "<group>"; };
 		A86803E2771DDB785466C381158BDD6C /* EKObjectModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKObjectModel.h; path = Sources/EasyMapping/EKObjectModel.h; sourceTree = "<group>"; };
@@ -1944,7 +1973,6 @@
 		A933E2544F245E2D262A8AE58E5EF8A1 /* SDImageGraphics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageGraphics.m; path = SDWebImage/SDImageGraphics.m; sourceTree = "<group>"; };
 		A94819E374F05A7791A799EE25267929 /* SDWebImageError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageError.m; path = SDWebImage/SDWebImageError.m; sourceTree = "<group>"; };
 		AA237CF9B37005DD3B544F18E066562E /* SentryStacktrace.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryStacktrace.m; path = Sources/Sentry/SentryStacktrace.m; sourceTree = "<group>"; };
-		AA2793A28BA2F2951479D61E76981AF6 /* Pods-BitBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBotTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB1D2EB14D32973CFC52130A8A0936A6 /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
 		AB1E04B5509EAE27BF99FBA6500CA2E5 /* MPLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLogger.h; path = Sources/MPLogger.h; sourceTree = "<group>"; };
 		AB2F97418B96AC38FDA5CFE133161C0C /* SentrySpan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentrySpan.h; path = Sources/Sentry/include/SentrySpan.h; sourceTree = "<group>"; };
@@ -1974,6 +2002,7 @@
 		B28DE7610A332F6BC99DAEB2EEFFA1C9 /* SentryFramesTrackingIntegration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryFramesTrackingIntegration.m; path = Sources/Sentry/SentryFramesTrackingIntegration.m; sourceTree = "<group>"; };
 		B29C7E9785F73C88E9FDDEF334662018 /* SentryCrashSymbolicator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashSymbolicator.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashSymbolicator.h; sourceTree = "<group>"; };
 		B2A21C378AC4B7F107AFAD7D025744C4 /* SentryNetworkTrackingIntegration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryNetworkTrackingIntegration.m; path = Sources/Sentry/SentryNetworkTrackingIntegration.m; sourceTree = "<group>"; };
+		B2B0A1AFB77257D9FCE26240844BBE68 /* Pods-BitBotMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitBotMenu-dummy.m"; sourceTree = "<group>"; };
 		B2E0CDE201482F79068D2574C2707C31 /* SentryCrashMachineContext_Apple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashMachineContext_Apple.h; path = Sources/SentryCrash/Recording/Tools/SentryCrashMachineContext_Apple.h; sourceTree = "<group>"; };
 		B2F6BF787CDDE44EDE585C56D36FB0B0 /* EasyMapping-macOS */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "EasyMapping-macOS"; path = "libEasyMapping-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B321C8985188A9345A88897489E15690 /* OCMBoxedReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBoxedReturnValueProvider.m; path = Source/OCMock/OCMBoxedReturnValueProvider.m; sourceTree = "<group>"; };
@@ -1999,7 +2028,6 @@
 		B80E992DAA840AE3C178CDA6ABDE5D6B /* MPJSONHander.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPJSONHander.h; path = Sources/MPJSONHander.h; sourceTree = "<group>"; };
 		B8B02209212E4645651DDCAF3BCB8B48 /* EKCoreDataImporter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EKCoreDataImporter.m; path = Sources/EasyMapping/EKCoreDataImporter.m; sourceTree = "<group>"; };
 		B8C8D9CE684DCFB9B5FE9A562F58FD56 /* SentryProfiler.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryProfiler.mm; path = Sources/Sentry/SentryProfiler.mm; sourceTree = "<group>"; };
-		B9A9599914DD2E69DFA3308658CC6D8D /* Pods-BitBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitBot.release.xcconfig"; sourceTree = "<group>"; };
 		B9AB3BE97F62AE85A701D00E2FC3F7DC /* UIViewController+Sentry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Sentry.h"; path = "Sources/Sentry/include/UIViewController+Sentry.h"; sourceTree = "<group>"; };
 		B9AD22ACAEBE81110EB6FF08850E679E /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		B9BBCD49B4301B5BDD4648955E505F9E /* NSTextAttachment+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextAttachment+Kingfisher.swift"; path = "Sources/Extensions/NSTextAttachment+Kingfisher.swift"; sourceTree = "<group>"; };
@@ -2122,12 +2150,14 @@
 		DF5BB16D1C08D9E30388FBCE4023BFF5 /* SentryError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryError.h; path = Sources/Sentry/Public/SentryError.h; sourceTree = "<group>"; };
 		DF662EB5CD1CBA217C47343EFB4D6514 /* EXPMatchers+beSubclassOf.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beSubclassOf.m"; path = "Expecta/Matchers/EXPMatchers+beSubclassOf.m"; sourceTree = "<group>"; };
 		E026CBB9F198F5ADF320DA82311A7EA8 /* SentryRateLimitParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryRateLimitParser.m; path = Sources/Sentry/SentryRateLimitParser.m; sourceTree = "<group>"; };
+		E02C910C814D600822BA13118DBFBDD5 /* Pods-BitBotMenu-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBotMenu-acknowledgements.plist"; sourceTree = "<group>"; };
 		E080202F8E0B54182443BA49E85C276D /* Pods-BitBotTests */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-BitBotTests"; path = "libPods-BitBotTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E08A439072D12D76B9EC008574879B9D /* SentryCrashMonitor_NSException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashMonitor_NSException.h; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor_NSException.h; sourceTree = "<group>"; };
 		E095BB4012753F043DF69664253C48AC /* OCClassMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCClassMockObject.m; path = Source/OCMock/OCClassMockObject.m; sourceTree = "<group>"; };
 		E0B9F9F3327311883D9B679D2F5FA4CC /* EKCoreDataImporter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKCoreDataImporter.h; path = Sources/EasyMapping/EKCoreDataImporter.h; sourceTree = "<group>"; };
 		E13BD4447632E8E6CF886D0F27906231 /* SentryBreadcrumbTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryBreadcrumbTracker.m; path = Sources/Sentry/SentryBreadcrumbTracker.m; sourceTree = "<group>"; };
 		E175CD3EB49B02A80BF11C132EF85EC2 /* EKSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EKSerializer.h; path = Sources/EasyMapping/EKSerializer.h; sourceTree = "<group>"; };
+		E1875B1F9E4D841805A181AA082D7022 /* Pods-BitBotMenu-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitBotMenu-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E1A7952E26EF0A6F434D7D13B3459BB3 /* SentryTransactionContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryTransactionContext.h; path = Sources/Sentry/Public/SentryTransactionContext.h; sourceTree = "<group>"; };
 		E23DC4FCC151C0769BC25346B5C7A1B3 /* KFImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImage.swift; path = Sources/SwiftUI/KFImage.swift; sourceTree = "<group>"; };
 		E2A69A919639B2C78EB37DD079B36760 /* SentryCrashIntegration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashIntegration.h; path = Sources/Sentry/include/SentryCrashIntegration.h; sourceTree = "<group>"; };
@@ -2160,6 +2190,7 @@
 		E991EABB720618DF7C17E9B2A0B76E8E /* OCMReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMReturnValueProvider.m; path = Source/OCMock/OCMReturnValueProvider.m; sourceTree = "<group>"; };
 		E99528B8B4FD4467BFD2E11D10A57208 /* SentrySessionTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentrySessionTracker.h; path = Sources/Sentry/include/SentrySessionTracker.h; sourceTree = "<group>"; };
 		E9B409220A02F6C80445A0AB2DB98F47 /* Mixpanel-macOS */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Mixpanel-macOS"; path = "libMixpanel-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9CD819168263C4E790950570A4EF583 /* Pods-BitBotTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitBotTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E9DFD4C812D552A4B5EEA1F3BC18ADE2 /* SentryAsynchronousOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryAsynchronousOperation.h; path = Sources/Sentry/include/SentryAsynchronousOperation.h; sourceTree = "<group>"; };
 		EA06E3208883272F1903718B2A855C9B /* SentrySession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentrySession.m; path = Sources/Sentry/SentrySession.m; sourceTree = "<group>"; };
 		EA2A326C9FF976DAB1A713D9DB92623E /* SentryThreadMetadataCache.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = SentryThreadMetadataCache.hpp; path = Sources/Sentry/include/SentryThreadMetadataCache.hpp; sourceTree = "<group>"; };
@@ -2316,6 +2347,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB6CB4644F82FB7BD95CA4FC74910B5D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD8A9F6886A94787849B53695E3B2435 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2403,35 +2441,6 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
-		1372CFF84AF9666CCDD3BEE2BE07B8E4 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1A1180CDEA41C596185CA91B31A3B29C /* Pods-BitBot */,
-				6684DD12711CB3465E66DFE68763CF4A /* Pods-BitBotATV */,
-				5BCBCE4A0FA422061D0BA7A9F8813035 /* Pods-BitBotTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		11E43E81B033773DB1331303C03524F4 /* SDWebImage */ = {
-		1A1180CDEA41C596185CA91B31A3B29C /* Pods-BitBot */ = {
-			isa = PBXGroup;
-			children = (
-				060AA8176AEE8E30492DADBC1106D50B /* Core */,
-				D166534AF7A49425EEF2BE63A484E284 /* Support Files */,
-				14A5388595A1D1C81EF01AB89A8478D4 /* Pods-BitBot-acknowledgements.markdown */,
-				6D36DF8121B4044216DF887F9A7EA8BD /* Pods-BitBot-acknowledgements.plist */,
-				0B84BCB752C7801A42B7566DCD7F888B /* Pods-BitBot-dummy.m */,
-				4FD1228EA2E85C9985EC483AD3EEC37E /* Pods-BitBot.debug.xcconfig */,
-				B9A9599914DD2E69DFA3308658CC6D8D /* Pods-BitBot.release.xcconfig */,
-			);
-			name = SDWebImage;
-			path = SDWebImage;
-			name = "Pods-BitBot";
-			path = "Target Support Files/Pods-BitBot";
-			sourceTree = "<group>";
-		};
-		1CB1FD9655670BA1B3D8F2903095854F /* SwiftUI */ = {
 		216D7871A4009782422D06914278E887 /* Sentry */ = {
 			isa = PBXGroup;
 			children = (
@@ -2999,19 +3008,6 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		5BCBCE4A0FA422061D0BA7A9F8813035 /* Pods-BitBotTests */ = {
-			isa = PBXGroup;
-			children = (
-				8C26A4BB3B912B165DC20DB7D54CB0C8 /* Pods-BitBotTests-acknowledgements.markdown */,
-				456AD22FE7425CEF9CCB07B74D2628F0 /* Pods-BitBotTests-acknowledgements.plist */,
-				2DB85262F5F33A0C16F18E0EB8E0C8CF /* Pods-BitBotTests-dummy.m */,
-				17A69362E1FC166F5C2F8F3C55D67E3F /* Pods-BitBotTests.debug.xcconfig */,
-				AA2793A28BA2F2951479D61E76981AF6 /* Pods-BitBotTests.release.xcconfig */,
-			);
-			name = "Pods-BitBotTests";
-			path = "Target Support Files/Pods-BitBotTests";
-			sourceTree = "<group>";
-		};
 		645FC880A675C30B8D814376D67FEE9A /* Mixpanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3054,7 +3050,7 @@
 			path = Mixpanel;
 			sourceTree = "<group>";
 		};
-		6684DD12711CB3465E66DFE68763CF4A /* Pods-BitBotATV */ = {
+		6817732DB6AF23BE10258C4D0DA22F29 /* Pods-BitBotATV */ = {
 			isa = PBXGroup;
 			children = (
 				49478DE88571A0330B958DAE5F45166D /* Pods-BitBotATV.modulemap */,
@@ -3105,6 +3101,19 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		73EBE15EE164A76A78CC5910B5810C77 /* Pods-BitBotTests */ = {
+			isa = PBXGroup;
+			children = (
+				91BE1D181724958F20F175277F3506B0 /* Pods-BitBotTests-acknowledgements.markdown */,
+				E9CD819168263C4E790950570A4EF583 /* Pods-BitBotTests-acknowledgements.plist */,
+				001F4D63A8519E60ACE66672B8C3D52C /* Pods-BitBotTests-dummy.m */,
+				0FF4A0BD5A9BAC89A4569EEFFE5AC353 /* Pods-BitBotTests.debug.xcconfig */,
+				678B21733032B043AE90111BF6223BCE /* Pods-BitBotTests.release.xcconfig */,
+			);
+			name = "Pods-BitBotTests";
+			path = "Target Support Files/Pods-BitBotTests";
+			sourceTree = "<group>";
+		};
 		75A0F86511A9F33092E2FB7F480C9566 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3119,24 +3128,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		98CFB47056772ABCA539C3BC7E3AD23A /* Products */ = {
+		93513EA4AAA3B822DCAFA717161AC532 /* Pods-BitBot */ = {
 			isa = PBXGroup;
 			children = (
-				B2F6BF787CDDE44EDE585C56D36FB0B0 /* EasyMapping-macOS */,
-				56ED198D758A74DB68808B8975C6B6C3 /* EasyMapping-tvOS */,
-				08F7F0770B4878B9883B87DCD8569CB4 /* Expecta */,
-				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
-				E9B409220A02F6C80445A0AB2DB98F47 /* Mixpanel-macOS */,
-				3CA25617ED43F9B28F37E0C51D1B5047 /* Mixpanel-tvOS */,
-				F30C125DB91902F63DC73AEF0B0E6111 /* OCMock */,
-				46F4F400E88483A3268939ED4F54B477 /* Pods-BitBot */,
-				304D7AE95A8997C86DF9D893909AE6FD /* Pods-BitBotATV */,
-				E080202F8E0B54182443BA49E85C276D /* Pods-BitBotTests */,
-				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
-				62754719072EA7728FFA28F8BA5B8676 /* Sentry-macOS */,
-				E5B37F686C226E712A6CCF4F485ECD08 /* Sentry-tvOS */,
+				99A79CB810023E6C772A4670563DE466 /* Pods-BitBot-acknowledgements.markdown */,
+				6E4F213F8AA361FCD98EB02ECE3A3E14 /* Pods-BitBot-acknowledgements.plist */,
+				A7341749F3214B605E990DDDB44D400C /* Pods-BitBot-dummy.m */,
+				9F6536774B52F422E57181C747A4D537 /* Pods-BitBot.debug.xcconfig */,
+				7D9CA9F4D19B3F91538B471471E75789 /* Pods-BitBot.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-BitBot";
+			path = "Target Support Files/Pods-BitBot";
+			sourceTree = "<group>";
+		};
+		9809EFEC4DF5B8811DCD7A54720999D5 /* Pods-BitBotMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E1875B1F9E4D841805A181AA082D7022 /* Pods-BitBotMenu-acknowledgements.markdown */,
+				E02C910C814D600822BA13118DBFBDD5 /* Pods-BitBotMenu-acknowledgements.plist */,
+				B2B0A1AFB77257D9FCE26240844BBE68 /* Pods-BitBotMenu-dummy.m */,
+				6556804E2927ACFA2227F3EAA5CAE656 /* Pods-BitBotMenu.debug.xcconfig */,
+				4D7276A91AF743A467284EF1B52EBE5A /* Pods-BitBotMenu.release.xcconfig */,
+			);
+			name = "Pods-BitBotMenu";
+			path = "Target Support Files/Pods-BitBotMenu";
 			sourceTree = "<group>";
 		};
 		A086ACA9D473B43D5A7E088543115EC3 /* Support Files */ = {
@@ -3160,23 +3175,36 @@
 			name = SwiftUI;
 			sourceTree = "<group>";
 		};
+		C3D976E3180681352D6232058C7BB553 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2F6BF787CDDE44EDE585C56D36FB0B0 /* EasyMapping-macOS */,
+				56ED198D758A74DB68808B8975C6B6C3 /* EasyMapping-tvOS */,
+				08F7F0770B4878B9883B87DCD8569CB4 /* Expecta */,
+				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
+				E9B409220A02F6C80445A0AB2DB98F47 /* Mixpanel-macOS */,
+				3CA25617ED43F9B28F37E0C51D1B5047 /* Mixpanel-tvOS */,
+				F30C125DB91902F63DC73AEF0B0E6111 /* OCMock */,
+				46F4F400E88483A3268939ED4F54B477 /* Pods-BitBot */,
+				304D7AE95A8997C86DF9D893909AE6FD /* Pods-BitBotATV */,
+				0CC4E9E0B2FDEE927C720F034633763B /* Pods-BitBotMenu */,
+				E080202F8E0B54182443BA49E85C276D /* Pods-BitBotTests */,
+				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
+				62754719072EA7728FFA28F8BA5B8676 /* Sentry-macOS */,
+				E5B37F686C226E712A6CCF4F485ECD08 /* Sentry-tvOS */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
-				5077CF7DF1C44724DE89EB9BBB88D802 /* Kingfisher.modulemap */,
-				91B04CC3CA805F7559BC4CE74B72812B /* Kingfisher-dummy.m */,
-				785E22CAC41A442E77BFB94D064D8F5E /* Kingfisher-prefix.pch */,
-				40D74B6D96A890D6768B62053F1EE3D4 /* Kingfisher-umbrella.h */,
-				738A8E5A4B89A5C40A026743F936C553 /* Kingfisher.debug.xcconfig */,
-				718EBFB77785D78ED245C667D41C3A75 /* Kingfisher.release.xcconfig */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
 				75A0F86511A9F33092E2FB7F480C9566 /* Pods */,
-				98CFB47056772ABCA539C3BC7E3AD23A /* Products */,
-				1372CFF84AF9666CCDD3BEE2BE07B8E4 /* Targets Support Files */,
+				C3D976E3180681352D6232058C7BB553 /* Products */,
+				D775A31DC9334EBDBA4952F68DA9E30D /* Targets Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Kingfisher";
 			sourceTree = "<group>";
 		};
 		CF1522EDD7F49F8F4F008F7A84612644 /* Kingfisher */ = {
@@ -3204,6 +3232,17 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/EasyMapping-macOS";
+			sourceTree = "<group>";
+		};
+		D775A31DC9334EBDBA4952F68DA9E30D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				93513EA4AAA3B822DCAFA717161AC532 /* Pods-BitBot */,
+				6817732DB6AF23BE10258C4D0DA22F29 /* Pods-BitBotATV */,
+				9809EFEC4DF5B8811DCD7A54720999D5 /* Pods-BitBotMenu */,
+				73EBE15EE164A76A78CC5910B5810C77 /* Pods-BitBotTests */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
@@ -3437,6 +3476,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		26320CA2260C5BF6CEE230908DA47289 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38E7085E139BAA4D11BA3D58E3BC2761 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3974,13 +4020,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D23C7D7D039CA18423428A15EA2D3807 /* Pods-BitBotATV-umbrella.h in Headers */,
-				60CADCB94AC8D2ADCABF729344D18C13 /* Mixpanel.h in Headers */,
-				14E412EC4ACB535F2BA0005E27A1D0D3 /* MixpanelExceptionHandler.h in Headers */,
-				A131B60C47B5DBFF629377ACB57E3D94 /* MixpanelGroup.h in Headers */,
-				2222FF19FBA4070DD697D2C7F363B818 /* MixpanelGroupPrivate.h in Headers */,
-				6B799AF667889B9370E11F617D34B0E9 /* MixpanelIdentity.h in Headers */,
-				E5EB3EB6A2DD77D8001D5BB36FB822F0 /* MixpanelPeople.h in Headers */,
 				70726C9063BF287D34E076144233EAEB /* AutomaticEvents.h in Headers */,
 				1747CB29AF1D32C41BC33B3EE5BA02AC /* Mixpanel.h in Headers */,
 				3D8F2189E33348FFFAA3E1B59079F68E /* MixpanelExceptionHandler.h in Headers */,
@@ -4002,21 +4041,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1ADA64DA4FA6A03DC307BFE3557FF06 /* Headers */ = {
 		DF8E459448AB896EE35F4FF037045820 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8C55F75C2F81A027F97D96E1EE0A689 /* NSBezierPath+RoundedCorners.h in Headers */,
-				4C9DF8DB54E3859AF22EC2FE16B04B4B /* NSButton+WebCache.h in Headers */,
-				AA1EEA7052133F1E3FB91EB52C565376 /* NSData+ImageContentType.h in Headers */,
-				E76E56A3F0C0CC369DA5E8D59F2234AE /* NSImage+Compatibility.h in Headers */,
-				1DCB6A0584BD4561420B84F48B368070 /* SDAnimatedImage.h in Headers */,
-				50E5781CD631D0EA484F924DBB54F4BF /* SDAnimatedImageRep.h in Headers */,
-				7FD65F0F386F58C6E0C4037C185B5584 /* SDAnimatedImageView.h in Headers */,
-				414DB92F2C866C977E8E3D86F311888D /* SDAnimatedImageView+WebCache.h in Headers */,
-				AD012E12E1098E9234B4CBC1B6DEC268 /* SDAsyncBlockOperation.h in Headers */,
-				8EE9DC9AD8AEF3DAA5656D79C7C0CE51 /* SDDiskCache.h in Headers */,
 				EE344B9CEE2C19DDDF5987D39F4B42E2 /* EXPBlockDefinedMatcher.h in Headers */,
 				820267C7E3B86845853E7B5F90F41CEF /* EXPDefines.h in Headers */,
 				FD7551E4F42A2A51807FA77A3D66572C /* EXPDoubleTuple.h in Headers */,
@@ -4336,6 +4364,27 @@
 			productReference = F30C125DB91902F63DC73AEF0B0E6111 /* OCMock */;
 			productType = "com.apple.product-type.library.static";
 		};
+		D01305119C92E032FCA5F037F91D7DDC /* Pods-BitBotMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1659E5264D81474B12452F9D3B3DEDB9 /* Build configuration list for PBXNativeTarget "Pods-BitBotMenu" */;
+			buildPhases = (
+				38E7085E139BAA4D11BA3D58E3BC2761 /* Headers */,
+				2AB8C6C3B1644311A2D3CEEEB5E5518E /* Sources */,
+				FB6CB4644F82FB7BD95CA4FC74910B5D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7DA70ECF169795B3D632DAF5BB73603 /* PBXTargetDependency */,
+				76A6A5D7C1DA669D025A9996E3F19C4D /* PBXTargetDependency */,
+				D12EAFB7226A61A02FB54BA52E42BA7D /* PBXTargetDependency */,
+				5DE842700A8F3059BB85A04955E20EEE /* PBXTargetDependency */,
+			);
+			name = "Pods-BitBotMenu";
+			productName = "Pods-BitBotMenu";
+			productReference = 0CC4E9E0B2FDEE927C720F034633763B /* Pods-BitBotMenu */;
+			productType = "com.apple.product-type.library.static";
+		};
 		DBD5E5EA15DC8E29C6771390FFF80639 /* Mixpanel-tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0D79098C55494B987FFCD323CF7CEA0 /* Build configuration list for PBXNativeTarget "Mixpanel-tvOS" */;
@@ -4463,7 +4512,7 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 98CFB47056772ABCA539C3BC7E3AD23A /* Products */;
+			productRefGroup = C3D976E3180681352D6232058C7BB553 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -4555,12 +4604,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD51FE8B461ED9BDABBD840E11DF953F /* Sources */ = {
 		27F3A8C9B01A3A00077293CED2C7091F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				208A51E5562EE818E1564DA668639316 /* Pods-BitBotTests-dummy.m in Sources */,
 				342374A99830EDB07E236C0141DFC495 /* NSBezierPath+RoundedCorners.m in Sources */,
 				2BFE3F89E2C0DD3008DA87A697EE8287 /* NSButton+WebCache.m in Sources */,
 				9974E27D3546C4F7829B5781545CDDF0 /* NSData+ImageContentType.m in Sources */,
@@ -4620,26 +4667,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		04CE8A2ACF1B3D285949F9C95B08AC08 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "EasyMapping-tvOS";
-			target = 74A6508FB061133A1E28C2850A437667 /* EasyMapping-tvOS */;
-			targetProxy = 409907377D8E9B3538352C06B53489A1 /* PBXContainerItemProxy */;
+		2AB8C6C3B1644311A2D3CEEEB5E5518E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6357D1119BE6B318C9835AFAAF1E1936 /* Pods-BitBotMenu-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		08743F05576C36E00B98BB332BA0359E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Mixpanel-macOS";
-			target = 8E2EC09E06710CFBAD6AF578E2A14F7C /* Mixpanel-macOS */;
-			targetProxy = 009200BC3A3DF49A40B5AFBDAC4261C0 /* PBXContainerItemProxy */;
-		};
-		18365AF73A9FB00194B9CEB24EB9D1FD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Sentry-macOS";
-			target = 9AA8A98273205387E6FF9B148A006F31 /* Sentry-macOS */;
-			targetProxy = E7964CDF20E5DD872E23B2DE178F175A /* PBXContainerItemProxy */;
 		2C5807F228BCE57BD79B668DF88795D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4836,11 +4871,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		258EA574E2750B22A4E8823725C27ADF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SDWebImage;
-			target = 3847153A6E5EEFB86565BA840768F429 /* SDWebImage */;
-			targetProxy = 5F8C04519A65EC36300B9945DE8080B6 /* PBXContainerItemProxy */;
 		3C042ADDB2466F0D2B45207A4558CDCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4862,11 +4892,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		25F40A5F9E7BB045FE46C767230FB9DC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Sentry-tvOS";
-			target = DDC5B143847B1E75AB9687D42E6EF6B8 /* Sentry-tvOS */;
-			targetProxy = C862245C40255193E157F7831F1DABB4 /* PBXContainerItemProxy */;
 		3CB34A3D624AD1F80EBD677555285687 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4888,11 +4913,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		42F61E2305C534C6922A519375E11CB4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Mixpanel-macOS";
-			target = 8E2EC09E06710CFBAD6AF578E2A14F7C /* Mixpanel-macOS */;
-			targetProxy = 85B45BF203019218D523D6493D7C3A47 /* PBXContainerItemProxy */;
 		601B16145DCF921DC42F79A9CAE7DDCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4901,10 +4921,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		440208B226C44BDAE5508738C87A3102 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = OCMock;
-			target = C260B5A26D3CD54F215E5E39371483B6 /* OCMock */;
 		6B4D69E4921D1AD49EC7F5E8DB673D50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5287,6 +5303,18 @@
 			target = DBD5E5EA15DC8E29C6771390FFF80639 /* Mixpanel-tvOS */;
 			targetProxy = A1404320F2F85D1DD375EC7F52B4C1CC /* PBXContainerItemProxy */;
 		};
+		5DE842700A8F3059BB85A04955E20EEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Sentry-macOS";
+			target = 9AA8A98273205387E6FF9B148A006F31 /* Sentry-macOS */;
+			targetProxy = 9A1D052626BD57430361F98CFDABB217 /* PBXContainerItemProxy */;
+		};
+		76A6A5D7C1DA669D025A9996E3F19C4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Mixpanel-macOS";
+			target = 8E2EC09E06710CFBAD6AF578E2A14F7C /* Mixpanel-macOS */;
+			targetProxy = 46E6D9F3A496666A951571B2CD5A34A9 /* PBXContainerItemProxy */;
+		};
 		B98AF30D0F9DEFFC7A10317FAF6200FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Sentry-tvOS";
@@ -5299,6 +5327,12 @@
 			target = C260B5A26D3CD54F215E5E39371483B6 /* OCMock */;
 			targetProxy = 94EEACB69E9D2E49940D1ED2680B8881 /* PBXContainerItemProxy */;
 		};
+		C7DA70ECF169795B3D632DAF5BB73603 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "EasyMapping-macOS";
+			target = 61C08C8B4FDF80F2237C00557D267969 /* EasyMapping-macOS */;
+			targetProxy = 928351B2E9BDA35AB25062A9B47C1F69 /* PBXContainerItemProxy */;
+		};
 		C94B2540C2FF3440D31B290578636DDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Sentry-macOS";
@@ -5310,6 +5344,12 @@
 			name = Kingfisher;
 			target = E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */;
 			targetProxy = 42B8C40AAF61C9BD96BBDDD1AB01DCA5 /* PBXContainerItemProxy */;
+		};
+		D12EAFB7226A61A02FB54BA52E42BA7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDWebImage;
+			target = 3847153A6E5EEFB86565BA840768F429 /* SDWebImage */;
+			targetProxy = AD532C18D26A9EEAA416EC389D119C9D /* PBXContainerItemProxy */;
 		};
 		D7B51BF3BB8B1634B8B59589B586DFBA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5351,7 +5391,7 @@
 		};
 		041BF9FE12FCD69A8E47E89CD5DEA989 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17A69362E1FC166F5C2F8F3C55D67E3F /* Pods-BitBotTests.debug.xcconfig */;
+			baseConfigurationReference = 0FF4A0BD5A9BAC89A4569EEFFE5AC353 /* Pods-BitBotTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -5441,7 +5481,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
 			};
-			name = Release;
+			name = Debug;
 		};
 		239D23AB62F6E9E3774488B22CF2C694 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -5488,48 +5528,25 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
 			};
-			name = Release;
+			name = Debug;
 		};
 		2F586B2021D8B89578E3BB658EE769D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B8740DB1817151CEDD9C6FC38DB337A /* OCMock.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		4416D23850ADDAAF2E5205EB826D9A83 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CB9DB3CBCECA2F964263EBDE6C6912F /* EasyMapping-macOS.debug.xcconfig */;
-			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				EXECUTABLE_PREFIX = lib;
-				GCC_PREFIX_HEADER = "Target Support Files/EasyMapping-macOS/EasyMapping-macOS-prefix.pch";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				GCC_PREFIX_HEADER = "Target Support Files/OCMock/OCMock-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = EasyMapping;
-				PRODUCT_NAME = "EasyMapping-macOS";
+				PRODUCT_MODULE_NAME = OCMock;
+				PRODUCT_NAME = OCMock;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -5539,7 +5556,7 @@
 		};
 		318D4FD5C686FC4FAC53DC5019ACE2A7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA2793A28BA2F2951479D61E76981AF6 /* Pods-BitBotTests.release.xcconfig */;
+			baseConfigurationReference = 678B21733032B043AE90111BF6223BCE /* Pods-BitBotTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -5580,11 +5597,11 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 			};
-			name = Release;
+			name = Debug;
 		};
 		564F778D8E66BE4A0D8E1E811D23C54E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FD1228EA2E85C9985EC483AD3EEC37E /* Pods-BitBot.debug.xcconfig */;
+			baseConfigurationReference = 9F6536774B52F422E57181C747A4D537 /* Pods-BitBot.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -5606,7 +5623,7 @@
 		};
 		572B662BA49FBF452850E5A019A8E0DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9A9599914DD2E69DFA3308658CC6D8D /* Pods-BitBot.release.xcconfig */;
+			baseConfigurationReference = 7D9CA9F4D19B3F91538B471471E75789 /* Pods-BitBot.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -5630,7 +5647,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B5EAED0286935368A7CCF5DC71F22174 /* Kingfisher.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -5675,9 +5691,31 @@
 			};
 			name = Release;
 		};
+		771A0DDAE560965458C7F3C5DF6F7F0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D7276A91AF743A467284EF1B52EBE5A /* Pods-BitBotMenu.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		8B3C02B6BF9AD571FB5F2F7C2EF37F8B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 298DE2A21DD8DFBCCC013ED8A37AFD59 /* Pods-BitBotATV.release.xcconfig */;
+			baseConfigurationReference = 145C43C8FC8F9F4BF7AF4FED3DD67514 /* Pods-BitBotATV.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5695,7 +5733,7 @@
 				TVOS_DEPLOYMENT_TARGET = 14.0;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		958AC3E85C3702BC442C7BD85C1A1F63 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -5764,6 +5802,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B05BD3228E5AB4DD868C78926E6FB6E0 /* Expecta.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -5776,14 +5815,11 @@
 				PRODUCT_MODULE_NAME = Expecta;
 				PRODUCT_NAME = Expecta;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = appletvos;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
-			name = Debug;
+			name = Release;
 		};
 		A60833C3E06D361388AFBEC517ADA190 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -5814,6 +5850,7 @@
 			baseConfigurationReference = 176F8F0DE80857A723E2701EF4065F06 /* Mixpanel-macOS.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -5831,14 +5868,12 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
 			};
-			name = Debug;
+			name = Release;
 		};
 		AA818DEC2184E3FB2CAE026F85ED5B05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E516565674796BD60ED50E04BB255168 /* Mixpanel-tvOS.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -5849,14 +5884,14 @@
 				PRODUCT_MODULE_NAME = Mixpanel;
 				PRODUCT_NAME = "Mixpanel-tvOS";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = macosx;
+				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
-			name = Release;
+			name = Debug;
 		};
 		ABB7A66F73D61B9BEC398776FFBA39F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -5878,6 +5913,28 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+			};
+			name = Debug;
+		};
+		BB9F7220FFB0FCF74776DB140AC25C16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6556804E2927ACFA2227F3EAA5CAE656 /* Pods-BitBotMenu.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -6069,7 +6126,7 @@
 		};
 		F37AF3ADC446991A94120C11CB23AA04 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70B4ECF8EB965BEFCBC17F7120D404FA /* Pods-BitBotATV.debug.xcconfig */;
+			baseConfigurationReference = A22EA56304F86790FB9391F88DF414BE /* Pods-BitBotATV.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -6096,6 +6153,15 @@
 			buildConfigurations = (
 				00C422DCB7D7D4E49CC5E9FD5DE581B4 /* Debug */,
 				EC67F81FDCF550B4AF56690DA8209C2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1659E5264D81474B12452F9D3B3DEDB9 /* Build configuration list for PBXNativeTarget "Pods-BitBotMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB9F7220FFB0FCF74776DB140AC25C16 /* Debug */,
+				771A0DDAE560965458C7F3C5DF6F7F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

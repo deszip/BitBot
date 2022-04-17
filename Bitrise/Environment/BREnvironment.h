@@ -26,13 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
 
-#if TARGET_OS_OSX
 #pragma mark - Autorun -
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
 
 #pragma mark - App control -
-
 - (void)hidePopover;
 - (void)quitApp;
 

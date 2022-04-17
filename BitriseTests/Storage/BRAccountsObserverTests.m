@@ -14,7 +14,7 @@
 #import <EasyMapping/EasyMapping.h>
 #import "BRMockBuilder.h"
 
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRAccountsObserver.h"
 
 @interface BRAccountsObserverTests : XCTestCase
@@ -32,7 +32,8 @@
 - (void)setUp {
     [super setUp];
     
-    self.container = [[BRContainerBuilder new] buildContainerOfType:NSInMemoryStoreType];
+    BRPersistentContainerBuilder *containerBuilder = [[BRPersistentContainerBuilder alloc] initWithEnv:OCMClassMock([BREnvironment class])];
+    self.container = [containerBuilder buildContainerOfType:NSInMemoryStoreType];
     self.context = [self.container newBackgroundContext];
     self.mockBuilder = [[BRMockBuilder alloc] initWithContext:self.context];
     
