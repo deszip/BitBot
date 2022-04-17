@@ -6,7 +6,7 @@
 //  Copyright © 2020 Bitrise. All rights reserved.
 //
 
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRAccountsObserver.h"
 #import "BRCommand.h"
 #import "BRGetAccountCommand.h"
