@@ -446,6 +446,13 @@
 			remoteGlobalIDString = D996C5FC27DE1B00005C76C9;
 			remoteInfo = BitBotMenu;
 		};
+		D9EF9EE2280C6BA600509CB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D996C5FC27DE1B00005C76C9;
+			remoteInfo = BitBotMenu;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1888,6 +1895,7 @@
 			);
 			dependencies = (
 				0E42CAED20EC7A800033CD03 /* PBXTargetDependency */,
+				D9EF9EE3280C6BA600509CB1 /* PBXTargetDependency */,
 			);
 			name = BitBotTests;
 			productName = BitriseTests;
@@ -2630,6 +2638,11 @@
 			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
 			targetProxy = D996C61227DE1B01005C76C9 /* PBXContainerItemProxy */;
 		};
+		D9EF9EE3280C6BA600509CB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D996C5FC27DE1B00005C76C9 /* BitBotMenu */;
+			targetProxy = D9EF9EE2280C6BA600509CB1 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -2783,6 +2796,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot developer ID";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -2808,6 +2822,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot MAS Profile";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
@@ -2816,7 +2831,7 @@
 			baseConfigurationReference = F1E23A1CB67922F4EB72E734 /* Pods-BitBotTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2831,6 +2846,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBot.app/Contents/MacOS/BitBot";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -2839,7 +2855,7 @@
 			baseConfigurationReference = 64F51DE74237213D947FD5AF /* Pods-BitBotTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
@@ -2854,6 +2870,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitBot.app/Contents/MacOS/BitBot";
+				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
