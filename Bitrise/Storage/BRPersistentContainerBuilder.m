@@ -23,9 +23,12 @@
     if (self = [super init]) {
         _environment = environment;
         
-        // Should be determined by env...
-        //[self migrateStoreToAppGroupContainer];
-        //[self forceMigrateStoreToAppGroupContainer];
+        // Should be determined based on app version, platform and launch count
+        // All got from env
+        //...
+        
+        [self migrateStoreToAppGroupContainer];
+//        [self forceMigrateStoreToAppGroupContainer];
     }
     
     return self;
@@ -63,44 +66,53 @@
         }
     }];
     
+    BRLog(LL_VERBOSE, LL_STORAGE, @"Built store at: %@", storeURL);
+    
     return container;
 }
 
 #pragma mark - Migration API -
 
 - (void)forceMigrateStoreToAppGroupContainer {
-    NSURL *destinationStoreURL = [self storeURLForAppGroup];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:destinationStoreURL.path]) {
-        NSError *error;
-        NSURL *shmURL = [NSURL fileURLWithPath:[[destinationStoreURL path] stringByAppendingString:@"-shm"]];
-        NSURL *walURL = [NSURL fileURLWithPath:[[destinationStoreURL path] stringByAppendingString:@"-wal"]];
-        [[NSFileManager defaultManager] removeItemAtURL:destinationStoreURL error:&error];
-        [[NSFileManager defaultManager] removeItemAtURL:shmURL error:&error];
-        [[NSFileManager defaultManager] removeItemAtURL:walURL error:&error];
+    // If source store does not exist - skip
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self storeURLForMacOSApp].path]) {
+        BRLog(LL_ERROR, LL_STORAGE, @"Migration source store does not exists, skipping...");
+        return;
     }
     
-    [self migrateStoreAt:[self storeURLAt:NSApplicationSupportDirectory] to:destinationStoreURL];
+    NSURL *destinationStoreURL = [self storeURLForAppGroup];
+    NSError *dropError;
+    if (![self dropStoreAtURL:destinationStoreURL error:&dropError]) {
+        BRLog(LL_ERROR, LL_STORAGE, @"Failed to drop store before force migration at %@: %@...", destinationStoreURL, dropError);
+    }
+    
+    [self migrateStoreToAppGroupContainer];
 }
 
 - (void)migrateStoreToAppGroupContainer {
-    [self migrateStoreAt:[self storeURLAt:NSApplicationSupportDirectory] to:[self storeURLForAppGroup]];
+    [self migrateStoreAt:[self storeURLForMacOSApp] to:[self storeURLForAppGroup]];
 }
 
 #pragma mark - Migration utilities -
 
 - (void)migrateStoreAt:(NSURL *)sourceStoreURL to:(NSURL *)destinationStoreURL {
     BRLog(LL_VERBOSE, LL_STORAGE, @"Attempting to migrate store:\nSource:\t%@\nDestination:\t%@", sourceStoreURL, destinationStoreURL);
+    // If source store does not exist - skip
+    if (![[NSFileManager defaultManager] fileExistsAtPath:sourceStoreURL.path]) {
+        BRLog(LL_ERROR, LL_STORAGE, @"Migration source store does not exists, skipping...");
+        return;
+    }
+    
+    // If destination store exists - skip
+    if ([[NSFileManager defaultManager] fileExistsAtPath:destinationStoreURL.path]) {
+        BRLog(LL_ERROR, LL_STORAGE, @"Migration destination store exists, skipping...");
+        return;
+    }
     
     NSPersistentStore *sourceStore = nil;
     NSPersistentStore *destinationStore = nil;
     NSPersistentContainer *container = [self buildContainerOfType:NSSQLiteStoreType atURL:sourceStoreURL];
     NSPersistentStoreCoordinator *coordinator = [container persistentStoreCoordinator];
-    
-    // If destination store exists - skip
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:destinationStoreURL.path]) {
-//        BRLog(LL_ERROR, LL_STORAGE, @"Migration destination store exists, skipping...");
-//        return;
-//    }
     
     NSError *error;
     sourceStore = [coordinator persistentStoreForURL:sourceStoreURL];
@@ -112,7 +124,10 @@
             // You can now remove the old data at oldStoreURL
             // Note that you should do this using the NSFileCoordinator/NSFilePresenter APIs, and you should remove the other files
             // described in QA1809 as well.
-            //...
+            NSError *dropError;
+            if (![self dropStoreAtURL:sourceStoreURL error:&dropError]) {
+                BRLog(LL_ERROR, LL_STORAGE, @"Failed to drop store after migration at %@: %@...", sourceStoreURL, dropError);
+            }
         }
     } else {
         BRLog(LL_ERROR, LL_STORAGE, @"Failed to init source store during migration");
@@ -124,9 +139,9 @@
 - (NSURL *)storeURL {
 #if TARGET_OS_OSX
     return [self storeURLForAppGroup];
-    //return [self storeURLAt:NSApplicationSupportDirectory];
+//    return [self storeURLForMacOSApp];
 #else
-    return [self storeURLAt:NSCachesDirectory];
+    return [self storeURLForTVApp];
 #endif
 }
 
@@ -147,6 +162,14 @@
     return [appDirectoryURL URLByAppendingPathComponent:@"bitrise.sqlite"];
 }
 
+- (NSURL *)storeURLForTVApp {
+    return [self storeURLAt:NSCachesDirectory];
+}
+
+- (NSURL *)storeURLForMacOSApp {
+    return [self storeURLAt:NSApplicationSupportDirectory];
+}
+
 - (NSURL *)storeURLForAppGroup {
     NSURL *groupContainerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.bitbot"];
     BOOL isDir = NO;
@@ -157,6 +180,20 @@
     }
     
     return nil;
+}
+
+- (BOOL)dropStoreAtURL:(NSURL *)storeURL error:(NSError * __autoreleasing *)error {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL.path]) {
+        NSURL *shmURL = [NSURL fileURLWithPath:[[storeURL path] stringByAppendingString:@"-shm"]];
+        NSURL *walURL = [NSURL fileURLWithPath:[[storeURL path] stringByAppendingString:@"-wal"]];
+        
+        return
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:error] &&
+        [[NSFileManager defaultManager] removeItemAtURL:shmURL error:error] &&
+        [[NSFileManager defaultManager] removeItemAtURL:walURL error:error];
+    }
+    
+    return NO;
 }
 
 @end
