@@ -156,6 +156,7 @@
 		D971033E27EF632600058E78 /* BRLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = D971033C27EF632600058E78 /* BRLauncher.m */; };
 		D971033F27EF6DFD00058E78 /* BitBotMenu.app in Resources */ = {isa = PBXBuildFile; fileRef = D996C5FD27DE1B00005C76C9 /* BitBotMenu.app */; };
 		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
+		D97AD70B281C7D31004B4F7C /* BRPersistentContainerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D97AD70A281C7D31004B4F7C /* BRPersistentContainerBuilderTests.m */; };
 		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
 		D982D8A9249E7ED70099F0A5 /* BRAccountsObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A8249E7ED70099F0A5 /* BRAccountsObserver.m */; };
 		D982D8AC249E8BDC0099F0A5 /* BRCommandFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8AB249E8BDC0099F0A5 /* BRCommandFactory.m */; };
@@ -747,6 +748,7 @@
 		D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
 		D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
 		D973553D2402F980003FCE9B /* JetBrainsMono-ExtraBold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-ExtraBold-Italic.ttf"; sourceTree = "<group>"; };
+		D97AD70A281C7D31004B4F7C /* BRPersistentContainerBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRPersistentContainerBuilderTests.m; sourceTree = "<group>"; };
 		D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise_1.0.2.xcdatamodel; sourceTree = "<group>"; };
 		D982D8A4249E157C0099F0A5 /* BREmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BREmptyView.h; sourceTree = "<group>"; };
 		D982D8A5249E157C0099F0A5 /* BREmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BREmptyView.m; sourceTree = "<group>"; };
@@ -1317,6 +1319,7 @@
 				0EB3ED4921E336BD003F0364 /* BRStorageTests.m */,
 				0ED2793C223ABCBA008A35D6 /* BRLogsParserTests.m */,
 				D90712F8271C60AF00BCDFE8 /* BRAccountsObserverTests.m */,
+				D97AD70A281C7D31004B4F7C /* BRPersistentContainerBuilderTests.m */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -2369,6 +2372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D97AD70B281C7D31004B4F7C /* BRPersistentContainerBuilderTests.m in Sources */,
 				D993A77F2630727900BBE937 /* BRAppsDataSourceTests.m in Sources */,
 				0EFB325D22020B5E0045C376 /* BRLogObserver.m in Sources */,
 				0E02C9AF22103ED100FCFE17 /* BRLogsDataSource.m in Sources */,
