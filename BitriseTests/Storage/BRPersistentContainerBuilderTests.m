@@ -11,15 +11,18 @@
 #import "Expecta/Expecta.h"
 
 #import "BRPersistentContainerBuilder.h"
+#import "BRMockBuilder.h"
 
 @interface BRPersistentContainerBuilderTests : XCTestCase
+
+@property (strong, nonatomic) BRMockBuilder *mockBuilder;
 
 @end
 
 @implementation BRPersistentContainerBuilderTests
 
 - (void)setUp {
-    
+    [super setUp];
 }
 
 - (void)tearDown {
@@ -63,15 +66,27 @@
 #pragma mark - Store migration
 
 - (void)testBaseMigrationFlow {
-    /**
-     - Build container
-     - Add entry
-     - Call migration
-     - Build another container
-     - Check entry
-     */
+    // Build container
+    id envMock = OCMClassMock([BREnvironment class]);
+    BRPersistentContainerBuilder *builder = [[BRPersistentContainerBuilder alloc] initWithEnv:envMock];
+    NSPersistentContainer *container = [builder buildContainer];
+    self.mockBuilder = [[BRMockBuilder alloc] initWithContext:container.viewContext];
     
-    //...
+    // Add entry
+    BRBuild *build = [self.mockBuilder buildWithSlug:kBuildSlug1 status:@(0) app:nil];
+    
+    // Call migration
+//    [builder migrateStoreToAppGroupContainer];
+    [builder forceMigrateStoreToAppGroupContainer];
+    
+    // Build another container
+    NSPersistentContainer *migratedContainer = [builder buildContainer];
+    self.mockBuilder = [[BRMockBuilder alloc] initWithContext:migratedContainer.viewContext];
+    
+    // Check entry
+    BRBuild *migratedBuild = [self.mockBuilder buildWithSlug:kBuildSlug1];
+    
+    expect(migratedBuild).toNot.beNil();
 }
 
 @end

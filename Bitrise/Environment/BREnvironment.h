@@ -12,6 +12,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, BRAppVersion) {
+    BRAppVersion_1_1_0 = 110,
+    BRAppVersion_1_2_0 = 120,
+    BRAppVersion_2_0_0 = 200
+};
+
 @interface BREnvironment : NSObject
 
 #if TARGET_OS_OSX
@@ -29,6 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Autorun -
 - (BOOL)autolaunchEnabled;
 - (void)toggleAutolaunch;
+
+#pragma mark - CoreData Store -
+- (BOOL)storeMigrationRequired;
+- (NSURL *)storeURL;
+- (NSURL *)storeURLForTVApp;
+- (NSURL *)storeURLForMacOSApp;
+- (NSURL *)storeURLForAppGroup;
 
 #if TARGET_OS_OSX
 #pragma mark - App control -

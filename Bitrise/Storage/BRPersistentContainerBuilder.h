@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Migration API
 - (void)migrateStoreToAppGroupContainer;
+- (void)forceMigrateStoreToAppGroupContainer;
 
 @end
 
