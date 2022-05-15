@@ -23,9 +23,9 @@
     if (self = [super init]) {
         _environment = environment;
         
-        if ([_environment storeMigrationRequired]) {
-            [self migrateStoreToAppGroupContainer];
-        }
+//        if ([_environment storeMigrationRequired]) {
+//            [self migrateStoreToAppGroupContainer];
+//        }
     }
     
     return self;

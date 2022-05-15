@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, BRAppVersion) {
 #pragma mark - Info -
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
+- (BRAppVersion)appVersion;
 
 #pragma mark - Autorun -
 - (BOOL)autolaunchEnabled;

@@ -47,7 +47,6 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 
 - (BOOL)isFirstLaunch {
     return ![[NSUserDefaults standardUserDefaults] boolForKey:kBRFirstLaunchKey];
-        
 }
 
 - (NSString *)versionNumber {
@@ -59,7 +58,7 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 }
 
 - (BRAppVersion)appVersion {
-    // @TODO: Conver version number to enum option
+    // @TODO: Convert version number to enum option
     //...
     return BRAppVersion_2_0_0;
 }
