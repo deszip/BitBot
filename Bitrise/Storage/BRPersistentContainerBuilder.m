@@ -23,9 +23,9 @@
     if (self = [super init]) {
         _environment = environment;
         
-//        if ([_environment storeMigrationRequired]) {
-//            [self migrateStoreToAppGroupContainer];
-//        }
+        if ([_environment storeMigrationRequired]) {
+            [self migrateStoreToAppGroupContainer];
+        }
     }
     
     return self;
@@ -132,53 +132,6 @@
 }
 
 #pragma mark - Utilities -
-
-//- (NSURL *)storeURL {
-//#if TARGET_OS_OSX
-////    return [self storeURLForAppGroup];
-//    return [self storeURLForMacOSApp];
-//#else
-//    return [self storeURLForTVApp];
-//#endif
-//}
-//
-//- (NSURL *)storeURLAt:(NSSearchPathDirectory)containerRoot {
-//    NSURL *appsURL = [[NSFileManager defaultManager] URLsForDirectory:containerRoot inDomains:NSUserDomainMask][0];
-//    NSURL *appDirectoryURL = [appsURL URLByAppendingPathComponent:@"Bitrise"];
-//
-//    BOOL isDir;
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:appDirectoryURL.path isDirectory:&isDir]) {
-//        NSError *error;
-//        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:appDirectoryURL.path withIntermediateDirectories:YES attributes:nil error:&error];
-//        if (!result) {
-//            BRLog(LL_WARN, LL_STORAGE, @"Failed to create app directory: %@", error);
-//            return nil;
-//        }
-//    }
-//
-//    return [appDirectoryURL URLByAppendingPathComponent:@"bitrise.sqlite"];
-//}
-//
-//- (NSURL *)storeURLForTVApp {
-//    return [self storeURLAt:NSCachesDirectory];
-//}
-//
-//- (NSURL *)storeURLForMacOSApp {
-//    return [self storeURLAt:NSApplicationSupportDirectory];
-//}
-//
-//- (NSURL *)storeURLForAppGroup {
-//    NSURL *groupContainerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.bitbot"];
-//    BOOL isDir = NO;
-//    BOOL containerExists = [[NSFileManager defaultManager] fileExistsAtPath:groupContainerURL.path isDirectory:&isDir];
-//
-//    if (isDir && containerExists) {
-//        return [groupContainerURL URLByAppendingPathComponent:@"bitrise.sqlite"];
-//    }
-//
-//    return nil;
-//}
-//
 
 - (BOOL)dropStoreAtURL:(NSURL *)storeURL error:(NSError * __autoreleasing *)error {
     if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL.path]) {

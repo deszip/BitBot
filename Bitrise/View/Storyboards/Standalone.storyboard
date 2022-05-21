@@ -478,7 +478,7 @@
             <objects>
                 <splitViewController id="bSF-uz-oea" customClass="BRSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="f5b-8c-TJE"/>
+                        <splitViewItem holdingPriority="1000" behavior="sidebar" id="f5b-8c-TJE"/>
                         <splitViewItem id="3Ot-NG-m7n"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="xtD-C1-R9a">

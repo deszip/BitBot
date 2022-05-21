@@ -31,6 +31,10 @@
 - (instancetype)init {
     if (self = [super init]) {
 
+        if (NSClassFromString(@"XCTestCase") != nil) {
+            return self;
+        }
+        
         [[BRAnalytics analytics] start];
         
     #if DEBUG

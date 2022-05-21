@@ -127,20 +127,6 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
     return nil;
 }
 
-//- (BOOL)dropStoreAtURL:(NSURL *)storeURL error:(NSError * __autoreleasing *)error {
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL.path]) {
-//        NSURL *shmURL = [NSURL fileURLWithPath:[[storeURL path] stringByAppendingString:@"-shm"]];
-//        NSURL *walURL = [NSURL fileURLWithPath:[[storeURL path] stringByAppendingString:@"-wal"]];
-//
-//        return
-//        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:error] &&
-//        [[NSFileManager defaultManager] removeItemAtURL:shmURL error:error] &&
-//        [[NSFileManager defaultManager] removeItemAtURL:walURL error:error];
-//    }
-//
-//    return NO;
-//}
-
 #pragma mark - App control -
 
 #if TARGET_OS_OSX
