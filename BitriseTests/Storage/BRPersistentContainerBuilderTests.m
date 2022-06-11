@@ -37,6 +37,7 @@
 
 - (void)testContainerHasProperSettings {
     id envMock = OCMClassMock([BREnvironment class]);
+    OCMStub([envMock storeURL]).andReturn([NSURL fileURLWithPath:@"/tmp"]);
     BRPersistentContainerBuilder *builder = [[BRPersistentContainerBuilder alloc] initWithEnv:envMock];
     
     NSPersistentContainer *container = [builder buildContainer];
@@ -121,6 +122,7 @@
     BREnvironment *env_2 = [[BREnvironment alloc] initWithAutorun:autorunMock_2];
     id envMock_2 = OCMPartialMock(env_2);
     OCMStub([envMock_2 appVersion]).andReturn(BRAppVersion_2_0_0);
+    OCMStub([envMock_2 isFirstLaunch]).andReturn(YES);
     
     // This will trigger store migration because app version stubbed to 2.0.0
     BRPersistentContainerBuilder *builder_2 = [[BRPersistentContainerBuilder alloc] initWithEnv:envMock_2];
