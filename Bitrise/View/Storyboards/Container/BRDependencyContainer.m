@@ -8,7 +8,7 @@
 
 #import "BRDependencyContainer.h"
 
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRCellBuilder.h"
 #import "BRAutorun.h"
 #import "BRCommandFactory.h"
@@ -23,7 +23,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        BRContainerBuilder *containerBuilder = [BRContainerBuilder new];
+        BRPersistentContainerBuilder *containerBuilder = [[BRPersistentContainerBuilder alloc] initWithEnv:[self appEnvironment]];
         _persistenceContainer = [containerBuilder buildContainer];
     }
     
@@ -78,13 +78,19 @@
 #pragma mark - BREnvironmentProvider -
 
 - (BREnvironment *)appEnvironment {
-    BRNotificationDispatcher *nDispatcher = [[BRNotificationDispatcher alloc] initWithDefaults:[NSUserDefaults standardUserDefaults]
-                                                                                            nc:[NSUserNotificationCenter defaultUserNotificationCenter]];
-    return [[BREnvironment alloc] initWithAutorun:[BRAutorun new] notificationsDispatcher:nDispatcher];
+    return [[BREnvironment alloc] initWithAutorun:[BRAutorun new]];
 }
 
 - (NSNotificationCenter *)notificationCenter {
     return [NSNotificationCenter defaultCenter];
+}
+
+- (BRNotificationDispatcher *)notificationDispatcher {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    return [[BRNotificationDispatcher alloc] initWithDefaults:[NSUserDefaults standardUserDefaults]
+                                                           nc:[NSUserNotificationCenter defaultUserNotificationCenter]];
+#pragma clang diagnostic pop
 }
 
 - (BRLauncher *)appLauncher {

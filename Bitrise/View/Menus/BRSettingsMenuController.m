@@ -25,16 +25,19 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 
 @property (strong, nonatomic) BREnvironment *environment;
 @property (strong, nonatomic) BRLauncher *launcher;
+@property (strong, nonatomic) BRNotificationDispatcher *notificationsDispatcher;
+
 @property (weak, nonatomic) NSMenu *menu;
 
 @end
 
 @implementation BRSettingsMenuController
 
-- (instancetype)initWithEnvironment:(BREnvironment *)environment appLauncher:(BRLauncher *)appLauncher {
+- (instancetype)initWithEnvironment:(BREnvironment *)environment appLauncher:(BRLauncher *)appLauncher notificationsDispatcher:(BRNotificationDispatcher *)notificationsDispatcher {
     if (self = [super init]) {
         _environment = environment;
         _launcher = appLauncher;
+        _notificationsDispatcher = notificationsDispatcher;
     }
     
     return self;
@@ -77,7 +80,7 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
 
 - (void)toggleNotifications {
     [[BRAnalytics analytics] trackNotificationsToggle];
-    [self.environment toggleNotifications];
+    [self.notificationsDispatcher toggleNotifications];
 }
 
 - (void)toggleAnalytics {
@@ -98,7 +101,7 @@ typedef NS_ENUM(NSUInteger, BRSettingsMenuItem) {
     }
     
     if (menuItem.tag == BRSettingsMenuItemNotifications) {
-        [menuItem setState:[self.environment notificationsEnabled] ? NSControlStateValueOn : NSControlStateValueOff];
+        [menuItem setState:[self.notificationsDispatcher notificationsEnabled] ? NSControlStateValueOn : NSControlStateValueOff];
     }
     
     if (menuItem.tag == BRSettingsMenuItemAnalytics) {

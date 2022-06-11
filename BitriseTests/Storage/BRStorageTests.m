@@ -15,7 +15,7 @@
 #import "BRMockBuilder.h"
 #import "BRLogStubBuilder.h"
 
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRStorage.h"
 
 @interface BRStorageTests : XCTestCase
@@ -34,7 +34,8 @@
 - (void)setUp {
     [super setUp];
 
-    self.container = [[BRContainerBuilder new] buildContainerOfType:NSInMemoryStoreType];
+    BRPersistentContainerBuilder *containerBuilder = [[BRPersistentContainerBuilder alloc] initWithEnv:OCMClassMock([BREnvironment class])];
+    self.container = [containerBuilder buildContainerOfType:NSInMemoryStoreType];
     self.context = [self.container newBackgroundContext];
     self.mockBuilder = [[BRMockBuilder alloc] initWithContext:self.context];
     self.logStubBuilder = [BRLogStubBuilder new];

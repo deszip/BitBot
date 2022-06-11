@@ -13,6 +13,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (strong, nonatomic, readonly) BRDependencyContainer *dependencyContainer;
+- (void)hidePopover;
 
 @end
 

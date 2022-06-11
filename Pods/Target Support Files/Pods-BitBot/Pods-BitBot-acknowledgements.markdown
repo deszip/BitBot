@@ -29,7 +29,7 @@ SOFTWARE.
 
 ## Mixpanel
 
-Copyright 2021 Mixpanel, Inc.
+Copyright 2022 Mixpanel, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
@@ -292,7 +292,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## SDWebImage
 
-Copyright (c) 2009-2018 Olivier Poitrey rs@dailymotion.com
+Copyright (c) 2009-2020 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

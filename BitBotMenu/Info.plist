@@ -4,6 +4,8 @@
 <dict>
 	<key>ATSApplicationFontsPath</key>
 	<string>Fonts/</string>
+	<key>CFBundleVersion</key>
+	<string>79</string>
 	<key>LSUIElement</key>
 	<true/>
 </dict>

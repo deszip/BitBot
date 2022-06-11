@@ -11,7 +11,7 @@
 #import "Expecta/Expecta.h"
 
 #import <CoreData/CoreData.h>
-#import "BRContainerBuilder.h"
+#import "BRPersistentContainerBuilder.h"
 #import "BRMockBuilder.h"
 
 #import "BRAppsDataSource.h"
@@ -32,7 +32,8 @@
 - (void)setUp {
     [super setUp];
     
-    self.containerMock = [[BRContainerBuilder new] buildContainerOfType:NSInMemoryStoreType];
+    BRPersistentContainerBuilder *containerBuilder = [[BRPersistentContainerBuilder alloc] initWithEnv:OCMClassMock([BREnvironment class])];
+    self.containerMock = [containerBuilder buildContainerOfType:NSInMemoryStoreType];
     self.cellBuilderMock = OCMClassMock([BRCellBuilder class]);
     
     self.dataSource = [[BRAppsDataSource alloc] initWithContainer:self.containerMock cellBuilder:self.cellBuilderMock];

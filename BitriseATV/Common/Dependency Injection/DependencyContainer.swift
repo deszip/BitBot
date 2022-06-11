@@ -18,7 +18,7 @@ final class DependencyContainer {
     static let shared = DependencyContainer()
     
     private init() {
-        _persistentContainer = BRContainerBuilder().buildContainer()
+        _persistentContainer = BRPersistentContainerBuilder(env: BREnvironment()).buildContainer()
     }
     
     func store() -> Store<AppState, Action> {
