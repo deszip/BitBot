@@ -13,10 +13,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, BRAppVersion) {
+    BRAppVersion_Undefined = 0,
+    
     BRAppVersion_1_1_0 = 110,
     BRAppVersion_1_2_0 = 120,
     BRAppVersion_2_0_0 = 200
 };
+
+static NSString * const kBRAppVersion_1_1_0 = @"1.1.0";
+static NSString * const kBRAppVersion_1_2_0 = @"1.2.0";
+static NSString * const kBRAppVersion_2_0_0 = @"2.0.0";
 
 @interface BREnvironment : NSObject
 
@@ -32,6 +38,7 @@ typedef NS_ENUM(NSUInteger, BRAppVersion) {
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
 - (BRAppVersion)appVersion;
+- (BOOL)isFirstLaunch;
 
 #pragma mark - Autorun -
 - (BOOL)autolaunchEnabled;

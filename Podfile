@@ -5,7 +5,7 @@ def sharedPods
 end
 
 def macosPods
-  pod 'SDWebImage', '~> 5.0.6'
+  pod 'SDWebImage', '~> 5.0'
   sharedPods()
 end
 

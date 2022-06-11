@@ -58,9 +58,11 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 }
 
 - (BRAppVersion)appVersion {
-    // @TODO: Convert version number to enum option
-    //...
-    return BRAppVersion_2_0_0;
+    if ([[self versionNumber] isEqualToString:kBRAppVersion_1_1_0]) return BRAppVersion_1_1_0;
+    if ([[self versionNumber] isEqualToString:kBRAppVersion_1_2_0]) return BRAppVersion_1_2_0;
+    if ([[self versionNumber] isEqualToString:kBRAppVersion_2_0_0]) return BRAppVersion_2_0_0;
+    
+    return BRAppVersion_Undefined;
 }
 
 #pragma mark - Autorun -
@@ -76,7 +78,7 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 #pragma mark - CoreData Store -
 
 - (BOOL)storeMigrationRequired {
-    return [self appVersion] >= BRAppVersion_2_0_0;
+    return [self appVersion] >= BRAppVersion_2_0_0 && [self isFirstLaunch];
 }
 
 - (NSURL *)storeURL {
