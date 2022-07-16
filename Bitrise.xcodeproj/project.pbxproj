@@ -2260,6 +2260,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AM5334753U;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = AM5334753U;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Bitrise/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2272,6 +2273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot MAS Profile";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "BitBot MAS Profile";
 			};
 			name = Release;
 		};
