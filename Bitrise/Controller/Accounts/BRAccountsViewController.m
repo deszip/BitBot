@@ -187,15 +187,15 @@
     }];
 }
 
-- (void)removeSelectedAccount {
-    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
-    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
-        BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
-                                                                              storage:self.storage
-                                                                                slug:[(BTRAccount *)selectedItem slug]];
-        [command execute:nil];
-    }
-}
+//- (void)removeSelectedAccount {
+//    id selectedItem = [self.outlineView itemAtRow:[self.outlineView clickedRow]];
+//    if ([selectedItem isKindOfClass:[BTRAccount class]]) {
+//        BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api
+//                                                                              storage:self.storage
+//                                                                                slug:[(BTRAccount *)selectedItem slug]];
+//        [command execute:nil];
+//    }
+//}
 
 - (void)removeAccountWithSlug:(NSString *)slug {
     BRRemoveAccountCommand *command = [[BRRemoveAccountCommand alloc] initWithAPI:self.api

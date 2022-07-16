@@ -41,19 +41,25 @@
     NSString *accSlug = notification.userInfo[@"AccountID"];
     [self.accountObserver startAccountObserving:accSlug callback:^(BTRAccount *account) {
         BRLog(LL_VERBOSE, LL_UI, @"Account selected: %@", account);
-        [self update:account];
+        [self updateAccount:account];
     }];
 }
 
 - (void)handleAppSelection:(NSNotification *)notification {
-    //NSString *appSlug = notification.userInfo[@"AppID"];
+    NSString *appSlug = notification.userInfo[@"AppID"];
+    BRLog(LL_VERBOSE, LL_UI, @"App selected: %@", appSlug);
+    
     // @TODO: Add app observer...
 }
 
 #pragma mark - UI update
 
-- (void)update:(BTRAccount *)account {
+- (void)updateAccount:(BTRAccount *)account {
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL] placeholderImage:[NSImage imageNamed:@"avatar-default"]];
+}
+
+- (void)updateApp:(BRApp *)app {
+    //...
 }
 
 @end

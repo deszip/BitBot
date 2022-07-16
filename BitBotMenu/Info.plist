@@ -5,7 +5,7 @@
 	<key>ATSApplicationFontsPath</key>
 	<string>Fonts/</string>
 	<key>CFBundleVersion</key>
-	<string>81</string>
+	<string>87</string>
 	<key>LSUIElement</key>
 	<true/>
 </dict>
