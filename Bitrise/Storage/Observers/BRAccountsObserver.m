@@ -73,7 +73,7 @@
 - (void)fetch {
     NSError *fetchError = nil;
     if (![self.accountsFRC performFetch:&fetchError]) {
-        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch apps: %@", fetchError);
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch accounts: %@", fetchError);
     }
 }
 

@@ -53,6 +53,10 @@
     return [[BRAccountsObserver alloc] initWithContext:self.persistenceContainer.viewContext];
 }
 
+- (BRAppsObserver *)appsObserver {
+    return [[BRAppsObserver alloc] initWithContext:self.persistenceContainer.viewContext];
+}
+
 #pragma mark - BRInteractionProvider -
 
 - (BRSyncEngine *)syncEngine {

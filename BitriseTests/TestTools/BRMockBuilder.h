@@ -55,6 +55,10 @@ static NSString * const kBuildSlug4 = @"build_slug_4";
 
 - (BRBuild *)buildWithSlug:(NSString *)slug;
 
+#pragma mark - CD Models Update -
+
+- (BRApp *)updateApp:(BRApp *)app;
+
 @end
 
 NS_ASSUME_NONNULL_END

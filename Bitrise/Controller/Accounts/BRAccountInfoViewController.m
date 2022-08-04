@@ -13,10 +13,12 @@
 #import "BRLogger.h"
 #import "BTRAccount+CoreDataClass.h"
 #import "BRApp+CoreDataClass.h"
+#import "BRAppsObserver.h"
 
 @interface BRAccountInfoViewController ()
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
+@property (strong, nonatomic) BRAppsObserver *appsObserver;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter;
 
 @property (weak) IBOutlet NSImageView *avatarImageView;
@@ -29,6 +31,7 @@
     [super viewDidAppear];
     
     _accountObserver = [self.dependencyContainer accountsObserver];
+    _appsObserver = [self.dependencyContainer appsObserver];
     
     _notificationCenter = [self.dependencyContainer notificationCenter];
     [self.notificationCenter addObserver:self selector:@selector(handleAccountSelection:) name:kAccountSelectedNotification object:nil];
@@ -49,7 +52,9 @@
     NSString *appSlug = notification.userInfo[@"AppID"];
     BRLog(LL_VERBOSE, LL_UI, @"App selected: %@", appSlug);
     
-    // @TODO: Add app observer...
+    [self.appsObserver startAppObserving:appSlug callback:^(BRApp *app) {
+        [self updateApp:app];
+    }];
 }
 
 #pragma mark - UI update
@@ -59,7 +64,7 @@
 }
 
 - (void)updateApp:(BRApp *)app {
-    //...
+    
 }
 
 @end

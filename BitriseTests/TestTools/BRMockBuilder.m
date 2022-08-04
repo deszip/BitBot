@@ -100,4 +100,13 @@
     return builds.firstObject;
 }
 
+#pragma mark - CD Models Update -
+
+- (BRApp *)updateApp:(BRApp *)app {
+    app.title = [[NSUUID UUID] UUIDString];
+    [self.context save:nil];
+    
+    return app;
+}
+
 @end
