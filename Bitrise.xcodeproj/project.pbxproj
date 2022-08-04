@@ -130,6 +130,8 @@
 		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
 		D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */; };
 		D931DFE5289C4E9D008AE272 /* BRAppsObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D931DFE4289C4E9D008AE272 /* BRAppsObserverTests.m */; };
+		D931DFE8289C5E50008AE272 /* BRAccountsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D931DFE7289C5E50008AE272 /* BRAccountsTabViewController.m */; };
+		D931DFEB289C5F33008AE272 /* BRAppInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D931DFEA289C5F33008AE272 /* BRAppInfoViewController.m */; };
 		D943B24B24EAF1AB00084C59 /* Proxima Nova Alt Bold.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
 		D943B24C24EAF1AB00084C59 /* Proxima Nova Alt Light.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		D943B24D24EAF1AB00084C59 /* Proxima Nova Alt Thin.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
@@ -724,6 +726,10 @@
 		D91BD9E225A1BF1D00EF8D66 /* BitBot.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BitBot.xctestplan; path = BitBotATVTests/BitBot.xctestplan; sourceTree = SOURCE_ROOT; };
 		D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BitBotATV.xctestplan; sourceTree = "<group>"; };
 		D931DFE4289C4E9D008AE272 /* BRAppsObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppsObserverTests.m; sourceTree = "<group>"; };
+		D931DFE6289C5E50008AE272 /* BRAccountsTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAccountsTabViewController.h; sourceTree = "<group>"; };
+		D931DFE7289C5E50008AE272 /* BRAccountsTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsTabViewController.m; sourceTree = "<group>"; };
+		D931DFE9289C5F33008AE272 /* BRAppInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppInfoViewController.h; sourceTree = "<group>"; };
+		D931DFEA289C5F33008AE272 /* BRAppInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppInfoViewController.m; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -1285,6 +1291,10 @@
 				0E8DFB4F21DA2E7700E7E5AC /* BRKeyRequestContext.m */,
 				D964CE75274A53EC007157FB /* BRAccountInfoViewController.h */,
 				D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */,
+				D931DFE6289C5E50008AE272 /* BRAccountsTabViewController.h */,
+				D931DFE7289C5E50008AE272 /* BRAccountsTabViewController.m */,
+				D931DFE9289C5F33008AE272 /* BRAppInfoViewController.h */,
+				D931DFEA289C5F33008AE272 /* BRAppInfoViewController.m */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -2368,8 +2378,10 @@
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,
 				0E51715F21D20E96000D470E /* BRActionDispatcher.m in Sources */,
 				0E8DFB4D21DA28EC00E7E5AC /* BRKeyInputViewController.m in Sources */,
+				D931DFEB289C5F33008AE272 /* BRAppInfoViewController.m in Sources */,
 				0ECFF27A21CD1C10005EC4A4 /* BRSyncDiff.m in Sources */,
 				0EDC5DE721BBFB0A00AD41FE /* BRSyncOperation.m in Sources */,
+				D931DFE8289C5E50008AE272 /* BRAccountsTabViewController.m in Sources */,
 				0EAB9D7C221F0A1A00A21D23 /* BRProgressObserver.m in Sources */,
 				D9E6005027137ABF0057AB8B /* BRWindowController.m in Sources */,
 				0E8DFB4A21D7A7D700E7E5AC /* BRAccountsMenuController.m in Sources */,

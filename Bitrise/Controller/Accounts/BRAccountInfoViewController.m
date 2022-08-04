@@ -35,7 +35,7 @@
     
     _notificationCenter = [self.dependencyContainer notificationCenter];
     [self.notificationCenter addObserver:self selector:@selector(handleAccountSelection:) name:kAccountSelectedNotification object:nil];
-    [self.notificationCenter addObserver:self selector:@selector(handleAppSelection:) name:kAppSelectedNotification object:nil];
+//    [self.notificationCenter addObserver:self selector:@selector(handleAppSelection:) name:kAppSelectedNotification object:nil];
 }
 
 #pragma mark - Notifications -
@@ -48,14 +48,14 @@
     }];
 }
 
-- (void)handleAppSelection:(NSNotification *)notification {
-    NSString *appSlug = notification.userInfo[@"AppID"];
-    BRLog(LL_VERBOSE, LL_UI, @"App selected: %@", appSlug);
-    
-    [self.appsObserver startAppObserving:appSlug callback:^(BRApp *app) {
-        [self updateApp:app];
-    }];
-}
+//- (void)handleAppSelection:(NSNotification *)notification {
+//    NSString *appSlug = notification.userInfo[@"AppID"];
+//    BRLog(LL_VERBOSE, LL_UI, @"App selected: %@", appSlug);
+//
+//    [self.appsObserver startAppObserving:appSlug callback:^(BRApp *app) {
+//        [self updateApp:app];
+//    }];
+//}
 
 #pragma mark - UI update
 
@@ -63,8 +63,8 @@
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:account.avatarURL] placeholderImage:[NSImage imageNamed:@"avatar-default"]];
 }
 
-- (void)updateApp:(BRApp *)app {
-    
-}
+//- (void)updateApp:(BRApp *)app {
+//    //...
+//}
 
 @end

@@ -499,7 +499,7 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="pXK-dp-5uX" customClass="BRStandaloneTabViewController" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem identifier="" id="mos-C4-Ljs"/>
+                        <tabViewItem id="tqP-Z6-EVi"/>
                         <tabViewItem identifier="" id="K8v-9v-wDy"/>
                         <tabViewItem identifier="" id="VxS-ea-muu"/>
                         <tabViewItem id="aEi-uc-5o0"/>
@@ -514,7 +514,7 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="fhz-fr-YRK" id="y97-dn-5ln"/>
-                        <segue destination="Xi6-sO-g7e" kind="relationship" relationship="tabItems" id="zGJ-08-YX3"/>
+                        <segue destination="Zfd-Jn-Xak" kind="relationship" relationship="tabItems" id="VdJ-MW-Dc0"/>
                         <segue destination="hEf-mh-bsV" kind="relationship" relationship="tabItems" id="Ojv-us-nvD"/>
                         <segue destination="5c8-yq-Ynp" kind="relationship" relationship="tabItems" id="hGu-EH-Mrw"/>
                         <segue destination="gKG-IJ-7Xc" kind="relationship" relationship="tabItems" id="Za6-rF-0U8"/>
@@ -624,7 +624,7 @@
                 </viewController>
                 <customObject id="Tsb-vk-cj6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="2606"/>
+            <point key="canvasLocation" x="-174" y="3065"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tqh-2r-riX">
@@ -794,6 +794,134 @@
                 <customObject id="jyh-BQ-Unr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1472" y="2606"/>
+        </scene>
+        <!--Accounts Tab View Controller-->
+        <scene sceneID="q2j-2B-e2m">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="Zfd-Jn-Xak" customClass="BRAccountsTabViewController" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem id="IiK-fl-EkW"/>
+                        <tabViewItem identifier="" id="gr7-yy-gfo"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="w8G-oe-Tfa">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="Zfd-Jn-Xak" id="bXs-1U-uEL"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="w8G-oe-Tfa" id="2Vs-pm-Pmc"/>
+                        <segue destination="Xi6-sO-g7e" kind="relationship" relationship="tabItems" id="noH-w2-JOh"/>
+                        <segue destination="ZEj-t0-JLb" kind="relationship" relationship="tabItems" id="ux8-gB-K6K"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="O3N-Os-La9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="2606"/>
+        </scene>
+        <!--App Info View Controller-->
+        <scene sceneID="f7v-rX-Se5">
+            <objects>
+                <viewController id="ZEj-t0-JLb" customClass="BRAppInfoViewController" sceneMemberID="viewController">
+                    <view key="view" id="qtP-SR-WdR">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uE1-m9-2OU">
+                                <rect key="frame" x="20" y="128" width="410" height="100"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PlZ-fb-atq">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="2RI-pN-5fW"/>
+                                            <constraint firstAttribute="height" constant="100" id="Rgf-BY-cXH"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="iF4-U7-YXh"/>
+                                    </imageView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4op-Zq-vRU">
+                                        <rect key="frame" x="120" y="15" width="290" height="85"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gxe-tn-rwU">
+                                                <rect key="frame" x="-2" y="69" width="66" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Username" id="bHo-Mu-pT1">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kCf-GE-Nzo">
+                                                <rect key="frame" x="-2" y="46" width="37" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Email" id="tt6-XV-mWZ">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dli-1F-h0d">
+                                                <rect key="frame" x="-2" y="23" width="75" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Created at: " id="B9u-KA-rA8">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OLj-Lb-DNZ">
+                                                <rect key="frame" x="-2" y="0.0" width="59" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Apps: 23" id="ugy-dW-P52">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mjq-iK-Ulv">
+                                <rect key="frame" x="0.0" y="248" width="450" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="ukN-X3-lwV"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mjq-iK-Ulv" secondAttribute="trailing" id="2aW-hG-ccj"/>
+                            <constraint firstAttribute="trailing" secondItem="uE1-m9-2OU" secondAttribute="trailing" constant="20" id="6mR-54-KO4"/>
+                            <constraint firstItem="Mjq-iK-Ulv" firstAttribute="leading" secondItem="qtP-SR-WdR" secondAttribute="leading" id="Q1X-D2-2BT"/>
+                            <constraint firstItem="uE1-m9-2OU" firstAttribute="top" secondItem="Mjq-iK-Ulv" secondAttribute="bottom" constant="20" id="Y1d-fj-rHC"/>
+                            <constraint firstItem="Mjq-iK-Ulv" firstAttribute="top" secondItem="qtP-SR-WdR" secondAttribute="top" id="dV2-7A-m8U"/>
+                            <constraint firstItem="uE1-m9-2OU" firstAttribute="leading" secondItem="qtP-SR-WdR" secondAttribute="leading" constant="20" id="sR3-v2-G74"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appIcon" destination="PlZ-fb-atq" id="snM-7c-jIE"/>
+                    </connections>
+                </viewController>
+                <customObject id="knH-es-UE4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="303" y="3065"/>
         </scene>
     </scenes>
     <resources>
