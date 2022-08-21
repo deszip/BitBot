@@ -25,8 +25,8 @@
 
 @implementation BRAppInfoViewController
 
-- (void)viewDidAppear {
-    [super viewDidAppear];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     _appsObserver = [self.dependencyContainer appsObserver];
     _notificationCenter = [self.dependencyContainer notificationCenter];

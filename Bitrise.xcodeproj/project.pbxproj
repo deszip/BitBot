@@ -1049,7 +1049,6 @@
 			isa = PBXGroup;
 			children = (
 				D903838E27E66D38000A6F65 /* Settings */,
-				D9069EC0274ACC9300C626BF /* Standalone */,
 				D9A9CB4E271315FE00E7CF43 /* Generic */,
 				0EAB9D79221F099100A21D23 /* Accounts */,
 				0EAB9D78221F096F00A21D23 /* Logs */,
@@ -1450,17 +1449,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		D9069EC0274ACC9300C626BF /* Standalone */ = {
-			isa = PBXGroup;
-			children = (
-				D9069EBD274AC6B100C626BF /* BRStandaloneWindowController.h */,
-				D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */,
-				D9069EC1274ACCBC00C626BF /* BRStandaloneTabViewController.h */,
-				D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */,
-			);
-			path = Standalone;
-			sourceTree = "<group>";
-		};
 		D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1599,6 +1587,10 @@
 		D9A9CB4E271315FE00E7CF43 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				D9069EBD274AC6B100C626BF /* BRStandaloneWindowController.h */,
+				D9069EBE274AC6B100C626BF /* BRStandaloneWindowController.m */,
+				D9069EC1274ACCBC00C626BF /* BRStandaloneTabViewController.h */,
+				D9069EC2274ACCBC00C626BF /* BRStandaloneTabViewController.m */,
 				D9E6004E27137ABF0057AB8B /* BRWindowController.h */,
 				D9E6004F27137ABF0057AB8B /* BRWindowController.m */,
 				0E73598520EF93B8007E15A7 /* BRViewController.h */,
