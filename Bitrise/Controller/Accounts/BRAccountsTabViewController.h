@@ -6,11 +6,11 @@
 //  Copyright © 2022 Bitrise. All rights reserved.
 //
 
-#import "BRStandaloneTabViewController.h"
+#import "BRTabViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BRAccountsTabViewController : BRStandaloneTabViewController
+@interface BRAccountsTabViewController : BRTabViewController
 
 @end
 

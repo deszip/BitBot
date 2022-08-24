@@ -8,6 +8,8 @@
 
 #import "BRAccountsTabViewController.h"
 
+#import "BRAccountsDataSource.h"
+
 @interface BRAccountsTabViewController ()
 
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter;
