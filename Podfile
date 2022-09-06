@@ -2,6 +2,7 @@ def sharedPods
   pod 'EasyMapping'
   pod 'Mixpanel'
   pod 'Sentry', :git => 'https://github.com/getsentry/sentry-cocoa.git', :tag => '7.12.0'
+  pod 'Charts'
 end
 
 def macosPods

@@ -1,4 +1,8 @@
 PODS:
+  - Charts (4.0.3):
+    - Charts/Core (= 4.0.3)
+  - Charts/Core (4.0.3):
+    - SwiftAlgorithms (~> 1.0)
   - EasyMapping (0.24.0):
     - EasyMapping/Core (= 0.24.0)
   - EasyMapping/Core (0.24.0)
@@ -14,8 +18,10 @@ PODS:
   - Sentry (7.12.0):
     - Sentry/Core (= 7.12.0)
   - Sentry/Core (7.12.0)
+  - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
+  - Charts
   - EasyMapping
   - Expecta (~> 1.0.6)
   - Kingfisher/SwiftUI
@@ -26,12 +32,14 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Charts
     - EasyMapping
     - Expecta
     - Kingfisher
     - Mixpanel
     - OCMock
     - SDWebImage
+    - SwiftAlgorithms
 
 EXTERNAL SOURCES:
   Sentry:
@@ -44,6 +52,7 @@ CHECKOUT OPTIONS:
     :tag: 7.12.0
 
 SPEC CHECKSUMS:
+  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
   EasyMapping: a86b28c64613e3b5784e05c42a40da7b103ef41c
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
@@ -51,7 +60,8 @@ SPEC CHECKSUMS:
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   Sentry: d2f889ed77bd7f8c51b1934dbabddbc553790630
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 3673f792a9b737a764674ae561740929a18d1e74
+PODFILE CHECKSUM: 4b6e15d28ebf9027d0e65c5c208f7d6524dfc284
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

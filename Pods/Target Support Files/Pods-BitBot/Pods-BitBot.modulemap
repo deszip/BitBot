@@ -1,0 +1,6 @@
+module Pods_BitBot {
+  umbrella header "Pods-BitBot-umbrella.h"
+
+  export *
+  module * { export * }
+}

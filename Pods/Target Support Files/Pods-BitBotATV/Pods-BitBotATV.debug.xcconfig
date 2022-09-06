@@ -5,14 +5,14 @@ CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 GCC_ENABLE_CPP_EXCEPTIONS = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) MIXPANEL_TVOS
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/EasyMapping" "${PODS_ROOT}/Headers/Public/Kingfisher" "${PODS_ROOT}/Headers/Public/Mixpanel" "${PODS_ROOT}/Headers/Public/Sentry"
-LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" "${PODS_CONFIGURATION_BUILD_DIR}/EasyMapping-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher" "${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/Sentry-tvOS" /usr/lib/swift
-OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.modulemap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"EasyMapping-tvOS" -l"Kingfisher" -l"Mixpanel-tvOS" -l"Sentry-tvOS" -l"c++" -l"icucore" -l"z" -framework "Accelerate" -framework "CFNetwork" -framework "CoreData" -framework "Foundation" -framework "UIKit"
-OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.modulemap"
+LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" "${PODS_CONFIGURATION_BUILD_DIR}/Charts-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/EasyMapping-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher" "${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/Sentry-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftAlgorithms-tvOS" /usr/lib/swift
+OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Charts-tvOS/Charts.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/SwiftAlgorithms-tvOS/Algorithms.modulemap"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Charts-tvOS" -l"EasyMapping-tvOS" -l"Kingfisher" -l"Mixpanel-tvOS" -l"Sentry-tvOS" -l"SwiftAlgorithms-tvOS" -l"c++" -l"icucore" -l"z" -framework "Accelerate" -framework "CFNetwork" -framework "CoreData" -framework "Foundation" -framework "UIKit"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Charts-tvOS/Charts.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/SwiftAlgorithms-tvOS/Algorithms.modulemap"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
 PODS_XCFRAMEWORKS_BUILD_DIR = $(PODS_CONFIGURATION_BUILD_DIR)/XCFrameworkIntermediates
-SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher"
+SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Charts-tvOS" "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftAlgorithms-tvOS"
 USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

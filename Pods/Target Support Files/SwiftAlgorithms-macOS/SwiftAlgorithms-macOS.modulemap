@@ -1,0 +1,7 @@
+module Algorithms {
+  umbrella header "SwiftAlgorithms-macOS-umbrella.h"
+  exclude header "SwiftAlgorithms-tvOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

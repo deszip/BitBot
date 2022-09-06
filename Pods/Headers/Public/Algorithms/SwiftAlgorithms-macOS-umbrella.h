@@ -1,0 +1,1 @@
+../../../Target Support Files/SwiftAlgorithms-macOS/SwiftAlgorithms-macOS-umbrella.h
