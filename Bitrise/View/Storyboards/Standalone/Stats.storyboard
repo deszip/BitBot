@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="lhI-hr-hlG">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Stats View Controller-->
+        <scene sceneID="gjD-U9-0SD">
+            <objects>
+                <viewController storyboardIdentifier="BRStatsViewController" id="lhI-hr-hlG" customClass="BRStatsViewController" sceneMemberID="viewController">
+                    <view key="view" id="Z5G-En-vxp">
+                        <rect key="frame" x="0.0" y="0.0" width="2846" height="1484"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-1h-2G2">
+                                <rect key="frame" x="10" y="10" width="2826" height="1412"/>
+                                <subviews>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DE3-d1-pd9">
+                                        <rect key="frame" x="0.0" y="1262" width="2826" height="150"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jax-8J-aA3">
+                                                <rect key="frame" x="0.0" y="0.0" width="699" height="150"/>
+                                                <subviews>
+                                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JUf-Nr-0OK">
+                                                        <rect key="frame" x="20" y="20" width="659" height="110"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JK2-eu-WH4">
+                                                                <rect key="frame" x="-2" y="79" width="41" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Builds" id="kdN-Vt-1nz">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MoI-nb-hqZ">
+                                                                <rect key="frame" x="-2" y="39" width="43" height="32"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="12345" id="Mum-Cs-uL7">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xDb-vG-UgG">
+                                                                <rect key="frame" x="-2" y="0.0" width="185" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Compared to 12300 last week" id="72a-w4-oeN">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="JUf-Nr-0OK" firstAttribute="leading" secondItem="jax-8J-aA3" secondAttribute="leading" constant="20" id="OzV-e1-VxW"/>
+                                                    <constraint firstAttribute="bottom" secondItem="JUf-Nr-0OK" secondAttribute="bottom" constant="20" id="cE6-6L-dJg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JUf-Nr-0OK" secondAttribute="trailing" constant="20" id="cIg-3K-b8n"/>
+                                                    <constraint firstItem="JUf-Nr-0OK" firstAttribute="top" secondItem="jax-8J-aA3" secondAttribute="top" constant="20" id="dz2-C6-rnf"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Zz-En-FzU">
+                                                <rect key="frame" x="709" y="0.0" width="699" height="150"/>
+                                                <subviews>
+                                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cxg-qX-Tz7">
+                                                        <rect key="frame" x="20" y="20" width="659" height="110"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I11-c6-p5E">
+                                                                <rect key="frame" x="-2" y="79" width="41" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Builds" id="4Kh-Q0-9sg">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o2e-n6-6k3">
+                                                                <rect key="frame" x="-2" y="39" width="43" height="32"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="12345" id="yDn-lZ-7bW">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yqm-pv-xEy">
+                                                                <rect key="frame" x="-2" y="0.0" width="185" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Compared to 12300 last week" id="TVs-J7-0lj">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="cxg-qX-Tz7" firstAttribute="leading" secondItem="7Zz-En-FzU" secondAttribute="leading" constant="20" id="01G-1n-b16"/>
+                                                    <constraint firstItem="cxg-qX-Tz7" firstAttribute="top" secondItem="7Zz-En-FzU" secondAttribute="top" constant="20" id="3ie-Pb-g2R"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cxg-qX-Tz7" secondAttribute="trailing" constant="20" id="IJK-Gg-eK1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="cxg-qX-Tz7" secondAttribute="bottom" constant="20" id="fdK-2y-qx1"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jvf-ND-gNL">
+                                                <rect key="frame" x="1418" y="0.0" width="699" height="150"/>
+                                                <subviews>
+                                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-5G-F2F">
+                                                        <rect key="frame" x="20" y="20" width="659" height="110"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qtx-6y-8Qd">
+                                                                <rect key="frame" x="-2" y="79" width="41" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Builds" id="KB1-hH-G7M">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ynL-kP-zVw">
+                                                                <rect key="frame" x="-2" y="39" width="43" height="32"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="12345" id="4x6-GF-paV">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jzh-ba-LJD">
+                                                                <rect key="frame" x="-2" y="0.0" width="185" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Compared to 12300 last week" id="g7F-Mi-Nlf">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="pnY-5G-F2F" secondAttribute="bottom" constant="20" id="165-bd-MFa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pnY-5G-F2F" secondAttribute="trailing" constant="20" id="GMN-vG-NDb"/>
+                                                    <constraint firstItem="pnY-5G-F2F" firstAttribute="top" secondItem="jvf-ND-gNL" secondAttribute="top" constant="20" id="GZF-MO-BEV"/>
+                                                    <constraint firstItem="pnY-5G-F2F" firstAttribute="leading" secondItem="jvf-ND-gNL" secondAttribute="leading" constant="20" id="Vxz-lw-q5o"/>
+                                                </constraints>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="QfG-IM-cnX">
+                                                <rect key="frame" x="2127" y="0.0" width="699" height="150"/>
+                                                <subviews>
+                                                    <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-7x-6Td">
+                                                        <rect key="frame" x="20" y="20" width="659" height="110"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AqO-ND-deV">
+                                                                <rect key="frame" x="-2" y="79" width="41" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Builds" id="M4i-Gy-9Wr">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aQX-TW-Iu6">
+                                                                <rect key="frame" x="-2" y="39" width="43" height="32"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="12345" id="3Pg-IS-Yk2">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bN-rr-yfK">
+                                                                <rect key="frame" x="-2" y="0.0" width="185" height="31"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Compared to 12300 last week" id="ccf-8u-15K">
+                                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="rS5-7x-6Td" secondAttribute="bottom" constant="20" id="3rO-ho-zMW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rS5-7x-6Td" secondAttribute="trailing" constant="20" id="9Ks-Fw-qcE"/>
+                                                    <constraint firstItem="rS5-7x-6Td" firstAttribute="top" secondItem="QfG-IM-cnX" secondAttribute="top" constant="20" id="FQ0-yn-iid"/>
+                                                    <constraint firstItem="rS5-7x-6Td" firstAttribute="leading" secondItem="QfG-IM-cnX" secondAttribute="leading" constant="20" id="xM2-jh-oro"/>
+                                                </constraints>
+                                            </customView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="QfG-IM-cnX" firstAttribute="top" secondItem="DE3-d1-pd9" secondAttribute="top" id="5Mm-D3-0T9"/>
+                                            <constraint firstItem="7Zz-En-FzU" firstAttribute="top" secondItem="DE3-d1-pd9" secondAttribute="top" id="8QY-hT-D6K"/>
+                                            <constraint firstItem="7Zz-En-FzU" firstAttribute="width" secondItem="jax-8J-aA3" secondAttribute="width" id="AlR-vz-06d"/>
+                                            <constraint firstAttribute="bottom" secondItem="QfG-IM-cnX" secondAttribute="bottom" id="JRn-Dv-JvA"/>
+                                            <constraint firstAttribute="bottom" secondItem="7Zz-En-FzU" secondAttribute="bottom" id="Nq8-Pz-UOR"/>
+                                            <constraint firstItem="jvf-ND-gNL" firstAttribute="width" secondItem="jax-8J-aA3" secondAttribute="width" id="Rxx-F0-UhF"/>
+                                            <constraint firstItem="jvf-ND-gNL" firstAttribute="top" secondItem="DE3-d1-pd9" secondAttribute="top" id="bVh-Yv-lsh"/>
+                                            <constraint firstItem="QfG-IM-cnX" firstAttribute="width" secondItem="jax-8J-aA3" secondAttribute="width" id="cUJ-u8-PCA"/>
+                                            <constraint firstAttribute="height" constant="150" id="iTp-UD-1PA"/>
+                                            <constraint firstItem="jax-8J-aA3" firstAttribute="top" secondItem="DE3-d1-pd9" secondAttribute="top" id="kD8-Jr-AkP"/>
+                                            <constraint firstAttribute="bottom" secondItem="jax-8J-aA3" secondAttribute="bottom" id="ois-e7-JEV"/>
+                                            <constraint firstAttribute="bottom" secondItem="jvf-ND-gNL" secondAttribute="bottom" id="oxX-Fs-g2d"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZL4-Wb-ofE">
+                                        <rect key="frame" x="0.0" y="160" width="1533" height="1092"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="lPb-T2-DvS" customClass="BarChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="0.0" width="824" height="1092"/>
+                                            </customView>
+                                            <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cdL-j4-Ed5">
+                                                <rect key="frame" x="834" y="0.0" width="699" height="1092"/>
+                                                <subviews>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vyI-tp-54O" customClass="BarChartView" customModule="Charts">
+                                                        <rect key="frame" x="0.0" y="551" width="699" height="541"/>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="HDA-6s-TgN" customClass="BarChartView" customModule="Charts">
+                                                        <rect key="frame" x="0.0" y="0.0" width="699" height="541"/>
+                                                    </customView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="HDA-6s-TgN" secondAttribute="trailing" id="3Xj-OH-DLW"/>
+                                                    <constraint firstItem="HDA-6s-TgN" firstAttribute="leading" secondItem="cdL-j4-Ed5" secondAttribute="leading" id="GNN-41-1ck"/>
+                                                    <constraint firstItem="vyI-tp-54O" firstAttribute="top" secondItem="cdL-j4-Ed5" secondAttribute="top" id="mEL-Yh-Svd"/>
+                                                    <constraint firstItem="vyI-tp-54O" firstAttribute="leading" secondItem="cdL-j4-Ed5" secondAttribute="leading" id="ncO-P2-863"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vyI-tp-54O" secondAttribute="trailing" id="wNT-v2-RNo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="HDA-6s-TgN" secondAttribute="bottom" id="yRU-Bn-PeV"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="cdL-j4-Ed5" secondAttribute="bottom" id="5Nf-WS-YyZ"/>
+                                            <constraint firstItem="cdL-j4-Ed5" firstAttribute="top" secondItem="ZL4-Wb-ofE" secondAttribute="top" id="8sS-6q-7hB"/>
+                                            <constraint firstAttribute="trailing" secondItem="cdL-j4-Ed5" secondAttribute="trailing" id="L5L-HL-jbT"/>
+                                            <constraint firstItem="lPb-T2-DvS" firstAttribute="top" secondItem="ZL4-Wb-ofE" secondAttribute="top" id="Z70-5I-odJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="lPb-T2-DvS" secondAttribute="bottom" id="k82-rd-pcI"/>
+                                            <constraint firstItem="lPb-T2-DvS" firstAttribute="leading" secondItem="ZL4-Wb-ofE" secondAttribute="leading" id="liV-Fp-O18"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEC-1S-xrm">
+                                        <rect key="frame" x="0.0" y="0.0" width="2826" height="150"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="QVh-XO-6F8" customClass="BarChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="0.0" width="1408" height="150"/>
+                                            </customView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="5yg-0q-aek" customClass="BarChartView" customModule="Charts">
+                                                <rect key="frame" x="1418" y="0.0" width="1408" height="150"/>
+                                            </customView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="QVh-XO-6F8" firstAttribute="leading" secondItem="OEC-1S-xrm" secondAttribute="leading" id="3ra-RL-dVZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="5yg-0q-aek" secondAttribute="trailing" id="LiO-Jd-Sum"/>
+                                            <constraint firstItem="5yg-0q-aek" firstAttribute="top" secondItem="OEC-1S-xrm" secondAttribute="top" id="Tcp-oP-o7Q"/>
+                                            <constraint firstAttribute="height" constant="150" id="dDG-Sg-muB"/>
+                                            <constraint firstAttribute="bottom" secondItem="5yg-0q-aek" secondAttribute="bottom" id="eyd-M2-ghu"/>
+                                            <constraint firstItem="QVh-XO-6F8" firstAttribute="top" secondItem="OEC-1S-xrm" secondAttribute="top" id="jJp-TG-PIh"/>
+                                            <constraint firstAttribute="bottom" secondItem="QVh-XO-6F8" secondAttribute="bottom" id="yQ3-do-Hze"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="OEC-1S-xrm" secondAttribute="bottom" id="9v8-9H-7V0"/>
+                                    <constraint firstItem="DE3-d1-pd9" firstAttribute="leading" secondItem="yoQ-1h-2G2" secondAttribute="leading" id="G5v-Wy-cLW"/>
+                                    <constraint firstAttribute="trailing" secondItem="DE3-d1-pd9" secondAttribute="trailing" id="KCU-ub-isI"/>
+                                    <constraint firstItem="QfG-IM-cnX" firstAttribute="width" secondItem="cdL-j4-Ed5" secondAttribute="width" id="Xg4-tC-WJs"/>
+                                    <constraint firstItem="OEC-1S-xrm" firstAttribute="leading" secondItem="yoQ-1h-2G2" secondAttribute="leading" id="ehZ-Lt-XIv"/>
+                                    <constraint firstItem="DE3-d1-pd9" firstAttribute="top" secondItem="yoQ-1h-2G2" secondAttribute="top" id="laF-n9-P4x"/>
+                                    <constraint firstAttribute="trailing" secondItem="OEC-1S-xrm" secondAttribute="trailing" id="w0N-zA-xaa"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ulO-uf-oHu">
+                                <rect key="frame" x="0.0" y="1432" width="2846" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="eCl-1h-6zl"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ulO-uf-oHu" secondAttribute="trailing" id="Gwm-ke-QcX"/>
+                            <constraint firstItem="ulO-uf-oHu" firstAttribute="top" secondItem="Z5G-En-vxp" secondAttribute="top" id="MIe-d2-zJi"/>
+                            <constraint firstItem="ulO-uf-oHu" firstAttribute="leading" secondItem="Z5G-En-vxp" secondAttribute="leading" id="fdU-6G-ZqQ"/>
+                            <constraint firstAttribute="bottom" secondItem="yoQ-1h-2G2" secondAttribute="bottom" constant="10" id="j2C-75-uwZ"/>
+                            <constraint firstItem="yoQ-1h-2G2" firstAttribute="leading" secondItem="Z5G-En-vxp" secondAttribute="leading" constant="10" id="k9v-t9-fxh"/>
+                            <constraint firstItem="yoQ-1h-2G2" firstAttribute="top" secondItem="ulO-uf-oHu" secondAttribute="bottom" constant="10" id="mXF-Xr-xo8"/>
+                            <constraint firstAttribute="trailing" secondItem="yoQ-1h-2G2" secondAttribute="trailing" constant="10" id="xcG-l3-AU0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="lPb-T2-DvS" id="OYd-US-WMQ"/>
+                        <outlet property="chartView1" destination="lPb-T2-DvS" id="o1T-nE-Ouq"/>
+                        <outlet property="chartView2" destination="vyI-tp-54O" id="eP6-Ph-H4l"/>
+                        <outlet property="chartView3" destination="HDA-6s-TgN" id="cH9-Zn-5rW"/>
+                        <outlet property="chartView4" destination="QVh-XO-6F8" id="poh-H7-Plw"/>
+                        <outlet property="chartView5" destination="5yg-0q-aek" id="Wgx-7W-P8a"/>
+                    </connections>
+                </viewController>
+                <customObject id="WK3-71-48y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1118.5" y="3463"/>
+        </scene>
+    </scenes>
+</document>

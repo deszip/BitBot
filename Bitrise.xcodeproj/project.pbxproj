@@ -153,6 +153,8 @@
 		D943B25B24EAF1C300084C59 /* JetBrainsMono-Medium-Italic.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */; };
 		D943B25C24EAF1C300084C59 /* JetBrainsMono-Medium.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
 		D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
+		D9440DB728C899A000068F8C /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9440DB628C899A000068F8C /* Stats.storyboard */; };
+		D9440DB828C8A72100068F8C /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9440DB628C899A000068F8C /* Stats.storyboard */; };
 		D964CE77274A53EC007157FB /* BRAccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */; };
 		D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE79274A5D01007157FB /* BRTabViewController.m */; };
 		D964CE7D274AAC78007157FB /* BRSyncAccountsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */; };
@@ -736,6 +738,7 @@
 		D931DFE7289C5E50008AE272 /* BRAccountsTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsTabViewController.m; sourceTree = "<group>"; };
 		D931DFE9289C5F33008AE272 /* BRAppInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppInfoViewController.h; sourceTree = "<group>"; };
 		D931DFEA289C5F33008AE272 /* BRAppInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppInfoViewController.m; sourceTree = "<group>"; };
+		D9440DB628C899A000068F8C /* Stats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -1484,6 +1487,15 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
+		D9440DB528C8998200068F8C /* Standalone */ = {
+			isa = PBXGroup;
+			children = (
+				D902E1EF271571CB00B7742A /* Standalone.storyboard */,
+				D9440DB628C899A000068F8C /* Stats.storyboard */,
+			);
+			path = Standalone;
+			sourceTree = "<group>";
+		};
 		D95F56EE246FFDE300DF2C50 /* Proxima */ = {
 			isa = PBXGroup;
 			children = (
@@ -1549,11 +1561,11 @@
 		D98338502710D5A800D80E24 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				D9440DB528C8998200068F8C /* Standalone */,
 				0E42CAE020EC7A800033CD03 /* Main.storyboard */,
 				D98338512710F5F200D80E24 /* Logs.storyboard */,
 				D98338532710F5FC00D80E24 /* About.storyboard */,
 				D98338552710F60700D80E24 /* Accounts.storyboard */,
-				D902E1EF271571CB00B7742A /* Standalone.storyboard */,
 				0E73597E20EF8D73007E15A7 /* Container */,
 			);
 			path = Storyboards;
@@ -2097,6 +2109,7 @@
 				0E42CADF20EC7A800033CD03 /* Assets.xcassets in Resources */,
 				D98338542710F5FC00D80E24 /* About.storyboard in Resources */,
 				0E42CAE220EC7A800033CD03 /* Main.storyboard in Resources */,
+				D9440DB728C899A000068F8C /* Stats.storyboard in Resources */,
 				D902E1F0271571CB00B7742A /* Standalone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2127,6 +2140,7 @@
 				D996C69127DE2DCB005C76C9 /* Logs.storyboard in Resources */,
 				D996C69227DE2DCB005C76C9 /* About.storyboard in Resources */,
 				D996C69327DE2DCB005C76C9 /* Accounts.storyboard in Resources */,
+				D9440DB828C8A72100068F8C /* Stats.storyboard in Resources */,
 				D996C60627DE1B01005C76C9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

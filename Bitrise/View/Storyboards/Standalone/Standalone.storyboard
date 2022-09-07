@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21223" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21223"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -501,7 +501,7 @@
                     <tabViewItems>
                         <tabViewItem id="tqP-Z6-EVi"/>
                         <tabViewItem identifier="" id="K8v-9v-wDy"/>
-                        <tabViewItem identifier="" id="VxS-ea-muu"/>
+                        <tabViewItem id="5Rq-Yo-mb6"/>
                         <tabViewItem id="aEi-uc-5o0"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="fhz-fr-YRK">
@@ -516,13 +516,13 @@
                         <outlet property="tabView" destination="fhz-fr-YRK" id="y97-dn-5ln"/>
                         <segue destination="Zfd-Jn-Xak" kind="relationship" relationship="tabItems" id="VdJ-MW-Dc0"/>
                         <segue destination="hEf-mh-bsV" kind="relationship" relationship="tabItems" id="Ojv-us-nvD"/>
-                        <segue destination="5c8-yq-Ynp" kind="relationship" relationship="tabItems" id="hGu-EH-Mrw"/>
+                        <segue destination="qMg-dJ-Jca" kind="relationship" relationship="tabItems" id="UKc-eO-c4z"/>
                         <segue destination="gKG-IJ-7Xc" kind="relationship" relationship="tabItems" id="Za6-rF-0U8"/>
                     </connections>
                 </tabViewController>
                 <customObject id="6IS-Z1-eEu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="2073"/>
+            <point key="canvasLocation" x="528" y="2095"/>
         </scene>
         <!--Account Info View Controller-->
         <scene sceneID="CUj-PB-VS4">
@@ -658,7 +658,7 @@
             <objects>
                 <viewController id="5c8-yq-Ynp" customClass="BRStatsViewController" sceneMemberID="viewController">
                     <view key="view" id="aNp-7J-a4f">
-                        <rect key="frame" x="0.0" y="0.0" width="2335" height="809"/>
+                        <rect key="frame" x="0.0" y="0.0" width="2846" height="1484"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZfC-ms-Z5p">
@@ -1023,7 +1023,7 @@
                 </viewController>
                 <customObject id="1gJ-KD-NIC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1760" y="3258"/>
+            <point key="canvasLocation" x="1490" y="3942"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Bkf-Cr-eeb">
@@ -1267,6 +1267,14 @@
                 <customObject id="knH-es-UE4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="303" y="3065"/>
+        </scene>
+        <!--Stats-->
+        <scene sceneID="nab-b9-96g">
+            <objects>
+                <controllerPlaceholder storyboardIdentifier="BRStatsViewController" storyboardName="Stats" id="qMg-dJ-Jca" sceneMemberID="viewController"/>
+                <customObject id="8f2-6o-8tc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="2540"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GVt-Rf-JW7">
