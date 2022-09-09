@@ -65,32 +65,34 @@
 #pragma mark - Data loading -
 
 - (void)loadDataForApp:(BRApp *)app {
-    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
-    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:build.buildNumber.doubleValue
-                                                                      y:[build.finishedTime timeIntervalSinceDate:build.startTime]];
-        [entries addObject:entry];
-    }];
+//    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
+//    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
+//        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:build.buildNumber.doubleValue
+//                                                                      y:[build.finishedTime timeIntervalSinceDate:build.startTime]];
+//        [entries addObject:entry];
+//    }];
+//
+//    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:app.title];
+//    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
     
-    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:app.title];
-    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+//    [self loadCharts:chartData];
     
-    [self loadCharts:chartData];
+    self.chartView1.data = [self buildTimeDataFor:app];
 }
 
 - (void)loadDataForAccount:(BTRAccount *)account {
-    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
-    __block NSUInteger index = 0;
-    [account.apps enumerateObjectsUsingBlock:^(BRApp *app, BOOL *stop) {
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:app.builds.count y:index];
-        [entries addObject:entry];
-        ++index;
-    }];
-    
-    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:account.username];
-    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
-    
-    [self loadCharts:chartData];
+//    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
+//    __block NSUInteger index = 0;
+//    [account.apps enumerateObjectsUsingBlock:^(BRApp *app, BOOL *stop) {
+//        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:app.builds.count y:index];
+//        [entries addObject:entry];
+//        ++index;
+//    }];
+//
+//    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:account.username];
+//    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+//
+//    [self loadCharts:chartData];
 }
 
 - (void)loadCharts:(BarChartData *)chartData {
@@ -99,6 +101,40 @@
     self.chartView3.data = chartData;
     self.chartView4.data = chartData;
     self.chartView5.data = chartData;
+}
+
+#pragma mark - Data loaders
+
+- (BarChartData *)buildTimeDataFor:(BRApp *)app {
+    NSMutableDictionary <NSString *, NSMutableDictionary<NSString *, NSNumber *> *> *flows = [@{} mutableCopy];
+    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
+        NSTimeInterval queuedTime = [build.startTime timeIntervalSinceDate:build.triggerTime];
+        NSTimeInterval buildTime = [build.finishedTime timeIntervalSinceDate:build.startTime];
+        
+        if (flows[build.workflow]) {
+            flows[build.workflow][@"q"] = @(flows[build.workflow][@"q"].doubleValue + queuedTime);
+            flows[build.workflow][@"b"] = @(flows[build.workflow][@"b"].doubleValue + buildTime);
+        } else {
+            flows[build.workflow] = [@{ @"q" : @(queuedTime), @"b" : @(buildTime) } mutableCopy];
+        }
+    }];
+    
+    __block NSUInteger entryIndex = 0;
+    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
+    [flows enumerateKeysAndObjectsUsingBlock:^(NSString *flowName, NSMutableDictionary<NSString *,NSNumber *> *flowData, BOOL *stop) {
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:entryIndex
+                                                                yValues:@[flowData[@"q"], flowData[@"b"]]];
+        [entries addObject:entry];
+        ++entryIndex;
+    }];
+    
+    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:@""];
+    dataSet.stackLabels = @[@"queued", @"building"];
+    dataSet.colors = @[NSColor.redColor, NSColor.blueColor];
+    
+    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+    
+    return chartData;
 }
 
 @end

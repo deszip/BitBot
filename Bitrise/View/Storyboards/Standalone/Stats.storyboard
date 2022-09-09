@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="lhI-hr-hlG">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +10,7 @@
             <objects>
                 <viewController storyboardIdentifier="BRStatsViewController" id="lhI-hr-hlG" customClass="BRStatsViewController" sceneMemberID="viewController">
                     <view key="view" id="Z5G-En-vxp">
-                        <rect key="frame" x="0.0" y="0.0" width="2846" height="1484"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1933" height="1249"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-1h-2G2">
@@ -366,7 +365,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="lPb-T2-DvS" id="OYd-US-WMQ"/>
                         <outlet property="chartView1" destination="lPb-T2-DvS" id="o1T-nE-Ouq"/>
                         <outlet property="chartView2" destination="vyI-tp-54O" id="eP6-Ph-H4l"/>
                         <outlet property="chartView3" destination="HDA-6s-TgN" id="cH9-Zn-5rW"/>
@@ -376,7 +374,7 @@
                 </viewController>
                 <customObject id="WK3-71-48y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118.5" y="3463"/>
+            <point key="canvasLocation" x="661.5" y="3345.5"/>
         </scene>
     </scenes>
 </document>
