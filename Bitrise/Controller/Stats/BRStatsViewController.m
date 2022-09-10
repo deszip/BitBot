@@ -14,6 +14,7 @@
 #import "BTRAccount+CoreDataClass.h"
 #import "BRApp+CoreDataClass.h"
 #import "BRAppsObserver.h"
+#import "BRStyleSheet.h"
 
 @interface BRStatsViewController ()
 
@@ -77,7 +78,8 @@
     
 //    [self loadCharts:chartData];
     
-    self.chartView1.data = [self buildTimeDataFor:app];
+    self.chartView1.data = [self buildStatusDataFor:app];
+    self.chartView4.data = [self buildTimeDataFor:app];
 }
 
 - (void)loadDataForAccount:(BTRAccount *)account {
@@ -130,7 +132,40 @@
     
     BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:@""];
     dataSet.stackLabels = @[@"queued", @"building"];
-    dataSet.colors = @[NSColor.redColor, NSColor.blueColor];
+    dataSet.colors = @[[BRStyleSheet progressColor], [BRStyleSheet successColor]];
+    
+    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+    
+    return chartData;
+}
+
+- (BarChartData *)buildStatusDataFor:(BRApp *)app {
+    NSMutableDictionary <NSString *, NSMutableDictionary<NSString *, NSNumber *> *> *flows = [@{} mutableCopy];
+    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
+        BRBuildStateInfo *buildStateInfo = [[[BRBuildInfo alloc] initWithBuild:build] stateInfo];
+        if (flows[build.workflow]) {
+            flows[build.workflow][@"s"] = @(flows[build.workflow][@"s"].integerValue + (buildStateInfo.state == BRBuildStateSuccess ? 1 : 0));
+            flows[build.workflow][@"f"] = @(flows[build.workflow][@"f"].integerValue + (buildStateInfo.state == BRBuildStateFailed ? 1 : 0));
+            flows[build.workflow][@"a"] = @(flows[build.workflow][@"a"].integerValue + (buildStateInfo.state == BRBuildStateAborted ? 1 : 0));
+        } else {
+            flows[build.workflow] = [@{ @"s" : @(buildStateInfo.state == BRBuildStateSuccess ? 1 : 0),
+                                        @"f" : @(buildStateInfo.state == BRBuildStateFailed ? 1 : 0),
+                                        @"a" : @(buildStateInfo.state == BRBuildStateAborted ? 1 : 0) } mutableCopy];
+        }
+    }];
+    
+    __block NSUInteger entryIndex = 0;
+    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
+    [flows enumerateKeysAndObjectsUsingBlock:^(NSString *flowName, NSMutableDictionary<NSString *,NSNumber *> *flowData, BOOL *stop) {
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:entryIndex
+                                                                yValues:@[flowData[@"s"], flowData[@"f"], flowData[@"a"]]];
+        [entries addObject:entry];
+        ++entryIndex;
+    }];
+    
+    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:@""];
+    dataSet.stackLabels = @[@"Success", @"Failed", @"Aborted"];
+    dataSet.colors = @[[BRStyleSheet successColor], [BRStyleSheet failedColor], [BRStyleSheet abortedColor]];
     
     BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
     
