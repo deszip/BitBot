@@ -15,12 +15,19 @@
 #import "BRApp+CoreDataClass.h"
 #import "BRAppsObserver.h"
 #import "BRStyleSheet.h"
+#import "BRChartValueFormatter.h"
+#import "BRStatsInfoView.h"
 
 @interface BRStatsViewController ()
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
 @property (strong, nonatomic) BRAppsObserver *appsObserver;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter;
+
+@property (weak) IBOutlet BRStatsInfoView *infoView1;
+@property (weak) IBOutlet BRStatsInfoView *infoView2;
+@property (weak) IBOutlet BRStatsInfoView *infoView3;
+@property (weak) IBOutlet BRStatsInfoView *infoView4;
 
 @property (weak) IBOutlet BarChartView *chartView1;
 @property (weak) IBOutlet BarChartView *chartView2;
@@ -66,17 +73,7 @@
 #pragma mark - Data loading -
 
 - (void)loadDataForApp:(BRApp *)app {
-//    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
-//    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
-//        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:build.buildNumber.doubleValue
-//                                                                      y:[build.finishedTime timeIntervalSinceDate:build.startTime]];
-//        [entries addObject:entry];
-//    }];
-//
-//    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:app.title];
-//    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
-    
-//    [self loadCharts:chartData];
+    [self loadInfoDataFor:app];
     
     self.chartView1.data = [self buildDailyDataFor:app];
     self.chartView5.data = [self buildMachineDataFor:app];
@@ -85,18 +82,7 @@
 }
 
 - (void)loadDataForAccount:(BTRAccount *)account {
-//    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
-//    __block NSUInteger index = 0;
-//    [account.apps enumerateObjectsUsingBlock:^(BRApp *app, BOOL *stop) {
-//        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:app.builds.count y:index];
-//        [entries addObject:entry];
-//        ++index;
-//    }];
-//
-//    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:account.username];
-//    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
-//
-//    [self loadCharts:chartData];
+
 }
 
 - (void)loadCharts:(BarChartData *)chartData {
@@ -107,7 +93,42 @@
     self.chartView5.data = chartData;
 }
 
-#pragma mark - Data loaders -
+#pragma mark - Info loaders -
+
+- (void)loadInfoDataFor:(BRApp *)app {
+    self.infoView1.label1.stringValue = @"Builds";
+    self.infoView1.label2.stringValue = [NSString stringWithFormat:@"%lu", (unsigned long)app.builds.count];
+    self.infoView1.label3.stringValue = @"";
+    
+    __block NSTimeInterval buildTime = 0;
+    __block NSTimeInterval queuedTime = 0;
+    __block NSUInteger successBuilds = 0;
+    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
+        if (build.finishedTime && build.startTime) {
+            buildTime += [build.finishedTime timeIntervalSinceDate:build.startTime];
+        }
+        if (build.startTime && build.triggerTime) {
+            queuedTime += [build.startTime timeIntervalSinceDate:build.triggerTime];
+        }
+        if (build.status.integerValue == 1) {
+            successBuilds++;
+        }
+    }];
+    
+    self.infoView2.label1.stringValue = @"Build Time";
+    self.infoView2.label2.stringValue = [NSString stringWithFormat:@"%f", buildTime];
+    self.infoView2.label3.stringValue = @"Total build time";
+    
+    self.infoView3.label1.stringValue = @"Queued Time";
+    self.infoView3.label2.stringValue = [NSString stringWithFormat:@"%f", queuedTime];
+    self.infoView3.label3.stringValue = @"Total queued time";
+    
+    self.infoView4.label1.stringValue = @"Success Rate";
+    self.infoView4.label2.stringValue = [NSString stringWithFormat:@"%.2f%%", ((double)successBuilds / (double)app.builds.count) * 100.0];
+    self.infoView4.label3.stringValue = @"Percentage of successfull builds";
+}
+
+#pragma mark - Chart Data loaders -
 
 #pragma mark - Dynamic
 
@@ -144,12 +165,11 @@
     return chartData;
 }
 
-
 #pragma mark - Static
 
 - (BarChartData *)buildDailyDataFor:(BRApp *)app {
-    NSMutableDictionary <NSDate *, NSMutableDictionary<NSString *, NSNumber *> *> *days = [@{} mutableCopy];
-    
+    NSMutableDictionary <NSDate *, NSMutableArray<BarChartDataEntry *> *> *days = [@{} mutableCopy];
+    __block NSUInteger entryIndex = 0;
     [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
         NSTimeInterval queuedTime = [build.startTime timeIntervalSinceDate:build.triggerTime];
         NSTimeInterval buildTime = [build.finishedTime timeIntervalSinceDate:build.startTime];
@@ -157,27 +177,24 @@
         NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:build.triggerTime];
         NSDate *buildDate = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
         
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:build.triggerTime.timeIntervalSince1970 / (3600) yValues:@[@(queuedTime), @(buildTime)]];
         if (days[buildDate]) {
-            days[buildDate][@"q"] = @(days[buildDate][@"q"].doubleValue + queuedTime);
-            days[buildDate][@"b"] = @(days[buildDate][@"b"].doubleValue + buildTime);
+            [days[buildDate] addObject:entry];
         } else {
-            days[buildDate] = [@{ @"q" : @(queuedTime), @"b" : @(buildTime) } mutableCopy];
+            days[buildDate] = [@[entry] mutableCopy];
         }
-    }];
-    
-    __block NSUInteger entryIndex = 0;
-    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
-    [days enumerateKeysAndObjectsUsingBlock:^(NSDate *day, NSMutableDictionary<NSString *,NSNumber *> *dayData, BOOL *stop) {
-        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:entryIndex yValues:@[dayData[@"q"], dayData[@"b"]]];
-        [entries addObject:entry];
         ++entryIndex;
     }];
     
-    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:@""];
-    dataSet.stackLabels = @[@"queued", @"building"];
-    dataSet.colors = @[[BRStyleSheet progressColor], [BRStyleSheet successColor]];
+    __block NSMutableArray <BarChartDataSet *> *dataSets = [NSMutableArray array];
+    [days enumerateKeysAndObjectsUsingBlock:^(NSDate *day, NSMutableArray<BarChartDataEntry *> *dayEntries, BOOL *stop) {
+        BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:dayEntries label:@""];
+        dataSet.colors = @[[BRStyleSheet progressColor], [BRStyleSheet successColor]];
+//        dataSet.valueFormatter = [BRChartValueFormatter new];
+        [dataSets addObject:dataSet];
+    }];
     
-    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+    BarChartData *chartData = [[BarChartData alloc] initWithDataSets:dataSets];
     
     return chartData;
 }

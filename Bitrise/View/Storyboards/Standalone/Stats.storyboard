@@ -10,7 +10,7 @@
             <objects>
                 <viewController storyboardIdentifier="BRStatsViewController" id="lhI-hr-hlG" customClass="BRStatsViewController" sceneMemberID="viewController">
                     <view key="view" id="Z5G-En-vxp">
-                        <rect key="frame" x="0.0" y="0.0" width="1933" height="1249"/>
+                        <rect key="frame" x="0.0" y="0.0" width="2846" height="1484"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-1h-2G2">
@@ -19,7 +19,7 @@
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DE3-d1-pd9">
                                         <rect key="frame" x="0.0" y="1262" width="2826" height="150"/>
                                         <subviews>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jax-8J-aA3">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jax-8J-aA3" customClass="BRStatsInfoView">
                                                 <rect key="frame" x="0.0" y="0.0" width="699" height="150"/>
                                                 <subviews>
                                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JUf-Nr-0OK">
@@ -32,6 +32,13 @@
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
+                                                                <connections>
+                                                                    <binding destination="tQL-VI-rzf" name="displayPatternValue1" keyPath="values.label1" id="gyx-1E-1xq">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSDisplayPattern">%{value1}@</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MoI-nb-hqZ">
                                                                 <rect key="frame" x="-2" y="39" width="43" height="32"/>
@@ -68,8 +75,13 @@
                                                     <constraint firstAttribute="trailing" secondItem="JUf-Nr-0OK" secondAttribute="trailing" constant="20" id="cIg-3K-b8n"/>
                                                     <constraint firstItem="JUf-Nr-0OK" firstAttribute="top" secondItem="jax-8J-aA3" secondAttribute="top" constant="20" id="dz2-C6-rnf"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="label1" destination="JK2-eu-WH4" id="QVh-Jw-cH4"/>
+                                                    <outlet property="label2" destination="MoI-nb-hqZ" id="boX-Dk-K4R"/>
+                                                    <outlet property="label3" destination="xDb-vG-UgG" id="tLu-K0-ZRc"/>
+                                                </connections>
                                             </customView>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Zz-En-FzU">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Zz-En-FzU" customClass="BRStatsInfoView">
                                                 <rect key="frame" x="709" y="0.0" width="699" height="150"/>
                                                 <subviews>
                                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cxg-qX-Tz7">
@@ -118,8 +130,13 @@
                                                     <constraint firstAttribute="trailing" secondItem="cxg-qX-Tz7" secondAttribute="trailing" constant="20" id="IJK-Gg-eK1"/>
                                                     <constraint firstAttribute="bottom" secondItem="cxg-qX-Tz7" secondAttribute="bottom" constant="20" id="fdK-2y-qx1"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="label1" destination="I11-c6-p5E" id="qTI-Mm-bLP"/>
+                                                    <outlet property="label2" destination="o2e-n6-6k3" id="8n0-JA-elF"/>
+                                                    <outlet property="label3" destination="Yqm-pv-xEy" id="6Z8-jp-Pcs"/>
+                                                </connections>
                                             </customView>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jvf-ND-gNL">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="jvf-ND-gNL" customClass="BRStatsInfoView">
                                                 <rect key="frame" x="1418" y="0.0" width="699" height="150"/>
                                                 <subviews>
                                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pnY-5G-F2F">
@@ -168,8 +185,13 @@
                                                     <constraint firstItem="pnY-5G-F2F" firstAttribute="top" secondItem="jvf-ND-gNL" secondAttribute="top" constant="20" id="GZF-MO-BEV"/>
                                                     <constraint firstItem="pnY-5G-F2F" firstAttribute="leading" secondItem="jvf-ND-gNL" secondAttribute="leading" constant="20" id="Vxz-lw-q5o"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="label1" destination="Qtx-6y-8Qd" id="yxl-95-Gbp"/>
+                                                    <outlet property="label2" destination="ynL-kP-zVw" id="U0h-Ym-QWK"/>
+                                                    <outlet property="label3" destination="Jzh-ba-LJD" id="x1t-ZZ-Rhk"/>
+                                                </connections>
                                             </customView>
-                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="QfG-IM-cnX">
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="QfG-IM-cnX" customClass="BRStatsInfoView">
                                                 <rect key="frame" x="2127" y="0.0" width="699" height="150"/>
                                                 <subviews>
                                                     <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-7x-6Td">
@@ -218,6 +240,11 @@
                                                     <constraint firstItem="rS5-7x-6Td" firstAttribute="top" secondItem="QfG-IM-cnX" secondAttribute="top" constant="20" id="FQ0-yn-iid"/>
                                                     <constraint firstItem="rS5-7x-6Td" firstAttribute="leading" secondItem="QfG-IM-cnX" secondAttribute="leading" constant="20" id="xM2-jh-oro"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="label1" destination="AqO-ND-deV" id="XjJ-qJ-es7"/>
+                                                    <outlet property="label2" destination="aQX-TW-Iu6" id="Kyz-aV-ezH"/>
+                                                    <outlet property="label3" destination="6bN-rr-yfK" id="bTq-cz-Haq"/>
+                                                </connections>
                                             </customView>
                                         </subviews>
                                         <constraints>
@@ -370,9 +397,14 @@
                         <outlet property="chartView3" destination="HDA-6s-TgN" id="cH9-Zn-5rW"/>
                         <outlet property="chartView4" destination="QVh-XO-6F8" id="poh-H7-Plw"/>
                         <outlet property="chartView5" destination="5yg-0q-aek" id="Wgx-7W-P8a"/>
+                        <outlet property="infoView1" destination="jax-8J-aA3" id="vVK-h4-U9T"/>
+                        <outlet property="infoView2" destination="7Zz-En-FzU" id="z9Y-Ab-g4W"/>
+                        <outlet property="infoView3" destination="jvf-ND-gNL" id="fP6-kA-0by"/>
+                        <outlet property="infoView4" destination="QfG-IM-cnX" id="a0L-dk-MEk"/>
                     </connections>
                 </viewController>
                 <customObject id="WK3-71-48y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="tQL-VI-rzf"/>
             </objects>
             <point key="canvasLocation" x="661.5" y="3345.5"/>
         </scene>

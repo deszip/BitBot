@@ -155,6 +155,8 @@
 		D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
 		D9440DB728C899A000068F8C /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9440DB628C899A000068F8C /* Stats.storyboard */; };
 		D9440DB828C8A72100068F8C /* Stats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9440DB628C899A000068F8C /* Stats.storyboard */; };
+		D944121A28CE747400068F8C /* BRChartValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D944121928CE747400068F8C /* BRChartValueFormatter.m */; };
+		D944121D28CE77FB00068F8C /* BRStatsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D944121C28CE77FB00068F8C /* BRStatsInfoView.m */; };
 		D964CE77274A53EC007157FB /* BRAccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE76274A53EC007157FB /* BRAccountInfoViewController.m */; };
 		D964CE7A274A5D01007157FB /* BRTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE79274A5D01007157FB /* BRTabViewController.m */; };
 		D964CE7D274AAC78007157FB /* BRSyncAccountsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = D964CE7C274AAC78007157FB /* BRSyncAccountsCommand.m */; };
@@ -740,6 +742,10 @@
 		D931DFEA289C5F33008AE272 /* BRAppInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppInfoViewController.m; sourceTree = "<group>"; };
 		D9440DB628C899A000068F8C /* Stats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
 		D944121428CE088600068F8C /* bitrise_1.0.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise_1.0.3.xcdatamodel; sourceTree = "<group>"; };
+		D944121828CE747400068F8C /* BRChartValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRChartValueFormatter.h; sourceTree = "<group>"; };
+		D944121928CE747400068F8C /* BRChartValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRChartValueFormatter.m; sourceTree = "<group>"; };
+		D944121B28CE77FB00068F8C /* BRStatsInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRStatsInfoView.h; sourceTree = "<group>"; };
+		D944121C28CE77FB00068F8C /* BRStatsInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRStatsInfoView.m; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -1475,6 +1481,8 @@
 			children = (
 				D924F94528B65B74003498A2 /* BRChartView.h */,
 				D924F94628B65B74003498A2 /* BRChartView.m */,
+				D944121B28CE77FB00068F8C /* BRStatsInfoView.h */,
+				D944121C28CE77FB00068F8C /* BRStatsInfoView.m */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -1484,6 +1492,8 @@
 			children = (
 				D924F94928B65CC7003498A2 /* BRStatsViewController.h */,
 				D924F94A28B65CC7003498A2 /* BRStatsViewController.m */,
+				D944121828CE747400068F8C /* BRChartValueFormatter.h */,
+				D944121928CE747400068F8C /* BRChartValueFormatter.m */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -2388,6 +2398,7 @@
 				0EFD893D20F4893B0023FCCE /* BRApp+Mapping.m in Sources */,
 				0E3C0B022117008200F2EA35 /* BRBuildStateInfo.m in Sources */,
 				0E42CB0E20EC8AFD0033CD03 /* bitrise.xcdatamodeld in Sources */,
+				D944121A28CE747400068F8C /* BRChartValueFormatter.m in Sources */,
 				0E73597720EDF0A0007E15A7 /* BRPersistentContainerBuilder.m in Sources */,
 				0EB3ED7921E890E1003F0364 /* BRAccountRequest.m in Sources */,
 				0EF766C021E2637900E64E0C /* BRAboutViewController.m in Sources */,
@@ -2423,6 +2434,7 @@
 				D964CE77274A53EC007157FB /* BRAccountInfoViewController.m in Sources */,
 				0EF766A621DDDF6C00E64E0C /* BRAddBuildTokenCommand.m in Sources */,
 				0E5C720E20F90A5B00E5A082 /* BRObserver.m in Sources */,
+				D944121D28CE77FB00068F8C /* BRStatsInfoView.m in Sources */,
 				0E93B6FE20F085E8001A6C15 /* BRAccountInfo.m in Sources */,
 				0E3C0B132117627700F2EA35 /* BRCommand.m in Sources */,
 				0EB3ED7621E88E8C003F0364 /* BRAppsRequest.m in Sources */,
