@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="BRApp" representedClassName="BRApp" syncable="YES" codeGenerationType="class">
+        <attribute name="avatarURL" optional="YES" attributeType="String"/>
+        <attribute name="buildToken" optional="YES" attributeType="String"/>
+        <attribute name="disabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="ownerAccountType" optional="YES" attributeType="String"/>
+        <attribute name="ownerName" optional="YES" attributeType="String"/>
+        <attribute name="ownerSlug" optional="YES" attributeType="String"/>
+        <attribute name="projectType" optional="YES" attributeType="String"/>
+        <attribute name="provider" optional="YES" attributeType="String"/>
+        <attribute name="public" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="repoOwner" optional="YES" attributeType="String"/>
+        <attribute name="repoSlug" optional="YES" attributeType="String"/>
+        <attribute name="repoURL" optional="YES" attributeType="String"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BTRAccount" inverseName="apps" inverseEntity="BTRAccount"/>
+        <relationship name="builds" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRBuild" inverseName="app" inverseEntity="BRBuild"/>
+    </entity>
+    <entity name="BRBuild" representedClassName="BRBuild" syncable="YES" codeGenerationType="class">
+        <attribute name="abortReason" optional="YES" attributeType="String"/>
+        <attribute name="branch" optional="YES" attributeType="String"/>
+        <attribute name="buildNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="commitHash" optional="YES" attributeType="String"/>
+        <attribute name="commitMessage" optional="YES" attributeType="String"/>
+        <attribute name="commitURL" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="envPrepareFinishedTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="finishedTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="machineTypeID" optional="YES" attributeType="String"/>
+        <attribute name="onHold" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="pullRequestID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="pullRequestTargetBranch" optional="YES" attributeType="String"/>
+        <attribute name="pullRequestURL" optional="YES" attributeType="String"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+        <attribute name="stackConfigType" optional="YES" attributeType="String"/>
+        <attribute name="stackID" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="statusText" optional="YES" attributeType="String"/>
+        <attribute name="tag" optional="YES" attributeType="String"/>
+        <attribute name="triggeredBy" optional="YES" attributeType="String"/>
+        <attribute name="triggerTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="workflow" optional="YES" attributeType="String"/>
+        <relationship name="app" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRApp" inverseName="builds" inverseEntity="BRApp"/>
+        <relationship name="log" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BRBuildLog" inverseName="build" inverseEntity="BRBuildLog"/>
+    </entity>
+    <entity name="BRBuildLog" representedClassName="BRBuildLog" syncable="YES" codeGenerationType="class">
+        <attribute name="archived" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="chunksCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expiringRawLogURL" optional="YES" attributeType="String"/>
+        <attribute name="loaded" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="build" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuild" inverseName="log" inverseEntity="BRBuild"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogLine" inverseName="log" inverseEntity="BRLogLine"/>
+        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogStep" inverseName="log" inverseEntity="BRLogStep"/>
+    </entity>
+    <entity name="BRLogLine" representedClassName="BRLogLine" syncable="YES" codeGenerationType="class">
+        <attribute name="chunkPosition" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="linePosition" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="lines" inverseEntity="BRBuildLog"/>
+        <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRLogStep" inverseName="lines" inverseEntity="BRLogStep"/>
+    </entity>
+    <entity name="BRLogStep" representedClassName="BRLogStep" syncable="YES" codeGenerationType="class">
+        <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="lines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRLogLine" inverseName="step" inverseEntity="BRLogLine"/>
+        <relationship name="log" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BRBuildLog" inverseName="steps" inverseEntity="BRBuildLog"/>
+    </entity>
+    <entity name="BTRAccount" representedClassName="BTRAccount" syncable="YES" codeGenerationType="class">
+        <attribute name="avatarURL" optional="YES" attributeType="String"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="emailUnconfirmed" optional="YES" attributeType="String"/>
+        <attribute name="enabled" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="hasUsedOrgTrial" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="paymentProcessor" optional="YES" attributeType="String"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+        <attribute name="token" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="apps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BRApp" inverseName="account" inverseEntity="BRApp"/>
+    </entity>
+    <elements>
+        <element name="BRApp" positionX="-391.99609375" positionY="-47.59765625" width="128" height="298"/>
+        <element name="BRBuild" positionX="-226.3125" positionY="-9.3984375" width="128" height="419"/>
+        <element name="BRBuildLog" positionX="-36.48046875" positionY="259.98046875" width="128" height="163"/>
+        <element name="BRLogLine" positionX="170.37109375" positionY="211.9140625" width="128" height="120"/>
+        <element name="BRLogStep" positionX="161.96484375" positionY="405.43359375" width="128" height="103"/>
+        <element name="BTRAccount" positionX="-536.609375" positionY="-83.33984375" width="128" height="194"/>
+    </elements>
+</model>

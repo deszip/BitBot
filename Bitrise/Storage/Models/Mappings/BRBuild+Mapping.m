@@ -39,6 +39,8 @@
         [mapping mapKeyPath:@"pull_request_view_url" toProperty:@"pullRequestURL"];
         [mapping mapKeyPath:@"commit_view_url" toProperty:@"commitURL"];
         
+        [mapping mapKeyPath:@"machine_type_id" toProperty:@"machineTypeID"];
+        
         [mapping setPrimaryKey:@"slug"];
     }];
 }

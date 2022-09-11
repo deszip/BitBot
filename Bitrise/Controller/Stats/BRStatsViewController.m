@@ -78,7 +78,9 @@
     
 //    [self loadCharts:chartData];
     
-    self.chartView1.data = [self buildStatusDataFor:app];
+    self.chartView1.data = [self buildDailyDataFor:app];
+    self.chartView5.data = [self buildMachineDataFor:app];
+    self.chartView2.data = [self buildStatusDataFor:app];
     self.chartView4.data = [self buildTimeDataFor:app];
 }
 
@@ -105,13 +107,16 @@
     self.chartView5.data = chartData;
 }
 
-#pragma mark - Data loaders
+#pragma mark - Data loaders -
+
+#pragma mark - Dynamic
 
 - (BarChartData *)buildTimeDataFor:(BRApp *)app {
     NSMutableDictionary <NSString *, NSMutableDictionary<NSString *, NSNumber *> *> *flows = [@{} mutableCopy];
     [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
         NSTimeInterval queuedTime = [build.startTime timeIntervalSinceDate:build.triggerTime];
         NSTimeInterval buildTime = [build.finishedTime timeIntervalSinceDate:build.startTime];
+        
         
         if (flows[build.workflow]) {
             flows[build.workflow][@"q"] = @(flows[build.workflow][@"q"].doubleValue + queuedTime);
@@ -126,6 +131,44 @@
     [flows enumerateKeysAndObjectsUsingBlock:^(NSString *flowName, NSMutableDictionary<NSString *,NSNumber *> *flowData, BOOL *stop) {
         BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:entryIndex
                                                                 yValues:@[flowData[@"q"], flowData[@"b"]]];
+        [entries addObject:entry];
+        ++entryIndex;
+    }];
+    
+    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:@""];
+    dataSet.stackLabels = @[@"queued", @"building"];
+    dataSet.colors = @[[BRStyleSheet progressColor], [BRStyleSheet successColor]];
+    
+    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+    
+    return chartData;
+}
+
+
+#pragma mark - Static
+
+- (BarChartData *)buildDailyDataFor:(BRApp *)app {
+    NSMutableDictionary <NSDate *, NSMutableDictionary<NSString *, NSNumber *> *> *days = [@{} mutableCopy];
+    
+    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
+        NSTimeInterval queuedTime = [build.startTime timeIntervalSinceDate:build.triggerTime];
+        NSTimeInterval buildTime = [build.finishedTime timeIntervalSinceDate:build.startTime];
+        
+        NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components: NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:build.triggerTime];
+        NSDate *buildDate = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+        
+        if (days[buildDate]) {
+            days[buildDate][@"q"] = @(days[buildDate][@"q"].doubleValue + queuedTime);
+            days[buildDate][@"b"] = @(days[buildDate][@"b"].doubleValue + buildTime);
+        } else {
+            days[buildDate] = [@{ @"q" : @(queuedTime), @"b" : @(buildTime) } mutableCopy];
+        }
+    }];
+    
+    __block NSUInteger entryIndex = 0;
+    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
+    [days enumerateKeysAndObjectsUsingBlock:^(NSDate *day, NSMutableDictionary<NSString *,NSNumber *> *dayData, BOOL *stop) {
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:entryIndex yValues:@[dayData[@"q"], dayData[@"b"]]];
         [entries addObject:entry];
         ++entryIndex;
     }];
@@ -171,5 +214,38 @@
     
     return chartData;
 }
+
+- (BarChartData *)buildMachineDataFor:(BRApp *)app {
+    NSMutableDictionary <NSString *, NSMutableDictionary<NSString *, NSNumber *> *> *machines = [@{} mutableCopy];
+    [app.builds enumerateObjectsUsingBlock:^(BRBuild *build, BOOL *stop) {
+        NSTimeInterval queuedTime = [build.startTime timeIntervalSinceDate:build.triggerTime];
+        NSTimeInterval buildTime = [build.finishedTime timeIntervalSinceDate:build.startTime];
+        NSString *machineID = build.machineTypeID ?: @"unknown";
+        if (machines[machineID]) {
+            machines[machineID][@"q"] = @(machines[machineID][@"q"].doubleValue + queuedTime);
+            machines[machineID][@"b"] = @(machines[machineID][@"b"].doubleValue + buildTime);
+        } else {
+            machines[machineID] = [@{ @"q" : @(queuedTime), @"b" : @(buildTime) } mutableCopy];
+        }
+    }];
+    
+    __block NSUInteger entryIndex = 0;
+    __block NSMutableArray <BarChartDataEntry *> *entries = [NSMutableArray array];
+    [machines enumerateKeysAndObjectsUsingBlock:^(NSString *machineName, NSMutableDictionary<NSString *, NSNumber *> *machineData, BOOL *stop) {
+        BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:entryIndex
+                                                                yValues:@[machineData[@"q"], machineData[@"b"]]];
+        [entries addObject:entry];
+        ++entryIndex;
+    }];
+    
+    BarChartDataSet *dataSet = [[BarChartDataSet alloc] initWithEntries:entries label:@""];
+    dataSet.stackLabels = @[@"queued", @"building"];
+    dataSet.colors = @[[BRStyleSheet progressColor], [BRStyleSheet successColor]];
+    
+    BarChartData *chartData = [[BarChartData alloc] initWithDataSet:dataSet];
+    
+    return chartData;
+}
+
 
 @end

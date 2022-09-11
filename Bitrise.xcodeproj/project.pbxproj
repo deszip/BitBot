@@ -739,6 +739,7 @@
 		D931DFE9289C5F33008AE272 /* BRAppInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRAppInfoViewController.h; sourceTree = "<group>"; };
 		D931DFEA289C5F33008AE272 /* BRAppInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAppInfoViewController.m; sourceTree = "<group>"; };
 		D9440DB628C899A000068F8C /* Stats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Stats.storyboard; sourceTree = "<group>"; };
+		D944121428CE088600068F8C /* bitrise_1.0.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = bitrise_1.0.3.xcdatamodel; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -3266,10 +3267,11 @@
 		0E42CB0C20EC8AFD0033CD03 /* bitrise.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D944121428CE088600068F8C /* bitrise_1.0.3.xcdatamodel */,
 				D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */,
 				0E42CB0D20EC8AFD0033CD03 /* bitrise.xcdatamodel */,
 			);
-			currentVersion = D97E426825BC7E6A0032C3C8 /* bitrise_1.0.2.xcdatamodel */;
+			currentVersion = D944121428CE088600068F8C /* bitrise_1.0.3.xcdatamodel */;
 			path = bitrise.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
