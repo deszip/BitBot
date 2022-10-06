@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -822,12 +822,12 @@
                                                                                     <rect key="frame" x="50" y="13" width="357" height="90"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5G-n9-Q9E">
-                                                                                            <rect key="frame" x="-2" y="74" width="42" height="16"/>
+                                                                                            <rect key="frame" x="-2" y="74" width="45" height="16"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="16" id="Bnp-Wa-dku"/>
                                                                                             </constraints>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="KOTKI" usesSingleLineMode="YES" id="nTH-LG-n3k">
-                                                                                                <font key="font" size="14" name="ProximaNova-Regular"/>
+                                                                                                <font key="font" metaFont="system" size="14"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </textFieldCell>
@@ -838,16 +838,16 @@
                                                                                                 <constraint firstAttribute="height" constant="21" id="Snt-NC-Npg"/>
                                                                                             </constraints>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="BITBOT" id="mNc-2u-WWY">
-                                                                                                <font key="font" size="20" name="ProximaNova-Regular"/>
+                                                                                                <font key="font" metaFont="system" size="20"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nln-lD-Wuc" customClass="BRBuildBranchView">
-                                                                                            <rect key="frame" x="0.0" y="23" width="354" height="16"/>
+                                                                                            <rect key="frame" x="0.0" y="23" width="357" height="16"/>
                                                                                             <subviews>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-eI-xql">
-                                                                                                    <rect key="frame" x="0.0" y="1" width="151" height="15"/>
+                                                                                                    <rect key="frame" x="0.0" y="1" width="166" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TVV-TI-rlj">
                                                                                                             <rect key="frame" x="0.0" y="2" width="10" height="10"/>
@@ -858,9 +858,9 @@
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="git-branch" id="Qj6-GW-xyQ"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-cH-HTt">
-                                                                                                            <rect key="frame" x="13" y="0.0" width="140" height="15"/>
+                                                                                                            <rect key="frame" x="13" y="0.0" width="155" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="feature/sdkd-enc-stub-api" usesSingleLineMode="YES" id="ToV-34-oy8">
-                                                                                                                <font key="font" size="12" name="ProximaNova-Regular"/>
+                                                                                                                <font key="font" metaFont="cellTitle"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                             </textFieldCell>
@@ -876,7 +876,7 @@
                                                                                                     </customSpacing>
                                                                                                 </stackView>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TDX-7F-3md">
-                                                                                                    <rect key="frame" x="166" y="1" width="111" height="15"/>
+                                                                                                    <rect key="frame" x="181" y="1" width="101" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mKD-wi-NwE">
                                                                                                             <rect key="frame" x="0.0" y="2" width="10" height="10"/>
@@ -887,9 +887,9 @@
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="message-square" id="B7o-7b-0aM"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h51-k2-hGy">
-                                                                                                            <rect key="frame" x="13" y="0.0" width="100" height="15"/>
+                                                                                                            <rect key="frame" x="13" y="0.0" width="90" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="develop develop" usesSingleLineMode="YES" id="sQr-Pk-f1M">
-                                                                                                                <font key="font" size="12" name="Jura-Medium"/>
+                                                                                                                <font key="font" metaFont="cellTitle"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                             </textFieldCell>
@@ -905,7 +905,7 @@
                                                                                                     </customSpacing>
                                                                                                 </stackView>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maR-WE-5mF">
-                                                                                                    <rect key="frame" x="292" y="1" width="62" height="15"/>
+                                                                                                    <rect key="frame" x="297" y="1" width="60" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bdu-c2-BcZ">
                                                                                                             <rect key="frame" x="0.0" y="2" width="10" height="10"/>
@@ -916,9 +916,9 @@
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="list" id="z3C-8e-zYQ"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sSb-xQ-bbg">
-                                                                                                            <rect key="frame" x="13" y="0.0" width="51" height="15"/>
+                                                                                                            <rect key="frame" x="13" y="0.0" width="49" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="develop" usesSingleLineMode="YES" id="TUr-ew-Ur5">
-                                                                                                                <font key="font" size="12" name="Jura-Medium"/>
+                                                                                                                <font key="font" metaFont="cellTitle"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                             </textFieldCell>
@@ -950,10 +950,10 @@
                                                                                             </customSpacing>
                                                                                         </stackView>
                                                                                         <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rF4-I2-ynn" customClass="BRBuildDateView">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="172" height="16"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="16"/>
                                                                                             <subviews>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pog-m7-8Ww">
-                                                                                                    <rect key="frame" x="0.0" y="1" width="101" height="15"/>
+                                                                                                    <rect key="frame" x="0.0" y="1" width="109" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iz8-qg-Dg4">
                                                                                                             <rect key="frame" x="0.0" y="2" width="10" height="10"/>
@@ -964,9 +964,9 @@
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="calendar" id="Dxg-fa-MFv"/>
                                                                                                         </imageView>
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5l-zK-olO">
-                                                                                                            <rect key="frame" x="13" y="0.0" width="90" height="15"/>
+                                                                                                            <rect key="frame" x="13" y="0.0" width="98" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="12.01.2019 11:08" usesSingleLineMode="YES" id="ydG-b7-4Es">
-                                                                                                                <font key="font" size="12" name="Jura-Medium"/>
+                                                                                                                <font key="font" metaFont="cellTitle"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                             </textFieldCell>
@@ -982,7 +982,7 @@
                                                                                                     </customSpacing>
                                                                                                 </stackView>
                                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpT-dz-pjB">
-                                                                                                    <rect key="frame" x="116" y="1" width="56" height="15"/>
+                                                                                                    <rect key="frame" x="124" y="1" width="56" height="15"/>
                                                                                                     <subviews>
                                                                                                         <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLG-4s-qyE">
                                                                                                             <rect key="frame" x="0.0" y="2" width="10" height="10"/>
@@ -995,7 +995,7 @@
                                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zaL-kZ-Ud4">
                                                                                                             <rect key="frame" x="13" y="0.0" width="45" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="1m 55s" usesSingleLineMode="YES" id="nlN-mZ-4mf">
-                                                                                                                <font key="font" size="12" name="Jura-Medium"/>
+                                                                                                                <font key="font" metaFont="cellTitle"/>
                                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                                             </textFieldCell>
@@ -1065,7 +1065,7 @@
                                                                                         <constraint firstAttribute="height" constant="16" id="A6w-4K-YmO"/>
                                                                                     </constraints>
                                                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="# 25" usesSingleLineMode="YES" id="gzH-nu-JSZ">
-                                                                                        <font key="font" size="12" name="Jura-Medium"/>
+                                                                                        <font key="font" metaFont="cellTitle"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
@@ -1171,7 +1171,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="106"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" id="o7A-9p-aS2" customClass="BRAboutTextView">
+                                                        <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" dataDetection="YES" id="o7A-9p-aS2" customClass="BRAboutTextView">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="106"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1184,7 +1184,7 @@
 </string>
                                                                     <attributes>
                                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="12" name="ProximaNova-Regular"/>
+                                                                        <font key="NSFont" metaFont="cellTitle"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
@@ -1193,7 +1193,7 @@
 https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                                                     <attributes>
                                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                        <font key="NSFont" size="12" name="ProximaNova-Regular"/>
+                                                                        <font key="NSFont" metaFont="cellTitle"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                                     </attributes>
                                                                 </fragment>
