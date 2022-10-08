@@ -1400,25 +1400,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                         <menuItem title="Quit" tag="3" keyEquivalent="q" id="f60-ia-sAq"/>
                     </items>
                 </menu>
-                <menu title="Settings" id="b4p-Af-EcD">
-                    <items>
-                        <menuItem title="Success" tag="1" id="DO8-ZS-jPB">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="Failed" tag="1" id="jUt-YM-dNb">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="Aborted" tag="2" id="Py8-NJ-s2W">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="On Hold" tag="2" id="M2X-AL-t1T">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="In Progress" tag="2" id="p5X-lD-xFF">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                    </items>
-                </menu>
+                <menu title="Settings" id="b4p-Af-EcD"/>
             </objects>
             <point key="canvasLocation" x="81" y="586.5"/>
         </scene>

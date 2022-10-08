@@ -8,7 +8,6 @@
 
 #import "BRFiltersMenuController.h"
 
-static const NSUInteger kMenuItemsCount = 5;
 typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     BRFilterMenuItemSuccess = 0,
     BRFilterMenuItemFailed = 1,
@@ -41,18 +40,26 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
     
-    if (self.menu.itemArray.count == kMenuItemsCount) {
-        [self.menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
-            [item setTag:idx];
-            [item setTarget:self];
-        }];
-        
-        [self.menu.itemArray[BRFilterMenuItemSuccess] setAction:@selector(toggleSuccess)];
-        [self.menu.itemArray[BRFilterMenuItemFailed] setAction:@selector(toggleFailed)];
-        [self.menu.itemArray[BRFilterMenuItemAborted] setAction:@selector(toggleAborted)];
-        [self.menu.itemArray[BRFilterMenuItemInProgress] setAction:@selector(toggleInProgress)];
-        [self.menu.itemArray[BRFilterMenuItemOnHold] setAction:@selector(toggleOnHold)];
-    }
+    // Statuses
+    NSMenuItem *successItem = [[NSMenuItem alloc] initWithTitle:@"Success" action:@selector(toggleSuccess) keyEquivalent:@""];
+    [self.menu addItem:successItem];
+    
+    NSMenuItem *failedItem = [[NSMenuItem alloc] initWithTitle:@"Failed" action:@selector(toggleFailed) keyEquivalent:@""];
+    [self.menu addItem:failedItem];
+    
+    NSMenuItem *abortedItem = [[NSMenuItem alloc] initWithTitle:@"Aborted" action:@selector(toggleAborted) keyEquivalent:@""];
+    [self.menu addItem:abortedItem];
+    
+    NSMenuItem *inProgressItem = [[NSMenuItem alloc] initWithTitle:@"In Progress" action:@selector(toggleInProgress) keyEquivalent:@""];
+    [self.menu addItem:inProgressItem];
+    
+    NSMenuItem *onHoldItem = [[NSMenuItem alloc] initWithTitle:@"On Hold" action:@selector(toggleOnHold) keyEquivalent:@""];
+    [self.menu addItem:onHoldItem];
+    
+    [self.menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
+        [item setTag:idx];
+        [item setTarget:self];
+    }];
 }
 
 #pragma mark - Actions -
