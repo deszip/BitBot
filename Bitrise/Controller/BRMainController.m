@@ -21,6 +21,7 @@
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
+#import "BRFiltersMenuController.h"
 #import "BRLogsTextViewController.h"
 #import "BRSegue.h"
 #import "BRLogsWindowPresenter.h"
@@ -45,6 +46,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
 @property (strong, nonatomic) BRBuildMenuController *buildController;
+@property (strong, nonatomic) BRFiltersMenuController *filterController;
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
@@ -54,8 +56,10 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (unsafe_unretained) IBOutlet BRAboutTextView *hintView;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet BREmptyView *emptyView;
+
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
+@property (strong) IBOutlet NSMenu *filterMenu;
 
 @end
 
@@ -123,6 +127,13 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
         }
     }];
     
+    // Filter menu controller
+    self.filterController = [BRFiltersMenuController new];
+    [self.filterController bind:self.filterMenu];
+    [self.filterController setStateChageCallback:^(BRBuildPredicate *predicate) {
+        [weakSelf.dataSource applyPredicate:predicate];
+    }];
+    
     // Empty view callback
     [self.emptyView setCallback:^{
         [weakSelf performSegueWithIdentifier:kAccountWindowSegue sender:weakSelf];
@@ -153,6 +164,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
 }
+
+- (IBAction)openFiltersMenu:(NSButton *)sender {
+    NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
+    [self.filterMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
+}
+
 
 #pragma mark - UI setup -
 

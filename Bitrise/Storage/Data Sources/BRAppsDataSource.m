@@ -60,6 +60,17 @@
     [self.outlineView reloadData];
 }
 
+#pragma mark - Filtering -
+
+- (void)applyPredicate:(BRBuildPredicate *)predicate {
+    if (!predicate) {
+        self.buildsFRC.fetchRequest.predicate = nil;
+    } else {
+        self.buildsFRC.fetchRequest.predicate = [predicate predicate];
+    }
+    [self fetch];
+}
+
 #pragma mark - Builders -
 
 - (NSFetchedResultsController *)buildBuildsFRC:(NSManagedObjectContext *)context {
