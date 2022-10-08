@@ -13,8 +13,8 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     BRFilterMenuItemSuccess = 0,
     BRFilterMenuItemFailed = 1,
     BRFilterMenuItemAborted = 2,
-    BRFilterMenuItemInProgress = 3,
-    BRFilterMenuItemOnHold = 4
+    BRFilterMenuItemOnHold = 3,
+    BRFilterMenuItemInProgress = 4
 };
 
 @interface BRFiltersMenuController () <NSMenuItemValidation>

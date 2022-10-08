@@ -1347,6 +1347,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                     <connections>
                         <outlet property="buildMenu" destination="Q6c-WQ-hru" id="n3V-JU-dc4"/>
                         <outlet property="emptyView" destination="lhQ-nT-Gbv" id="jxe-DC-jmu"/>
+                        <outlet property="filterButton" destination="Kyg-kQ-s8N" id="bgE-l3-GVu"/>
                         <outlet property="filterMenu" destination="b4p-Af-EcD" id="37W-NI-eWL"/>
                         <outlet property="hintView" destination="o7A-9p-aS2" id="GIa-9A-1QG"/>
                         <outlet property="outlineView" destination="1IG-VH-UrI" id="K1Y-S7-hEr"/>

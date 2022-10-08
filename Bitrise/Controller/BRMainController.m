@@ -37,6 +37,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @interface BRMainController () <NSMenuDelegate>
 
+// Services
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
@@ -51,12 +52,14 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
 
+// Outlets
 @property (weak) IBOutlet NSView *topBar;
-
+@property (weak) IBOutlet NSButton *filterButton;
 @property (unsafe_unretained) IBOutlet BRAboutTextView *hintView;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet BREmptyView *emptyView;
 
+// Menus
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
 @property (strong) IBOutlet NSMenu *filterMenu;
@@ -184,6 +187,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (void)handleAccountsState:(BRAccountsState)state {
+    self.filterButton.enabled = state == BRAccountsStateHasData;
     self.outlineView.hidden = state == BRAccountsStateEmpty;
     self.emptyView.hidden = state == BRAccountsStateHasData;
 }
