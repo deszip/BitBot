@@ -27,6 +27,8 @@
 @property (strong, nonatomic) NSPersistentContainer *container;
 @property (strong, nonatomic) NSFetchedResultsController *buildsFRC;
 
+@property (copy, nonatomic) void (^stateCallback)(BRBuildsState);
+
 @end
 
 @implementation BRAppsDataSource
@@ -58,6 +60,7 @@
         BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch builds: %@", fetchError);
     }
     [self.outlineView reloadData];
+    [self updateState];
 }
 
 #pragma mark - Filtering -
@@ -71,6 +74,11 @@
     [self fetch];
 }
 
+- (void)setStateCallback:(BRBuildsStateCallback)callback {
+    _stateCallback = callback;
+    [self updateState];
+}
+
 #pragma mark - Builders -
 
 - (NSFetchedResultsController *)buildBuildsFRC:(NSManagedObjectContext *)context {
@@ -78,6 +86,17 @@
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"triggerTime" ascending:NO]];
     [context setAutomaticallyMergesChangesFromParent:YES];
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+}
+
+#pragma mark - Private
+
+- (void)updateState {
+    NSUInteger itemsCount = [[self.buildsFRC.sections valueForKeyPath:@"objects.@unionOfObjects.@count"][0] integerValue];
+    BRBuildsState nextState = itemsCount == 0 ? BRBuildsStateEmpty : BRBuildsStateHasData;
+    if (nextState != _state) {
+        _state = nextState;
+        BR_SAFE_CALL(self.stateCallback, self.state);
+    }
 }
 
 #pragma mark - NSOutlineViewDataSource -

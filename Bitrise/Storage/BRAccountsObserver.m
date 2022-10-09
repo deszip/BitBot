@@ -70,4 +70,5 @@
         self.stateCallback(self.state);
     }
 }
+
 @end
