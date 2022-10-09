@@ -10,8 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, BREmptyViewType) {
+    BREmptyViewTypeNoAccounts = 0,
+    BREmptyViewTypeNoData = 1
+};
+
 @interface BREmptyView : NSView
 
+@property (assign, nonatomic) BREmptyViewType viewType;
 @property (copy, nonatomic) void (^callback)(void);
 
 @end

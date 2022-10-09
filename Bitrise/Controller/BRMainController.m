@@ -21,6 +21,7 @@
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
 #import "BRBuildMenuController.h"
+#import "BRFiltersMenuController.h"
 #import "BRLogsTextViewController.h"
 #import "BRSegue.h"
 #import "BRLogsWindowPresenter.h"
@@ -36,6 +37,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @interface BRMainController () <NSMenuDelegate>
 
+// Services
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
@@ -45,17 +47,22 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
 @property (strong, nonatomic) BRBuildMenuController *buildController;
+@property (strong, nonatomic) BRFiltersMenuController *filterController;
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
 
+// Outlets
 @property (weak) IBOutlet NSView *topBar;
-
+@property (weak) IBOutlet NSButton *filterButton;
 @property (unsafe_unretained) IBOutlet BRAboutTextView *hintView;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet BREmptyView *emptyView;
+
+// Menus
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
+@property (strong) IBOutlet NSMenu *filterMenu;
 
 @end
 
@@ -104,6 +111,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     // Builds data source
     BRCellBuilder *cellBuilder = [[BRCellBuilder alloc] initWithMenuController:self.buildController];
     self.dataSource = [self.dependencyContainer appsDataSourceWithCellBuilder:cellBuilder];
+    [self.dataSource setStateCallback:^(BRBuildsState state) {
+        [weakSelf handleBuildsState:state];
+    }];
     [self.dataSource bind:self.outlineView];
     
     // Settings menu controller
@@ -121,6 +131,13 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
                 
             default: break;
         }
+    }];
+    
+    // Filter menu controller
+    self.filterController = [BRFiltersMenuController new];
+    [self.filterController bind:self.filterMenu];
+    [self.filterController setStateChageCallback:^(BRBuildPredicate *predicate) {
+        [weakSelf.dataSource applyPredicate:predicate];
     }];
     
     // Empty view callback
@@ -154,6 +171,12 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.settingsMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
 }
 
+- (IBAction)openFiltersMenu:(NSButton *)sender {
+    NSPoint point = NSMakePoint(0.0, sender.bounds.size.height + 5.0);
+    [self.filterMenu popUpMenuPositioningItem:nil atLocation:point inView:sender];
+}
+
+
 #pragma mark - UI setup -
 
 - (void)setupUI {
@@ -167,8 +190,22 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (void)handleAccountsState:(BRAccountsState)state {
+    self.filterButton.enabled = state == BRAccountsStateHasData;
     self.outlineView.hidden = state == BRAccountsStateEmpty;
     self.emptyView.hidden = state == BRAccountsStateHasData;
+    
+    if (state == BRAccountsStateEmpty) {
+        [self.emptyView setViewType:BREmptyViewTypeNoAccounts];
+    }
+}
+
+- (void)handleBuildsState:(BRBuildsState)state {
+    self.outlineView.hidden = state == BRBuildsStateEmpty;
+    self.emptyView.hidden = state == BRBuildsStateHasData;
+    
+    if (state == BRBuildsStateEmpty && self.accountObserver.state == BRAccountsStateHasData) {
+        [self.emptyView setViewType:BREmptyViewTypeNoData];
+    }
 }
 
 @end

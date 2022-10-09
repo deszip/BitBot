@@ -163,6 +163,8 @@
 		D9BD3ABD25A0EFE500446FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E42CADE20EC7A800033CD03 /* Assets.xcassets */; };
 		D9C48B322724130000EE097C /* NSPopover+MISSINGBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */; };
 		D9D1D66A272C36C50057948E /* BRAccountsDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */; };
+		D9DBBD6828EF52B3008C5034 /* BRFiltersMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DBBD6728EF52B3008C5034 /* BRFiltersMenuController.m */; };
+		D9DBBD6B28EF62C6008C5034 /* BRBuildPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DBBD6A28EF62C6008C5034 /* BRBuildPredicate.m */; };
 		D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */; };
 		DE0FE2E325275A8900C12804 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E225275A8900C12804 /* AsyncImage.swift */; };
 		DE0FE2E82527623F00C12804 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0FE2E72527623F00C12804 /* Image+Extension.swift */; };
@@ -569,6 +571,10 @@
 		D9C48B302724130000EE097C /* NSPopover+MISSINGBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPopover+MISSINGBackgroundView.m"; sourceTree = "<group>"; };
 		D9C48B312724130000EE097C /* NSPopover+MISSINGBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPopover+MISSINGBackgroundView.h"; sourceTree = "<group>"; };
 		D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRAccountsDataSourceTests.m; sourceTree = "<group>"; };
+		D9DBBD6628EF52B3008C5034 /* BRFiltersMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFiltersMenuController.h; sourceTree = "<group>"; };
+		D9DBBD6728EF52B3008C5034 /* BRFiltersMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFiltersMenuController.m; sourceTree = "<group>"; };
+		D9DBBD6928EF62C6008C5034 /* BRBuildPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBuildPredicate.h; sourceTree = "<group>"; };
+		D9DBBD6A28EF62C6008C5034 /* BRBuildPredicate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildPredicate.m; sourceTree = "<group>"; };
 		D9E44BA0240C2CCA00DE96A6 /* BRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLogger.h; sourceTree = "<group>"; };
 		D9E44BA1240C2CCB00DE96A6 /* BRLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLogger.m; sourceTree = "<group>"; };
 		DE0FE2E225275A8900C12804 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
@@ -696,6 +702,8 @@
 				0E51715B21D2074E000D470E /* BRBuildMenuController.m */,
 				0E8DFB4821D7A7D700E7E5AC /* BRAccountsMenuController.h */,
 				0E8DFB4921D7A7D700E7E5AC /* BRAccountsMenuController.m */,
+				D9DBBD6628EF52B3008C5034 /* BRFiltersMenuController.h */,
+				D9DBBD6728EF52B3008C5034 /* BRFiltersMenuController.m */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -838,6 +846,8 @@
 				0E73598320EF8ED3007E15A7 /* BRAccountsDataSource.m */,
 				0E02C9AC22103ED100FCFE17 /* BRLogsDataSource.h */,
 				0E02C9AD22103ED100FCFE17 /* BRLogsDataSource.m */,
+				D9DBBD6928EF62C6008C5034 /* BRBuildPredicate.h */,
+				D9DBBD6A28EF62C6008C5034 /* BRBuildPredicate.m */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -1844,6 +1854,7 @@
 				0E4AD0892205F9D200257E8E /* BRLogsRequest.m in Sources */,
 				D9E44BA2240C2CCB00DE96A6 /* BRLogger.m in Sources */,
 				0EBA9D6C2217F9EF007234EB /* BRLogInfo.m in Sources */,
+				D9DBBD6828EF52B3008C5034 /* BRFiltersMenuController.m in Sources */,
 				0E52AB802242A4A60020A943 /* BRLogStorage.m in Sources */,
 				0EE1B85E21B4363D005D5140 /* NSSet+FRP.m in Sources */,
 				0EEF655720F5B2AB0012C45D /* BRCellBuilder.m in Sources */,
@@ -1909,6 +1920,7 @@
 				0EB3ED7321E7BC92003F0364 /* BRBuildsRequest.m in Sources */,
 				D9B0A6B424A89C8900C07935 /* BRLogScroller.m in Sources */,
 				0ED38CDC220DE9000006FE69 /* ASLogLoadingOperation.m in Sources */,
+				D9DBBD6B28EF62C6008C5034 /* BRBuildPredicate.m in Sources */,
 				D9C48B322724130000EE097C /* NSPopover+MISSINGBackgroundView.m in Sources */,
 				0EB3ED5521E617FB003F0364 /* BRAPIRequest.m in Sources */,
 				0EFD891820F201400023FCCE /* BRAppInfo.m in Sources */,

@@ -37,6 +37,23 @@
     [self.subtitleTextView setFont:[BRStyleSheet emptySubtitleFont]];
 }
 
+- (void)setViewType:(BREmptyViewType)viewType {
+    _viewType = viewType;
+    switch (viewType) {
+        case BREmptyViewTypeNoData:
+            self.titleField.stringValue = @"NO BUILDS MATCHING FILTER";
+            self.subtitleTextView.hidden = YES;
+            self.addAccountButton.hidden = YES;
+            break;
+            
+        case BREmptyViewTypeNoAccounts:
+            self.titleField.stringValue = @"NO ACCOUNTS YET";
+            self.subtitleTextView.hidden = NO;
+            self.addAccountButton.hidden = NO;
+            break;
+    }
+}
+
 - (IBAction)addAccount:(id)sender {
     self.callback();
 }
