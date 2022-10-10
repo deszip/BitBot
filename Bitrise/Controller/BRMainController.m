@@ -37,6 +37,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @interface BRMainController () <NSMenuDelegate>
 
+// Services
 @property (strong, nonatomic) BRBitriseAPI *api;
 @property (strong, nonatomic) BRStorage *storage;
 @property (strong, nonatomic) BRSyncEngine *syncEngine;
@@ -51,12 +52,14 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @property (strong, nonatomic) BRAccountsObserver *accountObserver;
 
+// Outlets
 @property (weak) IBOutlet NSView *topBar;
-
+@property (weak) IBOutlet NSButton *filterButton;
 @property (unsafe_unretained) IBOutlet BRAboutTextView *hintView;
 @property (weak) IBOutlet NSOutlineView *outlineView;
 @property (weak) IBOutlet BREmptyView *emptyView;
 
+// Menus
 @property (strong) IBOutlet NSMenu *buildMenu;
 @property (strong) IBOutlet NSMenu *settingsMenu;
 @property (strong) IBOutlet NSMenu *filterMenu;
@@ -108,6 +111,9 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     // Builds data source
     BRCellBuilder *cellBuilder = [[BRCellBuilder alloc] initWithMenuController:self.buildController];
     self.dataSource = [self.dependencyContainer appsDataSourceWithCellBuilder:cellBuilder];
+    [self.dataSource setStateCallback:^(BRBuildsState state) {
+        [weakSelf handleBuildsState:state];
+    }];
     [self.dataSource bind:self.outlineView];
     
     // Settings menu controller
@@ -184,8 +190,22 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 }
 
 - (void)handleAccountsState:(BRAccountsState)state {
+    self.filterButton.enabled = state == BRAccountsStateHasData;
     self.outlineView.hidden = state == BRAccountsStateEmpty;
     self.emptyView.hidden = state == BRAccountsStateHasData;
+    
+    if (state == BRAccountsStateEmpty) {
+        [self.emptyView setViewType:BREmptyViewTypeNoAccounts];
+    }
+}
+
+- (void)handleBuildsState:(BRBuildsState)state {
+    self.outlineView.hidden = state == BRBuildsStateEmpty;
+    self.emptyView.hidden = state == BRBuildsStateHasData;
+    
+    if (state == BRBuildsStateEmpty && self.accountObserver.state == BRAccountsStateHasData) {
+        [self.emptyView setViewType:BREmptyViewTypeNoData];
+    }
 }
 
 @end
