@@ -18,18 +18,19 @@ typedef NS_ENUM(NSUInteger, BRFilterStatusType) {
     BRFilterStatusTypeInProgress = 4
 };
 
-
 @interface BRFilterStatusCondition : NSObject
 
-@property (assign, nonatomic, readonly) BRFilterStatusType statusType;
-@property (retain, nonatomic, readonly) NSUUID *uuid;
+//@property (assign, nonatomic, readonly) BRFilterStatusType statusType;
+@property (strong, nonatomic, readonly) NSUUID *uuid;
+@property (strong, nonatomic, readonly) NSPredicate *predicate;
 
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithType:(BRFilterStatusType)statusType NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithType:(BRFilterStatusType)statusType;
+- (instancetype)initWithAppSlug:(NSString *)appSlug;
 
-- (NSPredicate *)predicate;
+//- (NSPredicate *)predicate;
 
 @end
 

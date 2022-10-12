@@ -12,21 +12,36 @@
 
 - (instancetype)initWithType:(BRFilterStatusType)statusType {
     if (self = [super init]) {
-        _statusType = statusType;
         _uuid = [NSUUID UUID];
+        switch (statusType) {
+            case BRFilterStatusTypeSuccess:
+                _predicate = [NSPredicate predicateWithFormat:@"status == 1"];
+                break;
+            case BRFilterStatusTypeFailed:
+                _predicate = [NSPredicate predicateWithFormat:@"status == 2"];
+                break;
+            case BRFilterStatusTypeAborted:
+                _predicate = [NSPredicate predicateWithFormat:@"status == 3 OR status == 4"];
+                break;
+            case BRFilterStatusTypeOnHold:
+                _predicate = [NSPredicate predicateWithFormat:@"status == 0 AND onHold == YES"];
+                break;
+            case BRFilterStatusTypeInProgress:
+                _predicate = [NSPredicate predicateWithFormat:@"status == 0 AND onHold == NO AND startTime != nil"];
+                break;
+        }
     }
     
     return self;
 }
 
-- (NSPredicate *)predicate {
-    switch (self.statusType) {
-        case BRFilterStatusTypeSuccess: return [NSPredicate predicateWithFormat:@"status == 1"];
-        case BRFilterStatusTypeFailed: return [NSPredicate predicateWithFormat:@"status == 2"];
-        case BRFilterStatusTypeAborted: return [NSPredicate predicateWithFormat:@"status == 3 OR status == 4"];
-        case BRFilterStatusTypeOnHold: return [NSPredicate predicateWithFormat:@"status == 0 AND onHold == YES"];
-        case BRFilterStatusTypeInProgress: return [NSPredicate predicateWithFormat:@"status == 0 AND onHold == NO AND startTime != nil"];
+- (instancetype)initWithAppSlug:(NSString *)appSlug {
+    if (self = [super init]) {
+        _uuid = [NSUUID UUID];
+        _predicate = [NSPredicate predicateWithFormat:@"app.slug == %@", appSlug];
     }
+    
+    return self;
 }
 
 @end
