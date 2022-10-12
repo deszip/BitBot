@@ -8,66 +8,44 @@
 
 #import "BRBuildPredicate.h"
 
+@interface BRBuildPredicate ()
+
+@property (strong, nonatomic) NSMutableDictionary <NSUUID *, BRFilterStatusCondition *> *conditions;
+
+@end
+
 @implementation BRBuildPredicate
 
 - (instancetype)init {
     if (self = [super init]) {
-        _includeFailed = YES;
-        _includeAborted = YES;
-        _includeSuccess = YES;
-        _includeOnHold = YES;
-        _includeInProgress = YES;
+        _conditions = [NSMutableDictionary new];
     }
     
     return self;
 }
 
-+ (instancetype)allEnabled {
-    return [BRBuildPredicate new];
+- (BOOL)hasConditions {
+    return self.conditions.count > 0;
 }
 
-+ (instancetype)allDisabled {
-    BRBuildPredicate *predicate = [BRBuildPredicate new];
-    predicate.includeFailed = NO;
-    predicate.includeAborted = NO;
-    predicate.includeSuccess = NO;
-    predicate.includeOnHold = NO;
-    predicate.includeInProgress = NO;
-    
-    return predicate;
+- (void)toggleCondition:(BRFilterStatusCondition *)condition {
+    if ([self.conditions.allKeys containsObject:condition.uuid]) {
+        [self.conditions removeObjectForKey:condition.uuid];
+    } else {
+        self.conditions[condition.uuid] = condition;
+    }
 }
 
-- (BOOL)hasEnabled {
-    return
-    self.includeFailed ||
-    self.includeAborted ||
-    self.includeSuccess ||
-    self.includeOnHold ||
-    self.includeInProgress;
+- (BOOL)hasCondition:(BRFilterStatusCondition *)condition {
+    return [self.conditions.allKeys containsObject:condition.uuid];
 }
 
 - (NSPredicate *)predicate {
     NSMutableArray <NSPredicate *> *subPredicates = [NSMutableArray array];
     
-    if (self.includeFailed) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 2"]];
-    }
-    
-    if (self.includeAborted) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 3 OR status == 4"]];
-    }
-    
-    if (self.includeSuccess) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 1"]];
-    }
-    
-    if (self.includeOnHold) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 0 AND onHold == YES"]];
-    }
-    
-    if (self.includeInProgress) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 0 AND onHold == NO AND startTime != nil"]];
-    }
+    [self.conditions.allValues enumerateObjectsUsingBlock:^(BRFilterStatusCondition *condition, NSUInteger idx, BOOL *stop) {
+        [subPredicates addObject:[condition predicate]];
+    }];
     
     // Predicate with empty subpredicates fails FRC fetch
     if (subPredicates.count) {

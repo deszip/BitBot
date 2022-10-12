@@ -134,7 +134,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     }];
     
     // Filter menu controller
-    self.filterController = [BRFiltersMenuController new];
+    self.filterController = [[BRFiltersMenuController alloc] initWithPredicate:[BRBuildPredicate new] itemProvider:[BRFilterItemProvider new]];
     [self.filterController bind:self.filterMenu];
     [self.filterController setStateChageCallback:^(BRBuildPredicate *predicate) {
         [weakSelf.dataSource applyPredicate:predicate];

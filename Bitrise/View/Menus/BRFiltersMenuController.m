@@ -7,6 +7,7 @@
 //
 
 #import "BRFiltersMenuController.h"
+#import "BRFilterStatusCondition.h"
 
 typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     BRFilterMenuItemSuccess = 0,
@@ -19,6 +20,7 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 @interface BRFiltersMenuController () <NSMenuItemValidation>
 
 @property (strong, nonatomic) BRBuildPredicate *predicate;
+@property (strong, nonatomic) BRFilterItemProvider *itemProvider;
 @property (weak, nonatomic) NSMenu *menu;
 
 @end
@@ -26,12 +28,13 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 @implementation BRFiltersMenuController
 
 - (instancetype)init {
-    return [self initWithPredicate:[BRBuildPredicate allDisabled]];
+    return [self initWithPredicate:[BRBuildPredicate new] itemProvider: [BRFilterItemProvider new]];
 }
 
-- (instancetype)initWithPredicate:(BRBuildPredicate *)predicate {
+- (instancetype)initWithPredicate:(BRBuildPredicate *)predicate itemProvider:(BRFilterItemProvider *)itemProvider {
     if (self = [super init]) {
         _predicate = predicate;
+        _itemProvider = itemProvider;
     }
     
     return self;
@@ -40,82 +43,36 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
     
-    // Statuses
-    NSMenuItem *successItem = [[NSMenuItem alloc] initWithTitle:@"Success" action:@selector(toggleSuccess) keyEquivalent:@""];
-    [self.menu addItem:successItem];
-    
-    NSMenuItem *failedItem = [[NSMenuItem alloc] initWithTitle:@"Failed" action:@selector(toggleFailed) keyEquivalent:@""];
-    [self.menu addItem:failedItem];
-    
-    NSMenuItem *abortedItem = [[NSMenuItem alloc] initWithTitle:@"Aborted" action:@selector(toggleAborted) keyEquivalent:@""];
-    [self.menu addItem:abortedItem];
-    
-    NSMenuItem *inProgressItem = [[NSMenuItem alloc] initWithTitle:@"In Progress" action:@selector(toggleInProgress) keyEquivalent:@""];
-    [self.menu addItem:inProgressItem];
-    
-    NSMenuItem *onHoldItem = [[NSMenuItem alloc] initWithTitle:@"On Hold" action:@selector(toggleOnHold) keyEquivalent:@""];
-    [self.menu addItem:onHoldItem];
-    
-    [self.menu.itemArray enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
-        [item setTag:idx];
+    [[self.itemProvider statusItems] enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
         [item setTarget:self];
+        [item setAction:@selector(toggleStatus:)];
+        [self.menu addItem:item];
     }];
 }
 
 #pragma mark - Actions -
 
-- (void)toggleSuccess {
-    self.predicate.includeSuccess = !self.predicate.includeSuccess;
-    self.stateChageCallback(self.predicate);
-}
-
-- (void)toggleFailed {
-    self.predicate.includeFailed = !self.predicate.includeFailed;
-    self.stateChageCallback(self.predicate);
-}
-
-- (void)toggleAborted {
-    self.predicate.includeAborted = !self.predicate.includeAborted;
-    self.stateChageCallback(self.predicate);
-}
-
-- (void)toggleInProgress {
-    self.predicate.includeInProgress = !self.predicate.includeInProgress;
-    self.stateChageCallback(self.predicate);
-}
-
-- (void)toggleOnHold {
-    self.predicate.includeOnHold = !self.predicate.includeOnHold;
-    self.stateChageCallback(self.predicate);
+- (void)toggleStatus:(NSMenuItem *)item {
+    if ([item.representedObject isKindOfClass:[BRFilterStatusCondition class]]) {
+        BRFilterStatusCondition *condition = (BRFilterStatusCondition *)item.representedObject;
+        [self.predicate toggleCondition:condition];
+        
+        self.stateChageCallback(self.predicate);
+    }
 }
 
 #pragma mark - NSMenuItemValidation -
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
     // If all options disabled we dont want to display all checkmarks
-    if (!self.predicate.hasEnabled) {
+    if (!self.predicate.hasConditions) {
         [menuItem setState:NSControlStateValueOff];
         return YES;
     }
     
-    if (menuItem.tag == BRFilterMenuItemSuccess) {
-        [menuItem setState:self.predicate.includeSuccess ? NSControlStateValueOn : NSControlStateValueOff];
-    }
-    
-    if (menuItem.tag == BRFilterMenuItemFailed) {
-        [menuItem setState:self.predicate.includeFailed ? NSControlStateValueOn : NSControlStateValueOff];
-    }
-    
-    if (menuItem.tag == BRFilterMenuItemAborted) {
-        [menuItem setState:self.predicate.includeAborted ? NSControlStateValueOn : NSControlStateValueOff];
-    }
-    
-    if (menuItem.tag == BRFilterMenuItemInProgress) {
-        [menuItem setState:self.predicate.includeInProgress ? NSControlStateValueOn : NSControlStateValueOff];
-    }
-    
-    if (menuItem.tag == BRFilterMenuItemOnHold) {
-        [menuItem setState:self.predicate.includeOnHold ? NSControlStateValueOn : NSControlStateValueOff];
+    if ([menuItem.representedObject isKindOfClass:[BRFilterStatusCondition class]]) {
+        BRFilterStatusCondition *condition = (BRFilterStatusCondition *)menuItem.representedObject;
+        [menuItem setState:[self.predicate hasCondition:condition] ? NSControlStateValueOn : NSControlStateValueOff];
     }
     
     return YES;
