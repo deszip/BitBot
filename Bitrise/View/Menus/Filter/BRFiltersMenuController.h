@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BRBuildPredicate.h"
+#import "BRFilterItemProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic) void (^stateChageCallback)(BRBuildPredicate *);
 
-- (instancetype)initWithPredicate:(BRBuildPredicate *)predicate;
+- (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithPredicate:(BRBuildPredicate *)predicate itemProvider:(BRFilterItemProvider *)itemProvider NS_DESIGNATED_INITIALIZER;
 
 - (void)bind:(NSMenu *)menu;
 

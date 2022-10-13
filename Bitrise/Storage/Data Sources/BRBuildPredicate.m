@@ -8,70 +8,66 @@
 
 #import "BRBuildPredicate.h"
 
+@interface BRBuildPredicate ()
+
+@property (strong, nonatomic) NSMutableDictionary <NSNumber *, NSMutableDictionary <NSUUID *, BRFilterCondition *> *> *conditions;
+
+@end
+
 @implementation BRBuildPredicate
 
 - (instancetype)init {
     if (self = [super init]) {
-        _includeFailed = YES;
-        _includeAborted = YES;
-        _includeSuccess = YES;
-        _includeOnHold = YES;
-        _includeInProgress = YES;
+        _conditions = [NSMutableDictionary new];
     }
     
     return self;
 }
 
-+ (instancetype)allEnabled {
-    return [BRBuildPredicate new];
+- (BOOL)hasConditions {
+    return self.conditions.count > 0;
 }
 
-+ (instancetype)allDisabled {
-    BRBuildPredicate *predicate = [BRBuildPredicate new];
-    predicate.includeFailed = NO;
-    predicate.includeAborted = NO;
-    predicate.includeSuccess = NO;
-    predicate.includeOnHold = NO;
-    predicate.includeInProgress = NO;
+- (void)toggleCondition:(BRFilterCondition *)condition {
+    NSMutableDictionary *conditionGroup = self.conditions[@(condition.group)];
+    if (!conditionGroup) {
+        conditionGroup = [NSMutableDictionary new];
+    }
+    if ([conditionGroup.allKeys containsObject:condition.uuid]) {
+        [conditionGroup removeObjectForKey:condition.uuid];
+    } else {
+        conditionGroup[condition.uuid] = condition;
+    }
     
-    return predicate;
+    self.conditions[@(condition.group)] = conditionGroup;
 }
 
-- (BOOL)hasEnabled {
-    return
-    self.includeFailed ||
-    self.includeAborted ||
-    self.includeSuccess ||
-    self.includeOnHold ||
-    self.includeInProgress;
+- (BOOL)hasCondition:(BRFilterCondition *)condition {
+    NSMutableDictionary *conditionGroup = self.conditions[@(condition.group)];
+    if (!conditionGroup) {
+        return NO;
+    }
+    
+    return [conditionGroup.allKeys containsObject:condition.uuid];
 }
 
 - (NSPredicate *)predicate {
-    NSMutableArray <NSPredicate *> *subPredicates = [NSMutableArray array];
+    __block NSMutableArray <NSPredicate *> *subPredicates = [NSMutableArray array];
     
-    if (self.includeFailed) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 2"]];
-    }
-    
-    if (self.includeAborted) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 3 OR status == 4"]];
-    }
-    
-    if (self.includeSuccess) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 1"]];
-    }
-    
-    if (self.includeOnHold) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 0 AND onHold == YES"]];
-    }
-    
-    if (self.includeInProgress) {
-        [subPredicates addObject:[NSPredicate predicateWithFormat:@"status == 0 AND onHold == NO AND startTime != nil"]];
-    }
+    [self.conditions enumerateKeysAndObjectsUsingBlock:^(NSNumber *group, NSMutableDictionary<NSUUID *,BRFilterCondition *> *conditions, BOOL *stop) {
+        __block NSMutableArray <NSPredicate *> *groupPredicates = [NSMutableArray array];
+        [conditions.allValues enumerateObjectsUsingBlock:^(BRFilterCondition *condition, NSUInteger idx, BOOL *stop) {
+            [groupPredicates addObject:[condition predicate]];
+        }];
+        if (groupPredicates.count > 0) {
+            NSPredicate *groupPredicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:groupPredicates];
+            [subPredicates addObject:groupPredicate];
+        }
+    }];
     
     // Predicate with empty subpredicates fails FRC fetch
     if (subPredicates.count) {
-        return [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:subPredicates];
+        return [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:subPredicates];
     }
     
     return nil;

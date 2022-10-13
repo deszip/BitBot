@@ -16,7 +16,7 @@
 #import "BRAppsDataSource.h"
 #import "BRAccountsViewController.h"
 
-#import "BRCommandFactory.h"
+//#import "BRCommandFactory.h"
 #import "BRSyncCommand.h"
 #import "BRBuildStateInfo.h"
 #import "BRSettingsMenuController.h"
@@ -37,20 +37,15 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
 
 @interface BRMainController () <NSMenuDelegate>
 
-// Services
-@property (strong, nonatomic) BRBitriseAPI *api;
-@property (strong, nonatomic) BRStorage *storage;
-@property (strong, nonatomic) BRSyncEngine *syncEngine;
-@property (strong, nonatomic) BREnvironment *environment;
-@property (strong, nonatomic) BRCommandFactory *commandFactory;
-
+// Serices
 @property (strong, nonatomic) BRAppsDataSource *dataSource;
+@property (strong, nonatomic) BRAccountsObserver *accountObserver;
+
+// UI
 @property (strong, nonatomic) BRSettingsMenuController *settingsController;
 @property (strong, nonatomic) BRBuildMenuController *buildController;
 @property (strong, nonatomic) BRFiltersMenuController *filterController;
 @property (strong, nonatomic) BRLogsWindowPresenter *logsPresenter;
-
-@property (strong, nonatomic) BRAccountsObserver *accountObserver;
 
 // Outlets
 @property (weak) IBOutlet NSView *topBar;
@@ -78,18 +73,13 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     
     // Services
     self.logsPresenter = [[BRLogsWindowPresenter alloc] initWithPresentingController:self];
-    self.syncEngine = [self.dependencyContainer syncEngine];
-    self.environment = [self.dependencyContainer appEnvironment];
     self.accountObserver = [self.dependencyContainer accountsObserver];
     [self.accountObserver start:^(BRAccountsState state) {
         [weakSelf handleAccountsState:state];
     }];
     
     // Build menu controller
-    self.commandFactory = [[BRCommandFactory alloc] initWithAPI:[self.dependencyContainer bitriseAPI]
-                                                     syncEngine:self.syncEngine
-                                                    environment:self.environment];
-    self.buildController = [[BRBuildMenuController alloc] initWithCommandFactory:self.commandFactory];
+    self.buildController = [self.dependencyContainer buildMenuController];
     self.buildController.menu = self.buildMenu;
     self.buildController.buildProvider = ^BRBuild* (NSView *targetView) {
         id selectedItem = [weakSelf.outlineView itemAtRow:[weakSelf.outlineView clickedRow]];
@@ -117,7 +107,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     [self.dataSource bind:self.outlineView];
     
     // Settings menu controller
-    self.settingsController = [[BRSettingsMenuController alloc] initWithEnvironment:self.environment];
+    self.settingsController = [self.dependencyContainer settingsMenuController];
     [self.settingsController bind:self.settingsMenu];
     [self.settingsController setNavigationCallback:^(BRSettingsMenuNavigationAction action) {
         switch (action) {
@@ -134,7 +124,7 @@ typedef NS_ENUM(NSUInteger, BRBuildMenuItem) {
     }];
     
     // Filter menu controller
-    self.filterController = [BRFiltersMenuController new];
+    self.filterController = [self.dependencyContainer filterMenuController];
     [self.filterController bind:self.filterMenu];
     [self.filterController setStateChageCallback:^(BRBuildPredicate *predicate) {
         [weakSelf.dataSource applyPredicate:predicate];

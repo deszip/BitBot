@@ -83,4 +83,21 @@
     return [[BREnvironment alloc] initWithAutorun:[BRAutorun new] notificationsDispatcher:nDispatcher];
 }
 
+#pragma mark - BRMenuControllerProvider -
+
+- (BRBuildMenuController *)buildMenuController {
+    BRCommandFactory *commandFactory = [[BRCommandFactory alloc] initWithAPI:self.bitriseAPI
+                                                     syncEngine:self.syncEngine
+                                                    environment:self.appEnvironment];
+    return [[BRBuildMenuController alloc] initWithCommandFactory:commandFactory];
+}
+
+- (BRSettingsMenuController *)settingsMenuController {
+    return [[BRSettingsMenuController alloc] initWithEnvironment:self.appEnvironment];
+}
+
+- (BRFiltersMenuController *)filterMenuController {
+    return [[BRFiltersMenuController alloc] initWithPredicate:[BRBuildPredicate new] itemProvider:[[BRFilterItemProvider alloc] initWithContext:self.persistenceContainer.viewContext]];
+}
+
 @end

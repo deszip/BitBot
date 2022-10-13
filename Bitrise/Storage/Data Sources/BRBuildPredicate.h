@@ -8,20 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "BRFilterCondition.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildPredicate : NSObject
 
-@property (assign, nonatomic) BOOL includeSuccess;
-@property (assign, nonatomic) BOOL includeFailed;
-@property (assign, nonatomic) BOOL includeOnHold;
-@property (assign, nonatomic) BOOL includeAborted;
-@property (assign, nonatomic) BOOL includeInProgress;
+- (BOOL)hasConditions;
 
-+ (instancetype)allEnabled;
-+ (instancetype)allDisabled;
+- (void)toggleCondition:(BRFilterCondition *)condition;
+- (BOOL)hasCondition:(BRFilterCondition *)condition;
 
-- (BOOL)hasEnabled;
 - (NSPredicate *)predicate;
     
 @end

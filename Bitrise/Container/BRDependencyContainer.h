@@ -20,6 +20,10 @@
 #import "BREnvironment.h"
 #import "BRLogObserver.h"
 
+#import "BRBuildMenuController.h"
+#import "BRSettingsMenuController.h"
+#import "BRFiltersMenuController.h"
+
 @protocol BRDataSourceProvider <NSObject>
 
 - (BRCellBuilder *)cellBuilder;
@@ -46,7 +50,14 @@
 
 @end
 
+@protocol BRMenuControllerProvider <NSObject>
 
-@interface BRDependencyContainer : NSObject <BRDataSourceProvider, BRInteractionProvider, BREnvironmentProvider>
+- (BRBuildMenuController *)buildMenuController;
+- (BRSettingsMenuController *)settingsMenuController;
+- (BRFiltersMenuController *)filterMenuController;
+
+@end
+
+@interface BRDependencyContainer : NSObject <BRDataSourceProvider, BRInteractionProvider, BREnvironmentProvider, BRMenuControllerProvider>
 
 @end
