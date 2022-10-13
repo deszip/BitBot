@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BRFilterStatusCondition.h"
+#import "BRFilterCondition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)hasConditions;
 
-- (void)toggleCondition:(BRFilterStatusCondition *)condition;
-- (BOOL)hasCondition:(BRFilterStatusCondition *)condition;
+- (void)toggleCondition:(BRFilterCondition *)condition;
+- (BOOL)hasCondition:(BRFilterCondition *)condition;
 
 - (NSPredicate *)predicate;
     

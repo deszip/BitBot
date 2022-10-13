@@ -1,5 +1,5 @@
 //
-//  BRFilterStatusCondition.h
+//  BRFilterCondition.h
 //  BitBot
 //
 //  Created by Deszip on 12.10.2022.
@@ -18,19 +18,22 @@ typedef NS_ENUM(NSUInteger, BRFilterStatusType) {
     BRFilterStatusTypeInProgress = 4
 };
 
-@interface BRFilterStatusCondition : NSObject
+typedef NS_ENUM(NSUInteger, BRFilterConditionGroup) {
+    BRFilterConditionGroupStatus = 0,
+    BRFilterConditionGroupApp = 1
+};
 
-//@property (assign, nonatomic, readonly) BRFilterStatusType statusType;
+@interface BRFilterCondition : NSObject
+
 @property (strong, nonatomic, readonly) NSUUID *uuid;
+@property (assign, nonatomic, readonly) BRFilterConditionGroup group;
 @property (strong, nonatomic, readonly) NSPredicate *predicate;
 
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithType:(BRFilterStatusType)statusType;
+- (instancetype)initWithBuildStatus:(BRFilterStatusType)statusType;
 - (instancetype)initWithAppSlug:(NSString *)appSlug;
-
-//- (NSPredicate *)predicate;
 
 @end
 

@@ -125,7 +125,7 @@
 		D90BFBA62537388000DA473E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90BFBA52537388000DA473E /* CloudKit.framework */; };
 		D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */; };
 		D93FFA1F28F74D9E005B35F0 /* BRFilterItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */; };
-		D93FFA2528F74F27005B35F0 /* BRFilterStatusCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = D93FFA2428F74F27005B35F0 /* BRFilterStatusCondition.m */; };
+		D93FFA2528F74F27005B35F0 /* BRFilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */; };
 		D943B24B24EAF1AB00084C59 /* Proxima Nova Alt Bold.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
 		D943B24C24EAF1AB00084C59 /* Proxima Nova Alt Light.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		D943B24D24EAF1AB00084C59 /* Proxima Nova Alt Thin.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
@@ -523,8 +523,8 @@
 		D91BD9EB25A1C03E00EF8D66 /* BitBotATV.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BitBotATV.xctestplan; sourceTree = "<group>"; };
 		D93FFA1D28F74D9E005B35F0 /* BRFilterItemProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterItemProvider.h; sourceTree = "<group>"; };
 		D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterItemProvider.m; sourceTree = "<group>"; };
-		D93FFA2328F74F27005B35F0 /* BRFilterStatusCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterStatusCondition.h; sourceTree = "<group>"; };
-		D93FFA2428F74F27005B35F0 /* BRFilterStatusCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterStatusCondition.m; sourceTree = "<group>"; };
+		D93FFA2328F74F27005B35F0 /* BRFilterCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterCondition.h; sourceTree = "<group>"; };
+		D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterCondition.m; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -712,8 +712,8 @@
 				0E8DFB4921D7A7D700E7E5AC /* BRAccountsMenuController.m */,
 				D93FFA1D28F74D9E005B35F0 /* BRFilterItemProvider.h */,
 				D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */,
-				D93FFA2328F74F27005B35F0 /* BRFilterStatusCondition.h */,
-				D93FFA2428F74F27005B35F0 /* BRFilterStatusCondition.m */,
+				D93FFA2328F74F27005B35F0 /* BRFilterCondition.h */,
+				D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -1895,7 +1895,7 @@
 				0EFD891520F1FDE10023FCCE /* BRBuild+Mapping.m in Sources */,
 				0EE1B85C21B4363D005D5140 /* NSDictionary+FRP.m in Sources */,
 				0E93B70520F09A85001A6C15 /* BRSyncCommand.m in Sources */,
-				D93FFA2528F74F27005B35F0 /* BRFilterStatusCondition.m in Sources */,
+				D93FFA2528F74F27005B35F0 /* BRFilterCondition.m in Sources */,
 				0E348F1A2213130A000343A1 /* BRLogLineView.m in Sources */,
 				0E4AD07D2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0E8E9B4F20F07D2000494DEB /* BRAccountCellView.m in Sources */,

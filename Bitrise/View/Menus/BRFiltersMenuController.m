@@ -7,7 +7,8 @@
 //
 
 #import "BRFiltersMenuController.h"
-#import "BRFilterStatusCondition.h"
+
+#import "BRFilterCondition.h"
 
 typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     BRFilterMenuItemSuccess = 0,
@@ -43,7 +44,15 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
     
+    [self.menu addItem:[NSMenuItem separatorItem]];
     [[self.itemProvider statusItems] enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
+        [item setTarget:self];
+        [item setAction:@selector(toggleStatus:)];
+        [self.menu addItem:item];
+    }];
+    
+    [self.menu addItem:[NSMenuItem separatorItem]];
+    [[self.itemProvider appsItems] enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
         [item setTarget:self];
         [item setAction:@selector(toggleStatus:)];
         [self.menu addItem:item];
@@ -53,8 +62,8 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 #pragma mark - Actions -
 
 - (void)toggleStatus:(NSMenuItem *)item {
-    if ([item.representedObject isKindOfClass:[BRFilterStatusCondition class]]) {
-        BRFilterStatusCondition *condition = (BRFilterStatusCondition *)item.representedObject;
+    if ([item.representedObject isKindOfClass:[BRFilterCondition class]]) {
+        BRFilterCondition *condition = (BRFilterCondition *)item.representedObject;
         [self.predicate toggleCondition:condition];
         
         self.stateChageCallback(self.predicate);
@@ -70,8 +79,8 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
         return YES;
     }
     
-    if ([menuItem.representedObject isKindOfClass:[BRFilterStatusCondition class]]) {
-        BRFilterStatusCondition *condition = (BRFilterStatusCondition *)menuItem.representedObject;
+    if ([menuItem.representedObject isKindOfClass:[BRFilterCondition class]]) {
+        BRFilterCondition *condition = (BRFilterCondition *)menuItem.representedObject;
         [menuItem setState:[self.predicate hasCondition:condition] ? NSControlStateValueOn : NSControlStateValueOff];
     }
     

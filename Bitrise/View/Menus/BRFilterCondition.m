@@ -1,18 +1,26 @@
 //
-//  BRFilterStatusCondition.m
+//  BRFilterCondition.m
 //  BitBot
 //
 //  Created by Deszip on 12.10.2022.
 //  Copyright © 2022 Bitrise. All rights reserved.
 //
 
-#import "BRFilterStatusCondition.h"
+#import "BRFilterCondition.h"
 
-@implementation BRFilterStatusCondition
+@implementation BRFilterCondition
 
-- (instancetype)initWithType:(BRFilterStatusType)statusType {
+- (instancetype)init {
     if (self = [super init]) {
         _uuid = [NSUUID UUID];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithBuildStatus:(BRFilterStatusType)statusType {
+    if (self = [self init]) {
+        _group = BRFilterConditionGroupStatus;
         switch (statusType) {
             case BRFilterStatusTypeSuccess:
                 _predicate = [NSPredicate predicateWithFormat:@"status == 1"];
@@ -36,8 +44,8 @@
 }
 
 - (instancetype)initWithAppSlug:(NSString *)appSlug {
-    if (self = [super init]) {
-        _uuid = [NSUUID UUID];
+    if (self = [self init]) {
+        _group = BRFilterConditionGroupApp;
         _predicate = [NSPredicate predicateWithFormat:@"app.slug == %@", appSlug];
     }
     

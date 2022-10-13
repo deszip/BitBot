@@ -97,7 +97,7 @@
 }
 
 - (BRFiltersMenuController *)filterMenuController {
-    return [[BRFiltersMenuController alloc] initWithPredicate:[BRBuildPredicate new] itemProvider:[BRFilterItemProvider new]];
+    return [[BRFiltersMenuController alloc] initWithPredicate:[BRBuildPredicate new] itemProvider:[[BRFilterItemProvider alloc] initWithContext:self.persistenceContainer.viewContext]];
 }
 
 @end

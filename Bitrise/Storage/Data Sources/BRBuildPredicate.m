@@ -10,7 +10,7 @@
 
 @interface BRBuildPredicate ()
 
-@property (strong, nonatomic) NSMutableDictionary <NSUUID *, BRFilterStatusCondition *> *conditions;
+@property (strong, nonatomic) NSMutableDictionary <NSNumber *, NSMutableDictionary <NSUUID *, BRFilterCondition *> *> *conditions;
 
 @end
 
@@ -28,28 +28,46 @@
     return self.conditions.count > 0;
 }
 
-- (void)toggleCondition:(BRFilterStatusCondition *)condition {
-    if ([self.conditions.allKeys containsObject:condition.uuid]) {
-        [self.conditions removeObjectForKey:condition.uuid];
-    } else {
-        self.conditions[condition.uuid] = condition;
+- (void)toggleCondition:(BRFilterCondition *)condition {
+    NSMutableDictionary *conditionGroup = self.conditions[@(condition.group)];
+    if (!conditionGroup) {
+        conditionGroup = [NSMutableDictionary new];
     }
+    if ([conditionGroup.allKeys containsObject:condition.uuid]) {
+        [conditionGroup removeObjectForKey:condition.uuid];
+    } else {
+        conditionGroup[condition.uuid] = condition;
+    }
+    
+    self.conditions[@(condition.group)] = conditionGroup;
 }
 
-- (BOOL)hasCondition:(BRFilterStatusCondition *)condition {
-    return [self.conditions.allKeys containsObject:condition.uuid];
+- (BOOL)hasCondition:(BRFilterCondition *)condition {
+    NSMutableDictionary *conditionGroup = self.conditions[@(condition.group)];
+    if (!conditionGroup) {
+        return NO;
+    }
+    
+    return [conditionGroup.allKeys containsObject:condition.uuid];
 }
 
 - (NSPredicate *)predicate {
-    NSMutableArray <NSPredicate *> *subPredicates = [NSMutableArray array];
+    __block NSMutableArray <NSPredicate *> *subPredicates = [NSMutableArray array];
     
-    [self.conditions.allValues enumerateObjectsUsingBlock:^(BRFilterStatusCondition *condition, NSUInteger idx, BOOL *stop) {
-        [subPredicates addObject:[condition predicate]];
+    [self.conditions enumerateKeysAndObjectsUsingBlock:^(NSNumber *group, NSMutableDictionary<NSUUID *,BRFilterCondition *> *conditions, BOOL *stop) {
+        __block NSMutableArray <NSPredicate *> *groupPredicates = [NSMutableArray array];
+        [conditions.allValues enumerateObjectsUsingBlock:^(BRFilterCondition *condition, NSUInteger idx, BOOL *stop) {
+            [groupPredicates addObject:[condition predicate]];
+        }];
+        if (groupPredicates.count > 0) {
+            NSPredicate *groupPredicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:groupPredicates];
+            [subPredicates addObject:groupPredicate];
+        }
     }];
     
     // Predicate with empty subpredicates fails FRC fetch
     if (subPredicates.count) {
-        return [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:subPredicates];
+        return [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:subPredicates];
     }
     
     return nil;
