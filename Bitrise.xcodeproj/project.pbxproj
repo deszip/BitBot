@@ -702,18 +702,13 @@
 		0E30344321CEDDA6001757C0 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
+				D93FFA2628F8D7E1005B35F0 /* Filter */,
 				0E30344421CEDDD0001757C0 /* BRSettingsMenuController.h */,
 				0E30344521CEDDD0001757C0 /* BRSettingsMenuController.m */,
-				D9DBBD6628EF52B3008C5034 /* BRFiltersMenuController.h */,
-				D9DBBD6728EF52B3008C5034 /* BRFiltersMenuController.m */,
 				0E51715A21D2074E000D470E /* BRBuildMenuController.h */,
 				0E51715B21D2074E000D470E /* BRBuildMenuController.m */,
 				0E8DFB4821D7A7D700E7E5AC /* BRAccountsMenuController.h */,
 				0E8DFB4921D7A7D700E7E5AC /* BRAccountsMenuController.m */,
-				D93FFA1D28F74D9E005B35F0 /* BRFilterItemProvider.h */,
-				D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */,
-				D93FFA2328F74F27005B35F0 /* BRFilterCondition.h */,
-				D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -1195,6 +1190,19 @@
 				D91BD9C725A1BE7000EF8D66 /* Info.plist */,
 			);
 			path = BitBotATVTests;
+			sourceTree = "<group>";
+		};
+		D93FFA2628F8D7E1005B35F0 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D9DBBD6628EF52B3008C5034 /* BRFiltersMenuController.h */,
+				D9DBBD6728EF52B3008C5034 /* BRFiltersMenuController.m */,
+				D93FFA1D28F74D9E005B35F0 /* BRFilterItemProvider.h */,
+				D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */,
+				D93FFA2328F74F27005B35F0 /* BRFilterCondition.h */,
+				D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		D95F56EE246FFDE300DF2C50 /* Proxima */ = {
