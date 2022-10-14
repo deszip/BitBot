@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRBuildPredicate : NSObject
 
+- (void)clear;
 - (BOOL)hasConditions;
 
 - (void)toggleCondition:(BRFilterCondition *)condition;

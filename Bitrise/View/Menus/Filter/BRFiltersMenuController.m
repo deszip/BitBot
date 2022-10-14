@@ -46,6 +46,12 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     
     [self addItems:[self.itemProvider statusItems] asSubmenuWithTitle:@"Status"];
     [self addItems:[self.itemProvider appsItems] asSubmenuWithTitle:@"Applications"];
+    [self addItems:[self.itemProvider accountsItems] asSubmenuWithTitle:@"Accounts"];
+    
+    NSMenuItem *clearItem = [[NSMenuItem alloc] initWithTitle:@"Clear filter" action:@selector(clearFilter) keyEquivalent:@""];
+    [clearItem setTarget:self];
+    [self.menu addItem:[NSMenuItem separatorItem]];
+    [self.menu addItem:clearItem];
 }
 
 - (void)addItems:(NSArray <NSMenuItem *> *)items asSubmenuWithTitle:(NSString *)title {
@@ -56,6 +62,11 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
         [submenu addItem:item];
     }];
     NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
+    
+    if (items.count < 2) {
+        [menuItem setEnabled:NO];
+    }
+    
     [self.menu addItem:menuItem];
     [self.menu setSubmenu:submenu forItem:menuItem];
 }
@@ -69,6 +80,12 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
         
         self.stateChageCallback(self.predicate);
     }
+}
+
+- (void)clearFilter {
+    [self.predicate clear];
+    [self.menu update];
+    self.stateChageCallback(self.predicate);
 }
 
 #pragma mark - NSMenuItemValidation -

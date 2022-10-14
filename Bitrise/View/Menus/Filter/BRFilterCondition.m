@@ -52,4 +52,13 @@
     return self;
 }
 
+- (instancetype)initWithAccountSlug:(NSString *)accountSlug {
+    if (self = [self init]) {
+        _group = BRFilterConditionGroupAccount;
+        _predicate = [NSPredicate predicateWithFormat:@"app.account.slug == %@", accountSlug];
+    }
+    
+    return self;
+}
+
 @end

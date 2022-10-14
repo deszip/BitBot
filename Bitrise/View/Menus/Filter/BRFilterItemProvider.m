@@ -11,6 +11,7 @@
 #import "BRLogger.h"
 #import "BRFilterCondition.h"
 #import "BRApp+CoreDataClass.h"
+#import "BTRAccount+CoreDataClass.h"
 
 @interface BRFilterItemProvider ()
 
@@ -27,6 +28,26 @@
     }
     
     return self;
+}
+
+- (NSArray <NSMenuItem *> *)accountsItems {
+    NSFetchRequest *request = [BTRAccount fetchRequest];
+    NSError *fetchError;
+    NSArray <BTRAccount *> *accounts = [self.context executeFetchRequest:request error:&fetchError];
+    
+    if (!accounts) {
+        BRLog(LL_WARN, LL_STORAGE, @"Failed to fetch accounts for filtering: %@", fetchError);
+        return @[];
+    }
+    
+    __block NSMutableArray *accountItems = [NSMutableArray array];
+    [accounts enumerateObjectsUsingBlock:^(BTRAccount *account, NSUInteger idx, BOOL *stop) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:account.username action:nil keyEquivalent:@""];
+        [item setRepresentedObject:[[BRFilterCondition alloc] initWithAccountSlug:account.slug]];
+        [accountItems addObject:item];
+    }];
+    
+    return [accountItems copy];
 }
 
 - (NSArray <NSMenuItem *> *)appsItems {

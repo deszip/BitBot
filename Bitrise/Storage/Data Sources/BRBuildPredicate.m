@@ -24,6 +24,10 @@
     return self;
 }
 
+- (void)clear {
+    [self.conditions removeAllObjects];
+}
+
 - (BOOL)hasConditions {
     return self.conditions.count > 0;
 }

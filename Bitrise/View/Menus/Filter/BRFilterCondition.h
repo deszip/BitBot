@@ -20,7 +20,8 @@ typedef NS_ENUM(NSUInteger, BRFilterStatusType) {
 
 typedef NS_ENUM(NSUInteger, BRFilterConditionGroup) {
     BRFilterConditionGroupStatus = 0,
-    BRFilterConditionGroupApp = 1
+    BRFilterConditionGroupApp = 1,
+    BRFilterConditionGroupAccount = 2
 };
 
 @interface BRFilterCondition : NSObject
@@ -34,6 +35,7 @@ typedef NS_ENUM(NSUInteger, BRFilterConditionGroup) {
 
 - (instancetype)initWithBuildStatus:(BRFilterStatusType)statusType;
 - (instancetype)initWithAppSlug:(NSString *)appSlug;
+- (instancetype)initWithAccountSlug:(NSString *)accountSlug;
 
 @end
 
