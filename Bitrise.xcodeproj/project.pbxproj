@@ -126,6 +126,7 @@
 		D91BD9C625A1BE7000EF8D66 /* BitBotATVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BD9C525A1BE7000EF8D66 /* BitBotATVTests.swift */; };
 		D93FFA1F28F74D9E005B35F0 /* BRFilterItemProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */; };
 		D93FFA2528F74F27005B35F0 /* BRFilterCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */; };
+		D93FFA2828FA18F8005B35F0 /* BRBuildPredicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D93FFA2728FA18F8005B35F0 /* BRBuildPredicateTests.m */; };
 		D943B24B24EAF1AB00084C59 /* Proxima Nova Alt Bold.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */; };
 		D943B24C24EAF1AB00084C59 /* Proxima Nova Alt Light.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56F2246FFDF300DF2C50 /* Proxima Nova Alt Light.otf */; };
 		D943B24D24EAF1AB00084C59 /* Proxima Nova Alt Thin.otf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */; };
@@ -525,6 +526,7 @@
 		D93FFA1E28F74D9E005B35F0 /* BRFilterItemProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterItemProvider.m; sourceTree = "<group>"; };
 		D93FFA2328F74F27005B35F0 /* BRFilterCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterCondition.h; sourceTree = "<group>"; };
 		D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterCondition.m; sourceTree = "<group>"; };
+		D93FFA2728FA18F8005B35F0 /* BRBuildPredicateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildPredicateTests.m; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -1282,6 +1284,7 @@
 			children = (
 				D993A77E2630727900BBE937 /* BRAppsDataSourceTests.m */,
 				D9D1D669272C36C50057948E /* BRAccountsDataSourceTests.m */,
+				D93FFA2728FA18F8005B35F0 /* BRBuildPredicateTests.m */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -1992,6 +1995,7 @@
 				0EB3ED4B21E33976003F0364 /* BRStorage.m in Sources */,
 				0E1ED8F422282B3200A432B1 /* BRLogStatusView.m in Sources */,
 				0EB3ED4D21E33A1D003F0364 /* bitrise.xcdatamodeld in Sources */,
+				D93FFA2828FA18F8005B35F0 /* BRBuildPredicateTests.m in Sources */,
 				0E4AD07E2205D01600257E8E /* ASLogObservingOperation.m in Sources */,
 				0ED2793D223ABCBA008A35D6 /* BRLogsParserTests.m in Sources */,
 				0EDE7D0921B9346200A39CC4 /* BRSyncEngine.m in Sources */,
