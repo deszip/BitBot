@@ -44,24 +44,25 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
     
-    [self.menu addItem:[NSMenuItem separatorItem]];
-    [[self.itemProvider statusItems] enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
+    [self addItems:[self.itemProvider statusItems] asSubmenuWithTitle:@"Status"];
+    [self addItems:[self.itemProvider appsItems] asSubmenuWithTitle:@"Applications"];
+}
+
+- (void)addItems:(NSArray <NSMenuItem *> *)items asSubmenuWithTitle:(NSString *)title {
+    NSMenu *submenu = [NSMenu new];
+    [items enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
         [item setTarget:self];
-        [item setAction:@selector(toggleStatus:)];
-        [self.menu addItem:item];
+        [item setAction:@selector(toggleItem:)];
+        [submenu addItem:item];
     }];
-    
-    [self.menu addItem:[NSMenuItem separatorItem]];
-    [[self.itemProvider appsItems] enumerateObjectsUsingBlock:^(NSMenuItem *item, NSUInteger idx, BOOL *stop) {
-        [item setTarget:self];
-        [item setAction:@selector(toggleStatus:)];
-        [self.menu addItem:item];
-    }];
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:title action:nil keyEquivalent:@""];
+    [self.menu addItem:menuItem];
+    [self.menu setSubmenu:submenu forItem:menuItem];
 }
 
 #pragma mark - Actions -
 
-- (void)toggleStatus:(NSMenuItem *)item {
+- (void)toggleItem:(NSMenuItem *)item {
     if ([item.representedObject isKindOfClass:[BRFilterCondition class]]) {
         BRFilterCondition *condition = (BRFilterCondition *)item.representedObject;
         [self.predicate toggleCondition:condition];
