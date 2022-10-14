@@ -43,7 +43,11 @@
         conditionGroup[condition.uuid] = condition;
     }
     
-    self.conditions[@(condition.group)] = conditionGroup;
+    if (conditionGroup.count == 0) {
+        [self.conditions removeObjectForKey:@(condition.group)];
+    } else {
+        self.conditions[@(condition.group)] = conditionGroup;
+    }
 }
 
 - (BOOL)hasCondition:(BRFilterCondition *)condition {
