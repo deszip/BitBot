@@ -55,4 +55,14 @@
     expect(predicate.hasConditions).to.beFalsy();
 }
 
+- (void)testPredicateChecksConditionPresence {
+    BRBuildPredicate *predicate = [BRBuildPredicate new];
+    BRFilterCondition *condition_1 = [[BRFilterCondition alloc] initWithAppSlug:@"DEADBEEF"];
+    BRFilterCondition *condition_2 = [[BRFilterCondition alloc] initWithAppSlug:@"CAFEBABE"];
+    
+    [predicate toggleCondition:condition_1];
+    expect([predicate hasCondition:condition_1]).to.beTruthy();
+    expect([predicate hasCondition:condition_2]).to.beFalsy();
+}
+
 @end
