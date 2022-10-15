@@ -7073,6 +7073,32 @@
 			};
 			name = Debug;
 		};
+		19B58B4EA877F42BAF039FA10D601AB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB63B36A06A296E318245E34AC3A5273 /* Charts-macOS.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Charts-macOS/Charts-macOS-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MODULEMAP_FILE = "Headers/Public/Charts/Charts-macOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Charts;
+				PRODUCT_NAME = "Charts-macOS";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.7;
+			};
+			name = Debug;
+		};
 		1BF5948E83889320561088A00EA0BC6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7EF489CC0BEE1C75F802F3B2144FD40 /* SwiftAlgorithms-tvOS.release.xcconfig */;
@@ -7173,6 +7199,31 @@
 			};
 			name = Debug;
 		};
+		2CB18876344695C3915F8178B42B13A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF8619D79A1FB76709DC93308CA5FB94 /* Charts-tvOS.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Charts-tvOS/Charts-tvOS-prefix.pch";
+				MODULEMAP_FILE = "Headers/Public/Charts/Charts-tvOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Charts;
+				PRODUCT_NAME = "Charts-tvOS";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.7;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		2F586B2021D8B89578E3BB658EE769D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70A3E0770E53506DA1C4375B8BBAAEB7 /* OCMock.debug.xcconfig */;
@@ -7215,32 +7266,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		407801910742513CADD932CD3D5DE4FC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 025FA9906FC0191D1C764061892F49AF /* Charts-macOS.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				GCC_PREFIX_HEADER = "Target Support Files/Charts-macOS/Charts-macOS-prefix.pch";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MODULEMAP_FILE = "Headers/Public/Charts/Charts-macOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Charts;
-				PRODUCT_NAME = "Charts-macOS";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.3;
 			};
 			name = Release;
 		};
@@ -7290,6 +7315,32 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 			};
 			name = Debug;
+		};
+		519F3B9DF8A424634EA4365E66DF767C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 025FA9906FC0191D1C764061892F49AF /* Charts-macOS.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/Charts-macOS/Charts-macOS-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MODULEMAP_FILE = "Headers/Public/Charts/Charts-macOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Charts;
+				PRODUCT_NAME = "Charts-macOS";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.7;
+			};
+			name = Release;
 		};
 		5EEF72B22FA30C8187764A2DFB303D7B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -7592,32 +7643,6 @@
 			};
 			name = Release;
 		};
-		C4F240D0C1AA4C04BCDAF54A50ACF406 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB63B36A06A296E318245E34AC3A5273 /* Charts-macOS.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				EXECUTABLE_PREFIX = lib;
-				GCC_PREFIX_HEADER = "Target Support Files/Charts-macOS/Charts-macOS-prefix.pch";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MODULEMAP_FILE = "Headers/Public/Charts/Charts-macOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Charts;
-				PRODUCT_NAME = "Charts-macOS";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.3;
-			};
-			name = Debug;
-		};
 		CC2CF89146BD56270AC0BFAB528F38C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D53BAF9F7C780037B5CDF15E253AA4D /* Sentry-macOS.debug.xcconfig */;
@@ -7709,31 +7734,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		E0D9A98F6C37F96EC5F87046C2AE9A41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF8619D79A1FB76709DC93308CA5FB94 /* Charts-tvOS.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Charts-tvOS/Charts-tvOS-prefix.pch";
-				MODULEMAP_FILE = "Headers/Public/Charts/Charts-tvOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Charts;
-				PRODUCT_NAME = "Charts-tvOS";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.3;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.0;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -7921,7 +7921,7 @@
 			};
 			name = Debug;
 		};
-		FE8B1FBAC9BA244104E9063D38D09304 /* Debug */ = {
+		FFE5E6C729B6317FDF198F772EF5B60B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F98A133B42E00B385F15249D0F96DCF6 /* Charts-tvOS.debug.xcconfig */;
 			buildSettings = {
@@ -7939,7 +7939,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.3;
+				SWIFT_VERSION = 5.7;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -8032,8 +8032,8 @@
 		9F1C8D9618BFA792B5B2516F3396198C /* Build configuration list for PBXNativeTarget "Charts-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FE8B1FBAC9BA244104E9063D38D09304 /* Debug */,
-				E0D9A98F6C37F96EC5F87046C2AE9A41 /* Release */,
+				FFE5E6C729B6317FDF198F772EF5B60B /* Debug */,
+				2CB18876344695C3915F8178B42B13A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -8095,8 +8095,8 @@
 		E696F72CEFC0E7F27217680A2FFFDBAE /* Build configuration list for PBXNativeTarget "Charts-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C4F240D0C1AA4C04BCDAF54A50ACF406 /* Debug */,
-				407801910742513CADD932CD3D5DE4FC /* Release */,
+				19B58B4EA877F42BAF039FA10D601AB0 /* Debug */,
+				519F3B9DF8A424634EA4365E66DF767C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

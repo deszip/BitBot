@@ -1,7 +1,7 @@
 PODS:
-  - Charts (4.0.3):
-    - Charts/Core (= 4.0.3)
-  - Charts/Core (4.0.3):
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
   - EasyMapping (0.24.0):
     - EasyMapping/Core (= 0.24.0)
@@ -10,11 +10,11 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - Kingfisher/SwiftUI (5.15.8):
     - Kingfisher/Core
-  - Mixpanel (4.1.6)
+  - Mixpanel (5.0.0)
   - OCMock (3.4.3)
-  - SDWebImage (5.12.5):
-    - SDWebImage/Core (= 5.12.5)
-  - SDWebImage/Core (5.12.5)
+  - SDWebImage (5.13.4):
+    - SDWebImage/Core (= 5.13.4)
+  - SDWebImage/Core (5.13.4)
   - Sentry (7.12.0):
     - Sentry/Core (= 7.12.0)
   - Sentry/Core (7.12.0)
@@ -52,13 +52,13 @@ CHECKOUT OPTIONS:
     :tag: 7.12.0
 
 SPEC CHECKSUMS:
-  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   EasyMapping: a86b28c64613e3b5784e05c42a40da7b103ef41c
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Mixpanel: 98578ca87dc11fe948555bfcdd7382711de7a206
+  Mixpanel: b26d788c4ca046f97b02900c1dfe1d49ede8704d
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
-  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   Sentry: d2f889ed77bd7f8c51b1934dbabddbc553790630
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
