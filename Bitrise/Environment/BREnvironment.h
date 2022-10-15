@@ -14,6 +14,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString * const kBRUserIdentityKey;
+
 @interface BREnvironment : NSObject
 
 - (instancetype)new NS_UNAVAILABLE;
@@ -26,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Info -
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
+- (NSString *)userIdentity;
 
 #pragma mark - Notifications -
 

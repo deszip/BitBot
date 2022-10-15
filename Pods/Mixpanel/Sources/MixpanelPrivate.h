@@ -36,6 +36,14 @@ static NSString *const PersistenceTypeGroups = @"groups";
 static BOOL UnIdentifiedFlag = YES;
 static BOOL IdentifiedFlag = NO;
 
+// Internal Standard UserDefaults Keys
+static NSString *const MPDebugTrackedKey = @"MPDebugTrackedKey";
+static NSString *const MPDebugInitCountKey = @"MPDebugInitCountKey";
+static NSString *const MPDebugImplementedKey = @"MPDebugImplementedKey";
+static NSString *const MPDebugIdentifiedKey = @"MPDebugIdentifiedKey";
+static NSString *const MPDebugAliasedKey = @"MPDebugAliasedKey";
+static NSString *const MPDebugUsedPeopleKey = @"MPDebugUsedPeopleKey";
+
 #if defined(MIXPANEL_NO_AUTOMATIC_EVENTS_SUPPORT)
 @interface Mixpanel ()
 #else
@@ -77,8 +85,6 @@ static BOOL IdentifiedFlag = NO;
 @property (nonatomic) dispatch_queue_t networkQueue;
 @property (nonatomic, strong) NSMutableDictionary *timedEvents;
 @property (nonatomic, strong) SessionMetadata *sessionMetadata;
-
-@property (nonatomic) BOOL decideResponseCached;
 
 
 @property (nonatomic, assign) BOOL optOutStatus;

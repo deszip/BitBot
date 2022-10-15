@@ -30,7 +30,7 @@
 #error The Mixpanel library must be compiled with ARC enabled
 #endif
 
-#define VERSION @"4.1.3"
+#define VERSION @"5.0.0"
 
 
 @implementation Mixpanel
@@ -42,12 +42,12 @@ static NSString *defaultProjectToken;
 static CTTelephonyNetworkInfo *telephonyInfo;
 #endif
 
-+ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackCrashes:(BOOL)trackCrashes
++ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackAutomaticEvents:(BOOL)trackAutomaticEvents trackCrashes:(BOOL)trackCrashes
 {
-    return [Mixpanel sharedInstanceWithToken:apiToken trackCrashes:trackCrashes optOutTrackingByDefault:NO useUniqueDistinctId:NO];
+    return [Mixpanel sharedInstanceWithToken:apiToken trackAutomaticEvents:trackAutomaticEvents trackCrashes:trackCrashes optOutTrackingByDefault:NO useUniqueDistinctId:NO];
 }
 
-+ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackCrashes:(BOOL)trackCrashes optOutTrackingByDefault:(BOOL)optOutTrackingByDefault useUniqueDistinctId:(BOOL)useUniqueDistinctId
++ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackAutomaticEvents:(BOOL)trackAutomaticEvents trackCrashes:(BOOL)trackCrashes optOutTrackingByDefault:(BOOL)optOutTrackingByDefault useUniqueDistinctId:(BOOL)useUniqueDistinctId
 {
     if (instances[apiToken]) {
         return instances[apiToken];
@@ -59,23 +59,23 @@ static CTTelephonyNetworkInfo *telephonyInfo;
     const NSUInteger flushInterval = 60;
 #endif
 
-    return [[self alloc] initWithToken:apiToken flushInterval:flushInterval trackCrashes:trackCrashes optOutTrackingByDefault:optOutTrackingByDefault useUniqueDistinctId:useUniqueDistinctId];
+    return [[self alloc] initWithToken:apiToken trackAutomaticEvents:trackAutomaticEvents flushInterval:flushInterval trackCrashes:trackCrashes optOutTrackingByDefault:optOutTrackingByDefault useUniqueDistinctId:useUniqueDistinctId];
 }
 
-+ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken
++ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackAutomaticEvents:(BOOL)trackAutomaticEvents
 {
-    return [Mixpanel sharedInstanceWithToken:apiToken trackCrashes:YES];
+    return [Mixpanel sharedInstanceWithToken:apiToken trackAutomaticEvents:trackAutomaticEvents trackCrashes:YES];
 }
 
 
-+ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken optOutTrackingByDefault:(BOOL)optOutTrackingByDefault
++ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackAutomaticEvents:(BOOL)trackAutomaticEvents optOutTrackingByDefault:(BOOL)optOutTrackingByDefault
 {
-    return [Mixpanel sharedInstanceWithToken:apiToken trackCrashes:YES optOutTrackingByDefault:optOutTrackingByDefault useUniqueDistinctId:NO];
+    return [Mixpanel sharedInstanceWithToken:apiToken trackAutomaticEvents:trackAutomaticEvents trackCrashes:YES optOutTrackingByDefault:optOutTrackingByDefault useUniqueDistinctId:NO];
 }
 
-+ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken useUniqueDistinctId:(BOOL)useUniqueDistinctId
++ (Mixpanel *)sharedInstanceWithToken:(NSString *)apiToken trackAutomaticEvents:(BOOL)trackAutomaticEvents useUniqueDistinctId:(BOOL)useUniqueDistinctId
 {
-    return [Mixpanel sharedInstanceWithToken:apiToken trackCrashes:YES optOutTrackingByDefault:NO useUniqueDistinctId:useUniqueDistinctId];
+    return [Mixpanel sharedInstanceWithToken:apiToken trackAutomaticEvents:trackAutomaticEvents trackCrashes:YES optOutTrackingByDefault:NO useUniqueDistinctId:useUniqueDistinctId];
 }
 
 + (nullable Mixpanel *)sharedInstance
@@ -111,6 +111,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
 }
 
 - (instancetype)initWithToken:(NSString *)apiToken
+         trackAutomaticEvents:(BOOL)trackAutomaticEvents
                 flushInterval:(NSUInteger)flushInterval
                  trackCrashes:(BOOL)trackCrashes
                optOutTrackingByDefault:(BOOL)optOutTrackingByDefault
@@ -132,6 +133,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
 #endif
         }
         self.apiToken = apiToken;
+        _trackAutomaticEventsEnabled = trackAutomaticEvents;
         _flushInterval = flushInterval;
         self.persistence = [[MixpanelPersistence alloc] initWithToken: apiToken];
         [self.persistence migrate];
@@ -174,17 +176,22 @@ static CTTelephonyNetworkInfo *telephonyInfo;
             [self.automaticEvents initializeEvents:self.people apiToken:apiToken];
 #endif
         }
+#if defined(DEBUG)
+        [self didDebugInit:apiToken];
+#endif
         instances[apiToken] = self;
     }
     return self;
 }
 
 - (instancetype)initWithToken:(NSString *)apiToken
+         trackAutomaticEvents:(BOOL)trackAutomaticEvents
                 flushInterval:(NSUInteger)flushInterval
                  trackCrashes:(BOOL)trackCrashes
           useUniqueDistinctId:(BOOL)useUniqueDistinctId
 {
     return [self initWithToken:apiToken
+          trackAutomaticEvents:trackAutomaticEvents
                  flushInterval:flushInterval
                   trackCrashes:trackCrashes
                 optOutTrackingByDefault:NO
@@ -192,12 +199,46 @@ static CTTelephonyNetworkInfo *telephonyInfo;
 }
 
 - (instancetype)initWithToken:(NSString *)apiToken
+         trackAutomaticEvents:(BOOL)trackAutomaticEvents
              andFlushInterval:(NSUInteger)flushInterval
 {
     return [self initWithToken:apiToken
+          trackAutomaticEvents:trackAutomaticEvents
                  flushInterval:flushInterval
                   trackCrashes:NO
            useUniqueDistinctId:NO];
+}
+
+- (void)didDebugInit:(NSString *)distinctId
+{
+    if (distinctId.length == 32) {
+        NSInteger debugInitCount = [[NSUserDefaults standardUserDefaults] integerForKey:MPDebugInitCountKey] + 1;
+        [self sendHttpEvent:@"SDK Debug Launch" apiToken:@"metrics-1" distinctId:distinctId properties:@{@"Debug Launch Count": @(debugInitCount)}];
+        [self checkIfImplemented:distinctId debugInitCount: debugInitCount];
+        [[NSUserDefaults standardUserDefaults] setInteger:debugInitCount forKey:MPDebugInitCountKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (void)checkIfImplemented:(NSString *)distinctId
+            debugInitCount:(NSInteger)debugInitCount
+{
+    BOOL hasImplemented = [[NSUserDefaults standardUserDefaults] boolForKey:MPDebugImplementedKey];
+    if (!hasImplemented) {
+        NSInteger completed = 0;
+        BOOL hasTracked = [[NSUserDefaults standardUserDefaults] boolForKey:MPDebugTrackedKey];
+        completed += hasTracked;
+        BOOL hasIdentified = [[NSUserDefaults standardUserDefaults] boolForKey:MPDebugIdentifiedKey];
+        completed += hasIdentified;
+        BOOL hasAliased = [[NSUserDefaults standardUserDefaults] boolForKey:MPDebugAliasedKey];
+        completed += hasAliased;
+        BOOL hasUsedPeople = [[NSUserDefaults standardUserDefaults] boolForKey:MPDebugUsedPeopleKey];
+        completed += hasUsedPeople;
+        if (completed >= 3) {
+            [self sendHttpEvent:@"SDK Implemented" apiToken:@"metrics-1" distinctId:distinctId properties:@{@"Tracked": @(hasTracked), @"Identified": @(hasIdentified), @"Aliased": @(hasAliased), @"Used People": @(hasUsedPeople), @"Debug Launch Count": @(debugInitCount)}];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MPDebugImplementedKey];
+        }
+    }
 }
 
 - (void)dealloc
@@ -261,7 +302,7 @@ static CTTelephonyNetworkInfo *telephonyInfo;
 
 - (void)setTrackAutomaticEventsEnabled:(BOOL)trackAutomaticEventsEnabled
 {
-    [MixpanelPersistence saveAutomaticEventsEnabledFlag:trackAutomaticEventsEnabled fromDecide:NO apiToken:self.apiToken];
+    _trackAutomaticEventsEnabled = trackAutomaticEventsEnabled;
     if (!trackAutomaticEventsEnabled) {
         dispatch_async(self.serialQueue, ^{
             [self.persistence removeAutomaticEvents];
@@ -386,6 +427,10 @@ static CTTelephonyNetworkInfo *telephonyInfo;
         MPLogWarning(@"%@ cannot identify blank distinct id: %@", self, distinctId);
         return;
     }
+    
+#if defined(DEBUG)
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MPDebugIdentifiedKey];
+#endif
 
     dispatch_async(self.serialQueue, ^{
         if(!self.anonymousId) {
@@ -438,6 +483,11 @@ static CTTelephonyNetworkInfo *telephonyInfo;
         MPLogError(@"%@ create alias called with empty distinct id: %@", self, distinctID);
         return;
     }
+    
+#if defined(DEBUG)
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MPDebugAliasedKey];
+#endif
+    
     if (![alias isEqualToString:distinctID]) {
         dispatch_async(self.serialQueue, ^{
             self.alias = alias;
@@ -467,20 +517,24 @@ static CTTelephonyNetworkInfo *telephonyInfo;
         event = @"mp_event";
     }
     
-    if (![MixpanelPersistence loadAutomaticEventsEnabledFlagWithApiToken:self.apiToken] && [event hasPrefix:@"$ae_"]) {
+    if (!self.trackAutomaticEventsEnabled && [event hasPrefix:@"$ae_"]) {
         return;
     }
-
+    
+#if defined(DEBUG)
+    if (![event hasPrefix:@"$"]) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MPDebugTrackedKey];
+#endif
+    
     properties = [properties copy];
     [Mixpanel assertPropertyTypes:properties];
 
     NSTimeInterval epochInterval = [[NSDate date] timeIntervalSince1970];
-    NSNumber *epochSeconds = @(round(epochInterval));
+    NSNumber *epochMilliseconds = @(round(epochInterval * 1000));
     dispatch_async(self.serialQueue, ^{
         NSNumber *eventStartTime = self.timedEvents[event];
         NSMutableDictionary *p = [NSMutableDictionary dictionaryWithDictionary:self.automaticProperties];
         p[@"token"] = self.apiToken;
-        p[@"time"] = epochSeconds;
+        p[@"time"] = epochMilliseconds;
         if (eventStartTime != nil) {
             [self.timedEvents removeObjectForKey:event];
             p[@"$duration"] = @([[NSString stringWithFormat:@"%.3f", epochInterval - [eventStartTime doubleValue]] floatValue]);
@@ -782,7 +836,6 @@ typedef NSDictionary*(^PropertyUpdate)(NSDictionary*);
         self.hadPersistedDistinctId = NO;
         self.cachedGroups = [NSMutableDictionary dictionary];
         self.timedEvents = [NSMutableDictionary dictionary];
-        self.decideResponseCached = NO;
         [self.persistence resetEntities];
         [self archive];
     });
@@ -1251,12 +1304,6 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
 {
     MPLogInfo(@"%@ application did become active", self);
     [self startFlushTimer];
-    
-#if !MIXPANEL_NO_AUTOMATIC_EVENTS_SUPPORT
-    if (![Mixpanel isAppExtension]) {
-        [self checkForDecideResponse];
-    }
-#endif
 }
 
 - (void)applicationWillResignActive:(NSNotification *)notification
@@ -1295,25 +1342,21 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
     NSString *trackedKey = [NSString stringWithFormat:@"MPTracked:%@", self.apiToken];
     if (![[NSUserDefaults standardUserDefaults] boolForKey:trackedKey]) {
         dispatch_group_enter(bgGroup);
-        NSString *requestData = [MPJSONHandler encodedJSONString:@[@{@"event": @"Integration",
-                                                                 @"properties": @{@"token": @"85053bf24bba75239b16a601d9387e17", @"mp_lib": @"iphone",
-                                                                                  @"distinct_id": self.apiToken, @"$lib_version": self.libVersion}}]];
-        
-        NSURLQueryItem *useIPAddressForGeoLocation = [NSURLQueryItem queryItemWithName:@"ip" value:self.useIPAddressForGeoLocation ? @"1": @"0"];
-        NSURLRequest *request = [self.network buildPostRequestForEndpoint:MPNetworkEndpointTrack withQueryItems:@[useIPAddressForGeoLocation] andBody:requestData];
-        [[[MPNetwork sharedURLSession] dataTaskWithRequest:request completionHandler:^(NSData *responseData,
-                                                                  NSURLResponse *urlResponse,
-                                                                  NSError *error) {
+        [self sendHttpEvent:@"Integration"
+                   apiToken:@"85053bf24bba75239b16a601d9387e17"
+                 distinctId:self.apiToken
+                 properties:@{}
+               updatePeople:NO
+          completionHandler:^(NSData *responseData,
+                              NSURLResponse *urlResponse,
+                              NSError *error) {
             if (!error) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:trackedKey];
             }
             dispatch_group_leave(bgGroup);
-        }] resume];
+        }];
     }
 
-    @synchronized (self) {
-        self.decideResponseCached = NO;
-    }
     if (self.flushOnBackground) {
         dispatch_group_enter(bgGroup);
         [self flushWithCompletion:^{
@@ -1346,100 +1389,54 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
 
 #endif // MIXPANEL_NO_APP_LIFECYCLE_SUPPORT
 
+- (void)sendHttpEvent:(NSString *)eventName
+             apiToken:(NSString *)apiToken
+           distinctId:(NSString *)distinctId
+{
+    [self sendHttpEvent:eventName apiToken:apiToken distinctId:distinctId properties:@{} updatePeople: YES completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {}];
+}
+
+
+- (void)sendHttpEvent:(NSString *)eventName
+             apiToken:(NSString *)apiToken
+           distinctId:(NSString *)distinctId
+           properties:(NSDictionary *)properties
+{
+    [self sendHttpEvent:eventName apiToken:apiToken distinctId:distinctId properties:properties updatePeople: YES completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {}];
+}
+
+- (void)sendHttpEvent:(NSString *)eventName
+             apiToken:(NSString *)apiToken
+           distinctId:(NSString *)distinctId
+           properties:(NSDictionary *)properties
+         updatePeople:(BOOL)updatePeople
+    completionHandler:(void (^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler
+{
+    NSMutableDictionary *trackingProperties = [[NSMutableDictionary alloc] initWithDictionary:@{@"token": apiToken, @"mp_lib": @"iphone", @"distinct_id": distinctId, @"$lib_version": self.libVersion, @"Logging Enabled": @(self.enableLogging), @"Project Token": distinctId, @"DevX": @YES}];
+    [trackingProperties addEntriesFromDictionary:properties];
+    NSString *requestData = [MPJSONHandler encodedJSONString:@[@{@"event": eventName, @"properties": trackingProperties}]];
+    NSURLQueryItem *useIPAddressForGeoLocation = [NSURLQueryItem queryItemWithName:@"ip" value:self.useIPAddressForGeoLocation ? @"1": @"0"];
+    NSURLRequest *request = [self.network buildPostRequestForEndpoint:MPNetworkEndpointTrack withQueryItems:@[useIPAddressForGeoLocation] andBody:requestData];
+    [[[MPNetwork sharedURLSession] dataTaskWithRequest:request completionHandler:completionHandler] resume];
+    if (updatePeople) {
+        NSString *engageData = [MPJSONHandler encodedJSONString:@[@{@"$token": apiToken, @"$distinct_id": distinctId, @"$add": @{eventName: @1}}]];
+        NSURLRequest *engageRequest = [self.network buildPostRequestForEndpoint:MPNetworkEndpointEngage withQueryItems:@[useIPAddressForGeoLocation] andBody:engageData];
+        [[[MPNetwork sharedURLSession] dataTaskWithRequest:engageRequest completionHandler:completionHandler] resume];
+    }
+}
+
 #pragma mark - Logging
 - (void)setEnableLogging:(BOOL)enableLogging
 {
     [MPLogger sharedInstance].loggingEnabled = enableLogging;
+#if defined(DEBUG)
+    [self sendHttpEvent:@"Toggle SDK Logging" apiToken:@"metrics-1" distinctId:self.apiToken properties:@{@"Logging Enabled": @(enableLogging)}];
+#endif
 }
 
 - (BOOL)enableLogging
 {
     return [MPLogger sharedInstance].loggingEnabled;
 }
-
-
-#if !MIXPANEL_NO_AUTOMATIC_EVENTS_SUPPORT
-
-#pragma mark - Decide
-
-- (void)handlingAutomaticEventsWith:(BOOL)decideTrackAutomaticEvents {
-    [MixpanelPersistence saveAutomaticEventsEnabledFlag:decideTrackAutomaticEvents fromDecide:YES apiToken:self.apiToken];
-    if (!decideTrackAutomaticEvents) {
-        dispatch_async(self.serialQueue, ^{
-            [self.persistence removeAutomaticEvents];
-        });
-    }
-}
-
-- (void)checkForDecideResponse
-{
-    dispatch_async(self.networkQueue, ^{
-        __block BOOL hadError = NO;
-
-        BOOL decideResponseCached;
-        @synchronized (self) {
-            decideResponseCached = self.decideResponseCached;
-        }
-
-        if (!decideResponseCached) {
-            // Build a proper URL from our parameters
-            NSArray *queryItems = [MPNetwork buildDecideQueryForProperties:self.people.automaticPeopleProperties
-                                                            withDistinctID:self.people.distinctId ?: self.distinctId
-                                                                  andToken:self.apiToken];
-
-
-            // Build a network request from the URL
-            NSURLRequest *request = [self.network buildGetRequestForEndpoint:MPNetworkEndpointDecide
-                                                              withQueryItems:queryItems];
-
-            // Send the network request
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-            [[[MPNetwork sharedURLSession] dataTaskWithRequest:request completionHandler:^(NSData *responseData,
-                                                                                           NSURLResponse *urlResponse,
-                                 
-                                                                                           NSError *error) {                
-                if (error) {
-                    MPLogError(@"%@ decide check http error: %@", self, error);
-                    hadError = YES;
-                    dispatch_semaphore_signal(semaphore);
-                    return;
-                }
-
-                // Handle network response
-                NSDictionary *object = [NSJSONSerialization JSONObjectWithData:responseData options:(NSJSONReadingOptions)0 error:&error];
-                if (error) {
-                    MPLogError(@"%@ decide check json error: %@, data: %@", self, error, [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
-                    hadError = YES;
-                    dispatch_semaphore_signal(semaphore);
-                    return;
-                }
-                if (object[@"error"]) {
-                    MPLogError(@"%@ decide check api error: %@", self, object[@"error"]);
-                    hadError = YES;
-                    dispatch_semaphore_signal(semaphore);
-                    return;
-                }
-                
-                id rawAutomaticEvents = object[@"automatic_events"];
-                if (rawAutomaticEvents != nil && [rawAutomaticEvents isKindOfClass:[NSNumber class]]) {
-                    [self handlingAutomaticEventsWith: [rawAutomaticEvents boolValue]];
-                }
-
-                @synchronized (self) {
-                    self.decideResponseCached = YES;
-                }
-
-                dispatch_semaphore_signal(semaphore);
-            }] resume];
-
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-
-        } else {
-            MPLogInfo(@"%@ decide cache found, skipping network request", self);
-        }
-    });
-}
-
-#endif
 
 @end

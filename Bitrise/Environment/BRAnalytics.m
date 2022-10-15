@@ -11,6 +11,8 @@
 #import <Mixpanel/Mixpanel.h>
 #import <Sentry/Sentry.h>
 
+#import "BREnvironment.h"
+
 static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailabilityKey";
 
 static NSString * const kBRMixpanelOSXToken = @"ae64ff4c78b73e7f945f63aa02677fbb";
@@ -72,6 +74,11 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 }
 
 - (void)start {
+    // No
+#if DEBUG
+    return;
+#endif
+    
     // First launch, enable by default
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kBRAnalyticsAvailabilityKey] == nil) {
         [[BRAnalytics analytics] setEnabled:YES];
@@ -119,7 +126,17 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 #pragma mark - Providers -
 
 - (void)startMixpanel:(NSString *)token {
-    [Mixpanel sharedInstanceWithToken:token];
+    Mixpanel *mixpanel = [Mixpanel sharedInstanceWithToken:token trackAutomaticEvents:YES];
+    
+    NSString *identity = [[NSUserDefaults standardUserDefaults] objectForKey:kBRUserIdentityKey];
+    if (identity) {
+        [[Mixpanel sharedInstance] identify:identity];
+    }
+
+#if DEBUG
+    [Mixpanel sharedInstance].enableLogging = YES;
+#endif
+
     if ([[Mixpanel sharedInstance] hasOptedOutTracking]) {
         [[Mixpanel sharedInstance] optInTracking];
     }
