@@ -51,6 +51,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 @interface BRAnalytics ()
 
 @property (strong, nonatomic) NSUserDefaults *defaults;
+@property (strong, nonatomic) Mixpanel *mixpanel;
 
 @end
 
@@ -61,6 +62,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (instancetype)initWithDefaults:(NSUserDefaults *)defaults {
     if (self = [super init]) {
         _defaults = defaults;
+        
     }
     
     return self;
@@ -129,26 +131,26 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 #pragma mark - Providers -
 
 - (void)startMixpanel:(NSString *)token {
-    Mixpanel *mixpanel = [Mixpanel sharedInstanceWithToken:token trackAutomaticEvents:YES];
+    self.mixpanel = [Mixpanel sharedInstanceWithToken:token trackAutomaticEvents:YES];
     
     NSString *identity = [[NSUserDefaults standardUserDefaults] objectForKey:kBRUserIdentityKey];
     if (identity) {
-        [[Mixpanel sharedInstance] identify:identity];
+        [self.mixpanel identify:identity];
     }
 
 #if DEBUG
-    [Mixpanel sharedInstance].enableLogging = YES;
+    self.mixpanel.enableLogging = YES;
 #endif
 
-    if ([[Mixpanel sharedInstance] hasOptedOutTracking]) {
-        [[Mixpanel sharedInstance] optInTracking];
+    if ([self.mixpanel hasOptedOutTracking]) {
+        [self.mixpanel optInTracking];
     }
 }
 
 - (void)stopMixpanel {
-    [[Mixpanel sharedInstance] flush];
-    [[Mixpanel sharedInstance] reset];
-    [[Mixpanel sharedInstance] optOutTracking];
+    [self.mixpanel flush];
+    [self.mixpanel reset];
+    [self.mixpanel optOutTracking];
 }
 
 - (void)startSentry:(NSString *)dsn {
@@ -202,7 +204,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 
 - (void)sendEvent:(BRAnalyticsEvent *)name properties:(NSDictionary *)properties {
     if ([self isEnabled]) {
-        [[Mixpanel sharedInstance] track:name properties:properties];
+        [self.mixpanel track:name properties:properties];
     }
 }
 
