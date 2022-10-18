@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
 
 #import "BRAutorun.h"
 #import "BRNotificationDispatcher.h"
