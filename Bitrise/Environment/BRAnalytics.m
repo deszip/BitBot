@@ -28,7 +28,10 @@ static NSString * const kBRSentryATVDSNPath = @"https://eb1b1d1669e344d2a0799c79
 
 typedef NSString BRAnalyticsEvent;
 
+static BRAnalyticsEvent * const kFirstStartAppEvent = @"app_first_start";
+static BRAnalyticsEvent * const kStartAppEvent = @"app_start";
 static BRAnalyticsEvent * const kQuitAppEvent = @"app_quit";
+static BRAnalyticsEvent * const kOpenPopoverAppEvent = @"app_open_popover";
 static BRAnalyticsEvent * const kAboutScreenEvent = @"app_showabout";
 static BRAnalyticsEvent * const kAccountsScreenEvent = @"app_showaccounts";
 static BRAnalyticsEvent * const kAutorunToggleEvent = @"app_autoruntoggle";
@@ -76,7 +79,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)start {
     // No
 #if DEBUG
-    return;
+    // return;
 #endif
     
     // First launch, enable by default
@@ -161,6 +164,9 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 
 #pragma mark - Events -
 
+- (void)trackFirstStartApp { [self sendEvent:kFirstStartAppEvent properties:@{}]; }
+- (void)trackStartApp { [self sendEvent:kStartAppEvent properties:@{}]; }
+- (void)trackPopoverOpen { [self sendEvent:kOpenPopoverAppEvent properties:@{}]; }
 - (void)trackQuitApp { [self sendEvent:kQuitAppEvent properties:@{}]; }
 - (void)trackAboutOpen { [self sendEvent:kAboutScreenEvent properties:@{}]; }
 - (void)trackAccountsOpen { [self sendEvent:kAccountsScreenEvent properties:@{}]; }

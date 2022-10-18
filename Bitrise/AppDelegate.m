@@ -95,6 +95,7 @@
     if (self.popover.shown) {
         [self.popover performClose:self];
     } else {
+        [[BRAnalytics analytics] trackPopoverOpen];
         if (self.detachableWindowController.window.isVisible) {
             [self.detachableWindowController.window makeKeyAndOrderFront:self];
         } else {
