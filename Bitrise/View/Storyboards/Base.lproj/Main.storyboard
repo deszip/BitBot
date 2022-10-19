@@ -813,7 +813,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="BRBuildCellView" translatesAutoresizingMaskIntoConstraints="NO" id="CEk-3K-jXL" customClass="BRBuildCellView">
-                                                            <rect key="frame" x="10" y="0.0" width="462" height="115"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="462" height="115"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ne7-WQ-C7u">
                                                                     <rect key="frame" x="10" y="0.0" width="442" height="115"/>

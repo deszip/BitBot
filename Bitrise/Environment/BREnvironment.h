@@ -6,13 +6,12 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+
 #import <Foundation/Foundation.h>
 
 #import "BRAutorun.h"
-
-#if TARGET_OS_OSX
 #import "BRNotificationDispatcher.h"
-#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,9 +22,7 @@ extern NSString * const kBRUserIdentityKey;
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
-#if TARGET_OS_OSX
 - (instancetype)initWithAutorun:(BRAutorun *)autorun notificationsDispatcher:(BRNotificationDispatcher *)nDispatcher NS_DESIGNATED_INITIALIZER;
-#endif
 
 - (void)handleAppLaunch;
 
@@ -51,5 +48,7 @@ extern NSString * const kBRUserIdentityKey;
 - (void)quitApp;
 
 @end
+
+#endif
 
 NS_ASSUME_NONNULL_END
