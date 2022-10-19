@@ -8,6 +8,7 @@
 
 #import "BRFiltersMenuController.h"
 
+#import "BRMacro.h"
 #import "BRFilterCondition.h"
 
 typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
@@ -29,7 +30,8 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 @implementation BRFiltersMenuController
 
 - (instancetype)init {
-    return [self initWithPredicate:[BRBuildPredicate new] itemProvider: [BRFilterItemProvider new]];
+    return [self initWithPredicate:[BRBuildPredicate new]
+                      itemProvider: [BRFilterItemProvider new]];
 }
 
 - (instancetype)initWithPredicate:(BRBuildPredicate *)predicate itemProvider:(BRFilterItemProvider *)itemProvider {
@@ -52,6 +54,10 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     [clearItem setTarget:self];
     [self.menu addItem:[NSMenuItem separatorItem]];
     [self.menu addItem:clearItem];
+    
+    // Recover predicate
+    self.predicate = [self savedPredicate];
+    [self handleStateChange];
 }
 
 - (void)addItems:(NSArray <NSMenuItem *> *)items asSubmenuWithTitle:(NSString *)title {
@@ -78,14 +84,19 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
         BRFilterCondition *condition = (BRFilterCondition *)item.representedObject;
         [self.predicate toggleCondition:condition];
         
-        self.stateChageCallback(self.predicate);
+        [self handleStateChange];
     }
 }
 
 - (void)clearFilter {
     [self.predicate clear];
     [self.menu update];
-    self.stateChageCallback(self.predicate);
+    [self handleStateChange];
+}
+
+- (void)handleStateChange {
+    [self savePredicate:self.predicate];
+    BR_SAFE_CALL(self.stateChageCallback, self.predicate);
 }
 
 #pragma mark - NSMenuItemValidation -
@@ -105,5 +116,28 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     return YES;
 }
 
+#pragma mark - Persistance
+
+- (void)savePredicate:(BRBuildPredicate *)predicate {
+    NSError *error;
+    NSData *encodedPredicate = [NSKeyedArchiver archivedDataWithRootObject:predicate requiringSecureCoding:NO error:&error];
+    if (encodedPredicate) {
+        [[NSUserDefaults standardUserDefaults] setObject:encodedPredicate forKey:@"brpredicate"];
+    } else {
+        //...
+    }
+}
+
+- (BRBuildPredicate *)savedPredicate {
+    NSData *encodedPredicate = [[NSUserDefaults standardUserDefaults] objectForKey:@"brpredicate"];
+    NSError *error;
+    BRBuildPredicate *predicate = [NSKeyedUnarchiver unarchivedObjectOfClass:[BRBuildPredicate class] fromData:encodedPredicate error:&error];
+
+    if (predicate) {
+        return predicate;
+    }
+    
+    return [BRBuildPredicate new];
+}
 
 @end

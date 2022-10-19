@@ -24,6 +24,22 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.conditions forKey:@"conditions"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.conditions = [decoder decodeObjectForKey:@"conditions"];
+    }
+    
+    return self;
+}
+
 - (void)clear {
     [self.conditions removeAllObjects];
 }

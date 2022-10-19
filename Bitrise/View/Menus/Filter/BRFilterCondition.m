@@ -18,6 +18,26 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.uuid forKey:@"uuid"];
+    [encoder encodeObject:@(self.group) forKey:@"group"];
+    [encoder encodeObject:self.predicate forKey:@"predicate"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        _uuid = [decoder decodeObjectForKey:@"uuid"];
+        _group = [[decoder decodeObjectForKey:@"group"] integerValue];
+        _predicate = [decoder decodeObjectForKey:@"predicate"];
+    }
+    
+    return self;
+}
+
 - (instancetype)initWithBuildStatus:(BRFilterStatusType)statusType {
     if (self = [self init]) {
         _group = BRFilterConditionGroupStatus;
