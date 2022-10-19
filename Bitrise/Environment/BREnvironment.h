@@ -49,6 +49,6 @@ extern NSString * const kBRUserIdentityKey;
 
 @end
 
-#endif
-
 NS_ASSUME_NONNULL_END
+
+#endif

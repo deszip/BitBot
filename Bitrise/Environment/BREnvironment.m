@@ -6,6 +6,8 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+
 #import "BREnvironment.h"
 
 #import "AppDelegate.h"
@@ -95,3 +97,5 @@ NSString * const kBRUserIdentityKey = @"kBRUserIdentityKey";
 }
 
 @end
+
+#endif
