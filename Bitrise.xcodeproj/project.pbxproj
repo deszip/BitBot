@@ -2424,9 +2424,11 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = BitBotATVDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
-				DEVELOPMENT_TEAM = AM5334753U;
+				DEVELOPMENT_TEAM = R76R7NWC75;
+				"DEVELOPMENT_TEAM[sdk=appletvos*]" = AM5334753U;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2437,6 +2439,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.atv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "BitBot aTV development";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
@@ -2455,10 +2458,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = BitBotATVRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"BitriseATV/Preview Content\"";
-				DEVELOPMENT_TEAM = AM5334753U;
+				DEVELOPMENT_TEAM = R76R7NWC75;
+				"DEVELOPMENT_TEAM[sdk=appletvos*]" = R76R7NWC75;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "BitriseATV/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2469,6 +2474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.atv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BitBot aTV AppStore";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=appletvos*]" = "BitBot aTV AppStore";
 				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bitrise/Bitrise-Bridging-Header.h";
