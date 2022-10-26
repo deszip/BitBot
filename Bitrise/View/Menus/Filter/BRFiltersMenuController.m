@@ -43,6 +43,11 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     return self;
 }
 
+- (void)setStateChageCallback:(void (^)(BRBuildPredicate * _Nonnull))stateChageCallback {
+    _stateChageCallback = stateChageCallback;
+    BR_SAFE_CALL(self.stateChageCallback, self.predicate);
+}
+
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
     
