@@ -50,6 +50,20 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
 
 - (void)bind:(NSMenu *)menu {
     self.menu = menu;
+    [self addItems];
+    self.predicate = [self savedPredicate];
+    
+    [self handleStateChange];
+}
+
+#pragma mark - Menu building -
+
+- (void)addItems {
+    if (!self.menu) {
+        return;
+    }
+    
+    [self.menu removeAllItems];
     
     [self addItems:[self.itemProvider statusItems] asSubmenuWithTitle:@"Status"];
     [self addItems:[self.itemProvider appsItems] asSubmenuWithTitle:@"Applications"];
@@ -59,10 +73,6 @@ typedef NS_ENUM(NSUInteger, BRFilterMenuItem) {
     [clearItem setTarget:self];
     [self.menu addItem:[NSMenuItem separatorItem]];
     [self.menu addItem:clearItem];
-    
-    // Recover predicate
-    self.predicate = [self savedPredicate];
-    [self handleStateChange];
 }
 
 - (void)addItems:(NSArray <NSMenuItem *> *)items asSubmenuWithTitle:(NSString *)title {
