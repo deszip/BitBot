@@ -6,7 +6,7 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - Kingfisher/SwiftUI (5.15.8):
     - Kingfisher/Core
-  - Mixpanel (4.1.3)
+  - Mixpanel (5.0.0)
   - OCMock (3.4.3)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
@@ -47,11 +47,11 @@ SPEC CHECKSUMS:
   EasyMapping: a86b28c64613e3b5784e05c42a40da7b103ef41c
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Mixpanel: e1946068db90518aa5abc05deb63176c109b7e00
+  Mixpanel: b26d788c4ca046f97b02900c1dfe1d49ede8704d
   OCMock: 43565190abc78977ad44a61c0d20d7f0784d35ab
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   Sentry: d2f889ed77bd7f8c51b1934dbabddbc553790630
 
 PODFILE CHECKSUM: 27ef9c072fefea39b98d5c09c9512f14e562ef18
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

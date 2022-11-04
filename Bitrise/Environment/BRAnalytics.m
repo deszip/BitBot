@@ -11,6 +11,8 @@
 #import <Mixpanel/Mixpanel.h>
 #import <Sentry/Sentry.h>
 
+#import "BREnvironment.h"
+
 static NSString * const kBRAnalyticsAvailabilityKey = @"kBRAnalyticsAvailabilityKey";
 
 static NSString * const kBRMixpanelOSXToken = @"ae64ff4c78b73e7f945f63aa02677fbb";
@@ -26,7 +28,10 @@ static NSString * const kBRSentryATVDSNPath = @"https://eb1b1d1669e344d2a0799c79
 
 typedef NSString BRAnalyticsEvent;
 
+static BRAnalyticsEvent * const kFirstStartAppEvent = @"app_first_start";
+static BRAnalyticsEvent * const kStartAppEvent = @"app_start";
 static BRAnalyticsEvent * const kQuitAppEvent = @"app_quit";
+static BRAnalyticsEvent * const kOpenPopoverAppEvent = @"app_open_popover";
 static BRAnalyticsEvent * const kAboutScreenEvent = @"app_showabout";
 static BRAnalyticsEvent * const kAccountsScreenEvent = @"app_showaccounts";
 static BRAnalyticsEvent * const kAutorunToggleEvent = @"app_autoruntoggle";
@@ -46,6 +51,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 @interface BRAnalytics ()
 
 @property (strong, nonatomic) NSUserDefaults *defaults;
+@property (strong, nonatomic) Mixpanel *mixpanel;
 
 @end
 
@@ -56,6 +62,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (instancetype)initWithDefaults:(NSUserDefaults *)defaults {
     if (self = [super init]) {
         _defaults = defaults;
+        
     }
     
     return self;
@@ -72,6 +79,11 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 }
 
 - (void)start {
+    // No
+#if DEBUG
+    // return;
+#endif
+    
     // First launch, enable by default
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kBRAnalyticsAvailabilityKey] == nil) {
         [[BRAnalytics analytics] setEnabled:YES];
@@ -119,16 +131,28 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 #pragma mark - Providers -
 
 - (void)startMixpanel:(NSString *)token {
-    [Mixpanel sharedInstanceWithToken:token];
-    if ([[Mixpanel sharedInstance] hasOptedOutTracking]) {
-        [[Mixpanel sharedInstance] optInTracking];
+    self.mixpanel = [Mixpanel sharedInstanceWithToken:token trackAutomaticEvents:YES];
+    
+#if TARGET_OS_OSX
+    NSString *identity = [[NSUserDefaults standardUserDefaults] objectForKey:kBRUserIdentityKey];
+    if (identity) {
+        [self.mixpanel identify:identity];
+    }
+#endif
+
+#if DEBUG
+    self.mixpanel.enableLogging = YES;
+#endif
+
+    if ([self.mixpanel hasOptedOutTracking]) {
+        [self.mixpanel optInTracking];
     }
 }
 
 - (void)stopMixpanel {
-    [[Mixpanel sharedInstance] flush];
-    [[Mixpanel sharedInstance] reset];
-    [[Mixpanel sharedInstance] optOutTracking];
+    [self.mixpanel flush];
+    [self.mixpanel reset];
+    [self.mixpanel optOutTracking];
 }
 
 - (void)startSentry:(NSString *)dsn {
@@ -144,6 +168,9 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 
 #pragma mark - Events -
 
+- (void)trackFirstStartApp { [self sendEvent:kFirstStartAppEvent properties:@{}]; }
+- (void)trackStartApp { [self sendEvent:kStartAppEvent properties:@{}]; }
+- (void)trackPopoverOpen { [self sendEvent:kOpenPopoverAppEvent properties:@{}]; }
 - (void)trackQuitApp { [self sendEvent:kQuitAppEvent properties:@{}]; }
 - (void)trackAboutOpen { [self sendEvent:kAboutScreenEvent properties:@{}]; }
 - (void)trackAccountsOpen { [self sendEvent:kAccountsScreenEvent properties:@{}]; }
@@ -179,7 +206,7 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 
 - (void)sendEvent:(BRAnalyticsEvent *)name properties:(NSDictionary *)properties {
     if ([self isEnabled]) {
-        [[Mixpanel sharedInstance] track:name properties:properties];
+        [self.mixpanel track:name properties:properties];
     }
 }
 

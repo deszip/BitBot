@@ -9,9 +9,11 @@
 #import "BREnvironment.h"
 
 #import "AppDelegate.h"
+#import "BRAnalytics.h"
 
 static NSString * const kBRNotificationsKey = @"kBRNotificationsKey";
 static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
+NSString * const kBRUserIdentityKey = @"kBRUserIdentityKey";
 
 @interface BREnvironment ()
 
@@ -32,9 +34,16 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 }
 
 - (void)handleAppLaunch {
+    [[BRAnalytics analytics] trackStartApp];
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kBRFirstLaunchKey]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kBRFirstLaunchKey];
         [self toggleNotifications];
+        [[BRAnalytics analytics] trackFirstStartApp];
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kBRUserIdentityKey]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[[NSUUID UUID] UUIDString] forKey:kBRUserIdentityKey];
     }
 }
 
@@ -46,6 +55,10 @@ static NSString * const kBRFirstLaunchKey = @"kBRFirstLaunchKey";
 
 - (NSString *)buildNumber {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSString *)userIdentity {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kBRUserIdentityKey];
 }
 
 #pragma mark - Notifications -

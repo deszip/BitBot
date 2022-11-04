@@ -32,9 +32,9 @@
             if (builds.count > 0) {
                 [environment postNotifications:builds];
             }
-            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
-                                                  running:result.diff.running.count
-                                                 finished:result.diff.finished.count];
+//            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
+//                                                  running:result.diff.running.count
+//                                                 finished:result.diff.finished.count];
         };
     }
     
@@ -47,9 +47,9 @@
     if (self = [super init]) {
         _syncEngine = engine;
         _syncEngine.syncCallback = ^(BRSyncResult *result) {
-            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
-                                                  running:result.diff.running.count
-                                                 finished:result.diff.finished.count];
+//            [[BRAnalytics analytics] trackSyncWithStarted:result.diff.started.count
+//                                                  running:result.diff.running.count
+//                                                 finished:result.diff.finished.count];
         };
     }
     return self;

@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
 
 #import "BRAutorun.h"
 #import "BRNotificationDispatcher.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+extern NSString * const kBRUserIdentityKey;
 
 @interface BREnvironment : NSObject
 
@@ -26,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Info -
 - (NSString *)versionNumber;
 - (NSString *)buildNumber;
+- (NSString *)userIdentity;
 
 #pragma mark - Notifications -
 

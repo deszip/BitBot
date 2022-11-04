@@ -29,7 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Events -
 
+- (void)trackFirstStartApp;
+- (void)trackStartApp;
 - (void)trackQuitApp;
+- (void)trackPopoverOpen;
 - (void)trackAboutOpen;
 - (void)trackAccountsOpen;
 - (void)trackAutorunToggle;
