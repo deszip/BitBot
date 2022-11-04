@@ -133,10 +133,12 @@ static BRAnalyticsEvent * const kOpenBuildActionEvent = @"action_openbuild";
 - (void)startMixpanel:(NSString *)token {
     self.mixpanel = [Mixpanel sharedInstanceWithToken:token trackAutomaticEvents:YES];
     
+#if TARGET_OS_OSX
     NSString *identity = [[NSUserDefaults standardUserDefaults] objectForKey:kBRUserIdentityKey];
     if (identity) {
         [self.mixpanel identify:identity];
     }
+#endif
 
 #if DEBUG
     self.mixpanel.enableLogging = YES;

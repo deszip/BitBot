@@ -6,8 +6,6 @@
 //  Copyright © 2018 BitBot. All rights reserved.
 //
 
-#if TARGET_OS_OSX
-
 #import <Foundation/Foundation.h>
 
 #import "BRAutorun.h"
@@ -50,5 +48,3 @@ extern NSString * const kBRUserIdentityKey;
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif

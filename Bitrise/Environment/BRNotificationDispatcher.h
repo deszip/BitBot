@@ -15,11 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BRNotificationDispatcher : NSObject
 
+#if TARGET_OS_OSX
 - (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithDefaults:(NSUserDefaults *)defaults
                               nc:(NSUserNotificationCenter *)nc NS_DESIGNATED_INITIALIZER;
+#endif
 
 #pragma mark - Notifications info -
 - (BOOL)notificationsEnabled;
