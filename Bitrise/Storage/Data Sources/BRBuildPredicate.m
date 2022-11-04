@@ -24,6 +24,29 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding {
+    return YES;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.conditions forKey:@"conditions"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        NSSet *classes = [NSSet setWithObjects:
+                          [NSMutableDictionary class],
+                          [NSUUID class],
+                          [NSComparisonPredicate class],
+                          [NSCompoundPredicate class],
+                          [NSNumber class],
+                          [BRFilterCondition class], nil];
+        self.conditions = [decoder decodeObjectOfClasses:classes forKey:@"conditions"];
+    }
+    
+    return self;
+}
+
 - (void)clear {
     [self.conditions removeAllObjects];
 }
@@ -56,7 +79,9 @@
         return NO;
     }
     
-    return [conditionGroup.allKeys containsObject:condition.uuid];
+    return [[conditionGroup keysOfEntriesPassingTest:^BOOL(NSUUID *key, BRFilterCondition *nextCondition, BOOL *stop) {
+        return  [condition.predicate isEqualTo:nextCondition.predicate];
+    }] count] > 0;
 }
 
 - (NSPredicate *)predicate {

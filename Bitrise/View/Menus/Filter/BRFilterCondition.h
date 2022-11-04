@@ -24,7 +24,9 @@ typedef NS_ENUM(NSUInteger, BRFilterConditionGroup) {
     BRFilterConditionGroupAccount = 2
 };
 
-@interface BRFilterCondition : NSObject
+@interface BRFilterCondition : NSObject <NSSecureCoding>
+
+@property (class, readonly) BOOL supportsSecureCoding;
 
 @property (strong, nonatomic, readonly) NSUUID *uuid;
 @property (assign, nonatomic, readonly) BRFilterConditionGroup group;
