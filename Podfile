@@ -8,8 +8,11 @@ end
 
 target 'BitBot' do
   platform :osx, '10.14'
-  pod 'SDWebImage', '~> 5.0.6'
+
+  pod 'SDWebImage'
+  # pod 'SDWebImage', '~> 5.0.6'
   
+
   sharedPods()
 end
 

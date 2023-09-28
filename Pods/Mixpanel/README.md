@@ -51,7 +51,7 @@ Mixpanel supports Carthage to package your dependencies as a framework. Include 
 ```objc
 github "mixpanel/mixpanel-iphone"
 ```
-Check out the [Carthage docs](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos) for more info.
+Check out the [Carthage docs](https://github.com/Carthage/Carthage#quick-start) for more info.
 
 ### Installation Option 3: Swift Package Manager
 1.  In Xcode, select File > Add Packages...
@@ -82,7 +82,7 @@ Mixpanel *mixpanel = [Mixpanel sharedInstance];
 ```
 
 ## 4. Check for Success
-[Open up Live View in Mixpanel](http://mixpanel.com/report/live) to view incoming events. 
+[Open up Events in Mixpanel](http://mixpanel.com/report/events) to view incoming events. 
 
 Once data hits our API, it generally takes ~60 seconds for it to be processed, stored, and queryable in your project.
 

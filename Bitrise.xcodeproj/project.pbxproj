@@ -146,6 +146,13 @@
 		D943B25B24EAF1C300084C59 /* JetBrainsMono-Medium-Italic.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D97355392402F97F003FCE9B /* JetBrainsMono-Medium-Italic.ttf */; };
 		D943B25C24EAF1C300084C59 /* JetBrainsMono-Medium.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553B2402F97F003FCE9B /* JetBrainsMono-Medium.ttf */; };
 		D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */ = {isa = PBXBuildFile; fileRef = D973553C2402F980003FCE9B /* JetBrainsMono-Regular.ttf */; };
+		D95812B42AC5920800B78565 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D95812B32AC5920700B78565 /* WidgetKit.framework */; };
+		D95812B62AC5920800B78565 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D95812B52AC5920800B78565 /* SwiftUI.framework */; };
+		D95812B92AC5920800B78565 /* BitBotWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95812B82AC5920800B78565 /* BitBotWidgetBundle.swift */; };
+		D95812BB2AC5920800B78565 /* BitBotWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95812BA2AC5920800B78565 /* BitBotWidget.swift */; };
+		D95812BD2AC5920800B78565 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95812BC2AC5920800B78565 /* AppIntent.swift */; };
+		D95812BF2AC5920900B78565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D95812BE2AC5920900B78565 /* Assets.xcassets */; };
+		D95812C42AC5920900B78565 /* BitBotWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D95812B22AC5920700B78565 /* BitBotWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D96DDE9224436F78005F5998 /* BRScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D96DDE9124436F78005F5998 /* BRScroller.m */; };
 		D97355332402F558003FCE9B /* BRLogPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D97355322402F558003FCE9B /* BRLogPresenter.m */; };
 		D982D8A6249E157C0099F0A5 /* BREmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D982D8A5249E157C0099F0A5 /* BREmptyView.m */; };
@@ -294,6 +301,13 @@
 			remoteGlobalIDString = DEBE8C182513B7FB00CF079A;
 			remoteInfo = BitBotATV;
 		};
+		D95812C22AC5920900B78565 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E42CACD20EC7A7E0033CD03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D95812B12AC5920700B78565;
+			remoteInfo = BitBotWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -324,6 +338,17 @@
 				D943B25D24EAF1C300084C59 /* JetBrainsMono-Regular.ttf in Copy Fonts */,
 			);
 			name = "Copy Fonts";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D95812C52AC5920900B78565 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D95812C42AC5920900B78565 /* BitBotWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -527,6 +552,15 @@
 		D93FFA2328F74F27005B35F0 /* BRFilterCondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRFilterCondition.h; sourceTree = "<group>"; };
 		D93FFA2428F74F27005B35F0 /* BRFilterCondition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRFilterCondition.m; sourceTree = "<group>"; };
 		D93FFA2728FA18F8005B35F0 /* BRBuildPredicateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBuildPredicateTests.m; sourceTree = "<group>"; };
+		D95812B22AC5920700B78565 /* BitBotWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BitBotWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D95812B32AC5920700B78565 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D95812B52AC5920800B78565 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D95812B82AC5920800B78565 /* BitBotWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBotWidgetBundle.swift; sourceTree = "<group>"; };
+		D95812BA2AC5920800B78565 /* BitBotWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitBotWidget.swift; sourceTree = "<group>"; };
+		D95812BC2AC5920800B78565 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		D95812BE2AC5920900B78565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D95812C02AC5920900B78565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D95812C12AC5920900B78565 /* BitBotWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BitBotWidget.entitlements; sourceTree = "<group>"; };
 		D95F56EF246FFDF300DF2C50 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
 		D95F56F0246FFDF300DF2C50 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		D95F56F1246FFDF300DF2C50 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
@@ -677,6 +711,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D95812AF2AC5920700B78565 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D95812B62AC5920800B78565 /* SwiftUI.framework in Frameworks */,
+				D95812B42AC5920800B78565 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEBE8C162513B7FB00CF079A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -697,6 +740,8 @@
 				4592E252F47089546A803FDB /* libPods-BitBot.a */,
 				6206DED9400023C6320DD7AB /* libPods-BitBotTests.a */,
 				A1C47D1452DDE09A85608B0F /* libPods-BitBotATV.a */,
+				D95812B32AC5920700B78565 /* WidgetKit.framework */,
+				D95812B52AC5920800B78565 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -724,6 +769,7 @@
 				0E42CAEE20EC7A800033CD03 /* BitriseTests */,
 				DEBE8C1A2513B7FB00CF079A /* BitriseATV */,
 				D91BD9C425A1BE7000EF8D66 /* BitBotATVTests */,
+				D95812B72AC5920800B78565 /* BitBotWidget */,
 				0E42CAD620EC7A7E0033CD03 /* Products */,
 				4983FB838EF9931C351A2EAB /* Pods */,
 				0ABB74A886F68049AE2D5596 /* Frameworks */,
@@ -737,6 +783,7 @@
 				0E42CAEB20EC7A800033CD03 /* BitBotTests.xctest */,
 				DEBE8C192513B7FB00CF079A /* BitBotATV.app */,
 				D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */,
+				D95812B22AC5920700B78565 /* BitBotWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1207,6 +1254,19 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
+		D95812B72AC5920800B78565 /* BitBotWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D95812B82AC5920800B78565 /* BitBotWidgetBundle.swift */,
+				D95812BA2AC5920800B78565 /* BitBotWidget.swift */,
+				D95812BC2AC5920800B78565 /* AppIntent.swift */,
+				D95812BE2AC5920900B78565 /* Assets.xcassets */,
+				D95812C02AC5920900B78565 /* Info.plist */,
+				D95812C12AC5920900B78565 /* BitBotWidget.entitlements */,
+			);
+			path = BitBotWidget;
+			sourceTree = "<group>";
+		};
 		D95F56EE246FFDE300DF2C50 /* Proxima */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,10 +1648,12 @@
 				0EF766BD21E2613C00E64E0C /* Bump build version */,
 				0E42CAD320EC7A7E0033CD03 /* Resources */,
 				D943B24A24EAF17F00084C59 /* Copy Fonts */,
+				D95812C52AC5920900B78565 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D95812C32AC5920900B78565 /* PBXTargetDependency */,
 			);
 			name = BitBot;
 			productName = Bitrise;
@@ -1635,6 +1697,23 @@
 			productReference = D91BD9C325A1BE7000EF8D66 /* BitBotATVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D95812B12AC5920700B78565 /* BitBotWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D95812C82AC5920A00B78565 /* Build configuration list for PBXNativeTarget "BitBotWidgetExtension" */;
+			buildPhases = (
+				D95812AE2AC5920700B78565 /* Sources */,
+				D95812AF2AC5920700B78565 /* Frameworks */,
+				D95812B02AC5920700B78565 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitBotWidgetExtension;
+			productName = BitBotWidgetExtension;
+			productReference = D95812B22AC5920700B78565 /* BitBotWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DEBE8C182513B7FB00CF079A /* BitBotATV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEBE8C272513B7FD00CF079A /* Build configuration list for PBXNativeTarget "BitBotATV" */;
@@ -1660,7 +1739,7 @@
 		0E42CACD20EC7A7E0033CD03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = Bitrise;
 				TargetAttributes = {
@@ -1679,6 +1758,9 @@
 					D91BD9C225A1BE7000EF8D66 = {
 						CreatedOnToolsVersion = 12.3;
 						TestTargetID = DEBE8C182513B7FB00CF079A;
+					};
+					D95812B12AC5920700B78565 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 					DEBE8C182513B7FB00CF079A = {
 						CreatedOnToolsVersion = 12.0;
@@ -1702,6 +1784,7 @@
 				0E42CAEA20EC7A800033CD03 /* BitBotTests */,
 				DEBE8C182513B7FB00CF079A /* BitBotATV */,
 				D91BD9C225A1BE7000EF8D66 /* BitBotATVTests */,
+				D95812B12AC5920700B78565 /* BitBotWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1732,6 +1815,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D95812B02AC5920700B78565 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D95812BF2AC5920900B78565 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2014,6 +2105,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D95812AE2AC5920700B78565 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D95812B92AC5920800B78565 /* BitBotWidgetBundle.swift in Sources */,
+				D95812BB2AC5920800B78565 /* BitBotWidget.swift in Sources */,
+				D95812BD2AC5920800B78565 /* AppIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DEBE8C152513B7FB00CF079A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2131,6 +2232,11 @@
 			isa = PBXTargetDependency;
 			target = DEBE8C182513B7FB00CF079A /* BitBotATV */;
 			targetProxy = D91BD9C825A1BE7000EF8D66 /* PBXContainerItemProxy */;
+		};
+		D95812C32AC5920900B78565 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D95812B12AC5920700B78565 /* BitBotWidgetExtension */;
+			targetProxy = D95812C22AC5920900B78565 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2262,6 +2368,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F124CB0846A3F855B92A993A /* Pods-BitBot.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BitBotDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
@@ -2293,6 +2400,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0981A88997343C17C035584A /* Pods-BitBot.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Bitrise/Bitrise.entitlements;
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
@@ -2417,6 +2525,85 @@
 			};
 			name = Release;
 		};
+		D95812C62AC5920900B78565 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = BitBotWidget/BitBotWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = AM5334753U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BitBotWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BitBotWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Bitrise. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "BitBot Widget Developer ID";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D95812C72AC5920900B78565 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = BitBotWidget/BitBotWidget.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BitBotWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BitBotWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Bitrise. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitbot.BitBotWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		DEBE8C252513B7FD00CF079A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C032C508CB7EA3215E3C4EEA /* Pods-BitBotATV.debug.xcconfig */;
@@ -2523,6 +2710,15 @@
 			buildConfigurations = (
 				D91BD9CB25A1BE7000EF8D66 /* Debug */,
 				D91BD9CC25A1BE7000EF8D66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D95812C82AC5920A00B78565 /* Build configuration list for PBXNativeTarget "BitBotWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D95812C62AC5920900B78565 /* Debug */,
+				D95812C72AC5920900B78565 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
