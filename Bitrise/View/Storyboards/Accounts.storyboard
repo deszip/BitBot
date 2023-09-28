@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="qmq-L7-CkP">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="qmq-L7-CkP">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -221,7 +220,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="W3r-9x-NSk">
-                                            <rect key="frame" x="434" y="1" width="15" height="-1"/>
+                                            <rect key="frame" x="434" y="0.0" width="15" height="1"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -309,11 +308,11 @@
             <objects>
                 <viewController id="iG7-Nh-Yok" customClass="BRKeyInputViewController" sceneMemberID="viewController">
                     <view key="view" id="KbV-nr-gFq">
-                        <rect key="frame" x="0.0" y="0.0" width="504" height="155"/>
+                        <rect key="frame" x="0.0" y="0.0" width="506" height="157"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o17-jo-W2E">
-                                <rect key="frame" x="357" y="15" width="127" height="32"/>
+                                <rect key="frame" x="359" y="15" width="127" height="32"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zm8-KN-DGe">
                                         <rect key="frame" x="-7" y="5" width="76" height="32"/>
@@ -352,9 +351,9 @@ Gw
                                 </customSpacing>
                             </stackView>
                             <box translatesAutoresizingMaskIntoConstraints="NO" id="ZqQ-TE-ccD">
-                                <rect key="frame" x="17" y="53" width="470" height="87"/>
+                                <rect key="frame" x="17" y="53" width="472" height="89"/>
                                 <view key="contentView" id="X6T-Ad-7Be">
-                                    <rect key="frame" x="3" y="3" width="464" height="69"/>
+                                    <rect key="frame" x="4" y="5" width="464" height="69"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mPe-mZ-dAr">
@@ -420,7 +419,7 @@ Gw
         </scene>
     </scenes>
     <resources>
-        <image name="NSAddTemplate" width="14" height="13"/>
-        <image name="NSRemoveTemplate" width="14" height="4"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
+        <image name="NSRemoveTemplate" width="18" height="5"/>
     </resources>
 </document>

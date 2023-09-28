@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fMf-Me-oJY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -695,7 +695,7 @@
                                 </constraints>
                             </customView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qt-Zm-LyZ">
-                                <rect key="frame" x="25" y="66" width="401" height="162"/>
+                                <rect key="frame" x="25" y="66" width="403" height="162"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fAd-8h-FuZ">
                                         <rect key="frame" x="-2" y="145" width="171" height="18"/>
@@ -712,16 +712,16 @@
                                         </buttonCell>
                                     </button>
                                     <box title="Menu app" translatesAutoresizingMaskIntoConstraints="NO" id="J7Z-OP-PDP">
-                                        <rect key="frame" x="-3" y="-4" width="407" height="114"/>
+                                        <rect key="frame" x="-3" y="-4" width="409" height="114"/>
                                         <view key="contentView" id="cBV-nv-t7B">
-                                            <rect key="frame" x="3" y="3" width="401" height="96"/>
+                                            <rect key="frame" x="4" y="5" width="401" height="94"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vq-U6-7Im">
-                                                    <rect key="frame" x="5" y="5" width="391" height="86"/>
+                                                    <rect key="frame" x="5" y="5" width="391" height="84"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-Bc-Lgc">
-                                                            <rect key="frame" x="-2" y="56" width="221" height="31"/>
+                                                            <rect key="frame" x="-2" y="55" width="221" height="30"/>
                                                             <buttonCell key="cell" type="check" title="Show menu app in the menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W2i-nz-toG">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
@@ -731,14 +731,14 @@
                                                             </connections>
                                                         </button>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KlR-VU-CTx">
-                                                            <rect key="frame" x="-2" y="28" width="393" height="30"/>
+                                                            <rect key="frame" x="-2" y="27" width="393" height="30"/>
                                                             <buttonCell key="cell" type="check" title="Keep menu app running in the background when I quit BitBot" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="pMt-1Z-l4z">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>
                                                             </buttonCell>
                                                         </button>
                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rpb-2O-l7R">
-                                                            <rect key="frame" x="-2" y="-1" width="298" height="31"/>
+                                                            <rect key="frame" x="-2" y="-1" width="298" height="30"/>
                                                             <buttonCell key="cell" type="check" title="Start menu app when I log in to my computer" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="LH8-R8-MGZ">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="system"/>

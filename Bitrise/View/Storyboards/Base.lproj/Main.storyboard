@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21179.7"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -718,14 +718,14 @@
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="JMg-rD-ZNo">
                                         <rect key="frame" x="442" y="20" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="8C6-9n-8CK"/>
-                                            <constraint firstAttribute="width" constant="20" id="aue-7u-QY1"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="Settings-icon" imagePosition="only" alignment="center" alternateImage="NSActionTemplate" state="on" imageScaling="proportionallyDown" inset="2" id="ONJ-GV-aRZ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="8C6-9n-8CK"/>
+                                            <constraint firstAttribute="width" constant="20" id="aue-7u-QY1"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="openSettingsMenu:" target="XfG-lQ-9wD" id="5yq-o5-APQ"/>
                                         </connections>
@@ -751,14 +751,14 @@
                                     </stackView>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Rev-Kr-WZY">
                                         <rect key="frame" x="414" y="20" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="LCG-AN-GRj"/>
-                                            <constraint firstAttribute="width" constant="20" id="NRG-Hs-ewa"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="Icon" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="PEr-bj-wYS">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="LCG-AN-GRj"/>
+                                            <constraint firstAttribute="width" constant="20" id="NRG-Hs-ewa"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="openStandaloneWindow:" target="XfG-lQ-9wD" id="8ZZ-mN-W8a"/>
                                         </connections>
@@ -836,7 +836,7 @@
                                                                                 <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-zv-646" customClass="BRBuildInfoView">
                                                                                     <rect key="frame" x="50" y="13" width="357" height="90"/>
                                                                                     <subviews>
-                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5G-n9-Q9E">
+                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X5G-n9-Q9E">
                                                                                             <rect key="frame" x="-2" y="74" width="45" height="16"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="16" id="Bnp-Wa-dku"/>
@@ -847,7 +847,7 @@
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
-                                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Vp9-Fy-Sm7">
+                                                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Vp9-Fy-Sm7">
                                                                                             <rect key="frame" x="-2" y="46" width="361" height="21"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="21" id="Snt-NC-Npg"/>
@@ -872,7 +872,7 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="git-branch" id="Qj6-GW-xyQ"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-cH-HTt">
+                                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-cH-HTt">
                                                                                                             <rect key="frame" x="13" y="0.0" width="155" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="feature/sdkd-enc-stub-api" usesSingleLineMode="YES" id="ToV-34-oy8">
                                                                                                                 <font key="font" metaFont="cellTitle"/>
@@ -901,7 +901,7 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="message-square" id="B7o-7b-0aM"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h51-k2-hGy">
+                                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h51-k2-hGy">
                                                                                                             <rect key="frame" x="13" y="0.0" width="90" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" title="develop develop" usesSingleLineMode="YES" id="sQr-Pk-f1M">
                                                                                                                 <font key="font" metaFont="cellTitle"/>
@@ -930,7 +930,7 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="list" id="z3C-8e-zYQ"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sSb-xQ-bbg">
+                                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sSb-xQ-bbg">
                                                                                                             <rect key="frame" x="13" y="0.0" width="49" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="develop" usesSingleLineMode="YES" id="TUr-ew-Ur5">
                                                                                                                 <font key="font" metaFont="cellTitle"/>
@@ -978,7 +978,7 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="calendar" id="Dxg-fa-MFv"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5l-zK-olO">
+                                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5l-zK-olO">
                                                                                                             <rect key="frame" x="13" y="0.0" width="98" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="12.01.2019 11:08" usesSingleLineMode="YES" id="ydG-b7-4Es">
                                                                                                                 <font key="font" metaFont="cellTitle"/>
@@ -1007,7 +1007,7 @@
                                                                                                             </constraints>
                                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="clock" id="SG2-ld-xP9"/>
                                                                                                         </imageView>
-                                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zaL-kZ-Ud4">
+                                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zaL-kZ-Ud4">
                                                                                                             <rect key="frame" x="13" y="0.0" width="45" height="15"/>
                                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="1m 55s" usesSingleLineMode="YES" id="nlN-mZ-4mf">
                                                                                                                 <font key="font" metaFont="cellTitle"/>
@@ -1074,7 +1074,7 @@
                                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="NLr-ma-tnY">
                                                                             <rect key="frame" x="372" y="0.0" width="70" height="115"/>
                                                                             <subviews>
-                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-yV-gGe">
+                                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-yV-gGe">
                                                                                     <rect key="frame" x="-2" y="86" width="74" height="16"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="16" id="A6w-4K-YmO"/>
@@ -1169,7 +1169,7 @@
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="EmptyIcon" id="f2i-wX-89C"/>
                                             </imageView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-0c-kFG">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-0c-kFG">
                                                 <rect key="frame" x="-2" y="170" width="298" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="tgs-C0-0Wa"/>
@@ -1228,15 +1228,15 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
                                             </scrollView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BUq-g1-K2L">
                                                 <rect key="frame" x="82" y="0.0" width="130" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="130" id="0uf-co-AGK"/>
-                                                    <constraint firstAttribute="height" constant="34" id="j2Z-VR-DC0"/>
-                                                </constraints>
                                                 <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="AddButtonImage" imagePosition="only" alternateImage="AddButtonImage" inset="2" id="ysV-sp-RcN">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
                                                 </buttonCell>
                                                 <color key="contentTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="0uf-co-AGK"/>
+                                                    <constraint firstAttribute="height" constant="34" id="j2Z-VR-DC0"/>
+                                                </constraints>
                                                 <connections>
                                                     <action selector="addAccount:" target="lhQ-nT-Gbv" id="WMO-t9-EYr"/>
                                                 </connections>
@@ -1459,7 +1459,7 @@ https://discuss.bitrise.io/t/personal-access-tokens-beta/1383</string>
         <image name="EmptyIcon" width="50" height="50"/>
         <image name="Icon" width="1024" height="1024"/>
         <image name="Logo" width="84" height="29"/>
-        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSActionTemplate" width="20" height="20"/>
         <image name="Settings-icon" width="20" height="20"/>
         <image name="ShadowBottom" width="430" height="25"/>
         <image name="ShadowTop" width="430" height="25"/>
